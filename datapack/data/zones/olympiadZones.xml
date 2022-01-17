@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<list>
+	<zone id="11070" maxZ="-3000" minZ="-3100" shape="Cuboid" type="OlympiadStadiumZone">
+		<stat name="stadiumId" val="1"/>
+		<node X="-18889" Y="-19464" />
+		<node X="-22768" Y="-22568" />
+		<spawn X="-21453" Y="-21058" Z="-3051" />
+		<spawn X="-20254" Y="-21058" Z="-3051" />
+		<!-- Spectate Spawn -->
+		<spawn X="-20854" Y="-21058" Z="-3051" isAlternate="true" />
+	</zone>
+	<zone id="11071" maxZ="-3200" minZ="-3400" shape="Cuboid" type="OlympiadStadiumZone">
+		<stat name="stadiumId" val="2"/>
+		<node X="-107967" Y="-217143" />
+		<node X="-111845" Y="-220273" />
+		<spawn X="-110508" Y="-218674" Z="-3357" />
+		<spawn X="-109311" Y="-218674" Z="-3357" />
+		<!-- Spectate Spawn -->
+		<spawn X="-109910" Y="-218674" Z="-3357" isAlternate="true" />
+	</zone>
+	<zone id="11072" maxZ="-3200" minZ="-3400" shape="Cuboid" type="OlympiadStadiumZone">
+		<stat name="stadiumId" val="3"/>
+		<node X="-118384" Y="-223397" />
+		<node X="-122186" Y="-226612" />
+		<spawn X="-120939" Y="-225041" Z="-3357" />
+		<spawn X="-119718" Y="-225041" Z="-3357" />
+		<!-- Spectate Spawn -->
+		<spawn X="-120329" Y="-225041" Z="-3357" isAlternate="true" />
+	</zone>
+	<zone id="11073" maxZ="-3200" minZ="-3400" shape="Cuboid" type="OlympiadStadiumZone">
+		<stat name="stadiumId" val="4"/>
+		<node X="-128500" Y="-219826" />
+		<node X="-124666" Y="-216698" />
+		<spawn X="-127235" Y="-218275" Z="-3357" />
+		<spawn X="-126041" Y="-218275" Z="-3357" />
+		<!-- Spectate Spawn -->
+		<spawn X="-126638" Y="-218275" Z="-3357" isAlternate="true" />
+	</zone>
+	<zone id="11074" maxZ="-3200" minZ="-3400" shape="Cuboid" type="OlympiadStadiumZone">
+		<stat name="stadiumId" val="5"/>
+		<node X="-112613" Y="-211596" />
+		<node X="-116473" Y="-214745" />
+		<spawn X="-115162" Y="-213201" Z="-3357" />
+		<spawn X="-113968" Y="-213201" Z="-3357" />
+		<!-- Spectate Spawn -->
+		<spawn X="-114565" Y="-213201" Z="-3357" isAlternate="true" />
+	</zone>
+	<zone id="11075" maxZ="-3200" minZ="-3400" shape="Cuboid" type="OlympiadStadiumZone">
+		<stat name="stadiumId" val="6"/>
+		<node X="-118318" Y="-205862" />
+		<node X="-122218" Y="-208906" />
+		<spawn X="-120870" Y="-207398" Z="-3357" />
+		<spawn X="-119718" Y="-207398" Z="-3357" />
+		<!-- Spectate Spawn -->
+		<spawn X="-120294" Y="-207398" Z="-3357" isAlternate="true" />
+	</zone>
+	<zone id="11076" maxZ="-3200" minZ="-3400" shape="Cuboid" type="OlympiadStadiumZone">
+		<stat name="stadiumId" val="7"/>
+		<node X="-104447" Y="-210562" />
+		<node X="-100612" Y="-207465" />
+		<spawn X="-103125" Y="-209047" Z="-3357" />
+		<spawn X="-101933" Y="-209047" Z="-3357" />
+		<!-- Spectate Spawn -->
+		<spawn X="-102529" Y="-209047" Z="-3357" isAlternate="true" />
+	</zone>
+	<zone id="11077" maxZ="-3200" minZ="-3400" shape="Cuboid" type="OlympiadStadiumZone">
+		<stat name="stadiumId" val="8"/>
+		<node X="-107684" Y="-199684" />
+		<node X="-111525" Y="-202828" />
+		<spawn X="-110237" Y="-201243" Z="-3357" />
+		<spawn X="-109022" Y="-201243" Z="-3357" />
+		<!-- Spectate Spawn -->
+		<spawn X="-109630" Y="-201243" Z="-3357" isAlternate="true" />
+	</zone>
+	<zone id="11078" maxZ="-3200" minZ="-3400" shape="Cuboid" type="OlympiadStadiumZone">
+		<stat name="stadiumId" val="9"/>
+		<node X="-89457" Y="-259331" />
+		<node X="-85585" Y="-256190" />
+		<spawn X="-88209" Y="-257844" Z="-3356" />
+		<spawn X="-86981" Y="-257844" Z="-3356" />
+		<!-- Spectate Spawn -->
+		<spawn X="-87595" Y="-257844" Z="-3356" isAlternate="true" />
+	</zone>
+	<zone id="11079" maxZ="-3200" minZ="-3400" shape="Cuboid" type="OlympiadStadiumZone">
+		<stat name="stadiumId" val="10"/>
+		<node X="-91880" Y="-249451" />
+		<node X="-95754" Y="-252596" />
+		<spawn X="-94489" Y="-251053" Z="-3356" />
+		<spawn X="-93289" Y="-251053" Z="-3356" />
+		<!-- Spectate Spawn -->
+		<spawn X="-93889" Y="-251053" Z="-3356" isAlternate="true" />
+	</zone>
+	<zone id="11080" maxZ="-3200" minZ="-3400" shape="Cuboid" type="OlympiadStadiumZone">
+		<stat name="stadiumId" val="11"/>
+		<node X="-75171" Y="-249932" />
+		<node X="-79045" Y="-253049" />
+		<spawn X="-77780" Y="-251509" Z="-3356" />
+		<spawn X="-76544" Y="-251509" Z="-3356" />
+		<!-- Spectate Spawn -->
+		<spawn X="-77162" Y="-251509" Z="-3356" isAlternate="true" />
+	</zone>
+	<zone id="11081" maxZ="-3200" minZ="-3400" shape="Cuboid" type="OlympiadStadiumZone">
+		<stat name="stadiumId" val="12"/>
+		<node X="-83690" Y="-247541" />
+		<node X="-79787" Y="-244454" />
+		<spawn X="-82415" Y="-246024" Z="-3356" />
+		<spawn X="-81206" Y="-246024" Z="-3356" />
+		<!-- Spectate Spawn -->
+		<spawn X="-81811" Y="-246024" Z="-3356" isAlternate="true" />
+	</zone>
+	<zone id="11082" maxZ="-3200" minZ="-3400" shape="Cuboid" type="OlympiadStadiumZone">
+		<stat name="stadiumId" val="13"/>
+		<node X="-89396" Y="-241735" />
+		<node X="-85523" Y="-238606" />
+		<spawn X="-88165" Y="-240165" Z="-3356" />
+		<spawn X="-86949" Y="-240165" Z="-3356" />
+		<!-- Spectate Spawn -->
+		<spawn X="-87557" Y="-240165" Z="-3356" isAlternate="true" />
+	</zone>
+	<zone id="11083" maxZ="-3200" minZ="-3400" shape="Cuboid" type="OlympiadStadiumZone">
+		<stat name="stadiumId" val="14"/>
+		<node X="-71707" Y="-243312" />
+		<node X="-67793" Y="-240230" />
+		<spawn X="-70382" Y="-241831" Z="-3356" />
+		<spawn X="-69178" Y="-241831" Z="-3356" />
+		<!-- Spectate Spawn -->
+		<spawn X="-69780" Y="-241831" Z="-3356" isAlternate="true" />
+	</zone>
+	<zone id="11084" maxZ="-3200" minZ="-3400" shape="Cuboid" type="OlympiadStadiumZone">
+		<stat name="stadiumId" val="15"/>
+		<node X="-74897" Y="-232470" />
+		<node X="-78788" Y="-235579" />
+		<spawn X="-77470" Y="-234008" Z="-3356" />
+		<spawn X="-76268" Y="-234008" Z="-3356" />
+		<!-- Spectate Spawn -->
+		<spawn X="-76869" Y="-234008" Z="-3356" isAlternate="true" />
+	</zone>
+	<zone id="11085" maxZ="-3200" minZ="-3400" shape="Cuboid" type="OlympiadStadiumZone">
+		<stat name="stadiumId" val="16"/>
+		<node X="-89455" Y="-226550" />
+		<node X="-85583" Y="-223455" />
+		<spawn X="-88267" Y="-225058" Z="-3357" />
+		<spawn X="-86867" Y="-225058" Z="-3357" />
+		<!-- Spectate Spawn -->
+		<spawn X="-87567" Y="-225058" Z="-3357" isAlternate="true" />
+	</zone>
+	<zone id="11086" maxZ="-3200" minZ="-3400" shape="Cuboid" type="OlympiadStadiumZone">
+		<stat name="stadiumId" val="17"/>
+		<node X="-95747" Y="-219818" />
+		<node X="-91865" Y="-216704" />
+		<spawn X="-94466" Y="-218294" Z="-3357" />
+		<spawn X="-93239" Y="-218294" Z="-3357" />
+		<!-- Spectate Spawn -->
+		<spawn X="-93853" Y="-218294" Z="-3357" isAlternate="true" />
+	</zone>
+	<zone id="11087" maxZ="-3200" minZ="-3400" shape="Cuboid" type="OlympiadStadiumZone">
+		<stat name="stadiumId" val="18"/>
+		<node X="-75157" Y="-217191" />
+		<node X="-79102" Y="-220234" />
+		<spawn X="-77777" Y="-218734" Z="-3357" />
+		<spawn X="-76525" Y="-218734" Z="-3357" />
+		<!-- Spectate Spawn -->
+		<spawn X="-77151" Y="-218734" Z="-3357" isAlternate="true" />
+	</zone>
+	<zone id="11088" maxZ="-3200" minZ="-3400" shape="Cuboid" type="OlympiadStadiumZone">
+		<stat name="stadiumId" val="19"/>
+		<node X="-79781" Y="-211683" />
+		<node X="-83654" Y="-214804" />
+		<spawn X="-82459" Y="-213232" Z="-3357" />
+		<spawn X="-81115" Y="-213232" Z="-3357" />
+		<!-- Spectate Spawn -->
+		<spawn X="-81787" Y="-213232" Z="-3357" isAlternate="true" />
+	</zone>
+	<zone id="11089" maxZ="-3200" minZ="-3400" shape="Cuboid" type="OlympiadStadiumZone">
+		<stat name="stadiumId" val="20"/>
+		<node X="-89438" Y="-208921" />
+		<node X="-85507" Y="-205854" />
+		<spawn X="-88166" Y="-207433" Z="-3357" />
+		<spawn X="-86918" Y="-207433" Z="-3357" />
+		<!-- Spectate Spawn -->
+		<spawn X="-87542" Y="-207433" Z="-3357" isAlternate="true" />
+	</zone>
+	<zone id="11090" maxZ="-3200" minZ="-3400" shape="Cuboid" type="OlympiadStadiumZone">
+		<stat name="stadiumId" val="21"/>
+		<node X="-78775" Y="-202811" />
+		<node X="-74900" Y="-199678" />
+		<spawn X="-77493" Y="-201268" Z="-3357" />
+		<spawn X="-76245" Y="-201268" Z="-3357" />
+		<!-- Spectate Spawn -->
+		<spawn X="-76869" Y="-201268" Z="-3357" isAlternate="true" />
+	</zone>
+	<zone id="11091" maxZ="-3200" minZ="-3400" shape="Cuboid" type="OlympiadStadiumZone">
+		<stat name="stadiumId" val="22"/>
+		<node X="-67737" Y="-207546" />
+		<node X="-71688" Y="-210571" />
+		<spawn X="-70392" Y="-209137" Z="-3357" />
+		<spawn X="-69176" Y="-209137" Z="-3357" />
+		<!-- Spectate Spawn -->
+		<spawn X="-69784" Y="-209137" Z="-3357" isAlternate="true" />
+	</zone>
+</list>

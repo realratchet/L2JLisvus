@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<list>
+	<zone id="11100" maxZ="-1800" minZ="-2000" shape="Cuboid" type="ClanHallZone">
+		<stat name="clanHallId" val="21" />
+		<spawn X="43399" Y="108888" Z="-1980" />
+		<node X="43151" Y="108377" />
+		<node X="43648" Y="109399" />
+	</zone>
+	<zone id="11101" maxZ="-3000" minZ="-3200" shape="Cuboid" type="ClanHallZone">
+		<stat name="clanHallId" val="22" />
+		<spawn X="-15975" Y="123562" Z="-3101" />
+		<node X="-16400" Y="123275" />
+		<node X="-15551" Y="123850" />
+	</zone>
+	<zone id="11102" maxZ="-3000" minZ="-3200" shape="Cuboid" type="ClanHallZone">
+		<stat name="clanHallId" val="23" />
+		<spawn X="-14950" Y="125575" Z="-3128" />
+		<node X="-15100" Y="125350" />
+		<node X="-14800" Y="125800" />
+	</zone>
+	<zone id="11103" maxZ="-3000" minZ="-3200" shape="Cuboid" type="ClanHallZone">
+		<stat name="clanHallId" val="24" />
+		<spawn X="-13875" Y="125375" Z="-3128" />
+		<node X="-14050" Y="125050" />
+		<node X="-13700" Y="125700" />
+	</zone>
+	<zone id="11104" maxZ="-3000" minZ="-3200" shape="Cuboid" type="ClanHallZone">
+		<stat name="clanHallId" val="25" />
+		<spawn X="-12625" Y="124075" Z="-3096" />
+		<node X="-12950" Y="123900" />
+		<node X="-12300" Y="124250" />
+	</zone>
+	<zone id="11105" maxZ="-3000" minZ="-3200" shape="Cuboid" type="ClanHallZone">
+		<stat name="clanHallId" val="26" />
+		<spawn X="-84475" Y="151950" Z="-3123" />
+		<node X="-84700" Y="151550" />
+		<node X="-84250" Y="152350" />
+	</zone>
+	<zone id="11106" maxZ="-3000" minZ="-3200" shape="Cuboid" type="ClanHallZone">
+		<stat name="clanHallId" val="27" />
+		<spawn X="-83875" Y="153325" Z="-3159" />
+		<node X="-84200" Y="153050" />
+		<node X="-83550" Y="153600" />
+	</zone>
+	<zone id="11107" maxZ="-3000" minZ="-3200" shape="Cuboid" type="ClanHallZone">
+		<stat name="clanHallId" val="28" />
+		<spawn X="-83800" Y="155500" Z="-3160" />
+		<node X="-84100" Y="155300" />
+		<node X="-83500" Y="155700" />
+	</zone>
+	<zone id="11108" maxZ="-3000" minZ="-3200" shape="Cuboid" type="ClanHallZone">
+		<stat name="clanHallId" val="29" />
+		<spawn X="-79800" Y="149625" Z="-3038" />
+		<node X="-80100" Y="149400" />
+		<node X="-79500" Y="149850" />
+	</zone>
+	<zone id="11109" maxZ="-3000" minZ="-3200" shape="Cuboid" type="ClanHallZone">
+		<stat name="clanHallId" val="30" />
+		<spawn X="-79500" Y="151800" Z="-3041" />
+		<node X="-79700" Y="151350" />
+		<node X="-79300" Y="152250" />
+	</zone>
+	<zone id="11110" maxZ="-3000" minZ="-3200" shape="Cuboid" type="ClanHallZone">
+		<stat name="clanHallId" val="31" />
+		<spawn X="17700" Y="145075" Z="-3036" />
+		<node X="17400" Y="144800" />
+		<node X="18000" Y="145350" />
+	</zone>
+	<zone id="11111" maxZ="-3000" minZ="-3200" shape="Cuboid" type="ClanHallZone">
+		<stat name="clanHallId" val="32" />
+		<spawn X="18725" Y="143350" Z="-3010" />
+		<node X="18850" Y="143600" />
+		<node X="18600" Y="143100" />
+	</zone>
+	<zone id="11112" maxZ="-3000" minZ="-3200" shape="Cuboid" type="ClanHallZone">
+		<stat name="clanHallId" val="33" />
+		<spawn X="20175" Y="146150" Z="-3111" />
+		<node X="19950" Y="146000" />
+		<node X="20400" Y="146300" />
+	</zone>
+	<zone id="11113" maxZ="0" minZ="0" shape="Cuboid" type="ClanHallZone">
+		<stat name="clanHallId" val="34" />
+		<spawn X="178256" Y="-15714" Z="-2263" />
+		<node X="0" Y="0" />
+		<node X="0" Y="0" />
+	</zone>
+	<zone id="11114" maxZ="-1800" minZ="-2000" shape="Cuboid" type="ClanHallZone">
+		<stat name="clanHallId" val="35" />
+		<spawn X="80182" Y="-15484" Z="-1804" />
+		<node X="80738" Y="-15914" />
+		<node X="79627" Y="-15054" />
+	</zone>
+	<zone id="11115" maxZ="-2000" minZ="-2200" shape="Cuboid" type="ClanHallZone">
+		<stat name="clanHallId" val="36" />
+		<spawn X="149134" Y="23139" Z="-2160" />
+		<node X="148844" Y="22709" />
+		<node X="149424" Y="23569" />
+	</zone>
+	<zone id="11116" maxZ="-2000" minZ="-2200" shape="Cuboid" type="ClanHallZone">
+		<stat name="clanHallId" val="37" />
+		<spawn X="150643" Y="23653" Z="-2150" />
+		<node X="150343" Y="23193" />
+		<node X="150943" Y="24113" />
+	</zone>
+	<zone id="11117" maxZ="-2000" minZ="-2200" shape="Cuboid" type="ClanHallZone">
+		<stat name="clanHallId" val="38" />
+		<spawn X="145667" Y="25355" Z="-2150" />
+		<node X="145362" Y="24890" />
+		<node X="145972" Y="25820" />
+	</zone>
+	<zone id="11118" maxZ="-2000" minZ="-2300" shape="Cuboid" type="ClanHallZone">
+		<stat name="clanHallId" val="39" />
+		<spawn X="150748" Y="26540" Z="-2280" />
+		<node X="150460" Y="26108" />
+		<node X="151036" Y="26972" />
+	</zone>
+	<zone id="11119" maxZ="-2000" minZ="-2300" shape="Cuboid" type="ClanHallZone">
+		<stat name="clanHallId" val="40" />
+		<spawn X="143991" Y="27091" Z="-2290" />
+		<node X="143701" Y="26661" />
+		<node X="144281" Y="27521" />
+	</zone>
+	<zone id="11120" maxZ="-2000" minZ="-2300" shape="Cuboid" type="ClanHallZone">
+		<stat name="clanHallId" val="41" />
+		<spawn X="144014" Y="28202" Z="-2280" />
+		<node X="143704" Y="27734" />
+		<node X="144324" Y="28670" />
+	</zone>
+	<zone id="11121" maxZ="-3400" minZ="-3600" shape="Cuboid" type="ClanHallZone">
+		<stat name="clanHallId" val="42" />
+		<spawn X="78590" Y="148101" Z="-3581" />
+		<node X="78059" Y="147906" />
+		<node X="79122" Y="148296" />
+	</zone>
+	<zone id="11122" maxZ="-3400" minZ="-3600" shape="Cuboid" type="ClanHallZone">
+		<stat name="clanHallId" val="43" />
+		<spawn X="82056" Y="145336" Z="-3520" />
+		<node X="81859" Y="144802" />
+		<node X="82254" Y="145870" />
+	</zone>
+	<zone id="11123" maxZ="-3400" minZ="-3500" shape="Cuboid" type="ClanHallZone">
+		<stat name="clanHallId" val="44" />
+		<spawn X="83393" Y="145313" Z="-3389" />
+		<node X="83195" Y="144779" />
+		<node X="83591" Y="145847" />
+	</zone>
+	<zone id="11124" maxZ="-3400" minZ="-3600" shape="Cuboid" type="ClanHallZone">
+		<stat name="clanHallId" val="45" />
+		<spawn X="80971" Y="151587" Z="-3517" />
+		<node X="80773" Y="151053" />
+		<node X="81169" Y="152121" />
+	</zone>
+	<zone id="11125" maxZ="-3400" minZ="-3600" shape="Cuboid" type="ClanHallZone">
+		<stat name="clanHallId" val="46" />
+		<spawn X="82101" Y="151911" Z="-3520" />
+		<node X="81903" Y="151377" />
+		<node X="82299" Y="152445" />
+	</zone>
+	<zone id="11126" maxZ="-2600" minZ="-2800" shape="NPoly" type="ClanHallZone">
+		<stat name="clanHallId" val="47" />
+		<spawn X="146025" Y="-55534" Z="-2765" />
+		<node X="145643" Y="-55883" />
+		<node X="146439" Y="-55714" />
+		<node X="146390" Y="-55288" />
+		<node X="145606" Y="-55367" />
+	</zone>
+	<zone id="11127" maxZ="-2600" minZ="-2800" shape="NPoly" type="ClanHallZone">
+		<stat name="clanHallId" val="48" />
+		<spawn X="146901" Y="-56857" Z="-2765" />
+		<node X="146486" Y="-57148" />
+		<node X="146984" Y="-57388" />
+		<node X="147299" Y="-56613" />
+		<node X="146919" Y="-56438" />
+	</zone>
+	<zone id="11128" maxZ="-2600" minZ="-2800" shape="NPoly" type="ClanHallZone">
+		<stat name="clanHallId" val="49" />
+		<spawn X="148479" Y="-56874" Z="-2765" />
+		<node X="148469" Y="-57355" />
+		<node X="148958" Y="-57115" />
+		<node X="148502" Y="-56409" />
+		<node X="148120" Y="-56627" />
+	</zone>
+	<zone id="11129" maxZ="-2600" minZ="-2800" shape="NPoly" type="ClanHallZone">
+		<stat name="clanHallId" val="50" />
+		<spawn X="149390" Y="-55587" Z="-2765" />
+		<node X="148970" Y="-55727" />
+		<node X="149773" Y="-55874" />
+		<node X="149852" Y="-55302" />
+		<node X="149022" Y="-55291" />
+	</zone>
+</list>

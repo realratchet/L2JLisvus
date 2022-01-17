@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<list>
+	<!-- Hot Springs Zones -->
+	<!-- Hot Springs Illusion -->
+	<zone id="20200" maxZ="-3434" minZ="-3634" shape="NPoly" type="EffectZone"> <!-- [24_14] spa_11 -->
+		<stat name="skillIdLvl" val="4559-1;" /> <!-- s_spa_big_head -->
+		<stat name="chance" val="100" />
+		<stat name="initialDelay" val="1000" />
+		<stat name="reuse" val="3000" />
+		<node X="141249" Y="-109636" />
+		<node X="141473" Y="-109798" />
+		<node X="141739" Y="-109821" />
+		<node X="141924" Y="-109669" />
+		<node X="142038" Y="-109397" />
+		<node X="141852" Y="-109130" />
+		<node X="141604" Y="-109051" />
+		<node X="141321" Y="-109091" />
+		<node X="141213" Y="-109266" />
+	</zone>
+	<zone id="20201" maxZ="-3468" minZ="-3668" shape="NPoly" type="EffectZone"> <!-- [24_14] spa_21 -->
+		<stat name="skillIdLvl" val="4559-1;" /> <!-- s_spa_big_head -->
+		<stat name="chance" val="70" />
+		<stat name="initialDelay" val="1000" />
+		<stat name="reuse" val="3000" />
+		<node X="140174" Y="-105832" />
+		<node X="140490" Y="-105875" />
+		<node X="140962" Y="-105738" />
+		<node X="141039" Y="-105378" />
+		<node X="140872" Y="-105119" />
+		<node X="140081" Y="-105295" />
+	</zone>
+	<zone id="20202" maxZ="-3524" minZ="-3724" shape="NPoly" type="EffectZone"> <!-- [24_14] spa_31 -->
+		<stat name="skillIdLvl" val="4559-1;" /> <!-- s_spa_big_head -->
+		<stat name="chance" val="70" />
+		<stat name="initialDelay" val="1000" />
+		<stat name="reuse" val="3000" />
+		<node X="144927" Y="-105193" />
+		<node X="145226" Y="-105412" />
+		<node X="145576" Y="-105344" />
+		<node X="145819" Y="-104976" />
+		<node X="145575" Y="-104555" />
+		<node X="145217" Y="-104490" />
+		<node X="144935" Y="-104684" />
+		<node X="144832" Y="-104959" />
+	</zone>
+	<zone id="20203" maxZ="-2671" minZ="-2871" shape="NPoly" type="EffectZone"> <!-- [24_14] spa_41 -->
+		<stat name="skillIdLvl" val="4559-1;" /> <!-- s_spa_big_head -->
+		<stat name="chance" val="70" />
+		<stat name="initialDelay" val="1000" />
+		<stat name="reuse" val="3000" />
+		<node X="152081" Y="-108262" />
+		<node X="152455" Y="-108588" />
+		<node X="152835" Y="-108448" />
+		<node X="152992" Y="-108120" />
+		<node X="152817" Y="-107670" />
+		<node X="152310" Y="-107632" />
+		<node X="152069" Y="-107905" />
+	</zone>
+	<zone id="20204" maxZ="-2587" minZ="-2787" shape="NPoly" type="EffectZone"> <!-- [24_14] spa_51 -->
+		<stat name="skillIdLvl" val="4559-1;" /> <!-- s_spa_big_head -->
+		<stat name="chance" val="70" />
+		<stat name="initialDelay" val="1000" />
+		<stat name="reuse" val="3000" />
+		<node X="155279" Y="-105735" />
+		<node X="155448" Y="-105880" />
+		<node X="155992" Y="-105963" />
+		<node X="156201" Y="-105790" />
+		<node X="156133" Y="-105320" />
+		<node X="155896" Y="-105229" />
+		<node X="155459" Y="-105254" />
+		<node X="155283" Y="-105478" />
+	</zone>
+	<zone id="20205" maxZ="-2517" minZ="-2717" shape="NPoly" type="EffectZone"> <!-- [24_14] spa_61 -->
+		<stat name="skillIdLvl" val="4559-1;" /> <!-- s_spa_big_head -->
+		<stat name="chance" val="70" />
+		<stat name="initialDelay" val="1000" />
+		<stat name="reuse" val="3000" />
+		<node X="156838" Y="-109948" />
+		<node X="157133" Y="-110046" />
+		<node X="157436" Y="-109918" />
+		<node X="157491" Y="-109405" />
+		<node X="157197" Y="-109197" />
+		<node X="156843" Y="-109261" />
+		<node X="156683" Y="-109569" />
+	</zone>
+	<zone id="20206" maxZ="-1409" minZ="-1609" shape="NPoly" type="EffectZone"> <!-- [24_14] spa_71 -->
+		<stat name="skillIdLvl" val="4559-1;" /> <!-- s_spa_big_head -->
+		<stat name="chance" val="70" />
+		<stat name="initialDelay" val="1000" />
+		<stat name="reuse" val="3000" />
+		<node X="152063" Y="-116732" />
+		<node X="152505" Y="-116982" />
+		<node X="152904" Y="-116927" />
+		<node X="153020" Y="-116469" />
+		<node X="152881" Y="-116221" />
+		<node X="152555" Y="-116100" />
+		<node X="152285" Y="-116160" />
+		<node X="152099" Y="-116415" />
+	</zone>
+	<zone id="20207" maxZ="-1494" minZ="-1694" shape="NPoly" type="EffectZone"> <!-- [24_14] spa_81 -->
+		<stat name="skillIdLvl" val="4559-1;" /> <!-- s_spa_big_head -->
+		<stat name="chance" val="70" />
+		<stat name="initialDelay" val="1000" />
+		<stat name="reuse" val="3000" />
+		<node X="152683" Y="-112829" />
+		<node X="152796" Y="-113129" />
+		<node X="153125" Y="-113339" />
+		<node X="153557" Y="-113190" />
+		<node X="153649" Y="-112721" />
+		<node X="153344" Y="-112385" />
+		<node X="152937" Y="-112409" />
+	</zone>
+	<zone id="20208" maxZ="-1779" minZ="-1979" shape="NPoly" type="EffectZone"> <!-- [24_14] spa_91 -->
+		<stat name="skillIdLvl" val="4559-1;" /> <!-- s_spa_big_head -->
+		<stat name="chance" val="70" />
+		<stat name="initialDelay" val="1000" />
+		<stat name="reuse" val="3000" />
+		<node X="157444" Y="-115790" />
+		<node X="157774" Y="-115907" />
+		<node X="158174" Y="-115759" />
+		<node X="158017" Y="-114971" />
+		<node X="157625" Y="-114984" />
+		<node X="157439" Y="-115101" />
+	</zone>
+	<!-- Disease treatment -->
+	<zone id="20209" maxZ="-3434" minZ="-3634" shape="NPoly" type="EffectZone"> <!-- [24_14] spa_12 -->
+		<stat name="skillIdLvl" val="4557-1;" /> <!-- s_dispel_spa_disease_bd -->
+		<stat name="chance" val="100" />
+		<stat name="initialDelay" val="1000" />
+		<stat name="reuse" val="3000" />
+		<node X="141249" Y="-109636" />
+		<node X="141473" Y="-109798" />
+		<node X="141739" Y="-109821" />
+		<node X="141924" Y="-109669" />
+		<node X="142038" Y="-109397" />
+		<node X="141852" Y="-109130" />
+		<node X="141604" Y="-109051" />
+		<node X="141321" Y="-109091" />
+		<node X="141213" Y="-109266" />
+	</zone>
+	<zone id="20210" maxZ="-3468" minZ="-3668" shape="NPoly" type="EffectZone"> <!-- [24_14] spa_22 -->
+		<stat name="skillIdLvl" val="4556-1;" /> <!-- s_dispel_spa_disease_ad -->
+		<stat name="chance" val="70" />
+		<stat name="initialDelay" val="1000" />
+		<stat name="reuse" val="3000" />
+		<node X="140174" Y="-105832" />
+		<node X="140490" Y="-105875" />
+		<node X="140962" Y="-105738" />
+		<node X="141039" Y="-105378" />
+		<node X="140872" Y="-105119" />
+		<node X="140081" Y="-105295" />
+	</zone>
+	<zone id="20211" maxZ="-3524" minZ="-3724" shape="NPoly" type="EffectZone"> <!-- [24_14] spa_32 -->
+		<stat name="skillIdLvl" val="4558-1;" /> <!-- s_dispel_spa_disease_cd -->
+		<stat name="chance" val="70" />
+		<stat name="initialDelay" val="1000" />
+		<stat name="reuse" val="3000" />
+		<node X="144927" Y="-105193" />
+		<node X="145226" Y="-105412" />
+		<node X="145576" Y="-105344" />
+		<node X="145819" Y="-104976" />
+		<node X="145575" Y="-104555" />
+		<node X="145217" Y="-104490" />
+		<node X="144935" Y="-104684" />
+		<node X="144832" Y="-104959" />
+	</zone>
+	<zone id="20212" maxZ="-2671" minZ="-2871" shape="NPoly" type="EffectZone"> <!-- [24_14] spa_42 -->
+		<stat name="skillIdLvl" val="4556-1;" /> <!-- s_dispel_spa_disease_ad -->
+		<stat name="chance" val="70" />
+		<stat name="initialDelay" val="1000" />
+		<stat name="reuse" val="3000" />
+		<node X="152081" Y="-108262" />
+		<node X="152455" Y="-108588" />
+		<node X="152835" Y="-108448" />
+		<node X="152992" Y="-108120" />
+		<node X="152817" Y="-107670" />
+		<node X="152310" Y="-107632" />
+		<node X="152069" Y="-107905" />
+	</zone>
+	<zone id="20213" maxZ="-2587" minZ="-2787" shape="NPoly" type="EffectZone"> <!-- [24_14] spa_52 -->
+		<stat name="skillIdLvl" val="4558-1;" /> <!-- s_dispel_spa_disease_cd -->
+		<stat name="chance" val="70" />
+		<stat name="initialDelay" val="1000" />
+		<stat name="reuse" val="3000" />
+		<node X="155279" Y="-105735" />
+		<node X="155448" Y="-105880" />
+		<node X="155992" Y="-105963" />
+		<node X="156201" Y="-105790" />
+		<node X="156133" Y="-105320" />
+		<node X="155896" Y="-105229" />
+		<node X="155459" Y="-105254" />
+		<node X="155283" Y="-105478" />
+	</zone>
+	<zone id="20214" maxZ="-2517" minZ="-2717" shape="NPoly" type="EffectZone"> <!-- [24_14] spa_62 -->
+		<stat name="skillIdLvl" val="4557-1;" /> <!-- s_dispel_spa_disease_bd -->
+		<stat name="chance" val="70" />
+		<stat name="initialDelay" val="1000" />
+		<stat name="reuse" val="3000" />
+		<node X="156838" Y="-109948" />
+		<node X="157133" Y="-110046" />
+		<node X="157436" Y="-109918" />
+		<node X="157491" Y="-109405" />
+		<node X="157197" Y="-109197" />
+		<node X="156843" Y="-109261" />
+		<node X="156683" Y="-109569" />
+	</zone>
+	<zone id="20215" maxZ="-1409" minZ="-1609" shape="NPoly" type="EffectZone"> <!-- [24_14] spa_72 -->
+		<stat name="skillIdLvl" val="4556-1;" /> <!-- s_dispel_spa_disease_ad -->
+		<stat name="chance" val="70" />
+		<stat name="initialDelay" val="1000" />
+		<stat name="reuse" val="3000" />
+		<node X="152063" Y="-116732" />
+		<node X="152505" Y="-116982" />
+		<node X="152904" Y="-116927" />
+		<node X="153020" Y="-116469" />
+		<node X="152881" Y="-116221" />
+		<node X="152555" Y="-116100" />
+		<node X="152285" Y="-116160" />
+		<node X="152099" Y="-116415" />
+	</zone>
+	<zone id="20216" maxZ="-1494" minZ="-1694" shape="NPoly" type="EffectZone"> <!-- [24_14] spa_82 -->
+		<stat name="skillIdLvl" val="4558-1;" /> <!-- s_dispel_spa_disease_cd -->
+		<stat name="chance" val="70" />
+		<stat name="initialDelay" val="1000" />
+		<stat name="reuse" val="3000" />
+		<node X="152683" Y="-112829" />
+		<node X="152796" Y="-113129" />
+		<node X="153125" Y="-113339" />
+		<node X="153557" Y="-113190" />
+		<node X="153649" Y="-112721" />
+		<node X="153344" Y="-112385" />
+		<node X="152937" Y="-112409" />
+	</zone>
+	<zone id="20217" maxZ="-1779" minZ="-1979" shape="NPoly" type="EffectZone"> <!-- [24_14] spa_92 -->
+		<stat name="skillIdLvl" val="4557-1;" /> <!-- s_dispel_spa_disease_bd -->
+		<stat name="chance" val="70" />
+		<stat name="initialDelay" val="1000" />
+		<stat name="reuse" val="3000" />
+		<node X="157444" Y="-115790" />
+		<node X="157774" Y="-115907" />
+		<node X="158174" Y="-115759" />
+		<node X="158017" Y="-114971" />
+		<node X="157625" Y="-114984" />
+		<node X="157439" Y="-115101" />
+	</zone>
+	<zone id="20218" maxZ="-1952" minZ="-2152" shape="NPoly" type="EffectZone"> <!-- [24_14] spa_102 -->
+		<stat name="skillIdLvl" val="4557-1;" /> <!-- s_dispel_spa_disease_bd -->
+		<stat name="chance" val="70" />
+		<stat name="initialDelay" val="1000" />
+		<stat name="reuse" val="3000" />
+		<node X="147182" Y="-113255" />
+		<node X="147194" Y="-113430" />
+		<node X="147312" Y="-113584" />
+		<node X="147467" Y="-113630" />
+		<node X="147748" Y="-113523" />
+		<node X="147816" Y="-113273" />
+		<node X="147723" Y="-113074" />
+		<node X="147512" Y="-112956" />
+		<node X="147258" Y="-113048" />
+	</zone>
+</list>

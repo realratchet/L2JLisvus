@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="L2JLisvus" default="dist" basedir=".">
+    <description>
+        This script will build the L2JLisvus server.
+        
+ 		This program is free software: you can redistribute it and/or modify it under
+		the terms of the GNU General Public License as published by the Free Software
+		Foundation, either version 3 of the License, or (at your option) any later
+		version.
+		
+		This program is distributed in the hope that it will be useful, but WITHOUT
+		ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+		FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
+		details.
+		
+		You should have received a copy of the GNU General Public License along with
+		this program. If not, see http://www.gnu.org/licenses/.
+    </description>
+
+    <property name="src" location="java"/>
+    <property name="lib" location="lib"/>
+    <property name="build" location="build"/>
+    <property name="build.classes" location="${build}/classes"/>
+    <property name="build.dist" location="${build}/dist"/>
+    <property name="build.dist.login" location="${build.dist}/login"/>
+    <property name="build.dist.game" location="${build.dist}/gameserver"/>
+    <property name="build.dist.libs" location="${build.dist}/libs"/>
+    <path id="classpath">
+        <fileset dir="${lib}">
+            <include name="*.jar" />
+        </fileset>
+    </path>
+
+    <target name="verifyRequirements" description="Check Requirements.">
+      	<fail message="A minimum version of Ant 1.10.0 is required. Your Ant version is ${ant.version} and if you are using Eclipse it's probably outdated.">
+        	<condition>
+          		<not>
+            		<antversion atleast="1.10.0"/>
+          		</not>
+        	</condition>
+      	</fail>
+      	<available classname="java.net.http.HttpClient" property="JDK11.present"/>
+      	<fail unless="JDK11.present" message="Java 11 is required. Your version is Java ${ant.java.version} and probably JDK is not installed."/>
+    </target>
+
+    <target name="init"
+    		depends="clean, verifyRequirements"
+        	description="Create the output directories.">
+
+        <mkdir dir="${build}"/>
+        <mkdir dir="${build.classes}"/>
+        <mkdir dir="${build.dist}" />
+    	<mkdir dir="${build.dist.login}" />
+		<mkdir dir="${build.dist.game}" />
+    </target>
+
+    <target name="compile"
+            depends="version"
+            description="Compile the source.">
+        <javac srcdir="${src}"
+        	classpathref="classpath"
+        	destdir="${build.classes}"
+    		compiler="javac10+"
+            optimize="on"
+            debug="on"
+            includeantruntime="false"
+            source="11"
+            target="11"/>
+    </target>
+
+    <target name="jar"
+            depends="compile"
+            description="Create the jar file">
+    	<jar destfile="${build}/L2JLisvus.jar">
+            <fileset dir="${build.classes}"/>
+        </jar>
+
+    	<copy todir="${build.dist.login}">
+            <fileset dir="${build}">
+                <include name="L2JLisvus.jar"/>
+			</fileset>
+        </copy>
+
+    	<copy todir="${build.dist.game}">
+            <fileset dir="${build}">
+                <include name="L2JLisvus.jar"/>
+			</fileset>
+        </copy>
+    </target>
+
+    <target name="dist" depends="jar">
+    	<copy todir="${build.dist.login}">
+            <fileset dir="${src}">
+                <include name="log.cfg"/>
+                <include name="banned_ip.cfg"/>
+                <include name="console.cfg"/>
+			</fileset>
+        </copy>
+    	
+    	<copy todir="${build.dist.game}">
+            <fileset dir="${src}">
+                <include name="log.cfg"/>
+                <include name="console.cfg"/>
+			</fileset>
+        </copy>
+    	
+    	<copy todir="${build.dist.libs}">
+            <fileset dir="${src}/../lib">
+                <include name="*"/>
+            </fileset>
+        </copy>
+
+
+        <copy todir="${build.dist.login}">
+            <fileset dir="dist">
+                <include name="startAccountManager.*"/>
+                <include name="startSQLAccountManager.*"/>
+                <include name="LoginServer_loop.sh"/>
+                <include name="startLoginServer.*"/>
+            	<include name="RegisterGameServer.*"/>
+            </fileset>
+        </copy>
+    	<copy todir="${build.dist.game}">
+            <fileset dir="dist">
+                <include name="GameServer_loop.sh"/>
+                <include name="startGameServer.*"/>
+            </fileset>
+        </copy>
+    	
+		<fixcrlf srcdir="${build.dist.game}"
+				eol="lf"
+				eof="remove"
+				includes="**/*.sh">
+		</fixcrlf>
+    	<fixcrlf srcdir="${build.dist.login}"
+				eol="lf"
+				eof="remove"
+				includes="**/*.sh">
+		</fixcrlf>
+		
+		<fixcrlf srcdir="${build.dist.game}"
+				eol="crlf"
+				eof="remove"
+				includes="**/*.bat">
+		</fixcrlf>
+    	<fixcrlf srcdir="${build.dist.login}"
+				eol="crlf"
+				eof="remove"
+				includes="**/*.bat">
+		</fixcrlf>
+        
+        <mkdir dir="${build.dist.game}/log"/>
+    	<mkdir dir="${build.dist.login}/log"/>
+
+        <mkdir dir="${build.dist.game}/config" />
+    	<mkdir dir="${build.dist.login}/config" />
+    	<copy todir="${build.dist.game}/config">
+			<fileset dir="java/config">
+				<include name="*.properties"/>
+				<exclude name="LoginServer.properties" />
+			</fileset>
+        </copy>
+    	<copy todir="${build.dist.login}/config">
+			<fileset dir="java/config">
+				<include name="LoginServer.properties"/>
+				<include name="MMO.properties"/>
+				<include name="Telnet.properties"/>
+			</fileset>
+		</copy>
+
+        <zip destfile="${build}/core.zip" basedir="${build.dist}" />
+    </target>
+    <target name="version" depends="init" description="Create l2j-version.properties file">
+    	<tstamp>
+    	  	<format property="build.tstamp" pattern="yyyyMMdd_HHmm"/>
+    	</tstamp>
+
+    	<exec dir="." executable="git" outputproperty="l2j.revision" failifexecutionfails="false">
+    	  	<arg value="log"/>
+            <arg value="-1"/>
+            <arg value="--pretty=format:%h"/>
+    	</exec>
+    	<echo message="Revision ${l2j.revision}"/>
+    	
+      	<concat destfile="${build.dist.game}/config/l2j-version.properties">
+			version=${l2j.revision}
+        	builddate=${build.tstamp}
+      	</concat>
+    </target>
+
+    <target name="clean"
+            description="Remove the output directories">
+        <delete dir="${build}"/>
+    </target>
+</project>

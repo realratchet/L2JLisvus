@@ -1,0 +1,15 @@
+<html><body>
+<center><table width="260"><tr><td width="40">
+<button value="Main" action="bypass -h admin_admin" width="45" height="15" back="sek.cbui94" fore="sek.cbui92">
+</td><td width="180">
+<center>Clan Management</center>
+</td><td width="40">
+</td></tr></table><br>
+Create / Delete / Level 0-5:
+<edit var="menu_command" width="100" height="15"><br>
+<table width="180"><tr>
+<td align="center"><a action="bypass -h admin_pledge_create $menu_command">Create</a></td>
+<td align="center"><a action="bypass -h admin_pledge_delete" msg="264;Clan will be permanently deleted. Do you wish to proceed?">Delete</a></td>
+<td align="center"><a action="bypass -h admin_pledge_level $menu_command">Set Level</a></td></tr>
+</table></center>
+</body></html>

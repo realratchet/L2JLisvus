@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<list>
+	<zone id="11000" maxZ="-2800" minZ="-3200" shape="Cuboid" type="JailZone">
+		<node X="-117072" Y="-252544" />
+		<node X="-112080" Y="-247536" />
+	</zone>
+</list>

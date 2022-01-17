@@ -1,0 +1,40 @@
+<html><body><center>
+<br>
+<title>My Schemes %schemeCount%</title>
+<img src="L2UI.SquareWhite" width="256" height="1"><br><br>
+<table width="256">
+<tr>
+<td>
+<edit width="128" var="newScheme">
+</td>
+<td>
+<a action="bypass -h npc_%objectId%_SchemeCreate $newScheme">Create</a>
+</td>
+</tr>
+<tr>
+<td>
+<combobox width="128" var="selectedScheme" list="%schemes%">
+</td>
+<td>
+<a action="bypass -h npc_%objectId%_BuffScheme $selectedScheme">Player</a>
+</td>
+<td>
+<a action="bypass -h npc_%objectId%_PetBuffScheme $selectedScheme">Pet</a>
+</td>
+</tr>
+</table>
+<table width="256">
+<tr>
+<td fixwidth="10">
+<a action="bypass -h npc_%objectId%_SchemeEdit $selectedScheme">Edit</a>
+</td>
+<td>
+<a action="bypass -h npc_%objectId%_SchemeDelete $selectedScheme" msg="614;Selected scheme will be deleted. Do you wish to proceed?">Delete</a>
+</td>
+</tr>
+</table>
+<br>
+<br><img src="L2UI.SquareWhite" width="256" height="1"><br>
+<button action="bypass -h npc_%objectId%_Chat 0" value="Back" width="75" height="21" back="L2UI_ch3.Btn1_normalOn" fore="L2UI_ch3.Btn1_normal"><br>
+</center>
+</body></html>

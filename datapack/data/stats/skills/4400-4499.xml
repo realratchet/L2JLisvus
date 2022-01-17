@@ -1,0 +1,179 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE xml>
+<list>
+<skill id="4400" levels="3" name="Acumen">
+  <!--  by DrLecter  -->
+  <table name="#Tab-mAtkSpd">1.15 1.23 1.3</table>
+  <set name="target" val="TARGET_ONE"/>
+  <set name="reuseDelay" val="100"/>
+  <set name="skillType" val="BUFF"/>
+  <set name="isMagic" val="true"/>
+  <set name="operateType" val="OP_ACTIVE"/>
+  <set name="castRange" val="400"/>
+  <set name="effectRange" val="900"/>
+  <for>
+    <effect count="1" name="Buff" time="3600" val="0" stackOrder="#Tab-mAtkSpd" stackType="mAtkSpeedUp">
+      <mul order="0x30" stat="mAtkSpd" val="#Tab-mAtkSpd"/>
+    </effect>
+  </for>
+</skill>
+<skill id="4401" levels="3" name="Empower">
+  <!--  by DrLecter  -->
+  <table name="#Tab-mAtk">1.55 1.65 1.75</table>
+  <set name="target" val="TARGET_ONE"/>
+  <set name="reuseDelay" val="100"/>
+  <set name="skillType" val="BUFF"/>
+  <set name="isMagic" val="true"/>
+  <set name="operateType" val="OP_ACTIVE"/>
+  <set name="castRange" val="400"/>
+  <set name="effectRange" val="900"/>
+  <for>
+    <effect count="1" name="Buff" time="3600" val="0" stackOrder="#Tab-mAtk" stackType="mAtk">
+      <mul order="0x30" stat="mAtk" val="#Tab-mAtk"/>
+    </effect>
+  </for>
+</skill>
+<skill id="4402" levels="2" name="Haste">
+  <!--  by DrLecter  -->
+  <table name="#Tab-pAtkSpd">1.15 1.33</table>
+  <set name="target" val="TARGET_ONE"/>
+  <set name="reuseDelay" val="100"/>
+  <set name="skillType" val="BUFF"/>
+  <set name="isMagic" val="true"/>
+  <set name="operateType" val="OP_ACTIVE"/>
+  <set name="castRange" val="400"/>
+  <set name="effectRange" val="900"/>
+  <for>
+    <effect count="1" name="Buff" time="3600" val="0" stackOrder="#Tab-pAtkSpd" stackType="pAtkSpeedUp">
+      <mul order="0x30" stat="pAtkSpd" val="#Tab-pAtkSpd"/>
+    </effect>
+  </for>
+</skill>
+<skill id="4403" levels="3" name="Guidance">
+  <table name="#Tab-accCombat"> 2 3 4 </table>
+  <set name="target" val="TARGET_ONE"/>
+  <set name="reuseDelay" val="100"/>
+  <set name="skillType" val="BUFF"/>
+  <set name="isMagic" val="true"/>
+  <set name="operateType" val="OP_ACTIVE"/>
+  <set name="castRange" val="400"/>
+  <set name="effectRange" val="900"/>
+  <for>
+    <effect count="1" name="Buff" time="3600" val="0" stackOrder="#Tab-accCombat" stackType="accuracyUp">
+      <add order="0x40" stat="accCombat" val="#Tab-accCombat"/>
+    </effect>
+  </for>
+</skill>
+<skill id="4404" levels="3" name="Focus">
+  <!--  by DrLecter  -->
+  <table name="#Tab-rCrit">0.2 0.25 0.3</table>
+  <set name="target" val="TARGET_ONE"/>
+  <set name="reuseDelay" val="100"/>
+  <set name="skillType" val="BUFF"/>
+  <set name="isMagic" val="true"/>
+  <set name="operateType" val="OP_ACTIVE"/>
+  <set name="castRange" val="400"/>
+  <set name="effectRange" val="900"/>
+  <for>
+    <effect count="1" name="Buff" time="3600" val="0" stackOrder="#Tab-rCrit" stackType="rCrit">
+      <basemul order="0x30" stat="rCrit" val="#Tab-rCrit"/>
+    </effect>
+  </for>
+</skill>
+<skill id="4405" levels="3" name="Death Whisper">
+  <!--  by DrLecter  -->
+  <table name="#Tab-cAtk">1.3 1.4 1.5</table>
+  <set name="target" val="TARGET_ONE"/>
+  <set name="reuseDelay" val="100"/>
+  <set name="skillType" val="BUFF"/>
+  <set name="isMagic" val="true"/>
+  <set name="operateType" val="OP_ACTIVE"/>
+  <set name="castRange" val="400"/>
+  <set name="effectRange" val="900"/>
+  <for>
+    <effect count="1" name="Buff" time="3600" val="0" stackOrder="#Tab-cAtk" stackType="cAtk">
+      <mul order="0x30" stat="cAtk" val="#Tab-cAtk"/>
+    </effect>
+  </for>
+</skill>
+<skill id="4406" levels="3" name="Agility">
+  <table name="#Tab-rEvas"> 2 3 4 </table>
+  <set name="target" val="TARGET_ONE"/>
+  <set name="reuseDelay" val="100"/>
+  <set name="skillType" val="BUFF"/>
+  <set name="isMagic" val="true"/>
+  <set name="operateType" val="OP_ACTIVE"/>
+  <set name="castRange" val="400"/>
+  <set name="effectRange" val="900"/>
+  <for>
+    <effect count="1" name="Buff" time="3600" val="0" stackOrder="#Tab-rEvas" stackType="rEvas">
+      <add order="0x40" stat="rEvas" val="#Tab-rEvas"/>
+    </effect>
+  </for>
+</skill>
+<skill id="4494" levels="1" name="Raid Boss">
+<!--
+  1: If the level of the person who made the greatest contribution is 
+  higher than the level of the raid monster by 3 or more levels, 
+  then the probability of dropping an item or adena will decrease. 
+  If the level difference is nine or more levels, then, the monster 
+  will not drop any item or adena.-->
+  <set name="target" val="TARGET_NONE"/>
+  <set name="skillType" val="NOTDONE"/>
+  <set name="operateType" val="OP_PASSIVE"/>
+</skill>
+<skill id="4495" levels="12" name="BOSS Power Shot">
+  <table name="#mpConsume"> 36 50 69 93 118 143 166 175 182 186 189 192 </table>
+  <table name="#power"> 352.0 949.0 2607.0 6828.0 17184.0 33213.0 51007.0 59177.0 67888.0 77001.0 86359.0 95790.0 </table>
+  <table name="#magicLvl"> 14 24 34 44 54 64 74 79 84 89 94 99 </table>
+  <set name="magicLvl" val="#magicLvl"/>
+  <set name="lvlDepend" val="1"/>
+  <set name="mpConsume" val="#mpConsume"/>
+  <set name="power" val="#power"/>
+  <set name="target" val="TARGET_ONE"/>
+  <set name="hitTime" val="4500"/>
+  <set name="skillType" val="PDAM"/>
+  <set name="operateType" val="OP_ACTIVE"/>
+  <set name="castRange" val="900"/>
+  <set name="effectRange" val="1400"/>
+</skill>
+<skill id="4496" levels="12" name="Shock">
+  <table name="#mpConsume"> 36 50 69 93 118 143 166 175 182 186 189 192 </table>
+  <table name="#power"> 176.0 475.0 1304.0 3414.0 8592.0 16607.0 25504.0 29589.0 33944.0 38501.0 43180.0 47895.0 </table>
+  <table name="#magicLvl"> 14 24 34 44 54 64 74 79 84 89 94 99 </table>
+  <set name="magicLvl" val="#magicLvl"/>
+  <set name="lvlDepend" val="1"/>
+  <set name="mpConsume" val="#mpConsume"/>
+  <set name="power" val="#power"/>
+  <set name="target" val="TARGET_ONE"/>
+  <set name="hitTime" val="4500"/>
+  <set name="overHit" val="true"/>
+  <set name="skillType" val="PDAM"/>
+  <set name="operateType" val="OP_ACTIVE"/>
+  <set name="castRange" val="900"/>
+  <set name="effectRange" val="1400"/>
+  <set name="effectType" val="STUN"/>
+  <set name="effectPower" val="80"/>
+  <for>
+    <effect count="1" name="Stun" time="9" val="0" stackOrder="1" stackType="Stun"/>
+  </for>
+</skill>
+<skill id="4497" levels="1" name="Treasure Chest - Level 21">
+  <!-- TODO -->
+  <set name="target" val="TARGET_NONE"/>
+  <set name="skillType" val="NOTDONE"/>
+  <set name="operateType" val="OP_PASSIVE"/>
+</skill>
+<skill id="4498" levels="1" name="Treasure Chest - Level 22">
+  <!-- TODO -->
+  <set name="target" val="TARGET_NONE"/>
+  <set name="skillType" val="NOTDONE"/>
+  <set name="operateType" val="OP_PASSIVE"/>
+</skill>
+<skill id="4499" levels="1" name="Treasure Chest - Level 25">
+  <!-- TODO -->
+  <set name="target" val="TARGET_NONE"/>
+  <set name="skillType" val="NOTDONE"/>
+  <set name="operateType" val="OP_PASSIVE"/>
+</skill>
+</list>

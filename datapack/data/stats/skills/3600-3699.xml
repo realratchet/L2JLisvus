@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE xml>
+<list>
+<skill id="3600" levels="9" name="Special Ability: Anger">
+<!--
+  Needs to be finished.
+  Target is set to TARGET_NONE, skillType to NOTDONE for server compatibility.
+  Description(s):
+      Lvl 1 - Decreases the character's Maximum HP but increases P. Atk. Allows the character to attack multiple opponents.
+      Lvl 2 - Decreases the character's Maximum HP but increases P. Atk., and allows the character to attack multiple opponents.
+      Lvl 3 - Decreases the character's Maximum HP but increases P. Atk., and allows the character to attack multiple opponents.
+      Lvl 4 - Decreases the character's Maximum HP but increases P. Atk., and allows the character to attack multiple opponents.
+      Lvl 5 - Decreases the character's Maximum HP but increases P. Atk., and allows the character to attack multiple opponents.
+      Lvl 6 - Decreases the character's Maximum HP but increases P. Atk., and allows the character to attack multiple opponents.
+      Lvl 7 - Decreases the character's Maximum HP but increases P. Atk., and allows the character to attack multiple opponents and inflicts additional damage during PvP.
+      Lvl 8 - Decreases the character's Maximum HP but increases P. Atk., and allows the character to attack multiple opponents and inflicts additional damage during PvP.
+      Lvl 9 - Decreases the character's Maximum HP but increases P. Atk., and allows the character to attack multiple opponents and inflicts additional damage during PvP.
+-->
+  <set name="target" val="TARGET_NONE"/>
+  <set name="skillType" val="ITEM_SA"/>
+  <set name="operateType" val="OP_PASSIVE"/>
+  <set name="castRange" val="-1"/>
+</skill>
+<skill id="3601" levels="9" name="Special Ability: Haste">
+<!--
+  Needs to be finished.
+  Target is set to TARGET_NONE, skillType to NOTDONE for server compatibility.
+  Description(s):
+      Lvl 1 - Increases Atk.Spd., and enables the character to attack multiple opponents.
+      Lvl 2 - Increases Atk.Spd., and enables the character to attack multiple opponents.
+      Lvl 3 - Increases Atk.Spd., and enables the character to attack multiple opponents.
+      Lvl 4 - Increases Atk.Spd., and enables the character to attack multiple opponents.
+      Lvl 5 - Increases Atk.Spd., and enables the character to attack multiple opponents.
+      Lvl 6 - Increases Atk.Spd., and enables the character to attack multiple opponents.
+      Lvl 7 - Increases Atk. Spd., and enables the character to attack multiple opponents and inflicts additional damage during PvP.
+      Lvl 8 - Increases Atk. Spd., and enables the character to attack multiple opponents and inflicts additional damage during PvP.
+      Lvl 9 - Increases Atk. Spd., and enables the character to attack multiple opponents and inflicts additional damage during PvP.
+-->
+  <set name="target" val="TARGET_NONE"/>
+  <set name="skillType" val="ITEM_SA"/>
+  <set name="operateType" val="OP_PASSIVE"/>
+  <set name="castRange" val="-1"/>
+</skill>
+<skill id="3602" levels="9" name="Special Ability: Guidance">
+<!--
+  Needs to be finished.
+  Target is set to TARGET_NONE, skillType to NOTDONE for server compatibility.
+  Description(s):
+      Lvl 1 - Increases Atk. Spd., and enables the character to attack multiple opponents and inflicts additional damage during PvP.
+      Lvl 2 - Increases Accuracy, and enables the character to attack multiple opponents.
+      Lvl 3 - Increases Accuracy, and enables the character to attack multiple opponents.
+      Lvl 4 - Increases Accuracy, and enables the character to attack multiple opponents.
+      Lvl 5 - Increases Accuracy, and enables the character to attack multiple opponents.
+      Lvl 6 - Increases Accuracy, and enables the character to attack multiple opponents.
+      Lvl 7 - Increases Accuracy, and enables the character to attack multiple opponents and inflicts additional damage during PvP.
+      Lvl 8 - Increases Accuracy, and enables the character to attack multiple opponents and inflicts additional damage during PvP.
+      Lvl 9 - Increases Accuracy, and enables the character to attack multiple opponents and inflicts additional damage during PvP.
+-->
+  <set name="target" val="TARGET_NONE"/>
+  <set name="skillType" val="ITEM_SA"/>
+  <set name="operateType" val="OP_PASSIVE"/>
+  <set name="castRange" val="-1"/>
+</skill>
+</list>

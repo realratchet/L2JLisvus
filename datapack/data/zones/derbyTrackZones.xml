@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<list>
+	<!-- Monster Derby Track -->
+	<zone id="11001" maxZ="-2000" minZ="-3600" shape="NPoly" type="DerbyTrackZone">
+		<node X="11718" Y="181534" />
+		<node X="13308" Y="181332" />
+		<node X="13297" Y="181318" />
+		<node X="14061" Y="181319" />
+		<node X="14081" Y="181573" />
+		<node X="14408" Y="181569" />
+		<node X="14403" Y="182670" />
+		<node X="14073" Y="182669" />
+		<node X="14077" Y="182927" />
+		<node X="13553" Y="182926" />
+		<node X="13554" Y="182616" />
+		<node X="13216" Y="182780" />
+		<node X="13200" Y="184270" />
+		<node X="11693" Y="184265" />
+		<node X="11694" Y="184011" />
+		<node X="12940" Y="184013" />
+		<node X="12945" Y="183015" />
+		<node X="11946" Y="183009" />
+		<node X="11948" Y="184007" />
+		<node X="11695" Y="184011" />
+	</zone>
+</list>

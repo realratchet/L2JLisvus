@@ -1,0 +1,2363 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<list>
+    <door id="17220001" name="gludin_clanhall_001">
+        <set name="x" val="-84495"/>
+        <set name="y" val="155209"/>
+        <set name="z" val="-3150"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="clanHallId" val="28"/>
+        <dimensions maxX="-84494" maxY="155246" maxZ="-2742" minX="-84497" minY="155208" minZ="-3192"/>
+    </door>
+    <door id="17220002" name="gludin_clanhall_002">
+        <set name="x" val="-84495"/>
+        <set name="y" val="155286"/>
+        <set name="z" val="-3150"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="clanHallId" val="28"/>
+        <dimensions maxX="-84494" maxY="155286" maxZ="-2742" minX="-84496" minY="155248" minZ="-3192"/>
+    </door>
+    <door id="17220003" name="gludin_clanhall_003">
+        <set name="x" val="-83961"/>
+        <set name="y" val="155258"/>
+        <set name="z" val="-3150"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="clanHallId" val="28"/>
+        <dimensions maxX="-83960" maxY="155257" maxZ="-2741" minX="-83962" minY="155218" minZ="-3191"/>
+    </door>
+    <door id="17220004" name="gludin_clanhall_004">
+        <set name="x" val="-83961"/>
+        <set name="y" val="155180"/>
+        <set name="z" val="-3150"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="clanHallId" val="28"/>
+        <dimensions maxX="-83960" maxY="155219" maxZ="-2741" minX="-83962" minY="155180" minZ="-3191"/>
+    </door>
+    <door id="17220005" name="gludin_clanhall_005">
+        <set name="x" val="-83879"/>
+        <set name="y" val="153064"/>
+        <set name="z" val="-3149"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="clanHallId" val="27"/>
+        <dimensions maxX="-83878" maxY="153064" maxZ="-2699" minX="-83917" minY="153062" minZ="-3149"/>
+    </door>
+    <door id="17220006" name="gludin_clanhall_006">
+        <set name="x" val="-83956"/>
+        <set name="y" val="153064"/>
+        <set name="z" val="-3149"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="clanHallId" val="27"/>
+        <dimensions maxX="-83916" maxY="153065" maxZ="-2699" minX="-83955" minY="153061" minZ="-3149"/>
+    </door>
+    <door id="17220007" name="gludin_clanhall_007">
+        <set name="x" val="-83927"/>
+        <set name="y" val="153598"/>
+        <set name="z" val="-3149"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="clanHallId" val="27"/>
+        <dimensions maxX="-83889" maxY="153599" maxZ="-2740" minX="-83927" minY="153597" minZ="-3190"/>
+    </door>
+    <door id="17220008" name="gludin_clanhall_008">
+        <set name="x" val="-83850"/>
+        <set name="y" val="153598"/>
+        <set name="z" val="-3149"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="clanHallId" val="27"/>
+        <dimensions maxX="-83850" maxY="153599" maxZ="-2740" minX="-83889" minY="153597" minZ="-3190"/>
+    </door>
+    <door id="17220009" name="gludin_clanhall_009">
+        <set name="x" val="-83971"/>
+        <set name="y" val="151880"/>
+        <set name="z" val="-3112"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="clanHallId" val="26"/>
+        <dimensions maxX="-83971" maxY="151882" maxZ="-2702" minX="-84009" minY="151879" minZ="-3152"/>
+    </door>
+    <door id="17220010" name="gludin_clanhall_010">
+        <set name="x" val="-84047"/>
+        <set name="y" val="151880"/>
+        <set name="z" val="-3112"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="clanHallId" val="26"/>
+        <dimensions maxX="-84008" maxY="151881" maxZ="-2702" minX="-84046" minY="151879" minZ="-3152"/>
+    </door>
+    <door id="17220011" name="gludin_einhasad_001">
+        <set name="x" val="-79737"/>
+        <set name="y" val="150063"/>
+        <set name="z" val="-3027"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="clanHallId" val="29"/>
+        <dimensions maxX="-79735" maxY="150100" maxZ="-2617" minX="-79737" minY="150062" minZ="-3067"/>
+    </door>
+    <door id="17220012" name="gludin_einhasad_002">
+        <set name="x" val="-79737"/>
+        <set name="y" val="150138"/>
+        <set name="z" val="-3027"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="clanHallId" val="29"/>
+        <dimensions maxX="-79735" maxY="150138" maxZ="-2617" minX="-79737" minY="150099" minZ="-3067"/>
+    </door>
+    <door id="17220013" name="gludin_einhasad_003">
+        <set name="x" val="-79740"/>
+        <set name="y" val="151522"/>
+        <set name="z" val="-3027"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="clanHallId" val="30"/>
+        <dimensions maxX="-79738" maxY="151561" maxZ="-2618" minX="-79740" minY="151522" minZ="-3068"/>
+    </door>
+    <door id="17220014" name="gludin_einhasad_004">
+        <set name="x" val="-79740"/>
+        <set name="y" val="151598"/>
+        <set name="z" val="-3027"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="clanHallId" val="30"/>
+        <dimensions maxX="-79738" maxY="151597" maxZ="-2618" minX="-79740" minY="151558" minZ="-3068"/>
+    </door>
+    <door id="19210011" name="gludio_clanhall_001">
+        <set name="x" val="-14790"/>
+        <set name="y" val="125633"/>
+        <set name="z" val="-3123"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="clanHallId" val="23"/>
+        <dimensions maxX="-14789" maxY="125632" maxZ="-2708" minX="-14791" minY="125595" minZ="-3158"/>
+    </door>
+    <door id="19210012" name="gludio_clanhall_002">
+        <set name="x" val="-14790"/>
+        <set name="y" val="125557"/>
+        <set name="z" val="-3123"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="clanHallId" val="23"/>
+        <dimensions maxX="-14789" maxY="125594" maxZ="-2708" minX="-14791" minY="125557" minZ="-3158"/>
+    </door>
+    <door id="19210013" name="gludio_clanhall_003">
+        <set name="x" val="-14116"/>
+        <set name="y" val="125602"/>
+        <set name="z" val="-3122"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="clanHallId" val="24"/>
+        <dimensions maxX="-14115" maxY="125639" maxZ="-2707" minX="-14117" minY="125602" minZ="-3157"/>
+    </door>
+    <door id="19210014" name="gludio_clanhall_004">
+        <set name="x" val="-14116"/>
+        <set name="y" val="125677"/>
+        <set name="z" val="-3122"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="clanHallId" val="24"/>
+        <dimensions maxX="-14115" maxY="125677" maxZ="-2707" minX="-14117" minY="125640" minZ="-3157"/>
+    </door>
+    <door id="19210015" name="gludio_clanhall_005">
+        <set name="x" val="-12601"/>
+        <set name="y" val="123885"/>
+        <set name="z" val="-3096"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="clanHallId" val="25"/>
+        <dimensions maxX="-12600" maxY="123886" maxZ="-2681" minX="-12637" minY="123884" minZ="-3131"/>
+    </door>
+    <door id="19210016" name="gludio_clanhall_006">
+        <set name="x" val="-12676"/>
+        <set name="y" val="123885"/>
+        <set name="z" val="-3096"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="clanHallId" val="25"/>
+        <dimensions maxX="-12639" maxY="123886" maxZ="-2681" minX="-12676" minY="123884" minZ="-3131"/>
+    </door>
+    <door id="19210017" name="gludio_clanhall_007">
+        <set name="x" val="-15981"/>
+        <set name="y" val="123747"/>
+        <set name="z" val="-3096"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="clanHallId" val="22"/>
+        <dimensions maxX="-15945" maxY="123747" maxZ="-2681" minX="-15981" minY="123734" minZ="-3131"/>
+    </door>
+    <door id="19210018" name="gludio_clanhall_008">
+        <set name="x" val="-15909"/>
+        <set name="y" val="123725"/>
+        <set name="z" val="-3096"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="clanHallId" val="22"/>
+        <dimensions maxX="-15909" maxY="123736" maxZ="-2681" minX="-15945" minY="123723" minZ="-3131"/>
+    </door>
+    <door id="20210001" name="cruma_001">
+        <set name="x" val="17624"/>
+        <set name="y" val="112427"/>
+        <set name="z" val="-6456"/>
+        <set name="baseHpMax" val="150000.0"/>
+        <set name="basePDef" val="476"/>
+        <set name="baseMDef" val="383"/>
+        <set name="isUnlockable" val="true"/>
+        <set name="autoCloseDelay" val="1200000"/>
+        <connectedDoors> 20210002 20210003 </connectedDoors>
+        <dimensions maxX="17741" maxY="112452" maxZ="-6287" minX="17506" minY="112402" minZ="-6625"/>
+    </door>
+    <door id="20210002" name="cruma_002">
+        <set name="x" val="17820"/>
+        <set name="y" val="112427"/>
+        <set name="z" val="-6456"/>
+        <set name="baseHpMax" val="150000.0"/>
+        <set name="basePDef" val="476"/>
+        <set name="baseMDef" val="383"/>
+        <set name="isUnlockable" val="true"/>
+        <connectedDoors> 20210001 20210003 </connectedDoors>
+        <dimensions maxX="17938" maxY="112452" maxZ="-6289" minX="17705" minY="112402" minZ="-6627"/>
+    </door>
+    <door id="20210003" name="cruma_003">
+        <set name="x" val="17721"/>
+        <set name="y" val="112427"/>
+        <set name="z" val="-6579"/>
+        <set name="baseHpMax" val="150000.0"/>
+        <set name="basePDef" val="476"/>
+        <set name="baseMDef" val="383"/>
+        <set name="isUnlockable" val="true"/>
+        <connectedDoors> 20210001 20210002 </connectedDoors>
+        <dimensions maxX="17819" maxY="112459" maxZ="-6530" minX="17623" minY="112396" minZ="-6628"/>
+    </door>
+    <door id="20220011" name="H_Door_MV_01">
+        <set name="x" val="18879"/>
+        <set name="y" val="143353"/>
+        <set name="z" val="-2998"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="clanHallId" val="32"/>
+        <dimensions maxX="18880" maxY="143353" maxZ="-2589" minX="18874" minY="143315" minZ="-3039"/>
+    </door>
+    <door id="20220012" name="H_Door_MV_01">
+        <set name="x" val="18872"/>
+        <set name="y" val="143278"/>
+        <set name="z" val="-2998"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="clanHallId" val="32"/>
+        <dimensions maxX="18877" maxY="143316" maxZ="-2589" minX="18871" minY="143278" minZ="-3039"/>
+    </door>
+    <door id="20220013" name="H_Door_MV_01">
+        <set name="x" val="17616"/>
+        <set name="y" val="145184"/>
+        <set name="z" val="-3025"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="clanHallId" val="31"/>
+        <dimensions maxX="17648" maxY="145206" maxZ="-2616" minX="17616" minY="145183" minZ="-3066"/>
+    </door>
+    <door id="20220014" name="H_Door_MV_01">
+        <set name="x" val="17678"/>
+        <set name="y" val="145226"/>
+        <set name="z" val="-3025"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="clanHallId" val="31"/>
+        <dimensions maxX="17679" maxY="145227" maxZ="-2616" minX="17646" minY="145204" minZ="-3066"/>
+    </door>
+    <door id="20220015" name="H_Door_MV_01">
+        <set name="x" val="20118"/>
+        <set name="y" val="145994"/>
+        <set name="z" val="-3099"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="clanHallId" val="33"/>
+        <dimensions maxX="20155" maxY="145996" maxZ="-2690" minX="20118" minY="145992" minZ="-3140"/>
+    </door>
+    <door id="20220016" name="H_Door_MV_01">
+        <set name="x" val="20193"/>
+        <set name="y" val="145994"/>
+        <set name="z" val="-3099"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="clanHallId" val="33"/>
+        <dimensions maxX="20193" maxY="145995" maxZ="-2690" minX="20156" minY="145993" minZ="-3140"/>
+    </door>
+    <door id="21210001" name="partisan001">
+        <set name="x" val="43643"/>
+        <set name="y" val="108908"/>
+        <set name="z" val="-1970"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="clanHallId" val="21"/>
+        <dimensions maxX="43651" maxY="108915" maxZ="-1565" minX="43643" minY="108840" minZ="-2015"/>
+    </door>
+    <door id="21210002" name="partisan002">
+        <set name="x" val="43643"/>
+        <set name="y" val="108783"/>
+        <set name="z" val="-1970"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="clanHallId" val="21"/>
+        <dimensions maxX="43651" maxY="108853" maxZ="-1565" minX="43643" minY="108778" minZ="-2015"/>
+    </door>
+    <door id="21240001" name="pirate_isle_001">
+        <set name="x" val="42001"/>
+        <set name="y" val="208378"/>
+        <set name="z" val="-3666"/>
+        <set name="baseHpMax" val="187500.0"/>
+        <set name="basePDef" val="100000"/>
+        <set name="baseMDef" val="10000"/>
+        <set name="autoOpenDelay" val="300000"/>
+        <set name="autoCloseDelay" val="300000"/>
+        <dimensions maxX="42006" maxY="208383" maxZ="-3540" minX="41864" minY="208287" minZ="-3785"/>
+    </door>
+    <door id="21240002" name="pirate_isle_002">
+        <set name="x" val="43745"/>
+        <set name="y" val="212594"/>
+        <set name="z" val="-3623"/>
+        <set name="baseHpMax" val="187500.0"/>
+        <set name="basePDef" val="100000"/>
+        <set name="baseMDef" val="10000"/>
+        <set name="autoOpenDelay" val="300000"/>
+        <set name="autoCloseDelay" val="300000"/>
+        <dimensions maxX="43749" maxY="212600" maxZ="-3497" minX="43741" minY="212433" minZ="-3742"/>
+    </door>
+    <door id="21240003" name="pirate_isle_003">
+        <set name="x" val="42167"/>
+        <set name="y" val="213285"/>
+        <set name="z" val="-3643"/>
+        <set name="baseHpMax" val="187500.0"/>
+        <set name="basePDef" val="476"/>
+        <set name="baseMDef" val="383"/>
+        <set name="isUnlockable" val="true"/>
+        <set name="autoCloseDelay" val="300000"/>
+        <dimensions maxX="42247" maxY="213286" maxZ="-3515" minX="42085" minY="213285" minZ="-3760"/>
+    </door>
+    <door id="21240004" name="pirate_isle_004">
+        <set name="x" val="51111"/>
+        <set name="y" val="206106"/>
+        <set name="z" val="-3912"/>
+        <set name="baseHpMax" val="187500.0"/>
+        <set name="basePDef" val="476"/>
+        <set name="baseMDef" val="383"/>
+        <set name="isUnlockable" val="true"/>
+        <set name="autoCloseDelay" val="300000"/>
+        <dimensions maxX="51270" maxY="206110" maxZ="-3786" minX="51105" minY="206102" minZ="-4031"/>
+    </door>
+    <door id="21240005" name="pirate_isle_005">
+        <set name="x" val="52910"/>
+        <set name="y" val="206720"/>
+        <set name="z" val="-3692"/>
+        <set name="baseHpMax" val="187500.0"/>
+        <set name="basePDef" val="476"/>
+        <set name="baseMDef" val="383"/>
+        <set name="isUnlockable" val="true"/>
+        <set name="autoCloseDelay" val="300000"/>
+        <dimensions maxX="52910" maxY="206801" maxZ="-3563" minX="52910" minY="206637" minZ="-3808"/>
+    </door>
+    <door id="21240006" name="pirate_isle_006">
+        <set name="x" val="52423"/>
+        <set name="y" val="219103"/>
+        <set name="z" val="-3209"/>
+        <set name="baseHpMax" val="187500.0"/>
+        <set name="basePDef" val="1000000"/>
+        <set name="baseMDef" val="383"/>
+        <set name="isUnlockable" val="true"/>
+        <set name="autoCloseDelay" val="300000"/>
+        <dimensions maxX="52423" maxY="219174" maxZ="-3067" minX="52423" minY="219032" minZ="-3312"/>
+    </door>
+    <door id="22170001" name="bandit_outer_001">
+        <set name="x" val="85621"/>
+        <set name="y" val="-18127"/>
+        <set name="z" val="-1670"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <dimensions maxX="85633" maxY="-18118" maxZ="-1471" minX="85411" minY="-18299" minZ="-1821"/>
+    </door>
+    <door id="22170002" name="bandit_outer_002">
+        <set name="x" val="85213"/>
+        <set name="y" val="-18458"/>
+        <set name="z" val="-1670"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <dimensions maxX="85425" maxY="-18288" maxZ="-1471" minX="85206" minY="-18466" minZ="-1821"/>
+    </door>
+    <door id="22170003" name="bandit_inner_003">
+        <set name="x" val="80818"/>
+        <set name="y" val="-15357"/>
+        <set name="z" val="-1762"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="clanHallId" val="35"/>
+        <dimensions maxX="80821" maxY="-15349" maxZ="-1379" minX="80815" minY="-15445" minZ="-1829"/>
+    </door>
+    <door id="22170004" name="bandit_inner_004">
+        <set name="x" val="80818"/>
+        <set name="y" val="-15518"/>
+        <set name="z" val="-1762"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="clanHallId" val="35"/>
+        <dimensions maxX="80820" maxY="-15431" maxZ="-1379" minX="80815" minY="-15525" minZ="-1829"/>
+    </door>
+    <door id="22220012" name="giran_clanhall_001">
+        <set name="x" val="83618"/>
+        <set name="y" val="145382"/>
+        <set name="z" val="-3360"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="clanHallId" val="44"/>
+        <dimensions maxX="83622" maxY="145332" maxZ="-2967" minX="83614" minY="145280" minZ="-3417"/>
+    </door>
+    <door id="22220011" name="giran_clanhall_002">
+        <set name="x" val="83618"/>
+        <set name="y" val="145382"/>
+        <set name="z" val="-3360"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="clanHallId" val="44"/>
+        <dimensions maxX="83623" maxY="145383" maxZ="-2967" minX="83614" minY="145330" minZ="-3417"/>
+    </door>
+    <door id="22220009" name="giran_clanhall_003">
+        <set name="x" val="81831"/>
+        <set name="y" val="145267"/>
+        <set name="z" val="-3489"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="clanHallId" val="43"/>
+        <dimensions maxX="81835" maxY="145369" maxZ="-3096" minX="81827" minY="145316" minZ="-3546"/>
+    </door>
+    <door id="22220010" name="giran_clanhall_004">
+        <set name="x" val="81831"/>
+        <set name="y" val="145267"/>
+        <set name="z" val="-3489"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="clanHallId" val="43"/>
+        <dimensions maxX="81835" maxY="145319" maxZ="-3096" minX="81828" minY="145265" minZ="-3546"/>
+    </door>
+    <door id="22220008" name="giran_clanhall_005">
+        <set name="x" val="78521"/>
+        <set name="y" val="148327"/>
+        <set name="z" val="-3553"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="clanHallId" val="42"/>
+        <dimensions maxX="78572" maxY="148331" maxZ="-3164" minX="78520" minY="148323" minZ="-3614"/>
+    </door>
+    <door id="22220007" name="giran_clanhall_006">
+        <set name="x" val="78521"/>
+        <set name="y" val="148327"/>
+        <set name="z" val="-3553"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="clanHallId" val="42"/>
+        <dimensions maxX="78623" maxY="148331" maxZ="-3164" minX="78570" minY="148323" minZ="-3614"/>
+    </door>
+    <door id="22220005" name="giran_clanhall_007">
+        <set name="x" val="81196"/>
+        <set name="y" val="151657"/>
+        <set name="z" val="-3490"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="clanHallId" val="45"/>
+        <dimensions maxX="81200" maxY="151658" maxZ="-3096" minX="81192" minY="151605" minZ="-3546"/>
+    </door>
+    <door id="22220006" name="giran_clanhall_008">
+        <set name="x" val="81196"/>
+        <set name="y" val="151657"/>
+        <set name="z" val="-3490"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="clanHallId" val="45"/>
+        <dimensions maxX="81200" maxY="151607" maxZ="-3096" minX="81192" minY="151555" minZ="-3546"/>
+    </door>
+    <door id="22220003" name="giran_clanhall_009">
+        <set name="x" val="81873"/>
+        <set name="y" val="151842"/>
+        <set name="z" val="-3488"/>
+        <set name="baseHpMax" val="126600.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="clanHallId" val="46"/>
+        <dimensions maxX="81877" maxY="151944" maxZ="-3095" minX="81870" minY="151892" minZ="-3545"/>
+    </door>
+    <door id="22220004" name="giran_clanhall_010">
+        <set name="x" val="81873"/>
+        <set name="y" val="151842"/>
+        <set name="z" val="-3488"/>
+        <set name="baseHpMax" val="126600.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="clanHallId" val="46"/>
+        <dimensions maxX="81877" maxY="151894" maxZ="-3095" minX="81870" minY="151842" minZ="-3545"/>
+    </door>
+    <door id="22250001" name="goe_001">
+        <set name="x" val="86226"/>
+        <set name="y" val="247063"/>
+        <set name="z" val="-8584"/>
+        <set name="baseHpMax" val="187500.0"/>
+        <set name="basePDef" val="476"/>
+        <set name="baseMDef" val="383"/>
+        <set name="autoOpenDelay" val="420000"/>
+        <set name="autoCloseDelay" val="420000"/>
+        <dimensions maxX="86364" maxY="247162" maxZ="-8333" minX="86085" minY="246961" minZ="-8845"/>
+    </door>
+    <door id="22250002" name="goe_002">
+        <set name="x" val="88491"/>
+        <set name="y" val="253871"/>
+        <set name="z" val="-8584"/>
+        <set name="baseHpMax" val="187500.0"/>
+        <set name="basePDef" val="476"/>
+        <set name="baseMDef" val="383"/>
+        <set name="autoOpenDelay" val="420000"/>
+        <set name="autoCloseDelay" val="420000"/>
+        <dimensions maxX="88546" maxY="254031" maxZ="-8333" minX="88436" minY="253707" minZ="-8845"/>
+    </door>
+    <door id="22250003" name="goe_003">
+        <set name="x" val="76873"/>
+        <set name="y" val="253954"/>
+        <set name="z" val="-8584"/>
+        <set name="baseHpMax" val="187500.0"/>
+        <set name="basePDef" val="476"/>
+        <set name="baseMDef" val="383"/>
+        <set name="autoOpenDelay" val="420000"/>
+        <set name="autoCloseDelay" val="420000"/>
+        <dimensions maxX="76928" maxY="254118" maxZ="-8344" minX="76816" minY="253788" minZ="-8856"/>
+    </door>
+    <door id="22250004" name="goe_004">
+        <set name="x" val="79033"/>
+        <set name="y" val="247128"/>
+        <set name="z" val="-8584"/>
+        <set name="baseHpMax" val="187500.0"/>
+        <set name="basePDef" val="476"/>
+        <set name="baseMDef" val="383"/>
+        <set name="autoOpenDelay" val="420000"/>
+        <set name="autoCloseDelay" val="420000"/>
+        <dimensions maxX="79164" maxY="247228" maxZ="-8326" minX="78897" minY="247031" minZ="-8838"/>
+    </door>
+    <door id="22250005" name="goe_005">
+        <set name="x" val="82738"/>
+        <set name="y" val="246603"/>
+        <set name="z" val="-9093"/>
+        <set name="baseHpMax" val="187500.0"/>
+        <set name="basePDef" val="476"/>
+        <set name="baseMDef" val="383"/>
+        <set name="autoOpenDelay" val="420000"/>
+        <set name="autoCloseDelay" val="420000"/>
+        <dimensions maxX="82901" maxY="246603" maxZ="-8847" minX="82574" minY="246603" minZ="-9359"/>
+    </door>
+    <door id="22250006" name="goe_006">
+        <set name="x" val="87902"/>
+        <set name="y" val="250378"/>
+        <set name="z" val="-9093"/>
+        <set name="baseHpMax" val="187500.0"/>
+        <set name="basePDef" val="476"/>
+        <set name="baseMDef" val="383"/>
+        <set name="autoOpenDelay" val="420000"/>
+        <set name="autoCloseDelay" val="420000"/>
+        <dimensions maxX="87963" maxY="250540" maxZ="-8849" minX="87845" minY="250218" minZ="-9361"/>
+    </door>
+    <door id="22250007" name="goe_007">
+        <set name="x" val="85914"/>
+        <set name="y" val="256377"/>
+        <set name="z" val="-9093"/>
+        <set name="baseHpMax" val="187500.0"/>
+        <set name="basePDef" val="476"/>
+        <set name="baseMDef" val="383"/>
+        <set name="autoOpenDelay" val="420000"/>
+        <set name="autoCloseDelay" val="420000"/>
+        <dimensions maxX="86047" maxY="256477" maxZ="-8840" minX="85778" minY="256278" minZ="-9352"/>
+    </door>
+    <door id="22250008" name="goe_008">
+        <set name="x" val="79561"/>
+        <set name="y" val="256348"/>
+        <set name="z" val="-9093"/>
+        <set name="baseHpMax" val="187500.0"/>
+        <set name="basePDef" val="476"/>
+        <set name="baseMDef" val="383"/>
+        <set name="autoOpenDelay" val="420000"/>
+        <set name="autoCloseDelay" val="420000"/>
+        <dimensions maxX="79699" maxY="256447" maxZ="-8836" minX="79427" minY="256253" minZ="-9348"/>
+    </door>
+    <door id="22250009" name="goe_009">
+        <set name="x" val="77616"/>
+        <set name="y" val="250361"/>
+        <set name="z" val="-9093"/>
+        <set name="baseHpMax" val="187500.0"/>
+        <set name="basePDef" val="476"/>
+        <set name="baseMDef" val="383"/>
+        <set name="autoOpenDelay" val="420000"/>
+        <set name="autoCloseDelay" val="420000"/>
+        <dimensions maxX="77671" maxY="250525" maxZ="-8848" minX="77560" minY="250195" minZ="-9360"/>
+    </door>
+    <door id="22250010" name="goe_010">
+        <set name="x" val="80102"/>
+        <set name="y" val="248387"/>
+        <set name="z" val="-9611"/>
+        <set name="baseHpMax" val="187500.0"/>
+        <set name="basePDef" val="476"/>
+        <set name="baseMDef" val="383"/>
+        <set name="autoOpenDelay" val="420000"/>
+        <set name="autoCloseDelay" val="420000"/>
+        <dimensions maxX="80233" maxY="248485" maxZ="-9371" minX="79968" minY="248290" minZ="-9883"/>
+    </door>
+    <door id="22250011" name="goe_011">
+        <set name="x" val="85343"/>
+        <set name="y" val="248344"/>
+        <set name="z" val="-9611"/>
+        <set name="baseHpMax" val="187500.0"/>
+        <set name="basePDef" val="476"/>
+        <set name="baseMDef" val="383"/>
+        <set name="autoOpenDelay" val="420000"/>
+        <set name="autoCloseDelay" val="420000"/>
+        <dimensions maxX="85481" maxY="248443" maxZ="-9357" minX="85204" minY="248243" minZ="-9869"/>
+    </door>
+    <door id="22250012" name="goe_012">
+        <set name="x" val="87018"/>
+        <set name="y" val="253389"/>
+        <set name="z" val="-9611"/>
+        <set name="baseHpMax" val="187500.0"/>
+        <set name="basePDef" val="476"/>
+        <set name="baseMDef" val="383"/>
+        <set name="autoOpenDelay" val="420000"/>
+        <set name="autoCloseDelay" val="420000"/>
+        <dimensions maxX="87076" maxY="253544" maxZ="-9363" minX="86965" minY="253223" minZ="-9875"/>
+    </door>
+    <door id="22250013" name="goe_013">
+        <set name="x" val="82768"/>
+        <set name="y" val="256485"/>
+        <set name="z" val="-9611"/>
+        <set name="baseHpMax" val="187500.0"/>
+        <set name="basePDef" val="476"/>
+        <set name="baseMDef" val="383"/>
+        <set name="autoOpenDelay" val="420000"/>
+        <set name="autoCloseDelay" val="420000"/>
+        <dimensions maxX="82932" maxY="256486" maxZ="-9361" minX="82603" minY="256484" minZ="-9873"/>
+    </door>
+    <door id="22250014" name="goe_014">
+        <set name="x" val="78490"/>
+        <set name="y" val="253391"/>
+        <set name="z" val="-9611"/>
+        <set name="baseHpMax" val="187500.0"/>
+        <set name="basePDef" val="476"/>
+        <set name="baseMDef" val="383"/>
+        <set name="autoOpenDelay" val="420000"/>
+        <set name="autoCloseDelay" val="420000"/>
+        <dimensions maxX="78548" maxY="253551" maxZ="-9372" minX="78435" minY="253230" minZ="-9884"/>
+    </door>
+    <door id="22250015" name="goe_015">
+        <set name="x" val="79253"/>
+        <set name="y" val="253097"/>
+        <set name="z" val="-10118"/>
+        <set name="baseHpMax" val="187500.0"/>
+        <set name="basePDef" val="476"/>
+        <set name="baseMDef" val="383"/>
+        <set name="autoOpenDelay" val="420000"/>
+        <set name="autoCloseDelay" val="420000"/>
+        <dimensions maxX="79308" maxY="253256" maxZ="-9874" minX="79196" minY="252936" minZ="-10386"/>
+    </door>
+    <door id="22250016" name="goe_016">
+        <set name="x" val="79276"/>
+        <set name="y" val="250856"/>
+        <set name="z" val="-10118"/>
+        <set name="baseHpMax" val="187500.0"/>
+        <set name="basePDef" val="476"/>
+        <set name="baseMDef" val="383"/>
+        <set name="autoOpenDelay" val="420000"/>
+        <set name="autoCloseDelay" val="420000"/>
+        <dimensions maxX="79328" maxY="251017" maxZ="-9874" minX="79220" minY="250697" minZ="-10386"/>
+    </door>
+    <door id="22250017" name="goe_017">
+        <set name="x" val="80601"/>
+        <set name="y" val="249046"/>
+        <set name="z" val="-10118"/>
+        <set name="baseHpMax" val="187500.0"/>
+        <set name="basePDef" val="476"/>
+        <set name="baseMDef" val="383"/>
+        <set name="autoOpenDelay" val="420000"/>
+        <set name="autoCloseDelay" val="420000"/>
+        <dimensions maxX="80735" maxY="249143" maxZ="-9858" minX="80464" minY="248949" minZ="-10370"/>
+    </door>
+    <door id="22250018" name="goe_018">
+        <set name="x" val="82836"/>
+        <set name="y" val="248341"/>
+        <set name="z" val="-10118"/>
+        <set name="baseHpMax" val="187500.0"/>
+        <set name="basePDef" val="476"/>
+        <set name="baseMDef" val="383"/>
+        <set name="autoOpenDelay" val="420000"/>
+        <set name="autoCloseDelay" val="420000"/>
+        <dimensions maxX="82999" maxY="248341" maxZ="-9879" minX="82672" minY="248340" minZ="-10391"/>
+    </door>
+    <door id="22250019" name="goe_019">
+        <set name="x" val="84906"/>
+        <set name="y" val="249034"/>
+        <set name="z" val="-10116"/>
+        <set name="baseHpMax" val="187500.0"/>
+        <set name="basePDef" val="476"/>
+        <set name="baseMDef" val="383"/>
+        <set name="autoOpenDelay" val="420000"/>
+        <set name="autoCloseDelay" val="420000"/>
+        <dimensions maxX="85050" maxY="249141" maxZ="-9867" minX="84761" minY="248927" minZ="-10379"/>
+    </door>
+    <door id="22250020" name="goe_020">
+        <set name="x" val="86247"/>
+        <set name="y" val="250888"/>
+        <set name="z" val="-10118"/>
+        <set name="baseHpMax" val="187500.0"/>
+        <set name="basePDef" val="476"/>
+        <set name="baseMDef" val="383"/>
+        <set name="autoOpenDelay" val="420000"/>
+        <set name="autoCloseDelay" val="420000"/>
+        <dimensions maxX="86307" maxY="251048" maxZ="-9856" minX="86186" minY="250724" minZ="-10368"/>
+    </door>
+    <door id="22250021" name="goe_021">
+        <set name="x" val="86213"/>
+        <set name="y" val="253197"/>
+        <set name="z" val="-10118"/>
+        <set name="baseHpMax" val="187500.0"/>
+        <set name="basePDef" val="476"/>
+        <set name="baseMDef" val="383"/>
+        <set name="autoOpenDelay" val="420000"/>
+        <set name="autoCloseDelay" val="420000"/>
+        <dimensions maxX="86268" maxY="253360" maxZ="-9868" minX="86157" minY="253034" minZ="-10380"/>
+    </door>
+    <door id="22250022" name="goe_022">
+        <set name="x" val="84889"/>
+        <set name="y" val="254973"/>
+        <set name="z" val="-10118"/>
+        <set name="baseHpMax" val="187500.0"/>
+        <set name="basePDef" val="476"/>
+        <set name="baseMDef" val="383"/>
+        <set name="autoOpenDelay" val="420000"/>
+        <set name="autoCloseDelay" val="420000"/>
+        <dimensions maxX="85027" maxY="255073" maxZ="-9864" minX="84750" minY="254873" minZ="-10376"/>
+    </door>
+    <door id="22250023" name="goe_023">
+        <set name="x" val="82726"/>
+        <set name="y" val="255659"/>
+        <set name="z" val="-10118"/>
+        <set name="baseHpMax" val="187500.0"/>
+        <set name="basePDef" val="476"/>
+        <set name="baseMDef" val="383"/>
+        <set name="autoOpenDelay" val="420000"/>
+        <set name="autoCloseDelay" val="420000"/>
+        <dimensions maxX="82892" maxY="255660" maxZ="-9875" minX="82560" minY="255658" minZ="-10387"/>
+    </door>
+    <door id="22250024" name="goe_024">
+        <set name="x" val="80590"/>
+        <set name="y" val="254950"/>
+        <set name="z" val="-10118"/>
+        <set name="baseHpMax" val="187500.0"/>
+        <set name="basePDef" val="476"/>
+        <set name="baseMDef" val="383"/>
+        <set name="autoOpenDelay" val="420000"/>
+        <set name="autoCloseDelay" val="420000"/>
+        <dimensions maxX="80727" maxY="255050" maxZ="-9860" minX="80454" minY="254851" minZ="-10372"/>
+    </door>
+    <door id="22250025" name="goe_025">
+        <set name="x" val="81959"/>
+        <set name="y" val="255493"/>
+        <set name="z" val="-10734"/>
+        <set name="baseHpMax" val="187500.0"/>
+        <set name="basePDef" val="476"/>
+        <set name="baseMDef" val="383"/>
+        <set name="isUnlockable" val="true"/>
+        <set name="autoCloseDelay" val="420000"/>
+        <dimensions maxX="82264" maxY="255508" maxZ="-10376" minX="81657" minY="255478" minZ="-10888"/>
+    </door>
+    <door id="22250026" name="goe_026">
+        <set name="x" val="83496"/>
+        <set name="y" val="255494"/>
+        <set name="z" val="-10734"/>
+        <set name="baseHpMax" val="187500.0"/>
+        <set name="basePDef" val="476"/>
+        <set name="baseMDef" val="383"/>
+        <set name="isUnlockable" val="true"/>
+        <set name="autoCloseDelay" val="420000"/>
+        <dimensions maxX="83795" maxY="255511" maxZ="-10379" minX="83194" minY="255479" minZ="-10891"/>
+    </door>
+    <door id="22250027" name="goe_027">
+        <set name="x" val="83549"/>
+        <set name="y" val="248505"/>
+        <set name="z" val="-10734"/>
+        <set name="baseHpMax" val="187500.0"/>
+        <set name="basePDef" val="476"/>
+        <set name="baseMDef" val="383"/>
+        <set name="isUnlockable" val="true"/>
+        <set name="autoCloseDelay" val="420000"/>
+        <dimensions maxX="83848" maxY="248523" maxZ="-10374" minX="83247" minY="248490" minZ="-10886"/>
+    </door>
+    <door id="22250028" name="goe_028">
+        <set name="x" val="82012"/>
+        <set name="y" val="248506"/>
+        <set name="z" val="-10734"/>
+        <set name="baseHpMax" val="187500.0"/>
+        <set name="basePDef" val="476"/>
+        <set name="baseMDef" val="383"/>
+        <set name="isUnlockable" val="true"/>
+        <set name="autoCloseDelay" val="420000"/>
+        <dimensions maxX="82312" maxY="248521" maxZ="-10376" minX="81713" minY="248490" minZ="-10888"/>
+    </door>
+    <door id="22250029" name="goe_029">
+        <set name="x" val="82560"/>
+        <set name="y" val="254715"/>
+        <set name="z" val="-10880"/>
+        <set name="baseHpMax" val="187500.0"/>
+        <set name="basePDef" val="476"/>
+        <set name="baseMDef" val="383"/>
+        <set name="isUnlockable" val="true"/>
+        <set name="autoCloseDelay" val="420000"/>
+        <dimensions maxX="82727" maxY="254719" maxZ="-10577" minX="82395" minY="254712" minZ="-11183"/>
+    </door>
+    <door id="23180001" name="aden_tower_of_hubris">
+        <set name="x" val="113876"/>
+        <set name="y" val="16953"/>
+        <set name="z" val="-1979"/>
+        <set name="baseHpMax" val="187500.0"/>
+        <set name="basePDef" val="476"/>
+        <set name="baseMDef" val="383"/>
+        <set name="isOpenByDefault" val="true"/>
+        <set name="autoOpenDelay" val="300000"/>
+        <set name="autoCloseDelay" val="300000"/>
+        <dimensions maxX="113937" maxY="17013" maxZ="-1801" minX="113814" minY="16890" minZ="-2156"/>
+    </door>
+    <door id="23180002" name="aden_tower_of_hubris">
+        <set name="x" val="113771"/>
+        <set name="y" val="16849"/>
+        <set name="z" val="-1979"/>
+        <set name="baseHpMax" val="187500.0"/>
+        <set name="basePDef" val="476"/>
+        <set name="baseMDef" val="383"/>
+        <set name="isOpenByDefault" val="true"/>
+        <set name="autoOpenDelay" val="300000"/>
+        <set name="autoCloseDelay" val="300000"/>
+        <dimensions maxX="113833" maxY="16910" maxZ="-1801" minX="113710" minY="16788" minZ="-2156"/>
+    </door>
+    <door id="23180003" name="aden_tower_of_hubris">
+        <set name="x" val="113252"/>
+        <set name="y" val="15914"/>
+        <set name="z" val="4115"/>
+        <set name="baseHpMax" val="187500.0"/>
+        <set name="basePDef" val="476"/>
+        <set name="baseMDef" val="383"/>
+        <set name="isOpenByDefault" val="true"/>
+        <set name="autoOpenDelay" val="300000"/>
+        <set name="autoCloseDelay" val="300000"/>
+        <dimensions maxX="113326" maxY="15954" maxZ="4292" minX="113178" minY="15874" minZ="3937"/>
+    </door>
+    <door id="23180004" name="aden_tower_of_hubris">
+        <set name="x" val="113117"/>
+        <set name="y" val="15970"/>
+        <set name="z" val="4115"/>
+        <set name="baseHpMax" val="187500.0"/>
+        <set name="basePDef" val="476"/>
+        <set name="baseMDef" val="383"/>
+        <set name="isOpenByDefault" val="true"/>
+        <set name="autoOpenDelay" val="300000"/>
+        <set name="autoCloseDelay" val="300000"/>
+        <dimensions maxX="113191" maxY="16010" maxZ="4293" minX="113043" minY="15930" minZ="3938"/>
+    </door>
+    <door id="23180005" name="aden_tower_of_hubris">
+        <set name="x" val="113263"/>
+        <set name="y" val="15764"/>
+        <set name="z" val="7145"/>
+        <set name="baseHpMax" val="187500.0"/>
+        <set name="basePDef" val="476"/>
+        <set name="baseMDef" val="383"/>
+        <set name="isOpenByDefault" val="true"/>
+        <set name="autoOpenDelay" val="300000"/>
+        <set name="autoCloseDelay" val="300000"/>
+        <dimensions maxX="113325" maxY="15826" maxZ="7323" minX="113201" minY="15703" minZ="6968"/>
+    </door>
+    <door id="23180006" name="aden_tower_of_hubris">
+        <set name="x" val="113367"/>
+        <set name="y" val="15868"/>
+        <set name="z" val="7145"/>
+        <set name="baseHpMax" val="187500.0"/>
+        <set name="basePDef" val="476"/>
+        <set name="baseMDef" val="383"/>
+        <set name="isOpenByDefault" val="true"/>
+        <set name="autoOpenDelay" val="300000"/>
+        <set name="autoCloseDelay" val="300000"/>
+        <dimensions maxX="113429" maxY="15930" maxZ="7323" minX="113305" minY="15806" minZ="6968"/>
+    </door>
+    <door id="24140001" name="godad_ElmoreDoor_001">
+        <set name="x" val="140728"/>
+        <set name="y" val="-124477"/>
+        <set name="z" val="-1894"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <dimensions maxX="140754" maxY="-124437" maxZ="-1463" minX="140725" minY="-124478" minZ="-1913"/>
+    </door>
+    <door id="24140002" name="godad_ElmoreDoor_002">
+        <set name="x" val="140778"/>
+        <set name="y" val="-124402"/>
+        <set name="z" val="-1894"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <dimensions maxX="140779" maxY="-124399" maxZ="-1473" minX="140750" minY="-124440" minZ="-1923"/>
+    </door>
+    <door id="24140003" name="godad_ElmoreDoor_003">
+        <set name="x" val="141149"/>
+        <set name="y" val="-124310"/>
+        <set name="z" val="-1894"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <dimensions maxX="141187" maxY="-124306" maxZ="-1471" minX="141146" minY="-124336" minZ="-1921"/>
+    </door>
+    <door id="24140004" name="godad_ElmoreDoor_004">
+        <set name="x" val="141224"/>
+        <set name="y" val="-124360"/>
+        <set name="z" val="-1894"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <dimensions maxX="141225" maxY="-124332" maxZ="-1470" minX="141184" minY="-124361" minZ="-1920"/>
+    </door>
+    <door id="24140005" name="godad_ElmoreDoor_005">
+        <set name="x" val="141281"/>
+        <set name="y" val="-124738"/>
+        <set name="z" val="-1894"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <dimensions maxX="141282" maxY="-124735" maxZ="-1499" minX="141253" minY="-124777" minZ="-1949"/>
+    </door>
+    <door id="24140006" name="godad_ElmoreDoor_006">
+        <set name="x" val="141231"/>
+        <set name="y" val="-124813"/>
+        <set name="z" val="-1894"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <dimensions maxX="141258" maxY="-124772" maxZ="-1497" minX="141228" minY="-124814" minZ="-1947"/>
+    </door>
+    <door id="24140007" name="godad_ElmoreDoor_007">
+        <set name="x" val="140702"/>
+        <set name="y" val="-123836"/>
+        <set name="z" val="-1932"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <dimensions maxX="140715" maxY="-123835" maxZ="-1492" minX="140700" minY="-123886" minZ="-1942"/>
+    </door>
+    <door id="24140008" name="godad_ElmoreDoor_008">
+        <set name="x" val="140722"/>
+        <set name="y" val="-123934"/>
+        <set name="z" val="-1932"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <dimensions maxX="140723" maxY="-123884" maxZ="-1491" minX="140709" minY="-123935" minZ="-1941"/>
+    </door>
+    <door id="24160001" name="goddard_clanhall_001">
+        <set name="x" val="146438"/>
+        <set name="y" val="-55458"/>
+        <set name="z" val="-2792"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="clanHallId" val="47"/>
+        <dimensions maxX="146450" maxY="-55453" maxZ="-2371" minX="146432" minY="-55506" minZ="-2821"/>
+    </door>
+    <door id="24160002" name="goddard_clanhall_002">
+        <set name="x" val="146449"/>
+        <set name="y" val="-55547"/>
+        <set name="z" val="-2792"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="clanHallId" val="47"/>
+        <dimensions maxX="146455" maxY="-55497" maxZ="-2369" minX="146437" minY="-55552" minZ="-2819"/>
+    </door>
+    <door id="24160003" name="goddard_clanhall_003">
+        <set name="x" val="147071"/>
+        <set name="y" val="-56472"/>
+        <set name="z" val="-2792"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="clanHallId" val="48"/>
+        <dimensions maxX="147117" maxY="-56465" maxZ="-2365" minX="147065" minY="-56500" minZ="-2815"/>
+    </door>
+    <door id="24160004" name="goddard_clanhall_004">
+        <set name="x" val="147151"/>
+        <set name="y" val="-56514"/>
+        <set name="z" val="-2792"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="clanHallId" val="48"/>
+        <dimensions maxX="147158" maxY="-56486" maxZ="-2368" minX="147105" minY="-56522" minZ="-2818"/>
+    </door>
+    <door id="24160005" name="goddard_clanhall_005">
+        <set name="x" val="148262"/>
+        <set name="y" val="-56520"/>
+        <set name="z" val="-2792"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="clanHallId" val="49"/>
+        <dimensions maxX="148310" maxY="-56490" maxZ="-2373" minX="148255" minY="-56529" minZ="-2823"/>
+    </door>
+    <door id="24160006" name="goddard_clanhall_006">
+        <set name="x" val="148342"/>
+        <set name="y" val="-56478"/>
+        <set name="z" val="-2792"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="clanHallId" val="49"/>
+        <dimensions maxX="148348" maxY="-56470" maxZ="-2374" minX="148296" minY="-56508" minZ="-2824"/>
+    </door>
+    <door id="24160007" name="goddard_clanhall_007">
+        <set name="x" val="148971"/>
+        <set name="y" val="-55557"/>
+        <set name="z" val="-2792"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="clanHallId" val="50"/>
+        <dimensions maxX="148982" maxY="-55509" maxZ="-2362" minX="148965" minY="-55561" minZ="-2812"/>
+    </door>
+    <door id="24160008" name="goddard_clanhall_008">
+        <set name="x" val="148982"/>
+        <set name="y" val="-55468"/>
+        <set name="z" val="-2792"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="clanHallId" val="50"/>
+        <dimensions maxX="148988" maxY="-55464" maxZ="-2371" minX="148970" minY="-55520" minZ="-2821"/>
+    </door>
+    <door id="23170001" name="borderoutpost_Door_001a">
+        <set name="x" val="113931"/>
+        <set name="y" val="-17870"/>
+        <set name="z" val="-1872"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <dimensions maxX="114035" maxY="-17819" maxZ="-1762" minX="113840" minY="-17920" minZ="-2000"/>
+    </door>
+    <door id="24170001" name="borderoutpost_Door_002">
+        <set name="x" val="157981"/>
+        <set name="y" val="-25122"/>
+        <set name="z" val="-1196"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <dimensions maxX="158104" maxY="-25069" maxZ="-1088" minX="157859" minY="-25172" minZ="-1344"/>
+    </door>
+    <door id="24180022" name="aden_clanhall_001">
+        <set name="x" val="145358"/>
+        <set name="y" val="25385"/>
+        <set name="z" val="-2090"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="clanHallId" val="38"/>
+        <dimensions maxX="145360" maxY="25385" maxZ="-1692" minX="145356" minY="25343" minZ="-2142"/>
+    </door>
+    <door id="24180023" name="aden_clanhall_002">
+        <set name="x" val="145358"/>
+        <set name="y" val="25304"/>
+        <set name="z" val="-2090"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="clanHallId" val="38"/>
+        <dimensions maxX="145360" maxY="25345" maxZ="-1692" minX="145356" minY="25304" minZ="-2142"/>
+    </door>
+    <door id="24180024" name="aden_clanhall_003">
+        <set name="x" val="149438"/>
+        <set name="y" val="23177"/>
+        <set name="z" val="-2101"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="clanHallId" val="36"/>
+        <dimensions maxX="149439" maxY="23176" maxZ="-1702" minX="149437" minY="23135" minZ="-2152"/>
+    </door>
+    <door id="24180025" name="aden_clanhall_004">
+        <set name="x" val="149438"/>
+        <set name="y" val="23095"/>
+        <set name="z" val="-2101"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="clanHallId" val="36"/>
+        <dimensions maxX="149439" maxY="23136" maxZ="-1702" minX="149437" minY="23095" minZ="-2152"/>
+    </door>
+    <door id="24180026" name="aden_clanhall_005">
+        <set name="x" val="150299"/>
+        <set name="y" val="23695"/>
+        <set name="z" val="-2090"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="clanHallId" val="37"/>
+        <dimensions maxX="150301" maxY="23695" maxZ="-1691" minX="150297" minY="23653" minZ="-2141"/>
+    </door>
+    <door id="24180027" name="aden_clanhall_006">
+        <set name="x" val="150299"/>
+        <set name="y" val="23614"/>
+        <set name="z" val="-2090"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="clanHallId" val="37"/>
+        <dimensions maxX="150301" maxY="23656" maxZ="-1691" minX="150297" minY="23614" minZ="-2141"/>
+    </door>
+    <door id="24180028" name="aden_clanhall_007">
+        <set name="x" val="150444"/>
+        <set name="y" val="26584"/>
+        <set name="z" val="-2226"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="clanHallId" val="39"/>
+        <dimensions maxX="150446" maxY="26583" maxZ="-1828" minX="150443" minY="26542" minZ="-2278"/>
+    </door>
+    <door id="24180029" name="aden_clanhall_008">
+        <set name="x" val="150444"/>
+        <set name="y" val="26502"/>
+        <set name="z" val="-2226"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="clanHallId" val="39"/>
+        <dimensions maxX="150445" maxY="26543" maxZ="-1828" minX="150443" minY="26502" minZ="-2278"/>
+    </door>
+    <door id="24180030" name="aden_clanhall_009">
+        <set name="x" val="144359"/>
+        <set name="y" val="28239"/>
+        <set name="z" val="-2218"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="clanHallId" val="41"/>
+        <dimensions maxX="144359" maxY="28238" maxZ="-1820" minX="144357" minY="28197" minZ="-2270"/>
+    </door>
+    <door id="24180031" name="aden_clanhall_010">
+        <set name="x" val="144359"/>
+        <set name="y" val="28158"/>
+        <set name="z" val="-2218"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="clanHallId" val="41"/>
+        <dimensions maxX="144359" maxY="28198" maxZ="-1820" minX="144357" minY="28157" minZ="-2270"/>
+    </door>
+    <door id="24180032" name="aden_clanhall_011">
+        <set name="x" val="144294"/>
+        <set name="y" val="27131"/>
+        <set name="z" val="-2228"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="clanHallId" val="40"/>
+        <dimensions maxX="144295" maxY="27130" maxZ="-1830" minX="144293" minY="27089" minZ="-2280"/>
+    </door>
+    <door id="24180033" name="aden_clanhall_012">
+        <set name="x" val="144294"/>
+        <set name="y" val="27049"/>
+        <set name="z" val="-2228"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="clanHallId" val="40"/>
+        <dimensions maxX="144295" maxY="27090" maxZ="-1830" minX="144293" minY="27049" minZ="-2280"/>
+    </door>
+    <door id="24190001" name="aden_colosseum_outer_001">
+        <set name="x" val="147086"/>
+        <set name="y" val="46721"/>
+        <set name="z" val="-3289"/>
+        <set name="baseHpMax" val="687500.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="isOpenByDefault" val="true"/>
+        <dimensions maxX="147099" maxY="46800" maxZ="-3178" minX="147075" minY="46641" minZ="-3434"/>
+    </door>
+    <door id="24190002" name="aden_colosseum_inner_001">
+        <set name="x" val="148045"/>
+        <set name="y" val="46721"/>
+        <set name="z" val="-3289"/>
+        <set name="baseHpMax" val="687500.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="isOpenByDefault" val="true"/>
+        <dimensions maxX="148057" maxY="46800" maxZ="-3179" minX="148034" minY="46642" minZ="-3435"/>
+    </door>
+    <door id="24190003" name="aden_colosseum_inner_002">
+        <set name="x" val="150951"/>
+        <set name="y" val="46721"/>
+        <set name="z" val="-3289"/>
+        <set name="baseHpMax" val="687500.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="isOpenByDefault" val="true"/>
+        <dimensions maxX="150961" maxY="46797" maxZ="-3179" minX="150939" minY="46640" minZ="-3435"/>
+    </door>
+    <door id="24190004" name="aden_colosseum_outer_002">
+        <set name="x" val="151911"/>
+        <set name="y" val="46721"/>
+        <set name="z" val="-3289"/>
+        <set name="baseHpMax" val="687500.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="isOpenByDefault" val="true"/>
+        <dimensions maxX="151918" maxY="46798" maxZ="-3179" minX="151903" minY="46644" minZ="-3435"/>
+    </door>
+    <door id="24210004" name="godad_DCDoor_001">
+        <set name="x" val="190918"/>
+        <set name="y" val="-115529"/>
+        <set name="z" val="-1529"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <dimensions maxX="190944" maxY="-115430" maxZ="-1363" minX="190891" minY="-115626" minZ="-1619"/>
+    </door>
+    <door id="24210005" name="godad_DCDoor1F_002a">
+        <set name="x" val="189480"/>
+        <set name="y" val="-108511"/>
+        <set name="z" val="-964"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <dimensions maxX="189579" maxY="-108473" maxZ="-800" minX="189380" minY="-108551" minZ="-1056"/>
+    </door>
+    <door id="24210006" name="godad_DCDoor2F_003a">
+        <set name="x" val="191458"/>
+        <set name="y" val="-108107"/>
+        <set name="z" val="-962"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <dimensions maxX="191557" maxY="-108058" maxZ="-802" minX="191357" minY="-108153" minZ="-1058"/>
+    </door>
+    <door id="25150001" name="ent_ruler">
+        <set name="x" val="179516"/>
+        <set name="y" val="-88988"/>
+        <set name="z" val="-7068"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <dimensions maxX="179567" maxY="-88805" maxZ="-6997" minX="179505" minY="-89155" minZ="-7253"/>
+    </door>
+    <door id="25150002" name="vs_hall_2">
+        <set name="x" val="181251"/>
+        <set name="y" val="-88979"/>
+        <set name="z" val="-7069"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <dimensions maxX="181304" maxY="-88804" maxZ="-6998" minX="181240" minY="-89155" minZ="-7254"/>
+    </door>
+    <door id="25150003" name="ct_ahll_2">
+        <set name="x" val="183055"/>
+        <set name="y" val="-88979"/>
+        <set name="z" val="-7065"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <dimensions maxX="183120" maxY="-88796" maxZ="-7005" minX="183038" minY="-89166" minZ="-7261"/>
+    </door>
+    <door id="25150004" name="mr_hall_2">
+        <set name="x" val="184881"/>
+        <set name="y" val="-88969"/>
+        <set name="z" val="-7068"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <dimensions maxX="184946" maxY="-88790" maxZ="-6987" minX="184871" minY="-89148" minZ="-7243"/>
+    </door>
+    <door id="25150005" name="dk_hall_2">
+        <set name="x" val="186685"/>
+        <set name="y" val="-88965"/>
+        <set name="z" val="-7064"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <dimensions maxX="186742" maxY="-88788" maxZ="-7005" minX="186678" minY="-89151" minZ="-7261"/>
+    </door>
+    <door id="25150006" name="em_grav_2">
+        <set name="x" val="188474"/>
+        <set name="y" val="-88968"/>
+        <set name="z" val="-7066"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <dimensions maxX="188527" maxY="-88793" maxZ="-7005" minX="188463" minY="-89147" minZ="-7261"/>
+    </door>
+    <door id="25150011" name="conq_mos">
+        <set name="x" val="181195"/>
+        <set name="y" val="-85594"/>
+        <set name="z" val="-7064"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <dimensions maxX="181256" maxY="-85412" maxZ="-7005" minX="181184" minY="-85775" minZ="-7261"/>
+    </door>
+    <door id="25150012" name="visc_hall_gate">
+        <set name="x" val="182981"/>
+        <set name="y" val="-85580"/>
+        <set name="z" val="-7067"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <dimensions maxX="183045" maxY="-85399" maxZ="-7003" minX="182970" minY="-85759" minZ="-7259"/>
+    </door>
+    <door id="25150013" name="count_hall_gate">
+        <set name="x" val="184798"/>
+        <set name="y" val="-85582"/>
+        <set name="z" val="-7064"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <dimensions maxX="184857" maxY="-85401" maxZ="-7003" minX="184787" minY="-85759" minZ="-7259"/>
+    </door>
+    <door id="25150014" name="marquis_hall_gate">
+        <set name="x" val="186575"/>
+        <set name="y" val="-85576"/>
+        <set name="z" val="-7066"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <dimensions maxX="186643" maxY="-85390" maxZ="-7009" minX="186560" minY="-85758" minZ="-7265"/>
+    </door>
+    <door id="25150015" name="duke_hall_gate">
+        <set name="x" val="188361"/>
+        <set name="y" val="-85576"/>
+        <set name="z" val="-7066"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <dimensions maxX="188426" maxY="-85383" maxZ="-7003" minX="188344" minY="-85772" minZ="-7259"/>
+    </door>
+    <door id="25150016" name="imp_grave_gate">
+        <set name="x" val="190191"/>
+        <set name="y" val="-85576"/>
+        <set name="z" val="-7064"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <dimensions maxX="190232" maxY="-85393" maxZ="-7009" minX="190151" minY="-85760" minZ="-7265"/>
+    </door>
+    <door id="25150021" name="ent_judge">
+        <set name="x" val="175610"/>
+        <set name="y" val="-82701"/>
+        <set name="z" val="-7057"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <dimensions maxX="175790" maxY="-82691" maxZ="-6995" minX="175429" minY="-82761" minZ="-7251"/>
+    </door>
+    <door id="25150022" name="vs_hall_4">
+        <set name="x" val="175606"/>
+        <set name="y" val="-80956"/>
+        <set name="z" val="-7075"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <dimensions maxX="175805" maxY="-80937" maxZ="-7004" minX="175421" minY="-81024" minZ="-7260"/>
+    </door>
+    <door id="25150023" name="ct_ahll_4">
+        <set name="x" val="175602"/>
+        <set name="y" val="-79162"/>
+        <set name="z" val="-7071"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <dimensions maxX="175777" maxY="-79155" maxZ="-7003" minX="175426" minY="-79217" minZ="-7259"/>
+    </door>
+    <door id="25150024" name="mr_hall_4">
+        <set name="x" val="175602"/>
+        <set name="y" val="-77330"/>
+        <set name="z" val="-7074"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <dimensions maxX="175778" maxY="-77319" maxZ="-7009" minX="175425" minY="-77387" minZ="-7265"/>
+    </door>
+    <door id="25150025" name="dk_hall_4">
+        <set name="x" val="175597"/>
+        <set name="y" val="-75538"/>
+        <set name="z" val="-7061"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <dimensions maxX="175777" maxY="-75529" maxZ="-7002" minX="175415" minY="-75595" minZ="-7258"/>
+    </door>
+    <door id="25150026" name="em_grav_4">
+        <set name="x" val="175592"/>
+        <set name="y" val="-73721"/>
+        <set name="z" val="-7063"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <dimensions maxX="175767" maxY="-73712" maxZ="-7001" minX="175401" minY="-73781" minZ="-7257"/>
+    </door>
+    <door id="25150031" name="ent_grtsage">
+        <set name="x" val="173218"/>
+        <set name="y" val="-86614"/>
+        <set name="z" val="-7076"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <dimensions maxX="173400" maxY="-86604" maxZ="-7012" minX="173033" minY="-86673" minZ="-7268"/>
+    </door>
+    <door id="25150032" name="vs_hall_3">
+        <set name="x" val="173218"/>
+        <set name="y" val="-84780"/>
+        <set name="z" val="-7072"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <dimensions maxX="173404" maxY="-84768" maxZ="-7012" minX="173032" minY="-84846" minZ="-7268"/>
+    </door>
+    <door id="25150033" name="ct_ahll_3">
+        <set name="x" val="173214"/>
+        <set name="y" val="-82974"/>
+        <set name="z" val="-7072"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <dimensions maxX="173388" maxY="-82966" maxZ="-7003" minX="173034" minY="-83033" minZ="-7259"/>
+    </door>
+    <door id="25150034" name="mr_hall_3">
+        <set name="x" val="173212"/>
+        <set name="y" val="-81165"/>
+        <set name="z" val="-7066"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <dimensions maxX="173388" maxY="-81152" maxZ="-6998" minX="173034" minY="-81221" minZ="-7254"/>
+    </door>
+    <door id="25150035" name="dk_hall_3">
+        <set name="x" val="173208"/>
+        <set name="y" val="-79393"/>
+        <set name="z" val="-7061"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <dimensions maxX="173391" maxY="-79384" maxZ="-6997" minX="173035" minY="-79450" minZ="-7253"/>
+    </door>
+    <door id="25150036" name="em_grav_3">
+        <set name="x" val="173198"/>
+        <set name="y" val="-77563"/>
+        <set name="z" val="-7063"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <dimensions maxX="173369" maxY="-77558" maxZ="-6997" minX="173019" minY="-77621" minZ="-7253"/>
+    </door>
+    <door id="25170001" name="devastated_castle_outer_001">
+        <set name="x" val="178212"/>
+        <set name="y" val="-15038"/>
+        <set name="z" val="-2135"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <dimensions maxX="178342" maxY="-15017" maxZ="-1976" minX="178211" minY="-15038" minZ="-2294"/>
+    </door>
+    <door id="25170002" name="devastated_castle_outer_002">
+        <set name="x" val="178468"/>
+        <set name="y" val="-15038"/>
+        <set name="z" val="-2135"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <dimensions maxX="178469" maxY="-15017" maxZ="-1977" minX="178339" minY="-15038" minZ="-2295"/>
+    </door>
+    <door id="25170003" name="devastated_castle_inner_001">
+        <set name="x" val="178121"/>
+        <set name="y" val="-18226"/>
+        <set name="z" val="-2286"/>
+        <set name="baseHpMax" val="79125.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <dimensions maxX="178183" maxY="-18211" maxZ="-1836" minX="178120" minY="-18225" minZ="-2286"/>
+    </door>
+    <door id="25170004" name="devastated_castle_inner_002">
+        <set name="x" val="178247"/>
+        <set name="y" val="-18220"/>
+        <set name="z" val="-2210"/>
+        <set name="baseHpMax" val="79125.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <dimensions maxX="178245" maxY="-18211" maxZ="-1836" minX="178182" minY="-18225" minZ="-2286"/>
+    </door>
+    <door id="25170005" name="devastated_castle_inner_003">
+        <set name="x" val="178119"/>
+        <set name="y" val="-18220"/>
+        <set name="z" val="-2210"/>
+        <set name="baseHpMax" val="79125.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <dimensions maxX="178309" maxY="-18573" maxZ="-1837" minX="178302" minY="-18611" minZ="-2287"/>
+    </door>
+    <door id="25170006" name="devastated_castle_inner_004">
+        <set name="x" val="178298"/>
+        <set name="y" val="-18650"/>
+        <set name="z" val="-2233"/>
+        <set name="baseHpMax" val="79125.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <dimensions maxX="178309" maxY="-18610" maxZ="-1837" minX="178302" minY="-18648" minZ="-2287"/>
+    </door>
+    
+	<!-- Castle doors & walls -->
+	<door id="19210001" name="Gludio_outer_001">
+        <set name="x" val="-18481"/>
+        <set name="y" val="113065"/>
+        <set name="z" val="-2774"/>
+        <set name="baseHpMax" val="316500.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="castleId" val="1"/>
+        <dimensions maxX="-18350" maxY="113072" maxZ="-2479" minX="-18481" minY="113058" minZ="-2799"/>
+    </door>
+    <door id="19210002" name="Gludio_outer_002">
+        <set name="x" val="-18219"/>
+        <set name="y" val="113065"/>
+        <set name="z" val="-2774"/>
+        <set name="baseHpMax" val="316500.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="castleId" val="1"/>
+        <dimensions maxX="-18220" maxY="113072" maxZ="-2479" minX="-18351" minY="113058" minZ="-2799"/>
+    </door>
+    <door id="19210003" name="Gludio_wall_001">
+        <set name="x" val="-19912"/>
+        <set name="y" val="111381"/>
+        <set name="z" val="-2861"/>
+        <set name="baseHpMax" val="678840.0"/>
+        <set name="basePDef" val="837"/>
+        <set name="baseMDef" val="674"/>
+        <set name="castleId" val="1"/>
+        <dimensions maxX="-19848" maxY="111682" maxZ="-2462" minX="-19977" minY="111082" minZ="-2922"/>
+    </door>
+    <door id="19210004" name="Gludio_wall_002">
+        <set name="x" val="-16586"/>
+        <set name="y" val="111382"/>
+        <set name="z" val="-2880"/>
+        <set name="baseHpMax" val="678840.0"/>
+        <set name="basePDef" val="837"/>
+        <set name="baseMDef" val="674"/>
+        <set name="castleId" val="1"/>
+        <dimensions maxX="-16522" maxY="111682" maxZ="-2462" minX="-16650" minY="111082" minZ="-2922"/>
+    </door>
+    <door id="19210005" name="Gludio_inner_001">
+        <set name="x" val="-18244"/>
+        <set name="y" val="110520"/>
+        <set name="z" val="-2518"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="castleId" val="1"/>
+        <dimensions maxX="-18113" maxY="110526" maxZ="-2293" minX="-18244" minY="110514" minZ="-2548"/>
+    </door>
+    <door id="19210006" name="Gludio_inner_002">
+        <set name="x" val="-17981"/>
+        <set name="y" val="110520"/>
+        <set name="z" val="-2518"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="castleId" val="1"/>
+        <dimensions maxX="-17982" maxY="110526" maxZ="-2293" minX="-18113" minY="110514" minZ="-2548"/>
+    </door>
+    <door id="19210007" name="Gludio_small_002">
+        <set name="x" val="-19235"/>
+        <set name="y" val="108276"/>
+        <set name="z" val="-2389"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="castleId" val="1"/>
+        <dimensions maxX="-19235" maxY="108277" maxZ="-2280" minX="-19333" minY="108276" minZ="-2408"/>
+    </door>
+    <door id="19210008" name="Gludio_station">
+        <set name="x" val="-18997"/>
+        <set name="y" val="108062"/>
+        <set name="z" val="-2038"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="castleId" val="1"/>
+        <dimensions maxX="-18991" maxY="108208" maxZ="-1819" minX="-19003" minY="108057" minZ="-2069"/>
+    </door>
+    <door id="19210009" name="Gludio_small_001">
+        <set name="x" val="-17939"/>
+        <set name="y" val="107109"/>
+        <set name="z" val="-2387"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="castleId" val="1"/>
+        <dimensions maxX="-17939" maxY="107109" maxZ="-2280" minX="-17940" minY="107011" minZ="-2408"/>
+    </door>
+    <door id="20220001" name="Dion_outer_001">
+        <set name="x" val="22441"/>
+        <set name="y" val="156684"/>
+        <set name="z" val="-2968"/>
+        <set name="baseHpMax" val="316500.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="castleId" val="2"/>
+        <dimensions maxX="22450" maxY="156692" maxZ="-2674" minX="22302" minY="156678" minZ="-2994"/>
+    </door>
+    <door id="20220002" name="Dion_outer_002">
+        <set name="x" val="22179"/>
+        <set name="y" val="156684"/>
+        <set name="z" val="-2968"/>
+        <set name="baseHpMax" val="316500.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="castleId" val="2"/>
+        <dimensions maxX="22318" maxY="156692" maxZ="-2674" minX="22171" minY="156678" minZ="-2994"/>
+    </door>
+    <door id="20220003" name="Dion_wall_001">
+        <set name="x" val="23873"/>
+        <set name="y" val="158368"/>
+        <set name="z" val="-3055"/>
+        <set name="baseHpMax" val="678840.0"/>
+        <set name="basePDef" val="837"/>
+        <set name="baseMDef" val="674"/>
+        <set name="castleId" val="2"/>
+        <dimensions maxX="23937" maxY="158676" maxZ="-2656" minX="23809" minY="158060" minZ="-3116"/>
+    </door>
+    <door id="20220004" name="Dion_wall_002">
+        <set name="x" val="20546"/>
+        <set name="y" val="158368"/>
+        <set name="z" val="-3074"/>
+        <set name="baseHpMax" val="678840.0"/>
+        <set name="basePDef" val="837"/>
+        <set name="baseMDef" val="674"/>
+        <set name="castleId" val="2"/>
+        <dimensions maxX="20611" maxY="158676" maxZ="-2656" minX="20483" minY="158060" minZ="-3116"/>
+    </door>
+    <door id="20220005" name="Dion_inner_001">
+        <set name="x" val="22205"/>
+        <set name="y" val="159230"/>
+        <set name="z" val="-2712"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="castleId" val="2"/>
+        <dimensions maxX="22213" maxY="159236" maxZ="-2480" minX="22067" minY="159224" minZ="-2735"/>
+    </door>
+    <door id="20220006" name="Dion_inner_002">
+        <set name="x" val="21943"/>
+        <set name="y" val="159230"/>
+        <set name="z" val="-2712"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="castleId" val="2"/>
+        <dimensions maxX="22082" maxY="159236" maxZ="-2480" minX="21935" minY="159224" minZ="-2735"/>
+    </door>
+    <door id="20220007" name="Dion_small_001">
+        <set name="x" val="23194"/>
+        <set name="y" val="161470"/>
+        <set name="z" val="-2583"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="castleId" val="2"/>
+        <dimensions maxX="23300" maxY="161472" maxZ="-2474" minX="23187" minY="161470" minZ="-2602"/>
+    </door>
+    <door id="20220008" name="Dion_station">
+        <set name="x" val="22905"/>
+        <set name="y" val="161547"/>
+        <set name="z" val="-2232"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="castleId" val="2"/>
+        <dimensions maxX="22912" maxY="161702" maxZ="-2008" minX="22900" minY="161535" minZ="-2258"/>
+    </door>
+    <door id="20220009" name="Dion_small_002">
+        <set name="x" val="21899"/>
+        <set name="y" val="162738"/>
+        <set name="z" val="-2483"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="castleId" val="2"/>
+        <dimensions maxX="21899" maxY="162744" maxZ="-2474" minX="21899" minY="162629" minZ="-2602"/>
+    </door>
+    <door id="23220001" name="Giran_outer_001">
+        <set name="x" val="112857"/>
+        <set name="y" val="144729"/>
+        <set name="z" val="-2841"/>
+        <set name="baseHpMax" val="316500.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="castleId" val="3"/>
+        <dimensions maxX="112864" maxY="144867" maxZ="-2544" minX="112850" minY="144720" minZ="-2864"/>
+    </door>
+    <door id="23220002" name="Giran_outer_002">
+        <set name="x" val="112857"/>
+        <set name="y" val="144990"/>
+        <set name="z" val="-2841"/>
+        <set name="baseHpMax" val="316500.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="castleId" val="3"/>
+        <dimensions maxX="112864" maxY="144997" maxZ="-2544" minX="112850" minY="144852" minZ="-2864"/>
+    </door>
+    <door id="23220003" name="Giran_wall_001">
+        <set name="x" val="114540"/>
+        <set name="y" val="143296"/>
+        <set name="z" val="-2928"/>
+        <set name="baseHpMax" val="678840.0"/>
+        <set name="basePDef" val="837"/>
+        <set name="baseMDef" val="674"/>
+        <set name="castleId" val="3"/>
+        <dimensions maxX="114848" maxY="143360" maxZ="-2531" minX="114232" minY="143232" minZ="-2991"/>
+    </door>
+    <door id="23220004" name="Giran_wall_002">
+        <set name="x" val="114540"/>
+        <set name="y" val="146623"/>
+        <set name="z" val="-2945"/>
+        <set name="baseHpMax" val="678840.0"/>
+        <set name="basePDef" val="837"/>
+        <set name="baseMDef" val="674"/>
+        <set name="castleId" val="3"/>
+        <dimensions maxX="114848" maxY="146687" maxZ="-2531" minX="114232" minY="146559" minZ="-2989"/>
+    </door>
+    <door id="23220005" name="Giran_inner_001">
+        <set name="x" val="115402"/>
+        <set name="y" val="144965"/>
+        <set name="z" val="-2585"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="castleId" val="3"/>
+        <dimensions maxX="115408" maxY="145104" maxZ="-2352" minX="115396" minY="144956" minZ="-2607"/>
+    </door>
+    <door id="23220006" name="Giran_inner_002">
+        <set name="x" val="115402"/>
+        <set name="y" val="145227"/>
+        <set name="z" val="-2585"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="castleId" val="3"/>
+        <dimensions maxX="115408" maxY="145236" maxZ="-2352" minX="115396" minY="145088" minZ="-2607"/>
+    </door>
+    <door id="23220007" name="Giran_small_001">
+        <set name="x" val="117643"/>
+        <set name="y" val="143974"/>
+        <set name="z" val="-2456"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="castleId" val="3"/>
+        <dimensions maxX="117643" maxY="143981" maxZ="-2347" minX="117643" minY="143868" minZ="-2475"/>
+    </door>
+    <door id="23220008" name="Giran_station">
+        <set name="x" val="117720"/>
+        <set name="y" val="144242"/>
+        <set name="z" val="-2105"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="castleId" val="3"/>
+        <dimensions maxX="117873" maxY="144248" maxZ="-1879" minX="117708" minY="144236" minZ="-2129"/>
+    </door>
+    <door id="23220009" name="Giran_small_002">
+        <set name="x" val="118811"/>
+        <set name="y" val="145270"/>
+        <set name="z" val="-2454"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="castleId" val="3"/>
+        <dimensions maxX="118917" maxY="145270" maxZ="-2347" minX="118804" minY="145270" minZ="-2475"/>
+    </door>
+    <door id="22190001" name="Oren_outer_001">
+        <set name="x" val="78925"/>
+        <set name="y" val="36824"/>
+        <set name="z" val="-2568"/>
+        <set name="baseHpMax" val="316500.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="castleId" val="4"/>
+        <dimensions maxX="78932" maxY="36959" maxZ="-2271" minX="78918" minY="36816" minZ="-2591"/>
+    </door>
+    <door id="22190002" name="Oren_outer_002">
+        <set name="x" val="78925"/>
+        <set name="y" val="37085"/>
+        <set name="z" val="-2568"/>
+        <set name="baseHpMax" val="316500.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="castleId" val="4"/>
+        <dimensions maxX="78932" maxY="37092" maxZ="-2271" minX="78918" minY="36949" minZ="-2591"/>
+    </door>
+    <door id="22190003" name="Oren_wall_001">
+        <set name="x" val="80616"/>
+        <set name="y" val="35391"/>
+        <set name="z" val="-2655"/>
+        <set name="baseHpMax" val="678840.0"/>
+        <set name="basePDef" val="837"/>
+        <set name="baseMDef" val="674"/>
+        <set name="castleId" val="4"/>
+        <dimensions maxX="80924" maxY="35456" maxZ="-2256" minX="80316" minY="35328" minZ="-2716"/>
+    </door>
+    <door id="22190004" name="Oren_wall_002">
+        <set name="x" val="80616"/>
+        <set name="y" val="38718"/>
+        <set name="z" val="-2674"/>
+        <set name="baseHpMax" val="678840.0"/>
+        <set name="basePDef" val="837"/>
+        <set name="baseMDef" val="674"/>
+        <set name="castleId" val="4"/>
+        <dimensions maxX="80616" maxY="38782" maxZ="-2256" minX="80308" minY="38718" minZ="-2716"/>
+    </door>
+    <door id="22190005" name="Oren_inner_001">
+        <set name="x" val="81470"/>
+        <set name="y" val="37060"/>
+        <set name="z" val="-2312"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="castleId" val="4"/>
+        <dimensions maxX="81470" maxY="37201" maxZ="-2180" minX="81464" minY="37060" minZ="-2335"/>
+    </door>
+    <door id="22190006" name="Oren_inner_002">
+        <set name="x" val="81470"/>
+        <set name="y" val="37322"/>
+        <set name="z" val="-2312"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="castleId" val="4"/>
+        <dimensions maxX="81476" maxY="37332" maxZ="-2180" minX="81464" minY="37181" minZ="-2335"/>
+    </door>
+    <door id="22190007" name="Oren_small_001">
+        <set name="x" val="83719"/>
+        <set name="y" val="36069"/>
+        <set name="z" val="-2202"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="castleId" val="4"/>
+        <dimensions maxX="83719" maxY="36076" maxZ="-2014" minX="83719" minY="35964" minZ="-2202"/>
+    </door>
+    <door id="22190008" name="Oren_station">
+        <set name="x" val="83796"/>
+        <set name="y" val="36337"/>
+        <set name="z" val="-1832"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="castleId" val="4"/>
+        <dimensions maxX="83950" maxY="36343" maxZ="-1606" minX="83784" minY="36331" minZ="-1856"/>
+    </door>
+    <door id="22190009" name="Oren_small_002">
+        <set name="x" val="84887"/>
+        <set name="y" val="37365"/>
+        <set name="z" val="-2181"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="castleId" val="4"/>
+        <dimensions maxX="84992" maxY="37365" maxZ="-2074" minX="84880" minY="37365" minZ="-2202"/>
+    </door>
+    <door id="24180001" name="Aden_outer_001">
+        <set name="x" val="147278"/>
+        <set name="y" val="8483"/>
+        <set name="z" val="-474"/>
+        <set name="baseHpMax" val="339420.0"/>
+        <set name="basePDef" val="837"/>
+        <set name="baseMDef" val="674"/>
+        <set name="castleId" val="5"/>
+        <dimensions maxX="147464" maxY="8492" maxZ="-1" minX="147277" minY="8474" minZ="-496"/>
+    </door>
+    <door id="24180002" name="Aden_outer_002">
+        <set name="x" val="147634"/>
+        <set name="y" val="8483"/>
+        <set name="z" val="-474"/>
+        <set name="baseHpMax" val="339420.0"/>
+        <set name="basePDef" val="837"/>
+        <set name="baseMDef" val="674"/>
+        <set name="castleId" val="5"/>
+        <dimensions maxX="147635" maxY="8492" maxZ="-1" minX="147448" minY="8474" minZ="-496"/>
+    </door>
+    <door id="24180003" name="Aden_wall_in">
+        <set name="x" val="146770"/>
+        <set name="y" val="6977"/>
+        <set name="z" val="-460"/>
+        <set name="baseHpMax" val="678840.0"/>
+        <set name="basePDef" val="837"/>
+        <set name="baseMDef" val="674"/>
+        <set name="castleId" val="5"/>
+        <dimensions maxX="147064" maxY="7105" maxZ="-391" minX="146440" minY="6895" minZ="-496"/>
+    </door>
+    <door id="24180004" name="Aden_inner_002">
+        <set name="x" val="147341"/>
+        <set name="y" val="6210"/>
+        <set name="z" val="-405"/>
+        <set name="baseHpMax" val="84855.0"/>
+        <set name="basePDef" val="837"/>
+        <set name="baseMDef" val="674"/>
+        <set name="castleId" val="5"/>
+        <dimensions maxX="147462" maxY="6220" maxZ="-140" minX="147341" minY="6202" minZ="-430"/>
+    </door>
+    <door id="24180005" name="Aden_inner_001">
+        <set name="x" val="147571"/>
+        <set name="y" val="6210"/>
+        <set name="z" val="-430"/>
+        <set name="baseHpMax" val="84855.0"/>
+        <set name="basePDef" val="837"/>
+        <set name="baseMDef" val="674"/>
+        <set name="castleId" val="5"/>
+        <dimensions maxX="147572" maxY="6220" maxZ="-140" minX="147450" minY="6202" minZ="-430"/>
+    </door>
+    <door id="24180006" name="Aden_wall_left">
+        <set name="x" val="145200"/>
+        <set name="y" val="5504"/>
+        <set name="z" val="-726"/>
+        <set name="baseHpMax" val="678840.0"/>
+        <set name="basePDef" val="837"/>
+        <set name="baseMDef" val="674"/>
+        <set name="castleId" val="5"/>
+        <dimensions maxX="145537" maxY="5889" maxZ="-187" minX="144863" minY="5119" minZ="-752"/>
+    </door>
+    <door id="24180007" name="Aden_left_004">
+        <set name="x" val="146607"/>
+        <set name="y" val="5384"/>
+        <set name="z" val="-20"/>
+        <set name="baseHpMax" val="113151.0"/>
+        <set name="basePDef" val="837"/>
+        <set name="baseMDef" val="674"/>
+        <set name="castleId" val="5"/>
+        <dimensions maxX="146614" maxY="5386" maxZ="140" minX="146600" minY="5318" minZ="-45"/>
+    </door>
+    <door id="24180008" name="Aden_left_003">
+        <set name="x" val="146606"/>
+        <set name="y" val="5262"/>
+        <set name="z" val="-20"/>
+        <set name="baseHpMax" val="113151.0"/>
+        <set name="basePDef" val="837"/>
+        <set name="baseMDef" val="674"/>
+        <set name="castleId" val="5"/>
+        <dimensions maxX="146614" maxY="5329" maxZ="140" minX="146600" minY="5262" minZ="-45"/>
+    </door>
+    <door id="24180009" name="Aden_right_003">
+        <set name="x" val="148324"/>
+        <set name="y" val="5384"/>
+        <set name="z" val="-20"/>
+        <set name="baseHpMax" val="113151.0"/>
+        <set name="basePDef" val="837"/>
+        <set name="baseMDef" val="674"/>
+        <set name="castleId" val="5"/>
+        <dimensions maxX="148331" maxY="5386" maxZ="140" minX="148317" minY="5319" minZ="-44"/>
+    </door>
+    <door id="24180010" name="Aden_right_004">
+        <set name="x" val="148323"/>
+        <set name="y" val="5262"/>
+        <set name="z" val="-20"/>
+        <set name="baseHpMax" val="113151.0"/>
+        <set name="basePDef" val="837"/>
+        <set name="baseMDef" val="674"/>
+        <set name="castleId" val="5"/>
+        <dimensions maxX="148317" maxY="5328" maxZ="140" minX="148317" minY="5261" minZ="-44"/>
+    </door>
+    <door id="24180011" name="Aden_wall_right">
+        <set name="x" val="149711"/>
+        <set name="y" val="5503"/>
+        <set name="z" val="-726"/>
+        <set name="baseHpMax" val="678840.0"/>
+        <set name="basePDef" val="837"/>
+        <set name="baseMDef" val="674"/>
+        <set name="castleId" val="5"/>
+        <dimensions maxX="150049" maxY="5889" maxZ="-197" minX="149887" minY="5119" minZ="-752"/>
+    </door>
+    <door id="24180012" name="Aden_left_002">
+        <set name="x" val="146001"/>
+        <set name="y" val="4721"/>
+        <set name="z" val="-402"/>
+        <set name="baseHpMax" val="113151.0"/>
+        <set name="basePDef" val="837"/>
+        <set name="baseMDef" val="674"/>
+        <set name="castleId" val="5"/>
+        <dimensions maxX="146011" maxY="4722" maxZ="-98" minX="145993" minY="4601" minZ="-427"/>
+    </door>
+    <door id="24180013" name="Aden_left_001">
+        <set name="x" val="146001"/>
+        <set name="y" val="4493"/>
+        <set name="z" val="-402"/>
+        <set name="baseHpMax" val="113151.0"/>
+        <set name="basePDef" val="837"/>
+        <set name="baseMDef" val="674"/>
+        <set name="castleId" val="5"/>
+        <dimensions maxX="146011" maxY="4613" maxZ="-98" minX="145993" minY="4493" minZ="-427"/>
+    </door>
+    <door id="24180014" name="Aden_right_001">
+        <set name="x" val="148908"/>
+        <set name="y" val="4721"/>
+        <set name="z" val="-402"/>
+        <set name="baseHpMax" val="113151.0"/>
+        <set name="basePDef" val="837"/>
+        <set name="baseMDef" val="674"/>
+        <set name="castleId" val="5"/>
+        <dimensions maxX="148918" maxY="4723" maxZ="-98" minX="148900" minY="4602" minZ="-427"/>
+    </door>
+    <door id="24180015" name="Aden_right_002">
+        <set name="x" val="148908"/>
+        <set name="y" val="4493"/>
+        <set name="z" val="-402"/>
+        <set name="baseHpMax" val="113151.0"/>
+        <set name="basePDef" val="837"/>
+        <set name="baseMDef" val="674"/>
+        <set name="castleId" val="5"/>
+        <dimensions maxX="148918" maxY="4613" maxZ="-98" minX="148900" minY="4492" minZ="-427"/>
+    </door>
+    <door id="24180016" name="Aden_terrace">
+        <set name="x" val="147511"/>
+        <set name="y" val="2240"/>
+        <set name="z" val="180"/>
+        <set name="baseHpMax" val="113151.0"/>
+        <set name="basePDef" val="837"/>
+        <set name="baseMDef" val="674"/>
+        <set name="castleId" val="5"/>
+        <dimensions maxX="147514" maxY="2245" maxZ="434" minX="147398" minY="2243" minZ="201"/>
+    </door>
+    <door id="24180018" name="Aden_side_door2">
+        <set name="x" val="150044"/>
+        <set name="y" val="3783"/>
+        <set name="z" val="-80"/>
+        <set name="baseHpMax" val="678840.0"/>
+        <set name="basePDef" val="837"/>
+        <set name="baseMDef" val="674"/>
+        <set name="castleId" val="5"/>
+        <dimensions maxX="150056" maxY="3904" maxZ="145" minX="150040" minY="3776" minZ="-102"/>
+    </door>
+    <door id="24180019" name="Aden_side_door1">
+        <set name="x" val="149208"/>
+        <set name="y" val="3077"/>
+        <set name="z" val="1260"/>
+        <set name="baseHpMax" val="678840.0"/>
+        <set name="basePDef" val="837"/>
+        <set name="baseMDef" val="674"/>
+        <set name="castleId" val="5"/>
+        <dimensions maxX="149217" maxY="3200" maxZ="1478" minX="149209" minY="3072" minZ="1235"/>
+    </door>
+    <door id="24180020" name="Aden_side_door4">
+        <set name="x" val="144859"/>
+        <set name="y" val="3783"/>
+        <set name="z" val="-80"/>
+        <set name="baseHpMax" val="678840.0"/>
+        <set name="basePDef" val="837"/>
+        <set name="baseMDef" val="674"/>
+        <set name="castleId" val="5"/>
+        <dimensions maxX="144881" maxY="3902" maxZ="145" minX="144848" minY="3775" minZ="-102"/>
+    </door>
+    <door id="24180021" name="Aden_side_door3">
+        <set name="x" val="145694"/>
+        <set name="y" val="3076"/>
+        <set name="z" val="1259"/>
+        <set name="baseHpMax" val="678840.0"/>
+        <set name="basePDef" val="837"/>
+        <set name="baseMDef" val="674"/>
+        <set name="castleId" val="5"/>
+        <dimensions maxX="145712" maxY="3200" maxZ="1477" minX="145688" minY="3072" minZ="1234"/>
+    </door>
+    <door id="23250001" name="Innadril_outer_002">
+        <set name="x" val="116392"/>
+        <set name="y" val="245462"/>
+        <set name="z" val="-1064"/>
+        <set name="baseHpMax" val="316500.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="castleId" val="6"/>
+        <dimensions maxX="116400" maxY="245470" maxZ="-770" minX="116254" minY="245456" minZ="-1090"/>
+    </door>
+    <door id="23250002" name="Innadril_outer_001">
+        <set name="x" val="116130"/>
+        <set name="y" val="245462"/>
+        <set name="z" val="-1064"/>
+        <set name="baseHpMax" val="316500.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="castleId" val="6"/>
+        <dimensions maxX="116269" maxY="245470" maxZ="-770" minX="116123" minY="245456" minZ="-1090"/>
+    </door>
+    <door id="23250003" name="Innadril_wall_001">
+        <set name="x" val="117824"/>
+        <set name="y" val="247146"/>
+        <set name="z" val="-1151"/>
+        <set name="baseHpMax" val="678840.0"/>
+        <set name="basePDef" val="837"/>
+        <set name="baseMDef" val="674"/>
+        <set name="castleId" val="6"/>
+        <dimensions maxX="117911" maxY="247468" maxZ="-752" minX="117745" minY="246831" minZ="-1212"/>
+    </door>
+    <door id="23250004" name="Innadril_wall_002">
+        <set name="x" val="114497"/>
+        <set name="y" val="247146"/>
+        <set name="z" val="-1170"/>
+        <set name="baseHpMax" val="678840.0"/>
+        <set name="basePDef" val="837"/>
+        <set name="baseMDef" val="674"/>
+        <set name="castleId" val="6"/>
+        <dimensions maxX="114578" maxY="247462" maxZ="-752" minX="114417" minY="246834" minZ="-1212"/>
+    </door>
+    <door id="23250005" name="Innadril_inner_002">
+        <set name="x" val="116155"/>
+        <set name="y" val="248008"/>
+        <set name="z" val="-808"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="castleId" val="6"/>
+        <dimensions maxX="116164" maxY="248014" maxZ="-576" minX="116019" minY="248002" minZ="-831"/>
+    </door>
+    <door id="23250006" name="Innadril_inner_001">
+        <set name="x" val="115894"/>
+        <set name="y" val="248008"/>
+        <set name="z" val="-808"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="castleId" val="6"/>
+        <dimensions maxX="116033" maxY="248014" maxZ="-576" minX="115886" minY="248002" minZ="-831"/>
+    </door>
+    <door id="23250007" name="Innadril_small_001">
+        <set name="x" val="117145"/>
+        <set name="y" val="250249"/>
+        <set name="z" val="-679"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="castleId" val="6"/>
+        <dimensions maxX="117250" maxY="250251" maxZ="-570" minX="117139" minY="250249" minZ="-698"/>
+    </door>
+    <door id="23250008" name="Innadril_station">
+        <set name="x" val="116856"/>
+        <set name="y" val="250326"/>
+        <set name="z" val="-328"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="castleId" val="6"/>
+        <dimensions maxX="116863" maxY="250479" maxZ="-104" minX="116850" minY="250315" minZ="-354"/>
+    </door>
+    <door id="23250009" name="Innadril_small_002">
+        <set name="x" val="115849"/>
+        <set name="y" val="251516"/>
+        <set name="z" val="-677"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="castleId" val="6"/>
+        <dimensions maxX="115852" maxY="251524" maxZ="570" minX="115850" minY="251412" minZ="-698"/>
+    </door>
+    <door id="24160009" name="Goddard_outer_002">
+        <set name="x" val="147642"/>
+        <set name="y" val="-45571"/>
+        <set name="z" val="-1945"/>
+        <set name="baseHpMax" val="316500.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="castleId" val="7"/>
+        <dimensions maxX="147664" maxY="-45553" maxZ="-1866" minX="147448" minY="-45584" minZ="-2116"/>
+    </door>
+    <door id="24160010" name="Goddard_outer_001">
+        <set name="x" val="147290"/>
+        <set name="y" val="-45571"/>
+        <set name="z" val="-1945"/>
+        <set name="baseHpMax" val="316500.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="castleId" val="7"/>
+        <dimensions maxX="147480" maxY="-45552" maxZ="-1866" minX="147272" minY="-45584" minZ="-2116"/>
+    </door>
+    <door id="24160011" name="Goddard_side_door_001">
+        <set name="x" val="149144"/>
+        <set name="y" val="-48368"/>
+        <set name="z" val="-2223"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="castleId" val="7"/>
+        <dimensions maxX="149160" maxY="-48098" maxZ="-2161" minX="149130" minY="-48384" minZ="-2411"/>
+    </door>
+    <door id="24160012" name="Goddard_side_door_002">
+        <set name="x" val="145793"/>
+        <set name="y" val="-48368"/>
+        <set name="z" val="-2223"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="castleId" val="7"/>
+        <dimensions maxX="145811" maxY="-48097" maxZ="-2161" minX="145779" minY="-48385" minZ="-2411"/>
+    </door>
+    <door id="24160013" name="Goddard_side_door_003">
+        <set name="x" val="148998"/>
+        <set name="y" val="-47795"/>
+        <set name="z" val="-1511"/>
+        <set name="baseHpMax" val="316500.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="castleId" val="7"/>
+        <dimensions maxX="149056" maxY="-47698" maxZ="-1375" minX="148940" minY="-47890" minZ="-1625"/>
+    </door>
+    <door id="24160014" name="Goddard_side_door_004">
+        <set name="x" val="145931"/>
+        <set name="y" val="-47794"/>
+        <set name="z" val="-1511"/>
+        <set name="baseHpMax" val="316500.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="castleId" val="7"/>
+        <dimensions maxX="145989" maxY="-47698" maxZ="-1375" minX="145873" minY="-47890" minZ="-1625"/>
+    </door>
+    <door id="24160015" name="Goddard_station_001">
+        <set name="x" val="148750"/>
+        <set name="y" val="-49120"/>
+        <set name="z" val="-588"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="castleId" val="7"/>
+        <dimensions maxX="148866" maxY="-49092" maxZ="-465" minX="148650" minY="-49143" minZ="-715"/>
+    </door>
+    <door id="24160016" name="Goddard_station_002">
+        <set name="x" val="146180"/>
+        <set name="y" val="-49121"/>
+        <set name="z" val="-588"/>
+        <set name="baseHpMax" val="158250.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="castleId" val="7"/>
+        <dimensions maxX="146296" maxY="-49093" maxZ="-465" minX="146080" minY="-49144" minZ="-715"/>
+    </door>
+    <door id="24160017" name="Goddard_ctr_001">
+        <set name="x" val="150248"/>
+        <set name="y" val="-48577"/>
+        <set name="z" val="-1659"/>
+        <set name="baseHpMax" val="39563.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="castleId" val="7"/>
+        <dimensions maxX="150364" maxY="-48549" maxZ="-1525" minX="150147" minY="-48600" minZ="-1775"/>
+    </door>
+    <door id="24160018" name="Goddard_ctr_002">
+        <set name="x" val="144682"/>
+        <set name="y" val="-48577"/>
+        <set name="z" val="-1659"/>
+        <set name="baseHpMax" val="39563.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="castleId" val="7"/>
+        <dimensions maxX="144798" maxY="-48549" maxZ="-1525" minX="144581" minY="-48600" minZ="-1775"/>
+    </door>
+    <door id="24160019" name="Goddard_inner_001">
+        <set name="x" val="148751"/>
+        <set name="y" val="-48603"/>
+        <set name="z" val="-2290"/>
+        <set name="baseHpMax" val="678840.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="castleId" val="7"/>
+        <dimensions maxX="148764" maxY="-48528" maxZ="-2164" minX="148735" minY="-48680" minZ="-2414"/>
+    </door>
+    <door id="24160020" name="Goddard_inner_002">
+        <set name="x" val="146180"/>
+        <set name="y" val="-48603"/>
+        <set name="z" val="-2290"/>
+        <set name="baseHpMax" val="678840.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="castleId" val="7"/>
+        <dimensions maxX="146193" maxY="-48528" maxZ="-2164" minX="146164" minY="-48680" minZ="-2414"/>
+    </door>
+    <door id="24160021" name="Goddard_wall_001">
+        <set name="x" val="150106"/>
+        <set name="y" val="-47523"/>
+        <set name="z" val="-2289"/>
+        <set name="baseHpMax" val="678840.0"/>
+        <set name="basePDef" val="837"/>
+        <set name="baseMDef" val="674"/>
+        <set name="castleId" val="7"/>
+        <dimensions maxX="150734" maxY="-46931" maxZ="-2323" minX="149636" minY="-47958" minZ="-2573"/>
+    </door>
+    <door id="24160022" name="Goddard_wall_002">
+        <set name="x" val="144824"/>
+        <set name="y" val="-47522"/>
+        <set name="z" val="-2289"/>
+        <set name="baseHpMax" val="678840.0"/>
+        <set name="basePDef" val="837"/>
+        <set name="baseMDef" val="674"/>
+        <set name="castleId" val="7"/>
+        <dimensions maxX="145286" maxY="-46922" maxZ="-2322" minX="144480" minY="-47958" minZ="-2572"/>
+    </door>
+    <door id="24160023" name="Goddard_inner_003">
+        <set name="x" val="147464"/>
+        <set name="y" val="-46200"/>
+        <set name="z" val="-1987"/>
+        <set name="baseHpMax" val="678840.0"/>
+        <set name="basePDef" val="644"/>
+        <set name="baseMDef" val="518"/>
+        <set name="castleId" val="7"/>
+        <set name="isOpenByDefault" val="true"/>
+        <dimensions maxX="147562" maxY="-46171" maxZ="-1863" minX="147366" minY="-46218" minZ="-2113"/>
+    </door>
+</list>

@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE xml>
+<list>
+	<item id="1">
+		<!-- Event - Medal -->
+		<ingredient id="6392" count="5" />
+		<!-- Greater Haste Potion -->
+		<production id="1374" count="1" />
+	</item>
+	<item id="2">
+		<!-- Event - Medal -->
+		<ingredient id="6392" count="10" />
+		<!-- Greater Swift Attack Potion -->
+		<production id="1375" count="1" />
+	</item>
+	<item id="3">
+		<!-- Event - Medal -->
+		<ingredient id="6392" count="10" />
+		<!-- Greater Magic Haste Potion -->
+		<production id="6036" count="1" />
+	</item>
+	<item id="4">
+		<!-- Event - Medal -->
+		<ingredient id="6392" count="17" />
+		<!-- Quick Healing Potion -->
+		<production id="1540" count="1" />
+	</item>
+	<item id="5">
+		<!-- Event - Medal -->
+		<ingredient id="6392" count="250" />
+		<!-- Blessed Scroll of Escape -->
+		<production id="1538" count="1" />
+	</item>
+	<item id="6">
+		<!-- Event - Medal -->
+		<ingredient id="6392" count="667" />
+		<!-- Blessed Scroll of Resurrection -->
+		<production id="3936" count="1" />
+	</item>
+	<item id="7">
+		<!-- Event - Medal -->
+		<ingredient id="6392" count="25" />
+		<!-- Scroll: Enchant Armor (D) -->
+		<production id="956" count="1" />
+	</item>
+	<item id="8">
+		<!-- Event - Medal -->
+		<ingredient id="6392" count="83" />
+		<!-- Scroll: Enchant Weapon (D) -->
+		<production id="955" count="1" />
+	</item>
+</list>

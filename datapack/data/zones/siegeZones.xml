@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<list>
+	<zone id="11200" maxZ="3551" minZ="-4448" shape="NPoly" type="SiegeZone">
+		<stat name="castleId" val="1" />
+		<spawn X="-16770" Y="109356" Z="-1798" />
+		<node X="-22615" Y="104510" />
+		<node X="-13290" Y="104564" />
+		<node X="-13313" Y="116950" />
+		<node X="-22638" Y="116896" />
+	</zone>
+	<zone id="11201" maxZ="4000" minZ="-4642" shape="NPoly" type="SiegeZone">
+		<stat name="castleId" val="2" />
+		<spawn X="20515" Y="160384" Z="-1992" />
+		<node X="26575" Y="165240" />
+		<node X="17250" Y="165186" />
+		<node X="17273" Y="152800" />
+		<node X="26598" Y="152854" />
+	</zone>
+	<zone id="11202" maxZ="19935" minZ="-4515" shape="NPoly" type="SiegeZone">
+		<stat name="castleId" val="3" />
+		<spawn X="116553" Y="146396" Z="-1868" />
+		<node X="121412" Y="140594" />
+		<node X="121358" Y="149919" />
+		<node X="108972" Y="149896" />
+		<node X="109026" Y="140571" />
+	</zone>
+	<zone id="11203" maxZ="19935" minZ="-4242" shape="NPoly" type="SiegeZone">
+		<stat name="castleId" val="4" />
+		<spawn X="82644" Y="38542" Z="-1592" />
+		<node X="87488" Y="32689" />
+		<node X="87434" Y="42014" />
+		<node X="75048" Y="41991" />
+		<node X="75102" Y="32666" />
+	</zone>
+	<zone id="11204" maxZ="6816" minZ="-3184" shape="NPoly" type="SiegeZone">
+		<stat name="castleId" val="5" />
+		<spawn X="147726" Y="4611" Z="-2788" />
+		<node X="142431" Y="362" />
+		<node X="152319" Y="344" />
+		<node X="152282" Y="15197" />
+		<node X="142393" Y="15215" />
+	</zone>
+	<zone id="11205" maxZ="4000" minZ="-2738" shape="NPoly" type="SiegeZone">
+		<stat name="castleId" val="6" />
+		<spawn X="114796" Y="249159" Z="-88" />
+		<node X="120526" Y="254019" />
+		<node X="111201" Y="253965" />
+		<node X="111224" Y="241579" />
+		<node X="120549" Y="241633" />
+	</zone>
+	<zone id="11206" maxZ="2103" minZ="-3397" shape="NPoly" type="SiegeZone">
+		<stat name="castleId" val="7" />
+		<spawn X="147451" Y="-46878" Z="-961" />
+		<node X="141457" Y="-51510" />
+		<node X="151949" Y="-51510" />
+		<node X="151949" Y="-39107" />
+		<node X="145899" Y="-39107" />
+		<node X="141457" Y="-44407" />
+	</zone>
+</list>

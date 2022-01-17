@@ -1,0 +1,1271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<list>
+	<!-- [16_21_1] water zone -->
+	<zone id="15000" maxZ="-3810" minZ="-4810" shape="NPoly" type="WaterZone">
+		<node X="-131072" Y="98304" />
+		<node X="-98304" Y="98304" />
+		<node X="-98304" Y="131072" />
+		<node X="-131072" Y="131072" />
+	</zone>
+	<!-- [16_22_1] water zone -->
+	<zone id="15001" maxZ="-3810" minZ="-4810" shape="NPoly" type="WaterZone">
+		<node X="-131072" Y="131072" />
+		<node X="-98304" Y="131072" />
+		<node X="-98304" Y="163840" />
+		<node X="-131072" Y="163840" />
+	</zone>
+	<!-- [16_23_1] water zone -->
+	<zone id="15002" maxZ="-3810" minZ="-4810" shape="NPoly" type="WaterZone">
+		<node X="-131072" Y="163840" />
+		<node X="-98304" Y="163840" />
+		<node X="-98304" Y="196608" />
+		<node X="-131072" Y="196608" />
+	</zone>
+	<!-- [16_24_1] water zone -->
+	<zone id="15003" maxZ="-3810" minZ="-7810" shape="NPoly" type="WaterZone">
+		<node X="-131072" Y="196608" />
+		<node X="-98304" Y="196608" />
+		<node X="-98304" Y="229376" />
+		<node X="-131072" Y="229376" />
+	</zone>
+	<!-- [16_25_1] water zone -->
+	<zone id="15004" maxZ="-3810" minZ="-4810" shape="NPoly" type="WaterZone">
+		<node X="-131072" Y="237205" />
+		<node X="-98304" Y="237205" />
+		<node X="-98304" Y="262144" />
+		<node X="-131072" Y="262144" />
+	</zone>
+	<!-- [17_20_1] water zone -->
+	<zone id="15005" maxZ="-3810" minZ="-4810" shape="NPoly" type="WaterZone">
+		<node X="-98304" Y="65536" />
+		<node X="-85504" Y="65536" />
+		<node X="-85504" Y="98304" />
+		<node X="-98304" Y="98304" />
+	</zone>
+	<!-- [17_20_2] water zone -->
+	<zone id="15006" maxZ="-3810" minZ="-4810" shape="NPoly" type="WaterZone">
+		<node X="-85504" Y="65536" />
+		<node X="-65536" Y="65536" />
+		<node X="-65536" Y="80384" />
+		<node X="-85504" Y="80384" />
+	</zone>
+	<!-- [17_20_3] water zone -->
+	<zone id="15007" maxZ="-3534" minZ="-5854" shape="NPoly" type="WaterZone">
+		<node X="-85056" Y="86208" />
+		<node X="-84416" Y="86208" />
+		<node X="-84416" Y="86848" />
+		<node X="-85056" Y="86848" />
+	</zone>
+	<!-- [17_20_4] water zone -->
+	<zone id="15008" maxZ="-5278" minZ="-5854" shape="NPoly" type="WaterZone">
+		<node X="-84416" Y="86208" />
+		<node X="-82944" Y="86208" />
+		<node X="-82944" Y="86848" />
+		<node X="-84416" Y="86848" />
+	</zone>
+	<!-- [17_21_1] water zone -->
+	<zone id="15009" maxZ="-3810" minZ="-4810" shape="NPoly" type="WaterZone">
+		<node X="-98304" Y="121072" />
+		<node X="-88304" Y="121072" />
+		<node X="-88304" Y="131072" />
+		<node X="-98304" Y="131072" />
+	</zone>
+	<!-- [17_21_2] water zone -->
+	<zone id="15010" maxZ="-3810" minZ="-4810" shape="NPoly" type="WaterZone">
+		<node X="-98304" Y="98304" />
+		<node X="-96804" Y="98304" />
+		<node X="-96804" Y="99804" />
+		<node X="-98304" Y="99804" />
+	</zone>
+	<!-- [17_21_3] water zone -->
+	<zone id="15011" maxZ="-3209" minZ="-4209" shape="NPoly" type="WaterZone">
+		<node X="-68536" Y="128072" />
+		<node X="-65536" Y="128072" />
+		<node X="-65536" Y="131072" />
+		<node X="-68536" Y="131072" />
+	</zone>
+	<!-- [17_21_4] water zone -->
+	<zone id="15012" maxZ="-3278" minZ="-5598" shape="NPoly" type="WaterZone">
+		<node X="-84032" Y="111040" />
+		<node X="-83392" Y="111040" />
+		<node X="-83392" Y="111680" />
+		<node X="-84032" Y="111680" />
+	</zone>
+	<!-- [17_21_5] water zone -->
+	<zone id="15013" maxZ="-5022" minZ="-5598" shape="NPoly" type="WaterZone">
+		<node X="-83392" Y="111040" />
+		<node X="-81920" Y="111040" />
+		<node X="-81920" Y="111680" />
+		<node X="-83392" Y="111680" />
+	</zone>
+	<!-- [17_22_1] water zone -->
+	<zone id="15014" maxZ="-3810" minZ="-4810" shape="NPoly" type="WaterZone">
+		<node X="-98304" Y="131072" />
+		<node X="-78304" Y="131072" />
+		<node X="-78304" Y="163840" />
+		<node X="-98304" Y="163840" />
+	</zone>
+	<!-- [17_22_2] water zone -->
+	<zone id="15015" maxZ="-3209" minZ="-4209" shape="NPoly" type="WaterZone">
+		<node X="-69836" Y="131072" />
+		<node X="-65536" Y="131072" />
+		<node X="-65536" Y="140072" />
+		<node X="-69836" Y="140072" />
+	</zone>
+	<!-- [17_23_1] water zone -->
+	<zone id="15016" maxZ="-3810" minZ="-7810" shape="NPoly" type="WaterZone">
+		<node X="-98304" Y="163840" />
+		<node X="-65536" Y="163840" />
+		<node X="-65536" Y="196608" />
+		<node X="-98304" Y="196608" />
+	</zone>
+	<!-- [17_24_1] water zone -->
+	<zone id="15017" maxZ="-3810" minZ="-4810" shape="NPoly" type="WaterZone">
+		<node X="-98304" Y="196608" />
+		<node X="-65536" Y="196608" />
+		<node X="-65536" Y="229376" />
+		<node X="-98304" Y="229376" />
+	</zone>
+	<!-- [17_25_1] water zone -->
+	<zone id="15018" maxZ="-3810" minZ="-4810" shape="NPoly" type="WaterZone">
+		<node X="-98304" Y="229376" />
+		<node X="-65536" Y="229376" />
+		<node X="-65536" Y="262144" />
+		<node X="-98304" Y="262144" />
+	</zone>
+	<!-- [18_14_1] water zone -->
+	<zone id="15019" maxZ="-3810" minZ="-4810" shape="NPoly" type="WaterZone">
+		<node X="-65536" Y="-103304" />
+		<node X="-32768" Y="-103304" />
+		<node X="-32768" Y="-98304" />
+		<node X="-65536" Y="-98304" />
+	</zone>
+	<!-- [18_19_1] water zone -->
+	<zone id="15020" maxZ="-3810" minZ="-4810" shape="NPoly" type="WaterZone">
+		<node X="-65536" Y="32768" />
+		<node X="-52036" Y="32768" />
+		<node X="-52036" Y="65536" />
+		<node X="-65536" Y="65536" />
+	</zone>
+	<!-- [18_19_2] water zone -->
+	<zone id="15021" maxZ="-3810" minZ="-4810" shape="NPoly" type="WaterZone">
+		<node X="-52036" Y="32768" />
+		<node X="-32768" Y="32768" />
+		<node X="-32768" Y="40768" />
+		<node X="-52036" Y="40768" />
+	</zone>
+	<!-- [18_20_1] water zone -->
+	<zone id="15022" maxZ="-3810" minZ="-4810" shape="NPoly" type="WaterZone">
+		<node X="-65536" Y="65536" />
+		<node X="-55536" Y="65536" />
+		<node X="-55536" Y="75536" />
+		<node X="-65536" Y="75536" />
+	</zone>
+	<!-- [18_20_2] Necropolis of Devotion - horizontal -->
+	<zone id="15023" maxZ="-4862" minZ="-5438" shape="Cuboid" type="WaterZone">
+		<node X="-55870" Y="78850" />
+		<node X="-54153" Y="79360" />
+	</zone>
+	<!-- [18_20_3] Necropolis of Devotion - vertical -->
+	<zone id="15024" maxZ="-2960" minZ="-5438" shape="Cuboid" type="WaterZone">
+		<node X="-55945" Y="78850" />
+		<node X="-55420" Y="79360" />
+	</zone>
+	<!-- [18_21_1] water zone -->
+	<zone id="15025" maxZ="-3209" minZ="-4209" shape="NPoly" type="WaterZone">
+		<node X="-65536" Y="122368" />
+		<node X="-52480" Y="122368" />
+		<node X="-52480" Y="131072" />
+		<node X="-65536" Y="131072" />
+	</zone>
+	<!-- [18_21_1] water zone -->
+	<zone id="15026" maxZ="-3689" minZ="-4689" shape="NPoly" type="WaterZone">
+		<node X="-65536" Y="113088" />
+		<node X="-57664" Y="113088" />
+		<node X="-57664" Y="121856" />
+		<node X="-65536" Y="121856" />
+	</zone>
+	<!-- [18_22_1] water zone -->
+	<zone id="15027" maxZ="-3209" minZ="-4209" shape="NPoly" type="WaterZone">
+		<node X="-65536" Y="131072" />
+		<node X="-62464" Y="131072" />
+		<node X="-62464" Y="141056" />
+		<node X="-65536" Y="141056" />
+	</zone>
+	<!-- [18_22_2] water zone -->
+	<zone id="15028" maxZ="-3209" minZ="-4209" shape="NPoly" type="WaterZone">
+		<node X="-61764" Y="131072" />
+		<node X="-55748" Y="131072" />
+		<node X="-55748" Y="132608" />
+		<node X="-61764" Y="132608" />
+	</zone>
+	<!-- [18_23_1] water zone -->
+	<zone id="15029" maxZ="-3810" minZ="-4810" shape="NPoly" type="WaterZone">
+		<node X="-65536" Y="191350" />
+		<node X="-53536" Y="191350" />
+		<node X="-53536" Y="196608" />
+		<node X="-65536" Y="196608" />
+	</zone>
+	<!-- [18_23_2] water zone -->
+	<zone id="15030" maxZ="-3810" minZ="-4810" shape="NPoly" type="WaterZone">
+		<node X="-65535" Y="179446" />
+		<node X="-62962" Y="179446" />
+		<node X="-62962" Y="191446" />
+		<node X="-65535" Y="191446" />
+	</zone>
+	<!-- [18_23_3] water zone -->
+	<zone id="15031" maxZ="-4732" minZ="-4990" shape="NPoly" type="WaterZone">
+		<node X="-54681" Y="180234" />
+		<node X="-53049" Y="180234" />
+		<node X="-53049" Y="183018" />
+		<node X="-54681" Y="183018" />
+	</zone>
+	<!-- [18_23_4] water zone -->
+	<zone id="15032" maxZ="-4732" minZ="-4990" shape="NPoly" type="WaterZone">
+		<node X="-53616" Y="183018" />
+		<node X="-52368" Y="183018" />
+		<node X="-52368" Y="184394" />
+		<node X="-53616" Y="184394" />
+	</zone>
+	<!-- [18_24_1] Necropolis of Sacrifice - horizontal -->
+	<zone id="15033" maxZ="-5207" minZ="-5784" shape="Cuboid" type="WaterZone">
+		<node X="-41815" Y="206190" />
+		<node X="-41315" Y="207860" />
+	</zone>
+	<!-- [18_24_2] water zone -->
+	<zone id="15034" maxZ="-3810" minZ="-4810" shape="NPoly" type="WaterZone">
+		<node X="-65536" Y="196608" />
+		<node X="-53536" Y="196608" />
+		<node X="-53536" Y="229376" />
+		<node X="-65536" Y="229376" />
+	</zone>
+	<!-- [18_24_3] water zone -->
+	<zone id="15035" maxZ="-3810" minZ="-4810" shape="NPoly" type="WaterZone">
+		<node X="-53536" Y="220976" />
+		<node X="-32768" Y="220976" />
+		<node X="-32768" Y="229376" />
+		<node X="-53536" Y="229376" />
+	</zone>
+	<!-- [18_24_4] water zone -->
+	<zone id="15036" maxZ="-3810" minZ="-4810" shape="NPoly" type="WaterZone">
+		<node X="-41024" Y="212576" />
+		<node X="-32768" Y="212576" />
+		<node X="-32768" Y="220976" />
+		<node X="-41024" Y="220976" />
+	</zone>
+	<!-- [18_24_5] water zone -->
+	<zone id="15037" maxZ="-3810" minZ="-4312" shape="NPoly" type="WaterZone">
+		<node X="-53536" Y="212576" />
+		<node X="-45280" Y="212576" />
+		<node X="-45280" Y="220976" />
+		<node X="-53536" Y="220976" />
+	</zone>
+	<!-- [18_24_6] water zone -->
+	<zone id="15038" maxZ="-3810" minZ="-4312" shape="NPoly" type="WaterZone">
+		<node X="-53536" Y="202208" />
+		<node X="-47584" Y="202208" />
+		<node X="-47584" Y="209584" />
+		<node X="-53536" Y="209584" />
+	</zone>
+	<!-- [18_24_7] water zone -->
+	<zone id="15039" maxZ="-3810" minZ="-4312" shape="NPoly" type="WaterZone">
+		<node X="-45280" Y="212576" />
+		<node X="-41024" Y="212576" />
+		<node X="-41024" Y="220976" />
+		<node X="-45280" Y="220976" />
+	</zone>
+	<!-- [18_24_8] Necropolis of Sacrifice - vertical -->
+	<zone id="15040" maxZ="-3300" minZ="-5660" shape="Cuboid" type="WaterZone">
+		<node X="-41815" Y="206115" />
+		<node X="-41315" Y="206620" />
+	</zone>
+	<!-- [18_25_1] water zone -->
+	<zone id="15041" maxZ="-3810" minZ="-4810" shape="NPoly" type="WaterZone">
+		<node X="-65536" Y="229376" />
+		<node X="-32768" Y="229376" />
+		<node X="-32768" Y="262144" />
+		<node X="-65536" Y="262144" />
+	</zone>
+	<!-- [19_14_1] water zone -->
+	<zone id="15042" maxZ="-3810" minZ="-4810" shape="NPoly" type="WaterZone">
+		<node X="-32768" Y="-101304" />
+		<node X="-29768" Y="-101304" />
+		<node X="-29768" Y="-98304" />
+		<node X="-32768" Y="-98304" />
+	</zone>
+	<!-- [19_15_1] water zone -->
+	<zone id="15043" maxZ="-3810" minZ="-4810" shape="NPoly" type="WaterZone">
+		<node X="-32768" Y="-98304" />
+		<node X="0" Y="-98304" />
+		<node X="0" Y="-65536" />
+		<node X="-32768" Y="-65536" />
+	</zone>
+	<!-- [19_18_1] water zone -->
+	<zone id="15044" maxZ="-3810" minZ="-4810" shape="NPoly" type="WaterZone">
+		<node X="-32768" Y="0" />
+		<node X="-23424" Y="0" />
+		<node X="-23424" Y="32768" />
+		<node X="-32768" Y="32768" />
+	</zone>
+	<!-- [19_18_2] Catacomb of Dark Omens - horizontal -->
+	<zone id="15045" maxZ="-3120" minZ="-5550" shape="Cuboid" type="WaterZone">
+		<node X="-23095" Y="13245" />
+		<node X="-22580" Y="13765" />
+	</zone>
+	<!-- [19_18_3] Catacomb of Dark Omens - vertical -->
+	<zone id="15046" maxZ="-5005" minZ="-5550" shape="Cuboid" type="WaterZone">
+		<node X="-23040" Y="13245" />
+		<node X="-21365" Y="13765" />
+	</zone>
+	<!-- [19_18_4] water zone -->
+	<zone id="15047" maxZ="-3810" minZ="-4810" shape="NPoly" type="WaterZone">
+		<node X="-23424" Y="0" />
+		<node X="0" Y="0" />
+		<node X="0" Y="12928" />
+		<node X="-23424" Y="12928" />
+	</zone>
+	<!-- [19_19_1] water zone -->
+	<zone id="15048" maxZ="-3814" minZ="-4814" shape="NPoly" type="WaterZone">
+		<node X="-12972" Y="57536" />
+		<node X="-5972" Y="57536" />
+		<node X="-5972" Y="65536" />
+		<node X="-12972" Y="65536" />
+	</zone>
+	<!-- [19_19_2] water zone -->
+	<zone id="15049" maxZ="-3818" minZ="-4818" shape="NPoly" type="WaterZone">
+		<node X="-5840" Y="60646" />
+		<node X="-3840" Y="60646" />
+		<node X="-3840" Y="62646" />
+		<node X="-5840" Y="62646" />
+	</zone>
+	<!-- [19_20_1] water zone -->
+	<zone id="15050" maxZ="-3810" minZ="-4298" shape="NPoly" type="WaterZone">
+		<node X="-24488" Y="65536" />
+		<node X="0" Y="65536" />
+		<node X="0" Y="98304" />
+		<node X="-24488" Y="98304" />
+	</zone>
+	<!-- [19_20_2] The Patriot"s Necropolis - horizontal -->
+	<zone id="15051" maxZ="-3390" minZ="-5870" shape="Cuboid" type="WaterZone">
+		<node X="-25405" Y="77100" />
+		<node X="-24890" Y="77635" />
+	</zone>
+	<!-- [19_20_3] The Patriot"s Necropolis - vertical -->
+	<zone id="15052" maxZ="-5293" minZ="-5870" shape="Cuboid" type="WaterZone">
+		<node X="-25345" Y="77100" />
+		<node X="-23655" Y="77635" />
+	</zone>
+	<!-- [19_21_1] water zone -->
+	<zone id="15053" maxZ="-3810" minZ="-10642" shape="NPoly" type="WaterZone">
+		<node X="-25816" Y="98304" />
+		<node X="0" Y="98304" />
+		<node X="0" Y="131072" />
+		<node X="-25816" Y="131072" />
+	</zone>
+	<!-- [19_24_1] water zone -->
+	<zone id="15054" maxZ="-3810" minZ="-7810" shape="NPoly" type="WaterZone">
+		<node X="-32768" Y="209376" />
+		<node X="-10000" Y="209376" />
+		<node X="-10000" Y="229376" />
+		<node X="-32768" Y="229376" />
+	</zone>
+	<!-- [19_24_2] water zone -->
+	<zone id="15055" maxZ="-3810" minZ="-7810" shape="NPoly" type="WaterZone">
+		<node X="-10000" Y="196608" />
+		<node X="0" Y="196608" />
+		<node X="0" Y="229376" />
+		<node X="-10000" Y="229376" />
+	</zone>
+	<!-- [19_25_1] water zone -->
+	<zone id="15056" maxZ="-3810" minZ="-4810" shape="NPoly" type="WaterZone">
+		<node X="-32768" Y="229376" />
+		<node X="0" Y="229376" />
+		<node X="0" Y="262144" />
+		<node X="-32768" Y="262144" />
+	</zone>
+	<!-- [20_15_1] water zone -->
+	<zone id="15057" maxZ="-3810" minZ="-4810" shape="NPoly" type="WaterZone">
+		<node X="0" Y="-73536" />
+		<node X="8000" Y="-73536" />
+		<node X="8000" Y="-65536" />
+		<node X="0" Y="-65536" />
+	</zone>
+	<!-- [20_18_1] water zone -->
+	<zone id="15058" maxZ="-3810" minZ="-4810" shape="NPoly" type="WaterZone">
+		<node X="0" Y="0" />
+		<node X="32768" Y="0" />
+		<node X="32768" Y="5500" />
+		<node X="0" Y="5500" />
+	</zone>
+	<!-- [20_19_1] water zone -->
+	<zone id="15059" maxZ="-3810" minZ="-4810" shape="NPoly" type="WaterZone">
+		<node X="0" Y="32768" />
+		<node X="32768" Y="32768" />
+		<node X="32768" Y="65536" />
+		<node X="0" Y="65536" />
+	</zone>
+	<!-- [20_20_1] water zone -->
+	<zone id="15060" maxZ="-3810" minZ="-4810" shape="NPoly" type="WaterZone">
+		<node X="0" Y="76174" />
+		<node X="4000" Y="76174" />
+		<node X="4000" Y="98304" />
+		<node X="0" Y="98304" />
+	</zone>
+	<!-- [20_20_2] water zone -->
+	<zone id="15061" maxZ="-3824" minZ="-4824" shape="NPoly" type="WaterZone">
+		<node X="4608" Y="65480" />
+		<node X="32768" Y="65480" />
+		<node X="32768" Y="70344" />
+		<node X="4608" Y="70344" />
+	</zone>
+	<!-- [20_20_3] water zone -->
+	<zone id="15062" maxZ="-3824" minZ="-4824" shape="NPoly" type="WaterZone">
+		<node X="0" Y="66792" />
+		<node X="4624" Y="66792" />
+		<node X="4624" Y="72936" />
+		<node X="0" Y="72936" />
+	</zone>
+	<!-- [20_21_1] water zone -->
+	<zone id="15063" maxZ="-3810" minZ="-4810" shape="NPoly" type="WaterZone">
+		<node X="0" Y="98304" />
+		<node X="4300" Y="98304" />
+		<node X="4300" Y="131072" />
+		<node X="0" Y="131072" />
+	</zone>
+	<!-- [20_22_1] water zone -->
+	<zone id="15064" maxZ="-3818" minZ="-4818" shape="NPoly" type="WaterZone">
+		<node X="0" Y="131072" />
+		<node X="7168" Y="131072" />
+		<node X="7168" Y="163840" />
+		<node X="0" Y="163840" />
+	</zone>
+	<!-- [20_23_1] water zone -->
+	<zone id="15065" maxZ="-3810" minZ="-7810" shape="NPoly" type="WaterZone">
+		<node X="0" Y="163840" />
+		<node X="32768" Y="163840" />
+		<node X="32768" Y="196608" />
+		<node X="0" Y="196608" />
+	</zone>
+	<!-- [20_24_1] water zone -->
+	<zone id="15066" maxZ="-3810" minZ="-4810" shape="NPoly" type="WaterZone">
+		<node X="0" Y="196608" />
+		<node X="32768" Y="196608" />
+		<node X="32768" Y="229376" />
+		<node X="0" Y="229376" />
+	</zone>
+	<!-- [21_18_1] water zone -->
+	<zone id="15067" maxZ="-3810" minZ="-4810" shape="NPoly" type="WaterZone">
+		<node X="32768" Y="0" />
+		<node X="65536" Y="0" />
+		<node X="65536" Y="10000" />
+		<node X="32768" Y="10000" />
+	</zone>
+	<!-- [21_19_1] water zone -->
+	<zone id="15068" maxZ="-3810" minZ="-4810" shape="NPoly" type="WaterZone">
+		<node X="32768" Y="32768" />
+		<node X="60672" Y="32768" />
+		<node X="60672" Y="65536" />
+		<node X="32768" Y="65536" />
+	</zone>
+	<!-- [21_20_1] water zone -->
+	<zone id="15069" maxZ="-3810" minZ="-4810" shape="NPoly" type="WaterZone">
+		<node X="32768" Y="65536" />
+		<node X="63568" Y="65536" />
+		<node X="63568" Y="90536" />
+		<node X="32768" Y="90536" />
+	</zone>
+	<!-- [21_20_2] water zone -->
+	<zone id="15070" maxZ="-3810" minZ="-4810" shape="NPoly" type="WaterZone">
+		<node X="63236" Y="73140" />
+		<node X="65536" Y="73140" />
+		<node X="65536" Y="75440" />
+		<node X="63236" Y="75440" />
+	</zone>
+	<!-- [21_21_1] water zone -->
+	<zone id="15071" maxZ="-3810" minZ="-4010" shape="NPoly" type="WaterZone">
+		<node X="43517" Y="116837" />
+		<node X="52517" Y="116837" />
+		<node X="52517" Y="126093" />
+		<node X="43517" Y="126093" />
+	</zone>
+	<!-- [21_21_2] water zone -->
+	<zone id="15072" maxZ="-2257" minZ="-2407" shape="NPoly" type="WaterZone">
+		<node X="48773" Y="115910" />
+		<node X="50237" Y="115910" />
+		<node X="50237" Y="116709" />
+		<node X="48773" Y="116709" />
+	</zone>
+	<!-- [21_21_3] water zone -->
+	<zone id="15073" maxZ="-2289" minZ="-2439" shape="NPoly" type="WaterZone">
+		<node X="46597" Y="111629" />
+		<node X="49597" Y="111629" />
+		<node X="49597" Y="115129" />
+		<node X="46597" Y="115129" />
+	</zone>
+	<!-- [21_21_4] water zone -->
+	<zone id="15074" maxZ="-2289" minZ="-2439" shape="NPoly" type="WaterZone">
+		<node X="49172" Y="115129" />
+		<node X="50136" Y="115129" />
+		<node X="50136" Y="116869" />
+		<node X="49172" Y="116869" />
+	</zone>
+	<!-- [21_21_5] water zone -->
+	<zone id="15075" maxZ="-2289" minZ="-2439" shape="NPoly" type="WaterZone">
+		<node X="48000" Y="115129" />
+		<node X="49172" Y="115129" />
+		<node X="49172" Y="116357" />
+		<node X="48000" Y="116357" />
+	</zone>
+	<!-- [21_21_6] The Pilgrim"s Necropolis - horizontal -->
+	<zone id="15076" maxZ="-3630" minZ="-6110" shape="Cuboid" type="WaterZone">
+		<node X="44980" Y="127045" />
+		<node X="45505" Y="127555" />
+	</zone>
+	<!-- [21_21_7] The Pilgrim"s Necropolis - vertical -->
+	<zone id="15077" maxZ="-5534" minZ="-6110" shape="Cuboid" type="WaterZone">
+		<node X="44928" Y="127455" />
+		<node X="45568" Y="125820" />
+	</zone>
+	<!-- [21_22_1] water zone -->
+	<zone id="15078" maxZ="-3779" minZ="-3979" shape="NPoly" type="WaterZone">
+		<node X="41917" Y="139480" />
+		<node X="51917" Y="139480" />
+		<node X="51917" Y="152770" />
+		<node X="41917" Y="152770" />
+	</zone>
+	<!-- [21_22_2] Catacomb of the Heretic - vertical -->
+	<zone id="15079" maxZ="-3600" minZ="-6078" shape="Cuboid" type="WaterZone">
+		<node X="39360" Y="143680" />
+		<node X="39875" Y="144190" />
+	</zone>
+	<!-- [21_22_3] Catacomb of the Heretic - horizontal -->
+	<zone id="15080" maxZ="-5501" minZ="-6078" shape="Cuboid" type="WaterZone">
+		<node X="39420" Y="143680" />
+		<node X="41113" Y="144190" />
+	</zone>
+	<!-- [21_23_1] water zone -->
+	<zone id="15081" maxZ="-3810" minZ="-4810" shape="NPoly" type="WaterZone">
+		<node X="32768" Y="181240" />
+		<node X="65536" Y="181240" />
+		<node X="65536" Y="196608" />
+		<node X="32768" Y="196608" />
+	</zone>
+	<!-- [21_23_2] water zone -->
+	<zone id="15082" maxZ="-3810" minZ="-4810" shape="NPoly" type="WaterZone">
+		<node X="32768" Y="175600" />
+		<node X="44032" Y="175600" />
+		<node X="44032" Y="181240" />
+		<node X="32768" Y="181240" />
+	</zone>
+	<!-- [21_23_3] water zone -->
+	<zone id="15083" maxZ="-3810" minZ="-4810" shape="NPoly" type="WaterZone">
+		<node X="57472" Y="175600" />
+		<node X="65536" Y="175600" />
+		<node X="65536" Y="181240" />
+		<node X="57472" Y="181240" />
+	</zone>
+	<!-- [21_23_4] Catacomb of the Branded - vertical -->
+	<zone id="15084" maxZ="-3200" minZ="-5678" shape="Cuboid" type="WaterZone">
+		<node X="42560" Y="170045" />
+		<node X="43075" Y="170565" />
+	</zone>
+	<!-- [21_23_5] Catacomb of the Branded - horizontal -->
+	<zone id="15085" maxZ="-5101" minZ="-5678" shape="Cuboid" type="WaterZone">
+		<node X="42620" Y="170045" />
+		<node X="44291" Y="170565" />
+	</zone>
+	<!-- [21_24_1] water zone -->
+	<zone id="15086" maxZ="-3810" minZ="-4810" shape="NPoly" type="WaterZone">
+		<node X="32768" Y="196608" />
+		<node X="65536" Y="196608" />
+		<node X="65536" Y="229376" />
+		<node X="32768" Y="229376" />
+	</zone>
+	<!-- [22_18_1] water zone -->
+	<zone id="15087" maxZ="-3810" minZ="-4810" shape="NPoly" type="WaterZone">
+		<node X="65536" Y="4768" />
+		<node X="75536" Y="4768" />
+		<node X="75536" Y="32768" />
+		<node X="65536" Y="32768" />
+	</zone>
+	<!-- [22_18_2] water zone -->
+	<zone id="15088" maxZ="-3810" minZ="-4810" shape="NPoly" type="WaterZone">
+		<node X="75536" Y="27768" />
+		<node X="98304" Y="27768" />
+		<node X="98304" Y="32768" />
+		<node X="75536" Y="32768" />
+	</zone>
+	<!-- [22_19_1] water zone -->
+	<zone id="15089" maxZ="-3810" minZ="-4810" shape="NPoly" type="WaterZone">
+		<node X="84727" Y="32768" />
+		<node X="91727" Y="32768" />
+		<node X="91727" Y="53768" />
+		<node X="84727" Y="53768" />
+	</zone>
+	<!-- [22_20_1] water zone -->
+	<zone id="15090" maxZ="-3802" minZ="-4802" shape="NPoly" type="WaterZone">
+		<node X="65536" Y="91304" />
+		<node X="98304" Y="91304" />
+		<node X="98304" Y="98304" />
+		<node X="65536" Y="98304" />
+	</zone>
+	<!-- [22_20_2] water zone -->
+	<zone id="15091" maxZ="-3802" minZ="-4802" shape="NPoly" type="WaterZone">
+		<node X="65536" Y="71304" />
+		<node X="70536" Y="71304" />
+		<node X="70536" Y="91304" />
+		<node X="65536" Y="91304" />
+	</zone>
+	<!-- [22_20_3] Catacomb of the Apostate - vertical -->
+	<zone id="15092" maxZ="-3340" minZ="-5822" shape="Cuboid" type="WaterZone">
+		<node X="74050" Y="78150" />
+		<node X="74550" Y="78665" />
+	</zone>
+	<!-- [22_20_4] Catacomb of the Apostate - horizontal -->
+	<zone id="15093" maxZ="-5245" minZ="-5822" shape="Cuboid" type="WaterZone">
+		<node X="74110" Y="78150" />
+		<node X="75791" Y="78665" />
+	</zone>
+	<!-- [22_22_1] water zone -->
+	<zone id="15094" maxZ="-3810" minZ="-8808" shape="NPoly" type="WaterZone">
+		<node X="78304" Y="139840" />
+		<node X="98304" Y="139840" />
+		<node X="98304" Y="163840" />
+		<node X="78304" Y="163840" />
+	</zone>
+	<!-- [22_23_1] water zone -->
+	<zone id="15095" maxZ="-3810" minZ="-4810" shape="NPoly" type="WaterZone">
+		<node X="65536" Y="163840" />
+		<node X="74752" Y="163840" />
+		<node X="74752" Y="196608" />
+		<node X="65536" Y="196608" />
+	</zone>
+	<!-- [22_23_2] water zone -->
+	<zone id="15096" maxZ="-3810" minZ="-4810" shape="NPoly" type="WaterZone">
+		<node X="74752" Y="163840" />
+		<node X="85215" Y="163840" />
+		<node X="85215" Y="173976" />
+		<node X="74752" Y="173976" />
+	</zone>
+	<!-- [22_23_3] water zone -->
+	<zone id="15097" maxZ="-3810" minZ="-4810" shape="NPoly" type="WaterZone">
+		<node X="74752" Y="173976" />
+		<node X="83244" Y="173976" />
+		<node X="83244" Y="178267" />
+		<node X="74752" Y="178267" />
+	</zone>
+	<!-- [22_23_4] water zone -->
+	<zone id="15098" maxZ="-3810" minZ="-4810" shape="NPoly" type="WaterZone">
+		<node X="74752" Y="178267" />
+		<node X="78031" Y="178267" />
+		<node X="78031" Y="180291" />
+		<node X="74752" Y="180291" />
+	</zone>
+	<!-- [22_23_5] water zone -->
+	<zone id="15099" maxZ="-3810" minZ="-4810" shape="NPoly" type="WaterZone">
+		<node X="91149" Y="163840" />
+		<node X="98304" Y="163840" />
+		<node X="98304" Y="166737" />
+		<node X="91149" Y="166737" />
+	</zone>
+	<!-- [22_23_6] water zone -->
+	<zone id="15100" maxZ="-3810" minZ="-4810" shape="NPoly" type="WaterZone">
+		<node X="95485" Y="166737" />
+		<node X="98304" Y="166737" />
+		<node X="98304" Y="193105" />
+		<node X="95485" Y="193105" />
+	</zone>
+	<!-- [22_23_7] water zone -->
+	<zone id="15101" maxZ="-3810" minZ="-4810" shape="NPoly" type="WaterZone">
+		<node X="92290" Y="173976" />
+		<node X="95485" Y="173976" />
+		<node X="95485" Y="185103" />
+		<node X="92290" Y="185103" />
+	</zone>
+	<!-- [22_23_8] water zone -->
+	<zone id="15102" maxZ="-3810" minZ="-4810" shape="NPoly" type="WaterZone">
+		<node X="92290" Y="193105" />
+		<node X="98304" Y="193105" />
+		<node X="98304" Y="196608" />
+		<node X="92290" Y="196608" />
+	</zone>
+	<!-- [22_24_1] water zone -->
+	<zone id="15103" maxZ="-3810" minZ="-4810" shape="NPoly" type="WaterZone">
+		<node X="93696" Y="224128" />
+		<node X="98304" Y="224128" />
+		<node X="98304" Y="229376" />
+		<node X="93696" Y="229376" />
+	</zone>
+	<!-- [22_24_2] water zone -->
+	<zone id="15104" maxZ="-3810" minZ="-4810" shape="NPoly" type="WaterZone">
+		<node X="93056" Y="196608" />
+		<node X="98304" Y="196608" />
+		<node X="98304" Y="201216" />
+		<node X="93056" Y="201216" />
+	</zone>
+	<!-- [22_24_3] water zone -->
+	<zone id="15105" maxZ="-3810" minZ="-4810" shape="NPoly" type="WaterZone">
+		<node X="65536" Y="196608" />
+		<node X="76032" Y="196608" />
+		<node X="76032" Y="200320" />
+		<node X="65536" Y="200320" />
+	</zone>
+	<!-- [22_24_4] water zone -->
+	<zone id="15106" maxZ="-3810" minZ="-4810" shape="NPoly" type="WaterZone">
+		<node X="70024" Y="222217" />
+		<node X="77862" Y="222217" />
+		<node X="77862" Y="229376" />
+		<node X="70024" Y="229376" />
+	</zone>
+	<!-- [22_24_5] water zone -->
+	<zone id="15107" maxZ="-3810" minZ="-4810" shape="NPoly" type="WaterZone">
+		<node X="65536" Y="200320" />
+		<node X="70024" Y="200320" />
+		<node X="70024" Y="229376" />
+		<node X="65536" Y="229376" />
+	</zone>
+	<!-- [22_24_6] water zone -->
+	<zone id="15108" maxZ="-3810" minZ="-4298" shape="NPoly" type="WaterZone">
+		<node X="70024" Y="200320" />
+		<node X="79174" Y="200320" />
+		<node X="79174" Y="222217" />
+		<node X="70024" Y="222217" />
+	</zone>
+	<!-- [22_24_7] water zone -->
+	<zone id="15109" maxZ="-3810" minZ="-4298" shape="NPoly" type="WaterZone">
+		<node X="77862" Y="224128" />
+		<node X="93696" Y="224128" />
+		<node X="93696" Y="229376" />
+		<node X="77862" Y="229376" />
+	</zone>
+	<!-- [22_24_8] water zone -->
+	<zone id="15110" maxZ="-3810" minZ="-4298" shape="NPoly" type="WaterZone">
+		<node X="80192" Y="201216" />
+		<node X="98304" Y="201216" />
+		<node X="98304" Y="224128" />
+		<node X="80192" Y="224128" />
+	</zone>
+	<!-- [22_24_9] water zone -->
+	<zone id="15111" maxZ="-3810" minZ="-4298" shape="NPoly" type="WaterZone">
+		<node X="81856" Y="196608" />
+		<node X="93056" Y="196608" />
+		<node X="93056" Y="201216" />
+		<node X="81856" Y="201216" />
+	</zone>
+	<!-- [22_24_10] The Saint"s Necropolis - vertical -->
+	<zone id="15112" maxZ="-3630" minZ="-6136" shape="Cuboid" type="WaterZone">
+		<node X="79410" Y="208965" />
+		<node X="79935" Y="209470" />
+	</zone>
+	<!-- [22_24_11] The Saint"s Necropolis - horizontal -->
+	<zone id="15113" maxZ="-5559" minZ="-6136" shape="Cuboid" type="WaterZone">
+		<node X="79485" Y="208965" />
+		<node X="81216" Y="209470" />
+	</zone>
+	<!-- [22_24_12] water zone -->
+	<zone id="15114" maxZ="-3810" minZ="-4298" shape="NPoly" type="WaterZone">
+		<node X="79174" Y="209727" />
+		<node X="80192" Y="209727" />
+		<node X="80192" Y="224128" />
+		<node X="79174" Y="224128" />
+	</zone>
+	<!-- [22_24_13] water zone -->
+	<zone id="15115" maxZ="-3810" minZ="-4298" shape="NPoly" type="WaterZone">
+		<node X="79174" Y="201216" />
+		<node X="80192" Y="201216" />
+		<node X="80192" Y="208704" />
+		<node X="79174" Y="208704" />
+	</zone>
+	<!-- [22_25_1] water zone -->
+	<zone id="15116" maxZ="-10916" minZ="-10932" shape="NPoly" type="WaterZone">
+		<node X="79010" Y="246661" />
+		<node X="86498" Y="246661" />
+		<node X="86498" Y="254711" />
+		<node X="79010" Y="254711" />
+	</zone>
+	<!-- [22_25_2] water zone -->
+	<zone id="15117" maxZ="-4233" minZ="-7249" shape="NPoly" type="WaterZone">
+		<node X="84195" Y="239660" />
+		<node X="86179" Y="239660" />
+		<node X="86179" Y="242732" />
+		<node X="84195" Y="242732" />
+	</zone>
+	<!-- [22_25_3] water zone -->
+	<zone id="15118" maxZ="-6793" minZ="-7249" shape="NPoly" type="WaterZone">
+		<node X="82979" Y="241472" />
+		<node X="84195" Y="241472" />
+		<node X="84195" Y="241920" />
+		<node X="82979" Y="241920" />
+	</zone>
+	<!-- [22_25_4] water zone -->
+	<zone id="15119" maxZ="-8928" minZ="-9384" shape="NPoly" type="WaterZone">
+		<node X="80356" Y="245013" />
+		<node X="84644" Y="245013" />
+		<node X="84644" Y="245845" />
+		<node X="80356" Y="245845" />
+	</zone>
+	<!-- [22_25_5] water zone -->
+	<zone id="15120" maxZ="-8928" minZ="-9384" shape="NPoly" type="WaterZone">
+		<node X="80303" Y="258157" />
+		<node X="84591" Y="258157" />
+		<node X="84591" Y="258989" />
+		<node X="80303" Y="258989" />
+	</zone>
+	<!-- [22_25_6] water zone -->
+	<zone id="15121" maxZ="-3810" minZ="-4810" shape="NPoly" type="WaterZone">
+		<node X="65536" Y="229376" />
+		<node X="98304" Y="229376" />
+		<node X="98304" Y="262144" />
+		<node X="65536" Y="262144" />
+	</zone>
+	<!-- [22_25_7] water zone -->
+	<zone id="15122" maxZ="-10916" minZ="-10932" shape="NPoly" type="WaterZone">
+		<node X="78624" Y="254711" />
+		<node X="82336" Y="254711" />
+		<node X="82336" Y="255593" />
+		<node X="78624" Y="255593" />
+	</zone>
+	<!-- [22_25_8] water zone -->
+	<zone id="15123" maxZ="-10916" minZ="-10932" shape="NPoly" type="WaterZone">
+		<node X="82785" Y="254711" />
+		<node X="86497" Y="254711" />
+		<node X="86497" Y="255593" />
+		<node X="82785" Y="255593" />
+	</zone>
+	<!-- [22_25_9] water zone -->
+	<zone id="15124" maxZ="-10916" minZ="-10932" shape="NPoly" type="WaterZone">
+		<node X="82336" Y="255351" />
+		<node X="82785" Y="255351" />
+		<node X="82785" Y="255593" />
+		<node X="82336" Y="255593" />
+	</zone>
+	<!-- [23_11_1] water zone -->
+	<zone id="15125" maxZ="-3810" minZ="-4810" shape="NPoly" type="WaterZone">
+		<node X="98304" Y="-229376" />
+		<node X="131072" Y="-229376" />
+		<node X="131072" Y="-196608" />
+		<node X="98304" Y="-196608" />
+	</zone>
+	<!-- [23_12_1] water zone -->
+	<zone id="15126" maxZ="-3810" minZ="-4810" shape="NPoly" type="WaterZone">
+		<node X="119040" Y="-196608" />
+		<node X="131072" Y="-196608" />
+		<node X="131072" Y="-178624" />
+		<node X="119040" Y="-178624" />
+	</zone>
+	<!-- [23_18_1] water zone -->
+	<zone id="15127" maxZ="-3810" minZ="-4810" shape="NPoly" type="WaterZone">
+		<node X="98305" Y="27768" />
+		<node X="120321" Y="27768" />
+		<node X="120321" Y="32768" />
+		<node X="98305" Y="32768" />
+	</zone>
+	<!-- [23_19_1] water zone -->
+	<zone id="15128" maxZ="-4686" minZ="-5686" shape="NPoly" type="WaterZone">
+		<node X="103091" Y="37760" />
+		<node X="128091" Y="37760" />
+		<node X="128091" Y="62760" />
+		<node X="103091" Y="62760" />
+	</zone>
+	<!-- [23_20_1] Catacomb of the Forbidden Path - vertical -->
+	<zone id="15129" maxZ="-4760" minZ="-7214" shape="Cuboid" type="WaterZone">
+		<node X="110270" Y="84290" />
+		<node X="110785" Y="84800" />
+	</zone>
+	<!-- [23_20_2] Catacomb of the Forbidden Path - hoizontal -->
+	<zone id="15130" maxZ="-6661" minZ="-7238" shape="Cuboid" type="WaterZone">
+		<node X="110335" Y="84290" />
+		<node X="112022" Y="84800" />
+	</zone>
+	<!-- [23_22_1] water zone -->
+	<zone id="15131" maxZ="-3810" minZ="-4810" shape="NPoly" type="WaterZone">
+		<node X="98304" Y="138240" />
+		<node X="131072" Y="138240" />
+		<node X="131072" Y="163840" />
+		<node X="98304" Y="163840" />
+	</zone>
+	<!-- [23_22_2] water zone -->
+	<zone id="15132" maxZ="-2922" minZ="-3206" shape="NPoly" type="WaterZone">
+		<node X="112096" Y="142624" />
+		<node X="119232" Y="142624" />
+		<node X="119232" Y="147604" />
+		<node X="112096" Y="147604" />
+	</zone>
+	<!-- [23_22_3] water zone -->
+	<zone id="15133" maxZ="-3810" minZ="-4110" shape="NPoly" type="WaterZone">
+		<node X="117509" Y="136740" />
+		<node X="122009" Y="136740" />
+		<node X="122009" Y="138240" />
+		<node X="117509" Y="138240" />
+	</zone>
+	<!-- [23_22_4] water zone -->
+	<zone id="15134" maxZ="-3810" minZ="-4110" shape="NPoly" type="WaterZone">
+		<node X="117509" Y="136740" />
+		<node X="122009" Y="136740" />
+		<node X="122009" Y="138240" />
+		<node X="117509" Y="138240" />
+	</zone>
+	<!-- [23_22_5] water zone -->
+	<zone id="15135" maxZ="-3810" minZ="-4110" shape="NPoly" type="WaterZone">
+		<node X="117509" Y="136740" />
+		<node X="122009" Y="136740" />
+		<node X="122009" Y="138240" />
+		<node X="117509" Y="138240" />
+	</zone>
+	<!-- [23_22_6] Necropolis of Martyrdom - horizontal -->
+	<zone id="15136" maxZ="-3020" minZ="-5534" shape="Cuboid" type="WaterZone">
+		<node X="114630" Y="132545" />
+		<node X="115140" Y="133055" />
+	</zone>
+	<!-- [23_22_7] Necropolis of Martyrdom - vertical -->
+	<zone id="15137" maxZ="-4900" minZ="-5534" shape="Cuboid" type="WaterZone">
+		<node X="114695" Y="132545" />
+		<node X="116358" Y="133055" />
+	</zone>
+	<!-- [23_23_1] water zone -->
+	<zone id="15138" maxZ="-3810" minZ="-4810" shape="NPoly" type="WaterZone">
+		<node X="98304" Y="163840" />
+		<node X="131072" Y="163840" />
+		<node X="131072" Y="167840" />
+		<node X="98304" Y="167840" />
+	</zone>
+	<!-- [23_23_2] water zone -->
+	<zone id="15139" maxZ="-3810" minZ="-4810" shape="NPoly" type="WaterZone">
+		<node X="98304" Y="167840" />
+		<node X="102304" Y="167840" />
+		<node X="102304" Y="196608" />
+		<node X="98304" Y="196608" />
+	</zone>
+	<!-- [23_23_3] water zone -->
+	<zone id="15140" maxZ="-3810" minZ="-4810" shape="NPoly" type="WaterZone">
+		<node X="124072" Y="167840" />
+		<node X="131072" Y="167840" />
+		<node X="131072" Y="196608" />
+		<node X="124072" Y="196608" />
+	</zone>
+	<!-- [23_23_4] water zone -->
+	<zone id="15141" maxZ="-3810" minZ="-4810" shape="NPoly" type="WaterZone">
+		<node X="102304" Y="191608" />
+		<node X="124072" Y="191608" />
+		<node X="124072" Y="196608" />
+		<node X="102304" Y="196608" />
+	</zone>
+	<!-- [23_23_5] water zone -->
+	<zone id="15142" maxZ="-3810" minZ="-4810" shape="NPoly" type="WaterZone">
+		<node X="121672" Y="186199" />
+		<node X="124072" Y="186199" />
+		<node X="124072" Y="189151" />
+		<node X="121672" Y="189151" />
+	</zone>
+	<!-- [23_23_6] water zone -->
+	<zone id="15143" maxZ="-3810" minZ="-4810" shape="NPoly" type="WaterZone">
+		<node X="102304" Y="184170" />
+		<node X="105652" Y="184170" />
+		<node X="105652" Y="187250" />
+		<node X="102304" Y="187250" />
+	</zone>
+	<!-- [23_23_7] water zone -->
+	<zone id="15144" maxZ="-3810" minZ="-4810" shape="NPoly" type="WaterZone">
+		<node X="102304" Y="168567" />
+		<node X="106804" Y="168567" />
+		<node X="106804" Y="173567" />
+		<node X="102304" Y="173567" />
+	</zone>
+	<!-- [23_23_8] Necropolis of Worship - horizontal -->
+	<zone id="15145" maxZ="-3660" minZ="-6126" shape="Cuboid" type="WaterZone">
+		<node X="107585" Y="173765" />
+		<node X="108095" Y="174270" />
+	</zone>
+	<!-- [23_23_9] Necropolis of Worship - vertical -->
+	<zone id="15146" maxZ="-5520" minZ="-6136" shape="Cuboid" type="WaterZone">
+		<node X="107755" Y="173765" />
+		<node X="109425" Y="174270" />
+	</zone>
+	<!-- [23_24_1] water zone -->
+	<zone id="15147" maxZ="-3810" minZ="-4810" shape="NPoly" type="WaterZone">
+		<node X="98304" Y="196608" />
+		<node X="131072" Y="196608" />
+		<node X="131072" Y="229376" />
+		<node X="98304" Y="229376" />
+	</zone>
+	<!-- [23_25_1] water zone -->
+	<zone id="15148" maxZ="-3810" minZ="-4810" shape="NPoly" type="WaterZone">
+		<node X="98304" Y="229376" />
+		<node X="131072" Y="229376" />
+		<node X="131072" Y="262144" />
+		<node X="98304" Y="262144" />
+	</zone>
+	<!-- [24_11_1] water zone -->
+	<zone id="15149" maxZ="-3810" minZ="-4810" shape="NPoly" type="WaterZone">
+		<node X="131072" Y="-229376" />
+		<node X="163840" Y="-229376" />
+		<node X="163840" Y="-196608" />
+		<node X="131072" Y="-196608" />
+	</zone>
+	<!-- [24_12_1] water zone -->
+	<zone id="15150" maxZ="-3810" minZ="-4810" shape="NPoly" type="WaterZone">
+		<node X="131072" Y="-196608" />
+		<node X="163840" Y="-196608" />
+		<node X="163840" Y="-178608" />
+		<node X="131072" Y="-178608" />
+	</zone>
+	<!-- [24_18_1] water zone -->
+	<zone id="15151" maxZ="-2558" minZ="-2656" shape="NPoly" type="WaterZone">
+		<node X="145081" Y="25139" />
+		<node X="149881" Y="25139" />
+		<node X="149881" Y="29939" />
+		<node X="145081" Y="29939" />
+	</zone>
+	<!-- [24_19_1] water zone -->
+	<zone id="15152" maxZ="-3806" minZ="-4806" shape="NPoly" type="WaterZone">
+		<node X="131059" Y="32768" />
+		<node X="163827" Y="32768" />
+		<node X="163827" Y="65536" />
+		<node X="131059" Y="65536" />
+	</zone>
+	<!-- [24_20_1] Catacomb of the Witch - vertical -->
+	<zone id="15153" maxZ="-3650" minZ="-6126" shape="Cuboid" type="WaterZone">
+		<node X="136765" Y="79420" />
+		<node X="137285" Y="79935" />
+	</zone>
+	<!-- [24_20_2] Catacomb of the Witch - horizontal -->
+	<zone id="15154" maxZ="-5549" minZ="-6126" shape="Cuboid" type="WaterZone">
+		<node X="136830" Y="79420" />
+		<node X="138512" Y="79935" />
+	</zone>
+	<!-- [24_20_3] water zone -->
+	<zone id="15155" maxZ="-3810" minZ="-4510" shape="NPoly" type="WaterZone">
+		<node X="137472" Y="65536" />
+		<node X="163840" Y="65536" />
+		<node X="163840" Y="98304" />
+		<node X="137472" Y="98304" />
+	</zone>
+	<!-- [24_21_1] water zone -->
+	<zone id="15156" maxZ="-3810" minZ="-4810" shape="NPoly" type="WaterZone">
+		<node X="131072" Y="126072" />
+		<node X="136072" Y="126072" />
+		<node X="136072" Y="131072" />
+		<node X="131072" Y="131072" />
+	</zone>
+	<!-- [25_11_1] water zone -->
+	<zone id="15157" maxZ="-3810" minZ="-4810" shape="NPoly" type="WaterZone">
+		<node X="163840" Y="-229376" />
+		<node X="196608" Y="-229376" />
+		<node X="196608" Y="-196608" />
+		<node X="163840" Y="-196608" />
+	</zone>
+	<!-- [25_12_1] water zone -->
+	<zone id="15158" maxZ="-3810" minZ="-4810" shape="NPoly" type="WaterZone">
+		<node X="163840" Y="-196608" />
+		<node X="168840" Y="-196608" />
+		<node X="168840" Y="-186608" />
+		<node X="163840" Y="-186608" />
+	</zone>
+	<!-- [25_12_2] water zone -->
+	<zone id="15159" maxZ="-4495" minZ="-5495" shape="NPoly" type="WaterZone">
+		<node X="173411" Y="-187756" />
+		<node X="186042" Y="-187756" />
+		<node X="186042" Y="-182534" />
+		<node X="173411" Y="-182534" />
+	</zone>
+	<!-- [25_12_3] water zone -->
+	<zone id="15160" maxZ="-2096" minZ="-2352" shape="NPoly" type="WaterZone">
+		<node X="174206" Y="-182687" />
+		<node X="176749" Y="-182687" />
+		<node X="176749" Y="-179167" />
+		<node X="174206" Y="-179167" />
+	</zone>
+	<!-- [25_14_1] water zone -->
+	<zone id="15161" maxZ="-4063" minZ="-4673" shape="NPoly" type="WaterZone">
+		<node X="170908" Y="-116846" />
+		<node X="173748" Y="-116846" />
+		<node X="173748" Y="-113953" />
+		<node X="170908" Y="-113953" />
+	</zone>
+	<!-- [25_14_2] water zone -->
+	<zone id="15162" maxZ="-5286" minZ="-6160" shape="NPoly" type="WaterZone">
+		<node X="170926" Y="-113936" />
+		<node X="173766" Y="-113936" />
+		<node X="173766" Y="-111043" />
+		<node X="170926" Y="-111043" />
+	</zone>
+	<!-- [25_20_1] water zone -->
+	<zone id="15163" maxZ="-3810" minZ="-4310" shape="NPoly" type="WaterZone">
+		<node X="163840" Y="65760" />
+		<node X="173840" Y="65760" />
+		<node X="173840" Y="95072" />
+		<node X="163840" Y="95072" />
+	</zone>
+	<!-- [25_17_1] The Disciple"s Necropolis - vertical -->
+	<zone id="15164" maxZ="-3120" minZ="-5598" shape="Cuboid" type="WaterZone">
+		<node X="168625" Y="-17850" />
+		<node X="169150" Y="-17330" />
+	</zone>
+	<!-- [25_17_2] The Disciple"s Necropolis - horizontal -->
+	<zone id="15165" maxZ="-5021" minZ="-5598" shape="Cuboid" type="WaterZone">
+		<node X="168700" Y="-17850" />
+		<node X="170365" Y="-17330" />
+	</zone>
+	<!-- [20_15_1] water zone -->
+	<zone id="15166" maxZ="-3810" minZ="-4810" shape="NPoly" type="WaterZone">
+		<node X="0" Y="-73536" />
+		<node X="8000" Y="-73536" />
+		<node X="8000" Y="-65536" />
+		<node X="0" Y="-65536" />
+	</zone>
+	<!-- [20_16_1] water zone -->
+	<zone id="15167" maxZ="-3810" minZ="-4810" shape="NPoly" type="WaterZone">
+		<node X="0" Y="-65536" />
+		<node X="32768" Y="-65536" />
+		<node X="32768" Y="-32768" />
+		<node X="0" Y="-32768" />
+	</zone>
+	<!-- [21_15_1] water zone -->
+	<zone id="15168" maxZ="-3810" minZ="-4810" shape="NPoly" type="WaterZone">
+		<node X="32768" Y="-98304" />
+		<node X="65536" Y="-98304" />
+		<node X="65536" Y="-65536" />
+		<node X="32768" Y="-65536" />
+	</zone>
+	<!-- [21_16_1] water zone -->
+	<zone id="15169" maxZ="-3814" minZ="-4814" shape="NPoly" type="WaterZone">
+		<node X="32768" Y="-65536" />
+		<node X="65536" Y="-65536" />
+		<node X="65536" Y="-32768" />
+		<node X="32768" Y="-32768" />
+	</zone>
+	<!-- [21_17_1] water zone -->
+	<zone id="15170" maxZ="-3810" minZ="-4810" shape="NPoly" type="WaterZone">
+		<node X="32768" Y="-32768" />
+		<node X="65536" Y="-32768" />
+		<node X="65536" Y="0" />
+		<node X="32768" Y="0" />
+	</zone>
+	<!-- [22_16_1] water zone -->
+	<zone id="15171" maxZ="-3810" minZ="-4810" shape="NPoly" type="WaterZone">
+		<node X="65536" Y="-40960" />
+		<node X="98304" Y="-40960" />
+		<node X="98304" Y="-32768" />
+		<node X="65536" Y="-32768" />
+	</zone>
+	<!-- [22_16_2] water zone -->
+	<zone id="15172" maxZ="-2663" minZ="-2919" shape="NPoly" type="WaterZone">
+		<node X="91829" Y="-55930" />
+		<node X="95637" Y="-55930" />
+		<node X="95637" Y="-50266" />
+		<node X="91829" Y="-50266" />
+	</zone>
+	<!-- [22_16_3] water zone -->
+	<zone id="15173" maxZ="-2663" minZ="-2919" shape="NPoly" type="WaterZone">
+		<node X="87765" Y="-54554" />
+		<node X="91829" Y="-54554" />
+		<node X="91829" Y="-50266" />
+		<node X="87765" Y="-50266" />
+	</zone>
+	<!-- [22_16_4] water zone -->
+	<zone id="15174" maxZ="-3182" minZ="-3438" shape="NPoly" type="WaterZone">
+		<node X="84947" Y="-50234" />
+		<node X="90133" Y="-50234" />
+		<node X="90133" Y="-46202" />
+		<node X="84947" Y="-46202" />
+	</zone>
+	<!-- [22_16_5] water zone -->
+	<zone id="15175" maxZ="-3278" minZ="-3534" shape="NPoly" type="WaterZone">
+		<node X="76003" Y="-46368" />
+		<node X="84947" Y="-46368" />
+		<node X="84947" Y="-39968" />
+		<node X="76003" Y="-39968" />
+	</zone>
+	<!-- [22_16_6] water zone -->
+	<zone id="15176" maxZ="-3191" minZ="-3447" shape="NPoly" type="WaterZone">
+		<node X="68852" Y="-62008" />
+		<node X="74036" Y="-62008" />
+		<node X="74036" Y="-56192" />
+		<node X="68852" Y="-56192" />
+	</zone>
+	<!-- [22_16_7] water zone -->
+	<zone id="15177" maxZ="-3191" minZ="-3447" shape="NPoly" type="WaterZone">
+		<node X="69480" Y="-56192" />
+		<node X="77032" Y="-56192" />
+		<node X="77032" Y="-53203" />
+		<node X="69480" Y="-53203" />
+	</zone>
+	<!-- [22_16_8] water zone -->
+	<zone id="15178" maxZ="-3191" minZ="-3447" shape="NPoly" type="WaterZone">
+		<node X="71311" Y="-53203" />
+		<node X="76175" Y="-53203" />
+		<node X="76175" Y="-50292" />
+		<node X="71311" Y="-50292" />
+	</zone>
+	<!-- [22_16_9] water zone -->
+	<zone id="15179" maxZ="-2382" minZ="-2638" shape="NPoly" type="WaterZone">
+		<node X="75059" Y="-63591" />
+		<node X="78355" Y="-63591" />
+		<node X="78355" Y="-57517" />
+		<node X="75059" Y="-57517" />
+	</zone>
+	<!-- [22_16_10] water zone -->
+	<zone id="15180" maxZ="-2382" minZ="-2638" shape="NPoly" type="WaterZone">
+		<node X="78355" Y="-65184" />
+		<node X="83859" Y="-65184" />
+		<node X="83859" Y="-51872" />
+		<node X="78355" Y="-51872" />
+	</zone>
+	<!-- [22_16_11] water zone -->
+	<zone id="15181" maxZ="-2382" minZ="-2638" shape="NPoly" type="WaterZone">
+		<node X="83859" Y="-64826" />
+		<node X="87187" Y="-64826" />
+		<node X="87187" Y="-55418" />
+		<node X="83859" Y="-55418" />
+	</zone>
+	<!-- [22_16_12] water zone -->
+	<zone id="15182" maxZ="-2382" minZ="-2638" shape="NPoly" type="WaterZone">
+		<node X="87187" Y="-62909" />
+		<node X="90963" Y="-62909" />
+		<node X="90963" Y="-58301" />
+		<node X="87187" Y="-58301" />
+	</zone>
+	<!-- [22_16_13] water zone -->
+	<zone id="15183" maxZ="-2382" minZ="-2638" shape="NPoly" type="WaterZone">
+		<node X="77283" Y="-51872" />
+		<node X="83747" Y="-51872" />
+		<node X="83747" Y="-49440" />
+		<node X="77283" Y="-49440" />
+	</zone>
+	<!-- [22_16_14] water zone -->
+	<zone id="15184" maxZ="-2382" minZ="-2638" shape="NPoly" type="WaterZone">
+		<node X="83859" Y="-55418" />
+		<node X="86227" Y="-55418" />
+		<node X="86227" Y="-52602" />
+		<node X="83859" Y="-52602" />
+	</zone>
+	<!-- [22_16_15] water zone -->
+	<zone id="15185" maxZ="-3278" minZ="-3534" shape="NPoly" type="WaterZone">
+		<node X="69635" Y="-47328" />
+		<node X="76003" Y="-47328" />
+		<node X="76003" Y="-39776" />
+		<node X="69635" Y="-39776" />
+	</zone>
+	<!-- [22_16_16] water zone -->
+	<zone id="15186" maxZ="-2382" minZ="-2638" shape="NPoly" type="WaterZone">
+		<node X="87187" Y="-58301" />
+		<node X="89235" Y="-58301" />
+		<node X="89235" Y="-56541" />
+		<node X="87187" Y="-56541" />
+	</zone>
+	<!-- [22_17_1] water zone -->
+	<zone id="15187" maxZ="-3810" minZ="-4810" shape="NPoly" type="WaterZone">
+		<node X="65536" Y="-32768" />
+		<node X="76800" Y="-32768" />
+		<node X="76800" Y="0" />
+		<node X="65536" Y="0" />
+	</zone>
+	<!-- [22_17_2] water zone -->
+	<zone id="15188" maxZ="-3810" minZ="-4810" shape="NPoly" type="WaterZone">
+		<node X="76800" Y="-32768" />
+		<node X="98304" Y="-32768" />
+		<node X="98304" Y="-18432" />
+		<node X="76800" Y="-18432" />
+	</zone>
+</list>

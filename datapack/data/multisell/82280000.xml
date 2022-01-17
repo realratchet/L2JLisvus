@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE xml>
+<list>
+	<item id="1">
+		<!-- Event - Medal -->
+		<ingredient id="6392" count="5" />
+		<!-- Greater Haste Potion -->
+		<production id="1374" count="1" />
+	</item>
+	<item id="2">
+		<!-- Event - Medal -->
+		<ingredient id="6392" count="10" />
+		<!-- Greater Swift Attack Potion -->
+		<production id="1375" count="1" />
+	</item>
+	<item id="3">
+		<!-- Event - Medal -->
+		<ingredient id="6392" count="10" />
+		<!-- Greater Magic Haste Potion -->
+		<production id="6036" count="1" />
+	</item>
+	<item id="4">
+		<!-- Event - Medal -->
+		<ingredient id="6392" count="17" />
+		<!-- Quick Healing Potion -->
+		<production id="1540" count="1" />
+	</item>
+</list>

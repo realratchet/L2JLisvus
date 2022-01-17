@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<list>
+	<zone id="11060" maxZ="10100" minZ="-5150" shape="Cuboid" type="NoLandingZone">
+		<node X="109448" Y="10233" />
+		<node X="118547" Y="21446" />
+	</zone>
+</list>

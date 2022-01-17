@@ -1,0 +1,148 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE xml>
+<list>
+	<item id="1">
+		<!-- Event - Medal -->
+		<ingredient id="6392" count="5" />
+		<!-- Greater Haste Potion -->
+		<production id="1374" count="1" />
+	</item>
+	<item id="2">
+		<!-- Event - Medal -->
+		<ingredient id="6392" count="10" />
+		<!-- Greater Swift Attack Potion -->
+		<production id="1375" count="1" />
+	</item>
+	<item id="3">
+		<!-- Event - Medal -->
+		<ingredient id="6392" count="10" />
+		<!-- Greater Magic Haste Potion -->
+		<production id="6036" count="1" />
+	</item>
+	<item id="4">
+		<!-- Event - Medal -->
+		<ingredient id="6392" count="17" />
+		<!-- Quick Healing Potion -->
+		<production id="1540" count="1" />
+	</item>
+	<item id="5">
+		<!-- Event - Medal -->
+		<ingredient id="6392" count="250" />
+		<!-- Blessed Scroll of Escape -->
+		<production id="1538" count="1" />
+	</item>
+	<item id="6">
+		<!-- Event - Medal -->
+		<ingredient id="6392" count="667" />
+		<!-- Blessed Scroll of Resurrection for Pets -->
+		<production id="6387" count="1" />
+	</item>
+	<item id="7">
+		<!-- Event - Medal -->
+		<ingredient id="6392" count="25" />
+		<!-- Scroll: Enchant Armor (D) -->
+		<production id="956" count="1" />
+	</item>
+	<item id="8">
+		<!-- Event - Medal -->
+		<ingredient id="6392" count="83" />
+		<!-- Scroll: Enchant Weapon (D) -->
+		<production id="955" count="1" />
+	</item>
+	<item id="9">
+		<!-- Event - Medal -->
+		<ingredient id="6392" count="67" />
+		<!-- Scroll: Enchant Armor (C) -->
+		<production id="952" count="1" />
+	</item>
+	<item id="10">
+		<!-- Event - Medal -->
+		<ingredient id="6392" count="183" />
+		<!-- Scroll: Enchant Weapon (C) -->
+		<production id="951" count="1" />
+	</item>
+	<item id="11">
+		<!-- Event - Medal -->
+		<ingredient id="6392" count="267" />
+		<!-- Scroll: Enchant Armor (B) -->
+		<production id="948" count="1" />
+	</item>
+	<item id="12">
+		<!-- Event - Medal -->
+		<ingredient id="6392" count="833" />
+		<!-- Scroll: Enchant Weapon (B) -->
+		<production id="947" count="1" />
+	</item>
+	<item id="13">
+		<!-- Event - Medal -->
+		<ingredient id="6392" count="833" />
+		<!-- Scroll: Enchant Armor (A) -->
+		<production id="730" count="1" />
+	</item>
+	<item id="14">
+		<!-- Event - Medal -->
+		<ingredient id="6392" count="3000" />
+		<!-- Scroll: Enchant Weapon (A) -->
+		<production id="729" count="1" />
+	</item>
+	<item id="15">
+		<!-- Event - Medal -->
+		<ingredient id="6392" count="833" />
+		<!-- Red Party Mask -->
+		<production id="6394" count="1" />
+	</item>
+	<item id="16">
+		<!-- Event - Medal -->
+		<ingredient id="6392" count="5000" />
+		<!-- Red Soul Crystal - Stage 11 -->
+		<production id="5577" count="1" />
+	</item>
+	<item id="17">
+		<!-- Event - Medal -->
+		<ingredient id="6392" count="5000" />
+		<!-- Green Soul Crystal - Stage 11 -->
+		<production id="5578" count="1" />
+	</item>
+	<item id="18">
+		<!-- Event - Medal -->
+		<ingredient id="6392" count="5000" />
+		<!-- Blue Soul Crystal - Stage 11 -->
+		<production id="5579" count="1" />
+	</item>
+	<item id="19">
+		<!-- Event - Medal -->
+		<ingredient id="6392" count="10000" />
+		<!-- Red Soul Crystal - Stage 12 -->
+		<production id="5580" count="1" />
+	</item>
+	<item id="20">
+		<!-- Event - Medal -->
+		<ingredient id="6392" count="10000" />
+		<!-- Green Soul Crystal - Stage 12 -->
+		<production id="5581" count="1" />
+	</item>
+	<item id="21">
+		<!-- Event - Medal -->
+		<ingredient id="6392" count="10000" />
+		<!-- Blue Soul Crystal - Stage 12 -->
+		<production id="5582" count="1" />
+	</item>
+	<item id="22">
+		<!-- Event - Medal -->
+		<ingredient id="6392" count="6240" />
+		<!-- Sealed Majestic Necklace -->
+		<production id="6326" count="1" />
+	</item>
+	<item id="23">
+		<!-- Event - Medal -->
+		<ingredient id="6392" count="4680" />
+		<!-- Sealed Majestic Earring -->
+		<production id="6327" count="1" />
+	</item>
+	<item id="24">
+		<!-- Event - Medal -->
+		<ingredient id="6392" count="3120" />
+		<!-- Sealed Majestic Ring -->
+		<production id="6328" count="1" />
+	</item>
+</list>

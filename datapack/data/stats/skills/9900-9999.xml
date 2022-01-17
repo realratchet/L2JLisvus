@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE xml>
+<list>
+<skill id="9900" levels="1" name="Antibuff Shield">
+  <set name="target" val="TARGET_SELF"/>
+  <set name="skillType" val="CONT"/>
+  <set name="operateType" val="OP_TOGGLE"/>
+  <for>
+    <effect count="0x7fffffff" name="DamOverTime" val="0">
+      <mul order="0x30" stat="buffVuln" val="0.0"/>
+    </effect>
+  </for>
+</skill>
+</list>

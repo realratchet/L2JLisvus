@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<list>
+	<!-- Coliseum Entrance -->
+	<zone id="13001" maxZ="-2000" minZ="-3500" shape="NPoly" type="PeaceZone">
+		<node X="148040" Y="46500" />
+		<node X="147784" Y="46200" />
+		<node X="147100" Y="46200" />
+		<node X="147100" Y="47240" />
+		<node X="147784" Y="47240" />
+		<node X="148040" Y="46940" />
+	</zone>
+	<!-- Coliseum Entrance -->
+	<zone id="13002" maxZ="-2000" minZ="-3500" shape="NPoly" type="PeaceZone">
+		<node X="150960" Y="46500" />
+		<node X="151220" Y="46200" />
+		<node X="151920" Y="46200" />
+		<node X="151920" Y="47240" />
+		<node X="151220" Y="47240" />
+		<node X="150960" Y="46940" />
+	</zone>
+	<!-- Ivory Tower Basement -->
+	<zone id="13003" maxZ="-3700" minZ="-4350" shape="Cuboid" type="PeaceZone">
+		<node X="84800" Y="15590" />
+		<node X="85870" Y="16790" />
+	</zone>
+	<!-- Ivory Tower Top Floors -->
+	<zone id="13004" maxZ="-1300" minZ="-2850" shape="Cuboid" type="PeaceZone">
+		<node X="84800" Y="15590" />
+		<node X="85870" Y="16790" />
+	</zone>
+	<!-- Gludin Arena Entrance -->
+	<zone id="13005" maxZ="-3500" minZ="-3700" shape="NPoly" type="PeaceZone">
+		<node X="-88672" Y="141456" />
+		<node X="-87168" Y="141456" />
+		<node X="-87168" Y="142976" />
+		<node X="-88672" Y="142976" />
+		<node X="-88672" Y="142705" />
+		<node X="-87439" Y="142705" />
+		<node X="-87439" Y="141727" />
+		<node X="-88417" Y="141727" />
+		<node X="-88417" Y="142705" />
+		<node X="-88672" Y="142705" />
+	</zone>
+	<!-- Giran Arena Entrance -->
+	<zone id="13006" maxZ="-3600" minZ="-3800" shape="NPoly" type="PeaceZone">
+		<node X="72240" Y="142016" />
+		<node X="73744" Y="142016" />
+		<node X="73744" Y="143504" />
+		<node X="72240" Y="143504" />
+		<node X="72240" Y="143249" />
+		<node X="73473" Y="143249" />
+		<node X="73473" Y="142271" />
+		<node X="72495" Y="142271" />
+		<node X="72495" Y="143249" />
+		<node X="72240" Y="143249" />
+	</zone>
+	<!-- Cedric"s Training Hall -->
+	<zone id="13007" maxZ="-2200" minZ="-3200" shape="NPoly" type="PeaceZone">
+		<node X="-71680" Y="256208" />
+		<node X="-71536" Y="256416" />
+		<node X="-71280" Y="256416" />
+		<node X="-70672" Y="257120" />
+		<node X="-70736" Y="257184" />
+		<node X="-70544" Y="257408" />
+		<node X="-70368" Y="257264" />
+		<node X="-70064" Y="257616" />
+		<node X="-69984" Y="258048" />
+		<node X="-71888" Y="259680" />
+		<node X="-72128" Y="259408" />
+		<node X="-72304" Y="259552" />
+		<node X="-72640" Y="259168" />
+		<node X="-72528" Y="259072" />
+		<node X="-73312" Y="258144" />
+		<node X="-73296" Y="257888" />
+		<node X="-73456" Y="257696" />
+	</zone>
+	<!-- Einhovant"s School of Magic -->
+	<zone id="13008" maxZ="-2650" minZ="-3650" shape="NPoly" type="PeaceZone">
+		<node X="-90816" Y="247856" />
+		<node X="-90608" Y="247776" />
+		<node X="-90160" Y="247136" />
+		<node X="-89168" Y="247792" />
+		<node X="-89104" Y="247728" />
+		<node X="-88656" Y="248016" />
+		<node X="-88720" Y="248112" />
+		<node X="-88672" Y="248192" />
+		<node X="-88736" Y="248320" />
+		<node X="-88544" Y="248640" />
+		<node X="-88592" Y="249008" />
+		<node X="-89200" Y="249872" />
+		<node X="-89488" Y="250080" />
+		<node X="-89872" Y="250016" />
+		<node X="-89984" Y="250144" />
+		<node X="-90048" Y="250112" />
+		<node X="-90112" Y="250208" />
+		<node X="-90560" Y="249888" />
+		<node X="-90496" Y="249808" />
+		<node X="-90592" Y="249728" />
+		<node X="-90624" Y="249760" />
+		<node X="-91504" Y="249152" />
+		<node X="-91072" Y="248496" />
+		<node X="-91152" Y="248320" />
+	</zone>
+	<!-- The Shilen Temple -->
+	<zone id="13009" maxZ="-2300" minZ="-4300" shape="NPoly" type="PeaceZone">
+		<node X="27680" Y="8960" />
+		<node X="28464" Y="8960" />
+		<node X="29824" Y="10352" />
+		<node X="31472" Y="10400" />
+		<node X="31472" Y="11664" />
+		<node X="29824" Y="11792" />
+		<node X="28464" Y="13056" />
+		<node X="27680" Y="13056" />
+		<node X="26208" Y="11632" />
+		<node X="26208" Y="10304" />
+	</zone>
+	<!-- The Pa"agrio Temple -->
+	<zone id="13010" maxZ="500" minZ="-1000" shape="Cuboid" type="PeaceZone">
+		<node X="-58880" Y="-115408" />
+		<node X="-55136" Y="-111824" />
+	</zone>
+	<!-- Dimensional Rift -->
+	<zone id="13011" maxZ="-5500" minZ="-6900" shape="Cuboid" type="PeaceZone">
+		<node X="-115384" Y="-178072" />
+		<node X="-114200" Y="-182120" />
+	</zone>
+	<!-- Oracle of Dawn -->
+	<zone id="13012" maxZ="-4500" minZ="-5000" shape="NPoly" type="PeaceZone">
+		<node X="-80472" Y="112120" />
+		<node X="-80472" Y="110600" />
+		<node X="-78056" Y="110600" />
+		<node X="-77048" Y="111208" />
+		<node X="-74904" Y="111208" />
+		<node X="-74904" Y="112728" />
+		<node X="-77048" Y="112728" />
+		<node X="-78056" Y="112120" />
+	</zone>
+	<!-- Oracle of Dusk -->
+	<zone id="13013" maxZ="-4800" minZ="-5300" shape="NPoly" type="PeaceZone">
+		<node X="-81512" Y="87288" />
+		<node X="-81512" Y="85768" />
+		<node X="-79080" Y="85768" />
+		<node X="-78072" Y="86376" />
+		<node X="-75928" Y="86376" />
+		<node X="-75928" Y="87896" />
+		<node X="-78072" Y="87896" />
+		<node X="-79080" Y="87288" />
+	</zone>
+</list>

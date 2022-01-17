@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<list>
+	<zone id="11050" maxZ="-3400" minZ="-3500" shape="Cuboid" type="MotherTreeZone">
+		<stat name="affectedRace" val="1" />
+		<node X="47600" Y="38290" />
+		<node X="44483" Y="41745" />
+	</zone>
+	<zone id="11051" maxZ="-3000" minZ="-3100" shape="Cuboid" type="MotherTreeZone">
+		<stat name="affectedRace" val="1" />
+		<node X="46249" Y="50036" />
+		<node X="44431" Y="49176" />
+	</zone>
+	<zone id="11052" maxZ="-3600" minZ="-3700" shape="Cuboid" type="MotherTreeZone">
+		<stat name="affectedRace" val="1" />
+		<node X="20580" Y="51713" />
+		<node X="21667" Y="50393" />
+	</zone>
+	<zone id="11053" maxZ="-3100" minZ="-3200" shape="Cuboid" type="MotherTreeZone">
+		<stat name="affectedRace" val="1" />
+		<node X="24993" Y="80655" />
+		<node X="25454" Y="82314" />
+	</zone>
+	<zone id="11054" maxZ="-3600" minZ="-3800" shape="Cuboid" type="MotherTreeZone">
+		<stat name="affectedRace" val="1" />
+		<node X="57052" Y="85445" />
+		<node X="57937" Y="87057" />
+	</zone>
+</list>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<!-- Note: Event Manager support can be activated if you uncomment script in scripts.cfg -->
+<Event ID="Medals Event" Active="24 Dec 2014-26 Dec 2016"> 
+   	<Droplist> 
+      	<AllDrop Items="6392" Count="1,1" Chance="10%" />
+   	</Droplist> 
+   	<Droplist> 
+      	<AllDrop Items="6393" Count="1,1" Chance="1%" />
+   	</Droplist> 
+   	<Message Type="OnJoin" Msg="Glittering Medals Event: You can collect medals from all monsters and trade them for various items!" /> 
+</Event>

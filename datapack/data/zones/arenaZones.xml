@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<list>
+	<zone id="11010" name="Giran Arena" type="ArenaZone" shape="Cuboid" minZ="-3800" maxZ="-3600">
+		<node X="72496" Y="142272" />
+		<node X="73472" Y="143248" />
+		<spawn X="73890" Y="142656" Z="-3778" />
+	</zone>
+	<zone id="11011" name="Gludin Arena" type="ArenaZone" shape="Cuboid" minZ="-3700" maxZ="-3500">
+		<node X="-88416" Y="141728" />
+		<node X="-87440" Y="142704" />
+		<spawn X="-86979" Y="142402" Z="-3643" />
+	</zone>
+	<zone id="11012" name="Coliseum" type="ArenaZone" shape="NPoly" minZ="-3500" maxZ="-3300">
+		<node X="147784" Y="45100" />
+		<node X="151220" Y="45100" />
+		<node X="151220" Y="46200" />
+		<node X="150960" Y="46500" />
+		<node X="150960" Y="46940" />
+		<node X="151220" Y="47240" />
+		<node X="151220" Y="48200" />
+		<node X="147784" Y="48200" />
+		<node X="147784" Y="47240" />
+		<node X="148040" Y="46940" />
+		<node X="148040" Y="46500" />
+		<node X="147784" Y="46200" />
+		<spawn X="147451" Y="46728" Z="-3410" />
+	</zone>
+	<zone id="11013" type="ArenaZone" shape="Cuboid" minZ="-3600" maxZ="-3500">
+		<node X="11948" Y="183015" />
+		<node X="12939" Y="184015" />
+		<spawn X="12312" Y="182752" Z="-3558" />
+	</zone>
+</list>

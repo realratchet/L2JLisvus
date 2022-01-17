@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<rift>
+	<!-- ########### RECRUITS AREA ########### -->
+	<area type="1">
+		<room id="1">
+			<!-- Otherworldy Invader Soldier -->
+			<spawn mobId="1659" count="2" delay="90"/>
+			<!-- Otherwordly Invader Archer -->
+			<spawn mobId="1661" count="4" delay="80"/>
+			<!-- Otherwordly Invader Soldier -->
+			<spawn mobId="1660" count="2" delay="90"/>
+		</room>
+		<room id="2">
+			<!-- Otherworldy Invader Priest -->
+			<spawn mobId="1664" count="3" delay="90"/>
+			<!-- Otherwordly Invader Shaman -->
+			<spawn mobId="1663" count="2" delay="90"/>
+			<!-- Otherwordly Invader Elite Soldier -->
+			<spawn mobId="1662" count="3" delay="90"/>
+		</room>
+		<room id="3">
+			<!-- Otherworldy Invader Martyrs -->
+			<spawn mobId="1666" count="2" delay="86"/>
+			<!-- Otherwordly Invader Warrior -->
+			<spawn mobId="1667" count="2" delay="86"/>
+			<!-- Otherwordly Invader Magus -->
+			<spawn mobId="1665" count="2" delay="86"/>
+		</room>
+		<room id="4">
+			<!-- Otherworldy Invader Soldier -->
+			<spawn mobId="1668" count="2" delay="101"/>
+			<!-- Otherwordly Invader Discipline -->
+			<spawn mobId="1669" count="2" delay="101"/>
+			<!-- Otherwordly Invader Berserker -->
+			<spawn mobId="1670" count="2" delay="101"/>
+		</room>
+		<room id="5">
+			<!-- Otherwordly Invader Food -->
+			<spawn mobId="1671" count="6" delay="82"/>
+			<!-- Otherwordly Invader Elite Soldier -->
+			<spawn mobId="1672" count="3" delay="82"/>
+			<!-- Otherwordly Invader Elite Soldier -->
+			<spawn mobId="1673" count="3" delay="82"/>
+		</room>
+		<room id="6">
+			<!-- Otherworldy Invader Elite Soldier -->
+			<spawn mobId="1675" count="4" delay="52"/>
+			<!-- Otherwordly Invader Warrior -->
+			<spawn mobId="1676" count="4" delay="52"/>
+			<!-- Otherwordly Invader Elite Soldier -->
+			<spawn mobId="1674" count="4" delay="52"/>
+		</room>
+		<room id="7">
+			<!-- Otherworldy Invader Elite Soldier -->
+			<spawn mobId="1677" count="4" delay="100"/>
+			<!-- Otherwordly Invader Elite Soldier -->
+			<spawn mobId="1678" count="4" delay="100"/>
+			<!-- Otherwordly Invader Food -->
+			<spawn mobId="1671" count="4" delay="100"/>
+		</room>
+		<room id="8">
+			<!-- Otherworldy Invader Elite Soldier -->
+			<spawn mobId="1679" count="4" delay="137"/>
+			<!-- Otherwordly Invader Magus -->
+			<spawn mobId="1681" count="4" delay="137"/>
+			<!-- Otherwordly Invader Elite Soldier -->
+			<spawn mobId="1680" count="4" delay="137"/>
+		</room>
+		<room id="9">
+			<!-- Anakazel -->
+			<spawn mobId="10333" count="1" delay="600"/>
+		</room>
+	</area>
+	<!-- ########### PRIVATES AREA ########### -->
+	<area type="2">
+		<room id="1">
+			<!-- Dimension Invader Soldier -->
+			<spawn mobId="1682" count="2" delay="90"/>
+			<!-- Dimension Invader Archer -->
+			<spawn mobId="1684" count="4" delay="80"/>
+			<!-- Dimension Invader Soldier -->
+			<spawn mobId="1683" count="2" delay="90"/>
+		</room>
+		<room id="2">
+			<!-- Dimension Invader Priest -->
+			<spawn mobId="1687" count="3" delay="90"/>
+			<!-- Dimension Invader Shaman -->
+			<spawn mobId="1686" count="2" delay="90"/>
+			<!-- Dimension Invader Elite Soldier -->
+			<spawn mobId="1685" count="3" delay="90"/>
+		</room>
+		<room id="3">
+			<!-- Dimension Invader Martyrs -->
+			<spawn mobId="1689" count="2" delay="86"/>
+			<!-- Dimension Invader Warrior -->
+			<spawn mobId="1690" count="2" delay="86"/>
+			<!-- Dimension Invader Magus -->
+			<spawn mobId="1688" count="2" delay="86"/>
+		</room>
+		<room id="4">
+			<!-- Dimension Invader Soldier -->
+			<spawn mobId="1691" count="2" delay="101"/>
+			<!-- Dimension Invader Discipline -->
+			<spawn mobId="1692" count="2" delay="101"/>
+			<!-- Dimension Invader Berserker -->
+			<spawn mobId="1693" count="2" delay="101"/>
+		</room>
+		<room id="5">
+			<!-- Dimension Invader Food -->
+			<spawn mobId="1694" count="6" delay="82"/>
+			<!-- Dimension Invader Elite Soldier -->
+			<spawn mobId="1695" count="3" delay="82"/>
+			<!-- Dimension Invader Elite Soldier -->
+			<spawn mobId="1696" count="3" delay="82"/>
+		</room>
+		<room id="6">
+			<!-- Dimension Invader Elite Soldier -->
+			<spawn mobId="1698" count="4" delay="52"/>
+			<!-- Dimension Invader Warrior -->
+			<spawn mobId="1699" count="4" delay="52"/>
+			<!-- Dimension Invader Elite Soldier -->
+			<spawn mobId="1697" count="4" delay="52"/>
+		</room>
+		<room id="7">
+			<!-- Dimension Invader Elite Soldier -->
+			<spawn mobId="1700" count="4" delay="100"/>
+			<!-- Dimension Invader Elite Soldier -->
+			<spawn mobId="1701" count="4" delay="100"/>
+			<!-- Dimension Invader Food -->
+			<spawn mobId="1694" count="4" delay="100"/>
+		</room>
+		<room id="8">
+			<!-- Dimension Invader Elite Soldier -->
+			<spawn mobId="1702" count="4" delay="137"/>
+			<!-- Dimension Invader Magus -->
+			<spawn mobId="1704" count="4" delay="137"/>
+			<!-- Dimension Invader Elite Soldier -->
+			<spawn mobId="1703" count="4" delay="137"/>
+		</room>
+		<room id="9">
+			<!-- Anakazel -->
+			<spawn mobId="10334" count="1" delay="600"/>
+		</room>
+	</area>
+	<!-- ########### OFFICERS AREA ########### -->
+	<area type="3">
+		<room id="1">
+			<!-- Purgatory Invader Soldier -->
+			<spawn mobId="1705" count="2" delay="90"/>
+			<!-- Purgatory Invader Archer -->
+			<spawn mobId="1707" count="4" delay="80"/>
+			<!-- Purgatory Invader Soldier -->
+			<spawn mobId="1706" count="2" delay="90"/>
+		</room>
+		<room id="2">
+			<!-- Purgatory Invader Priest -->
+			<spawn mobId="1710" count="3" delay="90"/>
+			<!-- Purgatory Invader Shaman -->
+			<spawn mobId="1709" count="2" delay="90"/>
+			<!-- Purgatory Invader Elite Soldier -->
+			<spawn mobId="1708" count="3" delay="90"/>
+		</room>
+		<room id="3">
+			<!-- Purgatory Invader Martyrs -->
+			<spawn mobId="1712" count="2" delay="86"/>
+			<!-- Purgatory Invader Warrior -->
+			<spawn mobId="1713" count="2" delay="86"/>
+			<!-- Purgatory Invader Magus -->
+			<spawn mobId="1711" count="2" delay="86"/>
+		</room>
+		<room id="4">
+			<!-- Purgatory Invader Soldier -->
+			<spawn mobId="1714" count="2" delay="101"/>
+			<!-- Purgatory Invader Disciples -->
+			<spawn mobId="1715" count="2" delay="101"/>
+			<!-- Purgatory Invader Berserker -->
+			<spawn mobId="1716" count="2" delay="101"/>
+		</room>
+		<room id="5">
+			<!-- Purgatory Invader Food -->
+			<spawn mobId="1717" count="6" delay="82"/>
+			<!-- Purgatory Invader Elite Soldier -->
+			<spawn mobId="1719" count="3" delay="82"/>
+			<!-- Purgatory Invader Elite Soldier -->
+			<spawn mobId="1718" count="3" delay="82"/>
+		</room>
+		<room id="6">
+			<!-- Purgatory Invader Elite Soldier -->
+			<spawn mobId="1721" count="4" delay="52"/>
+			<!-- Purgatory Invader Warrior -->
+			<spawn mobId="1722" count="4" delay="52"/>
+			<!-- Purgatory Invader Elite Soldier -->
+			<spawn mobId="1720" count="4" delay="52"/>
+		</room>
+		<room id="7">
+			<!-- Purgatory Invader Elite Soldier -->
+			<spawn mobId="1723" count="4" delay="100"/>
+			<!-- Purgatory Invader Elite Soldier -->
+			<spawn mobId="1724" count="4" delay="100"/>
+			<!-- Purgatory Invader Food -->
+			<spawn mobId="1717" count="4" delay="100"/>
+		</room>
+		<room id="8">
+			<!-- Purgatory Invader Elite Soldier -->
+			<spawn mobId="1725" count="4" delay="137"/>
+			<!-- Purgatory Invader Magus -->
+			<spawn mobId="1727" count="4" delay="137"/>
+			<!-- Purgatory Invader Elite Soldier -->
+			<spawn mobId="1726" count="4" delay="137"/>
+		</room>
+		<room id="9">
+			<!-- Anakazel -->
+			<spawn mobId="10335" count="1" delay="600"/>
+		</room>
+	</area>
+	<!-- ########### CAPTAINS AREA ########### -->
+	<area type="4">
+		<room id="1">
+			<!-- Forbidden Path Invader Elite Soldier -->
+			<spawn mobId="1728" count="2" delay="90"/>
+			<!-- Forbidden Path Invader Archer -->
+			<spawn mobId="1730" count="4" delay="80"/>
+			<!-- Forbidden Path Invader Elite Soldier -->
+			<spawn mobId="1729" count="2" delay="90"/>
+		</room>
+		<room id="2">
+			<!-- Forbidden Path Invader Priest -->
+			<spawn mobId="1733" count="3" delay="90"/>
+			<!-- Forbidden Path Invader Shaman -->
+			<spawn mobId="1732" count="2" delay="90"/>
+			<!-- Forbidden Path Invader Elite Soldier -->
+			<spawn mobId="1731" count="3" delay="90"/>
+		</room>
+		<room id="3">
+			<!-- Forbidden Path Invader Martyrs -->
+			<spawn mobId="1735" count="2" delay="86"/>
+			<!-- Forbidden Path Invader Warrior -->
+			<spawn mobId="1736" count="2" delay="86"/>
+			<!-- Forbidden Path Invader Magus -->
+			<spawn mobId="1734" count="2" delay="86"/>
+		</room>
+		<room id="4">
+			<!-- Forbidden Path Invader Soldier -->
+			<spawn mobId="1737" count="2" delay="101"/>
+			<!-- Forbidden Path Invader Disciple -->
+			<spawn mobId="1738" count="2" delay="101"/>
+			<!-- Forbidden Path Invader Berserker -->
+			<spawn mobId="1739" count="2" delay="101"/>
+		</room>
+		<room id="5">
+			<!-- Forbidden Path Invader Food -->
+			<spawn mobId="1740" count="6" delay="82"/>
+			<!-- Forbidden Path Invader Elite Soldier -->
+			<spawn mobId="1741" count="3" delay="82"/>
+			<!-- Forbidden Path Invader Elite Soldier -->
+			<spawn mobId="1742" count="3" delay="82"/>
+		</room>
+		<room id="6">
+			<!-- Forbidden Path Invader Elite Soldier -->
+			<spawn mobId="1744" count="4" delay="52"/>
+			<!-- Forbidden Path Invader Warrior -->
+			<spawn mobId="1745" count="4" delay="52"/>
+			<!-- Forbidden Path Invader Elite Soldier -->
+			<spawn mobId="1743" count="4" delay="52"/>
+		</room>
+		<room id="7">
+			<!-- Forbidden Path Invader Elite Soldier -->
+			<spawn mobId="1746" count="4" delay="100"/>
+			<!-- Forbidden Path Invader Elite Soldier -->
+			<spawn mobId="1747" count="4" delay="100"/>
+			<!-- Forbidden Path Invader Food -->
+			<spawn mobId="1740" count="4" delay="100"/>
+		</room>
+		<room id="8">
+			<!-- Forbidden Path Invader Elite Soldier -->
+			<spawn mobId="1748" count="4" delay="137"/>
+			<!-- Forbidden Path Invader Magus -->
+			<spawn mobId="1750" count="4" delay="137"/>
+			<!-- Forbidden Path Invader Elite Soldier -->
+			<spawn mobId="1749" count="4" delay="137"/>
+		</room>
+		<room id="9">
+			<!-- Anakazel -->
+			<spawn mobId="10336" count="1" delay="600"/>
+		</room>
+	</area>
+	<!-- ########### COMMANDERS AREA ########### -->
+	<area type="5">
+		<room id="1">
+			<!-- Dark Omen Invader Soldier -->
+			<spawn mobId="1751" count="2" delay="90"/>
+			<!-- Dark Omen Invader Archer -->
+			<spawn mobId="1753" count="4" delay="80"/>
+			<!-- Dark Omen Invader Soldier -->
+			<spawn mobId="1752" count="2" delay="90"/>
+		</room>
+		<room id="2">
+			<!-- Dark Omen Invader Priest -->
+			<spawn mobId="1756" count="3" delay="90"/>
+			<!-- Dark Omen Invader Shaman -->
+			<spawn mobId="1755" count="2" delay="90"/>
+			<!-- Dark Omen Invader Elite Soldier -->
+			<spawn mobId="1754" count="3" delay="90"/>
+		</room>
+		<room id="3">
+			<!-- Dark Omen Invader Martyrs -->
+			<spawn mobId="1758" count="2" delay="86"/>
+			<!-- Dark Omen Invader Warrior -->
+			<spawn mobId="1759" count="2" delay="86"/>
+			<!-- Dark Omen Invader Magus -->
+			<spawn mobId="1757" count="2" delay="86"/>
+		</room>
+		<room id="4">
+			<!-- Dark Omen Invader Soldier -->
+			<spawn mobId="1760" count="2" delay="101"/>
+			<!-- Dark Omen Invader Disciple -->
+			<spawn mobId="1761" count="2" delay="101"/>
+			<!-- Dark Omen Invader Berserker -->
+			<spawn mobId="1762" count="2" delay="101"/>
+		</room>
+		<room id="5">
+			<!-- Dark Omen Invader Food -->
+			<spawn mobId="1763" count="6" delay="82"/>
+			<!-- Dark Omen Invader Elite Soldier -->
+			<spawn mobId="1764" count="3" delay="82"/>
+			<!-- Dark Omen Invader Elite Soldier -->
+			<spawn mobId="1765" count="3" delay="82"/>
+		</room>
+		<room id="6">
+			<!-- Dark Omen Invader Elite Soldier -->
+			<spawn mobId="1767" count="4" delay="52"/>
+			<!-- Dark Omen Invader Warrior -->
+			<spawn mobId="1768" count="4" delay="52"/>
+			<!-- Dark Omen Invader Elite Soldier -->
+			<spawn mobId="1766" count="4" delay="52"/>
+		</room>
+		<room id="7">
+			<!-- Dark Omen Invader Elite Soldier -->
+			<spawn mobId="1769" count="4" delay="100"/>
+			<!-- Dark Omen Invader Elite Soldier -->
+			<spawn mobId="1770" count="4" delay="100"/>
+			<!-- Dark Omen Invader Food -->
+			<spawn mobId="1763" count="4" delay="100"/>
+		</room>
+		<room id="8">
+			<!-- Dark Omen Invader Elite Soldier -->
+			<spawn mobId="1771" count="4" delay="137"/>
+			<!-- Dark Omen Invader Magus -->
+			<spawn mobId="1773" count="4" delay="137"/>
+			<!-- Dark Omen Invader Elite Soldier -->
+			<spawn mobId="1772" count="4" delay="137"/>
+		</room>
+		<room id="9">
+			<!-- Anakazel -->
+			<spawn mobId="10337" count="1" delay="600"/>
+		</room>
+	</area>
+	<!-- ########## HEROES AREA ########### -->
+	<area type="6">
+		<room id="1">
+			<!-- Messenger Invader Soldier -->
+			<spawn mobId="1774" count="2" delay="90"/>
+			<!-- Messenger Invader Archer -->
+			<spawn mobId="1776" count="4" delay="80"/>
+			<!-- Messenger Invader Soldier -->
+			<spawn mobId="1775" count="2" delay="90"/>
+		</room>
+		<room id="2">
+			<!-- Messenger Invader Priest -->
+			<spawn mobId="1779" count="3" delay="90"/>
+			<!-- Messenger Invader Shaman -->
+			<spawn mobId="1778" count="2" delay="90"/>
+			<!-- Messenger Invader Elite Soldier -->
+			<spawn mobId="1777" count="3" delay="90"/>
+		</room>
+		<room id="3">
+			<!-- Messenger Invader Martyrs -->
+			<spawn mobId="1781" count="2" delay="86"/>
+			<!-- Messenger Invader Warrior -->
+			<spawn mobId="1782" count="2" delay="86"/>
+			<!-- Messenger Invader Magus -->
+			<spawn mobId="1780" count="2" delay="86"/>
+		</room>
+		<room id="4">
+			<!-- Messenger Invader Soldier -->
+			<spawn mobId="1783" count="2" delay="101"/>
+			<!-- Messenger Invader Disciple -->
+			<spawn mobId="1784" count="2" delay="101"/>
+			<!-- Messenger Invader Berserker -->
+			<spawn mobId="1785" count="2" delay="101"/>
+		</room>
+		<room id="5">
+			<!-- Messenger Invader Food -->
+			<spawn mobId="1786" count="6" delay="82"/>
+			<!-- Messenger Invader Elite Soldier -->
+			<spawn mobId="1787" count="3" delay="82"/>
+			<!-- Messenger Invader Elite Soldier -->
+			<spawn mobId="1788" count="3" delay="82"/>
+		</room>
+		<room id="6">
+			<!-- Messenger Invader Elite Soldier -->
+			<spawn mobId="1790" count="4" delay="52"/>
+			<!-- Messenger Invader Warrior -->
+			<spawn mobId="1791" count="4" delay="52"/>
+			<!-- Messenger Invader Elite Soldier -->
+			<spawn mobId="1789" count="4" delay="52"/>
+		</room>
+		<room id="7">
+			<!-- Messenger Invader Elite Soldier -->
+			<spawn mobId="1792" count="4" delay="100"/>
+			<!-- Messenger Invader Elite Soldier -->
+			<spawn mobId="1793" count="4" delay="100"/>
+			<!-- Messenger Invader Food -->
+			<spawn mobId="1786" count="4" delay="100"/>
+		</room>
+		<room id="8">
+			<!-- Messenger Invader Elite Soldier -->
+			<spawn mobId="1794" count="4" delay="137"/>
+			<!-- Messenger Invader Magus -->
+			<spawn mobId="1796" count="4" delay="137"/>
+			<!-- Messenger Invader Elite Soldier -->
+			<spawn mobId="1795" count="4" delay="137"/>
+		</room>
+		<room id="9">
+			<!-- Anakazel -->
+			<spawn mobId="10338" count="1" delay="600"/>
+		</room>
+	</area>
+</rift>
