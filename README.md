@@ -27,7 +27,7 @@ To add a local repository to workspace, click on `File -> Import -> General -> P
 
 ### Sublime Text 3
 For this editor, the basic packages I suggest you to install are `SublimeLinter` along with its javac extension, `FileManager`, `GitSavvy`, and a terminal of your choice (e.g. `Terminus`).  
-Hit `git clone https://gitlab.com/_DnR_/l2j-lisvus.git` in your CLI.  
+Hit `git clone https://gitlab.com/TheDnR/l2j-lisvus.git` in your CLI.  
 Once you have cloned repository, navigate to `l2j-lisvus` folder and execute `l2j-lisvus.sublime-project` file.
 
 ## Usage
