@@ -1,0 +1,18 @@
+{
+    "folders":
+    [
+        {
+            "path": ".",
+        }
+    ],
+    "settings":
+    {
+        "SublimeLinter.linters.javac.lint": "all",
+        "SublimeLinter.linters.javac.args": [
+			"-encoding", "UTF8",
+			"-cp", "${folder}/core/lib/*",
+			"-d", "${folder}/bin/",
+			"-sourcepath", "${folder}/core/java/;${folder}/datapack/data/scripts/"
+        ],
+    },
+}

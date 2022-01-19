@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<classpath>
-    <classpathentry excluding="**/.git/*|.git" including="**/*.java" kind="src" path="data/scripts"/>
-    <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-    <classpathentry combineaccessrules="false" kind="src" path="/core"/>
-    <classpathentry kind="output" path="bin"/>
-</classpath>

@@ -161,13 +161,9 @@ public class GameServer
 		_gameServer = this;
 		_log.finest("used mem:" + getUsedMemoryMB() + "MB");
 
-		if (Config.SERVER_VERSION != null)
+		if (Config.PROJECT_COMMIT_ID != null)
 		{
-			_log.info("L2J Server Version:    " + Config.SERVER_VERSION);
-		}
-		if (Config.DATAPACK_VERSION != null)
-		{
-			_log.info("L2J Datapack Version:  " + Config.DATAPACK_VERSION);
+			_log.info("L2JLisvus commit: " + Config.PROJECT_COMMIT_ID);
 		}
 		
 		IdFactory.getInstance();

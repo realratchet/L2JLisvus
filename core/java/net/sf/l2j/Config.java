@@ -51,8 +51,6 @@ public final class Config
 	public static final String ALT_SETTINGS_FILE = "./config/AltSettings.properties";
 	/** Properties file for custom configurations */
 	public static final String CUSTOM_FILE = "./config/Custom.properties";
-	/** Properties file for l2j datapack version configurations */
-	public static final String DATAPACK_VERSION_FILE = "./config/l2jdp-version.properties";
 	/** Properties file for events configurations */
 	public static final String EVENTS_FILE = "./config/Events.properties";
 	/** Properties file for extensions */
@@ -83,7 +81,7 @@ public final class Config
 	public static final String PVP_FILE = "./config/PVP.properties";
 	/** Properties file for rates configurations */
 	public static final String RATES_FILE = "./config/Rates.properties";
-	/** Properties file for l2j server version configurations */
+	/** Properties file for server version configurations */
 	public static final String SERVER_VERSION_FILE = "./config/l2j-version.properties";
 	/** Properties file for siege configurations */
 	public static final String SIEGE_FILE = "./config/Siege.properties";
@@ -183,7 +181,7 @@ public final class Config
 	public static String DEFAULT_TRADE_CHAT;
 	/** For test servers - everybody has admin rights */
 	public static boolean EVERYBODY_HAS_ADMIN_RIGHTS;
-	/** Display server revision */
+	/** Display server version */
 	public static boolean DISPLAY_SERVER_VERSION;
 	/** Alternative game crafting */
 	public static boolean ALT_GAME_CREATION;
@@ -873,15 +871,10 @@ public final class Config
 	public static int MMO_MAX_READ_PER_PASS;
 	public static int MMO_HELPER_BUFFER_COUNT;
 	
-	// Server version
-	/** Server version */
-	public static String SERVER_VERSION;
+	/** Project commit ID */
+	public static String PROJECT_COMMIT_ID;
 	/** Date of server build */
 	public static String SERVER_BUILD_DATE;
-	
-	// Datapack version
-	/** Datapack version */
-	public static String DATAPACK_VERSION;
 	
 	/** Zone Setting */
 	public static int ZONE_TOWN;
@@ -1393,7 +1386,7 @@ public final class Config
 			
 			EVERYBODY_HAS_ADMIN_RIGHTS = Boolean.parseBoolean(optionsSettings.getProperty("EverybodyHasAdminRights", "false"));
 			
-			DISPLAY_SERVER_VERSION = Boolean.parseBoolean(optionsSettings.getProperty("DisplayServerRevision", "false"));
+			DISPLAY_SERVER_VERSION = Boolean.parseBoolean(optionsSettings.getProperty("DisplayServerVersion", "false"));
 			
 			DEBUG = Boolean.parseBoolean(optionsSettings.getProperty("Debug", "false"));
 			ASSERT = Boolean.parseBoolean(optionsSettings.getProperty("Assert", "false"));
@@ -1530,28 +1523,12 @@ public final class Config
 			catch (Exception e)
 			{
 				// Ignore Properties file if it doesnt exist
-				SERVER_VERSION = "Unsupported Custom Version.";
+				PROJECT_COMMIT_ID = "Unsupported Commit.";
 				SERVER_BUILD_DATE = "Undefined Date.";
 			}
 			
-			SERVER_VERSION = serverVersion.getProperty("version", "Unsupported Custom Version.");
+			PROJECT_COMMIT_ID = serverVersion.getProperty("commit", "Unsupported Commit.");
 			SERVER_BUILD_DATE = serverVersion.getProperty("builddate", "Undefined Date.");
-			
-			/*
-			 * Load L2J Datapack Version Properties file (if exists)
-			 */
-			Properties datapackVersion = new Properties();
-			try (InputStream is = new FileInputStream(new File(DATAPACK_VERSION_FILE)))
-			{
-				datapackVersion.load(is);
-			}
-			catch (Exception e)
-			{
-				// Ignore Properties file if it doesnt exist
-				DATAPACK_VERSION = "Unsupported Custom Version.";
-			}
-			
-			DATAPACK_VERSION = datapackVersion.getProperty("version", "Unsupported Custom Version.");
 			
 			// Τelnet
 			Properties telnetSettings = new Properties();

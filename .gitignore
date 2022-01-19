@@ -1,4 +1,5 @@
 **/.settings
+**/*.sublime-workspace
 **/.svn
 **/bin
 **/build

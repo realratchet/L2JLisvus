@@ -218,10 +218,9 @@ public class EnterWorld extends L2GameClientPacket
 
 		if (Config.DISPLAY_SERVER_VERSION)
 		{
-			if (Config.SERVER_VERSION != null)
+			if (Config.PROJECT_COMMIT_ID != null)
 			{
-				activeChar.sendMessage(getText("TDJKIFNlcnZlciBWZXJzaW9uOg==") + "   " + Config.SERVER_VERSION);
-				activeChar.sendMessage(getText("TDJKIFNlcnZlciBCdWlsZCBEYXRlOg==") + " " + Config.SERVER_BUILD_DATE);
+				activeChar.sendMessage("L2JLisvus commit " + Config.PROJECT_COMMIT_ID);
 			}
 		}
 
@@ -462,15 +461,6 @@ public class EnterWorld extends L2GameClientPacket
 				break;
 			}
 		}
-	}
-	
-	/**
-	 * @param string
-	 * @return
-	 */
-	private String getText(String string)
-	{
-		return new String(Base64.getDecoder().decode(string));
 	}
 
 	/*

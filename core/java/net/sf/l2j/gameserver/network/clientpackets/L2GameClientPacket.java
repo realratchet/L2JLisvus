@@ -41,7 +41,7 @@ public abstract class L2GameClientPacket extends ReceivablePacket<L2GameClient>
 		}
 		catch (Exception e)
 		{
-			_log.log(Level.SEVERE, "Client: " + getClient().toString() + " - Failed reading: " + getType() + " - L2J Server Version: " + Config.SERVER_VERSION + " - DP Revision: " + Config.DATAPACK_VERSION + " ; " + e.getMessage(), e);
+			_log.log(Level.SEVERE, "Client: " + getClient().toString() + " - Failed reading: " + getType() + " - L2JLisvus commit: " + Config.PROJECT_COMMIT_ID + " ; " + e.getMessage(), e);
 			
 			if (e instanceof BufferUnderflowException)
 			{
@@ -79,7 +79,7 @@ public abstract class L2GameClientPacket extends ReceivablePacket<L2GameClient>
 		}
 		catch (Throwable t)
 		{
-			_log.log(Level.SEVERE, "Client: " + getClient().toString() + " - Failed running: " + getType() + " - L2J Server Version: " + Config.SERVER_VERSION + " - DP Revision: " + Config.DATAPACK_VERSION + " ; " + t.getMessage(), t);
+			_log.log(Level.SEVERE, "Client: " + getClient().toString() + " - Failed running: " + getType() + " - L2JLisvus commit: " + Config.PROJECT_COMMIT_ID + " ; " + t.getMessage(), t);
 			// in case of EnterWorld error kick player from game
 			if (this instanceof EnterWorld)
 			{

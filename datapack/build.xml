@@ -23,7 +23,7 @@
 	<property name="build.dist.login" location="${build.dist}/login"/>
   	<property name="build.dist.sql" location="${build.dist}/sql"/>
   	<property name="build.dist.tools" location="${build.dist}/tools"/>
-  	<property name="properties-file" location="${build.dist.game}/config/l2jdp-version.properties"/>
+  	<property name="properties-file" location="${build.dist.game}/config/l2j-version.properties"/>
 
   	<target name="init"
     		description="Create the output directories. Do nothing if directories were already created.">
@@ -84,18 +84,18 @@
   	</target>
 
   	<target name="version" depends="init"
-    		description="Create l2jdp-version.properties file">
+    		description="Create l2j-version.properties file">
     	<tstamp>
       		<format property="build.tstamp" pattern="yyyyMMdd_HHmm"/>
     	</tstamp>
-    	<exec dir="." executable="git" outputproperty="l2jdp.revision" failifexecutionfails="false">
+    	<exec dir="." executable="git" outputproperty="l2j.commit" failifexecutionfails="false">
       		<arg value="log"/>
 			<arg value="-1"/>
 			<arg value="--pretty=format:%h"/>
     	</exec>
-  		<echo message="Revision ${l2jdp.revision}"/>
+  		<echo message="Commit ${l2j.commit}"/>
     	<concat destfile="${properties-file}">
-			version=${l2jdp.revision}
+			commit=${l2j.commit}
     		builddate=${build.tstamp}
     	</concat>
   	</target>

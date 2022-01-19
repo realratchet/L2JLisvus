@@ -702,17 +702,17 @@ echo.
 echo I'll try to gather some version-related information that you
 echo may find useful when asking for support:
 echo.
-set dpvf="..\gameserver\config\l2jdp-version.properties"
-echo Datapack revision reported by properties file:
-if NOT EXIST %dpvf% (
-echo   Your %dpvf% file is missing!
-echo   Use eclipse/ant to build one from your DP repository copy.
+set cf="..\gameserver\config\l2j-commit.properties"
+echo Datapack commit reported by properties file:
+if NOT EXIST %cf% (
+echo   Your %cf% file is missing!
+echo   Use eclipse/ant to build one from your repository copy.
 echo   With it, we'll be able to help you better.
 ) else (
-type %dpvf% | find "version" 2> NUL
+type %cf% | find "version" 2> NUL
 if not %ERRORLEVEL% == 0 (
 echo   An error occured while trying to read
-echo   your %dpvf% file!
+echo   your %cf% file!
 echo   Make sure you keep it up to date
 echo   and in the correct place.
 echo %ERRORLEVEL%

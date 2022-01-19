@@ -175,15 +175,15 @@
     	  	<format property="build.tstamp" pattern="yyyyMMdd_HHmm"/>
     	</tstamp>
 
-    	<exec dir="." executable="git" outputproperty="l2j.revision" failifexecutionfails="false">
+    	<exec dir="." executable="git" outputproperty="l2j.commit" failifexecutionfails="false">
     	  	<arg value="log"/>
             <arg value="-1"/>
             <arg value="--pretty=format:%h"/>
     	</exec>
-    	<echo message="Revision ${l2j.revision}"/>
+    	<echo message="Commit ${l2j.commit}"/>
     	
       	<concat destfile="${build.dist.game}/config/l2j-version.properties">
-			version=${l2j.revision}
+			commit=${l2j.commit}
         	builddate=${build.tstamp}
       	</concat>
     </target>
