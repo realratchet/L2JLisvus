@@ -28,9 +28,6 @@ public class Q003_WillTheSealBeBroken extends Quest
     private static final int TAINT_STONE = 1082;
     private static final int SUCCUBUS_BLOOD = 1083;
     
-    // Reward
-    private static final int SCROLL_ENCHANT_ARMOR_D = 956;
-    
     public static void main(String[] args)
     {
         new Q003_WillTheSealBeBroken();
@@ -95,7 +92,8 @@ public class Q003_WillTheSealBeBroken extends Quest
                     st.takeItems(ONYX_BEAST_EYE, 1);
                     st.takeItems(SUCCUBUS_BLOOD, 1);
                     st.takeItems(TAINT_STONE, 1);
-                    st.giveItems(SCROLL_ENCHANT_ARMOR_D, 1);
+                    st.giveItems(57, 4900);
+                    st.addExpAndSp(5000, 0);
                     st.playSound(QuestState.SOUND_FINISH);
                     st.exitQuest(false);
                 }

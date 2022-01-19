@@ -37,7 +37,7 @@ public class Q002_WhatWomenWant extends Quest
     private static final int GREENIS_LETTER = 693;
     
     // Rewards
-    private static final int MYSTICS_EARRING = 113;
+    private static final int BEGINNERS_POTION = 1073;
     
     public static void main(String[] args)
     {
@@ -123,7 +123,7 @@ public class Q002_WhatWomenWant extends Quest
                         {
                             htmltext = "7223-10.htm";
                             st.takeItems(GREENIS_LETTER, 1);
-                            st.giveItems(MYSTICS_EARRING, 1);
+                            st.giveItems(BEGINNERS_POTION, 5);
                             st.playSound(QuestState.SOUND_FINISH);
                             st.exitQuest(false);
                         }
