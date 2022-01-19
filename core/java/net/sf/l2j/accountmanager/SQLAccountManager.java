@@ -47,6 +47,8 @@ public class SQLAccountManager
         Server.SERVER_MODE = Server.MODE_LOGINSERVER;
         Config.load();
 
+        L2DatabaseFactory.getInstance();
+
         try (InputStreamReader ir = new InputStreamReader(System.in);
             LineNumberReader _in = new LineNumberReader(ir))
         {

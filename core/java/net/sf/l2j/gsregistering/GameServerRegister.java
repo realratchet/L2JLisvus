@@ -38,7 +38,7 @@ public class GameServerRegister
 		Server.SERVER_MODE = Server.MODE_LOGINSERVER;
 		Config.load();
 
-		GameServerTable.getInstance();
+		L2DatabaseFactory.getInstance();
 
 		GameServerTable gameServerTable = GameServerTable.getInstance();
 		System.out.println("Welcome to L2JLisvus GameServer Registration.");
