@@ -73,7 +73,7 @@ Server startup will be completed once gameserver console has printed `Registered
 
 
 ## Contributing
-I'll gladly accept merge requests provided that I agree to changes and that it's not breaking any existing features.
+I'll gladly accept merge requests provided that I agree to changes and those changes don't break any existing features.
 
 ## Support
 The most desired method to report an issue is using gitlab's issue tracker.  
