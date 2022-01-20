@@ -1,4 +1,8 @@
 # L2JLisvus Chronicle 4: Scions of Destiny
+[![GitLab latest release](https://badgen.net/gitlab/release/TheDnR/l2j-lisvus)](https://gitlab.com/TheDnR/l2j-lisvus/-/releases)
+[![Website www.l2jlisvus.eu](https://img.shields.io/website-up-down-green-red/http/www.l2jlisvus.eu.svg)](https://www.l2jlisvus.eu/)
+[![Discord](https://img.shields.io/discord/622789181973987338.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2)](https://discord.gg/nsw2s4G)
+[![made-with-java](https://img.shields.io/badge/Made%20with-Java-1791ce.svg)](https://java.com/)
 
 ## Description
 This is a fork of L2J server emulator.  
@@ -16,7 +20,7 @@ On top of that, years have passed and game is old. Even so, I still apply improv
 - MySQL or MariaDB
 - Git
 
-Note: An IDE may already include few of those.
+**Note:** An IDE may already include few of those.
 
 ## Development setup
 
@@ -24,11 +28,18 @@ Note: An IDE may already include few of those.
 To clone and add project to workspace, click on `File -> Import -> Git -> Projects from Git -> Clone URI` and paste project URI.  
 To add a local repository to workspace, click on `File -> Import -> General -> Projects from Folder or Archive` and select directory to import. Then, click Finish.
 
+### Visual Studio Code
+For this editor, I suggest that you install `Extension Pack for Java` extension.  
+Hit `git clone https://gitlab.com/TheDnR/l2j-lisvus.git` in your CLI.  
+Once you have cloned repository, go to editor and click `File -> Open Folder` and select `l2j-lisvus` folder.
 
 ### Sublime Text 3
 For this editor, the basic packages I suggest you to install are `SublimeLinter` along with its javac extension, `FileManager`, `GitSavvy`, and a terminal of your choice (e.g. `Terminus`).  
 Hit `git clone https://gitlab.com/TheDnR/l2j-lisvus.git` in your CLI.  
 Once you have cloned repository, navigate to `l2j-lisvus` folder and execute `l2j-lisvus.sublime-project` file.
+
+**Note:** In Windows, linter of both editors will be quite slow to apply syntax highlighting. That is because project has so many files.  
+If you plan on using files for development purposes, do yourself a favor and start using a linux distro.
 
 ## Usage
 Builds are created using Ant builder. Both `core` and `datapack` folders contain a `build.xml` file for Ant to export build packages.
