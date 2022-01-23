@@ -1277,33 +1277,14 @@ public abstract class L2Character extends L2Object
         	case TARGET_AURA_UNDEAD:
         		target = this;
         		break;
-        	case TARGET_SELF:
-			case TARGET_PET:
-			case TARGET_OWNER_PET:
-			case TARGET_PARTY:
-			case TARGET_CLAN:
-			case TARGET_ALLY:
-				isFirstTarget = true;
 			default:
 				if (targets == null || targets.length == 0)
 				{
 					getAI().notifyEvent(CtrlEvent.EVT_CANCEL);
 					return;
 				}
-				
-				switch (skill.getSkillType())
-        		{
-        			case BUFF:
-        			case HEAL:
-        			case COMBATPOINTHEAL:
-        			case MANAHEAL:
-        			case REFLECT:
-        			case SEED:
-        				isFirstTarget = true;
-        				break;
-        		}
-				
-				target = isFirstTarget ? (L2Character) targets[0] : (L2Character) getTarget();
+				target = (L2Character) targets[0];
+				break;
         }
 		
 		if (target == null)
@@ -1454,9 +1435,12 @@ public abstract class L2Character extends L2Object
 			crit = skill.isCritical(this, target);
 		}
 
+		// This is a small hack to maintain bow skills animation
+		final int visualHitTime = hitTime < 1200 && skill.isOffensive() && (L2WeaponType.BOW.mask() & skill.getWeaponsAllowed()) != 0 ? 1200 : hitTime;
+
 		// Send a Server->Client packet MagicSkillUse with target, displayId, level, hitTime, reuseDelay
 		// to the L2Character AND to all L2PcInstance in the _KnownPlayers of the L2Character
-		broadcastPacket(new MagicSkillUse(this, target, displayId, level, hitTime, reuseDelay, !skill.isMagic() && crit));
+		broadcastPacket(new MagicSkillUse(this, target, displayId, level, visualHitTime, reuseDelay, !skill.isMagic() && crit));
 		
 		// Send skill cast messages to the L2Character
 		if ((this instanceof L2PcInstance) && (magicId != 1312))
