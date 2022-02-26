@@ -47,6 +47,7 @@ Most IDEs have built-in support for Ant Builds.
 
 When it comes to editors, the easiest method to use Ant is to download and set it up, then use it in your CLI.  
 Its usage is as easy as navigating into source directories by hitting `cd core` or `cd datapack` respectively, and hit `ant` command.  
+You can also perform both builds from project root directory by hitting `ant -f core/build.xml` and `ant -f datapack/build.xml` commands.  
 Build process exports a `build` directory that contains compiler output in various formats (e.g. zip).
 
 Once builds are done for both `core` and `datapack`, you can create a folder for your server files (e.g. myfirstl2server) and extract `zip` archives from `build` folders.

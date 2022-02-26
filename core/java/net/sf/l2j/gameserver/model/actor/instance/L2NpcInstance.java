@@ -928,26 +928,31 @@ public class L2NpcInstance extends L2Character
 	}
 	
 	/**
-	 * Return the L2Castle this L2NpcInstance belongs to.
+	 * Return the Castle this L2NpcInstance belongs to.
 	 * @return
 	 */
 	public final Castle getCastle()
 	{
 		if (_castleIndex < 0)
 		{
+			int castleId = 0;
 			L2TownZone town = TownManager.getTown(getX(), getY(), getZ());
 			if (town != null)
 			{
-				_castleIndex = CastleManager.getInstance().getCastleIndex(town.getTaxById());
+				_isInTown = town.getTaxById() != 0; // Npc was spawned in a town that pays taxes to a castle
+				castleId = town.getTaxById();
+			}
+
+			int castleIdByNpc = getCastleIdByNpc();
+			castleId = castleIdByNpc != 0 ? castleIdByNpc : castleId;
+			if (castleId != 0)
+			{
+				_castleIndex = CastleManager.getInstance().getCastleIndex(castleId);
 			}
 			
 			if (_castleIndex < 0)
 			{
 				_castleIndex = CastleManager.getInstance().findNearestCastleIndex(this);
-			}
-			else
-			{
-				_isInTown = true; // Npc was spawned in town
 			}
 		}
 		
@@ -959,6 +964,11 @@ public class L2NpcInstance extends L2Character
 		return CastleManager.getInstance().getCastles().get(_castleIndex);
 		
 	}
+
+	protected int getCastleIdByNpc()
+    {
+        return 0;
+    }
 	
 	public boolean getIsInCastleTown()
 	{

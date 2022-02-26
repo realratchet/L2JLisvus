@@ -123,20 +123,19 @@ public class NpcInfo extends L2GameServerPacket
 			// Check if NPC is inside town
 			if (cha.getIsInCastleTown())
 			{
-				int taxId = 0;
-				// Check if castle has owner
-				if (cha.getCastle().getOwnerId() != 0)
+				int ownerId = cha.getCastle().getOwnerId();
+
+				// Check if castle is owned
+				if (ownerId != 0)
 				{
-					taxId = TownManager.getTown(_x, _y, _z).getTaxById();
-				}
-				
-				if (taxId != 0)
-				{
-					L2Clan clan = ClanTable.getInstance().getClan(cha.getCastle().getOwnerId());
-					_clanCrest = clan.getCrestId();
-					_clanId = clan.getClanId();
-					_allyCrest = clan.getAllyCrestId();
-					_allyId = clan.getAllyId();
+					L2Clan clan = ClanTable.getInstance().getClan(ownerId);
+					if (clan != null)
+					{
+						_clanCrest = clan.getCrestId();
+						_clanId = clan.getClanId();
+						_allyCrest = clan.getAllyCrestId();
+						_allyId = clan.getAllyId();
+					}
 				}
 			}
 		}

@@ -40,9 +40,7 @@ public class L2SiegeNpcInstance extends L2FolkInstance
     @Override
 	public void showChatWindow(L2PcInstance player)
     {
-        final int castleId = getCastleIdForNpc();
-        final Castle castle = castleId != -1 ? CastleManager.getInstance().getCastleById(castleId) : getCastle();
-
+        Castle castle = getCastle();
         if (castle != null)
         {
             if (!castle.getSiege().getIsInProgress())
@@ -61,9 +59,10 @@ public class L2SiegeNpcInstance extends L2FolkInstance
         player.sendPacket(new ActionFailed());
     }
 
-    private int getCastleIdForNpc()
+    @Override
+    protected int getCastleIdByNpc()
     {
-        int castleId = -1;
+        int castleId = 0;
         switch(getNpcId())
         {
             case 12122:

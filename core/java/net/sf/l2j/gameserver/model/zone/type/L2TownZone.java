@@ -28,13 +28,15 @@ public class L2TownZone extends L2ZoneSpawn
 {
     private int _townId;
     private int _redirectTownId;
-    private int _taxById;
+    private int _taxById;
+
 
     public L2TownZone(int id)
     {
         super(id);
 
-        _taxById = 0;
+        _taxById = 0;
+
         // Default to Giran
         _redirectTownId = 9;
     }
