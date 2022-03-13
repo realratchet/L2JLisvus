@@ -861,9 +861,10 @@ public class Quest extends ManagedScript
 		}
 	}
 	
-	public L2NpcTemplate addStartNpc(int npcId)
+	public void addStartNpc(int... npcIds)
 	{
-		return addEventId(npcId, Quest.QuestEventType.QUEST_START);
+		for (int npcId : npcIds)
+			addEventId(npcId, Quest.QuestEventType.QUEST_START);
 	}
 	
 	/**
