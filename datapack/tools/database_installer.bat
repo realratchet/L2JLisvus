@@ -118,7 +118,11 @@ echo.
 echo %mysqlPath%
 )
 if not "%mysqlBinPath%" == "use path" call :binaryfind
-echo %path% | findstr /i /c:"mysql" > NUL
+echo.
+echo Searching for MySQL binaries inside PATH...
+echo.
+WHERE findstr > NUL 2> NUL
+if %errorlevel% == 0 echo %path% | findstr /i /c:"mysql" > NUL
 if %errorlevel% == 0 (
 echo I found MySQL is in your PATH, this will be used by default.
 echo If you want to use something different, change 'use path' for
