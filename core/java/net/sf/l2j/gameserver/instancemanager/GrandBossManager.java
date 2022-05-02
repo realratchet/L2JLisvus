@@ -18,8 +18,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Logger;
 
@@ -241,14 +241,11 @@ public class GrandBossManager
                     continue;
 
                 Integer id = zone.getId();
-                List<Integer> list = zone.getAllowedPlayers();
-                if (list == null)
+                Set<Integer> allowedPlayers = zone.getAllowedPlayers();
+                if (allowedPlayers == null || allowedPlayers.isEmpty())
                     continue;
 
-                if (list.isEmpty())
-                    continue;
-
-                for (Integer player : list)
+                for (Integer player : allowedPlayers)
                 {
                     try (PreparedStatement statement = con.prepareStatement("INSERT INTO grandboss_list (player_id,zone) VALUES (?,?)"))
                     {

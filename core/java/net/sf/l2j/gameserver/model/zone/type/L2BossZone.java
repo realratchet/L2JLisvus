@@ -14,8 +14,8 @@
  */
 package net.sf.l2j.gameserver.model.zone.type;
 
-import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 
@@ -38,26 +38,18 @@ public class L2BossZone extends L2ZoneType
 	// to log back into the zone as long as their log-out was within _timeInvade
 	// time...
 	// <player objectId, expiration time in milliseconds>
-	private Map<Integer, Long> _playerAllowedReEntryTimes;
-	
-	private int[] _oustLoc =
-	{
-		0,
-		0,
-		0
-	};
+	private final Map<Integer, Long> _playerAllowedReEntryTimes = new ConcurrentHashMap<>();
 	
 	// track the players admitted to the zone who should be allowed back in
 	// after reboot/server downtime (outside of their control), within 30
 	// of server restart
-	private List<Integer> _playersAllowed;
+	private final Set<Integer> _playersAllowed = ConcurrentHashMap.newKeySet();
+
+	private final int[] _oustLoc = new int[3];
 	
 	public L2BossZone(int id)
 	{
 		super(id);
-		_playerAllowedReEntryTimes = new ConcurrentHashMap<>();
-		_playersAllowed = new CopyOnWriteArrayList<>();
-		_oustLoc = new int[3];
 	}
 	
 	@Override
@@ -200,13 +192,7 @@ public class L2BossZone extends L2ZoneType
 		return _timeInvade;
 	}
 	
-	public void setAllowedPlayers(List<Integer> players)
-	{
-		if (players != null)
-			_playersAllowed = players;
-	}
-	
-	public List<Integer> getAllowedPlayers()
+	public Set<Integer> getAllowedPlayers()
 	{
 		return _playersAllowed;
 	}
