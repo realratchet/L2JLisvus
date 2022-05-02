@@ -255,7 +255,14 @@ public class GrandBossManager
                     }
                 }
             }
+        }
+        catch (Exception e)
+        {
+            _log.warning(getClass().getSimpleName() + ": Could not store players boss zone data to database. Reason: " + e);
+        }
 
+        try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+        {
             for (Integer bossId : _storedInfo.keySet())
             {
                 L2GrandBossInstance boss = _bosses.get(bossId);
@@ -299,7 +306,7 @@ public class GrandBossManager
         }
         catch (Exception e)
         {
-            _log.warning(getClass().getSimpleName() + ": Could not store Grand Bosses to database. Reason: " + e);
+            _log.warning(getClass().getSimpleName() + ": Could not store boss spawn data to database. Reason: " + e);
         }
     }
 
