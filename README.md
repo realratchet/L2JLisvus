@@ -78,7 +78,7 @@ I'll gladly accept merge requests provided that I agree to changes and those cha
 
 ## Support
 The most desired method to report an issue is using gitlab's issue tracker.  
-Otherwise, visit [forum](https://l2jlisvus.eu) or join [discord channel](https://discord.gg/nsw2s4G).
+Otherwise, visit [forum](https://www.l2jlisvus.eu) or join [discord channel](https://discord.gg/nsw2s4G).
 
 ## License
 Project is under the `GNU GPLv3`.
