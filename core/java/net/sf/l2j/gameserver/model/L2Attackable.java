@@ -1376,26 +1376,40 @@ public class L2Attackable extends L2NpcInstance
 	 */
 	private int calculateLevelModifierForDrop(L2PcInstance lastAttacker)
 	{
+		int level = getLevel();
 		if (Config.DEEPBLUE_DROP_RULES)
 		{
 			int highestLevel = lastAttacker.getLevel();
 			
-			// Check to prevent very high level player to nearly kill mob and let low level player do the last hit.
-			if ((getAttackByList() != null) && !getAttackByList().isEmpty())
+			// Check to prevent very high level player to nearly kill mob and let low level player do the last hit
+			List<L2Character> attackers = getAttackByList();
+			if (attackers != null)
 			{
-				for (L2Character atkChar : getAttackByList())
+				for (L2Character attacker : attackers)
 				{
-					if ((atkChar != null) && (atkChar.getLevel() > highestLevel))
+					if (attacker == null)
 					{
-						highestLevel = atkChar.getLevel();
+						continue;
+					}
+
+					int attackerLevel = attacker.getLevel();
+					// In the case of a raid boss, do not consider high level players since aggressive bosses may attack and add them to attack list
+					if (isRaid() && attackerLevel > (level + L2Character.RAID_LEVEL_MAX_DIFFERENCE))
+					{
+						continue;
+					}
+
+					if (attackerLevel > highestLevel)
+					{
+						highestLevel = attackerLevel;
 					}
 				}
 			}
 			
 			// According to official data (Prima), deep blue mobs are 9 or more levels below players
-			if ((highestLevel - 9) >= getLevel())
+			if ((highestLevel - 9) >= level)
 			{
-				return ((highestLevel - (getLevel() + 8)) * 9);
+				return ((highestLevel - (level + 8)) * 9);
 			}
 		}
 		

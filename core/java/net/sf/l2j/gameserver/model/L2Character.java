@@ -207,6 +207,8 @@ public abstract class L2Character extends L2Object
 	/** Map(Integer, L2Skill) containing all skills of the L2Character */
 	protected Map<Integer, L2Skill> _skills;
 
+	public static final int RAID_LEVEL_MAX_DIFFERENCE = 8;
+
 	/** Zone system */
 	public static final byte ZONE_PVP = 0;
 	public static final byte ZONE_PEACE = 1;
@@ -5007,7 +5009,7 @@ public abstract class L2Character extends L2Object
 			level = ((L2Summon) this).getOwner().getLevel() > getLevel() ? ((L2Summon) this).getOwner().getLevel() : getLevel();
 		}
 		
-		if (target.isRaid() && level > (target.getLevel() + 8))
+		if (target.isRaid() && level > (target.getLevel() + RAID_LEVEL_MAX_DIFFERENCE))
 		{
 			L2Skill skill = SkillTable.getInstance().getInfo(4515, 1);
 			if (skill != null)
@@ -5036,7 +5038,7 @@ public abstract class L2Character extends L2Object
 				double reflectPercent = target.getStat().calcStat(Stats.REFLECT_DAMAGE_PERCENT, 0, null, null);
 
 				// Check if RaidBoss level is high enough for reflect
-				if (target.isRaid() && (getLevel() > (target.getLevel() + 8)))
+				if (target.isRaid() && (getLevel() > (target.getLevel() + RAID_LEVEL_MAX_DIFFERENCE)))
 				{
 					reflectPercent = 0;
 				}
@@ -6019,9 +6021,9 @@ public abstract class L2Character extends L2Object
 					L2Character targetsCastTarget = target.getAI().getCastTarget();
 
 					// Check Raid boss attack
-					if ((target.isRaid() && (level > (target.getLevel() + 8))) || (!skill.isOffensive() && (targetsAttackTarget != null) && targetsAttackTarget.isRaid() && targetsAttackTarget.getAttackByList().contains(target) // has attacked raid
-						&& (level > (targetsAttackTarget.getLevel() + 8))) || (!skill.isOffensive() && (targetsCastTarget != null) && targetsCastTarget.isRaid() && targetsCastTarget.getAttackByList().contains(target) // has attacked raid
-							&& (level > (targetsCastTarget.getLevel() + 8))))
+					if ((target.isRaid() && (level > (target.getLevel() + RAID_LEVEL_MAX_DIFFERENCE))) || (!skill.isOffensive() && (targetsAttackTarget != null) && targetsAttackTarget.isRaid() && targetsAttackTarget.getAttackByList().contains(target) // has attacked raid
+						&& (level > (targetsAttackTarget.getLevel() + RAID_LEVEL_MAX_DIFFERENCE))) || (!skill.isOffensive() && (targetsCastTarget != null) && targetsCastTarget.isRaid() && targetsCastTarget.getAttackByList().contains(target) // has attacked raid
+							&& (level > (targetsCastTarget.getLevel() + RAID_LEVEL_MAX_DIFFERENCE))))
 					{
 						L2Skill tempSkill = SkillTable.getInstance().getInfo(4215, 1);
 						if (tempSkill != null)
@@ -6194,7 +6196,7 @@ public abstract class L2Character extends L2Object
 											level = ((L2Summon) this).getOwner().getLevel() > getLevel() ? ((L2Summon) this).getOwner().getLevel() : getLevel();
 										}
 										
-										if (level > (npcMob.getLevel() + 8) && npcMob.getAttackByList().contains(target))
+										if (level > (npcMob.getLevel() + RAID_LEVEL_MAX_DIFFERENCE) && npcMob.getAttackByList().contains(target))
 										{
 											L2Skill tempSkill = SkillTable.getInstance().getInfo(4215, 1);
 											if (tempSkill != null)
