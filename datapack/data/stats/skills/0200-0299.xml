@@ -127,7 +127,8 @@
   <set name="operateType" val="OP_PASSIVE"/>
   <for>
     <add order="0x40" stat="pAtk" val="#pAtk">
-      <using kind="Pole"/>
+      <using kind="Pole"/>
+
     </add>
     <add order="0x40" stat="atkCountMax" val="#atkCountMax">
       <using kind="Pole"/>
@@ -174,8 +175,16 @@
   <table name="#enchantMagicLvl"> 76 76 76 77 77 77 78 78 78 79 79 79 80 80 80 81 81 81 82 82 82 82 83 83 83 84 84 85 85 85 </table>
   <enchant1 name="magicLvl" val="#enchantMagicLvl"/>
   <enchant2 name="magicLvl" val="#enchantMagicLvl"/>
-  <table name="#ench2MpConsume"> 82 80 78 77 75 74 72 70 69 67 66 64 62 61 59 58 56 54 53 51 50 48 46 45 43 42 40 38 37 35 </table>
-  <table name="#ench1Chance"> 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 68 69 70 71 72 73 74 75 76 77 78 </table>
+  <table name="#ench2MpConsume">
+ 82 80 78 77 75 74 72 70 69 67
+ 66 64 62 61 59 58 56 54 53 51
+ 50 48 46 45 43 42 40 38 37 35
+ </table>
+
+  <table name="#ench1Chance">
+ 50 51 52 53 54 55 56 57 58 59
+ 60 61 62 63 64 65 66 67 68 68
+ 69 70 71 72 73 74 75 76 77 78 </table>
   <table name="#mpConsume"> 23 24 25 27 29 30 31 31 33 35 36 37 40 41 43 43 44 45 47 48 49 51 52 54 55 55 56 58 59 61 62 63 65 66 68 68 69 70 72 73 74 75 77 78 79 80 81 82 83 </table>
   <table name="#power"> 41.0 44.0 48.0 55.0 59.0 64.0 73.0 79.0 84.0 96.0 102.0 109.0 123.0 131.0 139.0 148.0 157.0 166.0 175.0 185.0 196.0 206.0 217.0 229.0 241.0 253.0 266.0 279.0 292.0 306.0 320.0 334.0 349.0 364.0 379.0 395.0 410.0 426.0 443.0 459.0 475.0 492.0 509.0 526.0 542.0 559.0 576.0 593.0 609.0 </table>
   <table name="#bleedpower"> 13 13 13 13 13 13 17 17 17 17 17 17 17 17 22 22 22 22 22 22 22 22 22 22 27 27 27 27 27 27 27 27 27 33 33 33 33 33 33 33 33 38 38 38 38 38 38 38 38 </table>
@@ -197,8 +206,10 @@
   <set name="effectRange" val="400"/>
   <set name="effectType" val="BLEED"/>
   <set name="effectPower" val="50"/>
-  <enchant1 name="effectPower" val="#ench1Chance"/>
-  <enchant2 name="mpConsume" val="#ench2MpConsume"/>
+  <enchant1 name="effectPower" val="#ench1Chance"/>
+
+  <enchant2 name="mpConsume" val="#ench2MpConsume"/>
+
   <for>
     <effect count="7" name="DamOverTime" time="3" val="#bleedpower" abnormal="bleeding"/>
   </for>
@@ -486,6 +497,7 @@
   <set name="mpConsume" val="0"/>
   <set name="target" val="TARGET_HOLY"/>
   <set name="hitTime" val="180000"/>
+  <set name="staticHitTime" val="true"/>
   <set name="skillType" val="TAKECASTLE"/>
   <set name="operateType" val="OP_ACTIVE"/>
   <set name="castRange" val="85"/>
@@ -515,7 +527,8 @@
 </skill>
 <skill id="249" levels="42" name="Weapon Mastery">
   <table name="#pAtk"> 1.5 2.8 4.5 5.7 6.7 8.3 9.5 11.6 13.3 16 17 18.1 20.4 21.6 22.8 25.5 26.9 28.3 31.4 33 34.6 38 39.8 41.7 43.5 45.4 47.4 49.4 51.4 53.5 55.6 57.7 59.9 62.0 64.1 66.8 68.5 70.7 72.9 75.1 77.2 79.4 </table>
-  <table name="#mAtk"> 1.9 3.5 5.7 7.2 8.3 10.3 11.9 14.6 16.6 20 21.3 22.6 25.4 26.9 28.5 31.8 33.6 35.4 39.2 41.2 43.2 47.5 49.8 52.1 54.4 56.8 59.2 61.7 64.3 66.8 69.4 72.1 74.8 77.4 80.2 82.9 85.6 88.4 91.1 93.8 96.5 99.3 </table>
+  <table name="#mAtk"> 1.9 3.5 5.7 7.2 8.3 10.3 11.9 14.6 16.6 20 21.3 22.6 25.4 26.9 28.5 31.8 33.6 35.4 39.2 41.2 43.2 47.5 49.8 52.1 54.4 56.8 59.2 61.7 64.3 66.8 69.4 72.1 74.8 77.4 80.2 82.9 85.6 88.4 91.1 93.8 96.5 99.3 </table>
+
   <set name="target" val="TARGET_SELF"/>
   <set name="skillType" val="BUFF"/>
   <set name="operateType" val="OP_PASSIVE"/>

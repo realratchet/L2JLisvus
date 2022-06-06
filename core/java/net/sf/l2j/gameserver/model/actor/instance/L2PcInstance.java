@@ -7788,7 +7788,7 @@ public final class L2PcInstance extends L2PlayableInstance
 				return isInOlympiadMode() && isOlympiadStart() && player.getOlympiadGameId() == getOlympiadGameId();
 			}
 			
-			if (player.getSiegeState() == 2 && player.isInsideZone(L2Character.ZONE_SIEGE) 
+			if (player.getSiegeState() != 0 && player.isInsideZone(L2Character.ZONE_SIEGE) 
 				&& player.getSiegeState() == getSiegeState() && player.getSiegeSide() == getSiegeSide())
 			{
 				return false;
@@ -8253,7 +8253,7 @@ public final class L2PcInstance extends L2PlayableInstance
 					return false;
 				}
 				
-				if (getSiegeState() == 2 && isInsideZone(L2Character.ZONE_SIEGE) 
+				if (getSiegeState() != 0 && isInsideZone(L2Character.ZONE_SIEGE) 
 					&& getSiegeState() == targetPlayer.getSiegeState() && getSiegeSide() == targetPlayer.getSiegeSide())
 				{
 					return false;
@@ -8338,7 +8338,7 @@ public final class L2PcInstance extends L2PlayableInstance
 						return !checkIfOffensive;
 					}
 					
-					if (getSiegeState() == 2 && isInsideZone(L2Character.ZONE_SIEGE) 
+					if (getSiegeState() != 0 && isInsideZone(L2Character.ZONE_SIEGE) 
 						&& getSiegeState() == targetPlayer.getSiegeState() && getSiegeSide() == targetPlayer.getSiegeSide())
 					{
 						return !checkIfOffensive;

@@ -330,7 +330,7 @@ public class L2CubicInstance
 						}
 						
 						// Defending alliances
-						if (_owner.getSiegeState() == 2 && _owner.getSiegeState() == enemy.getSiegeState() && _owner.getSiegeSide() == enemy.getSiegeSide()
+						if (_owner.getSiegeState() != 0 && _owner.getSiegeState() == enemy.getSiegeState() && _owner.getSiegeSide() == enemy.getSiegeSide()
 							&& _owner.isInsideZone(L2Character.ZONE_SIEGE))
 						{
 							targetIt = false;
