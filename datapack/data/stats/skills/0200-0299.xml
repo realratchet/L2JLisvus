@@ -496,7 +496,9 @@
   <set name="mpInitialConsume" val="50"/>
   <set name="mpConsume" val="0"/>
   <set name="target" val="TARGET_HOLY"/>
+  <set name="reuseDelay" val="5000"/>
   <set name="hitTime" val="180000"/>
+  <set name="staticReuse" val="true"/>
   <set name="staticHitTime" val="true"/>
   <set name="skillType" val="TAKECASTLE"/>
   <set name="operateType" val="OP_ACTIVE"/>
