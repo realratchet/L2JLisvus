@@ -12451,19 +12451,10 @@ public final class L2PcInstance extends L2PlayableInstance
 					continue;
 				}
 				
-				L2ItemInstance[] items = getInventory().unEquipItemInSlotAndRecord(i);
-				if (items.length == 0)
+				getInventory().unEquipItemInSlot(i);
+				if (iu != null)
 				{
-					continue;
-				}
-				
-				for (L2ItemInstance item : items)
-				{
-					if (iu != null)
-					{
-						iu.addModifiedItem(item);
-					}
-					count++;
+					iu.addModifiedItem(equippedItem);
 				}
 
 				SystemMessage sm = null;
@@ -12479,9 +12470,10 @@ public final class L2PcInstance extends L2PlayableInstance
 					sm.addItemName(equippedItem.getItemId());
 				}
 				sendPacket(sm);
+
+				count++;
 			}
 		}
-		
 		
 		// Send inventory update packet
 		if (count > 0)
