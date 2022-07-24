@@ -99,6 +99,13 @@ public class SetPrivateStoreListBuy extends L2GameClientPacket
 			return;
 		}
 
+		if (_count <= 0)
+		{
+			player.setPrivateStoreType(PrivateStoreType.NONE);
+			player.broadcastUserInfo();
+			return;
+		}
+
 		TradeList tradeList = player.getBuyList();
 		tradeList.clear();
 
@@ -116,13 +123,6 @@ public class SetPrivateStoreListBuy extends L2GameClientPacket
 				return;
 			}
 			totalCost += (long)count * price;
-		}
-
-		if (_count <= 0)
-		{
-			player.setPrivateStoreType(PrivateStoreType.NONE);
-			player.broadcastUserInfo();
-			return;
 		}
 
 		// Check maximum number of allowed slots for private stores
