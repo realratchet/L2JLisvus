@@ -251,7 +251,7 @@ public class ZoneManager
 								}
 								catch (Exception e)
 								{
-									_log.warning(getClass().getSimpleName() + ": No such zone type: " + zoneType + " in file: " + f.getName());
+									_log.log(Level.WARNING, getClass().getSimpleName() + ": No such zone type: " + zoneType + " in file: " + f.getName(), e);
 									continue;
 								}
 								
