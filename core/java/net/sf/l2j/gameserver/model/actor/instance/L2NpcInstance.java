@@ -2345,6 +2345,14 @@ public class L2NpcInstance extends L2Character
 		{
 			((L2ControlTowerInstance) this).onDeath();
 		}
+
+		if (getTemplate().getEventQuests(Quest.QuestEventType.ON_DECAY) != null)
+		{
+			for (Quest quest : getTemplate().getEventQuests(Quest.QuestEventType.ON_DECAY))
+			{
+				quest.notifyDecay(this);
+			}
+		}
 		
 		// Remove the L2NpcInstance from the world when the decay task is launched
 		super.onDecay();
