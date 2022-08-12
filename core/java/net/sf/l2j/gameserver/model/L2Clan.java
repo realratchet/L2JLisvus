@@ -83,7 +83,7 @@ public class L2Clan
     private List<Integer> _atWarWith = new ArrayList<>();
 
 	private boolean _hasCrestLarge;
-	private Forum _Forum;
+	private Forum _forum;
 
     //  Clan Privileges
 	public static final int CP_NOTHING = 0;           // No privileges
@@ -404,14 +404,14 @@ public class L2Clan
 	public void setLevel(int level)
 	{
 	    _level = level;
-	    if (_level >= 2 && _Forum == null && Config.COMMUNITY_TYPE > 0)
+	    if (_level >= 2 && _forum == null && Config.COMMUNITY_TYPE > 0)
 	    {
             Forum forum = ForumsBBSManager.getInstance().getForumByName("ClanRoot");
             if (forum != null)
             {
-                _Forum = forum.GetChildByName(_name);
-                if (_Forum == null)
-                    _Forum = ForumsBBSManager.getInstance().CreateNewForum(_name,ForumsBBSManager.getInstance().getForumByName("ClanRoot"),Forum.CLAN,Forum.CLANMEMBERONLY,getClanId());
+                _forum = forum.GetChildByName(_name);
+                if (_forum == null)
+                    _forum = ForumsBBSManager.getInstance().CreateNewForum(_name, ForumsBBSManager.getInstance().getForumByName("ClanRoot"), Forum.CLAN, Forum.CLANMEMBERONLY, getClanId());
             }
 	    }
 	}
