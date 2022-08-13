@@ -97,7 +97,7 @@ public class Q031_SecretBuriedInTheSwamp extends Quest
 		{
 			st.takeItems(KRORIN_JOURNAL, 1);
 			st.rewardItems(57, 40000);
-			st.rewardExpAndSp(130000, 0);
+			st.addExpAndSp(130000, 0);
 			st.playSound(QuestState.SOUND_FINISH);
 			st.exitQuest(false);
 		}

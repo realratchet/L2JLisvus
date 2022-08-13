@@ -1,18 +1,31 @@
-package net.sf.l2j.gameserver.scripting.quests;
+/*
+ * This program is free software: you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation, either version 3 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program. If not, see <http://www.gnu.org/licenses/>.
+ */
+package quests.Q033_MakeAPairOfDressShoes;
 
-import net.sf.l2j.gameserver.model.actor.Npc;
-import net.sf.l2j.gameserver.model.actor.Player;
-import net.sf.l2j.gameserver.scripting.Quest;
-import net.sf.l2j.gameserver.scripting.QuestState;
+import net.sf.l2j.gameserver.model.actor.instance.L2NpcInstance;
+import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.quest.Quest;
+import net.sf.l2j.gameserver.model.quest.QuestState;
+import net.sf.l2j.gameserver.model.quest.State;
 
 public class Q033_MakeAPairOfDressShoes extends Quest
 {
-	private static final String qn = "Q033_MakeAPairOfDressShoes";
-	
 	// NPCs
-	private static final int WOODLEY = 30838;
-	private static final int IAN = 30164;
-	private static final int LEIKAR = 31520;
+	private static final int WOODLEY = 7838;
+	private static final int IAN = 7164;
+	private static final int LEIKAR = 8520;
 	
 	// Items
 	private static final int LEATHER = 1882;
@@ -22,39 +35,44 @@ public class Q033_MakeAPairOfDressShoes extends Quest
 	// Rewards
 	public static int DRESS_SHOES_BOX = 7113;
 	
+	public static void main(String[] args)
+	{
+		new Q033_MakeAPairOfDressShoes();
+	}
+	
 	public Q033_MakeAPairOfDressShoes()
 	{
-		super(33, "Make a Pair of Dress Shoes");
+		super(33, Q033_MakeAPairOfDressShoes.class.getSimpleName(), "Make a Pair of Dress Shoes");
 		
 		addStartNpc(WOODLEY);
 		addTalkId(WOODLEY, IAN, LEIKAR);
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onAdvEvent(String event, L2NpcInstance npc, L2PcInstance player)
 	{
 		String htmltext = event;
-		QuestState st = player.getQuestState(qn);
+		QuestState st = player.getQuestState(getName());
 		if (st == null)
 			return htmltext;
 		
-		if (event.equalsIgnoreCase("30838-1.htm"))
+		if (event.equalsIgnoreCase("7838-1.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(State.STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
-		else if (event.equalsIgnoreCase("31520-1.htm"))
+		else if (event.equalsIgnoreCase("8520-1.htm"))
 		{
 			st.set("cond", "2");
 			st.playSound(QuestState.SOUND_MIDDLE);
 		}
-		else if (event.equalsIgnoreCase("30838-3.htm"))
+		else if (event.equalsIgnoreCase("7838-3.htm"))
 		{
 			st.set("cond", "3");
 			st.playSound(QuestState.SOUND_MIDDLE);
 		}
-		else if (event.equalsIgnoreCase("30838-5.htm"))
+		else if (event.equalsIgnoreCase("7838-5.htm"))
 		{
 			if (st.getQuestItemsCount(LEATHER) >= 200 && st.getQuestItemsCount(THREAD) >= 600 && st.getQuestItemsCount(ADENA) >= 200000)
 			{
@@ -65,9 +83,9 @@ public class Q033_MakeAPairOfDressShoes extends Quest
 				st.takeItems(THREAD, 600);
 			}
 			else
-				htmltext = "30838-4a.htm";
+				htmltext = "7838-4a.htm";
 		}
-		else if (event.equalsIgnoreCase("30164-1.htm"))
+		else if (event.equalsIgnoreCase("7164-1.htm"))
 		{
 			if (st.getQuestItemsCount(ADENA) >= 300000)
 			{
@@ -76,9 +94,9 @@ public class Q033_MakeAPairOfDressShoes extends Quest
 				st.takeItems(ADENA, 300000);
 			}
 			else
-				htmltext = "30164-1a.htm";
+				htmltext = "7164-1a.htm";
 		}
-		else if (event.equalsIgnoreCase("30838-7.htm"))
+		else if (event.equalsIgnoreCase("7838-7.htm"))
 		{
 			st.giveItems(DRESS_SHOES_BOX, 1);
 			st.playSound(QuestState.SOUND_FINISH);
@@ -89,67 +107,67 @@ public class Q033_MakeAPairOfDressShoes extends Quest
 	}
 	
 	@Override
-	public String onTalk(Npc npc, Player player)
+	public String onTalk(L2NpcInstance npc, L2PcInstance player)
 	{
-		QuestState st = player.getQuestState(qn);
+		QuestState st = player.getQuestState(getName());
 		String htmltext = getNoQuestMsg();
 		if (st == null)
 			return htmltext;
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case State.CREATED:
 				if (player.getLevel() >= 60)
 				{
 					QuestState fwear = player.getQuestState("Q037_MakeFormalWear");
 					if (fwear != null && fwear.getInt("cond") == 7)
-						htmltext = "30838-0.htm";
+						htmltext = "7838-0.htm";
 					else
-						htmltext = "30838-0a.htm";
+						htmltext = "7838-0a.htm";
 				}
 				else
-					htmltext = "30838-0b.htm";
+					htmltext = "7838-0b.htm";
 				break;
 			
-			case STATE_STARTED:
+			case State.STARTED:
 				int cond = st.getInt("cond");
 				switch (npc.getNpcId())
 				{
 					case WOODLEY:
 						if (cond == 1)
-							htmltext = "30838-1.htm";
+							htmltext = "7838-1.htm";
 						else if (cond == 2)
-							htmltext = "30838-2.htm";
+							htmltext = "7838-2.htm";
 						else if (cond == 3)
 						{
 							if (st.getQuestItemsCount(LEATHER) >= 200 && st.getQuestItemsCount(THREAD) >= 600 && st.getQuestItemsCount(ADENA) >= 200000)
-								htmltext = "30838-4.htm";
+								htmltext = "7838-4.htm";
 							else
-								htmltext = "30838-4a.htm";
+								htmltext = "7838-4a.htm";
 						}
 						else if (cond == 4)
-							htmltext = "30838-5a.htm";
+							htmltext = "7838-5a.htm";
 						else if (cond == 5)
-							htmltext = "30838-6.htm";
+							htmltext = "7838-6.htm";
 						break;
 					
 					case LEIKAR:
 						if (cond == 1)
-							htmltext = "31520-0.htm";
+							htmltext = "8520-0.htm";
 						else if (cond > 1)
-							htmltext = "31520-1a.htm";
+							htmltext = "8520-1a.htm";
 						break;
 					
 					case IAN:
 						if (cond == 4)
-							htmltext = "30164-0.htm";
+							htmltext = "7164-0.htm";
 						else if (cond == 5)
-							htmltext = "30164-2.htm";
+							htmltext = "7164-2.htm";
 						break;
 				}
 				break;
 			
-			case STATE_COMPLETED:
+			case State.COMPLETED:
 				htmltext = getAlreadyCompletedMsg();
 				break;
 		}

@@ -1,23 +1,35 @@
-package net.sf.l2j.gameserver.scripting.quests;
+/*
+ * This program is free software: you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation, either version 3 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program. If not, see <http://www.gnu.org/licenses/>.
+ */
+package quests.Q034_InSearchOfCloth;
 
-import net.sf.l2j.gameserver.model.actor.Creature;
-import net.sf.l2j.gameserver.model.actor.Npc;
-import net.sf.l2j.gameserver.model.actor.Player;
-import net.sf.l2j.gameserver.scripting.Quest;
-import net.sf.l2j.gameserver.scripting.QuestState;
+import net.sf.l2j.gameserver.model.actor.instance.L2NpcInstance;
+import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.quest.Quest;
+import net.sf.l2j.gameserver.model.quest.QuestState;
+import net.sf.l2j.gameserver.model.quest.State;
 
 public class Q034_InSearchOfCloth extends Quest
 {
-	private static final String qn = "Q034_InSearchOfCloth";
-	
 	// NPCs
-	private static final int RADIA = 30088;
-	private static final int RALFORD = 30165;
-	private static final int VARAN = 30294;
+	private static final int RADIA = 7088;
+	private static final int RALFORD = 7165;
+	private static final int VARAN = 7294;
 	
 	// Monsters
-	private static final int TRISALIM_SPIDER = 20560;
-	private static final int TRISALIM_TARANTULA = 20561;
+	private static final int TRISALIM_SPIDER = 560;
+	private static final int TRISALIM_TARANTULA = 561;
 	
 	// Items
 	private static final int SPINNERET = 7528;
@@ -27,10 +39,15 @@ public class Q034_InSearchOfCloth extends Quest
 	
 	// Rewards
 	private static final int MYSTERIOUS_CLOTH = 7076;
+
+	public static void main(String[] args)
+	{
+		new Q034_InSearchOfCloth();
+	}
 	
 	public Q034_InSearchOfCloth()
 	{
-		super(34, "In Search of Cloth");
+		super(34, Q034_InSearchOfCloth.class.getSimpleName(), "In Search of Cloth");
 		
 		setItemsIds(SPINNERET, SPIDERSILK);
 		
@@ -41,42 +58,42 @@ public class Q034_InSearchOfCloth extends Quest
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onAdvEvent(String event, L2NpcInstance npc, L2PcInstance player)
 	{
 		String htmltext = event;
-		QuestState st = player.getQuestState(qn);
+		QuestState st = player.getQuestState(getName());
 		if (st == null)
 			return htmltext;
 		
-		if (event.equalsIgnoreCase("30088-1.htm"))
+		if (event.equalsIgnoreCase("7088-1.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(State.STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
-		else if (event.equalsIgnoreCase("30294-1.htm"))
+		else if (event.equalsIgnoreCase("7294-1.htm"))
 		{
 			st.set("cond", "2");
 			st.playSound(QuestState.SOUND_MIDDLE);
 		}
-		else if (event.equalsIgnoreCase("30088-3.htm"))
+		else if (event.equalsIgnoreCase("7088-3.htm"))
 		{
 			st.set("cond", "3");
 			st.playSound(QuestState.SOUND_MIDDLE);
 		}
-		else if (event.equalsIgnoreCase("30165-1.htm"))
+		else if (event.equalsIgnoreCase("7165-1.htm"))
 		{
 			st.set("cond", "4");
 			st.playSound(QuestState.SOUND_MIDDLE);
 		}
-		else if (event.equalsIgnoreCase("30165-3.htm"))
+		else if (event.equalsIgnoreCase("7165-3.htm"))
 		{
 			st.set("cond", "6");
 			st.playSound(QuestState.SOUND_MIDDLE);
 			st.takeItems(SPINNERET, 10);
 			st.giveItems(SPIDERSILK, 1);
 		}
-		else if (event.equalsIgnoreCase("30088-5.htm"))
+		else if (event.equalsIgnoreCase("7088-5.htm"))
 		{
 			if (st.getQuestItemsCount(SUEDE) >= 3000 && st.getQuestItemsCount(THREAD) >= 5000 && st.hasQuestItems(SPIDERSILK))
 			{
@@ -88,76 +105,76 @@ public class Q034_InSearchOfCloth extends Quest
 				st.exitQuest(false);
 			}
 			else
-				htmltext = "30088-4a.htm";
+				htmltext = "7088-4a.htm";
 		}
 		
 		return htmltext;
 	}
 	
 	@Override
-	public String onTalk(Npc npc, Player player)
+	public String onTalk(L2NpcInstance npc, L2PcInstance player)
 	{
-		QuestState st = player.getQuestState(qn);
+		QuestState st = player.getQuestState(getName());
 		String htmltext = getNoQuestMsg();
 		if (st == null)
 			return htmltext;
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case State.CREATED:
 				if (player.getLevel() >= 60)
 				{
 					QuestState fwear = player.getQuestState("Q037_MakeFormalWear");
 					if (fwear != null && fwear.getInt("cond") == 6)
-						htmltext = "30088-0.htm";
+						htmltext = "7088-0.htm";
 					else
-						htmltext = "30088-0a.htm";
+						htmltext = "7088-0a.htm";
 				}
 				else
-					htmltext = "30088-0b.htm";
+					htmltext = "7088-0b.htm";
 				break;
 			
-			case STATE_STARTED:
+			case State.STARTED:
 				int cond = st.getInt("cond");
 				switch (npc.getNpcId())
 				{
 					case RADIA:
 						if (cond == 1)
-							htmltext = "30088-1a.htm";
+							htmltext = "7088-1a.htm";
 						else if (cond == 2)
-							htmltext = "30088-2.htm";
+							htmltext = "7088-2.htm";
 						else if (cond == 3)
-							htmltext = "30088-3a.htm";
+							htmltext = "7088-3a.htm";
 						else if (cond == 6)
 						{
 							if (st.getQuestItemsCount(SUEDE) < 3000 || st.getQuestItemsCount(THREAD) < 5000 || !st.hasQuestItems(SPIDERSILK))
-								htmltext = "30088-4a.htm";
+								htmltext = "7088-4a.htm";
 							else
-								htmltext = "30088-4.htm";
+								htmltext = "7088-4.htm";
 						}
 						break;
 					
 					case VARAN:
 						if (cond == 1)
-							htmltext = "30294-0.htm";
+							htmltext = "7294-0.htm";
 						else if (cond > 1)
-							htmltext = "30294-1a.htm";
+							htmltext = "7294-1a.htm";
 						break;
 					
 					case RALFORD:
 						if (cond == 3)
-							htmltext = "30165-0.htm";
+							htmltext = "7165-0.htm";
 						else if (cond == 4 && st.getQuestItemsCount(SPINNERET) < 10)
-							htmltext = "30165-1a.htm";
+							htmltext = "7165-1a.htm";
 						else if (cond == 5)
-							htmltext = "30165-2.htm";
+							htmltext = "7165-2.htm";
 						else if (cond > 5)
-							htmltext = "30165-3a.htm";
+							htmltext = "7165-3a.htm";
 						break;
 				}
 				break;
 			
-			case STATE_COMPLETED:
+			case State.COMPLETED:
 				htmltext = getAlreadyCompletedMsg();
 				break;
 		}
@@ -166,11 +183,9 @@ public class Q034_InSearchOfCloth extends Quest
 	}
 	
 	@Override
-	public String onKill(Npc npc, Creature killer)
+	public String onKill(L2NpcInstance npc, L2PcInstance killer, boolean isPet)
 	{
-		final Player player = killer.getActingPlayer();
-		
-		final QuestState st = checkPlayerCondition(player, npc, "cond", "4");
+		final QuestState st = checkPlayerCondition(killer, npc, "cond", "4");
 		if (st == null)
 			return null;
 		

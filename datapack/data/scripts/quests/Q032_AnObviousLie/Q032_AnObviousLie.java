@@ -1,15 +1,27 @@
-package net.sf.l2j.gameserver.scripting.quests;
+/*
+ * This program is free software: you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation, either version 3 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program. If not, see <http://www.gnu.org/licenses/>.
+ */
+package quests.Q032_AnObviousLie;
 
-import net.sf.l2j.gameserver.model.actor.Creature;
-import net.sf.l2j.gameserver.model.actor.Npc;
-import net.sf.l2j.gameserver.model.actor.Player;
-import net.sf.l2j.gameserver.scripting.Quest;
-import net.sf.l2j.gameserver.scripting.QuestState;
+import net.sf.l2j.gameserver.model.actor.instance.L2NpcInstance;
+import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.quest.Quest;
+import net.sf.l2j.gameserver.model.quest.QuestState;
+import net.sf.l2j.gameserver.model.quest.State;
 
 public class Q032_AnObviousLie extends Quest
 {
-	private static final String qn = "Q032_AnObviousLie";
-	
 	// Items
 	private static final int SUEDE = 1866;
 	private static final int THREAD = 1868;
@@ -23,58 +35,64 @@ public class Q032_AnObviousLie extends Quest
 	private static final int RABBIT_EARS = 7683;
 	
 	// NPCs
-	private static final int GENTLER = 30094;
-	private static final int MAXIMILIAN = 30120;
-	private static final int MIKI_THE_CAT = 31706;
+	private static final int GENTLER = 7094;
+	private static final int MAXIMILIAN = 7120;
+	private static final int MIKI_THE_CAT = 8706;
+	private static final int ALLIGATOR = 135;
+
+	public static void main(String[] args)
+	{
+		new Q032_AnObviousLie();
+	}
 	
 	public Q032_AnObviousLie()
 	{
-		super(32, "An Obvious Lie");
+		super(32, Q032_AnObviousLie.class.getSimpleName(), "An Obvious Lie");
 		
 		setItemsIds(MAP, MEDICINAL_HERB);
 		
 		addStartNpc(MAXIMILIAN);
 		addTalkId(MAXIMILIAN, GENTLER, MIKI_THE_CAT);
 		
-		addKillId(20135); // Alligator
+		addKillId(ALLIGATOR);
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onAdvEvent(String event, L2NpcInstance npc, L2PcInstance player)
 	{
 		String htmltext = event;
-		QuestState st = player.getQuestState(qn);
+		QuestState st = player.getQuestState(getName());
 		if (st == null)
 			return htmltext;
 		
-		if (event.equalsIgnoreCase("30120-1.htm"))
+		if (event.equalsIgnoreCase("7120-1.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(State.STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
-		else if (event.equalsIgnoreCase("30094-1.htm"))
+		else if (event.equalsIgnoreCase("7094-1.htm"))
 		{
 			st.set("cond", "2");
 			st.playSound(QuestState.SOUND_MIDDLE);
 			st.giveItems(MAP, 1);
 		}
-		else if (event.equalsIgnoreCase("31706-1.htm"))
+		else if (event.equalsIgnoreCase("8706-1.htm"))
 		{
 			st.set("cond", "3");
 			st.playSound(QuestState.SOUND_MIDDLE);
 			st.takeItems(MAP, 1);
 		}
-		else if (event.equalsIgnoreCase("30094-4.htm"))
+		else if (event.equalsIgnoreCase("7094-4.htm"))
 		{
 			st.set("cond", "5");
 			st.playSound(QuestState.SOUND_MIDDLE);
 			st.takeItems(MEDICINAL_HERB, 20);
 		}
-		else if (event.equalsIgnoreCase("30094-7.htm"))
+		else if (event.equalsIgnoreCase("7094-7.htm"))
 		{
 			if (st.getQuestItemsCount(SPIRIT_ORE) < 500)
-				htmltext = "30094-5.htm";
+				htmltext = "7094-5.htm";
 			else
 			{
 				st.set("cond", "6");
@@ -82,25 +100,25 @@ public class Q032_AnObviousLie extends Quest
 				st.takeItems(SPIRIT_ORE, 500);
 			}
 		}
-		else if (event.equalsIgnoreCase("31706-4.htm"))
+		else if (event.equalsIgnoreCase("8706-4.htm"))
 		{
 			st.set("cond", "7");
 			st.playSound(QuestState.SOUND_MIDDLE);
 		}
-		else if (event.equalsIgnoreCase("30094-10.htm"))
+		else if (event.equalsIgnoreCase("7094-10.htm"))
 		{
 			st.set("cond", "8");
 			st.playSound(QuestState.SOUND_MIDDLE);
 		}
-		else if (event.equalsIgnoreCase("30094-13.htm"))
+		else if (event.equalsIgnoreCase("7094-13.htm"))
 			st.playSound(QuestState.SOUND_MIDDLE);
 		else if (event.equalsIgnoreCase("cat"))
 		{
 			if (st.getQuestItemsCount(THREAD) < 1000 || st.getQuestItemsCount(SUEDE) < 500)
-				htmltext = "30094-11.htm";
+				htmltext = "7094-11.htm";
 			else
 			{
-				htmltext = "30094-14.htm";
+				htmltext = "7094-14.htm";
 				st.takeItems(SUEDE, 500);
 				st.takeItems(THREAD, 1000);
 				st.giveItems(CAT_EARS, 1);
@@ -111,10 +129,10 @@ public class Q032_AnObviousLie extends Quest
 		else if (event.equalsIgnoreCase("racoon"))
 		{
 			if (st.getQuestItemsCount(THREAD) < 1000 || st.getQuestItemsCount(SUEDE) < 500)
-				htmltext = "30094-11.htm";
+				htmltext = "7094-11.htm";
 			else
 			{
-				htmltext = "30094-14.htm";
+				htmltext = "7094-14.htm";
 				st.takeItems(SUEDE, 500);
 				st.takeItems(THREAD, 1000);
 				st.giveItems(RACOON_EARS, 1);
@@ -125,10 +143,10 @@ public class Q032_AnObviousLie extends Quest
 		else if (event.equalsIgnoreCase("rabbit"))
 		{
 			if (st.getQuestItemsCount(THREAD) < 1000 || st.getQuestItemsCount(SUEDE) < 500)
-				htmltext = "30094-11.htm";
+				htmltext = "7094-11.htm";
 			else
 			{
-				htmltext = "30094-14.htm";
+				htmltext = "7094-14.htm";
 				st.takeItems(SUEDE, 500);
 				st.takeItems(THREAD, 1000);
 				st.giveItems(RABBIT_EARS, 1);
@@ -141,58 +159,58 @@ public class Q032_AnObviousLie extends Quest
 	}
 	
 	@Override
-	public String onTalk(Npc npc, Player player)
+	public String onTalk(L2NpcInstance npc, L2PcInstance player)
 	{
-		QuestState st = player.getQuestState(qn);
+		QuestState st = player.getQuestState(getName());
 		String htmltext = getNoQuestMsg();
 		if (st == null)
 			return htmltext;
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
-				htmltext = (player.getLevel() < 45) ? "30120-0a.htm" : "30120-0.htm";
+			case State.CREATED:
+				htmltext = (player.getLevel() < 45) ? "7120-0a.htm" : "7120-0.htm";
 				break;
 			
-			case STATE_STARTED:
+			case State.STARTED:
 				int cond = st.getInt("cond");
 				switch (npc.getNpcId())
 				{
 					case MAXIMILIAN:
-						htmltext = "30120-2.htm";
+						htmltext = "7120-2.htm";
 						break;
 					
 					case GENTLER:
 						if (cond == 1)
-							htmltext = "30094-0.htm";
+							htmltext = "7094-0.htm";
 						else if (cond == 2 || cond == 3)
-							htmltext = "30094-2.htm";
+							htmltext = "7094-2.htm";
 						else if (cond == 4)
-							htmltext = "30094-3.htm";
+							htmltext = "7094-3.htm";
 						else if (cond == 5)
-							htmltext = (st.getQuestItemsCount(SPIRIT_ORE) < 500) ? "30094-5.htm" : "30094-6.htm";
+							htmltext = (st.getQuestItemsCount(SPIRIT_ORE) < 500) ? "7094-5.htm" : "7094-6.htm";
 						else if (cond == 6)
-							htmltext = "30094-8.htm";
+							htmltext = "7094-8.htm";
 						else if (cond == 7)
-							htmltext = "30094-9.htm";
+							htmltext = "7094-9.htm";
 						else if (cond == 8)
-							htmltext = (st.getQuestItemsCount(THREAD) < 1000 || st.getQuestItemsCount(SUEDE) < 500) ? "30094-11.htm" : "30094-12.htm";
+							htmltext = (st.getQuestItemsCount(THREAD) < 1000 || st.getQuestItemsCount(SUEDE) < 500) ? "7094-11.htm" : "7094-12.htm";
 						break;
 					
 					case MIKI_THE_CAT:
 						if (cond == 2)
-							htmltext = "31706-0.htm";
+							htmltext = "8706-0.htm";
 						else if (cond > 2 && cond < 6)
-							htmltext = "31706-2.htm";
+							htmltext = "8706-2.htm";
 						else if (cond == 6)
-							htmltext = "31706-3.htm";
+							htmltext = "8706-3.htm";
 						else if (cond > 6)
-							htmltext = "31706-5.htm";
+							htmltext = "8706-5.htm";
 						break;
 				}
 				break;
 			
-			case STATE_COMPLETED:
+			case State.COMPLETED:
 				htmltext = getAlreadyCompletedMsg();
 				break;
 		}
@@ -201,16 +219,16 @@ public class Q032_AnObviousLie extends Quest
 	}
 	
 	@Override
-	public String onKill(Npc npc, Creature killer)
+	public String onKill(L2NpcInstance npc, L2PcInstance killer, boolean isPet)
 	{
-		final Player player = killer.getActingPlayer();
-		
-		final QuestState st = checkPlayerCondition(player, npc, "cond", "3");
+		final QuestState st = checkPlayerCondition(killer, npc, "cond", "3");
 		if (st == null)
 			return null;
 		
 		if (st.dropItemsAlways(MEDICINAL_HERB, 1, 20))
+		{
 			st.set("cond", "4");
+		}
 		
 		return null;
 	}
