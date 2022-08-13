@@ -28,6 +28,11 @@ public class Q019_GoToThePastureland extends Quest
 	// NPCs
 	private static final int VLADIMIR = 8302;
 	private static final int TUNATUN = 8537;
+
+	public static void main(String[] args)
+	{
+		new Q019_GoToThePastureland();
+	}
 	
 	public Q019_GoToThePastureland()
 	{
