@@ -86,6 +86,7 @@ public class Quest extends ManagedScript
 		ON_ATTACK(true),
 		ON_KILL(true),
 		ON_SPAWN(true),
+		ON_DECAY(true),
 		ON_SKILL_SEE(true),
 		ON_AGGRO_RANGE_ENTER(true),
 		ON_FACTION_CALL(true),
@@ -733,6 +734,20 @@ public class Quest extends ManagedScript
 		}
 		return false;
 	}
+
+	public final boolean notifyDecay(L2NpcInstance npc)
+	{
+		try
+		{
+			onDecay(npc);
+		}
+		catch (Exception e)
+		{
+			_log.log(Level.WARNING, "Exception on onDecay() in notifyDecay(): " + e.getMessage(), e);
+			return true;
+		}
+		return false;
+	}
 	
 	public final boolean notifyCreatureSee(L2NpcInstance npc, L2PcInstance player, boolean isPet)
 	{
@@ -831,6 +846,11 @@ public class Quest extends ManagedScript
 	{
 		return null;
 	}
+
+	public String onDecay(L2NpcInstance npc)
+	{
+		return null;
+	}
 	
 	public String onCreatureSee(L2NpcInstance npc, L2PcInstance player, boolean isPet)
 	{
@@ -861,9 +881,10 @@ public class Quest extends ManagedScript
 		}
 	}
 	
-	public L2NpcTemplate addStartNpc(int npcId)
+	public void addStartNpc(int... npcIds)
 	{
-		return addEventId(npcId, Quest.QuestEventType.QUEST_START);
+		for (int npcId : npcIds)
+			addEventId(npcId, Quest.QuestEventType.QUEST_START);
 	}
 	
 	/**
@@ -1362,6 +1383,16 @@ public class Quest extends ManagedScript
 	{
 		for (int npcId : npcIds)
 			addEventId(npcId, QuestEventType.ON_SPAWN);
+	}
+
+	/**
+	 * Add this quest to the list of quests that the passed npc will respond to for Decay Events.
+	 * @param npcIds : A series of ids.
+	 */
+	public void addDecayId(int... npcIds)
+	{
+		for (int npcId : npcIds)
+			addEventId(npcId, QuestEventType.ON_DECAY);
 	}
 	
 	/**
