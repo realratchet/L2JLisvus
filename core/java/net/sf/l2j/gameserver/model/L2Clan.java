@@ -498,10 +498,10 @@ public class L2Clan
         }
     }
 
-    private void restorewars()
+    private void restoreWars()
     {
      	try (Connection con = L2DatabaseFactory.getInstance().getConnection();
-            PreparedStatement statement = con.prepareStatement("SELECT clan1, clan2, wantspeace1, wantspeace2 FROM clan_wars");
+            PreparedStatement statement = con.prepareStatement("SELECT clan1, clan2 FROM clan_wars");
             ResultSet rset = statement.executeQuery())
         {
             while(rset.next())
@@ -591,7 +591,7 @@ public class L2Clan
 
             if (Config.DEBUG && getName() != null)
             	_log.config("Restored clan data for \"" + getName() + "\" from database.");
-            restorewars();
+            restoreWars();
         }
         catch (Exception e)
         {

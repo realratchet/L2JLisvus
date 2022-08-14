@@ -5,6 +5,7 @@ DROP TABLE IF EXISTS `skill_spellbooks`;
 CREATE TABLE `skill_spellbooks` (
   `skill_id` int(11) NOT NULL default '-1',
   `item_id` int(11) NOT NULL default '-1',
+  PRIMARY KEY (`item_id`),
   KEY `skill_id` (`skill_id`,`item_id`)
 );
 

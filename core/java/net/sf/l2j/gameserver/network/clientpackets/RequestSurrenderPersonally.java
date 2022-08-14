@@ -78,7 +78,7 @@ public class RequestSurrenderPersonally extends L2GameClientPacket
 		sm.addString(_pledgeName);
 		player.sendPacket(sm);
 		sm = null;
-		ClanTable.getInstance().CheckSurrender(_clan, clan);
+		ClanTable.getInstance().checkSurrender(_clan, clan);
 	}
 	
 	@Override

@@ -73,7 +73,7 @@ public class RequestStopPledgeWar extends L2GameClientPacket
 			return;
 		}
 		
-		ClanTable.getInstance().deleteclanswars(playerClan.getClanId(), clan.getClanId());
+		ClanTable.getInstance().deleteClanWars(playerClan.getClanId(), clan.getClanId());
 		for (L2PcInstance cha : L2World.getInstance().getAllPlayers())
 		{
 			if ((cha.getClan() == player.getClan()) || (cha.getClan() == clan))

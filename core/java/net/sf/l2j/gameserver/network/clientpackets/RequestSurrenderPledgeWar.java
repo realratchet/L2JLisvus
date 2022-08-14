@@ -76,7 +76,7 @@ public class RequestSurrenderPledgeWar extends L2GameClientPacket
 		player.sendPacket(sm);
 		sm = null;
 		player.deathPenalty(false, false, false);
-		ClanTable.getInstance().deleteclanswars(_clan.getClanId(), clan.getClanId());
+		ClanTable.getInstance().deleteClanWars(_clan.getClanId(), clan.getClanId());
 	}
 	
 	@Override
