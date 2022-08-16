@@ -10697,6 +10697,7 @@ public final class L2PcInstance extends L2PlayableInstance
 			// deals with sudden exit in the middle of transaction
 			getActiveRequester().setLootInvitation(-1);
 			setActiveRequester(null);
+			cancelActiveTrade();
 		}
 		
 		// If the L2PcInstance is a GM, remove it from the GM List
