@@ -72,12 +72,6 @@ public class RequestRestart extends L2GameClientPacket
 			return;
 		}
 
-		if (player.getActiveRequester() != null)
-		{
-			player.getActiveRequester().onTradeCancel(player);
-			player.onTradeCancel(player.getActiveRequester());
-		}
-
 		if (AttackStanceTaskManager.getInstance().getAttackStanceTask(player))
 		{
 			if (Config.DEBUG)
