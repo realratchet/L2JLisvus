@@ -14,9 +14,6 @@
  */
 package quests.Q166_MassOfDarkness;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import net.sf.l2j.gameserver.model.actor.instance.L2NpcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.base.Race;

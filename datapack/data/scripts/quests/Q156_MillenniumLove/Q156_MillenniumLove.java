@@ -103,7 +103,7 @@ public class Q156_MillenniumLove extends Quest
 							htmltext = "7368-06.htm";
 							st.takeItems(THEON_DIARY, 1);
 							st.giveItems(5250, 1);
-							st.rewardExpAndSp(3000, 0);
+							st.addExpAndSp(3000, 0);
 							st.playSound(QuestState.SOUND_FINISH);
 							st.exitQuest(false);
 						}
