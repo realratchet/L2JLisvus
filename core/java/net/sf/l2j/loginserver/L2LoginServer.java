@@ -79,6 +79,15 @@ public class L2LoginServer
 		// Load Ban file
 		loadBanFile();
 
+		Runtime.getRuntime().addShutdownHook(new Thread()
+		{
+			@Override
+			public void run()
+			{
+				shutdown(false);
+			}
+	    });
+
 		InetAddress bindAddress = null;
 		if (!Config.LOGIN_BIND_ADDRESS.equals("*"))
 		{
@@ -277,6 +286,6 @@ public class L2LoginServer
 	
 	public void shutdown(boolean restart)
 	{
-		Runtime.getRuntime().exit(restart ? 2 : 0);
+		Runtime.getRuntime().halt(restart ? 2 : 0);
 	}
 }
