@@ -161,6 +161,13 @@ class OlympiadGame
     	player.setXYZ(x, y, z);
     }
 
+    protected void healPlayer(L2PcInstance player)
+    {
+        player.setCurrentCp(player.getMaxCp());
+        player.setCurrentHp(player.getMaxHp());
+        player.setCurrentMp(player.getMaxMp());
+    }
+
     protected void removals()
 	{
         if (_aborted)
@@ -182,12 +189,10 @@ class OlympiadGame
 
             player.getAppearance().setVisible();
 
-            // Heal Player fully
-            player.setCurrentCp(player.getMaxCp());
-            player.setCurrentHp(player.getMaxHp());
-            player.setCurrentMp(player.getMaxMp());
+            // Heal player fully
+            healPlayer(player);
 
-            // Remove Buffs
+            // Remove buffs
             player.stopAllEffects();
             player.clearCharges();
             
@@ -373,9 +378,10 @@ class OlympiadGame
             }
 
             player.getStatus().startHpMpRegeneration();
-            player.setCurrentCp(player.getMaxCp());
-            player.setCurrentHp(player.getMaxHp());
-            player.setCurrentMp(player.getMaxMp());
+
+             // Heal player fully
+            healPlayer(player);
+
             player.setIsInOlympiadMode(false);
             player.setIsOlympiadStart(false);
             player.setOlympiadSide(-1);
@@ -813,6 +819,9 @@ class OlympiadGame
         
         for (L2PcInstance player : _players)
         {
+             // Heal player fully
+            healPlayer(player);
+
 	        // Wind Walk Buff for any class
 	        skill = SkillTable.getInstance().getInfo(1204, 2);
 	        if (skill != null)
