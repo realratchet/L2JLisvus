@@ -147,7 +147,6 @@ public final class L2GameClient extends MMOClient<MMOConnection<L2GameClient>>
 	 */
 	public static void saveCharToDisk(L2PcInstance cha, boolean storeItems)
 	{
-		
 		try
 		{
 			cha.store();
@@ -688,11 +687,10 @@ public final class L2GameClient extends MMOClient<MMOConnection<L2GameClient>>
 		{
 			try
 			{
-				// we are going to manually save the char below thus we can force the cancel
+				// We are going to manually save the char below thus we can force the cancel
 				if (_autoSaveInDB != null)
 				{
 					_autoSaveInDB.cancel(true);
-					ThreadPoolManager.getInstance().removeGeneral((Runnable) _autoSaveInDB);
 				}
 
 				L2PcInstance player = L2GameClient.this.getActiveChar();

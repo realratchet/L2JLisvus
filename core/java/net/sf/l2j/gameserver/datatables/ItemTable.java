@@ -325,7 +325,8 @@ public class ItemTable
         item.set.set("shield_def_rate",	rset.getInt("shield_def_rate"));
         item.set.set("atk_speed", rset.getInt("atk_speed"));
         item.set.set("mp_consume", rset.getInt("mp_consume"));
-        item.set.set("m_dam", rset.getInt("m_dam"));
+        item.set.set("m_dam", rset.getInt("m_dam"));
+
         item.set.set("price", rset.getInt("price"));
         item.set.set("crystal_count", rset.getInt("crystal_count"));
         item.set.set("is_magical", Boolean.valueOf(rset.getString("is_magical")));
@@ -336,7 +337,8 @@ public class ItemTable
         item.set.set("tradeable", Boolean.valueOf(rset.getString("tradeable")));
         
         item.set.set("item_skill_id", rset.getInt("item_skill_id"));
-        item.set.set("item_skill_lvl", rset.getInt("item_skill_lvl"));
+        item.set.set("item_skill_lvl", rset.getInt("item_skill_lvl"));
+
         item.set.set("onCast_skill_id", rset.getInt("onCast_skill_id"));
         item.set.set("onCast_skill_lvl", rset.getInt("onCast_skill_lvl"));
         item.set.set("onCast_skill_chance", rset.getInt("onCast_skill_chance"));
@@ -399,7 +401,8 @@ public class ItemTable
         item.set.set("weight", rset.getInt("weight"));
         item.set.set("material", _materials.get(rset.getString("material")));
         item.set.set("crystal_type", _crystalTypes.get(rset.getString("crystal_type")));
-        item.set.set("avoid_modify", rset.getInt("avoid_modify"));
+        item.set.set("avoid_modify", rset.getInt("avoid_modify"));
+
         item.set.set("p_def", rset.getInt("p_def"));
         item.set.set("m_def", rset.getInt("m_def"));
         item.set.set("mp_bonus", rset.getInt("mp_bonus"));
@@ -526,7 +529,8 @@ public class ItemTable
         int weight = rset.getInt("weight");
         item.set.set("weight", weight);
         item.name = rset.getString("name");
-        item.set.set("name", item.name);
+        item.set.set("name", item.name);
+
         item.set.set("price", rset.getInt("price"));
 
         return item;
@@ -639,13 +643,13 @@ public class ItemTable
             if (reference != null && reference instanceof L2Attackable && ((L2Attackable)reference).isRaid() && !Config.AUTO_LOOT_RAIDS)
             {
                 item.setOwnerId(actor.getObjectId());
-                itemLootShedule = ThreadPoolManager.getInstance().scheduleGeneral(new resetOwner(item), 15000);
+                itemLootShedule = ThreadPoolManager.getInstance().scheduleGeneral(new ResetOwner(item), 15000);
                 item.setItemLootSchedule(itemLootShedule);
             }
             else if (!Config.AUTO_LOOT)
             {
                 item.setOwnerId(actor.getObjectId());
-                itemLootShedule = ThreadPoolManager.getInstance().scheduleGeneral(new resetOwner(item), 15000);
+                itemLootShedule = ThreadPoolManager.getInstance().scheduleGeneral(new ResetOwner(item), 15000);
                 item.setItemLootSchedule(itemLootShedule);
             }
         }
@@ -756,11 +760,11 @@ public class ItemTable
 		}
 	}
 
-    protected class resetOwner implements Runnable
+    protected class ResetOwner implements Runnable
     {
         L2ItemInstance _item;
         
-        public resetOwner(L2ItemInstance item)
+        public ResetOwner(L2ItemInstance item)
         {
             _item = item;
         }

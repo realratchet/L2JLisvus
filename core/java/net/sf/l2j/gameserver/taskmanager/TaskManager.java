@@ -96,7 +96,7 @@ public final class TaskManager
             }
             catch (SQLException e)
             {
-                _log.warning("cannot updated the Global Task " + _id + ": " + e.getMessage());
+                _log.warning("Failed to update global task " + _id + ": " + e.getMessage());
             }
 
             if (_type == TYPE_SHEDULED || _type == TYPE_TIME)
@@ -147,7 +147,7 @@ public final class TaskManager
 
             if (_scheduled != null)
             {
-            	_scheduled.cancel(true);
+            	_scheduled.cancel(false);
             	_scheduled = null;
             }
 
