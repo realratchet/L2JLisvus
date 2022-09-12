@@ -84,7 +84,7 @@ public class RequestExSetPledgeCrestLarge extends L2GameClientPacket
 			return;
 		}
 		
-		if ((activeChar.getClanPrivileges() & L2Clan.CP_CL_REGISTER_CREST) != L2Clan.CP_CL_REGISTER_CREST)
+		if ((activeChar.getClanPrivileges() & L2Clan.CP_CL_MANAGE_CREST) != L2Clan.CP_CL_MANAGE_CREST)
 		{
 			activeChar.sendPacket(new SystemMessage(SystemMessage.YOU_ARE_NOT_AUTHORIZED));
 			return;

@@ -90,14 +90,14 @@ public class L2Clan
 	public static final int CP_CL_JOIN_CLAN = 1;      // Join clan
 	public static final int CP_CL_GIVE_TITLE = 2;     // Give a title
 	public static final int CP_CL_VIEW_WAREHOUSE = 4; // View warehouse content
-	public static final int CP_CL_REGISTER_CREST = 8; // Register clan crest
-    public static final int CP_CL_CLAN_WAR = 16;      // Clan war
-    public static final int CP_CH_OPEN_DOOR = 32;     // Open clan hall doors
-	public static final int CP_CH_OTHER_RIGHTS = 64;  // Function adding/restoration
-    public static final int CP_CH_DISMISS = 128;      // Expel outsiders
-	public static final int CP_CS_OPEN_DOOR = 256;    // Open castle doors
-	public static final int CP_CS_OTHER_RIGHTS = 512; // (not fully implemented yet)Function adding/restoration, related to manors, mercenary placement
-	public static final int CP_CS_DISMISS = 1024;     // Expel outsiders
+	public static final int CP_CL_MANAGE_CREST = 8; // Manage clan crest
+    public static final int CP_CH_OPEN_DOOR = 16;     // Open clan hall doors
+	public static final int CP_CH_OTHER_RIGHTS = 32;  // Function adding/restoration
+    public static final int CP_CH_DISMISS = 64;      // Expel outsiders
+	public static final int CP_CS_OPEN_DOOR = 128;    // Open castle doors
+	public static final int CP_CS_OTHER_RIGHTS = 256; // (not fully implemented yet)Function adding/restoration, related to manors, mercenary placement
+	public static final int CP_CS_DISMISS = 512;     // Expel outsiders
+	public static final int CP_CL_CLAN_WAR = 1024;     // Clan war
 	public static final int CP_ALL = 2047;            // All privileges
 
     /**
