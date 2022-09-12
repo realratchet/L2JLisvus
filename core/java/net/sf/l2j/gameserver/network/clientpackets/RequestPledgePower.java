@@ -20,6 +20,8 @@ import net.sf.l2j.gameserver.model.L2Clan;
 import net.sf.l2j.gameserver.model.L2ClanMember;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.network.serverpackets.ManagePledgePower;
+import net.sf.l2j.gameserver.network.serverpackets.PledgeShowInfoUpdate;
+import net.sf.l2j.gameserver.network.serverpackets.UserInfo;
 
 public class RequestPledgePower extends L2GameClientPacket
 {
@@ -87,12 +89,13 @@ public class RequestPledgePower extends L2GameClientPacket
 						if (target != null && target != player)
 						{
 							target.setClanPrivileges(_privs);
+							target.sendPacket(new UserInfo(target));
+							target.sendPacket(new PledgeShowInfoUpdate(clan));
 						}
 					}
 					break;
 				}
 			}
-			
 		}
 	}
 	
