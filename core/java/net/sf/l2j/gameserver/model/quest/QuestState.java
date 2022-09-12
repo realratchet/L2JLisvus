@@ -357,6 +357,22 @@ public final class QuestState
 		}
 		return true;
 	}
+
+	/**
+	 * Check if player possesses at least one given item.
+	 * @param itemIds a list of item IDs to check for
+	 * @return True if at least one item exists in player's inventory, false otherwise
+	 */
+	public boolean hasAtLeastOneQuestItem(int... itemIds)
+	{
+		final Inventory inv = _player.getInventory();
+		for (int itemId : itemIds)
+		{
+			if (inv.getItemByItemId(itemId) != null)
+				return true;
+		}
+		return false;
+	}
 	
 	public int getQuestItemsCount(int itemId)
 	{
