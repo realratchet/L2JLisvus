@@ -8,8 +8,8 @@
         </attributes>
     </classpathentry>
     <classpathentry kind="lib" path="core/lib/weupnp-0.1.4.jar"/>
-    <classpathentry kind="lib" path="core/lib/ecj-4.13.jar"/>
+    <classpathentry kind="lib" path="core/lib/ecj-3.30.0.jar"/>
     <classpathentry kind="lib" path="core/lib/jython-2.7.2b1.jar"/>
-    <classpathentry kind="lib" path="core/lib/HikariCP-3.4.1.jar"/>
+    <classpathentry kind="lib" path="core/lib/HikariCP-5.0.1.jar"/>
     <classpathentry kind="output" path="bin"/>
 </classpath>
