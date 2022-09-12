@@ -78,16 +78,13 @@ public class L2ClanHallZone extends L2ZoneSpawn
 	
 	/**
 	 * Removes all foreigners from the clan hall
-	 * @param owningClanId
+	 * @param ownerId
 	 */
-	public void banishForeigners(int owningClanId)
+	public void banishForeigners(int ownerId)
 	{
 		for (L2Character temp : _characterList.values())
 		{
-			if (!(temp instanceof L2PcInstance))
-				continue;
-			
-			if (((L2PcInstance) temp).getClanId() == owningClanId)
+			if (!(temp instanceof L2PcInstance) || ((L2PcInstance) temp).getClanId() == ownerId)
 				continue;
 			
 			((L2PcInstance) temp).teleToLocation(MapRegionTable.TeleportWhereType.Town);

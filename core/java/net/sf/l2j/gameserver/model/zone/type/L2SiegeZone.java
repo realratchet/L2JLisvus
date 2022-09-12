@@ -34,10 +34,12 @@ import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
 public class L2SiegeZone extends L2ZoneSpawn
 {
     private int _castleId;
-    private Castle _castle;
+    private Castle _castle;
+
     public L2SiegeZone(int id)
     {
-        super(id);
+        super(id);
+
     }
 
     @Override
@@ -50,7 +52,8 @@ public class L2SiegeZone extends L2ZoneSpawn
             // Register self to the correct castle
             _castle = CastleManager.getInstance().getCastleById(_castleId);
             _castle.setZone(this);
-        }
+        }
+
         else
             super.setParameter(name, value);
     }
@@ -66,7 +69,8 @@ public class L2SiegeZone extends L2ZoneSpawn
             if (character instanceof L2PcInstance)
             {
                 L2PcInstance player = (L2PcInstance)character;
-                player.sendPacket(new SystemMessage(SystemMessage.ENTERED_COMBAT_ZONE));
+                player.sendPacket(new SystemMessage(SystemMessage.ENTERED_COMBAT_ZONE));
+
                 if (player.isFlying())
                 {
                     boolean isCastleLord = player.getClan() != null && player.isClanLeader() && player.getClan().getHasCastle() == _castle.getCastleId();
@@ -74,7 +78,8 @@ public class L2SiegeZone extends L2ZoneSpawn
                         player.teleToLocation(MapRegionTable.TeleportWhereType.Town);
                 }
             }
-        }
+        }
+
     }
 
     @Override
@@ -135,18 +140,15 @@ public class L2SiegeZone extends L2ZoneSpawn
 
     /**
      * Removes all foreigners from the castle
-     * @param owningClanId
+     * @param ownerId
      */
-    public void banishForeigners(int owningClanId)
+    public void banishForeigners(int ownerId)
     {
         for (L2Character temp : _characterList.values())
         {
-            if (!(temp instanceof L2PcInstance))
-                return;
-
-            if (((L2PcInstance)temp).getClanId() != owningClanId)
+            if (!(temp instanceof L2PcInstance) || ((L2PcInstance)temp).getClanId() == ownerId)
                 continue;
-
+            
             ((L2PcInstance)temp).teleToLocation(MapRegionTable.TeleportWhereType.Town); 
         }
     }
