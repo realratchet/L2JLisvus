@@ -161,10 +161,7 @@ public class GameServer
 		_gameServer = this;
 		_log.finest("used mem:" + getUsedMemoryMB() + "MB");
 
-		if (Config.PROJECT_COMMIT_ID != null)
-		{
-			_log.info("L2JLisvus commit: " + Config.PROJECT_COMMIT_ID);
-		}
+		_log.info("L2JLisvus tag: " + Config.PROJECT_TAG);
 		
 		IdFactory.getInstance();
 		ThreadPoolManager.getInstance();

@@ -175,16 +175,15 @@
     	  	<format property="build.tstamp" pattern="yyyyMMdd_HHmm"/>
     	</tstamp>
 
-    	<exec dir="." executable="git" outputproperty="l2j.commit" failifexecutionfails="false">
-    	  	<arg value="log"/>
-            <arg value="-1"/>
-            <arg value="--pretty=format:%h"/>
+    	<exec dir="." executable="git" outputproperty="l2j.tag" failifexecutionfails="false">
+    	  	<arg value="describe"/>
+            <arg value="--tags"/>
     	</exec>
-    	<echo message="Commit ${l2j.commit}"/>
+    	<echo message="Tag ${l2j.tag}"/>
     	
       	<concat destfile="${build.dist.game}/config/l2j-version.properties">
-			commit=${l2j.commit}
-        	builddate=${build.tstamp}
+			tag=${l2j.tag}
+        	buildDate=${build.tstamp}
       	</concat>
     </target>
 

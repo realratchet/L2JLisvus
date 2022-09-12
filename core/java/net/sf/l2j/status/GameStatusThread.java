@@ -585,7 +585,7 @@ public class GameStatusThread extends Thread
 
                             StringBuilder sb = new StringBuilder(2000);
                             StringUtil.append(sb, sdf.format(cal.getTime()));
-                            StringUtil.append(sb, "\n\nProject Commit: " + Config.PROJECT_COMMIT_ID);
+                            StringUtil.append(sb, "\n\nProject Tag: " + Config.PROJECT_TAG);
                             StringUtil.append(sb, "\n\n");
                             StringUtil.append(sb, getServerStatus());
                             StringUtil.append(sb, "\n\n");

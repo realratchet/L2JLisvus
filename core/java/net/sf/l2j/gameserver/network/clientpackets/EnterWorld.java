@@ -218,10 +218,7 @@ public class EnterWorld extends L2GameClientPacket
 
 		if (Config.DISPLAY_SERVER_VERSION)
 		{
-			if (Config.PROJECT_COMMIT_ID != null)
-			{
-				activeChar.sendMessage("L2JLisvus commit " + Config.PROJECT_COMMIT_ID);
-			}
+			activeChar.sendMessage("L2JLisvus tag: " + Config.PROJECT_TAG);
 		}
 
 		SevenSigns.getInstance().sendCurrentPeriodMsg(activeChar);

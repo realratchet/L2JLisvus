@@ -45,7 +45,7 @@ public abstract class L2GameServerPacket extends SendablePacket<L2GameClient>
 		}
 		catch (Exception e)
 		{
-			_log.log(Level.SEVERE, "Client: " + getClient().toString() + " - Failed writing: " + getType() + " - L2JLisvus commit: " + Config.PROJECT_COMMIT_ID + " ; " + e.getMessage(), e);
+			_log.log(Level.SEVERE, "Client: " + getClient().toString() + " - Failed writing: " + getType() + " - L2JLisvus tag: " + Config.PROJECT_TAG + " ; " + e.getMessage(), e);
 		}
 	}
 	

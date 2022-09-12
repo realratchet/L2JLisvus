@@ -871,8 +871,8 @@ public final class Config
 	public static int MMO_MAX_READ_PER_PASS;
 	public static int MMO_HELPER_BUFFER_COUNT;
 	
-	/** Project commit ID */
-	public static String PROJECT_COMMIT_ID;
+	/** Project tag */
+	public static String PROJECT_TAG;
 	/** Date of server build */
 	public static String SERVER_BUILD_DATE;
 	
@@ -1522,13 +1522,10 @@ public final class Config
 			}
 			catch (Exception e)
 			{
-				// Ignore Properties file if it doesnt exist
-				PROJECT_COMMIT_ID = "Unsupported Commit.";
-				SERVER_BUILD_DATE = "Undefined Date.";
 			}
 			
-			PROJECT_COMMIT_ID = serverVersion.getProperty("commit", "Unsupported Commit.");
-			SERVER_BUILD_DATE = serverVersion.getProperty("builddate", "Undefined Date.");
+			PROJECT_TAG = serverVersion.getProperty("tag", "N/A");
+			SERVER_BUILD_DATE = serverVersion.getProperty("buildDate", "N/A");
 			
 			// Τelnet
 			Properties telnetSettings = new Properties();
