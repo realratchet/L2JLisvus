@@ -1039,30 +1039,24 @@ class OlympiadGameTask implements Runnable
    						OlympiadGame._battleStarted = true;
    				}
 
-   				for (int i = 60; i > 10; i -= 10)
+   				for (int i = 60; i >= 10; i -= 10)
    				{
    					_game.sendMessageToPlayers(true, i);
+                    if (i == 20)
+                    {
+                        _game.additions();
+                    }
+
    					try
                   	{
-   						Thread.sleep(10000);
+   						Thread.sleep(i == 10 ? 5000 : 10000);
                   	}
    					catch (InterruptedException e){}
-
-   					if (i == 20)
-   					{
-   						_game.additions();
-   						_game.sendMessageToPlayers(true,10);
-   						try
-   						{
-   							Thread.sleep(5000);
-   						}
-   						catch (InterruptedException e){}
-   					}
    				}
 
    				for (int i = 5; i > 0; i--)
    				{
-   					_game.sendMessageToPlayers(true,i);
+   					_game.sendMessageToPlayers(true, i);
    					try
    					{
    						Thread.sleep(1000);

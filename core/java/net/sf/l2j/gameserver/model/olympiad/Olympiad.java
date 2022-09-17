@@ -53,7 +53,6 @@ public class Olympiad
     protected static final Logger _log = Logger.getLogger(Olympiad.class.getName());
 
     private static Map<Integer, StatsSet> _nobles = new ConcurrentHashMap<>();
-    protected static List<StatsSet> _heroesToBe = new ArrayList<>();
     private static Map<Integer, Integer> _noblesRank = new HashMap<>();
 
     protected static List<L2PcInstance> _nonClassBasedRegisters;
@@ -128,8 +127,6 @@ public class Olympiad
 
     protected byte _compPeriodState = NONE;
 
-    protected ScheduledFuture<?> _scheduledCompStart;
-    protected ScheduledFuture<?> _scheduledCompEnd;
     protected ScheduledFuture<?> _scheduledOlympiadEnd;
     protected ScheduledFuture<?> _scheduledWeeklyTask;
     protected ScheduledFuture<?> _scheduledValidationTask;
@@ -187,7 +184,7 @@ public class Olympiad
                 if (_validationEnd > Calendar.getInstance().getTimeInMillis())
                 {
                 	loadNoblesRank();
-                    _scheduledValidationTask  = ThreadPoolManager.getInstance().scheduleGeneral(new ValidationEndTask(), getMillisToValidationEnd());
+                    _scheduledValidationTask = ThreadPoolManager.getInstance().scheduleGeneral(new ValidationEndTask(), getMillisToValidationEnd());
                 }
                 else
                 {
@@ -353,13 +350,15 @@ public class Olympiad
             Announcements.getInstance().announceToAll("Olympiad Validation Period has began.");
 
             if (_scheduledWeeklyTask != null)
+            {
                 _scheduledWeeklyTask.cancel(true);
+                _scheduledWeeklyTask = null;
+            }
 
             saveNobleData();
 
             _period = 1;
-            sortHeroesToBe();
-            Hero.getInstance().computeNewHeroes(_heroesToBe);
+            Hero.getInstance().computeNewHeroes(getHeroesToBe());
 
             // Save Olympiad status data
             saveOlympiadStatus();
@@ -370,6 +369,11 @@ public class Olympiad
             _validationEnd = validationEnd.getTimeInMillis() + VALIDATION_PERIOD;
 
             loadNoblesRank();
+
+            if (_scheduledValidationTask != null)
+            {
+                _scheduledValidationTask.cancel(false);
+            }
             _scheduledValidationTask  = ThreadPoolManager.getInstance().scheduleGeneral(new ValidationEndTask(), getMillisToValidationEnd());
         }
     }
@@ -621,7 +625,7 @@ public class Olympiad
             _log.info("Olympiad System: Event starts/started : " + _compStart.getTime());
         }
 
-        _scheduledCompStart = ThreadPoolManager.getInstance().scheduleGeneral(new Runnable()
+        ThreadPoolManager.getInstance().scheduleGeneral(new Runnable()
         {
             @Override
 			public void run()
@@ -657,7 +661,7 @@ public class Olympiad
                     }, regEnd);
                 }
 
-                _scheduledCompEnd = ThreadPoolManager.getInstance().scheduleGeneral(new Runnable()
+                ThreadPoolManager.getInstance().scheduleGeneral(new Runnable()
                 {
                     @Override
 					public void run()
@@ -776,7 +780,7 @@ public class Olympiad
 
     private void scheduleWeeklyChange()
     {
-    	_scheduledWeeklyTask = ThreadPoolManager.getInstance().scheduleGeneralAtFixedRate(new Runnable()
+        _scheduledWeeklyTask = ThreadPoolManager.getInstance().scheduleGeneralAtFixedRate(new Runnable()
         {
             @Override
 			public void run()
@@ -961,13 +965,9 @@ public class Olympiad
 		}
 	}
     
-    protected void sortHeroesToBe()
+    protected List<StatsSet> getHeroesToBe()
     {
-        if (_period != 1)
-            return;
-
-        _heroesToBe.clear();
-
+        final List<StatsSet> heroesToBe = new ArrayList<>();
         try (Connection con = L2DatabaseFactory.getInstance().getConnection())
         {
             StatsSet hero;
@@ -986,7 +986,7 @@ public class Olympiad
                             hero.set(CHAR_ID, rset.getInt(CHAR_ID));
                             hero.set(CHAR_NAME, rset.getString(CHAR_NAME));
 
-                            _heroesToBe.add(hero);
+                            heroesToBe.add(hero);
                         }
                     }
                 }
@@ -996,6 +996,7 @@ public class Olympiad
         {
             _log.warning("Olympiad System: Could not load heroes from db");
         }
+        return heroesToBe;
     }
 
     public List<String> getClassLeaderBoard(int classId)
