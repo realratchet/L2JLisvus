@@ -41,8 +41,8 @@ public class L2DatabaseFactory
 		_dataSource.setPassword(Config.DATABASE_PASSWORD);
 		_dataSource.setMaximumPoolSize(Config.DATABASE_MAX_CONNECTIONS);
 		_dataSource.setIdleTimeout(Config.DATABASE_MAX_IDLE_TIME);
-		// A maximum life time of 15 minutes
-		_dataSource.setMaxLifetime(900000);
+		// A maximum life time of 10 minutes
+		_dataSource.setMaxLifetime(600000);
 		
         try
         {
