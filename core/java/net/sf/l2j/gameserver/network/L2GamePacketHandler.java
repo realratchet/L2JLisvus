@@ -50,6 +50,12 @@ public final class L2GamePacketHandler implements IPacketHandler<L2GameClient>, 
 			return null;
 		}
 
+		// Packet flood protection
+		if (client.getStat().isPacketFlooded())
+		{
+			return null;
+		}
+
 		int opcode = buf.get() & 0xFF;
 
 		ReceivablePacket<L2GameClient> msg = null;

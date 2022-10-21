@@ -39,7 +39,8 @@ public class BufferTable
     private BufferTable()
     {
     	load();
-    }
+    }
+
     public final void load()
     {
     	// AIO buffs
@@ -81,13 +82,15 @@ public class BufferTable
 	            ResultSet rset = statement.executeQuery())
 	        {
 	            while (rset.next())
-	            {	
+	            {
+	
 	                int skillId = rset.getInt("skill_id");
 	                int skillLevel = rset.getInt("skill_level");
 	                int duration = rset.getInt("duration");
 	                int skillFeeId = rset.getInt("skill_fee_id");
 	                int skillFeeAmount = rset.getInt("skill_fee_amount");
-	                _npcBuffs.put(skillId, new BuffInfo(skillId, skillLevel, duration, skillFeeId, skillFeeAmount));
+
+	                _npcBuffs.put(skillId, new BuffInfo(skillId, skillLevel, duration, skillFeeId, skillFeeAmount));
 	            }
 	            
 	            _log.info("BufferTable: Loaded " + _npcBuffs.size() + " NPC buffs.");

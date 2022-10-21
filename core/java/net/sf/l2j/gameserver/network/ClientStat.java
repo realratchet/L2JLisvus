@@ -58,12 +58,9 @@ public class ClientStat
 		else
 		{
 			_packetsSentInSec++;
-			if (_packetsSentInSec > 12)
+			if (_packetsSentInSec > 80)
 			{
-				if (_packetsSentInSec < 100)
-				{
-					_client.sendPacket(new ActionFailed());
-				}
+				_client.sendPacket(new ActionFailed());
 				return true;
 			}
 		}

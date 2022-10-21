@@ -59,12 +59,6 @@ public abstract class L2GameClientPacket extends ReceivablePacket<L2GameClient>
 	{
 		try
 		{
-			// Packet flood protection
-			if (getClient().getStat().isPacketFlooded())
-			{
-				return;
-			}
-
 			runImpl();
 
 			/*

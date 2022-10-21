@@ -1411,7 +1411,7 @@ public abstract class L2Character extends L2Object
 		// Disable the skill during the re-use delay and create a task EnableSkill with Medium priority to enable it at the end of the re-use delay
 		if (reuseDelay > 10)
 		{
-			if (skillMastery)
+			if (skillMastery && reuseDelay > 100)
 			{
 				reuseDelay = 100;
 			}
