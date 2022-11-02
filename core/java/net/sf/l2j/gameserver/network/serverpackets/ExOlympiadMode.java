@@ -22,7 +22,8 @@ package net.sf.l2j.gameserver.network.serverpackets;
 public class ExOlympiadMode extends L2GameServerPacket
 {
 	private static final String _S__FE_2B_OLYMPIADMODE = "[S] FE:2B ExOlympiadMode";
-	private static int _mode;
+	
+	private final int _mode;
 	
 	/**
 	 * @param mode (0 = return, 3 = spectate)

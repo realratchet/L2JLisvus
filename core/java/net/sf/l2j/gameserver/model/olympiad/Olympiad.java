@@ -1116,7 +1116,7 @@ public class Olympiad
 		}
 		catch (Exception e)
 		{
-			_log.warning("Could not load last olympiad points:" + e);
+			_log.warning("Olympiad System: Could not load last olympiad points:" + e);
 		}
 		return result;
 	}
@@ -1261,11 +1261,16 @@ public class Olympiad
     		return;
     	}
 
-    	// Notify game participants
-        if (player == game._playerOne)
-            game._playerTwo.sendPacket(new ExOlympiadUserInfo(player, 1));
-        if (player == game._playerTwo)
-            game._playerOne.sendPacket(new ExOlympiadUserInfo(player, 1));
+        // Send player status to opponent
+        L2PcInstance opponent = game.getOpponentOf(player);
+        if (opponent != null)
+        {
+            opponent.sendPacket(new ExOlympiadUserInfo(player));
+        }
+        else
+        {
+            _log.warning("Olympiad System: Failed to find opponent for player " + player.getName() + " - " + player.getObjectId());
+        }
 
         // Notify spectators
         for (L2PcInstance spectator : game.getStadium().getSpectators())
@@ -1273,22 +1278,15 @@ public class Olympiad
 	        if (spectator == null)
 	            continue;
 	
-	        spectator.sendPacket(new ExOlympiadUserInfo(player, player.getOlympiadSide()));
+	        spectator.sendPacket(new ExOlympiadUserInfo(player));
 	    }
     }
     
     public static void broadcastUsersInfo(L2PcInstance spectator)
     {
     	// Get the game this spectator observes
-    	OlympiadGame game = OlympiadManager.getInstance().getOlympiadGame(spectator.getOlympiadGameId());
+    	final OlympiadGame game = OlympiadManager.getInstance().getOlympiadGame(spectator.getOlympiadGameId());
     	if (game == null)
-    	{
-    		return;
-    	}
-    	
-    	// Get players for the requested game
-    	L2PcInstance[] players = game.getPlayers();
-    	if (players == null || players.length == 0)
     	{
     		return;
     	}
@@ -1300,14 +1298,18 @@ public class Olympiad
     	}
     	
     	// Broadcast user spelled packets to spectator
-    	for (L2PcInstance player : players)
+        for (L2PcInstance player : game.getPlayers())
     	{
-    		// Status packet
-    		spectator.sendPacket(new ExOlympiadUserInfo(player, player.getOlympiadSide()));
+            if (player == null)
+            {
+                continue;
+            }
+
+    		spectator.sendPacket(new ExOlympiadUserInfo(player));
    
     		ExOlympiadSpelledInfo os = new ExOlympiadSpelledInfo(player);
 
-    		// Get all user effects
+    		// Get all player effects
     		L2Effect[] effects = player.getAllEffects();
     		for (L2Effect e : effects)
     		{
@@ -1319,7 +1321,6 @@ public class Olympiad
 					e.addOlympiadSpelledIcon(os);
 				}
     		}
-    		// Spelled info packet
     		spectator.sendPacket(os);
     	}
     }

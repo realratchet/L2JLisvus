@@ -14,7 +14,6 @@
  */
 package net.sf.l2j.gameserver.model.actor.instance;
 
-import net.sf.l2j.gameserver.model.actor.instance.L2MonsterInstance;
 import net.sf.l2j.gameserver.templates.L2NpcTemplate;
 
 // This class is here mostly for convenience and for avoidance of hardcoded IDs.

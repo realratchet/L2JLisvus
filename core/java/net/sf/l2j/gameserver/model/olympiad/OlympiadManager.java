@@ -14,7 +14,6 @@
  */
 package net.sf.l2j.gameserver.model.olympiad;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -101,15 +100,20 @@ class OlympiadManager implements Runnable
                             {
                                 if (_olympiadInstances.containsKey(stadium.getStadiumId()))
                                 {
-                                    for (L2PcInstance player : _olympiadInstances.get(stadium.getStadiumId()).getPlayers())
+                                    final OlympiadGame game = _olympiadInstances.remove(stadium.getStadiumId());
+                                    for (L2PcInstance player : game.getPlayers())
                                     {
+                                        if (player == null)
+                                        {
+                                            continue;
+                                        }
+                                        
                                         player.sendMessage("Your olympiad registration was cancelled due to an error.");
                                         player.setIsInOlympiadMode(false);
                                         player.setIsOlympiadStart(false);
                                         player.setOlympiadSide(-1);
                                         player.setOlympiadGameId(-1);
                                     }
-                                    _olympiadInstances.remove(stadium.getStadiumId());
                                 }
 
                                 if (_gamesQueue.containsKey(stadium.getStadiumId()))
@@ -132,15 +136,20 @@ class OlympiadManager implements Runnable
                             {
                                 if (_olympiadInstances.containsKey(stadium.getStadiumId()))
                                 {
-                                    for (L2PcInstance player : _olympiadInstances.get(stadium.getStadiumId()).getPlayers())
+                                    final OlympiadGame game = _olympiadInstances.remove(stadium.getStadiumId());
+                                    for (L2PcInstance player : game.getPlayers())
                                     {
+                                        if (player == null)
+                                        {
+                                            continue;
+                                        }
+
                                         player.sendMessage("Your olympiad registration was cancelled due to an error.");
                                         player.setIsInOlympiadMode(false);
                                         player.setIsOlympiadStart(false);
                                         player.setOlympiadSide(-1);
                                         player.setOlympiadGameId(-1);
                                     }
-                                    _olympiadInstances.remove(stadium.getStadiumId());
                                 }
 
                                 if (_gamesQueue.containsKey(stadium.getStadiumId()))
@@ -252,43 +261,24 @@ class OlympiadManager implements Runnable
 		return list.get(classList.get(Rnd.nextInt(classList.size())));
 	}
 
-    private List<L2PcInstance> nextOpponents(List<L2PcInstance> list)
+    private L2PcInstance[] nextOpponents(List<L2PcInstance> participants)
     {
-        List<L2PcInstance> opponents = new ArrayList<>();
-        if (list.size() == 0)
-            return opponents;
+        final int count = participants.size();
+        if (count < 2) {
+            return null;
+        }
 
-        int loopCount = (list.size() / 2);
-        int first;
-        int second;
-
-        if (loopCount < 1)
-            return opponents;
-
-        first = Rnd.nextInt(list.size());
-        opponents.add(list.get(first));
-        list.remove(first);
-
-        second = Rnd.nextInt(list.size());
-        opponents.add(list.get(second));
-        list.remove(second);
-
+        final L2PcInstance[] opponents = new L2PcInstance[2];
+        for (int i = 0; i < opponents.length; i++) {
+            int randomIndex = Rnd.nextInt(count - i);
+            opponents[i] = participants.remove(randomIndex);
+        }
         return opponents;
     }
 
-    private boolean existNextOpponents(List<L2PcInstance> list)
+    private boolean existNextOpponents(List<L2PcInstance> participants)
     {
-        if (list == null)
-            return false;
-
-        if (list.size() == 0)
-            return false;
-
-        int loopCount = list.size() >> 1;
-        if (loopCount < 1)
-            return false;
-
-        return true;
+        return participants != null && participants.size() > 1;
     }
 
     protected Map<Integer, String> getAllTitles()

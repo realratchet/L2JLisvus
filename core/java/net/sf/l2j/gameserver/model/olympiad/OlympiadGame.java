@@ -24,6 +24,7 @@ import net.sf.l2j.gameserver.model.L2Party;
 import net.sf.l2j.gameserver.model.L2Skill;
 import net.sf.l2j.gameserver.model.L2Summon;
 import net.sf.l2j.gameserver.model.L2World;
+import net.sf.l2j.gameserver.model.Location;
 import net.sf.l2j.gameserver.model.actor.instance.L2CubicInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PetInstance;
@@ -67,12 +68,11 @@ class OlympiadGame
     protected static byte STANDBY = 1;
     protected static byte PLAYING = 2;
     
-    protected L2PcInstance _playerOne;
-    protected L2PcInstance _playerTwo;
-    private List<L2PcInstance> _players;
-    private int x1, y1, z1, x2, y2, z2;
+    private final L2PcInstance[] _players;
+    private Location _playerOneLoc;
+    private Location _playerTwoLoc;
 
-	protected OlympiadGame(L2OlympiadStadiumZone stadium, COMP_TYPE type, List<L2PcInstance> list)
+	protected OlympiadGame(L2OlympiadStadiumZone stadium, COMP_TYPE type, L2PcInstance[] players)
 	{
 		_aborted = false;
 		_stadium = stadium;
@@ -81,43 +81,41 @@ class OlympiadGame
         _playerTwoDisconnected = false;
         _type = type;
 
-        if (list != null)
+        _players = players;
+        if (players != null)
         {
-            _players = list;
-            _playerOne = list.get(0);
-            _playerTwo = list.get(1);
+            final L2PcInstance playerOne = _players[0];
+            final L2PcInstance playerTwo = _players[1];
 
-            try
+            if (playerOne != null && playerTwo != null)
             {
-                _playerOneName = _playerOne.getName();
-                _playerTwoName = _playerTwo.getName();
-                _playerOne.setOlympiadGameId(stadium.getStadiumId());
-                _playerTwo.setOlympiadGameId(stadium.getStadiumId());
-                _playerOneID = _playerOne.getObjectId();
-                _playerTwoID = _playerTwo.getObjectId();
+                _playerOneName = playerOne.getName();
+                _playerTwoName = playerTwo.getName();
+                playerOne.setOlympiadGameId(stadium.getStadiumId());
+                playerTwo.setOlympiadGameId(stadium.getStadiumId());
+                _playerOneID = playerOne.getObjectId();
+                _playerTwoID = playerTwo.getObjectId();
+
+                if (Config.DEBUG)
+                    _log.info("Olympiad System: Game - " + stadium.getStadiumId() + ": " + _playerOneName + " Vs " + _playerTwoName);
             }
-            catch (Exception e)
+            else
             {
                 _aborted = true;
                 clearPlayers();
             }
-
-            if (Config.DEBUG)
-                _log.info("Olympiad System: Game - " + stadium.getStadiumId() + ": " + _playerOne.getName() + " Vs " + _playerTwo.getName());
         }
         else
         {
             _aborted = true;
             clearPlayers();
-            return;
         }
     }
 
     protected void clearPlayers()
     {
-        _playerOne = null;
-        _playerTwo = null;
-        _players = null;
+        _players[0] = null;
+        _players[1] = null;
         _playerOneName = "";
         _playerTwoName = "";
         _playerOneID = 0;
@@ -126,39 +124,23 @@ class OlympiadGame
 
     protected void handleDisconnect(L2PcInstance player)
     {
-        if (player == _playerOne)
+        Location loc = null;
+        if (player == _players[0])
+        {
+            loc = _playerOneLoc;
             _playerOneDisconnected = true;
-        else if (player == _playerTwo)
+        }
+        else if (player == _players[1])
+        {
+            loc = _playerTwoLoc;
             _playerTwoDisconnected = true;
+        }
         
         // Also, reset player position if he is already inside arena
-        if (player.isInOlympiadMode())
+        if (player.isInOlympiadMode() && loc != null)
         {
-        	setPlayerXYZ(player);
+            player.setXYZ(loc.getX(), loc.getY(), loc.getZ());
         }
-    }
-    
-    protected void setPlayerXYZ(L2PcInstance player)
-    {
-    	int x, y, z = 0;
-    	if (player == _playerOne)
-    	{
-    		x = x1;
-    		y = y1;
-    		z = z1;
-    	}
-    	else if (player == _playerTwo)
-    	{
-    		x = x2;
-    		y = y2;
-    		z = z2;
-    	}
-    	else
-    	{
-    		return; // Invalid character
-    	}
-
-    	player.setXYZ(x, y, z);
     }
 
     protected void healPlayer(L2PcInstance player)
@@ -173,7 +155,7 @@ class OlympiadGame
         if (_aborted)
             return;
 
-        if (_playerOne == null || _playerTwo == null)
+        if (_players[0] == null || _players[1] == null)
             return;
 
         if (_playerOneDisconnected || _playerTwoDisconnected)
@@ -260,58 +242,48 @@ class OlympiadGame
     }
 
     protected boolean portPlayersToArena()
-    {    		
-        boolean _playerOneCrash = (_playerOne == null || _playerOneDisconnected);
-        boolean _playerTwoCrash = (_playerTwo == null || _playerTwoDisconnected);
+    {
+        final L2PcInstance playerOne = _players[0];
+        final L2PcInstance playerTwo = _players[1];
+        final boolean _playerOneCrash = (playerOne == null || _playerOneDisconnected);
+        final boolean _playerTwoCrash = (playerTwo == null || _playerTwoDisconnected);
 
         if (_playerOneCrash || _playerTwoCrash || _aborted)
         {
-            _playerOne = null;
-            _playerTwo = null;
+            _players[0] = null;
+            _players[1] = null;
             _aborted = true;
             return false;
         }
 
-        try
-        { 
-            x1 = _playerOne.getX();
-            y1 = _playerOne.getY();
-            z1 = _playerOne.getZ();
+        _playerOneLoc = new Location(playerOne.getX(), playerOne.getY(), playerOne.getZ());
+        _playerTwoLoc = new Location(playerTwo.getX(), playerTwo.getY(), playerTwo.getZ());
 
-            x2 = _playerTwo.getX();
-            y2 = _playerTwo.getY();
-            z2 = _playerTwo.getZ();
+        if (playerOne.isSitting())
+            playerOne.standUp();
 
+        if (playerTwo.isSitting())
+            playerTwo.standUp();
 
-            if (_playerOne.isSitting())
-                _playerOne.standUp();
+        playerOne.setTarget(null);
+        playerTwo.setTarget(null);
 
-            if (_playerTwo.isSitting())
-                _playerTwo.standUp();
+        playerOne.teleToLocation(_stadium.getSpawnLocs().get(0), false);
+        playerTwo.teleToLocation(_stadium.getSpawnLocs().get(1), false);
 
-            _playerOne.setTarget(null);
-            _playerTwo.setTarget(null);
+        playerOne.setIsInOlympiadMode(true);
+        playerOne.setIsOlympiadStart(false);
+        playerOne.setOlympiadSide(1);
 
-            _playerOne.teleToLocation(_stadium.getSpawnLocs().get(0), false);
-            _playerTwo.teleToLocation(_stadium.getSpawnLocs().get(1), false);
+        playerTwo.setIsInOlympiadMode(true);
+        playerTwo.setIsOlympiadStart(false);
+        playerTwo.setOlympiadSide(2);
 
-            _playerOne.setIsInOlympiadMode(true);
-            _playerOne.setIsOlympiadStart(false);
-            _playerOne.setOlympiadSide(1);
+        playerOne.sendPacket(new ExOlympiadMode(1));
+        playerTwo.sendPacket(new ExOlympiadMode(2));
 
-            _playerTwo.setIsInOlympiadMode(true);
-            _playerTwo.setIsOlympiadStart(false);
-            _playerTwo.setOlympiadSide(2);
+        _state = STANDBY;
 
-            _playerOne.sendPacket(new ExOlympiadMode(1));
-            _playerTwo.sendPacket(new ExOlympiadMode(2));
-
-            _state = STANDBY;
-        }
-        catch (NullPointerException e)
-        { 
-            return false; 
-        }
         return true;
     }
 
@@ -355,16 +327,18 @@ class OlympiadGame
 
     protected void portPlayersBack()
     {
-        if (_playerOne != null)
+        final L2PcInstance playerOne = _players[0];
+        final L2PcInstance playerTwo = _players[1];
+        if (playerOne != null && _playerOneLoc != null)
         {
-            _playerOne.sendPacket(new ExOlympiadMatchEnd());
-            _playerOne.teleToLocation(x1, y1, z1, false);
+            playerOne.sendPacket(new ExOlympiadMatchEnd());
+            playerOne.teleToLocation(_playerOneLoc, false);
         }
 
-        if (_playerTwo != null)
+        if (playerTwo != null && _playerTwoLoc != null)
         {
-            _playerTwo.sendPacket(new ExOlympiadMatchEnd());
-            _playerTwo.teleToLocation(x2, y2, z2, false);
+            playerTwo.sendPacket(new ExOlympiadMatchEnd());
+            playerTwo.teleToLocation(_playerTwoLoc, false);
         }
     }
 
@@ -372,6 +346,10 @@ class OlympiadGame
     {
         for (L2PcInstance player : _players)
         {
+            if (player == null) {
+                continue;
+            }
+            
             if (player.isDead())
             {
                 player.setIsDead(false);
@@ -392,8 +370,8 @@ class OlympiadGame
     
     protected boolean checkBattleStatus()
     {
-        boolean _pOneCrash = (_playerOne == null || _playerOneDisconnected);
-        boolean _pTwoCrash = (_playerTwo == null || _playerTwoDisconnected);
+        final boolean _pOneCrash = (_players[0] == null || _playerOneDisconnected);
+        final boolean _pTwoCrash = (_players[1] == null || _playerTwoDisconnected);
 
         int div;
         switch (_type)
@@ -540,48 +518,28 @@ class OlympiadGame
 
     protected boolean hasWinner()
     {
-        if (_aborted || _playerOne == null || _playerTwo == null)
+        final L2PcInstance playerOne = _players[0];
+        final L2PcInstance playerTwo = _players[1];
+
+        if (_aborted || playerOne == null || playerTwo == null)
             return true;
 
-        double playerOneHp = 0;
+        double playerOneHp = playerOne.getOlympiadGameId() != -1 ? playerOne.getCurrentHp() : 0;
+        double playerTwoHp = playerTwo.getOlympiadGameId() != -1 ? playerTwo.getCurrentHp() : 0;
 
-        try
-        {
-            if (_playerOne != null && _playerOne.getOlympiadGameId() != -1)
-                playerOneHp = _playerOne.getCurrentHp();
-        }
-        catch (Exception e)
-        {
-            playerOneHp = 0;
-        }
-
-        double playerTwoHp = 0;
-        try
-        {
-            if (_playerTwo != null && _playerTwo.getOlympiadGameId() != -1)
-                playerTwoHp = _playerTwo.getCurrentHp();
-        }
-        catch (Exception e)
-        {
-            playerTwoHp = 0;
-        }
-
-        if (playerTwoHp == 0 || playerOneHp == 0)
-            return true;
-
-        return false;
+        return playerTwoHp == 0 || playerOneHp == 0;
     }
 
     protected void validateWinner()
     {
-        if (_aborted || _playerOne == null || _playerTwo == null || _playerOneDisconnected || _playerTwoDisconnected)
+        L2PcInstance playerOne = _players[0];
+        L2PcInstance playerTwo = _players[1];
+
+        if (_aborted || playerOne == null || playerTwo == null || _playerOneDisconnected || _playerTwoDisconnected)
             return;
 
-        StatsSet playerOneStat;
-        StatsSet playerTwoStat;
-
-        playerOneStat = Olympiad.getNobleStats(_playerOneID);
-        playerTwoStat = Olympiad.getNobleStats(_playerTwoID);
+        StatsSet playerOneStat = Olympiad.getNobleStats(_playerOneID);
+        StatsSet playerTwoStat = Olympiad.getNobleStats(_playerTwoID);
 
         int div;
         int gpReward;
@@ -596,41 +554,16 @@ class OlympiadGame
         int playerOnePoints = playerOneStat.getInteger(POINTS);
         int playerTwoPoints = playerTwoStat.getInteger(POINTS);
 
-        double playerOneHp = 0;
-        try
-        {
-            if (_playerOne != null && !_playerOneDisconnected)
-            {
-                if (!_playerOne.isDead())
-                    playerOneHp = _playerOne.getCurrentHp()+_playerOne.getCurrentCp();
-            }
-        }
-        catch (Exception e)
-        {
-            playerOneHp = 0;
-        }
-
-        double playerTwoHp = 0;
-        try
-        {
-            if (_playerTwo != null && !_playerTwoDisconnected)
-            {
-                if (!_playerTwo.isDead())
-                    playerTwoHp = _playerTwo.getCurrentHp()+_playerTwo.getCurrentCp();
-            }
-        }
-        catch (Exception e)
-        {
-            playerTwoHp = 0;
-        }
+        final double playerOneHp = playerOne.isDead() ? 0 : playerOne.getCurrentHp() + playerOne.getCurrentCp();
+        final double playerTwoHp = playerTwo.isDead() ? 0 : playerTwo.getCurrentHp() + playerTwo.getCurrentCp();
 
         String result = "";
 
         // If players crashed, check if they have relogged
-        _playerOne = L2World.getInstance().getPlayer(_playerOneID); 
-        _players.set(0, _playerOne);
-        _playerTwo = L2World.getInstance().getPlayer(_playerTwoID);
-        _players.set(1, _playerTwo);
+        _players[0] = L2World.getInstance().getPlayer(_playerOneID);
+        _players[1] = L2World.getInstance().getPlayer(_playerTwoID);
+        playerOne = _players[0];
+        playerTwo = _players[1];
 
         switch (_type)
         {
@@ -656,14 +589,14 @@ class OlympiadGame
 
         SystemMessage sm;
         
-        if ((_playerOne == null || !_playerOne.isOnline()) && (_playerTwo == null || !_playerTwo.isOnline()))
+        if (!playerOne.isOnline() && !playerTwo.isOnline())
         {
             result = " tie";
             sm = new SystemMessage(SystemMessage.THE_GAME_ENDED_IN_A_TIE);
             broadcastMessage(sm, true);
         }
-        else if (_playerTwo == null || !_playerTwo.isOnline() || (playerTwoHp == 0 && playerOneHp != 0) 
-        	|| (_playerOne != null && _playerOne.dmgDealt > _playerTwo.dmgDealt && playerTwoHp != 0 && playerOneHp != 0))
+        else if (!playerTwo.isOnline() || (playerTwoHp == 0 && playerOneHp != 0) 
+        	|| (playerOne.dmgDealt > playerTwo.dmgDealt && playerTwoHp != 0 && playerOneHp != 0))
         {
             playerOneStat.set(POINTS, playerOnePoints + pointDiff);
             playerOneStat.set(COMP_WON, playerOneWon + 1);
@@ -686,21 +619,21 @@ class OlympiadGame
 
             try
             {
-                result = " ("+playerOneHp+"hp vs "+playerTwoHp+"hp - "+_playerOne.dmgDealt+"dmg vs "+_playerTwo.dmgDealt+"dmg) "+_playerOneName+" win "+pointDiff+" points";
-                L2ItemInstance item = _playerOne.getInventory().addItem("Olympiad", Config.ALT_OLY_BATTLE_REWARD_ITEM, gpReward, _playerOne, null);
+                result = " ("+playerOneHp+"hp vs "+playerTwoHp+"hp - "+playerOne.dmgDealt+"dmg vs "+playerTwo.dmgDealt+"dmg) "+_playerOneName+" win "+pointDiff+" points";
+                L2ItemInstance item = playerOne.getInventory().addItem("Olympiad", Config.ALT_OLY_BATTLE_REWARD_ITEM, gpReward, playerOne, null);
                 InventoryUpdate iu = new InventoryUpdate();
                 iu.addModifiedItem(item);
-                _playerOne.sendPacket(iu);
+                playerOne.sendPacket(iu);
 
                 sm = new SystemMessage(SystemMessage.EARNED_S2_S1_s);
                 sm.addItemName(item.getItemId());
                 sm.addNumber(gpReward);
-                _playerOne.sendPacket(sm);
+                playerOne.sendPacket(sm);
             }
             catch (Exception e) {}
         }
-        else if (_playerOne == null || !_playerOne.isOnline() || (playerOneHp == 0 && playerTwoHp != 0) 
-        	|| (_playerTwo != null && _playerTwo.dmgDealt > _playerOne.dmgDealt && playerOneHp != 0 && playerTwoHp != 0))
+        else if (!playerOne.isOnline() || (playerOneHp == 0 && playerTwoHp != 0) 
+        	|| (playerTwo.dmgDealt > playerOne.dmgDealt && playerOneHp != 0 && playerTwoHp != 0))
         {
             playerTwoStat.set(POINTS, playerTwoPoints + pointDiff);
             playerTwoStat.set(COMP_WON, playerTwoWon + 1);
@@ -723,16 +656,16 @@ class OlympiadGame
 
             try
             {
-                result = " ("+playerOneHp+"hp vs "+playerTwoHp+"hp - "+_playerOne.dmgDealt+"dmg vs "+_playerTwo.dmgDealt+"dmg) "+_playerTwoName+" win "+pointDiff+" points";
-                L2ItemInstance item = _playerTwo.getInventory().addItem("Olympiad", Config.ALT_OLY_BATTLE_REWARD_ITEM, gpReward, _playerTwo, null);
+                result = " ("+playerOneHp+"hp vs "+playerTwoHp+"hp - "+playerOne.dmgDealt+"dmg vs "+playerTwo.dmgDealt+"dmg) "+_playerTwoName+" win "+pointDiff+" points";
+                L2ItemInstance item = playerTwo.getInventory().addItem("Olympiad", Config.ALT_OLY_BATTLE_REWARD_ITEM, gpReward, playerTwo, null);
                 InventoryUpdate iu = new InventoryUpdate();
                 iu.addModifiedItem(item);
-                _playerTwo.sendPacket(iu);
+                playerTwo.sendPacket(iu);
 
                 sm = new SystemMessage(SystemMessage.EARNED_S2_S1_s);
                 sm.addItemName(item.getItemId());
                 sm.addNumber(gpReward);
-                _playerTwo.sendPacket(sm);
+                playerTwo.sendPacket(sm);
             }
             catch (Exception e) {}
         }
@@ -855,20 +788,17 @@ class OlympiadGame
         broadcastMessage(sm, true);
 
 		_state = PLAYING;
-		
-		for (L2PcInstance player : _players)
-		{
-		    if (player == null)
-		        continue;
-		
-		    player.setIsOlympiadStart(true);
-		    // Send user status to opponent
-		    if (player == _playerOne)
-		        _playerTwo.sendPacket(new ExOlympiadUserInfo(player, 1));
-		    if (player == _playerTwo)
-		        _playerOne.sendPacket(new ExOlympiadUserInfo(player, 1));
-		}
-		
+
+        final L2PcInstance playerOne = _players[0];
+        final L2PcInstance playerTwo = _players[1];
+        if (playerOne != null && playerTwo != null) {
+            playerOne.setIsOlympiadStart(true);
+            playerOne.sendPacket(new ExOlympiadUserInfo(playerTwo));
+
+            playerTwo.setIsOlympiadStart(true);
+            playerTwo.sendPacket(new ExOlympiadUserInfo(playerOne));
+        }
+
 		// Broadcast users info to spectators
 		for (L2PcInstance spectator : _stadium.getSpectators())
 		{
@@ -881,16 +811,32 @@ class OlympiadGame
         return true;
     }
 
+    /**
+     * 
+     * @param player
+     * @return 
+     */
+    protected L2PcInstance getOpponentOf(L2PcInstance player)
+    {
+        L2PcInstance opponent;
+        if (player == _players[0])
+        {
+            opponent = _players[1];
+        }
+        else if (player == _players[1])
+        {
+            opponent = _players[0];
+        }
+        else
+        {
+            opponent = null;
+        }
+        return opponent;
+    }
+
     protected L2PcInstance[] getPlayers()
     {
-        if (_playerOne == null || _playerTwo == null)
-            return null;
-
-        L2PcInstance[] players = new L2PcInstance[2];
-        players[0] = _playerOne;
-        players[1] = _playerTwo;
-
-        return players;
+        return _players;
     }
     
     protected L2OlympiadStadiumZone getStadium()
@@ -979,7 +925,8 @@ class OlympiadGameTask implements Runnable
    		_started = true;
    		if (_game != null)
    		{
-   			if (_game._playerOne != null && _game._playerTwo != null)
+            final L2PcInstance[] players = _game.getPlayers();
+   			if (players[0] != null && players[1] != null)
    			{
    				// Waiting to teleport to arena
    				for (int i = 120; i > 10; i -= 5)
@@ -1012,10 +959,13 @@ class OlympiadGameTask implements Runnable
    				}
 
    				// Check if players are qualified to fight
-   				if (!_game._playerOne.checkOlympiadConditions())
-   					_game._playerOne = null;
-   				if (!_game._playerTwo.checkOlympiadConditions())
-   					_game._playerTwo = null;
+                for (int i = 0; i < players.length; i++)
+                {
+                    if (players[i] != null && !players[i].checkOlympiadConditions())
+                    {
+                        players[i] = null;
+                    }
+                }
 
    				// Checking for opponents and teleporting to arena
    				if (!_game.checkBattleStatus())

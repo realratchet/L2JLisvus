@@ -25,17 +25,14 @@ public class ExOlympiadUserInfo extends L2GameServerPacket
 {
 	private static final String _S__FE_29_OLYMPIADUSERINFO = "[S] FE:29 OlympiadUserInfo";
 	
-	private final int _side;
 	private final L2PcInstance _player;
 	
 	/**
 	 * @param player
-	 * @param side (1 = right, 2 = left)
 	 */
-	public ExOlympiadUserInfo(L2PcInstance player, int side)
+	public ExOlympiadUserInfo(L2PcInstance player)
 	{
 		_player = player;
-		_side = side;
 	}
 	
 	@Override
@@ -43,7 +40,7 @@ public class ExOlympiadUserInfo extends L2GameServerPacket
 	{
 		writeC(0xfe);
 		writeH(0x29);
-		writeC(_side);
+		writeC(_player.getOlympiadSide());
 		writeD(_player.getObjectId());
 		writeS(_player.getName());
 		writeD(_player.getClassId().getId());

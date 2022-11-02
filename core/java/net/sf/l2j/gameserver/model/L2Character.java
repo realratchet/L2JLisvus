@@ -1270,8 +1270,6 @@ public abstract class L2Character extends L2Object
 		// Get all possible targets of the skill in a table in function of the skill target type
 		L2Object[] targets = skill.getTargetList(this);
 		
-		boolean isFirstTarget = false;
-		
 		// AURA skills should always be using caster as target
         switch (skill.getTargetType())
         {
