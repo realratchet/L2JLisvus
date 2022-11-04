@@ -16,13 +16,13 @@ package net.sf.l2j.gameserver.network.serverpackets;
 
 import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.datatables.ClanTable;
-import net.sf.l2j.gameserver.instancemanager.TownManager;
 import net.sf.l2j.gameserver.model.L2Character;
 import net.sf.l2j.gameserver.model.L2Clan;
 import net.sf.l2j.gameserver.model.L2Summon;
 import net.sf.l2j.gameserver.model.actor.instance.L2FolkInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2MonsterInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2NpcInstance;
+import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.templates.L2NpcTemplate.AIType;
 
 /**
@@ -175,21 +175,16 @@ public class NpcInfo extends L2GameServerPacket
 	{
 		if (_cha instanceof L2Summon)
 		{
-			if (((L2Summon) _cha).getOwner() != null)
+			final L2PcInstance tmp = getClient().getActiveChar();
+			if (tmp != null)
 			{
-				if (((L2Summon) _cha).getOwner().getAppearance().getInvisible())
+				final L2PcInstance owner = ((L2Summon) _cha).getOwner();
+				if (owner != null)
 				{
-					return;
-				}
-				
-				if (((L2Summon) _cha).getOwner().isInOlympiadMode())
-				{
-					if (getClient().getActiveChar() != null)
+					// This is an olympiad protection that prevents outsiders from targetting olympiad participants (useful for servers without geodata)
+					if (owner.isInOlympiadMode() && !tmp.isGM() && !tmp.isInOlympiadMode() && !tmp.inObserverMode())
 					{
-						if (!getClient().getActiveChar().isGM() && !getClient().getActiveChar().isInOlympiadMode() && !getClient().getActiveChar().inObserverMode())
-						{
-							return;
-						}
+						return;
 					}
 				}
 			}

@@ -76,16 +76,7 @@ public class UserInfo extends L2GameServerPacket
 		writeS(_cha.getName());
 		writeD(_cha.getRace().ordinal());
 		writeD(_cha.getAppearance().getSex() ? 1 : 0);
-		
-		if (_cha.getClassIndex() == 0)
-		{
-			writeD(_cha.getClassId().getId());
-		}
-		else
-		{
-			writeD(_cha.getBaseClass());
-		}
-		
+		writeD(_cha.getClassIndex() == 0 ? _cha.getClassId().getId() : _cha.getBaseClass());
 		writeD(_cha.getLevel());
 		writeD(Experience.getVisualExp(_cha.getLevel(), _cha.getExp()));
 		writeD(_cha.getSTR());
@@ -176,11 +167,7 @@ public class UserInfo extends L2GameServerPacket
 		writeD(_cha.getAppearance().getFace());
 		writeD(_cha.getAccessLevel() > 0 ? 1 : 0); // Builder level
 		
-		String title = _cha.getTitle();
-		if (_cha.getAppearance().getInvisible() && _cha.isGM())
-		{
-			title = "Invisible";
-		}
+		String title = _cha.getAppearance().getInvisible() && _cha.isGM() ? "Invisible" : _cha.getTitle();
 		if (_cha.getPoly().isMorphed())
 		{
 			L2NpcTemplate polyObj = NpcTable.getInstance().getTemplate(_cha.getPoly().getPolyId());
@@ -235,14 +222,7 @@ public class UserInfo extends L2GameServerPacket
 		writeD((int) _cha.getCurrentCp());
 		writeC(_cha.isMounted() ? 0 : _cha.getEnchantEffect());
 		
-		if (_cha.getEventTeam() > 0)
-		{
-			writeC(_cha.getEventTeam()); // team circle around feet 1= Blue, 2 = red
-		}
-		else
-		{
-			writeC(_cha.getAuraColor()); // team circle around feet 1= Blue, 2 = red
-		}
+		writeC(_cha.getEventTeam() > 0 ? _cha.getEventTeam() : _cha.getAuraColor()); // team circle around feet 1= Blue, 2 = red
 		
 		writeD(_cha.getClanCrestLargeId());
 		writeC(_cha.isNoble() ? 1 : 0); // 0x01: symbol on char menu ctrl+I

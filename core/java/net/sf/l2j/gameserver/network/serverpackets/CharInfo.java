@@ -63,12 +63,14 @@ public class CharInfo extends L2GameServerPacket
 	private static final Logger _log = Logger.getLogger(CharInfo.class.getName());
 
 	private static final String _S__03_CHARINFO = "[S] 03 CharInfo";
+
 	private final L2PcInstance _cha;
 	private final Inventory _inv;
 	private final int _x, _y, _z, _heading;
 	private final int _mAtkSpd, _pAtkSpd;
 	private final int _runSpd, _walkSpd, _swimRunSpd, _swimWalkSpd;
 	private final int _flRunSpd, _flWalkSpd, _flyRunSpd, _flyWalkSpd;
+	private boolean _isInvisible;
 
 	/**
 	 * @param cha
@@ -87,31 +89,30 @@ public class CharInfo extends L2GameServerPacket
 		_walkSpd = cha.getStat().getBaseWalkSpeed();
 		_swimRunSpd = _flRunSpd = _flyRunSpd = _runSpd;
 		_swimWalkSpd = _flWalkSpd = _flyWalkSpd = _walkSpd;
+		_isInvisible = _cha.getAppearance().getInvisible();
 	}
 
 	@Override
 	protected final void writeImpl()
 	{
 		boolean gmSeeInvis = false;
-		L2PcInstance tmp = getClient().getActiveChar();
+
+		final L2PcInstance tmp = getClient().getActiveChar();
 		if (tmp != null)
 		{
-			if (_cha.getAppearance().getInvisible())
+			if (_isInvisible)
 			{
 				if (tmp.isGM())
 				{
 					gmSeeInvis = true;
 				}
-				else
-				{
-					return;
-				}
 			}
-			else if (_cha.isInOlympiadMode())
+			else
 			{
-				if (!tmp.isGM() && !tmp.isInOlympiadMode() && !tmp.inObserverMode())
+				// This is an olympiad protection that prevents outsiders from targetting olympiad participants (useful for servers without geodata)
+				if (_cha.isInOlympiadMode() && !tmp.isGM() && !tmp.isInOlympiadMode() && !tmp.inObserverMode())
 				{
-					return;
+					_isInvisible = true;
 				}
 			}
 		}
@@ -156,25 +157,9 @@ public class CharInfo extends L2GameServerPacket
 			writeC(_cha.isInCombat() ? 1 : 0);
 			writeC(_cha.isAlikeDead() ? 1 : 0);
 
-			if (gmSeeInvis)
-			{
-				writeC(0);
-			}
-			else
-			{
-				writeC(_cha.getAppearance().getInvisible() ? 1 : 0); // invisible ?? 0=false 1=true 2=summoned (only works if model has a summon animation)
-			}
-
+			writeC(!_isInvisible || gmSeeInvis ? 0 : 1); // invisible ?? 0=false 1=true 2=summoned (only works if model has a summon animation)
 			writeS(_cha.getName());
-
-			if (gmSeeInvis)
-			{
-				writeS("Invisible");
-			}
-			else
-			{
-				writeS(_cha.getTitle());
-			}
+			writeS(gmSeeInvis ? "Invisible" : _cha.getTitle());
 
 			writeD(0);
 			writeD(0);
@@ -200,15 +185,7 @@ public class CharInfo extends L2GameServerPacket
 			writeS(_cha.getName());
 			writeD(_cha.getRace().ordinal());
 			writeD(_cha.getAppearance().getSex() ? 1 : 0);
-
-			if (_cha.getClassIndex() == 0)
-			{
-				writeD(_cha.getClassId().getId());
-			}
-			else
-			{
-				writeD(_cha.getBaseClass());
-			}
+			writeD(_cha.getClassIndex() == 0 ? _cha.getClassId().getId() : _cha.getBaseClass());
 
 			writeD(0); // Hair All, but there are no such items in C4
 			writeD(_inv.getPaperdollItemId(Inventory.PAPERDOLL_HEAD));
@@ -249,14 +226,7 @@ public class CharInfo extends L2GameServerPacket
 			writeD(_cha.getAppearance().getHairColor());
 			writeD(_cha.getAppearance().getFace());
 
-			if (gmSeeInvis)
-			{
-				writeS("Invisible");
-			}
-			else
-			{
-				writeS(_cha.getTitle());
-			}
+			writeS(gmSeeInvis ? "Invisible" : _cha.getTitle());
 
 			writeD(_cha.getClanId());
 			writeD(_cha.getClanCrestId());
@@ -271,14 +241,7 @@ public class CharInfo extends L2GameServerPacket
 			writeC(_cha.isInCombat() ? 1 : 0);
 			writeC(_cha.isAlikeDead() ? 1 : 0);
 
-			if (gmSeeInvis)
-			{
-				writeC(0);
-			}
-			else
-			{
-				writeC(_cha.getAppearance().getInvisible() ? 1 : 0); // invisible = 1 visible = 0
-			}
+			writeC(!_isInvisible || gmSeeInvis ? 0 : 1); // invisible = 1 visible = 0
 
 			writeC(_cha.getMountType()); // 1 on strider 2 on wyvern 0 no mount
 			writeC(_cha.getPrivateStoreType().getId()); // 1 - sellshop
@@ -303,14 +266,7 @@ public class CharInfo extends L2GameServerPacket
 
 			writeC(_cha.isMounted() ? 0 : _cha.getEnchantEffect());
 
-			if (_cha.getEventTeam() > 0)
-			{
-				writeC(_cha.getEventTeam()); // team circle around feet 1= Blue, 2 = red
-			}
-			else
-			{
-				writeC(_cha.getAuraColor()); // team circle around feet 1= Blue, 2 = red
-			}
+			writeC(_cha.getEventTeam() > 0 ? _cha.getEventTeam() : _cha.getAuraColor()); // team circle around feet 1= Blue, 2 = red
 
 			writeD(_cha.getClanCrestLargeId());
 			writeC(_cha.isNoble() ? 1 : 0); // Symbol on char menu ctrl+I
