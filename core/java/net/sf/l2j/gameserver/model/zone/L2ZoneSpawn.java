@@ -63,13 +63,11 @@ public abstract class L2ZoneSpawn extends L2ZoneType
     
     public Location getSpawnLoc()
     {
-        return _spawnLocs.get(Rnd.get(_spawnLocs.size()));
+        return _spawnLocs != null && !_spawnLocs.isEmpty() ? _spawnLocs.get(Rnd.get(_spawnLocs.size())) : null;
     }
 
     public Location getAlternateSpawnLoc()
     {
-        if (_alternateSpawnLocs != null)
-            return _alternateSpawnLocs.get(Rnd.get(_alternateSpawnLocs.size()));
-		return getSpawnLoc();
+        return _alternateSpawnLocs != null && !_alternateSpawnLocs.isEmpty() ? _alternateSpawnLocs.get(Rnd.get(_alternateSpawnLocs.size())) : getSpawnLoc();
     }
 }
