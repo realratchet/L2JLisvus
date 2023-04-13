@@ -45,9 +45,9 @@ class Quest (JQuest) :
    return htmltext
 
  def onTalk (self,npc,st):
+   htmltext = JQuest.getNoQuestMsg()
    if st :
         npcId = npc.getNpcId()
-        htmltext = JQuest.getNoQuestMsg()
         id = st.getState()
         cond = st.getInt("cond")
         if cond == 0 :

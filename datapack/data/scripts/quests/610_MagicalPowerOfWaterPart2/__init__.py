@@ -102,7 +102,7 @@ class Quest (JQuest) :
    return htmltext
 
  def onTalk (self,npc,st):
-   htmltext = "<html><body>You are either not on a quest that involves this NPC, or you don't meet this NPC's minimum quest requirements.</body></html>"
+   htmltext = JQuest.getNoQuestMsg()
    if st :
     npcId = npc.getNpcId()
     cond = st.getInt("cond")
@@ -121,7 +121,7 @@ class Quest (JQuest) :
                 htmltext = "8372-07.htm"
     elif npcId == Alter :
        htmltext = "8560-01.htm"
-    return htmltext
+   return htmltext
 
  def onKill(self,npc,player,isPet):
     npcId = npc.getNpcId()

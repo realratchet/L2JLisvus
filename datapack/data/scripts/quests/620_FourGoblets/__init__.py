@@ -38,7 +38,7 @@ class Quest (JQuest) :
       self.questItemIds = [ANTIQUE_BROOCH,SEALED_BOX,7256,7257,7258,7259,GRAVE_PASS]
 
   def onTalk (self,npc,st) :
-    htmltext = "<html><body>You are either not on a quest that involves this NPC, or you don't meet this NPC's minimum quest requirements.</body></html>"
+    htmltext = JQuest.getNoQuestMsg()
     id = st.getState()
     if id == State.CREATED :
       st.set("cond","0")

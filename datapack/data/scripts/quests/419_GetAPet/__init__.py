@@ -161,19 +161,21 @@ class Quest (JQuest):
     return
 
   def onTalk (self,npc,st):
+    htmltext = JQuest.getNoQuestMsg()
     npcid = npc.getNpcId()
     id = st.getState()
     if npcid == PET_MANAGER_MARTIN :
       if id == State.CREATED  :
          if st.getPlayer().getLevel() < 15 :
             st.exitQuest(1)
-            return "419_low_level.htm"
-         return "Start.htm"
+            htmltext = "419_low_level.htm"
+         else :
+            htmltext = "Start.htm"
       if id == State.STARTED and st.get("step") == "STARTED" :
          if getCount_proof(st) == 0 :
-            return "419_no_slay.htm"  
+            htmltext = "419_no_slay.htm"  
          elif getCount_proof(st) < REQUIRED_SPIDER_LEGS :
-            return "419_pending_slay.htm"
+            htmltext = "419_pending_slay.htm"
          else :
             st.set("step","SLAYED")
             st.set("progress","0")
@@ -193,23 +195,24 @@ class Quest (JQuest):
             elif race == 4:
                 st.takeItems(SPIDER_LEG5,REQUIRED_SPIDER_LEGS)
                 st.takeItems(ANIMAL_SLAYER_LIST5,1)
-            return "Slayed.htm"
+            htmltext = "Slayed.htm"
       elif id == State.STARTED and st.get("step") == "SLAYED" :
         if st.getInt("progress") == 7 :
            st.takeItems(ANIMAL_LOVERS_LIST1,1)
            st.set("step","TALKED")
            st.set("quiz","1 2 3 4 5 6 7 8 9 10 11 12 13 14")
            st.set("answers","0")
-           return "Talked.htm"
-        return "419_pending_talk.htm"
+           htmltext = "Talked.htm"
+        else :
+           htmltext = "419_pending_talk.htm"
     elif id == State.STARTED and st.get("step") == "SLAYED" :
       if npcid == GK_BELLA :
-         return "419_bella_1.htm"
+         htmltext = "419_bella_1.htm"
       elif npcid == MC_ELLIE :
-         return "419_ellie_1.htm"
+         htmltext = "419_ellie_1.htm"
       elif npcid == GD_METTY :
-         return "419_metty_1.htm"
-    return
+         htmltext = "419_metty_1.htm"
+    return htmltext
 
   def onKill (self,npc,player,isPet):
     st = player.getQuestState("419_GetAPet")
