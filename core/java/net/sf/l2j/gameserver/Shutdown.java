@@ -71,63 +71,6 @@ public class Shutdown extends Thread
 	}
 	
 	/**
-	 * This function starts a shutdown countdown from Telnet (Copied from Function startShutdown())
-	 * @param ip IP Which Issued shutdown command
-	 * @param seconds seconds until shutdown
-	 * @param restart true if the server will restart after shutdown
-	 */
-	public void startTelnetShutdown(String ip, int seconds, boolean restart)
-	{
-		Announcements an = Announcements.getInstance();
-		_log.warning("IP: " + ip + " issued shutdown command. " + _modeText[_shutdownMode] + " in " + seconds + " seconds!");
-		
-		if (restart)
-		{
-			_shutdownMode = GM_RESTART;
-		}
-		else
-		{
-			_shutdownMode = GM_SHUTDOWN;
-		}
-		
-		if (_shutdownMode > 0)
-		{
-			an.announceToAll("Attention players!");
-			an.announceToAll("Server is " + _modeText[_shutdownMode] + " in " + seconds + " seconds!");
-			if ((_shutdownMode == 1) || (_shutdownMode == 2))
-			{
-				an.announceToAll("Please, avoid using Gatekeepers/SoE");
-				an.announceToAll("during server " + _modeText[_shutdownMode] + " procedure.");
-			}
-		}
-		
-		if (_counterInstance != null)
-		{
-			_counterInstance._abort();
-		}
-		
-		_counterInstance = new Shutdown(seconds, restart);
-		_counterInstance.start();
-	}
-	
-	/**
-	 * This function aborts a running countdown
-	 * @param IP IP Which Issued shutdown command
-	 */
-	public void telnetAbort(String IP)
-	{
-		_log.warning("IP: " + IP + " issued shutdown ABORT. " + _modeText[_shutdownMode] + " has been stopped!");
-		
-		if (_counterInstance != null)
-		{
-			_counterInstance._abort();
-			Announcements _an = Announcements.getInstance();
-			_an.announceToAll("Server aborts " + _modeText[_shutdownMode] + " and continues normal operation!");
-		}
-		
-	}
-	
-	/**
 	 * This creates a countdown instance of Shutdown.
 	 * @param seconds how many seconds until shutdown
 	 * @param restart true is the server shall restart after shutdown

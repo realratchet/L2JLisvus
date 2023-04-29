@@ -20,6 +20,7 @@ import java.util.logging.Logger;
 
 import net.sf.l2j.gameserver.GameTimeController;
 import net.sf.l2j.gameserver.LoginServerThread;
+import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance.PunishmentLevel;
 import net.sf.l2j.gameserver.network.L2GameClient;
 import net.sf.l2j.util.StringUtil;
 
@@ -193,7 +194,7 @@ public final class FloodProtectorAction
 
 			if (!_client.getActiveChar().isInJail())
 			{
-				_client.getActiveChar().setInJail(true, _config.PUNISHMENT_TIME);
+				_client.getActiveChar().setPunishment(PunishmentLevel.JAIL, _config.PUNISHMENT_TIME);
 			}
 			else
 			{

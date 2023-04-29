@@ -14,12 +14,12 @@
  */
 package net.sf.l2j.gameserver.handler.admincommandhandlers;
 
-import net.sf.l2j.gameserver.ThreadPoolManager;
 import net.sf.l2j.gameserver.handler.IAdminCommandHandler;
 import net.sf.l2j.gameserver.model.GMAudit;
 import net.sf.l2j.gameserver.model.L2Object;
 import net.sf.l2j.gameserver.model.L2World;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance.PunishmentLevel;
 
 /**
  * This class handles following admin commands:
@@ -43,7 +43,7 @@ public class AdminBanChat implements IAdminCommandHandler
 	public boolean useAdminCommand(String command, L2PcInstance activeChar)
 	{
 		String[] cmdParams = command.split(" ");
-		long banLength = -1;
+		int delay = 0;
 		
 		L2Object targetObject = null;
 		L2PcInstance targetPlayer = null;
@@ -56,10 +56,11 @@ public class AdminBanChat implements IAdminCommandHandler
             {
                 try
                 {
-                    banLength = Integer.parseInt(cmdParams[2]) * 60000;
+                    delay = Integer.parseInt(cmdParams[2]) * 60000;
                 } catch (NumberFormatException nfe) {}
             }
-		} else 
+		}
+		else 
 		{
 			if (activeChar.getTarget() != null)
 			{
@@ -78,21 +79,27 @@ public class AdminBanChat implements IAdminCommandHandler
 
 		if (command.startsWith("admin_banchat"))
 		{
-            String banLengthStr = "";
-            
-			if (banLength > -1)
-            {
-                targetPlayer.setChatUnbanTask(ThreadPoolManager.getInstance().scheduleGeneral(new SchedChatUnban(targetPlayer), banLength));
-                banLengthStr = " for " + banLength + " seconds.";
-            }
-			
-            activeChar.sendMessage(targetPlayer.getName() + " is now chat banned" + banLengthStr + ".");
-            targetPlayer.setChatBanned(true);
+			if (PunishmentLevel.CHAT.getSeverity() < targetPlayer.getPunishmentLevel().getSeverity())
+			{
+				activeChar.sendMessage("Character " + targetPlayer.getName() + " is currently undergoing a more severe punishment: " + targetPlayer.getPunishmentLevel().getDescription());
+			}
+			else
+			{
+				targetPlayer.setPunishment(PunishmentLevel.CHAT, delay);
+				activeChar.sendMessage("Character " + targetPlayer.getName() + " was chat-banned for " + (delay > 0 ? delay + " minute(s)." : "ever!"));
+			}
 		}
 		else if (command.startsWith("admin_unbanchat"))
 		{
-            activeChar.sendMessage(targetPlayer.getName() + "'s chat ban has now been lifted.");
-			targetPlayer.setChatBanned(false);
+			if (targetPlayer.isChatBanned())
+			{
+				targetPlayer.setPunishment(PunishmentLevel.NONE, 0);
+				activeChar.sendMessage("Chat-ban for player " + targetPlayer.getName() + " has now been lifted.");
+			}
+			else
+			{
+				activeChar.sendMessage("Character " + targetPlayer.getName() + " is not chat-banned.");
+			}
 		}
 		
 		GMAudit.auditGMAction(activeChar.getName(), command,  targetPlayer.getName(), "");
@@ -103,20 +110,5 @@ public class AdminBanChat implements IAdminCommandHandler
 	public String[] getAdminCommandList()
 	{
 		return _adminCommands;
-	}
-	
-	private class SchedChatUnban implements Runnable
-	{
-		L2PcInstance _player;
-		protected SchedChatUnban(L2PcInstance player)
-		{
-			_player = player;
-		}
-		
-		@Override
-		public void run()
-		{
-			_player.setChatBanned(false);
-		}
 	}
 }

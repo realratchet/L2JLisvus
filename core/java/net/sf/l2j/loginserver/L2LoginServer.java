@@ -31,7 +31,6 @@ import net.sf.l2j.L2DatabaseFactory;
 import net.sf.l2j.Server;
 import net.sf.l2j.mmocore.SelectorConfig;
 import net.sf.l2j.mmocore.SelectorThread;
-import net.sf.l2j.status.Status;
 import net.sf.l2j.util.UPnPService;
 
 /**
@@ -44,7 +43,6 @@ public class L2LoginServer
 
 	private static L2LoginServer _loginServer;
 	private static GameServerListener _gameServerListener;
-	private static Status _statusServer;
 	
 	private SelectorThread<L2LoginClient> _selectorThread;
 
@@ -138,28 +136,7 @@ public class L2LoginServer
 			_log.log(Level.SEVERE, "FATAL: Failed to start the Game Server Listener. Reason: " + e.getMessage(), e);
 			System.exit(1);
 		}
-		
-		if (Config.IS_TELNET_ENABLED)
-		{
-			try
-			{
-				_statusServer = new Status(Server.SERVER_MODE);
-				_statusServer.start();
-			}
-			catch (IOException e)
-			{
-				_log.severe("Failed to start the Telnet Server. Reason: " + e.getMessage());
-				if (Config.DEVELOPER)
-				{
-					e.printStackTrace();
-				}
-			}
-		}
-		else
-		{
-			_log.info("Telnet server is currently disabled.");
-		}
-		
+
 		try
 		{
 			_selectorThread.openServerSocket(bindAddress, Config.PORT_LOGIN);
@@ -257,11 +234,6 @@ public class L2LoginServer
 		{
 			_log.config("IP Bans file (" + bannedFile.getName() + ") is missing or is a directory, skipped.");
 		}
-	}
-
-	public static Status getStatusServer()
-	{
-		return _statusServer;
 	}
 
 	public static GameServerListener getGameServerListener()

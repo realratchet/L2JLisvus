@@ -164,7 +164,6 @@
 			<fileset dir="java/config">
 				<include name="LoginServer.properties"/>
 				<include name="MMO.properties"/>
-				<include name="Telnet.properties"/>
 			</fileset>
 		</copy>
 

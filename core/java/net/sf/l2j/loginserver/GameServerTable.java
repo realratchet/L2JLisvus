@@ -250,24 +250,6 @@ public class GameServerTable
 		return new BigInteger(hex).toString(16);
 	}
 	
-	/**
-	 * A status report used by Telnet.
-	 * 
-	 * @return
-	 */
-	public List<String> getStatusReport()
-	{
-		List<String> report = new ArrayList<>();
-		report.add("There are " + _gameServerTable.size() + " GameServers");
-		for (GameServerInfo gsi : _gameServerTable.values())
-		{
-			String content = "GameServer: " + _serverNames.get(gsi.getId()) + " Server ID: " + gsi.getId() + " Hex ID: " + hexToString(gsi.getHexId()) 
-			+ " External IP: " + gsi.getExternalIp() + " Port: " + gsi.getPort() + " Status: " + ServerStatus.statusString[gsi.getStatus()];
-			report.add(content);
-		}
-		return report;
-	}
-	
 	public static class GameServerInfo
 	{
 		// auth

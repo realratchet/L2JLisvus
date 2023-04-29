@@ -90,8 +90,10 @@ public class DeadLockDetector extends Thread
                     if (Config.RESTART_ON_DEADLOCK)
                     {
                         Announcements an = Announcements.getInstance();
+                        short delay = 60;
                         an.announceToAll("Server has stability issues - restarting now.");
-                        Shutdown.getInstance().startTelnetShutdown("DeadLockDetector - Auto Restart",60,true);
+                        _log.warning(getClass().getSimpleName() + ": Server will restart " + " in " + delay + " seconds due to stability issues!");
+                        Shutdown.getInstance().startShutdown(null, delay, true);
                     }
                 }
                 Thread.sleep(_sleepTime); 

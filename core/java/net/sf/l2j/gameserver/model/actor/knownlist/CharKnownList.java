@@ -57,7 +57,9 @@ public class CharKnownList extends ObjectKnownList
             getKnownRelations().put(object.getObjectId(), -1);
         }
         else if (object instanceof L2Summon)
+        {
             getKnownSummons().put(object.getObjectId(), (L2Summon)object);
+        }
 
         return true;
     }

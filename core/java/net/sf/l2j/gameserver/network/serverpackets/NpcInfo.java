@@ -51,6 +51,8 @@ public class NpcInfo extends L2GameServerPacket
 	private final double collisionHeight, collisionRadius;
 	private String _name = "";
 	private String _title = "";
+
+	private final int _playableFlag, _pvpFlag, _karma, _auraColor;
 	
 	// Npc Crest
 	private int _clanCrest = 0;
@@ -92,7 +94,7 @@ public class NpcInfo extends L2GameServerPacket
 		{
 			_name = cha.getTemplate().name;
 		}
-		
+
 		if (Config.CHAMPION_ENABLE && cha.isChampion())
 		{
 			_title = (Config.CHAMPION_TITLE);
@@ -105,7 +107,7 @@ public class NpcInfo extends L2GameServerPacket
 		{
 			_title = cha.getTitle();
 		}
-		
+
 		if (Config.SHOW_NPC_LVL && (cha instanceof L2MonsterInstance))
 		{
 			String t = "Lv " + cha.getLevel() + (cha.getAggroRange() > 0 ? "*" : "");
@@ -113,9 +115,13 @@ public class NpcInfo extends L2GameServerPacket
 			{
 				t += " " + _title;
 			}
-			
 			_title = t;
 		}
+
+		_playableFlag = 0;
+		_pvpFlag = 0;
+		_karma = 0;
+		_auraColor = 0;
 
 		// Show NPC crest
 		if (Config.SHOW_NPC_CREST && cha instanceof L2FolkInstance)
@@ -143,6 +149,8 @@ public class NpcInfo extends L2GameServerPacket
 	
 	public NpcInfo(L2Summon cha, L2Character attacker, int val)
 	{
+		final L2PcInstance owner = cha.getOwner();
+		
 		_cha = cha;
 		_x = _cha.getX();
 		_y = _cha.getY();
@@ -167,29 +175,16 @@ public class NpcInfo extends L2GameServerPacket
 		collisionHeight = _cha.getTemplate().collisionHeight;
 		collisionRadius = _cha.getTemplate().collisionRadius;
 		_name = _cha.getName();
-		_title = cha.getOwner() != null && cha.getOwner().isOnline() ? cha.getOwner().getName() : "";
+		_title = owner.isOnline() ? owner.getName() : "";
+		_playableFlag = 1;
+		_pvpFlag = owner.getPvpFlag();
+		_karma = owner.getKarma();
+		_auraColor = owner.getEventTeam() > 0 ? owner.getEventTeam() : cha.getAuraColor();
 	}
 	
 	@Override
 	protected final void writeImpl()
 	{
-		if (_cha instanceof L2Summon)
-		{
-			final L2PcInstance tmp = getClient().getActiveChar();
-			if (tmp != null)
-			{
-				final L2PcInstance owner = ((L2Summon) _cha).getOwner();
-				if (owner != null)
-				{
-					// This is an olympiad protection that prevents outsiders from targetting olympiad participants (useful for servers without geodata)
-					if (owner.isInOlympiadMode() && !tmp.isGM() && !tmp.isInOlympiadMode() && !tmp.inObserverMode())
-					{
-						return;
-					}
-				}
-			}
-		}
-		
 		writeC(0x16);
 		writeD(_cha.getObjectId());
 		writeD(_idTemplate + 1000000); // npc type id
@@ -223,18 +218,9 @@ public class NpcInfo extends L2GameServerPacket
 		writeC(_showSpawnAnimation ? 2 : _val); // 0=teleported 1=default 2=summoned
 		writeS(_name);
 		writeS(_title);
-		if (_cha instanceof L2Summon)
-		{
-			writeD(1);
-			writeD(((L2Summon) _cha).getOwner().getPvpFlag());
-			writeD(((L2Summon) _cha).getOwner().getKarma()); // hmm karma ??
-		}
-		else
-		{
-			writeD(0);
-			writeD(0);
-			writeD(0000); // hmm karma ??
-		}
+		writeD(_playableFlag);
+		writeD(_pvpFlag);
+		writeD(_karma);
 		
 		writeD(_cha.getAbnormalEffect()); // C2
 		writeD(_clanId); // clan id
@@ -243,14 +229,7 @@ public class NpcInfo extends L2GameServerPacket
 		writeD(_allyCrest); // all crest
 		writeC(0000); // C2
 		
-		if ((_cha instanceof L2Summon) && (((L2Summon) _cha).getOwner().getEventTeam() > 0))
-		{
-			writeC(((L2Summon) _cha).getOwner().getEventTeam());// Title color 0=client default
-		}
-		else
-		{
-			writeC(_cha.getAuraColor());
-		}
+		writeC(_auraColor); // Title color 0=client default
 		
 		writeF(collisionRadius);
 		writeF(collisionHeight);

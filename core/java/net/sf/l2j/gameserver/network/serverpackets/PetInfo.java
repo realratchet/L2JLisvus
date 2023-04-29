@@ -15,7 +15,7 @@
 package net.sf.l2j.gameserver.network.serverpackets;
 
 import net.sf.l2j.gameserver.model.L2Summon;
-import net.sf.l2j.gameserver.model.actor.instance.L2PetInstance;
+import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2SummonInstance;
 
 /**
@@ -25,17 +25,22 @@ import net.sf.l2j.gameserver.model.actor.instance.L2SummonInstance;
 public class PetInfo extends L2GameServerPacket
 {
 	private static final String _S__CA_PETINFO = "[S] b1 PetInfo";
+
 	private final L2Summon _summon;
 	private final int _x, _y, _z, _heading;
 	private final boolean _isSummoned;
 	private final int _mAtkSpd, _pAtkSpd;
 	private final int _runSpd, _walkSpd, _swimRunSpd, _swimWalkSpd;
-	private int _flRunSpd;
-	private int _flWalkSpd;
-	private int _flyRunSpd;
-	private int _flyWalkSpd;
+	private final int _flRunSpd;
+	private final int _flWalkSpd;
+	private final int _flyRunSpd;
+	private final int _flyWalkSpd;
 	private final int _maxHp, _maxMp;
-	private int _maxFed, _curFed;
+	private final int _maxFed, _curFed;
+	private final int _hasOwner;
+	private final int _pvpFlag, _karma;
+	private final int _totalWeight, _maxLoad;
+	private final int _auraColor;
 	private final int _val;
 	
 	/**
@@ -45,8 +50,11 @@ public class PetInfo extends L2GameServerPacket
 	 */
 	public PetInfo(L2Summon summon, int val)
 	{
+		final L2PcInstance owner = summon.getOwner();
+
 		_summon = summon;
 		_isSummoned = summon.isShowSummonAnimation();
+		_hasOwner = owner != null ? 1 : 0;
 		_x = summon.getX();
 		_y = summon.getY();
 		_z = summon.getZ();
@@ -60,16 +68,22 @@ public class PetInfo extends L2GameServerPacket
 		_maxHp = summon.getMaxHp();
 		_maxMp = summon.getMaxMp();
 		_val = val;
-		if (summon instanceof L2PetInstance)
-		{
-			_curFed = summon.getCurrentFed(); // how fed it is
-			_maxFed = summon.getMaxFed(); // max fed it can be
-		}
-		else if (summon instanceof L2SummonInstance)
+		_pvpFlag = owner.getPvpFlag();
+		_karma = owner.getKarma();
+		_totalWeight = summon.getInventory() != null ? summon.getInventory().getTotalWeight() : 0;
+		_maxLoad = summon.getMaxLoad();
+		_auraColor = owner.getEventTeam() > 0 ? owner.getEventTeam() : summon.getAuraColor();
+
+		if (summon instanceof L2SummonInstance)
 		{
 			L2SummonInstance servitor = (L2SummonInstance) summon;
 			_curFed = servitor.getTimeRemaining();
 			_maxFed = servitor.getTotalLifeTime();
+		}
+		else
+		{
+			_curFed = summon.getCurrentFed(); // how fed it is
+			_maxFed = summon.getMaxFed(); // max fed it can be
 		}
 	}
 	
@@ -105,7 +119,7 @@ public class PetInfo extends L2GameServerPacket
 		writeD(_summon.getWeapon()); // right hand weapon
 		writeD(_summon.getArmor());
 		writeD(0); // left hand weapon
-		writeC(_summon.getOwner() != null ? 1 : 0); // master name above pet 1=true ...
+		writeC(_hasOwner); // master name above pet 1=true ...
 		writeC(1); // running=1
 		writeC(_summon.isInCombat() ? 1 : 0); // attacking 1=true
 		writeC(_summon.isAlikeDead() ? 1 : 0); // dead 1=true
@@ -113,8 +127,8 @@ public class PetInfo extends L2GameServerPacket
 		writeS(_summon.getName());
 		writeS(_summon.getTitle());
 		writeD(1);
-		writeD(_summon.getOwner().getPvpFlag()); // 0 = white,2= purpleblink, if its greater then karma = purple
-		writeD(_summon.getOwner().getKarma()); // hmm karma ??
+		writeD(_pvpFlag); // 0 = white,2= purpleblink, if its greater then karma = purple
+		writeD(_karma); // hmm karma ??
 		writeD(_curFed); // how fed it is
 		writeD(_maxFed); // max fed it can be
 		writeD((int) _summon.getCurrentHp());// current hp
@@ -127,16 +141,8 @@ public class PetInfo extends L2GameServerPacket
 		writeD((int) _summon.getExpForThisLevel());// 0% absolute value
 		writeD((int) _summon.getExpForNextLevel());// 100% absolute value
 		
-		if (_summon instanceof L2PetInstance)
-		{
-			writeD(((L2PetInstance) _summon).getInventory().getTotalWeight());// weight
-			writeD(((L2PetInstance) _summon).getMaxLoad());// max weight it can carry
-		}
-		else
-		{
-			writeD(0);
-			writeD(0);
-		}
+		writeD(_totalWeight); // weight
+		writeD(_maxLoad); // max weight it can carry
 		
 		writeD(_summon.getPAtk(null));// patk
 		writeD(_summon.getPDef(null));// pdef
@@ -157,14 +163,7 @@ public class PetInfo extends L2GameServerPacket
 		// Following all added in C4.
 		writeH(0); // ??
 		
-		if ((_summon.getOwner() != null) && (_summon.getOwner().getEventTeam() > 0))
-		{
-			writeC(_summon.getOwner().getEventTeam()); // team aura (1 = blue, 2 = red)
-		}
-		else
-		{
-			writeC(_summon.getAuraColor());
-		}
+		writeC(_auraColor); // team aura (1 = blue, 2 = red)
 		
 		writeD(_summon.getSoulShotsPerHit());
 		writeD(_summon.getSpiritShotsPerHit());

@@ -28,7 +28,7 @@ public class SkillSpellbookTable
 {
 	private static Logger _log = Logger.getLogger(SkillSpellbookTable.class.getName());
 	
-	private static Map<Integer, Integer> _skillSpellbooks;
+	private Map<Integer, Integer> _skillSpellbooks;
 	
 	public static SkillSpellbookTable getInstance()
 	{

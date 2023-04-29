@@ -85,8 +85,6 @@ public final class Config
 	public static final String SERVER_VERSION_FILE = "./config/l2j-version.properties";
 	/** Properties file for siege configurations */
 	public static final String SIEGE_FILE = "./config/Siege.properties";
-	/** Properties file for telnet configurations */
-	public static final String TELNET_FILE = "./config/Telnet.properties";
 	
 	/** Text file containing hexadecimal value of server ID */
 	public static final String HEXID_FILE = "./config/hexid.txt";
@@ -1047,11 +1045,6 @@ public final class Config
 	public static boolean DEEPBLUE_DROP_RULES;
 	public static int UNSTUCK_INTERVAL;
 	
-	/** Is telnet enabled ? */
-	public static boolean IS_TELNET_ENABLED;
-	/** Telnet status port */
-	public static int TELNET_PORT;
-	
 	/** Player Protection control */
 	public static int PLAYER_SPAWN_PROTECTION;
 	public static int PLAYER_FAKEDEATH_UP_PROTECTION;
@@ -1526,21 +1519,6 @@ public final class Config
 			
 			PROJECT_TAG = serverVersion.getProperty("tag", "N/A");
 			SERVER_BUILD_DATE = serverVersion.getProperty("buildDate", "N/A");
-			
-			// Τelnet
-			Properties telnetSettings = new Properties();
-			try (InputStream is = new FileInputStream(new File(TELNET_FILE)))
-			{
-				telnetSettings.load(is);
-			}
-			catch (Exception e)
-			{
-				e.printStackTrace();
-				throw new Error("Failed to Load " + TELNET_FILE + " File.");
-			}
-			
-			IS_TELNET_ENABLED = Boolean.valueOf(telnetSettings.getProperty("EnableTelnet", "False"));
-			TELNET_PORT = Integer.parseInt(telnetSettings.getProperty("GameStatusPort", "54321"));
 			
 			// MMO
 			Properties mmoSettings = new Properties();
@@ -2425,21 +2403,6 @@ public final class Config
 			MMO_MAX_SEND_PER_PASS = Integer.parseInt(mmoSettings.getProperty("MaxSendPerPass", "12"));
 			MMO_MAX_READ_PER_PASS = Integer.parseInt(mmoSettings.getProperty("MaxReadPerPass", "12"));
 			MMO_HELPER_BUFFER_COUNT = Integer.parseInt(mmoSettings.getProperty("HelperBufferCount", "20"));
-			
-			// Telnet
-			Properties telnetSettings = new Properties();
-			try (InputStream is = new FileInputStream(new File(TELNET_FILE)))
-			{
-				telnetSettings.load(is);
-			}
-			catch (Exception e)
-			{
-				e.printStackTrace();
-				throw new Error("Failed to Load " + TELNET_FILE + " File.");
-			}
-			
-			IS_TELNET_ENABLED = Boolean.valueOf(telnetSettings.getProperty("EnableTelnet", "False"));
-			TELNET_PORT = Integer.parseInt(telnetSettings.getProperty("LoginStatusPort", "12345"));
 		}
 		else
 		{

@@ -106,7 +106,6 @@ import net.sf.l2j.gameserver.taskmanager.TaskManager;
 import net.sf.l2j.gameserver.util.DynamicExtension;
 import net.sf.l2j.mmocore.SelectorConfig;
 import net.sf.l2j.mmocore.SelectorThread;
-import net.sf.l2j.status.Status;
 import net.sf.l2j.util.DeadLockDetector;
 import net.sf.l2j.util.IPv4Filter;
 import net.sf.l2j.util.UPnPService;
@@ -126,18 +125,11 @@ public class GameServer
 	private final Shutdown _shutdownHandler;
 	private final LoginServerThread _loginThread;
 
-	private static Status _statusServer;
-
 	private static final Calendar _dateTimeServerStarted = Calendar.getInstance();
 
 	public static GameServer getGameServer()
 	{
 		return _gameServer;
-	}
-	
-	public static Status getStatusServer()
-	{
-		return _statusServer;
 	}
 	
 	public static Calendar getDateTimeServerStarted()
@@ -454,15 +446,5 @@ public class GameServer
 
 		L2DatabaseFactory.getInstance();
 		_gameServer = new GameServer();
-
-		if (Config.IS_TELNET_ENABLED)
-		{
-			_statusServer = new Status(Server.SERVER_MODE);
-			_statusServer.start();
-		}
-		else
-		{
-			_log.info("Telnet server is currently disabled.");
-		}
 	}
 }

@@ -32,8 +32,8 @@ public class FishTable
 {
 	private static Logger _log = Logger.getLogger(FishTable.class.getName());
 	
-	private static List<FishData> _fishes;
-	private static List<FishData> _newbieFishes;
+	private List<FishData> _fishes;
+	private List<FishData> _newbieFishes;
 	
 	public static FishTable getInstance()
 	{
@@ -47,27 +47,27 @@ public class FishTable
 		
 		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
 			PreparedStatement statement = con.prepareStatement("SELECT id, level, name, hp, hpregen, fish_type, fish_group, fish_guts, guts_check_time, wait_time, combat_time FROM fish ORDER BY id");
-			ResultSet Fishes = statement.executeQuery())
+			ResultSet rset = statement.executeQuery())
 		{
 			_fishes = new ArrayList<>();
 			_newbieFishes = new ArrayList<>();
 			
 			FishData fish;
 			
-			while (Fishes.next())
+			while (rset.next())
 			{
-				int id = Fishes.getInt("id");
-				int lvl = Fishes.getInt("level");
-				String name = Fishes.getString("name");
-				int hp = Fishes.getInt("hp");
-				int hpreg = Fishes.getInt("hpregen");
-				int type = Fishes.getInt("fish_type");
-				int group = Fishes.getInt("fish_group");
-				int fish_guts = Fishes.getInt("fish_guts");
-				int guts_check_time = Fishes.getInt("guts_check_time");
-				int wait_time = Fishes.getInt("wait_time");
-				int combat_time = Fishes.getInt("combat_time");
-				fish = new FishData(id, lvl, name, hp, hpreg, type, group, fish_guts, guts_check_time, wait_time, combat_time);
+				int id = rset.getInt("id");
+				int lvl = rset.getInt("level");
+				String name = rset.getString("name");
+				int hp = rset.getInt("hp");
+				int hpreg = rset.getInt("hpregen");
+				int type = rset.getInt("fish_type");
+				int group = rset.getInt("fish_group");
+				int fishGuts = rset.getInt("fish_guts");
+				int gutsCheckTime = rset.getInt("guts_check_time");
+				int waitTime = rset.getInt("wait_time");
+				int combatTime = rset.getInt("combat_time");
+				fish = new FishData(id, lvl, name, hp, hpreg, type, group, fishGuts, gutsCheckTime, waitTime, combatTime);
 				if (fish.getGroup() == 0)
 					_newbieFishes.add(fish);
 				else
@@ -81,7 +81,7 @@ public class FishTable
 			_log.log(Level.SEVERE, "error while creating fishes table" + e);
 		}
 		
-		_log.config("FishTable: Loaded " + count + " Fishes.");
+		_log.config("FishTable: Loaded " + count + " fishes.");
 	}
 	
 	/**
@@ -92,21 +92,17 @@ public class FishTable
 	 */
 	public List<FishData> getFish(int lvl, int type, int group)
 	{
-		List<FishData> result = new ArrayList<>();
-		List<FishData> _Fishing = null;
-		if (group == 0)
-			_Fishing = _newbieFishes;
-		else
-			_Fishing = _fishes;
+		final List<FishData> result = new ArrayList<>();
+		final List<FishData> fishes = group == 0 ? _newbieFishes : _fishes;
 		
-		if (_Fishing == null || _Fishing.isEmpty())
+		if (fishes == null || fishes.isEmpty())
 		{
 			// the fish list is empty
 			_log.warning("Fish are not defined!");
 			return null;
 		}
 		
-		for (FishData f : _Fishing)
+		for (FishData f : fishes)
 		{
 			if (f.getLevel() != lvl)
 				continue;
@@ -116,7 +112,7 @@ public class FishTable
 			result.add(f);
 		}
 		
-		if (result.size() == 0)
+		if (result.isEmpty())
 			_log.warning("Cant Find Any Fish!? - Lvl: " + lvl + " Type: " + type);
 		
 		return result;
