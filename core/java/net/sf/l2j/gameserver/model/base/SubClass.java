@@ -108,8 +108,9 @@ public final class SubClass
     
     public void setLevel(byte levelValue)
     {
-        if (levelValue > 78)
-            levelValue = 78;
+        final byte maxLevel = (byte)(Config.MAX_PLAYER_LEVEL - 1);
+        if (levelValue > maxLevel)
+            levelValue = maxLevel;
         else if (levelValue < 40)
             levelValue = 40;
             
@@ -118,7 +119,7 @@ public final class SubClass
     
     public void incLevel()
     {
-        if (getLevel() == 78)
+        if (getLevel() == (Config.MAX_PLAYER_LEVEL - 1))
             return;
         
         _level++;

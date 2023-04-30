@@ -761,7 +761,8 @@ public class SevenSignsFestival implements SpawnListener
     protected long _nextFestivalStart;
     protected boolean _festivalInitialized;
     protected boolean _festivalInProgress;
-    protected List<Integer> _accumulatedBonuses;   // The total bonus available (in Ancient Adena)
+    protected List<Integer> _accumulatedBonuses;   // The total bonus available (in Ancient Adena)
+
     
     private L2NpcInstance _dawnChatGuide; 
     private L2NpcInstance _duskChatGuide;
@@ -861,7 +862,7 @@ public class SevenSignsFestival implements SpawnListener
      */
     public static final int getMaxLevelForFestival(int festivalId)
     {
-        int maxLevel = 78;
+        int maxLevel = Config.MAX_PLAYER_LEVEL - 1;
         
         switch (festivalId) 
         {

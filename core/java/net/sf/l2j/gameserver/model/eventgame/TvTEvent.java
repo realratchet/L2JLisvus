@@ -21,6 +21,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.ScheduledFuture;
 import java.util.logging.Logger;
 
+import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.Announcements;
 import net.sf.l2j.gameserver.ThreadPoolManager;
 import net.sf.l2j.gameserver.datatables.DoorTable;
@@ -92,6 +93,8 @@ public class TvTEvent extends L2Event
 		{
 			return;
 		}
+
+		final byte maxLevel = (byte) (Config.MAX_PLAYER_LEVEL - 1);
 		
 		// Clean up
 		_registered.clear();
@@ -104,14 +107,14 @@ public class TvTEvent extends L2Event
 		_maxParticipants = Integer.parseInt(settings.getProperty("TvTMaxParticipants", "40"));
 		_minParticipants = Integer.parseInt(settings.getProperty("TvTMinParticipants", "6"));
 		_minLevel = Byte.parseByte(settings.getProperty("TvTEventMinLevel", "60"));
-		if ((_minLevel < 1) || (_minLevel > 78))
+		if ((_minLevel < 1) || (_minLevel > maxLevel))
 		{
 			_minLevel = 60;
 		}
 		_maxLevel = Byte.parseByte(settings.getProperty("TvTEventMaxLevel", "78"));
-		if ((_maxLevel < 1) || (_maxLevel > 78))
+		if ((_maxLevel < 1) || (_maxLevel > maxLevel))
 		{
-			_maxLevel = 78;
+			_maxLevel = maxLevel;
 		}
 		_eventDelay = Integer.parseInt(settings.getProperty("TvTEventDelay", "18000"));
 		

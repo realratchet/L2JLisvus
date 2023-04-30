@@ -14,6 +14,7 @@
  */
 package net.sf.l2j.gameserver.skills.l2skills;
 
+import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.datatables.NpcTable;
 import net.sf.l2j.gameserver.idfactory.IdFactory;
 import net.sf.l2j.gameserver.model.L2Character;
@@ -195,7 +196,7 @@ public class L2SkillSummon extends L2Skill
 		if (summon.getLevel() >= Experience.LEVEL.length)
 		{
 			summon.getStat().setExp(Experience.LEVEL[Experience.LEVEL.length - 1]);
-			_log.warning("Summon (" + summon.getName() + ") NpcID: " + summon.getNpcId() + " has a level above 78. Please rectify.");
+			_log.warning("Summon (" + summon.getName() + ") NpcID: " + summon.getNpcId() + " has a level above " + (Config.MAX_PLAYER_LEVEL - 1) + ". Please rectify.");
 		}
 		else
 		{
