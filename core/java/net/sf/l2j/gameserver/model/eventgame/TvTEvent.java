@@ -111,7 +111,7 @@ public class TvTEvent extends L2Event
 		{
 			_minLevel = 60;
 		}
-		_maxLevel = Byte.parseByte(settings.getProperty("TvTEventMaxLevel", "78"));
+		_maxLevel = Byte.parseByte(settings.getProperty("TvTEventMaxLevel", String.valueOf(maxLevel)));
 		if ((_maxLevel < 1) || (_maxLevel > maxLevel))
 		{
 			_maxLevel = maxLevel;
