@@ -39,8 +39,6 @@
           		</not>
         	</condition>
       	</fail>
-      	<available classname="java.net.http.HttpClient" property="JDK11.present"/>
-      	<fail unless="JDK11.present" message="Java 11 is required. Your version is Java ${ant.java.version} and probably JDK is not installed."/>
     </target>
 
     <target name="init"
@@ -63,9 +61,10 @@
     		compiler="javac10+"
             optimize="on"
             debug="on"
+            deprecation="on"
             includeantruntime="false"
-            source="11"
-            target="11"/>
+            source="17"
+            target="17"/>
     </target>
 
     <target name="jar"

@@ -412,7 +412,7 @@ public class JavaScriptEngine extends AbstractScriptEngine implements Compilable
 		}
 		
 		// look for "com.sun.script.java.mainClass"
-		return System.getProperty("com.sun.script.java.mainClass");
+		return System.getProperty(SYSPROP_PREFIX + MAINCLASS);
 	}
 	
 	protected static ClassLoader getParentLoader(ScriptContext ctx)

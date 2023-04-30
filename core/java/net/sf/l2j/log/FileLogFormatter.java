@@ -42,7 +42,7 @@ public class FileLogFormatter extends Formatter
 		StringUtil.append(output, dateFmt.format(new Date(record.getMillis())), TAB,
 			record.getLevel().getName(),
 			TAB,
-			String.valueOf(record.getThreadID()),
+			String.valueOf(record.getLongThreadID()),
 			TAB,
 			record.getLoggerName(),
 			TAB,

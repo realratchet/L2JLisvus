@@ -34,7 +34,7 @@ import org.eclipse.jdt.internal.compiler.tool.EclipseCompiler;
  */
 public class JavaCompiler
 {
-	public static final String JAVA_LANGUAGE_VERSION = "11";
+	public static final String JAVA_LANGUAGE_VERSION = "17";
 	
 	private final javax.tools.JavaCompiler _tool;
 	
