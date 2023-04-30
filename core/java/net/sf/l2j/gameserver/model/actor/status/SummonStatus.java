@@ -17,7 +17,6 @@ package net.sf.l2j.gameserver.model.actor.status;
 import net.sf.l2j.gameserver.ai.CtrlEvent;
 import net.sf.l2j.gameserver.model.L2Character;
 import net.sf.l2j.gameserver.model.L2Summon;
-import net.sf.l2j.gameserver.model.actor.instance.L2NpcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PetInstance;
 import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
 
@@ -59,14 +58,7 @@ public class SummonStatus extends PlayableStatus
 				{
 					sm = new SystemMessage(SystemMessage.SUMMON_RECEIVED_DAMAGE_OF_S2_BY_S1);
 				}
-				if (attacker instanceof L2NpcInstance)
-				{
-					sm.addNpcName(((L2NpcInstance) attacker).getNpcId());
-				}
-				else
-				{
-					sm.addString(attacker.getName());
-				}
+				sm.addCharName(attacker);
 				sm.addNumber((int) value);
 				getActiveChar().getOwner().sendPacket(sm);
 				

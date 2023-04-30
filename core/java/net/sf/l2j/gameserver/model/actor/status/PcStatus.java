@@ -112,26 +112,7 @@ public class PcStatus extends PlayableStatus
 			{
 				// Send a System Message to the target L2PcInstance
 				SystemMessage smsg = new SystemMessage(SystemMessage.S1_GAVE_YOU_S2_DMG);
-				if (attacker instanceof L2NpcInstance)
-				{
-					smsg.addNpcName(((L2NpcInstance) attacker).getNpcId());
-					if (Config.AUTO_TARGET_NPC)
-					{
-						if (getActiveChar().getTarget() == null)
-						{
-							((L2NpcInstance) attacker).onAction(getActiveChar());
-						}
-					}
-				}
-				else if (attacker instanceof L2Summon)
-				{
-					smsg.addNpcName(((L2Summon) attacker).getNpcId());
-				}
-				else
-				{
-					smsg.addString(attacker.getName());
-				}
-				
+				smsg.addCharName(attacker);
 				smsg.addNumber(fullValue);
 				getActiveChar().sendPacket(smsg);
 				
@@ -146,6 +127,14 @@ public class PcStatus extends PlayableStatus
 						smsg.addNumber(fullValue);
 						smsg.addNumber(tDmg);
 						attackingPlayer.sendPacket(smsg);
+					}
+				}
+
+				if (Config.AUTO_TARGET_NPC && attacker instanceof L2NpcInstance)
+				{
+					if (getActiveChar().getTarget() == null)
+					{
+						((L2NpcInstance) attacker).onAction(getActiveChar());
 					}
 				}
 			}

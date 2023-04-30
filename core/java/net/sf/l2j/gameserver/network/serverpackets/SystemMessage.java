@@ -16,7 +16,10 @@ package net.sf.l2j.gameserver.network.serverpackets;
 
 import java.util.Vector;
 
+import net.sf.l2j.gameserver.model.L2Character;
 import net.sf.l2j.gameserver.model.L2Skill;
+import net.sf.l2j.gameserver.model.L2Summon;
+import net.sf.l2j.gameserver.model.actor.instance.L2NpcInstance;
 
 /**
  * This class ...
@@ -697,6 +700,15 @@ public class SystemMessage extends L2GameServerPacket
 		_types.add(Integer.valueOf(TYPE_NUMBER));
 		_values.add(Integer.valueOf(number));
 		return this;
+	}
+
+	public SystemMessage addCharName(L2Character cha)
+	{
+		if (cha instanceof L2NpcInstance && !((L2NpcInstance)cha).getTemplate().serverSideName)
+			return addNpcName(((L2NpcInstance)cha).getNpcId());
+		if (cha instanceof L2Summon)
+			return addNpcName(((L2Summon)cha).getNpcId());
+		return addString(cha.getName());
 	}
 	
 	public SystemMessage addNpcName(int id)
