@@ -448,7 +448,7 @@ public class L2Clan
 		}
 		catch (Exception e)
 		{
-			_log.warning("error while saving new clan leader to db "+e);
+			_log.warning("Error while saving new clan leader to db "+e);
 		}
 	}	
 
@@ -474,7 +474,7 @@ public class L2Clan
 		}
 		catch (Exception e)
 		{
-			_log.warning("error while saving new clan to db "+e);
+			_log.warning("Error while saving new clan to db "+e);
 		}
 	}
 
@@ -490,29 +490,31 @@ public class L2Clan
             statement.execute();
 
             if (Config.DEBUG)
-            	_log.fine("clan member removed in db: "+getClanId());
+            	_log.fine("Clan member removed in db: "+getClanId());
         }
         catch (Exception e)
         {
-            _log.warning("error while removing clan member in db "+e);
+            _log.warning("Error while removing clan member in db "+e);
         }
     }
 
     private void restoreWars()
     {
      	try (Connection con = L2DatabaseFactory.getInstance().getConnection();
-            PreparedStatement statement = con.prepareStatement("SELECT clan1, clan2 FROM clan_wars");
-            ResultSet rset = statement.executeQuery())
+            PreparedStatement statement = con.prepareStatement("SELECT clan2 FROM clan_wars WHERE clan1=?"))
         {
-            while(rset.next())
+            statement.setInt(1, _clanId);
+            try (ResultSet rset = statement.executeQuery())
             {
-                if (rset.getInt("clan1") == _clanId)
+                while(rset.next())
+                {
                     setEnemyClan(rset.getInt("clan2"));
+                }
             }
         }
         catch (Exception e)
         {
-            _log.warning("could not restore clan wars data:"+e);
+            _log.warning("Could not restore clan war data:" + e);
         }
     }
     
@@ -589,13 +591,15 @@ public class L2Clan
                 }
             }
 
-            if (Config.DEBUG && getName() != null)
-            	_log.config("Restored clan data for \"" + getName() + "\" from database.");
+            if (Config.DEBUG) {
+                _log.config("Restored clan data for \"" + _name + "\" from database.");
+            }
+
             restoreWars();
         }
         catch (Exception e)
         {
-            _log.warning("error while restoring clan "+e);
+            _log.warning("Error while restoring clan "+e);
         }
     }
     
