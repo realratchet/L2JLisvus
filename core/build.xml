@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="L2JLisvus" default="dist" basedir=".">
+<project name="L2JLisvus" default="finish" basedir=".">
     <description>
         This script will build the L2JLisvus server.
         
@@ -188,5 +188,9 @@
     <target name="clean"
             description="Remove the output directories">
         <delete dir="${build}"/>
+    </target>
+
+    <target name="finish" depends="dist" description="Core build path">
+        <echo message="Core build is located in ${build}"/>
     </target>
 </project>
