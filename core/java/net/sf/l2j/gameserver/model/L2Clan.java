@@ -502,71 +502,74 @@ public class L2Clan
     {
     	try (Connection con = L2DatabaseFactory.getInstance().getConnection())
         {
+            int leaderId = -1;
+
             try (PreparedStatement statement = con.prepareStatement("SELECT clan_name,clan_level,hasCastle,ally_id,ally_name,leader_id,crest_id,crest_large_id,ally_crest_id,auction_bid_at,char_penalty_expiry_time,recover_penalty_expiry_time,dissolving_expiry_time,ally_join_expiry_time,ally_penalty_expiry_time,ally_penalty_type FROM clan_data where clan_id=?"))
             {
                 statement.setInt(1, _clanId);
-                try (ResultSet clanData = statement.executeQuery())
+                try (ResultSet rset = statement.executeQuery())
                 {
-                    if (clanData.next())
+                    if (rset.next())
                     {
-                        setName(clanData.getString("clan_name"));
-                        setLevel(clanData.getInt("clan_level"));
-                        setHasCastle(clanData.getInt("hasCastle"));
-                        setAllyId(clanData.getInt("ally_id"));
-                        setAllyName(clanData.getString("ally_name"));
+                        setName(rset.getString("clan_name"));
+                        setLevel(rset.getInt("clan_level"));
+                        setHasCastle(rset.getInt("hasCastle"));
+                        setAllyId(rset.getInt("ally_id"));
+                        setAllyName(rset.getString("ally_name"));
 
-                        setCharPenaltyExpiryTime(clanData.getLong("char_penalty_expiry_time"));
+                        setCharPenaltyExpiryTime(rset.getLong("char_penalty_expiry_time"));
                         if (getCharPenaltyExpiryTime() + Config.ALT_CLAN_JOIN_DAYS * 86400000L < System.currentTimeMillis()) // 24*60*60*1000 = 86400000
                         {
                             setCharPenaltyExpiryTime(0);
                         }
-                        setRecoverPenaltyExpiryTime(clanData.getLong("recover_penalty_expiry_time"));
+                        setRecoverPenaltyExpiryTime(rset.getLong("recover_penalty_expiry_time"));
                         if (getRecoverPenaltyExpiryTime() + Config.ALT_RECOVERY_PENALTY * 86400000L < System.currentTimeMillis()) // 24*60*60*1000 = 86400000
                         {
                             setRecoverPenaltyExpiryTime(0);
                         }
 
-                        setDissolvingExpiryTime(clanData.getLong("dissolving_expiry_time"));
-                        setAllyJoinExpiryTime(clanData.getLong("ally_join_expiry_time"));
+                        setDissolvingExpiryTime(rset.getLong("dissolving_expiry_time"));
+                        setAllyJoinExpiryTime(rset.getLong("ally_join_expiry_time"));
 
-                        setAllyPenaltyExpiryTime(clanData.getLong("ally_penalty_expiry_time"), clanData.getInt("ally_penalty_type"));
+                        setAllyPenaltyExpiryTime(rset.getLong("ally_penalty_expiry_time"), rset.getInt("ally_penalty_type"));
                         if (getAllyPenaltyExpiryTime() < System.currentTimeMillis())
                         {
                             setAllyPenaltyExpiryTime(0, 0);
                         }
 
-                        setCrestId(clanData.getInt("crest_id"));
+                        setCrestId(rset.getInt("crest_id"));
                         if (getCrestId() != 0)
                         {
                             setHasCrest(true);
                         }
 
-                        setCrestLargeId(clanData.getInt("crest_large_id"));
+                        setCrestLargeId(rset.getInt("crest_large_id"));
                         if (getCrestLargeId() != 0)
                         {
                             setHasCrestLarge(true);
                         }
 
-                        setAllyCrestId(clanData.getInt("ally_crest_id"));
-                        setAuctionBiddedAt(clanData.getInt("auction_bid_at"), false);
+                        setAllyCrestId(rset.getInt("ally_crest_id"));
+                        setAuctionBiddedAt(rset.getInt("auction_bid_at"), false);
 
-                        int leaderId = (clanData.getInt("leader_id"));          
-                    
-                        try (PreparedStatement statement2 = con.prepareStatement("SELECT char_name,level,classid,obj_Id FROM characters WHERE clanid=?"))
-                        {
-                            statement2.setInt(1, getClanId());
-                            try (ResultSet clanMembers = statement2.executeQuery())
-                            {
-                                while (clanMembers.next())
-                                {
-                                    L2ClanMember member = new L2ClanMember(clanMembers.getString("char_name"), clanMembers.getInt("level"), clanMembers.getInt("classid"), clanMembers.getInt("obj_id"));
-                                    if (member.getObjectId() == leaderId)
-                                        setLeader(member);
-                                    else
-                                        addClanMember(member);
-                                }
-                            }
-                        }
+                        leaderId = (rset.getInt("leader_id"));          
+                    }
+                }
+            }
+
+            // Clan members
+            try (PreparedStatement statement = con.prepareStatement("SELECT char_name, level, classid, obj_Id FROM characters WHERE clanid=?"))
+            {
+                statement.setInt(1, _clanId);
+                try (ResultSet rset = statement.executeQuery())
+                {
+                    while (rset.next())
+                    {
+                        L2ClanMember member = new L2ClanMember(rset.getString("char_name"), rset.getInt("level"), rset.getInt("classid"), rset.getInt("obj_id"));
+                        if (member.getObjectId() == leaderId)
+                            setLeader(member);
+                        else
+                            addClanMember(member);
                     }
                 }
             }
