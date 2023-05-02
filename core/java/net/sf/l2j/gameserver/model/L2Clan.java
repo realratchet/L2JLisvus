@@ -21,6 +21,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Logger;
 
 import net.sf.l2j.Config;
@@ -80,7 +82,7 @@ public class L2Clan
     public static final int PENALTY_TYPE_DISSOLVE_ALLY = 2;
 
     private ItemContainer _warehouse = new ClanWarehouse(this);
-    private List<Integer> _atWarWith = new ArrayList<>();
+    private Set<Integer> _atWarWith = ConcurrentHashMap.newKeySet();
 
 	private boolean _hasCrestLarge;
 	private Forum _forum;
