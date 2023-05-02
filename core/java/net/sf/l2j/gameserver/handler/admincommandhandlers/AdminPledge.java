@@ -88,15 +88,17 @@ public class AdminPledge implements IAdminCommandHandler
         		showMainPage(activeChar);
         		return false;
         	}
+
+            L2Clan clan = target.getClan();
         	
-        	if (target.getClan() == null)
+        	if (clan == null)
             {
             	activeChar.sendMessage("Target is not associated with any clan.");
             	showMainPage(activeChar);
             	return false;
             }
             
-            ClanTable.getInstance().destroyClan(target.getClanId());
+            ClanTable.getInstance().destroyClan(clan);
             if (target.getClan() != null)
             {
                 activeChar.sendMessage("There was a problem while destroying the clan.");

@@ -14,7 +14,6 @@
  */
 package net.sf.l2j.gameserver.network.clientpackets;
 
-import java.util.Base64;
 import java.util.Collection;
 import java.util.logging.Logger;
 

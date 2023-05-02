@@ -457,8 +457,7 @@ public final class L2VillageMasterInstance extends L2FolkInstance
         clan.setDissolvingExpiryTime(System.currentTimeMillis() + Config.ALT_CLAN_DISSOLVE_DAYS * 86400000L); //24*60*60*1000 = 86400000
         clan.updateClanInDB();
 
-        ClanTable.getInstance().scheduleRemoveClan(clan.getClanId());
-
+        ClanTable.getInstance().scheduleRemoveClan(clan);
 
         // The clan leader should take the XP penalty of a full death.
         player.deathPenalty(false, false, false);

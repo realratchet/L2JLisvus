@@ -17,8 +17,8 @@ package net.sf.l2j.gameserver.datatables;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Logger;
 
 import net.sf.l2j.Config;
@@ -47,7 +47,7 @@ public class ClanTable
 {
     private static Logger _log = Logger.getLogger(ClanTable.class.getName());
 
-    private Map<Integer, L2Clan> _clans;
+    private final Map<Integer, L2Clan> _clans = new ConcurrentHashMap<>();
 
     public static ClanTable getInstance()
     {
@@ -61,9 +61,6 @@ public class ClanTable
 
     private ClanTable()
     {
-        _clans = new HashMap<>();
-        L2Clan clan;
-
         try (Connection con = L2DatabaseFactory.getInstance().getConnection();
             PreparedStatement statement = con.prepareStatement("SELECT clan_id FROM clan_data");	           
             ResultSet result = statement.executeQuery())
@@ -71,26 +68,27 @@ public class ClanTable
             // Count the clans
             int clanCount = 0;
 
-            while(result.next())
+            while (result.next())
             {
-                _clans.put(Integer.parseInt(result.getString("clan_id")),new L2Clan(Integer.parseInt(result.getString("clan_id"))));
-                clan = getClan(Integer.parseInt(result.getString("clan_id")));
+                int clanId = Integer.parseInt(result.getString("clan_id"));
+                _clans.put(clanId, new L2Clan(clanId));
+
+                L2Clan clan = getClan(clanId);
                 if (clan.getDissolvingExpiryTime() != 0)
                 {
                     if (clan.getDissolvingExpiryTime() < System.currentTimeMillis())
-                        destroyClan(clan.getClanId());
+                        destroyClan(clan);
                     else
-                        scheduleRemoveClan(clan.getClanId());
+                        scheduleRemoveClan(clan);
                 }
                 clanCount++;
             }
 
-            _log.config("Restored "+clanCount+" clans from the database.");
+            _log.config("Restored " + clanCount + " clans from the database.");
         }
         catch (Exception e)
-
         {
-            _log.warning("data error on ClanTable: " + e);
+            _log.warning("Data error on ClanTable: " + e);
             e.printStackTrace();
         }
     }
@@ -102,7 +100,6 @@ public class ClanTable
     public L2Clan getClan(int clanId)
     {
         L2Clan clan = _clans.get(Integer.valueOf(clanId));
-
         return clan; 
     }
 
@@ -186,9 +183,8 @@ public class ClanTable
         return clan;
     }
 
-    public void destroyClan(int clanId)
+    public void destroyClan(L2Clan clan)
     {
-        L2Clan clan = getClan(clanId);
         if (clan == null)
             return;
 
@@ -205,7 +201,7 @@ public class ClanTable
         {
             for (Siege siege : SiegeManager.getInstance().getSieges())
             {
-                siege.removeSiegeClan(clanId, true);
+                siege.removeSiegeClan(clan.getClanId(), true);
             }
         }
 
@@ -220,34 +216,34 @@ public class ClanTable
             clan.removeClanMember(member.getObjectId(), 0);
         }
 
-        _clans.remove(clanId);
-        IdFactory.getInstance().releaseId(clanId);
+        _clans.remove(clan.getClanId());
+        IdFactory.getInstance().releaseId(clan.getClanId());
 
         try (Connection con = L2DatabaseFactory.getInstance().getConnection())
         {
             try (PreparedStatement statement = con.prepareStatement("UPDATE characters SET clanid = 0, clan_privs = 0 WHERE clanid=?"))
             {
-                statement.setInt(1, clanId);
+                statement.setInt(1, clan.getClanId());
                 statement.execute();
             }
 
             try (PreparedStatement statement = con.prepareStatement("DELETE FROM clan_data WHERE clan_id=?"))
             {
-                statement.setInt(1, clanId);
+                statement.setInt(1, clan.getClanId());
                 statement.execute();
             }
 
 
             try (PreparedStatement statement = con.prepareStatement("DELETE FROM clan_wars WHERE clan1=? OR clan2=?"))
             {
-                statement.setInt(1, clanId);
-                statement.setInt(2, clanId);
+                statement.setInt(1, clan.getClanId());
+                statement.setInt(2, clan.getClanId());
                 statement.execute();
             }
 
             if (castleId != 0)
             {
-                try (PreparedStatement statement = con.prepareStatement("UPDATE castle SET taxPercent = 0 WHERE id = ?"))
+                try (PreparedStatement statement = con.prepareStatement("UPDATE castle SET taxPercent=0 WHERE id=?"))
                 {
                     statement.setInt(1, castleId);
                     statement.execute();
@@ -256,7 +252,7 @@ public class ClanTable
         }
         catch (Exception e)
         {
-            _log.warning("could not dissolve clan:" + e);
+            _log.warning("Could not dissolve clan:" + e);
         }
     }
 
@@ -345,24 +341,26 @@ public class ClanTable
         {
             clan1.deleteEnemyClan(clan2);
             clan2.deleteEnemyClan(clan1);
-            deleteClanWars(clan1.getClanId(),clan2.getClanId());
+            deleteClanWars(clan1.getClanId(), clan2.getClanId());
         }
     }
 
-    public void scheduleRemoveClan(final int clanId)
+    public void scheduleRemoveClan(L2Clan clan)
     {
-        ThreadPoolManager.getInstance().scheduleGeneral(new Runnable()
-        {
-            @Override
-			public void run()
-            {
-                if (getClan(clanId) == null)
-                    return;
+        if (clan == null) {
+            return;
+        }
 
-                if (getClan(clanId).getDissolvingExpiryTime() != 0)
-                    destroyClan(clanId);
+        final int clanId = clan.getClanId();
+
+        ThreadPoolManager.getInstance().scheduleGeneral(() ->
+        {
+            // Avoid making use of clan reference from outer scope as it may result in a temporary leak in case it's already deleted
+            L2Clan clanToDelete = getClan(clanId);
+            if (clanToDelete != null && clanToDelete.getDissolvingExpiryTime() != 0) {
+                destroyClan(clanToDelete);
             }
-        }, getClan(clanId).getDissolvingExpiryTime() - System.currentTimeMillis());
+        }, clan.getDissolvingExpiryTime() - System.currentTimeMillis());
     }
     
     private static class SingletonHolder
