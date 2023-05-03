@@ -110,7 +110,7 @@ public class ClanTable
                 L2Clan clan1 = getClan(rset.getInt("clan1"));
                 if (clan1 != null)
                 {
-                    L2Clan clan2 = getClan(rset.getInt("clan1"));
+                    L2Clan clan2 = getClan(rset.getInt("clan2"));
                     
                     clan1.setEnemyClan(clan2.getClanId());
                     clan2.setAttackerClan(clan1.getClanId());

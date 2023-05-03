@@ -108,7 +108,6 @@ public class ClanWarsList implements IUserCommandHandler
                 }
             }
         }
-        activeChar.sendPacket(new SystemMessage(SystemMessage.FRIEND_LIST_FOOTER));
 
         return true;
     }
