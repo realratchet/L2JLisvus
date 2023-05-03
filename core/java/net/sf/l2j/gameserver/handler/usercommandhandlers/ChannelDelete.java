@@ -16,6 +16,7 @@ package net.sf.l2j.gameserver.handler.usercommandhandlers;
 
 import net.sf.l2j.gameserver.handler.IUserCommandHandler;
 import net.sf.l2j.gameserver.model.L2CommandChannel;
+import net.sf.l2j.gameserver.model.L2Party;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
 
@@ -33,18 +34,13 @@ public class ChannelDelete implements IUserCommandHandler
     @Override
 	public boolean useUserCommand(int id, L2PcInstance activeChar)
     {
-        if (id != COMMAND_IDS[0])
-            return false;
-
-        if (activeChar.isInParty())
+        L2Party party = activeChar.getParty();
+        if (party != null)
         {
-            if (activeChar.getParty().isLeader(activeChar) && activeChar.getParty().isInCommandChannel() 
-                     && activeChar.getParty().getCommandChannel().getChannelLeader().equals(activeChar))
+            if (party.isLeader(activeChar) && party.isInCommandChannel() && party.getCommandChannel().getChannelLeader().equals(activeChar))
             {
-                L2CommandChannel channel = activeChar.getParty().getCommandChannel();
-
+                L2CommandChannel channel = party.getCommandChannel();
                 channel.broadcastToChannelMembers(new SystemMessage(SystemMessage.COMMAND_CHANNEL_DISBANDED)); 
-
                 channel.disbandChannel();
                 return true;
             }

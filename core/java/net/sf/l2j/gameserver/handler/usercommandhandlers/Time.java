@@ -33,7 +33,6 @@ public class Time implements IUserCommandHandler
     @Override
 	public boolean useUserCommand(int id, L2PcInstance activeChar)
     {
-        if (COMMAND_IDS[0] != id) return false;
         int t = GameTimeController.getInstance().getGameTime();
         String h = "" + (t/60)%24;
         String m = "" + t%60;

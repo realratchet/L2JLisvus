@@ -348,6 +348,7 @@ public class SystemMessage extends L2GameServerPacket
 	public static final int S1_WAS_REMOVED_FROM_YOUR_IGNORE_LIST = 618;
 	public static final int S1_HAS_ADDED_YOU_TO_IGNORE_LIST = 619;
 	public static final int WAR_PROCLAMATION_HAS_BEEN_REFUSED = 626;
+	public static final int NOT_INVOLVED_IN_WAR = 636;
 	public static final int ALREADY_REQUESTED_SIEGE_BATTLE = 638;
 	public static final int ALREADY_SUBMITTED_A_REQUEST_FOR_ANOTHER_SIEGE_BATTLE = 639;
 	public static final int NOT_AUTHORIZED_TO_REGISTER_RECIPE = 642;
@@ -493,6 +494,8 @@ public class SystemMessage extends L2GameServerPacket
 	public static final int RESULTS_PERIOD = 1184;
 	public static final int YOU_NO_LONGER_RECIVE_A_RECOMMENDATION = 1188;
 	public static final int SUMMONING_SERVITOR_COSTS_S2_S1 = 1197;
+	public static final int S1_S2_ALLIANCE = 1200;
+	public static final int S1_NO_ALLIANCE_EXISTS = 1202;
 	public static final int S1_DIED_DROPPED_S3_S2 = 1208;
 	public static final int QUEST_EVENT_PERIOD_BEGUN = 1210;
 	public static final int QUEST_EVENT_PERIOD_ENDED = 1211;
@@ -621,6 +624,14 @@ public class SystemMessage extends L2GameServerPacket
 	public static final int ATTENTION_S1_PICKED_UP_S2_S3 = 1534;
 	public static final int LOC_RUNE_S1_S2_S3 = 1537;
 	public static final int LOC_GODDARD_S1_S2_S3 = 1538;
+	public static final int S1_CLAN_CANNOT_DECLARE_WAR_TOO_LOW_LEVEL_OR_NOT_ENOUGH_MEMBERS = 1563;
+	public static final int CLAN_WAR_DECLARED_IF_CLAN_LVL3_OR_15_MEMBER = 1564;
+	public static final int CLAN_WAR_CANNOT_DECLARED_CLAN_NOT_EXIST = 1565;
+	public static final int CLAN_WAR_AGAINST_A_ALLIED_CLAN_NOT_WORK = 1569;
+	public static final int CLANS_YOU_DECLARED_WAR_ON = 1571;
+	public static final int CLANS_THAT_HAVE_DECLARED_WAR_ON_YOU = 1572;
+	public static final int NO_WARS_AGAINST_CLANS = 1573;
+	public static final int NO_WARS_AGAINST_YOU = 1574;
 	public static final int PET_USES_SHOTS = 1576;
 	public static final int COMMAND_CHANNEL_FORMED = 1580;
 	public static final int COMMAND_CHANNEL_DISBANDED = 1581;
@@ -638,6 +649,10 @@ public class SystemMessage extends L2GameServerPacket
 	public static final int CANNOT_USE_ITEMS_SKILLS_WITH_FORMALWEAR = 1604;
 	public static final int HERE_YOU_CAN_BUY_ONLY_SEEDS_OF_S1_MANOR = 1605;
 	public static final int S1_ADENA_HAS_BEEN_WITHDRAWN_TO_PAY_FOR_PURCHASING_FEES = 1607;
+	public static final int WAR_ALREADY_DECLARED = 1609;
+	public static final int CANNOT_DECLARE_AGAINST_OWN_CLAN = 1610;
+	public static final int WAR_LIST = 1612;
+	public static final int NO_CLAN_ON_WAR_LIST = 1613;
 	public static final int CHANNEL_ACTIVATED = 1616;
 	public static final int NO_RIGHT_TO_USE_CHANNEL = 1617;
 	public static final int CANNOT_FISH_WHILE_USING_RECIPE_BOOK = 1638;
@@ -660,7 +675,9 @@ public class SystemMessage extends L2GameServerPacket
 	public static final int THE_PRESENT_RECORD_DURING_THE_CURRENT_OLYMPIAD_SESSION_IS_S1_WINS_S2_DEFEATS_YOU_HAVE_EARNED_S3_OLYMPIAD_POINTS = 1673;
 	public static final int A_MANOR_CANNOT_BE_SET_UP_BETWEEN_6_AM_AND_8_PM = 1675;
 	public static final int NO_PET_TO_AUTOMATE_USE = 1676;
+	public static final int CANT_STOP_CLAN_WAR_WHILE_IN_COMBAT = 1677;
 	public static final int S1_DECLINED_CHANNEL_INVITATION = 1680;
+	public static final int NO_CLAN_WAR_AGAINST_DISSOLVING_CLAN = 1684;
 	public static final int AREA_CANNOT_BE_ENTERED_WHILE_MOUNTED_WYVERN = 1687;
 	public static final int CANNOT_ENCHANT_WHILE_STORE = 1688;
 	public static final int YOU_ARE_ALREADY_ON_THE_WAITING_LIST_TO_PARTICIPATE_IN_THE_GAME_FOR_YOUR_CLASS = 1689;

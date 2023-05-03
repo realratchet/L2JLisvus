@@ -83,6 +83,7 @@ public class L2Clan
 
     private final ItemContainer _warehouse = new ClanWarehouse(this);
     private final Set<Integer> _atWarWith = ConcurrentHashMap.newKeySet();
+    private final Set<Integer> _atWarAttackers = ConcurrentHashMap.newKeySet();
 
 	private boolean _hasCrestLarge;
 	private Forum _forum;
@@ -661,9 +662,34 @@ public class L2Clan
     	return _atWarWith.contains(clanId);
     }
 
+    public boolean isAtWarAttacker(int id)
+	{
+		return _atWarAttackers.contains(id);
+	}
+
+    public Set<Integer> getWarList()
+	{
+		return _atWarWith;
+	}
+
+    public Set<Integer> getAttackerList()
+	{
+		return _atWarAttackers;
+	}
+
+    public void setAttackerClan(int clanId)
+	{
+		_atWarAttackers.add(clanId);
+	}
+
     public void setEnemyClan(int clanId)
     {
     	_atWarWith.add(clanId);
+    }
+
+    public void deleteAttackerClan(int clanId)
+    {
+    	_atWarAttackers.remove(clanId);
     }
 
     public void deleteEnemyClan(int clanId)

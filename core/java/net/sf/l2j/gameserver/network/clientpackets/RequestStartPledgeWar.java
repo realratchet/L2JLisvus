@@ -20,7 +20,6 @@ import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.datatables.ClanTable;
 import net.sf.l2j.gameserver.model.L2Clan;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.network.serverpackets.ActionFailed;
 import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
 
 public class RequestStartPledgeWar extends L2GameClientPacket
@@ -54,43 +53,51 @@ public class RequestStartPledgeWar extends L2GameClientPacket
 		
 		if ((clan.getLevel() < 3) || (clan.getMembersCount() < Config.ALT_CLAN_MEMBERS_FOR_WAR))
 		{
-			SystemMessage sm = new SystemMessage(1564);
-			player.sendPacket(sm);
-			player.sendPacket(new ActionFailed());
-			sm = null;
+			player.sendPacket(new SystemMessage(SystemMessage.CLAN_WAR_DECLARED_IF_CLAN_LVL3_OR_15_MEMBER));
 			return;
 		}
 		
 		if ((player.getClanPrivileges() & L2Clan.CP_CL_CLAN_WAR) != L2Clan.CP_CL_CLAN_WAR)
 		{
-			player.sendMessage("You are not authorized to manage clan wars.");
-			player.sendPacket(new ActionFailed());
+			player.sendPacket(new SystemMessage(SystemMessage.YOU_ARE_NOT_AUTHORIZED));
 			return;
 		}
 		
 		L2Clan requestedClan = ClanTable.getInstance().getClanByName(_pledgeName);
-		if ((requestedClan == null) || (requestedClan == clan))
+		if ((requestedClan == null))
 		{
-			player.sendMessage("Invalid Clan.");
-			player.sendPacket(new ActionFailed());
+			player.sendPacket(new SystemMessage(SystemMessage.CLAN_WAR_CANNOT_DECLARED_CLAN_NOT_EXIST));
+			return;
+		}
+
+		if (requestedClan == clan)
+		{
+			player.sendPacket(new SystemMessage(SystemMessage.CANNOT_DECLARE_AGAINST_OWN_CLAN));
 			return;
 		}
 		
 		if ((clan.getAllyId() == requestedClan.getAllyId()) && (clan.getAllyId() != 0))
 		{
-			SystemMessage sm = new SystemMessage(1569);
-			player.sendPacket(sm);
-			player.sendPacket(new ActionFailed());
-			sm = null;
+			player.sendPacket(new SystemMessage(SystemMessage.CLAN_WAR_AGAINST_A_ALLIED_CLAN_NOT_WORK));
 			return;
 		}
+
+		if (requestedClan.getDissolvingExpiryTime() > 0)
+		{
+			player.sendPacket(new SystemMessage(SystemMessage.NO_CLAN_WAR_AGAINST_DISSOLVING_CLAN));
+			return;
+		}
+
 		
 		if ((requestedClan.getLevel() < 3) || (requestedClan.getMembersCount() < Config.ALT_CLAN_MEMBERS_FOR_WAR))
 		{
-			SystemMessage sm = new SystemMessage(1564);
-			player.sendPacket(sm);
-			player.sendPacket(new ActionFailed());
-			sm = null;
+			player.sendPacket(new SystemMessage(SystemMessage.S1_CLAN_CANNOT_DECLARE_WAR_TOO_LOW_LEVEL_OR_NOT_ENOUGH_MEMBERS));
+			return;
+		}
+
+		if (clan.isAtWarWith(requestedClan.getClanId()))
+		{
+			player.sendPacket(new SystemMessage(SystemMessage.WAR_ALREADY_DECLARED));
 			return;
 		}
 		

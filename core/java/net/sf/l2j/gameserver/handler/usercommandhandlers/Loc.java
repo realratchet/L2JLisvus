@@ -19,10 +19,6 @@ import net.sf.l2j.gameserver.handler.IUserCommandHandler;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
 
-/**
- * 
- *
- */
 public class Loc implements IUserCommandHandler
 {
     private static final int[] COMMAND_IDS = { 0 }; 
@@ -33,9 +29,9 @@ public class Loc implements IUserCommandHandler
     @Override
 	public boolean useUserCommand(int id, L2PcInstance activeChar)
     {
-    	int _nearestTown = MapRegionTable.getInstance().getClosestTownNumber(activeChar);
+    	int nearestTown = MapRegionTable.getInstance().getClosestTownNumber(activeChar);
     	int msg = 0;
-    	switch (_nearestTown)
+    	switch (nearestTown)
     	{
             case 0:
                 msg = SystemMessage.LOC_TI_S1_S2_S3;
@@ -87,9 +83,10 @@ public class Loc implements IUserCommandHandler
                 break;
             case 16:
                 msg = SystemMessage.LOC_FLORAN_S1_S2_S3;
-                break;
+                break;
             default:
                 msg = SystemMessage.LOC_ADEN_S1_S2_S3;
+                break;
     	}
 
         SystemMessage sm = new SystemMessage(msg);

@@ -33,8 +33,6 @@ public class OlympiadStat implements IUserCommandHandler
     @Override
 	public boolean useUserCommand(int id, L2PcInstance activeChar)
     {
-        if (COMMAND_IDS[0] != id)
-            return false;
         SystemMessage sm = new SystemMessage(SystemMessage.THE_PRESENT_RECORD_DURING_THE_CURRENT_OLYMPIAD_SESSION_IS_S1_WINS_S2_DEFEATS_YOU_HAVE_EARNED_S3_OLYMPIAD_POINTS);
         sm.addNumber(Olympiad.getInstance().getCompetitionWon(activeChar.getObjectId()));
         sm.addNumber(Olympiad.getInstance().getCompetitionLost(activeChar.getObjectId()));

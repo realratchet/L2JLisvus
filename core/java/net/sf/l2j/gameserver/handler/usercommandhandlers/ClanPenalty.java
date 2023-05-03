@@ -17,6 +17,7 @@ package net.sf.l2j.gameserver.handler.usercommandhandlers;
 import java.text.SimpleDateFormat;
 
 import net.sf.l2j.gameserver.handler.IUserCommandHandler;
+import net.sf.l2j.gameserver.model.L2Clan;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.network.serverpackets.NpcHtmlMessage;
 import net.sf.l2j.util.StringUtil;
@@ -35,8 +36,6 @@ public class ClanPenalty implements IUserCommandHandler
     @Override
 	public boolean useUserCommand(int id, L2PcInstance activeChar)
     {
-        if (id != COMMAND_IDS[0])
-            return false;
         boolean penalty = false;
         SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
         StringBuilder htmlContent = new StringBuilder();
@@ -61,19 +60,20 @@ public class ClanPenalty implements IUserCommandHandler
             penalty = true;
         }
 
-        if (activeChar.getClan() != null)
+        L2Clan clan = activeChar.getClan();
+        if (clan != null)
         {
-            if (activeChar.getClan().getCharPenaltyExpiryTime() > System.currentTimeMillis())
+            if (clan.getCharPenaltyExpiryTime() > System.currentTimeMillis())
             {
             	StringUtil.append(htmlContent, "<tr><td width=170>Unable to invite players to clan.</td>");
-            	StringUtil.append(htmlContent, "<td width=100 align=center>"+format.format(activeChar.getClan().getCharPenaltyExpiryTime())+"</td></tr>");
+            	StringUtil.append(htmlContent, "<td width=100 align=center>"+format.format(clan.getCharPenaltyExpiryTime())+"</td></tr>");
                 penalty = true;
             }
 
-            if (activeChar.getClan().getRecoverPenaltyExpiryTime() > System.currentTimeMillis())
+            if (clan.getRecoverPenaltyExpiryTime() > System.currentTimeMillis())
             {
             	StringUtil.append(htmlContent, "<tr><td width=170>Unable to dissolve clan.</td>");
-            	StringUtil.append(htmlContent, "<td width=100 align=center>"+format.format(activeChar.getClan().getRecoverPenaltyExpiryTime())+"</td></tr>");
+            	StringUtil.append(htmlContent, "<td width=100 align=center>"+format.format(clan.getRecoverPenaltyExpiryTime())+"</td></tr>");
                 penalty = true;
             }
         }

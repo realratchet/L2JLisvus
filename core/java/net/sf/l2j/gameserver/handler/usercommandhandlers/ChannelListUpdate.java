@@ -16,6 +16,7 @@ package net.sf.l2j.gameserver.handler.usercommandhandlers;
 
 import net.sf.l2j.gameserver.handler.IUserCommandHandler;
 import net.sf.l2j.gameserver.model.L2CommandChannel;
+import net.sf.l2j.gameserver.model.L2Party;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.network.serverpackets.ExMultiPartyCommandChannelInfo;
 
@@ -33,13 +34,11 @@ public class ChannelListUpdate implements IUserCommandHandler
     @Override
 	public boolean useUserCommand(int id, L2PcInstance activeChar)
     {
-        if (id != COMMAND_IDS[0])
+        L2Party party = activeChar.getParty();
+        if (party == null || party.getCommandChannel() == null)
             return false;
 
-        if (activeChar.getParty() == null || activeChar.getParty().getCommandChannel() == null)
-            return false;
-
-        L2CommandChannel channel = activeChar.getParty().getCommandChannel();
+        L2CommandChannel channel = party.getCommandChannel();
 
         activeChar.sendPacket(new ExMultiPartyCommandChannelInfo(channel));
         return true;

@@ -32,9 +32,6 @@ public class Mount implements IUserCommandHandler
     @Override
 	public synchronized boolean useUserCommand(int id, L2PcInstance activeChar)
     {
-        if (id != COMMAND_IDS[0])
-            return false;
-
         return activeChar.mountPlayer(activeChar.getPet());
     }
 

@@ -108,8 +108,12 @@ public class ClanTable
             while(rset.next())
             {
                 L2Clan clan1 = getClan(rset.getInt("clan1"));
-                if (clan1 != null) {
-                    clan1.setEnemyClan(rset.getInt("clan2"));
+                if (clan1 != null)
+                {
+                    L2Clan clan2 = getClan(rset.getInt("clan1"));
+                    
+                    clan1.setEnemyClan(clan2.getClanId());
+                    clan2.setAttackerClan(clan1.getClanId());
                 }
             }
         }
@@ -230,6 +234,14 @@ public class ClanTable
             }
         }
 
+        // Remove clan from enemy clan wars
+        for (int clanId : clan.getAttackerList())
+        {
+            final L2Clan attackerClan = _clans.get(clanId);
+            attackerClan.deleteAttackerClan(clan.getClanId());
+            attackerClan.deleteEnemyClan(clan.getClanId());
+        }
+
         L2ClanMember leaderMember = clan.getLeader();
         if (leaderMember == null)
             clan.getWarehouse().destroyAllItems("ClanRemove", null, null);
@@ -296,6 +308,7 @@ public class ClanTable
         L2Clan clan1 = ClanTable.getInstance().getClan(clanId1);
         L2Clan clan2 = ClanTable.getInstance().getClan(clanId2);
         clan1.setEnemyClan(clanId2);
+        clan2.setAttackerClan(clanId1);
 
         clan1.broadcastClanStatus();
 
@@ -326,6 +339,7 @@ public class ClanTable
         L2Clan clan1 = ClanTable.getInstance().getClan(clanId1);
         L2Clan clan2 = ClanTable.getInstance().getClan(clanId2);
         clan1.deleteEnemyClan(clanId2);
+        clan2.deleteAttackerClan(clanId1);
 
         clan1.broadcastClanStatus();
 

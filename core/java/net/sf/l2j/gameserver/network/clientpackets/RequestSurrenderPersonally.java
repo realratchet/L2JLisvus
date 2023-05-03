@@ -20,7 +20,6 @@ import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.datatables.ClanTable;
 import net.sf.l2j.gameserver.model.L2Clan;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.network.serverpackets.ActionFailed;
 import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
 
 public class RequestSurrenderPersonally extends L2GameClientPacket
@@ -59,15 +58,12 @@ public class RequestSurrenderPersonally extends L2GameClientPacket
 		L2Clan requestedClan = ClanTable.getInstance().getClanByName(_pledgeName);
 		if (requestedClan == null)
 		{
-			player.sendMessage("No such clan.");
-			player.sendPacket(new ActionFailed());
 			return;
 		}
 		
 		if (!clan.isAtWarWith(requestedClan.getClanId()) || (player.getWantsPeace() == 1))
 		{
-			player.sendMessage("You aren't at war with this clan.");
-			player.sendPacket(new ActionFailed());
+			player.sendPacket(new SystemMessage(SystemMessage.NOT_INVOLVED_IN_WAR));
 			return;
 		}
 		

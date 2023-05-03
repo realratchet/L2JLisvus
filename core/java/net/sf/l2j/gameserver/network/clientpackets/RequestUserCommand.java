@@ -49,7 +49,7 @@ public class RequestUserCommand extends L2GameClientPacket
 		IUserCommandHandler handler = UserCommandHandler.getInstance().getUserCommandHandler(_command);
 		if (handler != null)
 		{
-			handler.useUserCommand(_command, getClient().getActiveChar());
+			handler.useUserCommand(_command, player);
 		}
 	}
 	

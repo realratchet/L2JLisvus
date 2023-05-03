@@ -19,7 +19,8 @@ import java.util.logging.Logger;
 import net.sf.l2j.gameserver.datatables.ClanTable;
 import net.sf.l2j.gameserver.model.L2Clan;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.network.serverpackets.ActionFailed;
+import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
+import net.sf.l2j.gameserver.taskmanager.AttackStanceTaskManager;
 
 public class RequestStopPledgeWar extends L2GameClientPacket
 {
@@ -48,28 +49,32 @@ public class RequestStopPledgeWar extends L2GameClientPacket
 		{
 			return;
 		}
-		
-		L2Clan requestedClan = ClanTable.getInstance().getClanByName(_pledgeName);
-		
-		if (requestedClan == null)
+
+		if ((player.getClanPrivileges() & L2Clan.CP_CL_CLAN_WAR) != L2Clan.CP_CL_CLAN_WAR)
 		{
-			player.sendMessage("Clan does not exist.");
-			player.sendPacket(new ActionFailed());
+			player.sendPacket(new SystemMessage(SystemMessage.YOU_ARE_NOT_AUTHORIZED));
 			return;
 		}
 		
-		if ((player.getClanPrivileges() & L2Clan.CP_CL_CLAN_WAR) != L2Clan.CP_CL_CLAN_WAR)
+		L2Clan requestedClan = ClanTable.getInstance().getClanByName(_pledgeName);
+		if (requestedClan == null)
 		{
-			player.sendMessage("You are not authorized to manage clan wars.");
-			player.sendPacket(new ActionFailed());
 			return;
 		}
 		
 		if (!clan.isAtWarWith(requestedClan.getClanId()))
 		{
-			player.sendMessage("You aren't at war with this clan.");
-			player.sendPacket(new ActionFailed());
+			player.sendPacket(new SystemMessage(SystemMessage.NOT_INVOLVED_IN_WAR));
 			return;
+		}
+
+		for (L2PcInstance member : clan.getOnlineMembers(0))
+		{
+			if (AttackStanceTaskManager.getInstance().getAttackStanceTask(member))
+			{
+				player.sendPacket(new SystemMessage(SystemMessage.CANT_STOP_CLAN_WAR_WHILE_IN_COMBAT));
+				return;
+			}
 		}
 		
 		ClanTable.getInstance().deleteClanWars(clan.getClanId(), requestedClan.getClanId());
