@@ -26,7 +26,7 @@ import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
 public class RequestSurrenderPersonally extends L2GameClientPacket
 {
 	private static final String _C__69_REQUESTSURRENDERPERSONALLY = "[C] 69 RequestSurrenderPersonally";
-	private static Logger _log = Logger.getLogger(RequestSurrenderPledgeWar.class.getName());
+	private static Logger _log = Logger.getLogger(RequestSurrenderPersonally.class.getName());
 	
 	private String _pledgeName;
 	
@@ -47,25 +47,24 @@ public class RequestSurrenderPersonally extends L2GameClientPacket
 		
 		if (Config.DEBUG)
 		{
-			_log.info("RequestSurrenderPersonally by " + getClient().getActiveChar().getName() + " with " + _pledgeName);
+			_log.info("RequestSurrenderPersonally by " + player.getName() + " with " + _pledgeName);
 		}
 		
-		L2Clan _clan = getClient().getActiveChar().getClan();
-		L2Clan clan = ClanTable.getInstance().getClanByName(_pledgeName);
-		
-		if (_clan == null)
+		L2Clan clan = player.getClan();
+		if (clan == null)
 		{
 			return;
 		}
-		
-		if (clan == null)
+
+		L2Clan requestedClan = ClanTable.getInstance().getClanByName(_pledgeName);
+		if (requestedClan == null)
 		{
 			player.sendMessage("No such clan.");
 			player.sendPacket(new ActionFailed());
 			return;
 		}
 		
-		if (!_clan.isAtWarWith(clan.getClanId()) || (player.getWantsPeace() == 1))
+		if (!clan.isAtWarWith(requestedClan.getClanId()) || (player.getWantsPeace() == 1))
 		{
 			player.sendMessage("You aren't at war with this clan.");
 			player.sendPacket(new ActionFailed());
@@ -78,7 +77,7 @@ public class RequestSurrenderPersonally extends L2GameClientPacket
 		sm.addString(_pledgeName);
 		player.sendPacket(sm);
 		sm = null;
-		ClanTable.getInstance().checkSurrender(_clan, clan);
+		ClanTable.getInstance().checkSurrender(clan, requestedClan);
 	}
 	
 	@Override

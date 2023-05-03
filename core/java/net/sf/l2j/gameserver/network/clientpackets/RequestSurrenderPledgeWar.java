@@ -45,14 +45,14 @@ public class RequestSurrenderPledgeWar extends L2GameClientPacket
 			return;
 		}
 		
-		L2Clan _clan = player.getClan();
-		if (_clan == null)
+		L2Clan clan = player.getClan();
+		if (clan == null)
 		{
 			return;
 		}
 		
-		L2Clan clan = ClanTable.getInstance().getClanByName(_pledgeName);
-		if (clan == null)
+		L2Clan requestedClan = ClanTable.getInstance().getClanByName(_pledgeName);
+		if (requestedClan == null)
 		{
 			player.sendMessage("No such clan.");
 			player.sendPacket(new ActionFailed());
@@ -61,10 +61,10 @@ public class RequestSurrenderPledgeWar extends L2GameClientPacket
 		
 		if (Config.DEBUG)
 		{
-			_log.info("RequestSurrenderPledgeWar by " + getClient().getActiveChar().getClan().getName() + " with " + _pledgeName);
+			_log.info("RequestSurrenderPledgeWar by " + clan.getName() + " with " + _pledgeName);
 		}
 		
-		if (!_clan.isAtWarWith(clan.getClanId()))
+		if (!clan.isAtWarWith(requestedClan.getClanId()))
 		{
 			player.sendMessage("You aren't at war with this clan.");
 			player.sendPacket(new ActionFailed());
@@ -76,7 +76,7 @@ public class RequestSurrenderPledgeWar extends L2GameClientPacket
 		player.sendPacket(sm);
 		sm = null;
 		player.deathPenalty(false, false, false);
-		ClanTable.getInstance().deleteClanWars(_clan.getClanId(), clan.getClanId());
+		ClanTable.getInstance().deleteClanWars(clan.getClanId(), requestedClan.getClanId());
 	}
 	
 	@Override

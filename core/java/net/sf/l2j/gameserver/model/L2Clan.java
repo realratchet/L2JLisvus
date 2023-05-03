@@ -81,8 +81,8 @@ public class L2Clan
     /** Leader clan dissolve ally */
     public static final int PENALTY_TYPE_DISSOLVE_ALLY = 2;
 
-    private ItemContainer _warehouse = new ClanWarehouse(this);
-    private Set<Integer> _atWarWith = ConcurrentHashMap.newKeySet();
+    private final ItemContainer _warehouse = new ClanWarehouse(this);
+    private final Set<Integer> _atWarWith = ConcurrentHashMap.newKeySet();
 
 	private boolean _hasCrestLarge;
 	private Forum _forum;
@@ -576,19 +576,6 @@ public class L2Clan
                 }
             }
 
-            // Clan wars
-            try (PreparedStatement statement = con.prepareStatement("SELECT clan2 FROM clan_wars WHERE clan1=?"))
-            {
-                statement.setInt(1, _clanId);
-                try (ResultSet rset = statement.executeQuery())
-                {
-                    while(rset.next())
-                    {
-                        setEnemyClan(rset.getInt("clan2"));
-                    }
-                }
-            }
-
             if (Config.DEBUG) {
                 _log.config("Restored clan data for \"" + _name + "\" from database.");
             }
@@ -668,24 +655,22 @@ public class L2Clan
     {
         return _warehouse;
     }
-    public boolean isAtWarWith(Integer id)
+
+    public boolean isAtWarWith(int clanId)
     {
-    	return _atWarWith != null && _atWarWith.contains(id);
+    	return _atWarWith.contains(clanId);
     }
-    public void setEnemyClan(L2Clan clan)
+
+    public void setEnemyClan(int clanId)
     {
-    	Integer id = clan.getClanId();
-    	_atWarWith.add(id);
+    	_atWarWith.add(clanId);
     }
-    public void setEnemyClan(Integer clan)
+
+    public void deleteEnemyClan(int clanId)
     {
-    	_atWarWith.add(clan);
+    	_atWarWith.remove(clanId);
     }
-    public void deleteEnemyClan(L2Clan clan)
-    {
-    	Integer id = clan.getClanId();
-    	_atWarWith.remove(id);
-    }
+
     public int getHiredGuards()
     {
     	return _hiredGuards;
@@ -698,9 +683,7 @@ public class L2Clan
     
     public int isAtWar()
     {
-       if (_atWarWith != null && !_atWarWith.isEmpty())
-           return 1;
-       return 0;
+        return _atWarWith.isEmpty() ? 0 : 1;
     }
     
     public void broadcastClanStatus()

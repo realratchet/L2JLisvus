@@ -61,6 +61,12 @@ public class ClanTable
 
     private ClanTable()
     {
+        loadClans();
+        restoreClanWars();
+    }
+
+    private void loadClans()
+    {
         try (Connection con = L2DatabaseFactory.getInstance().getConnection();
             PreparedStatement statement = con.prepareStatement("SELECT clan_id FROM clan_data");	           
             ResultSet result = statement.executeQuery())
@@ -88,9 +94,29 @@ public class ClanTable
         }
         catch (Exception e)
         {
-            _log.warning("Data error on ClanTable: " + e);
+            _log.warning("Could not restore clans from database: " + e);
             e.printStackTrace();
         }
+    }
+
+    private void restoreClanWars()
+    {
+        try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+            PreparedStatement statement = con.prepareStatement("SELECT clan1, clan2 FROM clan_wars");
+            ResultSet rset = statement.executeQuery())
+        {
+            while(rset.next())
+            {
+                L2Clan clan1 = getClan(rset.getInt("clan1"));
+                if (clan1 != null) {
+                    clan1.setEnemyClan(rset.getInt("clan2"));
+                }
+            }
+        }
+        catch (Exception e)
+		{
+			_log.warning("Could not restore clan war data: " + e);
+		}
     }
 
     /**
@@ -99,8 +125,7 @@ public class ClanTable
      */
     public L2Clan getClan(int clanId)
     {
-        L2Clan clan = _clans.get(Integer.valueOf(clanId));
-        return clan; 
+        return _clans.get(clanId);
     }
 
     public L2Clan getClanByName(String clanName)
@@ -252,7 +277,7 @@ public class ClanTable
         }
         catch (Exception e)
         {
-            _log.warning("Could not dissolve clan:" + e);
+            _log.warning("Could not dissolve clan: " + e);
         }
     }
 
@@ -270,7 +295,7 @@ public class ClanTable
     {
         L2Clan clan1 = ClanTable.getInstance().getClan(clanId1);
         L2Clan clan2 = ClanTable.getInstance().getClan(clanId2);
-        clan1.setEnemyClan(clan2);
+        clan1.setEnemyClan(clanId2);
 
         clan1.broadcastClanStatus();
 
@@ -283,7 +308,7 @@ public class ClanTable
         }
         catch (Exception e)
         {
-            _log.warning("could not store clans wars data:"+e);
+            _log.warning("Could not store clan war data: " + e);
         }
 
         SystemMessage msg = new SystemMessage(1562);
@@ -300,7 +325,7 @@ public class ClanTable
     {
         L2Clan clan1 = ClanTable.getInstance().getClan(clanId1);
         L2Clan clan2 = ClanTable.getInstance().getClan(clanId2);
-        clan1.deleteEnemyClan(clan2);
+        clan1.deleteEnemyClan(clanId2);
 
         clan1.broadcastClanStatus();
 
@@ -314,7 +339,7 @@ public class ClanTable
         }
         catch (Exception e)
         {
-            _log.warning("could not restore clans wars data:"+e);
+            _log.warning("Could not delete clan war data: " + e);
         }
 
 
@@ -339,8 +364,8 @@ public class ClanTable
 
         if (count == clan1.getMembers().length-1)
         {
-            clan1.deleteEnemyClan(clan2);
-            clan2.deleteEnemyClan(clan1);
+            clan1.deleteEnemyClan(clan2.getClanId());
+            clan2.deleteEnemyClan(clan1.getClanId());
             deleteClanWars(clan1.getClanId(), clan2.getClanId());
         }
     }
