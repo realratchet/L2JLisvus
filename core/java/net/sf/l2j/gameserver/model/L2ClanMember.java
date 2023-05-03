@@ -40,20 +40,25 @@ public class L2ClanMember
 	public L2ClanMember(L2PcInstance player)
 	{
 		_player = player;
+		_name = _player.getName();
+		_level = _player.getLevel();
+		_classId = _player.getClassId().getId();
+		_objectId = _player.getObjectId();
 	}
 
 	public void setPlayerInstance(L2PcInstance player)
 	{
 		if (player == null && _player != null)
 		{
-			// this is here to keep the data when the player logs off
+			// This is here to keep the data when the player logs off
 			_name = _player.getName();
 			_level = _player.getLevel();
 			_classId = _player.getClassId().getId();
 			_objectId = _player.getObjectId();
 		}
 
-		_player = player;
+		_player = player;
+
 	}
 
 	public L2PcInstance getPlayerInstance()
@@ -64,7 +69,8 @@ public class L2ClanMember
 	public boolean isOnline()
 	{
 		if (_player == null)
-           return false;
+           return false;
+
 		if (_player.inOfflineMode())
 			return false;
 
