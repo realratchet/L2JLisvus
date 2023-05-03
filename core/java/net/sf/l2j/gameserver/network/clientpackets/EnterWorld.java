@@ -154,6 +154,8 @@ public class EnterWorld extends L2GameClientPacket
 		L2Clan clan = activeChar.getClan();
 		if (clan != null)
 		{
+			onClanMemberEnter(activeChar, clan);
+
 			if (activeChar.isClanLeader() && (clan.getLevel() > 3))
 			{
 				SiegeManager.getInstance().addSiegeSkills(activeChar);
@@ -176,6 +178,9 @@ public class EnterWorld extends L2GameClientPacket
 					activeChar.setSiegeSide(siege.getCastle().getCastleId());
 				}
 			}
+
+			sendPacket(new PledgeShowMemberListAll(clan, activeChar));
+			sendPacket(new PledgeStatusChanged(clan));
 		}
 
 		sendPacket(new UserInfo(activeChar));
@@ -235,15 +240,6 @@ public class EnterWorld extends L2GameClientPacket
 		L2ClassMasterInstance.showQuestionMark(activeChar);
 
 		PetitionManager.getInstance().checkPetitionMessages(activeChar);
-
-		if (clan != null)
-		{
-			sendPacket(new PledgeShowMemberListAll(clan, activeChar));
-			sendPacket(new PledgeStatusChanged(clan));
-		}
-
-		notifyClanMembers(activeChar);
-
 		activeChar.onPlayerEnter();
 		
 		// Load engagement and notify partner
@@ -367,23 +363,19 @@ public class EnterWorld extends L2GameClientPacket
 	}
 
 	/**
+	 *  Updates member info and notifies other clan members about login.
+	 * 
 	 * @param activeChar
+	 * @param clan
 	 */
-	private final void notifyClanMembers(L2PcInstance activeChar)
+	private final void onClanMemberEnter(L2PcInstance activeChar, L2Clan clan)
 	{
-		L2Clan clan = activeChar.getClan();
-		if (clan != null)
-		{
-			clan.getClanMember(activeChar.getObjectId()).setPlayerInstance(activeChar);
-			SystemMessage msg = new SystemMessage(SystemMessage.CLAN_MEMBER_S1_LOGGED_IN);
-			msg.addString(activeChar.getName());
+		clan.getClanMember(activeChar.getObjectId()).setPlayerInstance(activeChar);
+		SystemMessage msg = new SystemMessage(SystemMessage.CLAN_MEMBER_S1_LOGGED_IN);
+		msg.addString(activeChar.getName());
 
-			clan.broadcastToOtherOnlineMembers(msg, activeChar);
-
-			msg = null;
-
-			clan.broadcastToOtherOnlineMembers(new PledgeShowMemberListUpdate(activeChar), activeChar);
-		}
+		clan.broadcastToOtherOnlineMembers(msg, activeChar);
+		clan.broadcastToOtherOnlineMembers(new PledgeShowMemberListUpdate(activeChar), activeChar);
 	}
 
 	private final void updateLoginEffectIcons(L2PcInstance activeChar)

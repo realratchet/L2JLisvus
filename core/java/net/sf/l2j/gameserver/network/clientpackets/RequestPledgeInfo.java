@@ -21,7 +21,6 @@ import net.sf.l2j.gameserver.datatables.ClanTable;
 import net.sf.l2j.gameserver.model.L2Clan;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.network.serverpackets.PledgeInfo;
-import net.sf.l2j.gameserver.network.serverpackets.PledgeShowMemberListAll;
 
 /**
  * This class ...
@@ -45,10 +44,15 @@ public class RequestPledgeInfo extends L2GameClientPacket
 	{
 		if (Config.DEBUG)
 		{
-			_log.fine("infos for clan " + _clanId + " requested");
+			_log.fine("Information about clan " + _clanId + " requested");
 		}
 		
 		L2PcInstance activeChar = getClient().getActiveChar();
+		if (activeChar == null)
+		{
+			return;
+		}
+
 		L2Clan clan = ClanTable.getInstance().getClan(_clanId);
 		if (clan == null)
 		{
@@ -56,19 +60,10 @@ public class RequestPledgeInfo extends L2GameClientPacket
 			{
 				_log.warning("Clan data for clanId " + _clanId + " is missing");
 			}
-			return; // we have no clan data ?!? should not happen
+			return;
 		}
-		
-		if (activeChar != null)
-		{
-			activeChar.sendPacket(new PledgeInfo(clan));
-			
-			if (clan.getClanId() == activeChar.getClanId())
-			{
-				PledgeShowMemberListAll pm = new PledgeShowMemberListAll(clan, activeChar);
-				activeChar.sendPacket(pm);
-			}
-		}
+
+		activeChar.sendPacket(new PledgeInfo(clan));
 	}
 	
 	/*
