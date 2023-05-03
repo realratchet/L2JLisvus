@@ -18,7 +18,6 @@ import java.util.logging.Logger;
 
 import net.sf.l2j.gameserver.datatables.ClanTable;
 import net.sf.l2j.gameserver.model.L2Clan;
-import net.sf.l2j.gameserver.model.L2World;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.network.serverpackets.ActionFailed;
 
@@ -44,15 +43,15 @@ public class RequestStopPledgeWar extends L2GameClientPacket
 		{
 			return;
 		}
-		L2Clan playerClan = player.getClan();
-		if (playerClan == null)
+		L2Clan clan = player.getClan();
+		if (clan == null)
 		{
 			return;
 		}
 		
-		L2Clan clan = ClanTable.getInstance().getClanByName(_pledgeName);
+		L2Clan requestedClan = ClanTable.getInstance().getClanByName(_pledgeName);
 		
-		if (clan == null)
+		if (requestedClan == null)
 		{
 			player.sendMessage("Clan does not exist.");
 			player.sendPacket(new ActionFailed());
@@ -66,20 +65,20 @@ public class RequestStopPledgeWar extends L2GameClientPacket
 			return;
 		}
 		
-		if (!playerClan.isAtWarWith(clan.getClanId()))
+		if (!clan.isAtWarWith(requestedClan.getClanId()))
 		{
 			player.sendMessage("You aren't at war with this clan.");
 			player.sendPacket(new ActionFailed());
 			return;
 		}
 		
-		ClanTable.getInstance().deleteClanWars(playerClan.getClanId(), clan.getClanId());
-		for (L2PcInstance cha : L2World.getInstance().getAllPlayers())
-		{
-			if ((cha.getClan() == player.getClan()) || (cha.getClan() == clan))
-			{
-				cha.broadcastUserInfo();
-			}
+		ClanTable.getInstance().deleteClanWars(clan.getClanId(), requestedClan.getClanId());
+
+		for (L2PcInstance member : clan.getOnlineMembers(0)) {
+			member.broadcastUserInfo();
+		}
+		for (L2PcInstance member : requestedClan.getOnlineMembers(0)) {
+			member.broadcastUserInfo();
 		}
 	}
 	

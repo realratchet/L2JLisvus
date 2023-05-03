@@ -19,7 +19,6 @@ import java.util.logging.Logger;
 import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.datatables.ClanTable;
 import net.sf.l2j.gameserver.model.L2Clan;
-import net.sf.l2j.gameserver.model.L2World;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.network.serverpackets.ActionFailed;
 import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
@@ -47,13 +46,13 @@ public class RequestStartPledgeWar extends L2GameClientPacket
 			return;
 		}
 		
-		L2Clan _clan = getClient().getActiveChar().getClan();
-		if (_clan == null)
+		L2Clan clan = player.getClan();
+		if (clan == null)
 		{
 			return;
 		}
 		
-		if ((_clan.getLevel() < 3) || (_clan.getMembersCount() < Config.ALT_CLAN_MEMBERS_FOR_WAR))
+		if ((clan.getLevel() < 3) || (clan.getMembersCount() < Config.ALT_CLAN_MEMBERS_FOR_WAR))
 		{
 			SystemMessage sm = new SystemMessage(1564);
 			player.sendPacket(sm);
@@ -69,15 +68,15 @@ public class RequestStartPledgeWar extends L2GameClientPacket
 			return;
 		}
 		
-		L2Clan clan = ClanTable.getInstance().getClanByName(_pledgeName);
-		if ((clan == null) || (clan == _clan))
+		L2Clan requestedClan = ClanTable.getInstance().getClanByName(_pledgeName);
+		if ((requestedClan == null) || (requestedClan == clan))
 		{
 			player.sendMessage("Invalid Clan.");
 			player.sendPacket(new ActionFailed());
 			return;
 		}
 		
-		if ((_clan.getAllyId() == clan.getAllyId()) && (_clan.getAllyId() != 0))
+		if ((clan.getAllyId() == requestedClan.getAllyId()) && (clan.getAllyId() != 0))
 		{
 			SystemMessage sm = new SystemMessage(1569);
 			player.sendPacket(sm);
@@ -86,7 +85,7 @@ public class RequestStartPledgeWar extends L2GameClientPacket
 			return;
 		}
 		
-		if ((clan.getLevel() < 3) || (clan.getMembersCount() < Config.ALT_CLAN_MEMBERS_FOR_WAR))
+		if ((requestedClan.getLevel() < 3) || (requestedClan.getMembersCount() < Config.ALT_CLAN_MEMBERS_FOR_WAR))
 		{
 			SystemMessage sm = new SystemMessage(1564);
 			player.sendPacket(sm);
@@ -95,13 +94,13 @@ public class RequestStartPledgeWar extends L2GameClientPacket
 			return;
 		}
 		
-		ClanTable.getInstance().storeClanWars(player.getClanId(), clan.getClanId());
-		for (L2PcInstance cha : L2World.getInstance().getAllPlayers())
-		{
-			if ((cha.getClan() == player.getClan()) || (cha.getClan() == clan))
-			{
-				cha.broadcastUserInfo();
-			}
+		ClanTable.getInstance().storeClanWars(clan.getClanId(), requestedClan.getClanId());
+
+		for (L2PcInstance member : clan.getOnlineMembers(0)) {
+			member.broadcastUserInfo();
+		}
+		for (L2PcInstance member : requestedClan.getOnlineMembers(0)) {
+			member.broadcastUserInfo();
 		}
 	}
 	

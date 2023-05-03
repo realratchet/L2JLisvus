@@ -234,7 +234,7 @@ public class ClanTable
         if (leaderMember == null)
             clan.getWarehouse().destroyAllItems("ClanRemove", null, null);
         else
-            clan.getWarehouse().destroyAllItems("ClanRemove", clan.getLeader().getPlayerInstance(), null);
+            clan.getWarehouse().destroyAllItems("ClanRemove", leaderMember.getPlayerInstance(), null);
 
         for (L2ClanMember member : clan.getMembers())
         {
