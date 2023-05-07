@@ -1,0 +1,1186 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<list>
+  <item id="5700" name="Alternative Great Cobol Seed" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="40" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Seed" />
+    <set name="item_skill" val="2097-3" />
+  </item>
+  <item id="5701" name="Alternative Red Codran Seed" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="40" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Seed" />
+    <set name="item_skill" val="2097-3" />
+  </item>
+  <item id="5702" name="Alternative Sea Codran Seed" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="50" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Seed" />
+    <set name="item_skill" val="2097-3" />
+  </item>
+  <item id="5703" name="Lucky Charm" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="10" />
+    <set name="price" val="100" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Scrolls" />
+    <set name="item_skill" val="2168-1" />
+  </item>
+  <item id="5704" name="Keshanberk*Keshanberk" type="Weapon">
+    <set name="weapon_type" val="DUAL" />
+    <set name="bodypart" val="lrhand" />
+    <set name="crystal_type" val="A" />
+    <set name="crystal_count" val="1464" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="FINE_STEEL" />
+    <set name="weight" val="2080" />
+    <set name="price" val="18300000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <for>
+      <set order="0x08" stat="pAtk" val="259" />
+      <set order="0x08" stat="mAtk" val="107" />
+      <set order="0x08" stat="rCrit" val="8" />
+      <add order="0x10" stat="accCombat" val="0" />
+      <set order="0x08" stat="pAtkSpd" val="325" />
+      <mul order="0x30" stat="pAtkSpd" val="1.08">
+        <and>
+          <using minEnchantLevel="4" />
+        </and>
+      </mul>
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="5705" name="Keshanberk*Damascus" type="Weapon">
+    <set name="weapon_type" val="DUAL" />
+    <set name="bodypart" val="lrhand" />
+    <set name="crystal_type" val="A" />
+    <set name="crystal_count" val="1928" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="FINE_STEEL" />
+    <set name="weight" val="2080" />
+    <set name="price" val="24100000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <for>
+      <set order="0x08" stat="pAtk" val="275" />
+      <set order="0x08" stat="mAtk" val="112" />
+      <set order="0x08" stat="rCrit" val="8" />
+      <add order="0x10" stat="accCombat" val="0" />
+      <set order="0x08" stat="pAtkSpd" val="325" />
+      <mul order="0x30" stat="maxHp" val="1.25">
+        <and>
+          <using minEnchantLevel="4" />
+        </and>
+      </mul>
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+
+      <mul order="0x30" stat="pvpPhysDmg" val="1.05" />
+      <mul order="0x30" stat="pvpPhysSkillsDmg" val="1.05" />
+      <mul order="0x30" stat="pvpMagicalDmg" val="1.05" />
+    </for>
+  </item>
+  <item id="5706" name="Damascus*Damascus" type="Weapon">
+    <set name="weapon_type" val="DUAL" />
+    <set name="bodypart" val="lrhand" />
+    <set name="crystal_type" val="A" />
+    <set name="crystal_count" val="2160" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="FINE_STEEL" />
+    <set name="weight" val="2080" />
+    <set name="price" val="27000000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <for>
+      <set order="0x08" stat="pAtk" val="282" />
+      <set order="0x08" stat="mAtk" val="114" />
+      <set order="0x08" stat="rCrit" val="8" />
+      <set order="0x08" stat="pAtkSpd" val="325" />
+      <add order="0x10" stat="accCombat" val="6">
+        <and>
+          <using minEnchantLevel="4" />
+        </and>
+      </add>
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+
+      <mul order="0x30" stat="pvpPhysDmg" val="1.05" />
+      <mul order="0x30" stat="pvpPhysSkillsDmg" val="1.05" />
+      <mul order="0x30" stat="pvpMagicalDmg" val="1.05" />
+    </for>
+  </item>
+  <item id="5707" name="Record of Seven Signs" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="0" />
+    <set name="price" val="600" />
+    <set name="handler" val="SevenSignsRecord" />
+  </item>
+  <item id="5708" name="Lord of the Manor's Certificate of Approval" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+  </item>
+  <item id="5709" name="Sealed Zubei's Gauntlets" type="Armor">
+    <set name="bodypart" val="gloves" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="69" />
+    <set name="material" val="MITHRIL" />
+    <set name="weight" val="590" />
+    <set name="price" val="519000" />
+    <for>
+      <add order="0x10" stat="pDef" val="41" />
+      <enchant order="0x0C" stat="pDef" val="0" />
+    </for>
+  </item>
+  <item id="5710" name="Zubei's Gauntlets - Heavy Armor" type="Armor">
+    <set name="bodypart" val="gloves" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="69" />
+    <set name="material" val="MITHRIL" />
+    <set name="weight" val="590" />
+    <set name="price" val="519000" />
+    <for>
+      <add order="0x10" stat="pDef" val="41" />
+      <enchant order="0x0C" stat="pDef" val="0" />
+    </for>
+  </item>
+  <item id="5711" name="Zubei's Gauntlets - Light Armor" type="Armor">
+    <set name="bodypart" val="gloves" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="69" />
+    <set name="material" val="MITHRIL" />
+    <set name="weight" val="590" />
+    <set name="price" val="519000" />
+    <for>
+      <add order="0x10" stat="pDef" val="41" />
+      <enchant order="0x0C" stat="pDef" val="0" />
+    </for>
+  </item>
+  <item id="5712" name="Zubei's Gauntlets - Robe" type="Armor">
+    <set name="bodypart" val="gloves" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="69" />
+    <set name="material" val="MITHRIL" />
+    <set name="weight" val="590" />
+    <set name="price" val="519000" />
+    <for>
+      <add order="0x10" stat="pDef" val="41" />
+      <enchant order="0x0C" stat="pDef" val="0" />
+    </for>
+  </item>
+  <item id="5713" name="Sealed Avadon Gloves" type="Armor">
+    <set name="bodypart" val="gloves" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="69" />
+    <set name="material" val="MITHRIL" />
+    <set name="weight" val="590" />
+    <set name="price" val="519000" />
+    <for>
+      <add order="0x10" stat="pDef" val="41" />
+      <enchant order="0x0C" stat="pDef" val="0" />
+    </for>
+  </item>
+  <item id="5714" name="Avadon Gloves - Heavy Armor" type="Armor">
+    <set name="bodypart" val="gloves" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="69" />
+    <set name="material" val="MITHRIL" />
+    <set name="weight" val="590" />
+    <set name="price" val="519000" />
+    <for>
+      <add order="0x10" stat="pDef" val="41" />
+      <enchant order="0x0C" stat="pDef" val="0" />
+    </for>
+  </item>
+  <item id="5715" name="Avadon Gloves - Light Armor" type="Armor">
+    <set name="bodypart" val="gloves" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="69" />
+    <set name="material" val="MITHRIL" />
+    <set name="weight" val="590" />
+    <set name="price" val="519000" />
+    <for>
+      <add order="0x10" stat="pDef" val="41" />
+      <enchant order="0x0C" stat="pDef" val="0" />
+    </for>
+  </item>
+  <item id="5716" name="Avadon Gloves - Robe" type="Armor">
+    <set name="bodypart" val="gloves" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="69" />
+    <set name="material" val="MITHRIL" />
+    <set name="weight" val="590" />
+    <set name="price" val="519000" />
+    <for>
+      <add order="0x10" stat="pDef" val="41" />
+      <enchant order="0x0C" stat="pDef" val="0" />
+    </for>
+  </item>
+  <item id="5717" name="Sealed Blue Wolf Gloves" type="Armor">
+    <set name="bodypart" val="gloves" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="107" />
+    <set name="material" val="LEATHER" />
+    <set name="weight" val="590" />
+    <set name="price" val="804000" />
+    <for>
+      <add order="0x10" stat="pDef" val="44" />
+      <enchant order="0x0C" stat="pDef" val="0" />
+    </for>
+  </item>
+  <item id="5718" name="Blue Wolf Gloves - Heavy Armor" type="Armor">
+    <set name="bodypart" val="gloves" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="107" />
+    <set name="material" val="LEATHER" />
+    <set name="weight" val="590" />
+    <set name="price" val="804000" />
+    <for>
+      <add order="0x10" stat="pDef" val="44" />
+      <enchant order="0x0C" stat="pDef" val="0" />
+    </for>
+  </item>
+  <item id="5719" name="Blue Wolf Gloves - Light Armor" type="Armor">
+    <set name="bodypart" val="gloves" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="107" />
+    <set name="material" val="LEATHER" />
+    <set name="weight" val="590" />
+    <set name="price" val="804000" />
+    <for>
+      <add order="0x10" stat="pDef" val="44" />
+      <enchant order="0x0C" stat="pDef" val="0" />
+    </for>
+  </item>
+  <item id="5720" name="Blue Wolf Gloves - Robe" type="Armor">
+    <set name="bodypart" val="gloves" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="107" />
+    <set name="material" val="LEATHER" />
+    <set name="weight" val="590" />
+    <set name="price" val="804000" />
+    <for>
+      <add order="0x10" stat="pDef" val="44" />
+      <enchant order="0x0C" stat="pDef" val="0" />
+    </for>
+  </item>
+  <item id="5721" name="Sealed Doom Gloves" type="Armor">
+    <set name="bodypart" val="gloves" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="107" />
+    <set name="material" val="LEATHER" />
+    <set name="weight" val="580" />
+    <set name="price" val="804000" />
+    <for>
+      <add order="0x10" stat="pDef" val="44" />
+      <enchant order="0x0C" stat="pDef" val="0" />
+    </for>
+  </item>
+  <item id="5722" name="Doom Gloves - Heavy Armor" type="Armor">
+    <set name="bodypart" val="gloves" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="107" />
+    <set name="material" val="LEATHER" />
+    <set name="weight" val="580" />
+    <set name="price" val="804000" />
+    <for>
+      <add order="0x10" stat="pDef" val="44" />
+      <enchant order="0x0C" stat="pDef" val="0" />
+    </for>
+  </item>
+  <item id="5723" name="Doom Gloves - Light Armor" type="Armor">
+    <set name="bodypart" val="gloves" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="107" />
+    <set name="material" val="LEATHER" />
+    <set name="weight" val="580" />
+    <set name="price" val="804000" />
+    <for>
+      <add order="0x10" stat="pDef" val="44" />
+      <enchant order="0x0C" stat="pDef" val="0" />
+    </for>
+  </item>
+  <item id="5724" name="Doom Gloves - Robe" type="Armor">
+    <set name="bodypart" val="gloves" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="107" />
+    <set name="material" val="LEATHER" />
+    <set name="weight" val="580" />
+    <set name="price" val="804000" />
+    <for>
+      <add order="0x10" stat="pDef" val="44" />
+      <enchant order="0x0C" stat="pDef" val="0" />
+    </for>
+  </item>
+  <item id="5725" name="Sealed Zubei's Boots" type="Armor">
+    <set name="bodypart" val="feet" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="69" />
+    <set name="material" val="MITHRIL" />
+    <set name="weight" val="1180" />
+    <set name="price" val="519000" />
+    <for>
+      <add order="0x10" stat="pDef" val="41" />
+      <enchant order="0x0C" stat="pDef" val="0" />
+    </for>
+  </item>
+  <item id="5726" name="Zubei's Boots - Heavy Armor" type="Armor">
+    <set name="bodypart" val="feet" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="69" />
+    <set name="material" val="MITHRIL" />
+    <set name="weight" val="1180" />
+    <set name="price" val="519000" />
+    <for>
+      <add order="0x10" stat="pDef" val="41" />
+      <enchant order="0x0C" stat="pDef" val="0" />
+    </for>
+  </item>
+  <item id="5727" name="Zubei's Boots - Light Armor" type="Armor">
+    <set name="bodypart" val="feet" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="69" />
+    <set name="material" val="MITHRIL" />
+    <set name="weight" val="1180" />
+    <set name="price" val="519000" />
+    <for>
+      <add order="0x10" stat="pDef" val="41" />
+      <enchant order="0x0C" stat="pDef" val="0" />
+    </for>
+  </item>
+  <item id="5728" name="Zubei's Boots - Robe" type="Armor">
+    <set name="bodypart" val="feet" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="69" />
+    <set name="material" val="MITHRIL" />
+    <set name="weight" val="1180" />
+    <set name="price" val="519000" />
+    <for>
+      <add order="0x10" stat="pDef" val="41" />
+      <enchant order="0x0C" stat="pDef" val="0" />
+    </for>
+  </item>
+  <item id="5729" name="Sealed Avadon Boots" type="Armor">
+    <set name="bodypart" val="feet" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="69" />
+    <set name="material" val="MITHRIL" />
+    <set name="weight" val="1180" />
+    <set name="price" val="519000" />
+    <for>
+      <add order="0x10" stat="pDef" val="41" />
+      <enchant order="0x0C" stat="pDef" val="0" />
+    </for>
+  </item>
+  <item id="5730" name="Avadon Boots - Heavy Armor" type="Armor">
+    <set name="bodypart" val="feet" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="69" />
+    <set name="material" val="MITHRIL" />
+    <set name="weight" val="1180" />
+    <set name="price" val="519000" />
+    <for>
+      <add order="0x10" stat="pDef" val="41" />
+      <enchant order="0x0C" stat="pDef" val="0" />
+    </for>
+  </item>
+  <item id="5731" name="Avadon Boots - Light Armor" type="Armor">
+    <set name="bodypart" val="feet" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="69" />
+    <set name="material" val="MITHRIL" />
+    <set name="weight" val="1180" />
+    <set name="price" val="519000" />
+    <for>
+      <add order="0x10" stat="pDef" val="41" />
+      <enchant order="0x0C" stat="pDef" val="0" />
+    </for>
+  </item>
+  <item id="5732" name="Avadon Boots - Robe" type="Armor">
+    <set name="bodypart" val="feet" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="69" />
+    <set name="material" val="MITHRIL" />
+    <set name="weight" val="1180" />
+    <set name="price" val="519000" />
+    <for>
+      <add order="0x10" stat="pDef" val="41" />
+      <enchant order="0x0C" stat="pDef" val="0" />
+    </for>
+  </item>
+  <item id="5733" name="Sealed Blue Wolf Boots" type="Armor">
+    <set name="bodypart" val="feet" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="107" />
+    <set name="material" val="LEATHER" />
+    <set name="weight" val="1130" />
+    <set name="price" val="804000" />
+    <for>
+      <add order="0x10" stat="pDef" val="44" />
+      <enchant order="0x0C" stat="pDef" val="0" />
+    </for>
+  </item>
+  <item id="5734" name="Blue Wolf Boots - Heavy Armor" type="Armor">
+    <set name="bodypart" val="feet" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="107" />
+    <set name="material" val="LEATHER" />
+    <set name="weight" val="1130" />
+    <set name="price" val="804000" />
+    <for>
+      <add order="0x10" stat="pDef" val="44" />
+      <enchant order="0x0C" stat="pDef" val="0" />
+    </for>
+  </item>
+  <item id="5735" name="Blue Wolf Boots - Light Armor" type="Armor">
+    <set name="bodypart" val="feet" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="107" />
+    <set name="material" val="LEATHER" />
+    <set name="weight" val="1130" />
+    <set name="price" val="804000" />
+    <for>
+      <add order="0x10" stat="pDef" val="44" />
+      <enchant order="0x0C" stat="pDef" val="0" />
+    </for>
+  </item>
+  <item id="5736" name="Blue Wolf Boots - Robe" type="Armor">
+    <set name="bodypart" val="feet" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="107" />
+    <set name="material" val="LEATHER" />
+    <set name="weight" val="1130" />
+    <set name="price" val="804000" />
+    <for>
+      <add order="0x10" stat="pDef" val="44" />
+      <enchant order="0x0C" stat="pDef" val="0" />
+    </for>
+  </item>
+  <item id="5737" name="Sealed Boots of Doom" type="Armor">
+    <set name="bodypart" val="feet" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="107" />
+    <set name="material" val="MITHRIL" />
+    <set name="weight" val="1130" />
+    <set name="price" val="804000" />
+    <for>
+      <add order="0x10" stat="pDef" val="44" />
+      <enchant order="0x0C" stat="pDef" val="0" />
+    </for>
+  </item>
+  <item id="5738" name="Doom Boots - Heavy Armor" type="Armor">
+    <set name="bodypart" val="feet" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="107" />
+    <set name="material" val="MITHRIL" />
+    <set name="weight" val="1130" />
+    <set name="price" val="804000" />
+    <for>
+      <add order="0x10" stat="pDef" val="44" />
+      <enchant order="0x0C" stat="pDef" val="0" />
+    </for>
+  </item>
+  <item id="5739" name="Doom Boots - Light Armor" type="Armor">
+    <set name="bodypart" val="feet" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="107" />
+    <set name="material" val="MITHRIL" />
+    <set name="weight" val="1130" />
+    <set name="price" val="804000" />
+    <for>
+      <add order="0x10" stat="pDef" val="44" />
+      <enchant order="0x0C" stat="pDef" val="0" />
+    </for>
+  </item>
+  <item id="5740" name="Doom Boots - Robe" type="Armor">
+    <set name="bodypart" val="feet" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="107" />
+    <set name="material" val="MITHRIL" />
+    <set name="weight" val="1130" />
+    <set name="price" val="804000" />
+    <for>
+      <add order="0x10" stat="pDef" val="44" />
+      <enchant order="0x0C" stat="pDef" val="0" />
+    </for>
+  </item>
+  <item id="5741" name="Recipe: Sealed Zubei's Gauntlets (100%)" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5742" name="Recipe: Zubei's Gauntlets (60%)" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5743" name="Recipe: Sealed Avadon Gloves (100%)" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5744" name="Recipe: Sealed Avadon Gloves (60%)" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5745" name="Recipe: Sealed Blue Wolf Gloves (100%)" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5746" name="Recipe: Sealed Blue Wolf Gloves (60%)" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5747" name="Recipe: Sealed Doom Gloves (100%)" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5748" name="Recipe: Sealed Doom Gloves (60%)" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5749" name="Recipe: Sealed Zubei's Boots (100%)" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5750" name="Recipe: Sealed Zubei's Boots (60%)" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5751" name="Recipe: Sealed Avadon Boots (100%)" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5752" name="Recipe: Sealed Avadon Boots (60%)" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5753" name="Recipe: Sealed Blue Wolf Boots (100%)" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5754" name="Recipe: Sealed Blue Wolf Boots (60%)" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5755" name="Recipe: Sealed Boots of Doom (100%)" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5756" name="Recipe: Sealed Boots of Doom (60%)" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5757" name="Sealed Zubei's Gauntlet Part" type="EtcItem">
+    <set name="etcitem_type" val="MATERIAL" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="60" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5758" name="Sealed Avadon Gloves Part" type="EtcItem">
+    <set name="etcitem_type" val="MATERIAL" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="60" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5759" name="Sealed Blue Wolf Gloves Fabric" type="EtcItem">
+    <set name="etcitem_type" val="MATERIAL" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="60" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5760" name="Sealed Doom Gloves Part" type="EtcItem">
+    <set name="etcitem_type" val="MATERIAL" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="60" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5761" name="Sealed Zubei's Boots Design" type="EtcItem">
+    <set name="etcitem_type" val="MATERIAL" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="60" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5762" name="Sealed Avadon Boots Design" type="EtcItem">
+    <set name="etcitem_type" val="MATERIAL" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="60" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5763" name="Sealed Blue Wolf Boots Design" type="EtcItem">
+    <set name="etcitem_type" val="MATERIAL" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="60" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5764" name="Sealed Doom Boots Part" type="EtcItem">
+    <set name="etcitem_type" val="MATERIAL" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="60" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5765" name="Dark Crystal Gloves - Heavy Armor" type="Armor">
+    <set name="bodypart" val="gloves" />
+    <set name="crystal_type" val="A" />
+    <set name="crystal_count" val="92" />
+    <set name="material" val="LEATHER" />
+    <set name="weight" val="580" />
+    <set name="price" val="1160000" />
+    <for>
+      <add order="0x10" stat="pDef" val="46" />
+      <enchant order="0x0C" stat="pDef" val="0" />
+    </for>
+  </item>
+  <item id="5766" name="Dark Crystal Gloves - Light Armor" type="Armor">
+    <set name="bodypart" val="gloves" />
+    <set name="crystal_type" val="A" />
+    <set name="crystal_count" val="92" />
+    <set name="material" val="LEATHER" />
+    <set name="weight" val="580" />
+    <set name="price" val="1160000" />
+    <for>
+      <add order="0x10" stat="pDef" val="46" />
+      <enchant order="0x0C" stat="pDef" val="0" />
+    </for>
+  </item>
+  <item id="5767" name="Dark Crystal Gloves - Robe" type="Armor">
+    <set name="bodypart" val="gloves" />
+    <set name="crystal_type" val="A" />
+    <set name="crystal_count" val="92" />
+    <set name="material" val="LEATHER" />
+    <set name="weight" val="580" />
+    <set name="price" val="1160000" />
+    <for>
+      <add order="0x10" stat="pDef" val="46" />
+      <enchant order="0x0C" stat="pDef" val="0" />
+    </for>
+  </item>
+  <item id="5768" name="Tallum Gloves - Heavy Armor" type="Armor">
+    <set name="bodypart" val="gloves" />
+    <set name="crystal_type" val="A" />
+    <set name="crystal_count" val="92" />
+    <set name="material" val="LEATHER" />
+    <set name="weight" val="580" />
+    <set name="price" val="1160000" />
+    <for>
+      <add order="0x10" stat="pDef" val="46" />
+      <enchant order="0x0C" stat="pDef" val="0" />
+    </for>
+  </item>
+  <item id="5769" name="Tallum Gloves - Light Armor" type="Armor">
+    <set name="bodypart" val="gloves" />
+    <set name="crystal_type" val="A" />
+    <set name="crystal_count" val="92" />
+    <set name="material" val="LEATHER" />
+    <set name="weight" val="580" />
+    <set name="price" val="1160000" />
+    <for>
+      <add order="0x10" stat="pDef" val="46" />
+      <enchant order="0x0C" stat="pDef" val="0" />
+    </for>
+  </item>
+  <item id="5770" name="Tallum Gloves - Robe" type="Armor">
+    <set name="bodypart" val="gloves" />
+    <set name="crystal_type" val="A" />
+    <set name="crystal_count" val="92" />
+    <set name="material" val="LEATHER" />
+    <set name="weight" val="580" />
+    <set name="price" val="1160000" />
+    <for>
+      <add order="0x10" stat="pDef" val="46" />
+      <enchant order="0x0C" stat="pDef" val="0" />
+    </for>
+  </item>
+  <item id="5771" name="Gauntlets of Nightmare - Heavy Armor" type="Armor">
+    <set name="bodypart" val="gloves" />
+    <set name="crystal_type" val="A" />
+    <set name="crystal_count" val="140" />
+    <set name="material" val="LEATHER" />
+    <set name="weight" val="550" />
+    <set name="price" val="1760000" />
+    <for>
+      <add order="0x10" stat="pDef" val="49" />
+      <enchant order="0x0C" stat="pDef" val="0" />
+    </for>
+  </item>
+  <item id="5772" name="Gauntlets of Nightmare - Light Armor" type="Armor">
+    <set name="bodypart" val="gloves" />
+    <set name="crystal_type" val="A" />
+    <set name="crystal_count" val="140" />
+    <set name="material" val="LEATHER" />
+    <set name="weight" val="550" />
+    <set name="price" val="1760000" />
+    <for>
+      <add order="0x10" stat="pDef" val="49" />
+      <enchant order="0x0C" stat="pDef" val="0" />
+    </for>
+  </item>
+  <item id="5773" name="Gauntlets of Nightmare - Robe" type="Armor">
+    <set name="bodypart" val="gloves" />
+    <set name="crystal_type" val="A" />
+    <set name="crystal_count" val="140" />
+    <set name="material" val="LEATHER" />
+    <set name="weight" val="550" />
+    <set name="price" val="1760000" />
+    <for>
+      <add order="0x10" stat="pDef" val="49" />
+      <enchant order="0x0C" stat="pDef" val="0" />
+    </for>
+  </item>
+  <item id="5774" name="Majestic Gauntlets - Heavy Armor" type="Armor">
+    <set name="bodypart" val="gloves" />
+    <set name="crystal_type" val="A" />
+    <set name="crystal_count" val="140" />
+    <set name="material" val="LEATHER" />
+    <set name="weight" val="540" />
+    <set name="price" val="1760000" />
+    <for>
+      <add order="0x10" stat="pDef" val="49" />
+      <enchant order="0x0C" stat="pDef" val="0" />
+    </for>
+  </item>
+  <item id="5775" name="Majestic Gauntlets - Light Armor" type="Armor">
+    <set name="bodypart" val="gloves" />
+    <set name="crystal_type" val="A" />
+    <set name="crystal_count" val="140" />
+    <set name="material" val="LEATHER" />
+    <set name="weight" val="540" />
+    <set name="price" val="1760000" />
+    <for>
+      <add order="0x10" stat="pDef" val="49" />
+      <enchant order="0x0C" stat="pDef" val="0" />
+    </for>
+  </item>
+  <item id="5776" name="Majestic Gauntlets - Robe" type="Armor">
+    <set name="bodypart" val="gloves" />
+    <set name="crystal_type" val="A" />
+    <set name="crystal_count" val="140" />
+    <set name="material" val="LEATHER" />
+    <set name="weight" val="540" />
+    <set name="price" val="1760000" />
+    <for>
+      <add order="0x10" stat="pDef" val="49" />
+      <enchant order="0x0C" stat="pDef" val="0" />
+    </for>
+  </item>
+  <item id="5777" name="Dark Crystal Boots - Heavy Armor" type="Armor">
+    <set name="bodypart" val="feet" />
+    <set name="crystal_type" val="A" />
+    <set name="crystal_count" val="92" />
+    <set name="material" val="CRYSTAL" />
+    <set name="weight" val="1110" />
+    <set name="price" val="1160000" />
+    <for>
+      <add order="0x10" stat="pDef" val="46" />
+      <enchant order="0x0C" stat="pDef" val="0" />
+    </for>
+  </item>
+  <item id="5778" name="Dark Crystal Boots - Light Armor" type="Armor">
+    <set name="bodypart" val="feet" />
+    <set name="crystal_type" val="A" />
+    <set name="crystal_count" val="92" />
+    <set name="material" val="CRYSTAL" />
+    <set name="weight" val="1110" />
+    <set name="price" val="1160000" />
+    <for>
+      <add order="0x10" stat="pDef" val="46" />
+      <enchant order="0x0C" stat="pDef" val="0" />
+    </for>
+  </item>
+  <item id="5779" name="Dark Crystal Boots - Robe" type="Armor">
+    <set name="bodypart" val="feet" />
+    <set name="crystal_type" val="A" />
+    <set name="crystal_count" val="92" />
+    <set name="material" val="CRYSTAL" />
+    <set name="weight" val="1110" />
+    <set name="price" val="1160000" />
+    <for>
+      <add order="0x10" stat="pDef" val="46" />
+      <enchant order="0x0C" stat="pDef" val="0" />
+    </for>
+  </item>
+  <item id="5780" name="Tallum Boots - Heavy Armor" type="Armor">
+    <set name="bodypart" val="feet" />
+    <set name="crystal_type" val="A" />
+    <set name="crystal_count" val="92" />
+    <set name="material" val="BLOOD_STEEL" />
+    <set name="weight" val="1130" />
+    <set name="price" val="1160000" />
+    <for>
+      <add order="0x10" stat="pDef" val="46" />
+      <enchant order="0x0C" stat="pDef" val="0" />
+    </for>
+  </item>
+  <item id="5781" name="Tallum Boots - Light Armor" type="Armor">
+    <set name="bodypart" val="feet" />
+    <set name="crystal_type" val="A" />
+    <set name="crystal_count" val="92" />
+    <set name="material" val="BLOOD_STEEL" />
+    <set name="weight" val="1130" />
+    <set name="price" val="1160000" />
+    <for>
+      <add order="0x10" stat="pDef" val="46" />
+      <enchant order="0x0C" stat="pDef" val="0" />
+    </for>
+  </item>
+  <item id="5782" name="Tallum Boots - Robe" type="Armor">
+    <set name="bodypart" val="feet" />
+    <set name="crystal_type" val="A" />
+    <set name="crystal_count" val="92" />
+    <set name="material" val="BLOOD_STEEL" />
+    <set name="weight" val="1130" />
+    <set name="price" val="1160000" />
+    <for>
+      <add order="0x10" stat="pDef" val="46" />
+      <enchant order="0x0C" stat="pDef" val="0" />
+    </for>
+  </item>
+  <item id="5783" name="Boots of Nightmare - Heavy Armor" type="Armor">
+    <set name="bodypart" val="feet" />
+    <set name="crystal_type" val="A" />
+    <set name="crystal_count" val="140" />
+    <set name="material" val="LEATHER" />
+    <set name="weight" val="1110" />
+    <set name="price" val="1760000" />
+    <for>
+      <add order="0x10" stat="pDef" val="49" />
+      <enchant order="0x0C" stat="pDef" val="0" />
+    </for>
+  </item>
+  <item id="5784" name="Boots of Nightmare - Light Armor" type="Armor">
+    <set name="bodypart" val="feet" />
+    <set name="crystal_type" val="A" />
+    <set name="crystal_count" val="140" />
+    <set name="material" val="LEATHER" />
+    <set name="weight" val="1110" />
+    <set name="price" val="1760000" />
+    <for>
+      <add order="0x10" stat="pDef" val="49" />
+      <enchant order="0x0C" stat="pDef" val="0" />
+    </for>
+  </item>
+  <item id="5785" name="Boots of Nightmare - Robe" type="Armor">
+    <set name="bodypart" val="feet" />
+    <set name="crystal_type" val="A" />
+    <set name="crystal_count" val="140" />
+    <set name="material" val="LEATHER" />
+    <set name="weight" val="1110" />
+    <set name="price" val="1760000" />
+    <for>
+      <add order="0x10" stat="pDef" val="49" />
+      <enchant order="0x0C" stat="pDef" val="0" />
+    </for>
+  </item>
+  <item id="5786" name="Majestic Boots - Heavy Armor" type="Armor">
+    <set name="bodypart" val="feet" />
+    <set name="crystal_type" val="A" />
+    <set name="crystal_count" val="140" />
+    <set name="material" val="BLOOD_STEEL" />
+    <set name="weight" val="1110" />
+    <set name="price" val="1760000" />
+    <for>
+      <add order="0x10" stat="pDef" val="49" />
+      <enchant order="0x0C" stat="pDef" val="0" />
+    </for>
+  </item>
+  <item id="5787" name="Majestic Boots - Light Armor" type="Armor">
+    <set name="bodypart" val="feet" />
+    <set name="crystal_type" val="A" />
+    <set name="crystal_count" val="140" />
+    <set name="material" val="BLOOD_STEEL" />
+    <set name="weight" val="1110" />
+    <set name="price" val="1760000" />
+    <for>
+      <add order="0x10" stat="pDef" val="49" />
+      <enchant order="0x0C" stat="pDef" val="0" />
+    </for>
+  </item>
+  <item id="5788" name="Majestic Boots - Robe" type="Armor">
+    <set name="bodypart" val="feet" />
+    <set name="crystal_type" val="A" />
+    <set name="crystal_count" val="140" />
+    <set name="material" val="BLOOD_STEEL" />
+    <set name="weight" val="1110" />
+    <set name="price" val="1760000" />
+    <for>
+      <add order="0x10" stat="pDef" val="49" />
+      <enchant order="0x0C" stat="pDef" val="0" />
+    </for>
+  </item>
+  <item id="5789" name="Soulshot: No Grade for Beginners" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="SoulShots" />
+    <set name="item_skill" val="2039-1" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="5790" name="Spiritshot: No Grade for Beginners" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="SpiritShot" />
+    <set name="item_skill" val="2061-1" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="5791" name="Tomb Guard A" type="Weapon">
+    <set name="weapon_type" val="BIGSWORD" />
+    <set name="bodypart" val="lrhand" />
+    <set name="crystal_type" val="D" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="FINE_STEEL" />
+    <set name="weight" val="2180" />
+    <set name="price" val="967000" />
+    <set name="soulshots" val="2" />
+    <set name="spiritshots" val="2" />
+    <for>
+      <set order="0x08" stat="pAtk" val="78" />
+      <set order="0x08" stat="mAtk" val="39" />
+      <set order="0x08" stat="rCrit" val="8" />
+      <add order="0x10" stat="accCombat" val="0" />
+      <set order="0x08" stat="pAtkSpd" val="325" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="5792" name="Tomb Guard B" type="Weapon">
+    <set name="weapon_type" val="BIGSWORD" />
+    <set name="bodypart" val="lrhand" />
+    <set name="crystal_type" val="D" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="FINE_STEEL" />
+    <set name="weight" val="2180" />
+    <set name="price" val="967000" />
+    <set name="soulshots" val="2" />
+    <set name="spiritshots" val="2" />
+    <for>
+      <set order="0x08" stat="pAtk" val="78" />
+      <set order="0x08" stat="mAtk" val="39" />
+      <set order="0x08" stat="rCrit" val="8" />
+      <add order="0x10" stat="accCombat" val="0" />
+      <set order="0x08" stat="pAtkSpd" val="325" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="5793" name="Tomb Savant A" type="Weapon">
+    <set name="weapon_type" val="SWORD" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="C" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="ORIHARUKON" />
+    <set name="weight" val="1380" />
+    <set name="price" val="6130000" />
+    <set name="soulshots" val="3" />
+    <set name="spiritshots" val="3" />
+    <for>
+      <set order="0x08" stat="pAtk" val="156" />
+      <set order="0x08" stat="mAtk" val="83" />
+      <set order="0x08" stat="rCrit" val="8" />
+      <add order="0x10" stat="accCombat" val="0" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="5794" name="Tomb Savant B" type="Weapon">
+    <set name="weapon_type" val="SWORD" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="C" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="ORIHARUKON" />
+    <set name="weight" val="1380" />
+    <set name="price" val="6130000" />
+    <set name="soulshots" val="3" />
+    <set name="spiritshots" val="3" />
+    <for>
+      <set order="0x08" stat="pAtk" val="156" />
+      <set order="0x08" stat="mAtk" val="83" />
+      <set order="0x08" stat="rCrit" val="8" />
+      <add order="0x10" stat="accCombat" val="0" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="5795" name="Tomb Guard A" type="Weapon">
+    <set name="weapon_type" val="BIGSWORD" />
+    <set name="bodypart" val="lrhand" />
+    <set name="crystal_type" val="D" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="FINE_STEEL" />
+    <set name="weight" val="2180" />
+    <set name="price" val="967000" />
+    <set name="soulshots" val="2" />
+    <set name="spiritshots" val="2" />
+    <for>
+      <set order="0x08" stat="pAtk" val="78" />
+      <set order="0x08" stat="mAtk" val="39" />
+      <set order="0x08" stat="rCrit" val="8" />
+      <add order="0x10" stat="accCombat" val="0" />
+      <set order="0x08" stat="pAtkSpd" val="325" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="5796" name="Tomb Guard B" type="Weapon">
+    <set name="weapon_type" val="BIGSWORD" />
+    <set name="bodypart" val="lrhand" />
+    <set name="crystal_type" val="D" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="FINE_STEEL" />
+    <set name="weight" val="2180" />
+    <set name="price" val="967000" />
+    <set name="soulshots" val="2" />
+    <set name="spiritshots" val="2" />
+    <for>
+      <set order="0x08" stat="pAtk" val="78" />
+      <set order="0x08" stat="mAtk" val="39" />
+      <set order="0x08" stat="rCrit" val="8" />
+      <add order="0x10" stat="accCombat" val="0" />
+      <set order="0x08" stat="pAtkSpd" val="325" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="5797" name="Tomb Savant A" type="Weapon">
+    <set name="weapon_type" val="SWORD" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="C" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="ORIHARUKON" />
+    <set name="weight" val="1380" />
+    <set name="price" val="6130000" />
+    <set name="soulshots" val="3" />
+    <set name="spiritshots" val="3" />
+    <for>
+      <set order="0x08" stat="pAtk" val="156" />
+      <set order="0x08" stat="mAtk" val="83" />
+      <set order="0x08" stat="rCrit" val="8" />
+      <add order="0x10" stat="accCombat" val="0" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="5798" name="Tomb Savant B" type="Weapon">
+    <set name="weapon_type" val="SWORD" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="C" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="ORIHARUKON" />
+    <set name="weight" val="1380" />
+    <set name="price" val="6130000" />
+    <set name="soulshots" val="3" />
+    <set name="spiritshots" val="3" />
+    <for>
+      <set order="0x08" stat="pAtk" val="156" />
+      <set order="0x08" stat="mAtk" val="83" />
+      <set order="0x08" stat="rCrit" val="8" />
+      <add order="0x10" stat="accCombat" val="0" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="5799" name="Nephilim Lord" type="Armor">
+    <set name="bodypart" val="lhand" />
+    <set name="crystal_type" val="D" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="LEATHER" />
+    <set name="weight" val="1320" />
+    <set name="price" val="78400" />
+    <for>
+      <sub order="0x10" stat="rEvas" val="8" />
+      <set order="0x08" stat="sDef" val="142" />
+      <set order="0x08" stat="rShld" val="20" />
+      <enchant order="0x0C" stat="sDef" val="0" />
+    </for>
+  </item>
+</list>

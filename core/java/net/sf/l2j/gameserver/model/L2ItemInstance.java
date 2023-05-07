@@ -42,7 +42,6 @@ import net.sf.l2j.gameserver.network.serverpackets.DropItem;
 import net.sf.l2j.gameserver.network.serverpackets.GetItem;
 import net.sf.l2j.gameserver.network.serverpackets.SpawnItem;
 import net.sf.l2j.gameserver.skills.funcs.Func;
-import net.sf.l2j.gameserver.templates.L2Armor;
 import net.sf.l2j.gameserver.templates.L2EtcItem;
 import net.sf.l2j.gameserver.templates.L2EtcItemType;
 import net.sf.l2j.gameserver.templates.L2Item;
@@ -594,12 +593,12 @@ public final class L2ItemInstance extends L2Object
     }
 
     /**
-     * Returns if item is tradeable
+     * Returns if item is tradable
      * @return boolean
      */
-    public boolean isTradeable()
+    public boolean isTradable()
     {
-        return _item.isTradeable();
+        return _item.isTradable();
     }
 	
     /**
@@ -642,7 +641,7 @@ public final class L2ItemInstance extends L2Object
     		&& (player.getActiveEnchantItem() != this) // Not momentarily used enchant scroll
     		&& (allowAdena || _itemId != Inventory.ADENA_ID)
     		&& (player.getCurrentSkill() == null || player.getCurrentSkill().getSkill().getItemConsumeId() != _itemId)
-    		&& (isTradeable()));
+    		&& (isTradable()));
     }
 
     /* (non-Javadoc)
@@ -704,17 +703,6 @@ public final class L2ItemInstance extends L2Object
 
 		_enchantLevel = enchantLevel;
 		_storedInDb = false;
-	}
-
-	/**
-	 * Returns the physical defense of the item
-	 * @return int
-	 */
-	public int getPDef()
-	{
-		if (_item instanceof L2Armor)
-			return ((L2Armor)_item).getPDef();
-		return 0;
 	}
 
 	/**

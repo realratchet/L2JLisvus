@@ -510,7 +510,6 @@ gameservers.sql
 set dest=gs
 for %%i in (
 aio_buffer.sql
-armor.sql
 armorsets.sql
 auction.sql
 auction_bid.sql
@@ -545,7 +544,6 @@ clanhall_functions.sql
 dimensional_rift.sql
 droplist.sql
 enchant_skill_trees.sql
-etcitem.sql
 fish.sql
 fishing_skill_trees.sql
 forums.sql
@@ -592,7 +590,6 @@ spawnlist.sql
 teleport.sql
 topic.sql
 walker_routes.sql
-weapon.sql
 weddings.sql
 ) do call :dump %%i
 echo done...

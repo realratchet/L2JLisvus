@@ -1,0 +1,1090 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<list>
+  <item id="4600" name="Greater Dye of WIT &lt;Wit+2 Men-2&gt;" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="150" />
+    <set name="price" val="72000" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="4601" name="Greater Dye of STR &lt;Str+3 Con-3&gt;" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="150" />
+    <set name="price" val="108000" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="4602" name="Greater Dye of STR &lt;Str+3 Dex-3&gt;" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="150" />
+    <set name="price" val="108000" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="4603" name="Greater Dye of CON &lt;Con+3 Str-3&gt;" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="150" />
+    <set name="price" val="108000" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="4604" name="Greater Dye of CON &lt;Con+3 Dex-3&gt;" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="150" />
+    <set name="price" val="108000" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="4605" name="Greater Dye of DEX &lt;Dex+3 Str-3&gt;" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="150" />
+    <set name="price" val="108000" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="4606" name="Greater Dye of DEX &lt;Dex+3 Con-3&gt;" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="150" />
+    <set name="price" val="108000" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="4607" name="Greater Dye of INT &lt;Int+3 Men-3&gt;" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="150" />
+    <set name="price" val="108000" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="4608" name="Greater Dye of INT &lt;Int+3 Wit-3&gt;" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="150" />
+    <set name="price" val="108000" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="4609" name="Greater Dye of MEN &lt;Men+3 Int-3&gt;" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="150" />
+    <set name="price" val="108000" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="4610" name="Greater Dye of MEN &lt;Men+3 Wit-3&gt;" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="150" />
+    <set name="price" val="108000" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="4611" name="Greater Dye of WIT &lt;Wit+3 Int-3&gt;" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="150" />
+    <set name="price" val="108000" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="4612" name="Greater Dye of WIT &lt;Wit+3 Men-3&gt;" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="150" />
+    <set name="price" val="108000" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="4613" name="Greater Dye of STR &lt;Str+4 Con-4&gt;" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="150" />
+    <set name="price" val="174000" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="4614" name="Greater Dye of STR &lt;Str+4 Dex-4&gt;" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="150" />
+    <set name="price" val="174000" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="4615" name="Greater Dye of CON &lt;Con+4 Str-4&gt;" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="150" />
+    <set name="price" val="174000" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="4616" name="Greater Dye of CON &lt;Con+4 Dex-4&gt;" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="150" />
+    <set name="price" val="174000" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="4617" name="Greater Dye of DEX &lt;Dex+4 Str-4&gt;" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="150" />
+    <set name="price" val="174000" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="4618" name="Greater Dye of DEX &lt;Dex+4 Con-4&gt;" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="150" />
+    <set name="price" val="174000" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="4619" name="Greater Dye of INT &lt;Int+4 Men-4&gt;" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="150" />
+    <set name="price" val="174000" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="4620" name="Greater Dye of INT &lt;Int+4 Wit-4&gt;" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="150" />
+    <set name="price" val="174000" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="4621" name="Greater Dye of MEN &lt;Men+4 Int-4&gt;" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="150" />
+    <set name="price" val="174000" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="4622" name="Greater Dye of MEN &lt;Men+4 Wit-4&gt;" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="150" />
+    <set name="price" val="174000" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="4623" name="Greater Dye of WIT &lt;Wit+4 Int-4&gt;" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="150" />
+    <set name="price" val="174000" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="4624" name="Greater Dye of WIT &lt;Wit+4 Men-4&gt;" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="150" />
+    <set name="price" val="174000" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="4625" name="Dice (Heart)" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="500" />
+    <set name="handler" val="RollingDice" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="4626" name="Dice (Spade)" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="500" />
+    <set name="handler" val="RollingDice" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="4627" name="Dice (Clover)" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="500" />
+    <set name="handler" val="RollingDice" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="4628" name="Dice (Diamond)" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="500" />
+    <set name="handler" val="RollingDice" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="4629" name="Red Soul Crystal" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="CRYSTAL" />
+    <set name="weight" val="20" />
+    <set name="price" val="0" />
+    <set name="handler" val="SoulCrystals" />
+    <set name="item_skill" val="2096-1" />
+  </item>
+  <item id="4630" name="Red Soul Crystal - Stage 1" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="CRYSTAL" />
+    <set name="weight" val="20" />
+    <set name="price" val="0" />
+    <set name="handler" val="SoulCrystals" />
+    <set name="item_skill" val="2096-1" />
+  </item>
+  <item id="4631" name="Red Soul Crystal - Stage 2" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="CRYSTAL" />
+    <set name="weight" val="20" />
+    <set name="price" val="0" />
+    <set name="handler" val="SoulCrystals" />
+    <set name="item_skill" val="2096-1" />
+  </item>
+  <item id="4632" name="Red Soul Crystal - Stage 3" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="CRYSTAL" />
+    <set name="weight" val="20" />
+    <set name="price" val="0" />
+    <set name="handler" val="SoulCrystals" />
+    <set name="item_skill" val="2096-1" />
+  </item>
+  <item id="4633" name="Red Soul Crystal - Stage 4" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="CRYSTAL" />
+    <set name="weight" val="20" />
+    <set name="price" val="0" />
+    <set name="handler" val="SoulCrystals" />
+    <set name="item_skill" val="2096-1" />
+  </item>
+  <item id="4634" name="Red Soul Crystal - Stage 5" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="CRYSTAL" />
+    <set name="weight" val="20" />
+    <set name="price" val="0" />
+    <set name="handler" val="SoulCrystals" />
+    <set name="item_skill" val="2096-1" />
+  </item>
+  <item id="4635" name="Red Soul Crystal - Stage 6" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="CRYSTAL" />
+    <set name="weight" val="20" />
+    <set name="price" val="0" />
+    <set name="handler" val="SoulCrystals" />
+    <set name="item_skill" val="2096-1" />
+  </item>
+  <item id="4636" name="Red Soul Crystal - Stage 7" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="CRYSTAL" />
+    <set name="weight" val="20" />
+    <set name="price" val="0" />
+    <set name="handler" val="SoulCrystals" />
+    <set name="item_skill" val="2096-1" />
+  </item>
+  <item id="4637" name="Red Soul Crystal - Stage 8" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="CRYSTAL" />
+    <set name="weight" val="20" />
+    <set name="price" val="0" />
+    <set name="handler" val="SoulCrystals" />
+    <set name="item_skill" val="2096-1" />
+  </item>
+  <item id="4638" name="Red Soul Crystal - Stage 9" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="CRYSTAL" />
+    <set name="weight" val="20" />
+    <set name="price" val="0" />
+    <set name="handler" val="SoulCrystals" />
+    <set name="item_skill" val="2096-1" />
+  </item>
+  <item id="4639" name="Red Soul Crystal - Stage 10" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="CRYSTAL" />
+    <set name="weight" val="20" />
+    <set name="price" val="0" />
+    <set name="handler" val="SoulCrystals" />
+    <set name="item_skill" val="2096-1" />
+  </item>
+  <item id="4640" name="Green Soul Crystal" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="CRYSTAL" />
+    <set name="weight" val="20" />
+    <set name="price" val="0" />
+    <set name="handler" val="SoulCrystals" />
+    <set name="item_skill" val="2096-1" />
+  </item>
+  <item id="4641" name="Green Soul Crystal - Stage 1" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="CRYSTAL" />
+    <set name="weight" val="20" />
+    <set name="price" val="0" />
+    <set name="handler" val="SoulCrystals" />
+    <set name="item_skill" val="2096-1" />
+  </item>
+  <item id="4642" name="Green Soul Crystal - Stage 2" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="CRYSTAL" />
+    <set name="weight" val="20" />
+    <set name="price" val="0" />
+    <set name="handler" val="SoulCrystals" />
+    <set name="item_skill" val="2096-1" />
+  </item>
+  <item id="4643" name="Green Soul Crystal - Stage 3" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="CRYSTAL" />
+    <set name="weight" val="20" />
+    <set name="price" val="0" />
+    <set name="handler" val="SoulCrystals" />
+    <set name="item_skill" val="2096-1" />
+  </item>
+  <item id="4644" name="Green Soul Crystal - Stage 4" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="CRYSTAL" />
+    <set name="weight" val="20" />
+    <set name="price" val="0" />
+    <set name="handler" val="SoulCrystals" />
+    <set name="item_skill" val="2096-1" />
+  </item>
+  <item id="4645" name="Green Soul Crystal - Stage 5" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="CRYSTAL" />
+    <set name="weight" val="20" />
+    <set name="price" val="0" />
+    <set name="handler" val="SoulCrystals" />
+    <set name="item_skill" val="2096-1" />
+  </item>
+  <item id="4646" name="Green Soul Crystal - Stage 6" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="CRYSTAL" />
+    <set name="weight" val="20" />
+    <set name="price" val="0" />
+    <set name="handler" val="SoulCrystals" />
+    <set name="item_skill" val="2096-1" />
+  </item>
+  <item id="4647" name="Green Soul Crystal - Stage 7" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="CRYSTAL" />
+    <set name="weight" val="20" />
+    <set name="price" val="0" />
+    <set name="handler" val="SoulCrystals" />
+    <set name="item_skill" val="2096-1" />
+  </item>
+  <item id="4648" name="Green Soul Crystal - Stage 8" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="CRYSTAL" />
+    <set name="weight" val="20" />
+    <set name="price" val="0" />
+    <set name="handler" val="SoulCrystals" />
+    <set name="item_skill" val="2096-1" />
+  </item>
+  <item id="4649" name="Green Soul Crystal - Stage 9" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="CRYSTAL" />
+    <set name="weight" val="20" />
+    <set name="price" val="0" />
+    <set name="handler" val="SoulCrystals" />
+    <set name="item_skill" val="2096-1" />
+  </item>
+  <item id="4650" name="Green Soul Crystal - Stage 10" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="CRYSTAL" />
+    <set name="weight" val="20" />
+    <set name="price" val="0" />
+    <set name="handler" val="SoulCrystals" />
+    <set name="item_skill" val="2096-1" />
+  </item>
+  <item id="4651" name="Blue Soul Crystal" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="CRYSTAL" />
+    <set name="weight" val="20" />
+    <set name="price" val="0" />
+    <set name="handler" val="SoulCrystals" />
+    <set name="item_skill" val="2096-1" />
+  </item>
+  <item id="4652" name="Blue Soul Crystal - Stage 1" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="CRYSTAL" />
+    <set name="weight" val="20" />
+    <set name="price" val="0" />
+    <set name="handler" val="SoulCrystals" />
+    <set name="item_skill" val="2096-1" />
+  </item>
+  <item id="4653" name="Blue Soul Crystal - Stage 2" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="CRYSTAL" />
+    <set name="weight" val="20" />
+    <set name="price" val="0" />
+    <set name="handler" val="SoulCrystals" />
+    <set name="item_skill" val="2096-1" />
+  </item>
+  <item id="4654" name="Blue Soul Crystal - Stage 3" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="CRYSTAL" />
+    <set name="weight" val="20" />
+    <set name="price" val="0" />
+    <set name="handler" val="SoulCrystals" />
+    <set name="item_skill" val="2096-1" />
+  </item>
+  <item id="4655" name="Blue Soul Crystal - Stage 4" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="CRYSTAL" />
+    <set name="weight" val="20" />
+    <set name="price" val="0" />
+    <set name="handler" val="SoulCrystals" />
+    <set name="item_skill" val="2096-1" />
+  </item>
+  <item id="4656" name="Blue Soul Crystal - Stage 5" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="CRYSTAL" />
+    <set name="weight" val="20" />
+    <set name="price" val="0" />
+    <set name="handler" val="SoulCrystals" />
+    <set name="item_skill" val="2096-1" />
+  </item>
+  <item id="4657" name="Blue Soul Crystal - Stage 6" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="CRYSTAL" />
+    <set name="weight" val="20" />
+    <set name="price" val="0" />
+    <set name="handler" val="SoulCrystals" />
+    <set name="item_skill" val="2096-1" />
+  </item>
+  <item id="4658" name="Blue Soul Crystal - Stage 7" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="CRYSTAL" />
+    <set name="weight" val="20" />
+    <set name="price" val="0" />
+    <set name="handler" val="SoulCrystals" />
+    <set name="item_skill" val="2096-1" />
+  </item>
+  <item id="4659" name="Blue Soul Crystal - Stage 8" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="CRYSTAL" />
+    <set name="weight" val="20" />
+    <set name="price" val="0" />
+    <set name="handler" val="SoulCrystals" />
+    <set name="item_skill" val="2096-1" />
+  </item>
+  <item id="4660" name="Blue Soul Crystal - Stage 9" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="CRYSTAL" />
+    <set name="weight" val="20" />
+    <set name="price" val="0" />
+    <set name="handler" val="SoulCrystals" />
+    <set name="item_skill" val="2096-1" />
+  </item>
+  <item id="4661" name="Blue Soul Crystal - Stage 10" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="CRYSTAL" />
+    <set name="weight" val="20" />
+    <set name="price" val="0" />
+    <set name="handler" val="SoulCrystals" />
+    <set name="item_skill" val="2096-1" />
+  </item>
+  <item id="4662" name="Broken Red Soul Crystal" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="CRYSTAL" />
+    <set name="weight" val="20" />
+    <set name="price" val="0" />
+  </item>
+  <item id="4663" name="Broken Green Soul Crystal" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="CRYSTAL" />
+    <set name="weight" val="20" />
+    <set name="price" val="0" />
+  </item>
+  <item id="4664" name="Broken Blue Soul Crystal" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="CRYSTAL" />
+    <set name="weight" val="20" />
+    <set name="price" val="0" />
+  </item>
+  <item id="4665" name="Pipette Knife" type="Weapon">
+    <set name="weapon_type" val="DAGGER" />
+    <set name="bodypart" val="rhand" />
+    <set name="random_damage" val="5" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="BRONZE" />
+    <set name="weight" val="1140" />
+    <set name="price" val="0" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <set name="is_sellable" val="false" />
+    <for>
+      <set order="0x08" stat="pAtk" val="10" />
+      <set order="0x08" stat="mAtk" val="9" />
+      <set order="0x08" stat="rCrit" val="12" />
+      <add order="0x10" stat="accCombat" val="-3" />
+      <set order="0x08" stat="pAtkSpd" val="433" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4666" name="Reiria's Soul Orb" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="4667" name="Kernon's Infernium Scepter" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="4668" name="Golkonda's Infernium Scepter" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="4669" name="Hallate's Infernium Scepter" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="4670" name="Maestro Reorin's Hammer" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="4671" name="Maestro Reorin's Mold" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="4672" name="Infernium Varnish" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="4673" name="Red Pipette Knife" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="4674" name="Medal of Honor" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="4675" name="Medal of Friendship" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="4676" name="Medal of Victory" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="4677" name="Potion of Critical Escape" type="EtcItem">
+    <set name="etcitem_type" val="POTION" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="120" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="4678" name="Decrease Haste Potion" type="EtcItem">
+    <set name="etcitem_type" val="POTION" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="180" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="4679" name="Bless of Eva" type="EtcItem">
+    <set name="etcitem_type" val="POTION" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="180" />
+    <set name="price" val="500" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="4680" name="Potion of Revenge" type="EtcItem">
+    <set name="etcitem_type" val="POTION" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="180" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="4681" name="Stormbringer - Critical Anger" type="Weapon">
+    <set name="weapon_type" val="SWORD" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="916" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="FINE_STEEL" />
+    <set name="weight" val="1430" />
+    <set name="price" val="2290000" />
+    <set name="soulshots" val="2" />
+    <set name="spiritshots" val="2" />
+    <set name="item_skill" val="3026-1" />
+    <for>
+      <set order="0x08" stat="pAtk" val="107" />
+      <set order="0x08" stat="mAtk" val="61" />
+      <set order="0x08" stat="rCrit" val="8" />
+      <add order="0x10" stat="accCombat" val="0" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4682" name="Stormbringer - Focus" type="Weapon">
+    <set name="weapon_type" val="SWORD" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="916" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="FINE_STEEL" />
+    <set name="weight" val="1430" />
+    <set name="price" val="2290000" />
+    <set name="soulshots" val="2" />
+    <set name="spiritshots" val="2" />
+    <set name="item_skill" val="3010-1" />
+    <for>
+      <set order="0x08" stat="pAtk" val="107" />
+      <set order="0x08" stat="mAtk" val="61" />
+      <set order="0x08" stat="rCrit" val="8" />
+      <add order="0x10" stat="accCombat" val="0" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4683" name="Stormbringer - Light" type="Weapon">
+    <set name="weapon_type" val="SWORD" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="916" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="FINE_STEEL" />
+    <set name="weight" val="430" />
+    <set name="price" val="2290000" />
+    <set name="soulshots" val="2" />
+    <set name="spiritshots" val="2" />
+    <for>
+      <set order="0x08" stat="pAtk" val="107" />
+      <set order="0x08" stat="mAtk" val="61" />
+      <set order="0x08" stat="rCrit" val="8" />
+      <add order="0x10" stat="accCombat" val="0" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4684" name="Shamshir - Guidance" type="Weapon">
+    <set name="weapon_type" val="SWORD" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="1148" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="FINE_STEEL" />
+    <set name="weight" val="1420" />
+    <set name="price" val="2870000" />
+    <set name="soulshots" val="2" />
+    <set name="spiritshots" val="2" />
+    <set name="item_skill" val="3007-2" />
+    <for>
+      <set order="0x08" stat="pAtk" val="122" />
+      <set order="0x08" stat="mAtk" val="68" />
+      <set order="0x08" stat="rCrit" val="8" />
+      <add order="0x10" stat="accCombat" val="0" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4685" name="Shamshir - Back Blow" type="Weapon">
+    <set name="weapon_type" val="SWORD" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="1148" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="FINE_STEEL" />
+    <set name="weight" val="1420" />
+    <set name="price" val="2870000" />
+    <set name="soulshots" val="2" />
+    <set name="spiritshots" val="2" />
+    <set name="item_skill" val="3018-2" />
+    <for>
+      <set order="0x08" stat="pAtk" val="122" />
+      <set order="0x08" stat="mAtk" val="68" />
+      <set order="0x08" stat="rCrit" val="8" />
+      <add order="0x10" stat="accCombat" val="0" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4686" name="Shamshir - Rsk. Evasion" type="Weapon">
+    <set name="weapon_type" val="SWORD" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="1148" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="FINE_STEEL" />
+    <set name="weight" val="1420" />
+    <set name="price" val="2870000" />
+    <set name="soulshots" val="2" />
+    <set name="spiritshots" val="2" />
+    <set name="item_skill" val="3028-2" />
+    <for>
+      <set order="0x08" stat="pAtk" val="122" />
+      <set order="0x08" stat="mAtk" val="68" />
+      <set order="0x08" stat="rCrit" val="8" />
+      <add order="0x10" stat="accCombat" val="0" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4687" name="Katana - Focus" type="Weapon">
+    <set name="weapon_type" val="SWORD" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="1148" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="FINE_STEEL" />
+    <set name="weight" val="1420" />
+    <set name="price" val="2870000" />
+    <set name="soulshots" val="2" />
+    <set name="spiritshots" val="2" />
+    <set name="item_skill" val="3010-2" />
+    <for>
+      <set order="0x08" stat="pAtk" val="122" />
+      <set order="0x08" stat="mAtk" val="68" />
+      <set order="0x08" stat="rCrit" val="8" />
+      <add order="0x10" stat="accCombat" val="0" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4688" name="Katana - Critical Damage" type="Weapon">
+    <set name="weapon_type" val="SWORD" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="1148" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="FINE_STEEL" />
+    <set name="weight" val="1420" />
+    <set name="price" val="2870000" />
+    <set name="soulshots" val="2" />
+    <set name="spiritshots" val="2" />
+    <set name="item_skill" val="3023-2" />
+    <for>
+      <set order="0x08" stat="pAtk" val="122" />
+      <set order="0x08" stat="mAtk" val="68" />
+      <set order="0x08" stat="rCrit" val="8" />
+      <add order="0x10" stat="accCombat" val="0" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4689" name="Katana - Haste" type="Weapon">
+    <set name="weapon_type" val="SWORD" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="1148" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="FINE_STEEL" />
+    <set name="weight" val="1420" />
+    <set name="price" val="2870000" />
+    <set name="soulshots" val="2" />
+    <set name="spiritshots" val="2" />
+    <set name="item_skill" val="3037-2" />
+    <for>
+      <set order="0x08" stat="pAtk" val="122" />
+      <set order="0x08" stat="mAtk" val="68" />
+      <set order="0x08" stat="rCrit" val="8" />
+      <add order="0x10" stat="accCombat" val="0" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4690" name="Spirit Sword - Critical Damage" type="Weapon">
+    <set name="weapon_type" val="SWORD" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="1148" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="FINE_STEEL" />
+    <set name="weight" val="1420" />
+    <set name="price" val="2870000" />
+    <set name="soulshots" val="2" />
+    <set name="spiritshots" val="2" />
+    <set name="item_skill" val="3023-2" />
+    <for>
+      <set order="0x08" stat="pAtk" val="122" />
+      <set order="0x08" stat="mAtk" val="68" />
+      <set order="0x08" stat="rCrit" val="8" />
+      <add order="0x10" stat="accCombat" val="0" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4691" name="Spirit Sword - Critical Poison" type="Weapon">
+    <set name="weapon_type" val="SWORD" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="1148" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="FINE_STEEL" />
+    <set name="weight" val="1420" />
+    <set name="price" val="2870000" />
+    <set name="soulshots" val="2" />
+    <set name="spiritshots" val="2" />
+    <set name="oncrit_skill" val="3024-4" />
+    <set name="oncrit_chance" val="15" />
+    <for>
+      <set order="0x08" stat="pAtk" val="122" />
+      <set order="0x08" stat="mAtk" val="68" />
+      <set order="0x08" stat="rCrit" val="8" />
+      <add order="0x10" stat="accCombat" val="0" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4692" name="Spirit Sword - Haste" type="Weapon">
+    <set name="weapon_type" val="SWORD" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="1148" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="FINE_STEEL" />
+    <set name="weight" val="1420" />
+    <set name="price" val="2870000" />
+    <set name="soulshots" val="2" />
+    <set name="spiritshots" val="2" />
+    <set name="item_skill" val="3037-2" />
+    <for>
+      <set order="0x08" stat="pAtk" val="122" />
+      <set order="0x08" stat="mAtk" val="68" />
+      <set order="0x08" stat="rCrit" val="8" />
+      <add order="0x10" stat="accCombat" val="0" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4693" name="Raid Sword - Focus" type="Weapon">
+    <set name="weapon_type" val="SWORD" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="1148" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="FINE_STEEL" />
+    <set name="weight" val="1420" />
+    <set name="price" val="2870000" />
+    <set name="soulshots" val="2" />
+    <set name="spiritshots" val="2" />
+    <set name="item_skill" val="3010-2" />
+    <for>
+      <set order="0x08" stat="pAtk" val="122" />
+      <set order="0x08" stat="mAtk" val="68" />
+      <set order="0x08" stat="rCrit" val="8" />
+      <add order="0x10" stat="accCombat" val="0" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4694" name="Raid Sword - Critical Drain" type="Weapon">
+    <set name="weapon_type" val="SWORD" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="1148" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="FINE_STEEL" />
+    <set name="weight" val="1420" />
+    <set name="price" val="2870000" />
+    <set name="soulshots" val="2" />
+    <set name="spiritshots" val="2" />
+    <set name="oncrit_skill" val="3022-2" />
+    <set name="oncrit_chance" val="15" />
+    <for>
+      <set order="0x08" stat="pAtk" val="122" />
+      <set order="0x08" stat="mAtk" val="68" />
+      <set order="0x08" stat="rCrit" val="8" />
+      <add order="0x10" stat="accCombat" val="0" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4695" name="Raid Sword - Critical Poison" type="Weapon">
+    <set name="weapon_type" val="SWORD" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="1148" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="FINE_STEEL" />
+    <set name="weight" val="1420" />
+    <set name="price" val="2870000" />
+    <set name="soulshots" val="2" />
+    <set name="spiritshots" val="2" />
+    <set name="oncrit_skill" val="3024-4" />
+    <set name="oncrit_chance" val="15" />
+    <for>
+      <set order="0x08" stat="pAtk" val="122" />
+      <set order="0x08" stat="mAtk" val="68" />
+      <set order="0x08" stat="rCrit" val="8" />
+      <add order="0x10" stat="accCombat" val="0" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4696" name="Caliburs - Guidance" type="Weapon">
+    <set name="weapon_type" val="SWORD" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="1720" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="ORIHARUKON" />
+    <set name="weight" val="1400" />
+    <set name="price" val="4300000" />
+    <set name="soulshots" val="3" />
+    <set name="spiritshots" val="3" />
+    <set name="item_skill" val="3007-3" />
+    <for>
+      <set order="0x08" stat="pAtk" val="139" />
+      <set order="0x08" stat="mAtk" val="76" />
+      <set order="0x08" stat="rCrit" val="8" />
+      <add order="0x10" stat="accCombat" val="0" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4697" name="Caliburs - Focus" type="Weapon">
+    <set name="weapon_type" val="SWORD" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="1720" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="ORIHARUKON" />
+    <set name="weight" val="1400" />
+    <set name="price" val="4300000" />
+    <set name="soulshots" val="3" />
+    <set name="spiritshots" val="3" />
+    <set name="item_skill" val="3010-3" />
+    <for>
+      <set order="0x08" stat="pAtk" val="139" />
+      <set order="0x08" stat="mAtk" val="76" />
+      <set order="0x08" stat="rCrit" val="8" />
+      <add order="0x10" stat="accCombat" val="0" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4698" name="Caliburs - Critical Damage" type="Weapon">
+    <set name="weapon_type" val="SWORD" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="1720" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="ORIHARUKON" />
+    <set name="weight" val="1400" />
+    <set name="price" val="4300000" />
+    <set name="soulshots" val="3" />
+    <set name="spiritshots" val="3" />
+    <set name="item_skill" val="3023-3" />
+    <for>
+      <set order="0x08" stat="pAtk" val="139" />
+      <set order="0x08" stat="mAtk" val="76" />
+      <set order="0x08" stat="rCrit" val="8" />
+      <add order="0x10" stat="accCombat" val="0" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4699" name="Sword of Delusion - Focus" type="Weapon">
+    <set name="weapon_type" val="SWORD" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="1720" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="MITHRIL" />
+    <set name="weight" val="1400" />
+    <set name="price" val="4300000" />
+    <set name="soulshots" val="3" />
+    <set name="spiritshots" val="3" />
+    <set name="item_skill" val="3010-3" />
+    <for>
+      <set order="0x08" stat="pAtk" val="139" />
+      <set order="0x08" stat="mAtk" val="76" />
+      <set order="0x08" stat="rCrit" val="8" />
+      <add order="0x10" stat="accCombat" val="0" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+</list>

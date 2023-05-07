@@ -23,7 +23,6 @@ import net.sf.l2j.gameserver.skills.Calculator;
 import net.sf.l2j.gameserver.skills.Env;
 import net.sf.l2j.gameserver.skills.Stats;
 import net.sf.l2j.gameserver.templates.L2Weapon;
-import net.sf.l2j.gameserver.templates.L2WeaponType;
 
 public class CharStat
 {
@@ -239,7 +238,8 @@ public class CharStat
     public void setLevel(byte value)
     {
         _level = value;
-    }
+    }
+
 
     /** 
      * Return the Magical Attack range (base+modifier) of the L2Character. 
@@ -567,7 +567,8 @@ public class CharStat
     public final double getPAtkMCreatures(L2Character target)
     {
         return calcStat(Stats.PATK_MCREATURES, 1, target, null);
-    }
+    }
+
     /** 
      * Return the PAtk Modifier against undead. 
      * @param target 
@@ -621,7 +622,7 @@ public class CharStat
     }
 
     /** 
-     * Return the Physical Attack range (base+modifier) of the L2Character. 
+     * Return the Physical Attack range (base) of the L2Character. 
      * @return 
      */
     public final int getPhysicalAttackRange()
@@ -629,12 +630,10 @@ public class CharStat
         if (_activeChar == null)
             return 1;
 
-        // Polearm handled here for now.
         L2Weapon weaponItem = _activeChar.getActiveWeaponItem();
-        if (weaponItem != null && weaponItem.getItemType() == L2WeaponType.POLE)
-            return (int) calcStat(Stats.POWER_ATTACK_RANGE, 66, null, null);
+        int baseAttackRange = weaponItem != null ? weaponItem.getBaseAttackRange() : _activeChar.getTemplate().baseAtkRange;
 
-        return (int)calcStat(Stats.POWER_ATTACK_RANGE, _activeChar.getTemplate().baseAtkRange, null, null);
+        return (int)calcStat(Stats.POWER_ATTACK_RANGE, baseAttackRange, null, null);
     }
 
     /** 

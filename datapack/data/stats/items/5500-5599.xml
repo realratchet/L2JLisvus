@@ -1,0 +1,824 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<list>
+  <item id="5500" name="Sealed Red Flame Boots Lining" type="EtcItem">
+    <set name="etcitem_type" val="MATERIAL" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="60" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5501" name="Sealed Phoenix Boots Lining" type="EtcItem">
+    <set name="etcitem_type" val="MATERIAL" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="60" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5502" name="Sealed Boots of Nightmare Lining" type="EtcItem">
+    <set name="etcitem_type" val="MATERIAL" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="60" />
+    <set name="price" val="11842" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5503" name="Sealed Majestic Boots Lining" type="EtcItem">
+    <set name="etcitem_type" val="MATERIAL" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="60" />
+    <set name="price" val="11842" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5504" name="Sealed Dark Legion Boots Lining" type="EtcItem">
+    <set name="etcitem_type" val="MATERIAL" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="60" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5505" name="Sealed Boots of Phantom Lining" type="EtcItem">
+    <set name="etcitem_type" val="MATERIAL" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="60" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5506" name="Sealed Cerberus Boots Lining" type="EtcItem">
+    <set name="etcitem_type" val="MATERIAL" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="60" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5507" name="Sealed Dasparion's Boots Lining" type="EtcItem">
+    <set name="etcitem_type" val="MATERIAL" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="60" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5508" name="Sealed Dark Crystal Gloves Design" type="EtcItem">
+    <set name="etcitem_type" val="MATERIAL" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="60" />
+    <set name="price" val="8530" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5509" name="Sealed Tallum Gloves Design" type="EtcItem">
+    <set name="etcitem_type" val="MATERIAL" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="60" />
+    <set name="price" val="8530" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5510" name="Sealed Gloves of the Underworld Design" type="EtcItem">
+    <set name="etcitem_type" val="MATERIAL" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="60" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5511" name="Sealed Gust Bracer design" type="EtcItem">
+    <set name="etcitem_type" val="MATERIAL" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="60" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5512" name="Sealed Gloves of Black Ore Design" type="EtcItem">
+    <set name="etcitem_type" val="MATERIAL" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="60" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5513" name="Sealed Phoenix Gloves Design" type="EtcItem">
+    <set name="etcitem_type" val="MATERIAL" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="60" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5514" name="Sealed Gauntlets of Nightmare Design" type="EtcItem">
+    <set name="etcitem_type" val="MATERIAL" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="60" />
+    <set name="price" val="11842" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5515" name="Sealed Majestic Gauntlets Design" type="EtcItem">
+    <set name="etcitem_type" val="MATERIAL" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="60" />
+    <set name="price" val="11842" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5516" name="Sealed Dark Legion Gloves Design" type="EtcItem">
+    <set name="etcitem_type" val="MATERIAL" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="60" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5517" name="Sealed Gloves of Phantom Design" type="EtcItem">
+    <set name="etcitem_type" val="MATERIAL" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="60" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5518" name="Sealed Cerberus Gloves Design" type="EtcItem">
+    <set name="etcitem_type" val="MATERIAL" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="60" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5519" name="Sealed Dasparion's Gloves Design" type="EtcItem">
+    <set name="etcitem_type" val="MATERIAL" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="60" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5520" name="Sealed Dark Crystal Breastplate Pattern" type="EtcItem">
+    <set name="etcitem_type" val="MATERIAL" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="60" />
+    <set name="price" val="31015" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5521" name="Sealed Tallum Plate Armor Pattern" type="EtcItem">
+    <set name="etcitem_type" val="MATERIAL" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="60" />
+    <set name="price" val="43953" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5522" name="Sealed Armor of Nightmare Pattern" type="EtcItem">
+    <set name="etcitem_type" val="MATERIAL" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="60" />
+    <set name="price" val="58728" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5523" name="Sealed Majestic Plate Armor Pattern" type="EtcItem">
+    <set name="etcitem_type" val="MATERIAL" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="60" />
+    <set name="price" val="58728" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5524" name="Sealed Dark Crystal Gaiters Pattern" type="EtcItem">
+    <set name="etcitem_type" val="MATERIAL" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="60" />
+    <set name="price" val="20292" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5525" name="Sealed Dark Crystal Helmet Design" type="EtcItem">
+    <set name="etcitem_type" val="MATERIAL" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="60" />
+    <set name="price" val="12938" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5526" name="Sealed Tallum Helm Design" type="EtcItem">
+    <set name="etcitem_type" val="MATERIAL" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="60" />
+    <set name="price" val="12938" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5527" name="Sealed Helm of Nightmare Design" type="EtcItem">
+    <set name="etcitem_type" val="MATERIAL" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="60" />
+    <set name="price" val="16728" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5528" name="Sealed Majestic Circlet Design" type="EtcItem">
+    <set name="etcitem_type" val="MATERIAL" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="60" />
+    <set name="price" val="16728" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5529" name="Dragon Slayer Edge" type="EtcItem">
+    <set name="etcitem_type" val="MATERIAL" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="60" />
+    <set name="price" val="72900" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5530" name="Berserker Blade Edge" type="EtcItem">
+    <set name="etcitem_type" val="MATERIAL" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="60" />
+    <set name="price" val="43600" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5531" name="Heavy Sword Edge" type="EtcItem">
+    <set name="etcitem_type" val="MATERIAL" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="60" />
+    <set name="price" val="11912" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5532" name="Meteor Shower Head" type="EtcItem">
+    <set name="etcitem_type" val="MATERIAL" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="60" />
+    <set name="price" val="59308" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5533" name="Elysian Head" type="EtcItem">
+    <set name="etcitem_type" val="MATERIAL" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="60" />
+    <set name="price" val="72914" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5534" name="Soul Bow Stave" type="EtcItem">
+    <set name="etcitem_type" val="MATERIAL" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="60" />
+    <set name="price" val="72850" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5535" name="Carnage Bow Stave" type="EtcItem">
+    <set name="etcitem_type" val="MATERIAL" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="60" />
+    <set name="price" val="58615" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5536" name="Bloody Orchid Head" type="EtcItem">
+    <set name="etcitem_type" val="MATERIAL" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="60" />
+    <set name="price" val="58785" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5537" name="Soul Separator Head" type="EtcItem">
+    <set name="etcitem_type" val="MATERIAL" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="60" />
+    <set name="price" val="72900" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5538" name="Dragon Grinder Edge" type="EtcItem">
+    <set name="etcitem_type" val="MATERIAL" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="60" />
+    <set name="price" val="72914" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5539" name="Blood Tornado Edge" type="EtcItem">
+    <set name="etcitem_type" val="MATERIAL" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="60" />
+    <set name="price" val="59308" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5540" name="Orcish Halberd Edge" type="EtcItem">
+    <set name="etcitem_type" val="MATERIAL" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="60" />
+    <set name="price" val="62500" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5541" name="Tallum Glaive Edge" type="EtcItem">
+    <set name="etcitem_type" val="MATERIAL" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="60" />
+    <set name="price" val="72929" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5542" name="Halberd Edge" type="EtcItem">
+    <set name="etcitem_type" val="MATERIAL" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="60" />
+    <set name="price" val="59308" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5543" name="Dasparion's Staff Edge" type="EtcItem">
+    <set name="etcitem_type" val="MATERIAL" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="60" />
+    <set name="price" val="58754" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5544" name="Branch of The Mother Tree Head" type="EtcItem">
+    <set name="etcitem_type" val="MATERIAL" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="60" />
+    <set name="price" val="72986" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5545" name="Dark Legion's Edge Blade" type="EtcItem">
+    <set name="etcitem_type" val="MATERIAL" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="60" />
+    <set name="price" val="72900" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5546" name="Sword of Miracles Edge" type="EtcItem">
+    <set name="etcitem_type" val="MATERIAL" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="60" />
+    <set name="price" val="66369" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5547" name="Elemental Sword Edge" type="EtcItem">
+    <set name="etcitem_type" val="MATERIAL" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="60" />
+    <set name="price" val="58785" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5548" name="Tallum Blade Edge" type="EtcItem">
+    <set name="etcitem_type" val="MATERIAL" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="60" />
+    <set name="price" val="58785" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5549" name="Metallic Thread" type="EtcItem">
+    <set name="etcitem_type" val="MATERIAL" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="2" />
+    <set name="price" val="2000" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5550" name="Durable Metal Plate" type="EtcItem">
+    <set name="etcitem_type" val="MATERIAL" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="2" />
+    <set name="price" val="15000" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5551" name="Leolin's Mold" type="EtcItem">
+    <set name="etcitem_type" val="MATERIAL" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="2" />
+    <set name="price" val="238000" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5552" name="Warsmith's Mold" type="EtcItem">
+    <set name="etcitem_type" val="MATERIAL" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="2" />
+    <set name="price" val="385000" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5553" name="Arcsmith's Anvil" type="EtcItem">
+    <set name="etcitem_type" val="MATERIAL" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="2" />
+    <set name="price" val="531200" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5554" name="Warsmith's Holder" type="EtcItem">
+    <set name="etcitem_type" val="MATERIAL" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="2" />
+    <set name="price" val="884000" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5555" name="Token of Love" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="SpecialXMas" />
+  </item>
+  <item id="5556" name="Star Ornament" type="EtcItem">
+    <set name="etcitem_type" val="MATERIAL" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="0" />
+    <set name="price" val="1" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5557" name="Bead Ornament" type="EtcItem">
+    <set name="etcitem_type" val="MATERIAL" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="0" />
+    <set name="price" val="1" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5558" name="Fir Tree Branch" type="EtcItem">
+    <set name="etcitem_type" val="MATERIAL" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="0" />
+    <set name="price" val="1" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5559" name="Flower Pot" type="EtcItem">
+    <set name="etcitem_type" val="MATERIAL" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="0" />
+    <set name="price" val="1" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5560" name="Christmas Tree" type="EtcItem">
+    <set name="etcitem_type" val="POTION" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="1" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="SummonItems" />
+    <set name="item_skill" val="2137-1" />
+  </item>
+  <item id="5561" name="Special Christmas Tree" type="EtcItem">
+    <set name="etcitem_type" val="POTION" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="1" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="SummonItems" />
+    <set name="item_skill" val="2138-1" />
+  </item>
+  <item id="5562" name="Echo Crystal - 1st Carol" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="10" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="CrystalCarol" />
+    <set name="item_skill" val="2140-1" />
+  </item>
+  <item id="5563" name="Echo Crystal - 2nd Carol" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="10" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="CrystalCarol" />
+    <set name="item_skill" val="2141-1" />
+  </item>
+  <item id="5564" name="Echo Crystal - 3rd Carol" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="10" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="CrystalCarol" />
+    <set name="item_skill" val="2142-1" />
+  </item>
+  <item id="5565" name="Echo Crystal - 4th Carol" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="10" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="CrystalCarol" />
+    <set name="item_skill" val="2143-1" />
+  </item>
+  <item id="5566" name="Echo Crystal - 5th Carol" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="10" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="CrystalCarol" />
+    <set name="item_skill" val="2144-1" />
+  </item>
+  <item id="5567" name="Letter of Greetings" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="5568" name="Letter of Greetings" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="5569" name="Water Rune" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="GOLD" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5570" name="Water Mantra" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="GOLD" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5571" name="Wind Rune" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="GOLD" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5572" name="Wind Mantra" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="GOLD" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5573" name="Fire Rune" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="GOLD" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5574" name="Fire Mantra" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="GOLD" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5575" name="Ancient Adena" type="EtcItem">
+    <set name="etcitem_type" val="MONEY" />
+    <set name="material" val="GOLD" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5576" name="Sound Test Boots" type="Armor">
+    <set name="bodypart" val="feet" />
+    <set name="material" val="CLOTH" />
+    <set name="weight" val="50" />
+    <set name="price" val="0" />
+    <for>
+      <add order="0x10" stat="pDef" val="0" />
+    </for>
+  </item>
+  <item id="5577" name="Red Soul Crystal - Stage 11" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="CRYSTAL" />
+    <set name="weight" val="20" />
+    <set name="price" val="0" />
+    <set name="handler" val="SoulCrystals" />
+    <set name="item_skill" val="2096-1" />
+  </item>
+  <item id="5578" name="Green Soul Crystal - Stage 11" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="CRYSTAL" />
+    <set name="weight" val="20" />
+    <set name="price" val="0" />
+    <set name="handler" val="SoulCrystals" />
+    <set name="item_skill" val="2096-1" />
+  </item>
+  <item id="5579" name="Blue Soul Crystal - Stage 11" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="CRYSTAL" />
+    <set name="weight" val="20" />
+    <set name="price" val="0" />
+    <set name="handler" val="SoulCrystals" />
+    <set name="item_skill" val="2096-1" />
+  </item>
+  <item id="5580" name="Red Soul Crystal - Stage 12" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="CRYSTAL" />
+    <set name="weight" val="20" />
+    <set name="price" val="0" />
+    <set name="handler" val="SoulCrystals" />
+    <set name="item_skill" val="2096-1" />
+  </item>
+  <item id="5581" name="Green Soul Crystal - Stage 12" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="CRYSTAL" />
+    <set name="weight" val="20" />
+    <set name="price" val="0" />
+    <set name="handler" val="SoulCrystals" />
+    <set name="item_skill" val="2096-1" />
+  </item>
+  <item id="5582" name="Blue Soul Crystal - Stage 12" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="CRYSTAL" />
+    <set name="weight" val="20" />
+    <set name="price" val="0" />
+    <set name="handler" val="SoulCrystals" />
+    <set name="item_skill" val="2096-1" />
+  </item>
+  <item id="5583" name="Echo Crystal - 6th Carol" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="10" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="CrystalCarol" />
+    <set name="item_skill" val="2145-1" />
+  </item>
+  <item id="5584" name="Echo Crystal - 7th Carol" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="10" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="CrystalCarol" />
+    <set name="item_skill" val="2146-1" />
+  </item>
+  <item id="5585" name="Echo Crystal - 8th Carol" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="10" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="CrystalCarol" />
+    <set name="item_skill" val="2147-1" />
+  </item>
+  <item id="5586" name="Echo Crystal - 9th Carol" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="10" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="CrystalCarol" />
+    <set name="item_skill" val="2148-1" />
+  </item>
+  <item id="5587" name="Echo Crystal - 10th Carol" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="10" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="CrystalCarol" />
+    <set name="item_skill" val="2149-1" />
+  </item>
+  <item id="5588" name="Tutorial Guide" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="10" />
+    <set name="price" val="1" />
+    <set name="handler" val="Book" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="5589" name="Energy Stone" type="EtcItem">
+    <set name="etcitem_type" val="POTION" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="10" />
+    <set name="price" val="100" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="EnergyStone" />
+    <set name="item_skill" val="2165-1" />
+  </item>
+  <item id="5590" name="Squeaking Shoes" type="Armor">
+    <set name="bodypart" val="feet" />
+    <set name="material" val="CLOTH" />
+    <set name="weight" val="50" />
+    <set name="price" val="350000" />
+    <for>
+      <add order="0x10" stat="pDef" val="0" />
+    </for>
+  </item>
+  <item id="5591" name="CP Potion" type="EtcItem">
+    <set name="etcitem_type" val="POTION" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="25" />
+    <set name="price" val="240" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Potions" />
+    <set name="item_skill" val="2166-1" />
+  </item>
+  <item id="5592" name="Greater CP Potion" type="EtcItem">
+    <set name="etcitem_type" val="POTION" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="100" />
+    <set name="price" val="600" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Potions" />
+    <set name="item_skill" val="2166-2" />
+  </item>
+  <item id="5593" name="SP Scroll: Low Grade" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="30" />
+    <set name="price" val="2400" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Scrolls" />
+    <set name="item_skill" val="2167-1" />
+  </item>
+  <item id="5594" name="SP Scroll: Medium Grade" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="30" />
+    <set name="price" val="24000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Scrolls" />
+    <set name="item_skill" val="2167-2" />
+  </item>
+  <item id="5595" name="SP Scroll: High Grade" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="30" />
+    <set name="price" val="480000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Scrolls" />
+    <set name="item_skill" val="2167-3" />
+  </item>
+  <item id="5596" name="Dasparion's Staff - Mana Up" type="Weapon">
+    <set name="weapon_type" val="BIGBLUNT" />
+    <set name="bodypart" val="lrhand" />
+    <set name="crystal_type" val="A" />
+    <set name="crystal_count" val="1464" />
+    <set name="random_damage" val="20" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="ADAMANTAITE" />
+    <set name="weight" val="920" />
+    <set name="price" val="18300000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <set name="is_magical" val="true" />
+    <set name="item_skill" val="3014-2" />
+    <for>
+      <set order="0x08" stat="pAtk" val="207" />
+      <set order="0x08" stat="mAtk" val="143" />
+      <set order="0x08" stat="rCrit" val="4" />
+      <add order="0x10" stat="accCombat" val="4" />
+      <set order="0x08" stat="pAtkSpd" val="325" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="5597" name="Dasparion's Staff - Conversion" type="Weapon">
+    <set name="weapon_type" val="BIGBLUNT" />
+    <set name="bodypart" val="lrhand" />
+    <set name="crystal_type" val="A" />
+    <set name="crystal_count" val="1464" />
+    <set name="random_damage" val="20" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="ADAMANTAITE" />
+    <set name="weight" val="920" />
+    <set name="price" val="18300000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <set name="is_magical" val="true" />
+    <set name="item_skill" val="3048-2" />
+    <for>
+      <set order="0x08" stat="pAtk" val="207" />
+      <set order="0x08" stat="mAtk" val="143" />
+      <set order="0x08" stat="rCrit" val="4" />
+      <add order="0x10" stat="accCombat" val="4" />
+      <set order="0x08" stat="pAtkSpd" val="325" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="5598" name="Dasparion's Staff - Acumen" type="Weapon">
+    <set name="weapon_type" val="BIGBLUNT" />
+    <set name="bodypart" val="lrhand" />
+    <set name="crystal_type" val="A" />
+    <set name="crystal_count" val="1464" />
+    <set name="random_damage" val="20" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="ADAMANTAITE" />
+    <set name="weight" val="920" />
+    <set name="price" val="18300000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <set name="is_magical" val="true" />
+    <set name="item_skill" val="3047-2" />
+    <for>
+      <set order="0x08" stat="pAtk" val="207" />
+      <set order="0x08" stat="mAtk" val="143" />
+      <set order="0x08" stat="rCrit" val="4" />
+      <add order="0x10" stat="accCombat" val="4" />
+      <set order="0x08" stat="pAtkSpd" val="325" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="5599" name="Meteor Shower - Focus" type="Weapon">
+    <set name="weapon_type" val="BLUNT" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="A" />
+    <set name="crystal_count" val="1464" />
+    <set name="random_damage" val="20" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="FINE_STEEL" />
+    <set name="weight" val="1600" />
+    <set name="price" val="18300000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <set name="item_skill" val="3050-1" />
+    <for>
+      <set order="0x08" stat="pAtk" val="213" />
+      <set order="0x08" stat="mAtk" val="107" />
+      <set order="0x08" stat="rCrit" val="4" />
+      <add order="0x10" stat="accCombat" val="4" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+</list>

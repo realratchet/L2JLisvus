@@ -37,10 +37,7 @@ import net.sf.l2j.gameserver.skills.Stats;
  */
 public class Heal implements ISkillHandler
 {
-	// all the items ids that this handler knows
-	// private static Logger _log = Logger.getLogger(Heal.class.getName());
-
-	private static SkillType[] _skillIds =
+	private static SkillType[] SKILL_TYPES =
 	{
 		SkillType.HEAL,
 		SkillType.HEAL_PERCENT,
@@ -174,8 +171,8 @@ public class Heal implements ISkillHandler
 	}
 
 	@Override
-	public SkillType[] getSkillIds()
+	public SkillType[] getSkillTypes()
 	{
-		return _skillIds;
+		return SKILL_TYPES;
 	}
 }

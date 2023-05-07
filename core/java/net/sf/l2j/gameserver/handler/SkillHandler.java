@@ -99,7 +99,7 @@ public class SkillHandler
 	
 	public void registerSkillHandler(ISkillHandler handler)
 	{
-		SkillType[] types = handler.getSkillIds();
+		SkillType[] types = handler.getSkillTypes();
 		for (SkillType t : types)
 		{
 			_dataTable.put(t, handler);

@@ -31,7 +31,7 @@ import net.sf.l2j.gameserver.skills.Formulas;
 public class Spoil implements ISkillHandler
 {
 	// private static Logger _log = Logger.getLogger(Spoil.class.getName());
-	protected SkillType[] _skillIds =
+	private static SkillType[] SKILL_TYPES =
 	{
 		SkillType.SPOIL
 	};
@@ -89,8 +89,8 @@ public class Spoil implements ISkillHandler
 	}
 	
 	@Override
-	public SkillType[] getSkillIds()
+	public SkillType[] getSkillTypes()
 	{
-		return _skillIds;
+		return SKILL_TYPES;
 	}
 }

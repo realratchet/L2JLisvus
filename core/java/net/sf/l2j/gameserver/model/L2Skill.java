@@ -413,8 +413,7 @@ public abstract class L2Skill
 
 	private final int _baseCritRate;
 
-	protected Condition[] _preCondition;
-	protected Condition[] _itemPreCondition;
+	protected List<Condition> _preConditions;
 	protected FuncTemplate[] _funcTemplates;
 	protected EffectTemplate[] _effectTemplates;
 	protected EffectTemplate[] _effectTemplatesSelf;
@@ -1159,7 +1158,7 @@ public abstract class L2Skill
 		return false;
 	}
 
-	public boolean checkCondition(L2Character activeChar, L2Object target, boolean itemOrWeapon)
+	public boolean checkCondition(L2Character activeChar, L2Object target)
 	{
 		if (activeChar instanceof L2PcInstance)
     	{
@@ -1175,8 +1174,7 @@ public abstract class L2Skill
 			return true;
 		}
 		
-		final Condition[] preCondition = itemOrWeapon ? _itemPreCondition : _preCondition;
-		if (preCondition == null)
+		if (_preConditions == null || _preConditions.isEmpty())
 		{
 			return true;
 		}
@@ -1186,7 +1184,7 @@ public abstract class L2Skill
 		env.target = target != null && target instanceof L2Character ? (L2Character)target : null;
 		env.skill = this;
 		
-		for (Condition cond : preCondition)
+		for (Condition cond : _preConditions)
 		{
 			if (!cond.test(env, this))
 			{
@@ -2499,43 +2497,15 @@ public abstract class L2Skill
 		}
 	}
 
-	public final void attach(Condition cond, boolean itemOrWeapon)
+	public final void attach(Condition c)
 	{
-		if (itemOrWeapon)
+		if (_preConditions == null)
 		{
-			if (_itemPreCondition == null)
-			{
-				_itemPreCondition = new Condition[]
-				{
-					cond
-				};
-			}
-			else
-			{
-				int len = _itemPreCondition.length;
-				Condition[] tmp = new Condition[len + 1];
-				System.arraycopy(_itemPreCondition, 0, tmp, 0, len);
-				tmp[len] = cond;
-				_itemPreCondition = tmp;
-			}
+			_preConditions = new ArrayList<>();
 		}
-		else
+		if (!_preConditions.contains(c))
 		{
-			if (_preCondition == null)
-			{
-				_preCondition = new Condition[]
-				{
-					cond
-				};
-			}
-			else
-			{
-				int len = _preCondition.length;
-				Condition[] tmp = new Condition[len + 1];
-				System.arraycopy(_preCondition, 0, tmp, 0, len);
-				tmp[len] = cond;
-				_preCondition = tmp;
-			}
+			_preConditions.add(c);
 		}
 	}
 

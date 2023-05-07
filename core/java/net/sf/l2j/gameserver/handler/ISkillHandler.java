@@ -55,8 +55,8 @@ public interface ISkillHandler
 	}
 
 	/**
-	 * this method is called at initialization to register all the item ids automatically
-	 * @return all known itemIds
+	 * this method is called at initialization to register all the skill types automatically
+	 * @return all known skill types
 	 */
-	public SkillType[] getSkillIds();
+	public SkillType[] getSkillTypes();
 }

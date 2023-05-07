@@ -30,7 +30,7 @@ import net.sf.l2j.util.Rnd;
  */
 public class Harvest implements ISkillHandler
 {
-	private static final SkillType[] SKILL_IDS =
+	private static final SkillType[] SKILL_TYPES =
 	{
 		SkillType.HARVEST
 	};
@@ -148,8 +148,8 @@ public class Harvest implements ISkillHandler
 	}
 	
 	@Override
-	public SkillType[] getSkillIds()
+	public SkillType[] getSkillTypes()
 	{
-		return SKILL_IDS;
+		return SKILL_TYPES;
 	}
 }

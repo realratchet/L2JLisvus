@@ -1,0 +1,2317 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<list>
+  <item id="4700" name="Sword of Delusion - Health" type="Weapon">
+    <set name="weapon_type" val="SWORD" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="1720" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="MITHRIL" />
+    <set name="weight" val="1400" />
+    <set name="price" val="4300000" />
+    <set name="soulshots" val="3" />
+    <set name="spiritshots" val="3" />
+    <set name="item_skill" val="3013-1" />
+    <for>
+      <set order="0x08" stat="pAtk" val="139" />
+      <set order="0x08" stat="mAtk" val="76" />
+      <set order="0x08" stat="rCrit" val="8" />
+      <add order="0x10" stat="accCombat" val="0" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4701" name="Sword of Delusion - Rsk. Haste" type="Weapon">
+    <set name="weapon_type" val="SWORD" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="1720" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="MITHRIL" />
+    <set name="weight" val="1400" />
+    <set name="price" val="4300000" />
+    <set name="soulshots" val="3" />
+    <set name="spiritshots" val="3" />
+    <set name="item_skill" val="3032-3" />
+    <for>
+      <set order="0x08" stat="pAtk" val="139" />
+      <set order="0x08" stat="mAtk" val="76" />
+      <set order="0x08" stat="rCrit" val="8" />
+      <add order="0x10" stat="accCombat" val="0" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4702" name="Tsurugi - Focus" type="Weapon">
+    <set name="weapon_type" val="SWORD" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="1720" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="FINE_STEEL" />
+    <set name="weight" val="1400" />
+    <set name="price" val="4300000" />
+    <set name="soulshots" val="3" />
+    <set name="spiritshots" val="3" />
+    <set name="item_skill" val="3010-3" />
+    <for>
+      <set order="0x08" stat="pAtk" val="139" />
+      <set order="0x08" stat="mAtk" val="76" />
+      <set order="0x08" stat="rCrit" val="8" />
+      <add order="0x10" stat="accCombat" val="0" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4703" name="Tsurugi - Critical Damage" type="Weapon">
+    <set name="weapon_type" val="SWORD" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="1720" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="FINE_STEEL" />
+    <set name="weight" val="1400" />
+    <set name="price" val="4300000" />
+    <set name="soulshots" val="3" />
+    <set name="spiritshots" val="3" />
+    <set name="item_skill" val="3023-3" />
+    <for>
+      <set order="0x08" stat="pAtk" val="139" />
+      <set order="0x08" stat="mAtk" val="76" />
+      <set order="0x08" stat="rCrit" val="8" />
+      <add order="0x10" stat="accCombat" val="0" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4704" name="Tsurugi - Haste" type="Weapon">
+    <set name="weapon_type" val="SWORD" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="1720" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="FINE_STEEL" />
+    <set name="weight" val="1400" />
+    <set name="price" val="4300000" />
+    <set name="soulshots" val="3" />
+    <set name="spiritshots" val="3" />
+    <set name="item_skill" val="3037-3" />
+    <for>
+      <set order="0x08" stat="pAtk" val="139" />
+      <set order="0x08" stat="mAtk" val="76" />
+      <set order="0x08" stat="rCrit" val="8" />
+      <add order="0x10" stat="accCombat" val="0" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4705" name="Sword of Nightmare - Health" type="Weapon">
+    <set name="weapon_type" val="SWORD" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="1720" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="BLOOD_STEEL" />
+    <set name="weight" val="1400" />
+    <set name="price" val="4300000" />
+    <set name="soulshots" val="3" />
+    <set name="spiritshots" val="3" />
+    <set name="item_skill" val="3013-1" />
+    <for>
+      <set order="0x08" stat="pAtk" val="139" />
+      <set order="0x08" stat="mAtk" val="76" />
+      <set order="0x08" stat="rCrit" val="8" />
+      <add order="0x10" stat="accCombat" val="0" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4706" name="Sword of Nightmare - Focus" type="Weapon">
+    <set name="weapon_type" val="SWORD" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="1720" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="BLOOD_STEEL" />
+    <set name="weight" val="1400" />
+    <set name="price" val="4300000" />
+    <set name="soulshots" val="3" />
+    <set name="spiritshots" val="3" />
+    <set name="item_skill" val="3010-3" />
+    <for>
+      <set order="0x08" stat="pAtk" val="139" />
+      <set order="0x08" stat="mAtk" val="76" />
+      <set order="0x08" stat="rCrit" val="8" />
+      <add order="0x10" stat="accCombat" val="0" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4707" name="Sword of Nightmare - Light" type="Weapon">
+    <set name="weapon_type" val="SWORD" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="1720" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="BLOOD_STEEL" />
+    <set name="weight" val="420" />
+    <set name="price" val="4300000" />
+    <set name="soulshots" val="3" />
+    <set name="spiritshots" val="3" />
+    <for>
+      <set order="0x08" stat="pAtk" val="139" />
+      <set order="0x08" stat="mAtk" val="76" />
+      <set order="0x08" stat="rCrit" val="8" />
+      <add order="0x10" stat="accCombat" val="0" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4708" name="Samurai Longsword - Focus" type="Weapon">
+    <set name="weapon_type" val="SWORD" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="2452" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="ORIHARUKON" />
+    <set name="weight" val="1380" />
+    <set name="price" val="6130000" />
+    <set name="soulshots" val="3" />
+    <set name="spiritshots" val="3" />
+    <set name="item_skill" val="3010-4" />
+    <for>
+      <set order="0x08" stat="pAtk" val="156" />
+      <set order="0x08" stat="mAtk" val="83" />
+      <set order="0x08" stat="rCrit" val="8" />
+      <add order="0x10" stat="accCombat" val="0" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4709" name="Samurai Longsword - Critical Damage" type="Weapon">
+    <set name="weapon_type" val="SWORD" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="2452" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="ORIHARUKON" />
+    <set name="weight" val="1380" />
+    <set name="price" val="6130000" />
+    <set name="soulshots" val="3" />
+    <set name="spiritshots" val="3" />
+    <set name="item_skill" val="3023-4" />
+    <for>
+      <set order="0x08" stat="pAtk" val="156" />
+      <set order="0x08" stat="mAtk" val="83" />
+      <set order="0x08" stat="rCrit" val="8" />
+      <add order="0x10" stat="accCombat" val="0" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4710" name="Samurai Longsword - Haste" type="Weapon">
+    <set name="weapon_type" val="SWORD" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="2452" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="ORIHARUKON" />
+    <set name="weight" val="1380" />
+    <set name="price" val="6130000" />
+    <set name="soulshots" val="3" />
+    <set name="spiritshots" val="3" />
+    <set name="item_skill" val="3037-4" />
+    <for>
+      <set order="0x08" stat="pAtk" val="156" />
+      <set order="0x08" stat="mAtk" val="83" />
+      <set order="0x08" stat="rCrit" val="8" />
+      <add order="0x10" stat="accCombat" val="0" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4711" name="Flamberge - Critical Damage" type="Weapon">
+    <set name="weapon_type" val="BIGSWORD" />
+    <set name="bodypart" val="lrhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="916" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="BRONZE" />
+    <set name="weight" val="2010" />
+    <set name="price" val="2290000" />
+    <set name="soulshots" val="2" />
+    <set name="spiritshots" val="2" />
+    <set name="item_skill" val="3023-1" />
+    <for>
+      <set order="0x08" stat="pAtk" val="130" />
+      <set order="0x08" stat="mAtk" val="61" />
+      <set order="0x08" stat="rCrit" val="8" />
+      <add order="0x10" stat="accCombat" val="0" />
+      <set order="0x08" stat="pAtkSpd" val="325" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4712" name="Flamberge - Focus" type="Weapon">
+    <set name="weapon_type" val="BIGSWORD" />
+    <set name="bodypart" val="lrhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="916" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="BRONZE" />
+    <set name="weight" val="2010" />
+    <set name="price" val="2290000" />
+    <set name="soulshots" val="2" />
+    <set name="spiritshots" val="2" />
+    <set name="item_skill" val="3010-1" />
+    <for>
+      <set order="0x08" stat="pAtk" val="130" />
+      <set order="0x08" stat="mAtk" val="61" />
+      <set order="0x08" stat="rCrit" val="8" />
+      <add order="0x10" stat="accCombat" val="0" />
+      <set order="0x08" stat="pAtkSpd" val="325" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4713" name="Flamberge - Light" type="Weapon">
+    <set name="weapon_type" val="BIGSWORD" />
+    <set name="bodypart" val="lrhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="916" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="BRONZE" />
+    <set name="weight" val="600" />
+    <set name="price" val="2290000" />
+    <set name="soulshots" val="2" />
+    <set name="spiritshots" val="2" />
+    <for>
+      <set order="0x08" stat="pAtk" val="130" />
+      <set order="0x08" stat="mAtk" val="61" />
+      <set order="0x08" stat="rCrit" val="8" />
+      <add order="0x10" stat="accCombat" val="0" />
+      <set order="0x08" stat="pAtkSpd" val="325" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4714" name="Keshanberk - Guidance" type="Weapon">
+    <set name="weapon_type" val="SWORD" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="1157" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="ORIHARUKON" />
+    <set name="weight" val="1370" />
+    <set name="price" val="8680000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <set name="item_skill" val="3007-5" />
+    <for>
+      <set order="0x08" stat="pAtk" val="175" />
+      <set order="0x08" stat="mAtk" val="91" />
+      <set order="0x08" stat="rCrit" val="8" />
+      <add order="0x10" stat="accCombat" val="0" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4715" name="Keshanberk - Focus" type="Weapon">
+    <set name="weapon_type" val="SWORD" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="1157" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="ORIHARUKON" />
+    <set name="weight" val="1370" />
+    <set name="price" val="8680000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <set name="item_skill" val="3010-5" />
+    <for>
+      <set order="0x08" stat="pAtk" val="175" />
+      <set order="0x08" stat="mAtk" val="91" />
+      <set order="0x08" stat="rCrit" val="8" />
+      <add order="0x10" stat="accCombat" val="0" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4716" name="Keshanberk - Back Blow" type="Weapon">
+    <set name="weapon_type" val="SWORD" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="1157" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="ORIHARUKON" />
+    <set name="weight" val="1370" />
+    <set name="price" val="8680000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <set name="item_skill" val="3018-5" />
+    <for>
+      <set order="0x08" stat="pAtk" val="175" />
+      <set order="0x08" stat="mAtk" val="91" />
+      <set order="0x08" stat="rCrit" val="8" />
+      <add order="0x10" stat="accCombat" val="0" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4717" name="Sword of Damascus - Focus" type="Weapon">
+    <set name="weapon_type" val="SWORD" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="1746" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="DAMASCUS" />
+    <set name="weight" val="1350" />
+    <set name="price" val="13100000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <set name="item_skill" val="3010-6" />
+    <for>
+      <set order="0x08" stat="pAtk" val="194" />
+      <set order="0x08" stat="mAtk" val="99" />
+      <set order="0x08" stat="rCrit" val="8" />
+      <add order="0x10" stat="accCombat" val="0" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4718" name="Sword of Damascus - Critical Damage" type="Weapon">
+    <set name="weapon_type" val="SWORD" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="1746" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="DAMASCUS" />
+    <set name="weight" val="1350" />
+    <set name="price" val="13100000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <set name="item_skill" val="3023-3" />
+    <for>
+      <set order="0x08" stat="pAtk" val="194" />
+      <set order="0x08" stat="mAtk" val="99" />
+      <set order="0x08" stat="rCrit" val="8" />
+      <add order="0x10" stat="accCombat" val="0" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4719" name="Sword of Damascus - Haste" type="Weapon">
+    <set name="weapon_type" val="SWORD" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="1746" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="DAMASCUS" />
+    <set name="weight" val="1350" />
+    <set name="price" val="13100000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <set name="item_skill" val="3037-6" />
+    <for>
+      <set order="0x08" stat="pAtk" val="194" />
+      <set order="0x08" stat="mAtk" val="99" />
+      <set order="0x08" stat="rCrit" val="8" />
+      <add order="0x10" stat="accCombat" val="0" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4720" name="Tallum Blade - Health" type="Weapon">
+    <set name="weapon_type" val="SWORD" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="A" />
+    <set name="crystal_count" val="1464" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="ADAMANTAITE" />
+    <set name="weight" val="1330" />
+    <set name="price" val="18300000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <set name="item_skill" val="3013-3" />
+    <for>
+      <set order="0x08" stat="pAtk" val="213" />
+      <set order="0x08" stat="mAtk" val="107" />
+      <set order="0x08" stat="rCrit" val="8" />
+      <add order="0x10" stat="accCombat" val="0" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4721" name="Tallum Blade - Rsk. Evasion" type="Weapon">
+    <set name="weapon_type" val="SWORD" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="A" />
+    <set name="crystal_count" val="1464" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="ADAMANTAITE" />
+    <set name="weight" val="1330" />
+    <set name="price" val="18300000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <set name="item_skill" val="3028-1" />
+    <for>
+      <set order="0x08" stat="pAtk" val="213" />
+      <set order="0x08" stat="mAtk" val="107" />
+      <set order="0x08" stat="rCrit" val="8" />
+      <add order="0x10" stat="accCombat" val="0" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4722" name="Tallum Blade - Rsk. Haste" type="Weapon">
+    <set name="weapon_type" val="SWORD" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="A" />
+    <set name="crystal_count" val="1464" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="ADAMANTAITE" />
+    <set name="weight" val="1330" />
+    <set name="price" val="18300000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <set name="item_skill" val="3032-2" />
+    <for>
+      <set order="0x08" stat="pAtk" val="213" />
+      <set order="0x08" stat="mAtk" val="107" />
+      <set order="0x08" stat="rCrit" val="8" />
+      <add order="0x10" stat="accCombat" val="0" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4723" name="Great Sword - Health" type="Weapon">
+    <set name="weapon_type" val="BIGSWORD" />
+    <set name="bodypart" val="lrhand" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="1157" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="1930" />
+    <set name="price" val="8680000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <set name="item_skill" val="3013-1" />
+    <for>
+      <set order="0x08" stat="pAtk" val="213" />
+      <set order="0x08" stat="mAtk" val="91" />
+      <set order="0x08" stat="rCrit" val="8" />
+      <add order="0x10" stat="accCombat" val="0" />
+      <set order="0x08" stat="pAtkSpd" val="325" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4724" name="Great Sword - Critical Damage" type="Weapon">
+    <set name="weapon_type" val="BIGSWORD" />
+    <set name="bodypart" val="lrhand" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="1157" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="1930" />
+    <set name="price" val="8680000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <set name="item_skill" val="3023-5" />
+    <for>
+      <set order="0x08" stat="pAtk" val="213" />
+      <set order="0x08" stat="mAtk" val="91" />
+      <set order="0x08" stat="rCrit" val="8" />
+      <add order="0x10" stat="accCombat" val="0" />
+      <set order="0x08" stat="pAtkSpd" val="325" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4725" name="Great Sword - Focus" type="Weapon">
+    <set name="weapon_type" val="BIGSWORD" />
+    <set name="bodypart" val="lrhand" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="1157" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="1930" />
+    <set name="price" val="8680000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <set name="item_skill" val="3010-5" />
+    <for>
+      <set order="0x08" stat="pAtk" val="213" />
+      <set order="0x08" stat="mAtk" val="91" />
+      <set order="0x08" stat="rCrit" val="8" />
+      <add order="0x10" stat="accCombat" val="0" />
+      <set order="0x08" stat="pAtkSpd" val="325" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4726" name="Big Hammer - Health" type="Weapon">
+    <set name="weapon_type" val="BLUNT" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="916" />
+    <set name="random_damage" val="20" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="FINE_STEEL" />
+    <set name="weight" val="1710" />
+    <set name="price" val="2290000" />
+    <set name="soulshots" val="2" />
+    <set name="spiritshots" val="2" />
+    <set name="item_skill" val="3013-1" />
+    <for>
+      <set order="0x08" stat="pAtk" val="107" />
+      <set order="0x08" stat="mAtk" val="61" />
+      <set order="0x08" stat="rCrit" val="4" />
+      <add order="0x10" stat="accCombat" val="4" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4727" name="Big Hammer - Rsk.Focus" type="Weapon">
+    <set name="weapon_type" val="BLUNT" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="916" />
+    <set name="random_damage" val="20" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="FINE_STEEL" />
+    <set name="weight" val="1710" />
+    <set name="price" val="2290000" />
+    <set name="soulshots" val="2" />
+    <set name="spiritshots" val="2" />
+    <set name="item_skill" val="3027-1" />
+    <for>
+      <set order="0x08" stat="pAtk" val="107" />
+      <set order="0x08" stat="mAtk" val="61" />
+      <set order="0x08" stat="rCrit" val="4" />
+      <add order="0x10" stat="accCombat" val="4" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4728" name="Big Hammer - Haste" type="Weapon">
+    <set name="weapon_type" val="BLUNT" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="916" />
+    <set name="random_damage" val="20" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="FINE_STEEL" />
+    <set name="weight" val="1710" />
+    <set name="price" val="2290000" />
+    <set name="soulshots" val="2" />
+    <set name="spiritshots" val="2" />
+    <set name="item_skill" val="3037-1" />
+    <for>
+      <set order="0x08" stat="pAtk" val="107" />
+      <set order="0x08" stat="mAtk" val="61" />
+      <set order="0x08" stat="rCrit" val="4" />
+      <add order="0x10" stat="accCombat" val="4" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4729" name="Battle Axe - Anger" type="Weapon">
+    <set name="weapon_type" val="BLUNT" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="916" />
+    <set name="random_damage" val="20" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="FINE_STEEL" />
+    <set name="weight" val="1720" />
+    <set name="price" val="2290000" />
+    <set name="soulshots" val="2" />
+    <set name="spiritshots" val="2" />
+    <set name="item_skill" val="3012-1" />
+    <for>
+      <set order="0x08" stat="pAtk" val="107" />
+      <set order="0x08" stat="mAtk" val="61" />
+      <set order="0x08" stat="rCrit" val="4" />
+      <add order="0x10" stat="accCombat" val="4" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4730" name="Battle Axe - Rsk.Focus" type="Weapon">
+    <set name="weapon_type" val="BLUNT" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="916" />
+    <set name="random_damage" val="20" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="FINE_STEEL" />
+    <set name="weight" val="1720" />
+    <set name="price" val="2290000" />
+    <set name="soulshots" val="2" />
+    <set name="spiritshots" val="2" />
+    <set name="item_skill" val="3027-1" />
+    <for>
+      <set order="0x08" stat="pAtk" val="107" />
+      <set order="0x08" stat="mAtk" val="61" />
+      <set order="0x08" stat="rCrit" val="4" />
+      <add order="0x10" stat="accCombat" val="4" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4731" name="Battle Axe - Haste" type="Weapon">
+    <set name="weapon_type" val="BLUNT" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="916" />
+    <set name="random_damage" val="20" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="FINE_STEEL" />
+    <set name="weight" val="1720" />
+    <set name="price" val="2290000" />
+    <set name="soulshots" val="2" />
+    <set name="spiritshots" val="2" />
+    <set name="item_skill" val="3037-1" />
+    <for>
+      <set order="0x08" stat="pAtk" val="107" />
+      <set order="0x08" stat="mAtk" val="61" />
+      <set order="0x08" stat="rCrit" val="4" />
+      <add order="0x10" stat="accCombat" val="4" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4732" name="Silver Axe - Anger" type="Weapon">
+    <set name="weapon_type" val="BLUNT" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="916" />
+    <set name="random_damage" val="20" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="FINE_STEEL" />
+    <set name="weight" val="1690" />
+    <set name="price" val="2290000" />
+    <set name="soulshots" val="2" />
+    <set name="spiritshots" val="2" />
+    <set name="item_skill" val="3012-1" />
+    <for>
+      <set order="0x08" stat="pAtk" val="107" />
+      <set order="0x08" stat="mAtk" val="61" />
+      <set order="0x08" stat="rCrit" val="4" />
+      <add order="0x10" stat="accCombat" val="4" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4733" name="Silver Axe - Rsk.Focus" type="Weapon">
+    <set name="weapon_type" val="BLUNT" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="916" />
+    <set name="random_damage" val="20" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="FINE_STEEL" />
+    <set name="weight" val="1690" />
+    <set name="price" val="2290000" />
+    <set name="soulshots" val="2" />
+    <set name="spiritshots" val="2" />
+    <set name="item_skill" val="3027-1" />
+    <for>
+      <set order="0x08" stat="pAtk" val="107" />
+      <set order="0x08" stat="mAtk" val="61" />
+      <set order="0x08" stat="rCrit" val="4" />
+      <add order="0x10" stat="accCombat" val="4" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4734" name="Silver Axe - Haste" type="Weapon">
+    <set name="weapon_type" val="BLUNT" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="916" />
+    <set name="random_damage" val="20" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="FINE_STEEL" />
+    <set name="weight" val="1690" />
+    <set name="price" val="2290000" />
+    <set name="soulshots" val="2" />
+    <set name="spiritshots" val="2" />
+    <set name="item_skill" val="3037-1" />
+    <for>
+      <set order="0x08" stat="pAtk" val="107" />
+      <set order="0x08" stat="mAtk" val="61" />
+      <set order="0x08" stat="rCrit" val="4" />
+      <add order="0x10" stat="accCombat" val="4" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4735" name="Skull Graver - Anger" type="Weapon">
+    <set name="weapon_type" val="BLUNT" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="916" />
+    <set name="random_damage" val="20" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="FINE_STEEL" />
+    <set name="weight" val="1640" />
+    <set name="price" val="2290000" />
+    <set name="soulshots" val="2" />
+    <set name="spiritshots" val="2" />
+    <set name="item_skill" val="3012-1" />
+    <for>
+      <set order="0x08" stat="pAtk" val="107" />
+      <set order="0x08" stat="mAtk" val="61" />
+      <set order="0x08" stat="rCrit" val="4" />
+      <add order="0x10" stat="accCombat" val="4" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4736" name="Skull Graver - Health" type="Weapon">
+    <set name="weapon_type" val="BLUNT" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="916" />
+    <set name="random_damage" val="20" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="FINE_STEEL" />
+    <set name="weight" val="1640" />
+    <set name="price" val="2290000" />
+    <set name="soulshots" val="2" />
+    <set name="spiritshots" val="2" />
+    <set name="item_skill" val="3013-1" />
+    <for>
+      <set order="0x08" stat="pAtk" val="107" />
+      <set order="0x08" stat="mAtk" val="61" />
+      <set order="0x08" stat="rCrit" val="4" />
+      <add order="0x10" stat="accCombat" val="4" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4737" name="Skull Graver - Rsk.Focus" type="Weapon">
+    <set name="weapon_type" val="BLUNT" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="916" />
+    <set name="random_damage" val="20" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="FINE_STEEL" />
+    <set name="weight" val="1640" />
+    <set name="price" val="2290000" />
+    <set name="soulshots" val="2" />
+    <set name="spiritshots" val="2" />
+    <set name="item_skill" val="3027-1" />
+    <for>
+      <set order="0x08" stat="pAtk" val="107" />
+      <set order="0x08" stat="mAtk" val="61" />
+      <set order="0x08" stat="rCrit" val="4" />
+      <add order="0x10" stat="accCombat" val="4" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4738" name="Dwarven War Hammer - Anger" type="Weapon">
+    <set name="weapon_type" val="BLUNT" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="1148" />
+    <set name="random_damage" val="20" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="FINE_STEEL" />
+    <set name="weight" val="1670" />
+    <set name="price" val="2870000" />
+    <set name="soulshots" val="2" />
+    <set name="spiritshots" val="2" />
+    <set name="item_skill" val="3012-2" />
+    <for>
+      <set order="0x08" stat="pAtk" val="122" />
+      <set order="0x08" stat="mAtk" val="68" />
+      <set order="0x08" stat="rCrit" val="4" />
+      <add order="0x10" stat="accCombat" val="4" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4739" name="Dwarven War Hammer - Health" type="Weapon">
+    <set name="weapon_type" val="BLUNT" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="1148" />
+    <set name="random_damage" val="20" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="FINE_STEEL" />
+    <set name="weight" val="1670" />
+    <set name="price" val="2870000" />
+    <set name="soulshots" val="2" />
+    <set name="spiritshots" val="2" />
+    <set name="item_skill" val="3013-1" />
+    <for>
+      <set order="0x08" stat="pAtk" val="122" />
+      <set order="0x08" stat="mAtk" val="68" />
+      <set order="0x08" stat="rCrit" val="4" />
+      <add order="0x10" stat="accCombat" val="4" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4740" name="Dwarven War Hammer - Haste" type="Weapon">
+    <set name="weapon_type" val="BLUNT" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="1148" />
+    <set name="random_damage" val="20" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="FINE_STEEL" />
+    <set name="weight" val="1670" />
+    <set name="price" val="2870000" />
+    <set name="soulshots" val="2" />
+    <set name="spiritshots" val="2" />
+    <set name="item_skill" val="3037-2" />
+    <for>
+      <set order="0x08" stat="pAtk" val="122" />
+      <set order="0x08" stat="mAtk" val="68" />
+      <set order="0x08" stat="rCrit" val="4" />
+      <add order="0x10" stat="accCombat" val="4" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4741" name="War Axe - Anger" type="Weapon">
+    <set name="weapon_type" val="BLUNT" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="1720" />
+    <set name="random_damage" val="20" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="FINE_STEEL" />
+    <set name="weight" val="1660" />
+    <set name="price" val="4300000" />
+    <set name="soulshots" val="3" />
+    <set name="spiritshots" val="3" />
+    <set name="item_skill" val="3012-3" />
+    <for>
+      <set order="0x08" stat="pAtk" val="139" />
+      <set order="0x08" stat="mAtk" val="76" />
+      <set order="0x08" stat="rCrit" val="4" />
+      <add order="0x10" stat="accCombat" val="4" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4742" name="War Axe - Health" type="Weapon">
+    <set name="weapon_type" val="BLUNT" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="1720" />
+    <set name="random_damage" val="20" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="FINE_STEEL" />
+    <set name="weight" val="1660" />
+    <set name="price" val="4300000" />
+    <set name="soulshots" val="3" />
+    <set name="spiritshots" val="3" />
+    <set name="item_skill" val="3013-1" />
+    <for>
+      <set order="0x08" stat="pAtk" val="139" />
+      <set order="0x08" stat="mAtk" val="76" />
+      <set order="0x08" stat="rCrit" val="4" />
+      <add order="0x10" stat="accCombat" val="4" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4743" name="War Axe - Haste" type="Weapon">
+    <set name="weapon_type" val="BLUNT" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="1720" />
+    <set name="random_damage" val="20" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="FINE_STEEL" />
+    <set name="weight" val="1660" />
+    <set name="price" val="4300000" />
+    <set name="soulshots" val="3" />
+    <set name="spiritshots" val="3" />
+    <set name="item_skill" val="3037-3" />
+    <for>
+      <set order="0x08" stat="pAtk" val="139" />
+      <set order="0x08" stat="mAtk" val="76" />
+      <set order="0x08" stat="rCrit" val="4" />
+      <add order="0x10" stat="accCombat" val="4" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4744" name="Yaksa Mace - Anger" type="Weapon">
+    <set name="weapon_type" val="BLUNT" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="2452" />
+    <set name="random_damage" val="20" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="FINE_STEEL" />
+    <set name="weight" val="1640" />
+    <set name="price" val="6130000" />
+    <set name="soulshots" val="3" />
+    <set name="spiritshots" val="3" />
+    <set name="item_skill" val="3012-4" />
+    <for>
+      <set order="0x08" stat="pAtk" val="156" />
+      <set order="0x08" stat="mAtk" val="83" />
+      <set order="0x08" stat="rCrit" val="4" />
+      <add order="0x10" stat="accCombat" val="4" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4745" name="Yaksa Mace - Health" type="Weapon">
+    <set name="weapon_type" val="BLUNT" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="2452" />
+    <set name="random_damage" val="20" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="FINE_STEEL" />
+    <set name="weight" val="1640" />
+    <set name="price" val="6130000" />
+    <set name="soulshots" val="3" />
+    <set name="spiritshots" val="3" />
+    <set name="item_skill" val="3013-1" />
+    <for>
+      <set order="0x08" stat="pAtk" val="156" />
+      <set order="0x08" stat="mAtk" val="83" />
+      <set order="0x08" stat="rCrit" val="4" />
+      <add order="0x10" stat="accCombat" val="4" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4746" name="Yaksa Mace - Rsk. Focus" type="Weapon">
+    <set name="weapon_type" val="BLUNT" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="2452" />
+    <set name="random_damage" val="20" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="FINE_STEEL" />
+    <set name="weight" val="1640" />
+    <set name="price" val="6130000" />
+    <set name="soulshots" val="3" />
+    <set name="spiritshots" val="3" />
+    <set name="item_skill" val="3027-4" />
+    <for>
+      <set order="0x08" stat="pAtk" val="156" />
+      <set order="0x08" stat="mAtk" val="83" />
+      <set order="0x08" stat="rCrit" val="4" />
+      <add order="0x10" stat="accCombat" val="4" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4747" name="Heavy War Axe - Anger" type="Weapon">
+    <set name="weapon_type" val="BLUNT" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="1157" />
+    <set name="random_damage" val="20" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="FINE_STEEL" />
+    <set name="weight" val="1620" />
+    <set name="price" val="8680000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <set name="item_skill" val="3012-5" />
+    <for>
+      <set order="0x08" stat="pAtk" val="175" />
+      <set order="0x08" stat="mAtk" val="91" />
+      <set order="0x08" stat="rCrit" val="4" />
+      <add order="0x10" stat="accCombat" val="4" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4748" name="Heavy War Axe - Health" type="Weapon">
+    <set name="weapon_type" val="BLUNT" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="1157" />
+    <set name="random_damage" val="20" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="FINE_STEEL" />
+    <set name="weight" val="1620" />
+    <set name="price" val="8680000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <set name="item_skill" val="3013-1" />
+    <for>
+      <set order="0x08" stat="pAtk" val="175" />
+      <set order="0x08" stat="mAtk" val="91" />
+      <set order="0x08" stat="rCrit" val="4" />
+      <add order="0x10" stat="accCombat" val="4" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4749" name="Heavy War Axe - Rsk. Focus" type="Weapon">
+    <set name="weapon_type" val="BLUNT" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="1157" />
+    <set name="random_damage" val="20" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="FINE_STEEL" />
+    <set name="weight" val="1620" />
+    <set name="price" val="8680000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <set name="item_skill" val="3027-5" />
+    <for>
+      <set order="0x08" stat="pAtk" val="175" />
+      <set order="0x08" stat="mAtk" val="91" />
+      <set order="0x08" stat="rCrit" val="4" />
+      <add order="0x10" stat="accCombat" val="4" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4750" name="Deadman's Glory - Anger" type="Weapon">
+    <set name="weapon_type" val="BLUNT" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="1746" />
+    <set name="random_damage" val="20" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="BONE" />
+    <set name="weight" val="1600" />
+    <set name="price" val="13100000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <set name="item_skill" val="3012-6" />
+    <for>
+      <set order="0x08" stat="pAtk" val="194" />
+      <set order="0x08" stat="mAtk" val="99" />
+      <set order="0x08" stat="rCrit" val="4" />
+      <add order="0x10" stat="accCombat" val="4" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4751" name="Deadman's Glory - Health" type="Weapon">
+    <set name="weapon_type" val="BLUNT" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="1746" />
+    <set name="random_damage" val="20" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="BONE" />
+    <set name="weight" val="1600" />
+    <set name="price" val="13100000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <set name="item_skill" val="3013-1" />
+    <for>
+      <set order="0x08" stat="pAtk" val="194" />
+      <set order="0x08" stat="mAtk" val="99" />
+      <set order="0x08" stat="rCrit" val="4" />
+      <add order="0x10" stat="accCombat" val="4" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4752" name="Deadman's Glory - Haste" type="Weapon">
+    <set name="weapon_type" val="BLUNT" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="1746" />
+    <set name="random_damage" val="20" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="BONE" />
+    <set name="weight" val="1600" />
+    <set name="price" val="13100000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <set name="item_skill" val="3037-6" />
+    <for>
+      <set order="0x08" stat="pAtk" val="194" />
+      <set order="0x08" stat="mAtk" val="99" />
+      <set order="0x08" stat="rCrit" val="4" />
+      <add order="0x10" stat="accCombat" val="4" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4753" name="Art of Battle Axe - Health" type="Weapon">
+    <set name="weapon_type" val="BLUNT" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="1746" />
+    <set name="random_damage" val="20" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="CHRYSOLITE" />
+    <set name="weight" val="1570" />
+    <set name="price" val="13100000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <set name="item_skill" val="3013-1" />
+    <for>
+      <set order="0x08" stat="pAtk" val="194" />
+      <set order="0x08" stat="mAtk" val="99" />
+      <set order="0x08" stat="rCrit" val="4" />
+      <add order="0x10" stat="accCombat" val="4" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4754" name="Art of Battle Axe - Rsk. Focus" type="Weapon">
+    <set name="weapon_type" val="BLUNT" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="1746" />
+    <set name="random_damage" val="20" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="CHRYSOLITE" />
+    <set name="weight" val="1570" />
+    <set name="price" val="13100000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <set name="item_skill" val="3027-6" />
+    <for>
+      <set order="0x08" stat="pAtk" val="194" />
+      <set order="0x08" stat="mAtk" val="99" />
+      <set order="0x08" stat="rCrit" val="4" />
+      <add order="0x10" stat="accCombat" val="4" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4755" name="Art of Battle Axe - Haste" type="Weapon">
+    <set name="weapon_type" val="BLUNT" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="1746" />
+    <set name="random_damage" val="20" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="CHRYSOLITE" />
+    <set name="weight" val="1570" />
+    <set name="price" val="13100000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <set name="item_skill" val="3037-6" />
+    <for>
+      <set order="0x08" stat="pAtk" val="194" />
+      <set order="0x08" stat="mAtk" val="99" />
+      <set order="0x08" stat="rCrit" val="4" />
+      <add order="0x10" stat="accCombat" val="4" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4756" name="Meteor Shower - Health" type="Weapon">
+    <set name="weapon_type" val="BLUNT" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="A" />
+    <set name="crystal_count" val="1464" />
+    <set name="random_damage" val="20" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="FINE_STEEL" />
+    <set name="weight" val="1600" />
+    <set name="price" val="18300000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <set name="item_skill" val="3013-1" />
+    <for>
+      <set order="0x08" stat="pAtk" val="213" />
+      <set order="0x08" stat="mAtk" val="107" />
+      <set order="0x08" stat="rCrit" val="4" />
+      <add order="0x10" stat="accCombat" val="4" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4757" name="Meteor Shower - Focus" type="Weapon">
+    <set name="weapon_type" val="BLUNT" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="A" />
+    <set name="crystal_count" val="1464" />
+    <set name="random_damage" val="20" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="FINE_STEEL" />
+    <set name="weight" val="1600" />
+    <set name="price" val="18300000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <set name="item_skill" val="3010-1" />
+    <for>
+      <set order="0x08" stat="pAtk" val="213" />
+      <set order="0x08" stat="mAtk" val="107" />
+      <set order="0x08" stat="rCrit" val="4" />
+      <add order="0x10" stat="accCombat" val="4" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4758" name="Meteor Shower - P.Focus" type="Weapon">
+    <set name="weapon_type" val="BLUNT" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="A" />
+    <set name="crystal_count" val="1464" />
+    <set name="random_damage" val="20" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="FINE_STEEL" />
+    <set name="weight" val="1600" />
+    <set name="price" val="18300000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <set name="item_skill" val="3010-1" />
+    <for>
+      <set order="0x08" stat="pAtk" val="213" />
+      <set order="0x08" stat="mAtk" val="107" />
+      <set order="0x08" stat="rCrit" val="4" />
+      <add order="0x10" stat="accCombat" val="4" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4759" name="Cursed Dagger - Critical Bleed" type="Weapon">
+    <set name="weapon_type" val="DAGGER" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="916" />
+    <set name="random_damage" val="5" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="MITHRIL" />
+    <set name="weight" val="1040" />
+    <set name="price" val="2290000" />
+    <set name="soulshots" val="2" />
+    <set name="spiritshots" val="2" />
+    <set name="oncrit_skill" val="3021-3" />
+    <set name="oncrit_chance" val="12" />
+    <for>
+      <set order="0x08" stat="pAtk" val="94" />
+      <set order="0x08" stat="mAtk" val="61" />
+      <set order="0x08" stat="rCrit" val="12" />
+      <add order="0x10" stat="accCombat" val="-3" />
+      <set order="0x08" stat="pAtkSpd" val="433" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4760" name="Cursed Dagger - Critical Poison" type="Weapon">
+    <set name="weapon_type" val="DAGGER" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="916" />
+    <set name="random_damage" val="5" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="MITHRIL" />
+    <set name="weight" val="1040" />
+    <set name="price" val="2290000" />
+    <set name="soulshots" val="2" />
+    <set name="spiritshots" val="2" />
+    <set name="oncrit_skill" val="3024-4" />
+    <set name="oncrit_chance" val="4" />
+    <for>
+      <set order="0x08" stat="pAtk" val="94" />
+      <set order="0x08" stat="mAtk" val="61" />
+      <set order="0x08" stat="rCrit" val="12" />
+      <add order="0x10" stat="accCombat" val="-3" />
+      <set order="0x08" stat="pAtkSpd" val="433" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4761" name="Cursed Dagger - Rsk. Haste" type="Weapon">
+    <set name="weapon_type" val="DAGGER" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="916" />
+    <set name="random_damage" val="5" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="MITHRIL" />
+    <set name="weight" val="1040" />
+    <set name="price" val="2290000" />
+    <set name="soulshots" val="2" />
+    <set name="spiritshots" val="2" />
+    <set name="item_skill" val="3033-1" />
+    <for>
+      <set order="0x08" stat="pAtk" val="94" />
+      <set order="0x08" stat="mAtk" val="61" />
+      <set order="0x08" stat="rCrit" val="12" />
+      <add order="0x10" stat="accCombat" val="-3" />
+      <set order="0x08" stat="pAtkSpd" val="433" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4762" name="Dark Elven Dagger - Focus" type="Weapon">
+    <set name="weapon_type" val="DAGGER" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="916" />
+    <set name="random_damage" val="5" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="FINE_STEEL" />
+    <set name="weight" val="1050" />
+    <set name="price" val="2290000" />
+    <set name="soulshots" val="2" />
+    <set name="spiritshots" val="2" />
+    <set name="item_skill" val="3011-1" />
+    <for>
+      <set order="0x08" stat="pAtk" val="94" />
+      <set order="0x08" stat="mAtk" val="61" />
+      <set order="0x08" stat="rCrit" val="12" />
+      <add order="0x10" stat="accCombat" val="-3" />
+      <set order="0x08" stat="pAtkSpd" val="433" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4763" name="Dark Elven Dagger - Back Blow" type="Weapon">
+    <set name="weapon_type" val="DAGGER" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="916" />
+    <set name="random_damage" val="5" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="FINE_STEEL" />
+    <set name="weight" val="1050" />
+    <set name="price" val="2290000" />
+    <set name="soulshots" val="2" />
+    <set name="spiritshots" val="2" />
+    <set name="item_skill" val="3019-1" />
+    <for>
+      <set order="0x08" stat="pAtk" val="94" />
+      <set order="0x08" stat="mAtk" val="61" />
+      <set order="0x08" stat="rCrit" val="12" />
+      <add order="0x10" stat="accCombat" val="-3" />
+      <set order="0x08" stat="pAtkSpd" val="433" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4764" name="Dark Elven Dagger - Mortal Strike" type="Weapon">
+    <set name="weapon_type" val="DAGGER" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="916" />
+    <set name="random_damage" val="5" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="FINE_STEEL" />
+    <set name="weight" val="1050" />
+    <set name="price" val="2290000" />
+    <set name="soulshots" val="2" />
+    <set name="spiritshots" val="2" />
+    <set name="item_skill" val="3035-1" />
+    <for>
+      <set order="0x08" stat="pAtk" val="94" />
+      <set order="0x08" stat="mAtk" val="61" />
+      <set order="0x08" stat="rCrit" val="12" />
+      <add order="0x10" stat="accCombat" val="-3" />
+      <set order="0x08" stat="pAtkSpd" val="433" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4765" name="Stiletto - Critical Bleed" type="Weapon">
+    <set name="weapon_type" val="DAGGER" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="1148" />
+    <set name="random_damage" val="5" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="FINE_STEEL" />
+    <set name="weight" val="1030" />
+    <set name="price" val="2870000" />
+    <set name="soulshots" val="2" />
+    <set name="spiritshots" val="2" />
+    <set name="oncrit_skill" val="3021-3" />
+    <set name="oncrit_chance" val="12" />
+    <for>
+      <set order="0x08" stat="pAtk" val="107" />
+      <set order="0x08" stat="mAtk" val="68" />
+      <set order="0x08" stat="rCrit" val="12" />
+      <add order="0x10" stat="accCombat" val="-3" />
+      <set order="0x08" stat="pAtkSpd" val="433" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4766" name="Stiletto - Critical Poison" type="Weapon">
+    <set name="weapon_type" val="DAGGER" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="1148" />
+    <set name="random_damage" val="5" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="FINE_STEEL" />
+    <set name="weight" val="1030" />
+    <set name="price" val="2870000" />
+    <set name="soulshots" val="2" />
+    <set name="spiritshots" val="2" />
+    <set name="oncrit_skill" val="3024-4" />
+    <set name="oncrit_chance" val="4" />
+    <for>
+      <set order="0x08" stat="pAtk" val="107" />
+      <set order="0x08" stat="mAtk" val="68" />
+      <set order="0x08" stat="rCrit" val="12" />
+      <add order="0x10" stat="accCombat" val="-3" />
+      <set order="0x08" stat="pAtkSpd" val="433" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4767" name="Stiletto - Mortal Strike" type="Weapon">
+    <set name="weapon_type" val="DAGGER" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="1148" />
+    <set name="random_damage" val="5" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="FINE_STEEL" />
+    <set name="weight" val="1030" />
+    <set name="price" val="2870000" />
+    <set name="soulshots" val="2" />
+    <set name="spiritshots" val="2" />
+    <set name="item_skill" val="3035-2" />
+    <for>
+      <set order="0x08" stat="pAtk" val="107" />
+      <set order="0x08" stat="mAtk" val="68" />
+      <set order="0x08" stat="rCrit" val="12" />
+      <add order="0x10" stat="accCombat" val="-3" />
+      <set order="0x08" stat="pAtkSpd" val="433" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4768" name="Grace Dagger - Evasion" type="Weapon">
+    <set name="weapon_type" val="DAGGER" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="1720" />
+    <set name="random_damage" val="5" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="FINE_STEEL" />
+    <set name="weight" val="1020" />
+    <set name="price" val="4300000" />
+    <set name="soulshots" val="3" />
+    <set name="spiritshots" val="3" />
+    <set name="item_skill" val="3009-3" />
+    <for>
+      <set order="0x08" stat="pAtk" val="122" />
+      <set order="0x08" stat="mAtk" val="76" />
+      <set order="0x08" stat="rCrit" val="12" />
+      <add order="0x10" stat="accCombat" val="-3" />
+      <set order="0x08" stat="pAtkSpd" val="433" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4769" name="Grace Dagger - Focus" type="Weapon">
+    <set name="weapon_type" val="DAGGER" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="1720" />
+    <set name="random_damage" val="5" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="FINE_STEEL" />
+    <set name="weight" val="1020" />
+    <set name="price" val="4300000" />
+    <set name="soulshots" val="3" />
+    <set name="spiritshots" val="3" />
+    <set name="item_skill" val="3011-3" />
+    <for>
+      <set order="0x08" stat="pAtk" val="122" />
+      <set order="0x08" stat="mAtk" val="76" />
+      <set order="0x08" stat="rCrit" val="12" />
+      <add order="0x10" stat="accCombat" val="-3" />
+      <set order="0x08" stat="pAtkSpd" val="433" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4770" name="Grace Dagger - Back Blow" type="Weapon">
+    <set name="weapon_type" val="DAGGER" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="1720" />
+    <set name="random_damage" val="5" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="FINE_STEEL" />
+    <set name="weight" val="1020" />
+    <set name="price" val="4300000" />
+    <set name="soulshots" val="3" />
+    <set name="spiritshots" val="3" />
+    <set name="item_skill" val="3019-3" />
+    <for>
+      <set order="0x08" stat="pAtk" val="122" />
+      <set order="0x08" stat="mAtk" val="76" />
+      <set order="0x08" stat="rCrit" val="12" />
+      <add order="0x10" stat="accCombat" val="-3" />
+      <set order="0x08" stat="pAtkSpd" val="433" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4771" name="Dark Screamer - Evasion" type="Weapon">
+    <set name="weapon_type" val="DAGGER" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="1720" />
+    <set name="random_damage" val="5" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="FINE_STEEL" />
+    <set name="weight" val="1010" />
+    <set name="price" val="4300000" />
+    <set name="soulshots" val="3" />
+    <set name="spiritshots" val="3" />
+    <set name="item_skill" val="3009-3" />
+    <for>
+      <set order="0x08" stat="pAtk" val="122" />
+      <set order="0x08" stat="mAtk" val="76" />
+      <set order="0x08" stat="rCrit" val="12" />
+      <add order="0x10" stat="accCombat" val="-3" />
+      <set order="0x08" stat="pAtkSpd" val="433" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4772" name="Dark Screamer - Focus" type="Weapon">
+    <set name="weapon_type" val="DAGGER" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="1720" />
+    <set name="random_damage" val="5" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="FINE_STEEL" />
+    <set name="weight" val="1010" />
+    <set name="price" val="4300000" />
+    <set name="soulshots" val="3" />
+    <set name="spiritshots" val="3" />
+    <set name="item_skill" val="3011-3" />
+    <for>
+      <set order="0x08" stat="pAtk" val="122" />
+      <set order="0x08" stat="mAtk" val="76" />
+      <set order="0x08" stat="rCrit" val="12" />
+      <add order="0x10" stat="accCombat" val="-3" />
+      <set order="0x08" stat="pAtkSpd" val="433" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4773" name="Dark Screamer - Critical Bleed" type="Weapon">
+    <set name="weapon_type" val="DAGGER" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="1720" />
+    <set name="random_damage" val="5" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="FINE_STEEL" />
+    <set name="weight" val="1010" />
+    <set name="price" val="4300000" />
+    <set name="soulshots" val="3" />
+    <set name="spiritshots" val="3" />
+    <set name="oncrit_skill" val="3021-4" />
+    <set name="oncrit_chance" val="10" />
+    <for>
+      <set order="0x08" stat="pAtk" val="122" />
+      <set order="0x08" stat="mAtk" val="76" />
+      <set order="0x08" stat="rCrit" val="12" />
+      <add order="0x10" stat="accCombat" val="-3" />
+      <set order="0x08" stat="pAtkSpd" val="433" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4774" name="Crystal Dagger - Critical Bleed" type="Weapon">
+    <set name="weapon_type" val="DAGGER" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="2452" />
+    <set name="random_damage" val="5" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="CRYSTAL" />
+    <set name="weight" val="1000" />
+    <set name="price" val="6130000" />
+    <set name="soulshots" val="3" />
+    <set name="spiritshots" val="3" />
+    <set name="oncrit_skill" val="3021-4" />
+    <set name="oncrit_chance" val="10" />
+    <for>
+      <set order="0x08" stat="pAtk" val="136" />
+      <set order="0x08" stat="mAtk" val="83" />
+      <set order="0x08" stat="rCrit" val="12" />
+      <add order="0x10" stat="accCombat" val="-3" />
+      <set order="0x08" stat="pAtkSpd" val="433" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4775" name="Crystal Dagger - Critical Poison" type="Weapon">
+    <set name="weapon_type" val="DAGGER" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="2452" />
+    <set name="random_damage" val="5" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="CRYSTAL" />
+    <set name="weight" val="1000" />
+    <set name="price" val="6130000" />
+    <set name="soulshots" val="3" />
+    <set name="spiritshots" val="3" />
+    <set name="oncrit_skill" val="3024-5" />
+    <set name="oncrit_chance" val="3" />
+    <for>
+      <set order="0x08" stat="pAtk" val="136" />
+      <set order="0x08" stat="mAtk" val="83" />
+      <set order="0x08" stat="rCrit" val="12" />
+      <add order="0x10" stat="accCombat" val="-3" />
+      <set order="0x08" stat="pAtkSpd" val="433" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4776" name="Crystal Dagger - Mortal Strike" type="Weapon">
+    <set name="weapon_type" val="DAGGER" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="2452" />
+    <set name="random_damage" val="5" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="CRYSTAL" />
+    <set name="weight" val="1000" />
+    <set name="price" val="6130000" />
+    <set name="soulshots" val="3" />
+    <set name="spiritshots" val="3" />
+    <set name="item_skill" val="3035-4" />
+    <for>
+      <set order="0x08" stat="pAtk" val="136" />
+      <set order="0x08" stat="mAtk" val="83" />
+      <set order="0x08" stat="rCrit" val="12" />
+      <add order="0x10" stat="accCombat" val="-3" />
+      <set order="0x08" stat="pAtkSpd" val="433" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4777" name="Kris - Evasion" type="Weapon">
+    <set name="weapon_type" val="DAGGER" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="1157" />
+    <set name="random_damage" val="5" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="MITHRIL" />
+    <set name="weight" val="980" />
+    <set name="price" val="8680000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <set name="item_skill" val="3009-5" />
+    <for>
+      <set order="0x08" stat="pAtk" val="153" />
+      <set order="0x08" stat="mAtk" val="91" />
+      <set order="0x08" stat="rCrit" val="12" />
+      <add order="0x10" stat="accCombat" val="-3" />
+      <set order="0x08" stat="pAtkSpd" val="433" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4778" name="Kris - Focus" type="Weapon">
+    <set name="weapon_type" val="DAGGER" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="1157" />
+    <set name="random_damage" val="5" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="MITHRIL" />
+    <set name="weight" val="980" />
+    <set name="price" val="8680000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <set name="item_skill" val="3011-5" />
+    <for>
+      <set order="0x08" stat="pAtk" val="153" />
+      <set order="0x08" stat="mAtk" val="91" />
+      <set order="0x08" stat="rCrit" val="12" />
+      <add order="0x10" stat="accCombat" val="-3" />
+      <set order="0x08" stat="pAtkSpd" val="433" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4779" name="Kris - Back Blow" type="Weapon">
+    <set name="weapon_type" val="DAGGER" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="1157" />
+    <set name="random_damage" val="5" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="MITHRIL" />
+    <set name="weight" val="980" />
+    <set name="price" val="8680000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <set name="item_skill" val="3019-5" />
+    <for>
+      <set order="0x08" stat="pAtk" val="153" />
+      <set order="0x08" stat="mAtk" val="91" />
+      <set order="0x08" stat="rCrit" val="12" />
+      <add order="0x10" stat="accCombat" val="-3" />
+      <set order="0x08" stat="pAtkSpd" val="433" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4780" name="Demon Dagger - Critical Bleed" type="Weapon">
+    <set name="weapon_type" val="DAGGER" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="1746" />
+    <set name="random_damage" val="5" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="BLOOD_STEEL" />
+    <set name="weight" val="970" />
+    <set name="price" val="13100000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <set name="oncrit_skill" val="3021-4" />
+    <set name="oncrit_chance" val="10" />
+    <for>
+      <set order="0x08" stat="pAtk" val="170" />
+      <set order="0x08" stat="mAtk" val="99" />
+      <set order="0x08" stat="rCrit" val="12" />
+      <add order="0x10" stat="accCombat" val="-3" />
+      <set order="0x08" stat="pAtkSpd" val="433" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4781" name="Demon Dagger - Critical Poison" type="Weapon">
+    <set name="weapon_type" val="DAGGER" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="1746" />
+    <set name="random_damage" val="5" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="BLOOD_STEEL" />
+    <set name="weight" val="970" />
+    <set name="price" val="13100000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <set name="oncrit_skill" val="3024-5" />
+    <set name="oncrit_chance" val="3" />
+    <for>
+      <set order="0x08" stat="pAtk" val="170" />
+      <set order="0x08" stat="mAtk" val="99" />
+      <set order="0x08" stat="rCrit" val="12" />
+      <add order="0x10" stat="accCombat" val="-3" />
+      <set order="0x08" stat="pAtkSpd" val="433" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4782" name="Demon Dagger - Mortal Strike" type="Weapon">
+    <set name="weapon_type" val="DAGGER" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="1746" />
+    <set name="random_damage" val="5" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="BLOOD_STEEL" />
+    <set name="weight" val="970" />
+    <set name="price" val="13100000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <set name="item_skill" val="3035-6" />
+    <for>
+      <set order="0x08" stat="pAtk" val="170" />
+      <set order="0x08" stat="mAtk" val="99" />
+      <set order="0x08" stat="rCrit" val="12" />
+      <add order="0x10" stat="accCombat" val="-3" />
+      <set order="0x08" stat="pAtkSpd" val="433" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4783" name="Bloody Orchid - Evasion" type="Weapon">
+    <set name="weapon_type" val="DAGGER" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="A" />
+    <set name="crystal_count" val="1464" />
+    <set name="random_damage" val="5" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="BLOOD_STEEL" />
+    <set name="weight" val="960" />
+    <set name="price" val="18300000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <set name="item_skill" val="3009-6" />
+    <for>
+      <set order="0x08" stat="pAtk" val="186" />
+      <set order="0x08" stat="mAtk" val="107" />
+      <set order="0x08" stat="rCrit" val="12" />
+      <add order="0x10" stat="accCombat" val="-3" />
+      <set order="0x08" stat="pAtkSpd" val="433" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4784" name="Bloody Orchid - Focus" type="Weapon">
+    <set name="weapon_type" val="DAGGER" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="A" />
+    <set name="crystal_count" val="1464" />
+    <set name="random_damage" val="5" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="BLOOD_STEEL" />
+    <set name="weight" val="960" />
+    <set name="price" val="18300000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <set name="item_skill" val="3011-2" />
+    <for>
+      <set order="0x08" stat="pAtk" val="186" />
+      <set order="0x08" stat="mAtk" val="107" />
+      <set order="0x08" stat="rCrit" val="12" />
+      <add order="0x10" stat="accCombat" val="-3" />
+      <set order="0x08" stat="pAtkSpd" val="433" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4785" name="Bloody Orchid - Back Blow" type="Weapon">
+    <set name="weapon_type" val="DAGGER" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="A" />
+    <set name="crystal_count" val="1464" />
+    <set name="random_damage" val="5" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="BLOOD_STEEL" />
+    <set name="weight" val="960" />
+    <set name="price" val="18300000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <set name="item_skill" val="3019-6" />
+    <for>
+      <set order="0x08" stat="pAtk" val="186" />
+      <set order="0x08" stat="mAtk" val="107" />
+      <set order="0x08" stat="rCrit" val="12" />
+      <add order="0x10" stat="accCombat" val="-3" />
+      <set order="0x08" stat="pAtkSpd" val="433" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4786" name="Hell Knife - Focus" type="Weapon">
+    <set name="weapon_type" val="DAGGER" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="1157" />
+    <set name="random_damage" val="5" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="BLOOD_STEEL" />
+    <set name="weight" val="740" />
+    <set name="price" val="8680000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <set name="is_magical" val="true" />
+    <set name="item_skill" val="3011-5" />
+    <for>
+      <set order="0x08" stat="pAtk" val="122" />
+      <set order="0x08" stat="mAtk" val="122" />
+      <set order="0x08" stat="rCrit" val="12" />
+      <add order="0x10" stat="accCombat" val="-3" />
+      <set order="0x08" stat="pAtkSpd" val="433" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4787" name="Hell Knife - Back Blow" type="Weapon">
+    <set name="weapon_type" val="DAGGER" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="1157" />
+    <set name="random_damage" val="5" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="BLOOD_STEEL" />
+    <set name="weight" val="740" />
+    <set name="price" val="8680000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <set name="is_magical" val="true" />
+    <set name="item_skill" val="3018-5" />
+    <for>
+      <set order="0x08" stat="pAtk" val="122" />
+      <set order="0x08" stat="mAtk" val="122" />
+      <set order="0x08" stat="rCrit" val="12" />
+      <add order="0x10" stat="accCombat" val="-3" />
+      <set order="0x08" stat="pAtkSpd" val="433" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4788" name="Hell Knife - Mortal Strike" type="Weapon">
+    <set name="weapon_type" val="DAGGER" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="1157" />
+    <set name="random_damage" val="5" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="BLOOD_STEEL" />
+    <set name="weight" val="740" />
+    <set name="price" val="8680000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <set name="is_magical" val="true" />
+    <set name="item_skill" val="3035-5" />
+    <for>
+      <set order="0x08" stat="pAtk" val="122" />
+      <set order="0x08" stat="mAtk" val="122" />
+      <set order="0x08" stat="rCrit" val="12" />
+      <add order="0x10" stat="accCombat" val="-3" />
+      <set order="0x08" stat="pAtkSpd" val="433" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4789" name="Chakram - Critical Drain" type="Weapon">
+    <set name="weapon_type" val="DUALFIST" />
+    <set name="bodypart" val="lrhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="916" />
+    <set name="random_damage" val="5" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="FINE_STEEL" />
+    <set name="weight" val="1490" />
+    <set name="price" val="2290000" />
+    <set name="soulshots" val="2" />
+    <set name="spiritshots" val="2" />
+    <set name="oncrit_skill" val="3022-1" />
+    <set name="oncrit_chance" val="10" />
+    <for>
+      <set order="0x08" stat="pAtk" val="130" />
+      <set order="0x08" stat="mAtk" val="61" />
+      <set order="0x08" stat="rCrit" val="4" />
+      <add order="0x10" stat="accCombat" val="4" />
+      <set order="0x08" stat="pAtkSpd" val="325" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4790" name="Chakram - Critical Poison" type="Weapon">
+    <set name="weapon_type" val="DUALFIST" />
+    <set name="bodypart" val="lrhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="916" />
+    <set name="random_damage" val="5" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="FINE_STEEL" />
+    <set name="weight" val="1490" />
+    <set name="price" val="2290000" />
+    <set name="soulshots" val="2" />
+    <set name="spiritshots" val="2" />
+    <set name="oncrit_skill" val="3024-4" />
+    <set name="oncrit_chance" val="8" />
+    <for>
+      <set order="0x08" stat="pAtk" val="130" />
+      <set order="0x08" stat="mAtk" val="61" />
+      <set order="0x08" stat="rCrit" val="4" />
+      <add order="0x10" stat="accCombat" val="4" />
+      <set order="0x08" stat="pAtkSpd" val="325" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4791" name="Chakram - Rsk. Haste" type="Weapon">
+    <set name="weapon_type" val="DUALFIST" />
+    <set name="bodypart" val="lrhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="916" />
+    <set name="random_damage" val="5" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="FINE_STEEL" />
+    <set name="weight" val="1490" />
+    <set name="price" val="2290000" />
+    <set name="soulshots" val="2" />
+    <set name="spiritshots" val="2" />
+    <set name="item_skill" val="3034-1" />
+    <for>
+      <set order="0x08" stat="pAtk" val="130" />
+      <set order="0x08" stat="mAtk" val="61" />
+      <set order="0x08" stat="rCrit" val="4" />
+      <add order="0x10" stat="accCombat" val="4" />
+      <set order="0x08" stat="pAtkSpd" val="325" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4792" name="Fisted Blade - Rsk. Evasion" type="Weapon">
+    <set name="weapon_type" val="DUALFIST" />
+    <set name="bodypart" val="lrhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="1720" />
+    <set name="random_damage" val="5" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="FINE_STEEL" />
+    <set name="weight" val="1480" />
+    <set name="price" val="4300000" />
+    <set name="soulshots" val="3" />
+    <set name="spiritshots" val="3" />
+    <set name="item_skill" val="3030-3" />
+    <for>
+      <set order="0x08" stat="pAtk" val="169" />
+      <set order="0x08" stat="mAtk" val="76" />
+      <set order="0x08" stat="rCrit" val="4" />
+      <add order="0x10" stat="accCombat" val="4" />
+      <set order="0x08" stat="pAtkSpd" val="325" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4793" name="Fisted Blade - Rsk. Haste" type="Weapon">
+    <set name="weapon_type" val="DUALFIST" />
+    <set name="bodypart" val="lrhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="1720" />
+    <set name="random_damage" val="5" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="FINE_STEEL" />
+    <set name="weight" val="1480" />
+    <set name="price" val="4300000" />
+    <set name="soulshots" val="3" />
+    <set name="spiritshots" val="3" />
+    <set name="item_skill" val="3034-3" />
+    <for>
+      <set order="0x08" stat="pAtk" val="169" />
+      <set order="0x08" stat="mAtk" val="76" />
+      <set order="0x08" stat="rCrit" val="4" />
+      <add order="0x10" stat="accCombat" val="4" />
+      <set order="0x08" stat="pAtkSpd" val="325" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4794" name="Fisted Blade - Haste" type="Weapon">
+    <set name="weapon_type" val="DUALFIST" />
+    <set name="bodypart" val="lrhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="1720" />
+    <set name="random_damage" val="5" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="FINE_STEEL" />
+    <set name="weight" val="1480" />
+    <set name="price" val="4300000" />
+    <set name="soulshots" val="3" />
+    <set name="spiritshots" val="3" />
+    <set name="item_skill" val="3037-3" />
+    <for>
+      <set order="0x08" stat="pAtk" val="169" />
+      <set order="0x08" stat="mAtk" val="76" />
+      <set order="0x08" stat="rCrit" val="4" />
+      <add order="0x10" stat="accCombat" val="4" />
+      <set order="0x08" stat="pAtkSpd" val="325" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4795" name="Great Pata - Critical Drain" type="Weapon">
+    <set name="weapon_type" val="DUALFIST" />
+    <set name="bodypart" val="lrhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="2452" />
+    <set name="random_damage" val="5" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="CHRYSOLITE" />
+    <set name="weight" val="1460" />
+    <set name="price" val="6130000" />
+    <set name="soulshots" val="3" />
+    <set name="spiritshots" val="3" />
+    <set name="oncrit_skill" val="3022-3" />
+    <set name="oncrit_chance" val="10" />
+    <for>
+      <set order="0x08" stat="pAtk" val="190" />
+      <set order="0x08" stat="mAtk" val="83" />
+      <set order="0x08" stat="rCrit" val="4" />
+      <add order="0x10" stat="accCombat" val="4" />
+      <set order="0x08" stat="pAtkSpd" val="325" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4796" name="Great Pata - Critical Poison" type="Weapon">
+    <set name="weapon_type" val="DUALFIST" />
+    <set name="bodypart" val="lrhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="2452" />
+    <set name="random_damage" val="5" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="CHRYSOLITE" />
+    <set name="weight" val="1460" />
+    <set name="price" val="6130000" />
+    <set name="soulshots" val="3" />
+    <set name="spiritshots" val="3" />
+    <set name="oncrit_skill" val="3024-5" />
+    <set name="oncrit_chance" val="7" />
+    <for>
+      <set order="0x08" stat="pAtk" val="190" />
+      <set order="0x08" stat="mAtk" val="83" />
+      <set order="0x08" stat="rCrit" val="4" />
+      <add order="0x10" stat="accCombat" val="4" />
+      <set order="0x08" stat="pAtkSpd" val="325" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4797" name="Great Pata - Rsk. Haste" type="Weapon">
+    <set name="weapon_type" val="DUALFIST" />
+    <set name="bodypart" val="lrhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="2452" />
+    <set name="random_damage" val="5" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="CHRYSOLITE" />
+    <set name="weight" val="1460" />
+    <set name="price" val="6130000" />
+    <set name="soulshots" val="3" />
+    <set name="spiritshots" val="3" />
+    <set name="item_skill" val="3034-4" />
+    <for>
+      <set order="0x08" stat="pAtk" val="190" />
+      <set order="0x08" stat="mAtk" val="83" />
+      <set order="0x08" stat="rCrit" val="4" />
+      <add order="0x10" stat="accCombat" val="4" />
+      <set order="0x08" stat="pAtkSpd" val="325" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4798" name="Knuckle Duster - Rsk. Evasion" type="Weapon">
+    <set name="weapon_type" val="DUALFIST" />
+    <set name="bodypart" val="lrhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="1148" />
+    <set name="random_damage" val="5" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="FINE_STEEL" />
+    <set name="weight" val="1490" />
+    <set name="price" val="2870000" />
+    <set name="soulshots" val="2" />
+    <set name="spiritshots" val="2" />
+    <set name="item_skill" val="3030-2" />
+    <for>
+      <set order="0x08" stat="pAtk" val="148" />
+      <set order="0x08" stat="mAtk" val="68" />
+      <set order="0x08" stat="rCrit" val="4" />
+      <add order="0x10" stat="accCombat" val="4" />
+      <set order="0x08" stat="pAtkSpd" val="325" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="4799" name="Knuckle Duster - Rsk. Haste" type="Weapon">
+    <set name="weapon_type" val="DUALFIST" />
+    <set name="bodypart" val="lrhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="1148" />
+    <set name="random_damage" val="5" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="FINE_STEEL" />
+    <set name="weight" val="1490" />
+    <set name="price" val="2870000" />
+    <set name="soulshots" val="2" />
+    <set name="spiritshots" val="2" />
+    <set name="item_skill" val="3034-2" />
+    <for>
+      <set order="0x08" stat="pAtk" val="148" />
+      <set order="0x08" stat="mAtk" val="68" />
+      <set order="0x08" stat="rCrit" val="4" />
+      <add order="0x10" stat="accCombat" val="4" />
+      <set order="0x08" stat="pAtkSpd" val="325" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+</list>

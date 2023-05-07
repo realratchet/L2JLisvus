@@ -1,0 +1,716 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<list>
+  <item id="7800" name="Small Black Fat Fish - For Beginners" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="7801" name="Black Nimble Fish - For Beginners" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="7802" name="Black Ugly Fish - For Beginners" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="7803" name="Black Fat Fish - For Beginners" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="7804" name="Large Black Nimble Fish - For Beginners" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="7805" name="Large Black Ugly Fish - For Beginners" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="7806" name="Large Black Fat Fish - For Beginners" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="7807" name="Green Colored Lure - For Beginners" type="EtcItem">
+    <set name="etcitem_type" val="LURE" />
+    <set name="bodypart" val="lhand" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="5" />
+    <set name="price" val="50" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="7808" name="Purple Colored Lure - For Beginners" type="EtcItem">
+    <set name="etcitem_type" val="LURE" />
+    <set name="bodypart" val="lhand" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="5" />
+    <set name="price" val="70" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="7809" name="Yellow Colored Lure - For Beginners" type="EtcItem">
+    <set name="etcitem_type" val="LURE" />
+    <set name="bodypart" val="lhand" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="5" />
+    <set name="price" val="60" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="7810" name="Soulfire Dirk - Mana Up" type="Weapon">
+    <set name="weapon_type" val="DAGGER" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="1148" />
+    <set name="random_damage" val="5" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="FINE_STEEL" />
+    <set name="weight" val="750" />
+    <set name="price" val="2870000" />
+    <set name="soulshots" val="2" />
+    <set name="spiritshots" val="2" />
+    <set name="is_magical" val="true" />
+    <set name="item_skill" val="3014-1" />
+    <for>
+      <set order="0x08" stat="pAtk" val="86" />
+      <set order="0x08" stat="mAtk" val="91" />
+      <set order="0x08" stat="rCrit" val="12" />
+      <add order="0x10" stat="accCombat" val="-3" />
+      <set order="0x08" stat="pAtkSpd" val="433" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="7811" name="Soulfire Dirk - Magic Hold" type="Weapon">
+    <set name="weapon_type" val="DAGGER" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="1148" />
+    <set name="random_damage" val="5" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="FINE_STEEL" />
+    <set name="weight" val="750" />
+    <set name="price" val="2870000" />
+    <set name="soulshots" val="2" />
+    <set name="spiritshots" val="2" />
+    <set name="is_magical" val="true" />
+    <set name="oncast_skill" val="3577-1" />
+    <set name="oncast_chance" val="10" />
+    <for>
+      <set order="0x08" stat="pAtk" val="86" />
+      <set order="0x08" stat="mAtk" val="91" />
+      <set order="0x08" stat="rCrit" val="12" />
+      <add order="0x10" stat="accCombat" val="-3" />
+      <set order="0x08" stat="pAtkSpd" val="433" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="7812" name="Soulfire Dirk - Magic Silence" type="Weapon">
+    <set name="weapon_type" val="DAGGER" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="1148" />
+    <set name="random_damage" val="5" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="FINE_STEEL" />
+    <set name="weight" val="750" />
+    <set name="price" val="2870000" />
+    <set name="soulshots" val="2" />
+    <set name="spiritshots" val="2" />
+    <set name="is_magical" val="true" />
+    <set name="oncast_skill" val="3078-2" />
+    <set name="oncast_chance" val="10" />
+    <for>
+      <set order="0x08" stat="pAtk" val="86" />
+      <set order="0x08" stat="mAtk" val="91" />
+      <set order="0x08" stat="rCrit" val="12" />
+      <add order="0x10" stat="accCombat" val="-3" />
+      <set order="0x08" stat="pAtkSpd" val="433" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="7813" name="Hell Knife - Magic Regeneration" type="Weapon">
+    <set name="weapon_type" val="DAGGER" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="1157" />
+    <set name="random_damage" val="5" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="BLOOD_STEEL" />
+    <set name="weight" val="740" />
+    <set name="price" val="8680000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <set name="is_magical" val="true" />
+    <set name="oncast_skill" val="1044-3" />
+    <set name="oncast_chance" val="30" />
+    <for>
+      <set order="0x08" stat="pAtk" val="122" />
+      <set order="0x08" stat="mAtk" val="122" />
+      <set order="0x08" stat="rCrit" val="12" />
+      <add order="0x10" stat="accCombat" val="-3" />
+      <set order="0x08" stat="pAtkSpd" val="433" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="7814" name="Hell Knife - Mental Shield" type="Weapon">
+    <set name="weapon_type" val="DAGGER" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="1157" />
+    <set name="random_damage" val="5" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="BLOOD_STEEL" />
+    <set name="weight" val="740" />
+    <set name="price" val="8680000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <set name="is_magical" val="true" />
+    <set name="oncast_skill" val="1035-3" />
+    <set name="oncast_chance" val="50" />
+    <for>
+      <set order="0x08" stat="pAtk" val="122" />
+      <set order="0x08" stat="mAtk" val="122" />
+      <set order="0x08" stat="rCrit" val="12" />
+      <add order="0x10" stat="accCombat" val="-3" />
+      <set order="0x08" stat="pAtkSpd" val="433" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="7815" name="Hell Knife - Magic Weakness" type="Weapon">
+    <set name="weapon_type" val="DAGGER" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="1157" />
+    <set name="random_damage" val="5" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="BLOOD_STEEL" />
+    <set name="weight" val="740" />
+    <set name="price" val="8680000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <set name="is_magical" val="true" />
+    <set name="oncast_skill" val="1164-3" />
+    <set name="oncast_chance" val="7" />
+    <for>
+      <set order="0x08" stat="pAtk" val="122" />
+      <set order="0x08" stat="mAtk" val="122" />
+      <set order="0x08" stat="rCrit" val="12" />
+      <add order="0x10" stat="accCombat" val="-3" />
+      <set order="0x08" stat="pAtkSpd" val="433" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="7816" name="Apprentice Adventurer's Staff" type="Weapon">
+    <set name="weapon_type" val="BIGBLUNT" />
+    <set name="bodypart" val="lrhand" />
+    <set name="random_damage" val="20" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="WOOD" />
+    <set name="weight" val="1070" />
+    <set name="price" val="0" />
+    <set name="soulshots" val="2" />
+    <set name="spiritshots" val="2" />
+    <set name="is_magical" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+    <cond msgId="1685">
+      <player pkCount="0" />
+    </cond>
+    <for>
+      <set order="0x08" stat="pAtk" val="23" />
+      <set order="0x08" stat="mAtk" val="22" />
+      <set order="0x08" stat="rCrit" val="4" />
+      <add order="0x10" stat="accCombat" val="4" />
+      <set order="0x08" stat="pAtkSpd" val="325" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="7817" name="Apprentice Adventurer's Bone Club" type="Weapon">
+    <set name="weapon_type" val="BLUNT" />
+    <set name="bodypart" val="rhand" />
+    <set name="random_damage" val="20" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="FINE_STEEL" />
+    <set name="weight" val="1850" />
+    <set name="price" val="0" />
+    <set name="soulshots" val="2" />
+    <set name="spiritshots" val="2" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+    <cond msgId="1685">
+      <player pkCount="0" />
+    </cond>
+    <for>
+      <set order="0x08" stat="pAtk" val="24" />
+      <set order="0x08" stat="mAtk" val="17" />
+      <set order="0x08" stat="rCrit" val="4" />
+      <add order="0x10" stat="accCombat" val="4" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="7818" name="Apprentice Adventurer's Knife" type="Weapon">
+    <set name="weapon_type" val="DAGGER" />
+    <set name="bodypart" val="rhand" />
+    <set name="random_damage" val="5" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="MITHRIL" />
+    <set name="weight" val="1120" />
+    <set name="price" val="0" />
+    <set name="soulshots" val="2" />
+    <set name="spiritshots" val="2" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+    <cond msgId="1685">
+      <player pkCount="0" />
+    </cond>
+    <for>
+      <set order="0x08" stat="pAtk" val="21" />
+      <set order="0x08" stat="mAtk" val="17" />
+      <set order="0x08" stat="rCrit" val="12" />
+      <add order="0x10" stat="accCombat" val="-3" />
+      <set order="0x08" stat="pAtkSpd" val="433" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="7819" name="Apprentice Adventurer's Cestus" type="Weapon">
+    <set name="weapon_type" val="DUALFIST" />
+    <set name="bodypart" val="lrhand" />
+    <set name="random_damage" val="5" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="1570" />
+    <set name="price" val="0" />
+    <set name="soulshots" val="2" />
+    <set name="spiritshots" val="2" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+    <cond msgId="1685">
+      <player pkCount="0" />
+    </cond>
+    <for>
+      <set order="0x08" stat="pAtk" val="29" />
+      <set order="0x08" stat="mAtk" val="17" />
+      <set order="0x08" stat="rCrit" val="4" />
+      <add order="0x10" stat="accCombat" val="4" />
+      <set order="0x08" stat="pAtkSpd" val="325" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="7820" name="Apprentice Adventurer's Bow" type="Weapon">
+    <set name="weapon_type" val="BOW" />
+    <set name="bodypart" val="lrhand" />
+    <set name="random_damage" val="5" />
+    <set name="attack_range" val="500" />
+    <set name="material" val="WOOD" />
+    <set name="weight" val="1900" />
+    <set name="price" val="0" />
+    <set name="soulshots" val="7" />
+    <set name="spiritshots" val="2" />
+    <set name="reuse_delay" val="1500" />
+    <set name="mp_consume" val="3" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+    <cond msgId="1685">
+      <player pkCount="0" />
+    </cond>
+    <for>
+      <set order="0x08" stat="pAtk" val="49" />
+      <set order="0x08" stat="mAtk" val="17" />
+      <set order="0x08" stat="rCrit" val="12" />
+      <add order="0x10" stat="accCombat" val="-3" />
+      <set order="0x08" stat="pAtkSpd" val="293" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="7821" name="Apprentice Adventurer's Long Sword" type="Weapon">
+    <set name="weapon_type" val="SWORD" />
+    <set name="bodypart" val="rhand" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="FINE_STEEL" />
+    <set name="weight" val="1560" />
+    <set name="price" val="0" />
+    <set name="soulshots" val="2" />
+    <set name="spiritshots" val="2" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+    <cond msgId="1685">
+      <player pkCount="0" />
+    </cond>
+    <for>
+      <set order="0x08" stat="pAtk" val="24" />
+      <set order="0x08" stat="mAtk" val="17" />
+      <set order="0x08" stat="rCrit" val="8" />
+      <add order="0x10" stat="accCombat" val="0" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="7822" name="Traveler's Mace" type="Weapon">
+    <set name="weapon_type" val="BLUNT" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="D" />
+    <set name="random_damage" val="20" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="1300" />
+    <set name="price" val="0" />
+    <set name="soulshots" val="2" />
+    <set name="spiritshots" val="2" />
+    <set name="is_magical" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+    <cond msgId="1685">
+      <player pkCount="0" />
+    </cond>
+    <for>
+      <set order="0x08" stat="pAtk" val="41" />
+      <set order="0x08" stat="mAtk" val="43" />
+      <set order="0x08" stat="rCrit" val="4" />
+      <add order="0x10" stat="accCombat" val="4" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="7823" name="Traveler's Dark Elven Bow" type="Weapon">
+    <set name="weapon_type" val="BOW" />
+    <set name="bodypart" val="lrhand" />
+    <set name="crystal_type" val="D" />
+    <set name="random_damage" val="5" />
+    <set name="attack_range" val="500" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="1830" />
+    <set name="price" val="0" />
+    <set name="soulshots" val="6" />
+    <set name="spiritshots" val="2" />
+    <set name="reuse_delay" val="1500" />
+    <set name="mp_consume" val="4" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+    <cond msgId="1685">
+      <player pkCount="0" />
+    </cond>
+    <for>
+      <set order="0x08" stat="pAtk" val="105" />
+      <set order="0x08" stat="mAtk" val="32" />
+      <set order="0x08" stat="rCrit" val="12" />
+      <add order="0x10" stat="accCombat" val="-3" />
+      <set order="0x08" stat="pAtkSpd" val="293" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="7824" name="Traveler's Long Bow" type="Weapon">
+    <set name="weapon_type" val="BOW" />
+    <set name="bodypart" val="lrhand" />
+    <set name="crystal_type" val="D" />
+    <set name="random_damage" val="5" />
+    <set name="attack_range" val="500" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="1830" />
+    <set name="price" val="0" />
+    <set name="soulshots" val="6" />
+    <set name="spiritshots" val="2" />
+    <set name="reuse_delay" val="1500" />
+    <set name="mp_consume" val="4" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+    <cond msgId="1685">
+      <player pkCount="0" />
+    </cond>
+    <for>
+      <set order="0x08" stat="pAtk" val="114" />
+      <set order="0x08" stat="mAtk" val="35" />
+      <set order="0x08" stat="rCrit" val="12" />
+      <add order="0x10" stat="accCombat" val="-3" />
+      <set order="0x08" stat="pAtkSpd" val="227" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="7825" name="Traveler's Staff" type="Weapon">
+    <set name="weapon_type" val="BIGBLUNT" />
+    <set name="bodypart" val="lrhand" />
+    <set name="crystal_type" val="D" />
+    <set name="random_damage" val="20" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="WOOD" />
+    <set name="weight" val="1040" />
+    <set name="price" val="0" />
+    <set name="soulshots" val="2" />
+    <set name="spiritshots" val="2" />
+    <set name="is_magical" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+    <for>
+      <set order="0x08" stat="pAtk" val="50" />
+      <set order="0x08" stat="mAtk" val="43" />
+      <set order="0x08" stat="rCrit" val="4" />
+      <add order="0x10" stat="accCombat" val="4" />
+      <set order="0x08" stat="pAtkSpd" val="325" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="7826" name="Traveler's Bastard Sword" type="Weapon">
+    <set name="weapon_type" val="SWORD" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="D" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="FINE_STEEL" />
+    <set name="weight" val="1510" />
+    <set name="price" val="0" />
+    <set name="soulshots" val="2" />
+    <set name="spiritshots" val="2" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+    <cond msgId="1685">
+      <player pkCount="0" />
+    </cond>
+    <for>
+      <set order="0x08" stat="pAtk" val="51" />
+      <set order="0x08" stat="mAtk" val="32" />
+      <set order="0x08" stat="rCrit" val="8" />
+      <add order="0x10" stat="accCombat" val="0" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="7827" name="Traveler's Wand" type="Weapon">
+    <set name="weapon_type" val="ETC" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="D" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="570" />
+    <set name="price" val="0" />
+    <set name="soulshots" val="2" />
+    <set name="spiritshots" val="2" />
+    <set name="is_magical" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+    <for>
+      <set order="0x08" stat="pAtk" val="41" />
+      <set order="0x08" stat="mAtk" val="43" />
+      <set order="0x08" stat="rCrit" val="8" />
+      <add order="0x10" stat="accCombat" val="0" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="7828" name="Traveler's Jamadhr" type="Weapon">
+    <set name="weapon_type" val="DUALFIST" />
+    <set name="bodypart" val="lrhand" />
+    <set name="crystal_type" val="D" />
+    <set name="random_damage" val="5" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="1550" />
+    <set name="price" val="0" />
+    <set name="soulshots" val="2" />
+    <set name="spiritshots" val="2" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+    <cond msgId="1685">
+      <player pkCount="0" />
+    </cond>
+    <for>
+      <set order="0x08" stat="pAtk" val="62" />
+      <set order="0x08" stat="mAtk" val="32" />
+      <set order="0x08" stat="rCrit" val="4" />
+      <add order="0x10" stat="accCombat" val="4" />
+      <set order="0x08" stat="pAtkSpd" val="325" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="7829" name="Traveler's Tomahawk" type="Weapon">
+    <set name="weapon_type" val="BLUNT" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="D" />
+    <set name="random_damage" val="20" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="BRONZE" />
+    <set name="weight" val="1780" />
+    <set name="price" val="0" />
+    <set name="soulshots" val="2" />
+    <set name="spiritshots" val="2" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+    <cond msgId="1685">
+      <player pkCount="0" />
+    </cond>
+    <for>
+      <set order="0x08" stat="pAtk" val="51" />
+      <set order="0x08" stat="mAtk" val="32" />
+      <set order="0x08" stat="rCrit" val="4" />
+      <add order="0x10" stat="accCombat" val="4" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="7830" name="Traveler's Poniard Dagger" type="Weapon">
+    <set name="weapon_type" val="DAGGER" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="D" />
+    <set name="random_damage" val="5" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="1090" />
+    <set name="price" val="0" />
+    <set name="soulshots" val="2" />
+    <set name="spiritshots" val="2" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+    <cond msgId="1685">
+      <player pkCount="0" />
+    </cond>
+    <for>
+      <set order="0x08" stat="pAtk" val="45" />
+      <set order="0x08" stat="mAtk" val="32" />
+      <set order="0x08" stat="rCrit" val="12" />
+      <add order="0x10" stat="accCombat" val="-3" />
+      <set order="0x08" stat="pAtkSpd" val="433" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="7831" name="Traveler's Pike" type="Weapon">
+    <set name="weapon_type" val="POLE" />
+    <set name="bodypart" val="lrhand" />
+    <set name="crystal_type" val="D" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="66" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="2090" />
+    <set name="price" val="0" />
+    <set name="soulshots" val="2" />
+    <set name="spiritshots" val="2" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+    <cond msgId="1685">
+      <player pkCount="0" />
+    </cond>
+    <for>
+      <set order="0x08" stat="pAtk" val="51" />
+      <set order="0x08" stat="mAtk" val="32" />
+      <set order="0x08" stat="rCrit" val="8" />
+      <set order="0x08" stat="pAtkRange" val="66" />
+      <add order="0x10" stat="accCombat" val="-3" />
+      <set order="0x08" stat="pAtkSpd" val="325" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="7832" name="Apprentice Adventurer's Weapon Exchange Coupon" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="0" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="7833" name="Adventurer's Magic Armor Exchange Coupon" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="0" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="7834" name="Art of Battle Axe" type="Weapon">
+    <set name="weapon_type" val="BLUNT" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="1746" />
+    <set name="random_damage" val="20" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="CHRYSOLITE" />
+    <set name="weight" val="1570" />
+    <set name="price" val="13100000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <for>
+      <set order="0x08" stat="pAtk" val="194" />
+      <set order="0x08" stat="mAtk" val="99" />
+      <set order="0x08" stat="rCrit" val="4" />
+      <add order="0x10" stat="accCombat" val="4" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="7835" name="Amulet: Seal of Disease" type="EtcItem">
+    <set name="etcitem_type" val="SPELLBOOK" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="120" />
+    <set name="price" val="11600" />
+  </item>
+  <item id="7838" name="Santa's Hat" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="10" />
+    <set name="price" val="0" />
+    <set name="is_dropable" val="false" />
+  </item>
+</list>

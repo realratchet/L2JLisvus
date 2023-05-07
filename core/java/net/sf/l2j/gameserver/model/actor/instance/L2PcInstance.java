@@ -190,6 +190,7 @@ import net.sf.l2j.gameserver.skills.BaseStats;
 import net.sf.l2j.gameserver.skills.Formulas;
 import net.sf.l2j.gameserver.skills.Stats;
 import net.sf.l2j.gameserver.skills.l2skills.L2SkillSummon;
+import net.sf.l2j.gameserver.templates.CrystalType;
 import net.sf.l2j.gameserver.templates.L2Armor;
 import net.sf.l2j.gameserver.templates.L2ArmorType;
 import net.sf.l2j.gameserver.templates.L2Henna;
@@ -2152,8 +2153,7 @@ public final class L2PcInstance extends L2PlayableInstance
 		{
 			if ((item != null) && item.isEquipped())
 			{
-				int crystaltype = item.getItem().getCrystalType();
-				
+				int crystaltype = item.getItem().getCrystalType().getId();
 				if (crystaltype > newPenalty)
 				{
 					newPenalty = crystaltype;
@@ -8026,7 +8026,7 @@ public final class L2PcInstance extends L2PlayableInstance
 		}
 		
 		// Check if all casting conditions are met
-		if (!skill.checkCondition(this, target, false))
+		if (!skill.checkCondition(this, target))
 		{
 			// Send a Server->Client packet ActionFailed to the L2PcInstance
 			sendPacket(new ActionFailed());
@@ -8921,7 +8921,7 @@ public final class L2PcInstance extends L2PlayableInstance
 		}
 	}
 	
-	public void disableAutoShotByCrystalType(int crystalType)
+	public void disableAutoShotByCrystalType(CrystalType crystalType)
 	{
 		for (int itemId : _activeSoulShots)
 		{
@@ -11920,7 +11920,6 @@ public final class L2PcInstance extends L2PlayableInstance
 	
 	class FeedTask implements Runnable
 	{
-		@SuppressWarnings("synthetic-access")
 		@Override
 		public void run()
 		{

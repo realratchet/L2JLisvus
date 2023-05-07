@@ -29,7 +29,7 @@ import net.sf.l2j.gameserver.templates.L2Weapon;
 public class FishingSkill implements ISkillHandler
 {
 	// private static Logger _log = Logger.getLogger(SiegeFlag.class.getName());
-	protected SkillType[] _skillIds =
+	private static SkillType[] SKILL_TYPES =
 	{
 		SkillType.PUMPING,
 		SkillType.REELING
@@ -78,7 +78,7 @@ public class FishingSkill implements ISkillHandler
 			SS = 2;
 		}
 
-		double gradebonus = 1 + (weaponItem.getCrystalType() * 0.1);
+		double gradebonus = 1 + (weaponItem.getCrystalType().getId() * 0.1);
 		int dmg = (int) (skill.getPower() * gradebonus * SS);
 
 		if (player.getSkillLevel(1315) <= (skill.getLevel() - 2)) // 1315 - Fish Expertise
@@ -112,8 +112,8 @@ public class FishingSkill implements ISkillHandler
 	}
 	
 	@Override
-	public SkillType[] getSkillIds()
+	public SkillType[] getSkillTypes()
 	{
-		return _skillIds;
+		return SKILL_TYPES;
 	}
 }

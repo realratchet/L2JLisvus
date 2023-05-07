@@ -26,7 +26,7 @@ import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
  */
 public class DeluxeKey implements ISkillHandler
 {
-	private static final SkillType[] SKILL_IDS =
+	private static final SkillType[] SKILL_TYPES =
 	{
 		SkillType.DELUXE_KEY_UNLOCK
 	};
@@ -50,8 +50,8 @@ public class DeluxeKey implements ISkillHandler
 	}
 	
 	@Override
-	public SkillType[] getSkillIds()
+	public SkillType[] getSkillTypes()
 	{
-		return SKILL_IDS;
+		return SKILL_TYPES;
 	}
 }

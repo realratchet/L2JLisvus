@@ -29,7 +29,7 @@ import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
  */
 public class Craft implements ISkillHandler
 {
-	private static SkillType[] _skillIds =
+	private static SkillType[] SKILL_TYPES =
 	{
 		SkillType.COMMON_CRAFT,
 		SkillType.DWARVEN_CRAFT
@@ -57,8 +57,8 @@ public class Craft implements ISkillHandler
 	}
 	
 	@Override
-	public SkillType[] getSkillIds()
+	public SkillType[] getSkillTypes()
 	{
-		return _skillIds;
+		return SKILL_TYPES;
 	}
 }

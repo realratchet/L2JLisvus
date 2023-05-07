@@ -155,7 +155,7 @@ public class RequestEnchantItem extends L2GameClientPacket
 		/** pretty code ;D */
 		switch (item.getItem().getCrystalType())
 		{
-			case L2Item.CRYSTAL_S:
+			case S:
 				crystalId = 1462;
 				switch (scroll.getItemId())
 				{
@@ -177,7 +177,7 @@ public class RequestEnchantItem extends L2GameClientPacket
 						break;
 				}
 				break;
-			case L2Item.CRYSTAL_A:
+			case A:
 				crystalId = 1461;
 				switch (scroll.getItemId())
 				{
@@ -199,7 +199,7 @@ public class RequestEnchantItem extends L2GameClientPacket
 						break;
 				}
 				break;
-			case L2Item.CRYSTAL_B:
+			case B:
 				crystalId = 1460;
 				switch (scroll.getItemId())
 				{
@@ -221,7 +221,7 @@ public class RequestEnchantItem extends L2GameClientPacket
 						break;
 				}
 				break;
-			case L2Item.CRYSTAL_C:
+			case C:
 				crystalId = 1459;
 				switch (scroll.getItemId())
 				{
@@ -243,7 +243,7 @@ public class RequestEnchantItem extends L2GameClientPacket
 						break;
 				}
 				break;
-			case L2Item.CRYSTAL_D:
+			case D:
 				crystalId = 1458;
 				switch (scroll.getItemId())
 				{

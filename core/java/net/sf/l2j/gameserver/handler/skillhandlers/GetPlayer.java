@@ -28,7 +28,7 @@ import net.sf.l2j.util.Rnd;
  */
 public class GetPlayer implements ISkillHandler
 {
-	private static final SkillType[] SKILL_IDS =
+	private static final SkillType[] SKILL_TYPES =
 	{
 		SkillType.GET_PLAYER
 	};
@@ -79,11 +79,11 @@ public class GetPlayer implements ISkillHandler
 	}
 
 	/**
-	 * @see net.sf.l2j.gameserver.handler.ISkillHandler#getSkillIds()
+	 * @see net.sf.l2j.gameserver.handler.ISkillHandler#getSkillTypes()
 	 */
 	@Override
-	public SkillType[] getSkillIds()
+	public SkillType[] getSkillTypes()
 	{
-		return SKILL_IDS;
+		return SKILL_TYPES;
 	}
 }

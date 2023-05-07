@@ -37,7 +37,7 @@ import net.sf.l2j.util.Rnd;
 public class Fishing implements ISkillHandler
 {
 	// private static Logger _log = Logger.getLogger(SiegeFlag.class.getName());
-	protected SkillType[] _skillIds =
+	private static SkillType[] SKILL_TYPES =
 	{
 		SkillType.FISHING
 	};
@@ -194,8 +194,8 @@ public class Fishing implements ISkillHandler
 	}
 	
 	@Override
-	public SkillType[] getSkillIds()
+	public SkillType[] getSkillTypes()
 	{
-		return _skillIds;
+		return SKILL_TYPES;
 	}
 }

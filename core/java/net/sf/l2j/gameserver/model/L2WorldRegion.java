@@ -48,14 +48,16 @@ public final class L2WorldRegion
     private Queue<L2WorldRegion> _surroundingRegions;
     private int tileX, tileY;
     private Boolean _active = false;
-    private ScheduledFuture<?> _neighborsTask = null;
+    private ScheduledFuture<?> _neighborsTask = null;
+
     private final List<L2ZoneType> _zones;
 
     public L2WorldRegion(int pTileX, int pTileY)
     {
         _allPlayable = new ConcurrentHashMap<>();
         _visibleObjects = new ConcurrentHashMap<>();
-        _surroundingRegions = new ConcurrentLinkedQueue<>();
+        _surroundingRegions = new ConcurrentLinkedQueue<>();
+
         tileX = pTileX;
         tileY = pTileY;
         
@@ -191,9 +193,11 @@ public final class L2WorldRegion
                     // L2Monsterinstance/L2Attackable socials are handled by AI (TODO: check the instances)
                     ((L2NpcInstance)o).startRandomAnimationTimer();
                 }
-            }
+            }
+
             _log.fine(c+ " mobs were turned on");
-        }
+        }
+
     }
 
     public boolean isActive()
@@ -332,7 +336,7 @@ public final class L2WorldRegion
         {
             _allPlayable.remove(object.getObjectId());
             
-            if ((_allPlayable.size() == 0) && (!Config.GRIDS_ALWAYS_ON))
+            if (_allPlayable.isEmpty() && !Config.GRIDS_ALWAYS_ON)
                 startDeactivation();
         }
     }

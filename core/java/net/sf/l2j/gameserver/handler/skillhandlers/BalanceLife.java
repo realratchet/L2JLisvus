@@ -29,7 +29,7 @@ import net.sf.l2j.gameserver.network.serverpackets.StatusUpdate;
 
 public class BalanceLife implements ISkillHandler
 {
-	private static SkillType[] _skillIds =
+	private static SkillType[] SKILL_TYPES =
 	{
 		SkillType.BALANCE_LIFE
 	};
@@ -88,8 +88,8 @@ public class BalanceLife implements ISkillHandler
 	}
 	
 	@Override
-	public SkillType[] getSkillIds()
+	public SkillType[] getSkillTypes()
 	{
-		return _skillIds;
+		return SKILL_TYPES;
 	}
 }

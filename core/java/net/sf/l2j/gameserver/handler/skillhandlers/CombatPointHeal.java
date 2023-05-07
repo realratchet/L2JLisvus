@@ -28,7 +28,7 @@ import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
  */
 public class CombatPointHeal implements ISkillHandler
 {
-	private static SkillType[] _skillIds =
+	private static SkillType[] SKILL_TYPES =
 	{
 		SkillType.COMBATPOINTHEAL
 	};
@@ -56,8 +56,8 @@ public class CombatPointHeal implements ISkillHandler
 	}
 	
 	@Override
-	public SkillType[] getSkillIds()
+	public SkillType[] getSkillTypes()
 	{
-		return _skillIds;
+		return SKILL_TYPES;
 	}
 }

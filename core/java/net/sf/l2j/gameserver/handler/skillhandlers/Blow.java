@@ -35,7 +35,7 @@ import net.sf.l2j.util.Log;
  */
 public class Blow implements ISkillHandler
 {
-	private static final SkillType[] SKILL_IDS =
+	private static final SkillType[] SKILL_TYPES =
 	{
 		SkillType.BLOW
 	};
@@ -177,8 +177,8 @@ public class Blow implements ISkillHandler
 	}
 	
 	@Override
-	public SkillType[] getSkillIds()
+	public SkillType[] getSkillTypes()
 	{
-		return SKILL_IDS;
+		return SKILL_TYPES;
 	}
 }

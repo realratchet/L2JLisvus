@@ -30,7 +30,7 @@ import net.sf.l2j.gameserver.skills.Stats;
  */
 public class ManaHeal implements ISkillHandler
 {
-	private static SkillType[] _skillIds =
+	private static SkillType[] SKILL_TYPES =
 	{
 		SkillType.MANAHEAL,
 		SkillType.MANARECHARGE
@@ -94,8 +94,8 @@ public class ManaHeal implements ISkillHandler
 	}
 	
 	@Override
-	public SkillType[] getSkillIds()
+	public SkillType[] getSkillTypes()
 	{
-		return _skillIds;
+		return SKILL_TYPES;
 	}
 }

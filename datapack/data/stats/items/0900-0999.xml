@@ -1,0 +1,1052 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<list>
+  <item id="900" name="Ring of Grace" type="Armor">
+    <set name="bodypart" val="rfinger;lfinger" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="53" />
+    <set name="material" val="GOLD" />
+    <set name="weight" val="150" />
+    <set name="price" val="404000" />
+    <for>
+      <add order="0x10" stat="mDef" val="34" />
+      <enchant order="0x0C" stat="mDef" val="0" />
+    </for>
+  </item>
+  <item id="901" name="Ring of Holy Spirit" type="Armor">
+    <set name="bodypart" val="rfinger;lfinger" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="82" />
+    <set name="material" val="GOLD" />
+    <set name="weight" val="150" />
+    <set name="price" val="616000" />
+    <for>
+      <add order="0x10" stat="mDef" val="36" />
+      <enchant order="0x0C" stat="mDef" val="0" />
+    </for>
+  </item>
+  <item id="902" name="Phoenix Ring" type="Armor">
+    <set name="bodypart" val="rfinger;lfinger" />
+    <set name="crystal_type" val="A" />
+    <set name="crystal_count" val="104" />
+    <set name="material" val="GOLD" />
+    <set name="weight" val="150" />
+    <set name="price" val="1300000" />
+    <for>
+      <add order="0x10" stat="mDef" val="40" />
+      <add order="0x60" stat="maxMp" val="13" />
+      <enchant order="0x0C" stat="mDef" val="0" />
+    </for>
+  </item>
+  <item id="903" name="Cerberus Ring" type="Armor">
+    <set name="bodypart" val="rfinger;lfinger" />
+    <set name="crystal_type" val="A" />
+    <set name="crystal_count" val="104" />
+    <set name="material" val="GOLD" />
+    <set name="weight" val="150" />
+    <set name="price" val="1300000" />
+    <for>
+      <add order="0x10" stat="mDef" val="40" />
+      <enchant order="0x0C" stat="mDef" val="0" />
+    </for>
+  </item>
+  <item id="904" name="Ring of Aid" type="Armor">
+    <set name="bodypart" val="rfinger;lfinger" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="53" />
+    <set name="material" val="GOLD" />
+    <set name="weight" val="150" />
+    <set name="price" val="404000" />
+    <for>
+      <add order="0x10" stat="mDef" val="34" />
+      <enchant order="0x0C" stat="mDef" val="0" />
+    </for>
+  </item>
+  <item id="905" name="Ring of Blessing" type="Armor">
+    <set name="bodypart" val="rfinger;lfinger" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="53" />
+    <set name="material" val="GOLD" />
+    <set name="weight" val="150" />
+    <set name="price" val="404000" />
+    <for>
+      <add order="0x10" stat="mDef" val="34" />
+      <enchant order="0x0C" stat="mDef" val="0" />
+    </for>
+  </item>
+  <item id="906" name="Necklace of Knowledge" type="Armor">
+    <set name="bodypart" val="neck" />
+    <set name="material" val="SILVER" />
+    <set name="weight" val="150" />
+    <set name="price" val="1080" />
+    <for>
+      <add order="0x10" stat="mDef" val="18" />
+    </for>
+  </item>
+  <item id="907" name="Necklace of Anguish" type="Armor">
+    <set name="bodypart" val="neck" />
+    <set name="material" val="SILVER" />
+    <set name="weight" val="150" />
+    <set name="price" val="4680" />
+    <for>
+      <add order="0x10" stat="mDef" val="21" />
+    </for>
+  </item>
+  <item id="908" name="Necklace of Wisdom" type="Armor">
+    <set name="bodypart" val="neck" />
+    <set name="material" val="SILVER" />
+    <set name="weight" val="150" />
+    <set name="price" val="11900" />
+    <for>
+      <add order="0x10" stat="mDef" val="25" />
+    </for>
+  </item>
+  <item id="909" name="Blue Diamond Necklace" type="Armor">
+    <set name="bodypart" val="neck" />
+    <set name="material" val="SILVER" />
+    <set name="weight" val="150" />
+    <set name="price" val="21300" />
+    <for>
+      <add order="0x10" stat="mDef" val="28" />
+    </for>
+  </item>
+  <item id="910" name="Necklace of Devotion" type="Armor">
+    <set name="bodypart" val="neck" />
+    <set name="crystal_type" val="D" />
+    <set name="crystal_count" val="65" />
+    <set name="material" val="SILVER" />
+    <set name="weight" val="150" />
+    <set name="price" val="35900" />
+    <for>
+      <add order="0x10" stat="mDef" val="32" />
+      <enchant order="0x0C" stat="mDef" val="0" />
+    </for>
+  </item>
+  <item id="911" name="Enchanted Necklace" type="Armor">
+    <set name="bodypart" val="neck" />
+    <set name="crystal_type" val="D" />
+    <set name="crystal_count" val="103" />
+    <set name="material" val="SILVER" />
+    <set name="weight" val="150" />
+    <set name="price" val="56800" />
+    <for>
+      <add order="0x10" stat="mDef" val="36" />
+      <enchant order="0x0C" stat="mDef" val="0" />
+    </for>
+  </item>
+  <item id="912" name="Near Forest Necklace" type="Armor">
+    <set name="bodypart" val="neck" />
+    <set name="crystal_type" val="D" />
+    <set name="crystal_count" val="155" />
+    <set name="material" val="SILVER" />
+    <set name="weight" val="150" />
+    <set name="price" val="85700" />
+    <for>
+      <add order="0x10" stat="mDef" val="40" />
+      <enchant order="0x0C" stat="mDef" val="0" />
+    </for>
+  </item>
+  <item id="913" name="Elven Necklace" type="Armor">
+    <set name="bodypart" val="neck" />
+    <set name="crystal_type" val="D" />
+    <set name="crystal_count" val="227" />
+    <set name="material" val="SILVER" />
+    <set name="weight" val="150" />
+    <set name="price" val="125000" />
+    <for>
+      <add order="0x10" stat="mDef" val="45" />
+      <enchant order="0x0C" stat="mDef" val="0" />
+    </for>
+  </item>
+  <item id="914" name="Necklace of Darkness" type="Armor">
+    <set name="bodypart" val="neck" />
+    <set name="crystal_type" val="D" />
+    <set name="crystal_count" val="294" />
+    <set name="material" val="SILVER" />
+    <set name="weight" val="150" />
+    <set name="price" val="162000" />
+    <for>
+      <add order="0x10" stat="mDef" val="48" />
+      <enchant order="0x0C" stat="mDef" val="0" />
+    </for>
+  </item>
+  <item id="915" name="Aquastone Necklace" type="Armor">
+    <set name="bodypart" val="neck" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="82" />
+    <set name="material" val="SILVER" />
+    <set name="weight" val="150" />
+    <set name="price" val="207000" />
+    <for>
+      <add order="0x10" stat="mDef" val="52" />
+      <enchant order="0x0C" stat="mDef" val="0" />
+    </for>
+  </item>
+  <item id="916" name="Necklace of Protection" type="Armor">
+    <set name="bodypart" val="neck" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="104" />
+    <set name="material" val="SILVER" />
+    <set name="weight" val="150" />
+    <set name="price" val="261000" />
+    <for>
+      <add order="0x10" stat="mDef" val="56" />
+      <enchant order="0x0C" stat="mDef" val="0" />
+    </for>
+  </item>
+  <item id="917" name="Necklace of Mermaid" type="Armor">
+    <set name="bodypart" val="neck" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="157" />
+    <set name="material" val="SILVER" />
+    <set name="weight" val="150" />
+    <set name="price" val="393000" />
+    <for>
+      <add order="0x10" stat="mDef" val="60" />
+      <enchant order="0x0C" stat="mDef" val="0" />
+    </for>
+  </item>
+  <item id="918" name="Adamantite Necklace" type="Armor">
+    <set name="bodypart" val="neck" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="107" />
+    <set name="material" val="SILVER" />
+    <set name="weight" val="150" />
+    <set name="price" val="808000" />
+    <for>
+      <add order="0x10" stat="mDef" val="68" />
+      <enchant order="0x0C" stat="mDef" val="0" />
+    </for>
+  </item>
+  <item id="919" name="Blessed Necklace" type="Armor">
+    <set name="bodypart" val="neck" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="226" />
+    <set name="material" val="SILVER" />
+    <set name="weight" val="150" />
+    <set name="price" val="565000" />
+    <for>
+      <add order="0x10" stat="mDef" val="64" />
+      <enchant order="0x0C" stat="mDef" val="0" />
+    </for>
+  </item>
+  <item id="920" name="Tateossian Necklace" type="Armor">
+    <set name="bodypart" val="neck" />
+    <set name="crystal_type" val="S" />
+    <set name="crystal_count" val="296" />
+    <set name="material" val="SILVER" />
+    <set name="weight" val="150" />
+    <set name="price" val="5920000" />
+    <for>
+      <add order="0x10" stat="mDef" val="95" />
+      <add order="0x60" stat="maxMp" val="42" />
+      <enchant order="0x0C" stat="mDef" val="0" />
+    </for>
+  </item>
+  <item id="921" name="Necklace of Mana" type="Armor">
+    <set name="bodypart" val="neck" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="107" />
+    <set name="material" val="SILVER" />
+    <set name="weight" val="150" />
+    <set name="price" val="808000" />
+    <for>
+      <add order="0x10" stat="mDef" val="72" />
+      <enchant order="0x0C" stat="mDef" val="0" />
+    </for>
+  </item>
+  <item id="922" name="Sage's Necklace" type="Armor">
+    <set name="bodypart" val="neck" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="164" />
+    <set name="material" val="SILVER" />
+    <set name="weight" val="150" />
+    <set name="price" val="1230000" />
+    <for>
+      <add order="0x10" stat="mDef" val="72" />
+      <enchant order="0x0C" stat="mDef" val="0" />
+    </for>
+  </item>
+  <item id="923" name="Paradia Necklace" type="Armor">
+    <set name="bodypart" val="neck" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="164" />
+    <set name="material" val="SILVER" />
+    <set name="weight" val="150" />
+    <set name="price" val="1230000" />
+    <for>
+      <add order="0x10" stat="mDef" val="72" />
+      <enchant order="0x0C" stat="mDef" val="0" />
+    </for>
+  </item>
+  <item id="924" name="Majestic Necklace" type="Armor">
+    <set name="bodypart" val="neck" />
+    <set name="crystal_type" val="A" />
+    <set name="crystal_count" val="276" />
+    <set name="material" val="SILVER" />
+    <set name="weight" val="150" />
+    <set name="price" val="3450000" />
+    <for>
+      <add order="0x10" stat="mDef" val="85" />
+      <add order="0x60" stat="maxMp" val="33" />
+      <enchant order="0x0C" stat="mDef" val="0" />
+    </for>
+  </item>
+  <item id="925" name="Necklace of Solar Eclipse" type="Armor">
+    <set name="bodypart" val="neck" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="107" />
+    <set name="material" val="SILVER" />
+    <set name="weight" val="150" />
+    <set name="price" val="808000" />
+    <for>
+      <add order="0x10" stat="mDef" val="68" />
+      <enchant order="0x0C" stat="mDef" val="0" />
+    </for>
+  </item>
+  <item id="926" name="Necklace of Black Ore" type="Armor">
+    <set name="bodypart" val="neck" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="164" />
+    <set name="material" val="SILVER" />
+    <set name="weight" val="150" />
+    <set name="price" val="1230000" />
+    <for>
+      <add order="0x10" stat="mDef" val="72" />
+      <enchant order="0x0C" stat="mDef" val="0" />
+    </for>
+  </item>
+  <item id="927" name="Necklace of Summoning" type="Armor">
+    <set name="bodypart" val="neck" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="107" />
+    <set name="material" val="SILVER" />
+    <set name="weight" val="150" />
+    <set name="price" val="808000" />
+    <for>
+      <add order="0x10" stat="mDef" val="68" />
+      <enchant order="0x0C" stat="mDef" val="0" />
+    </for>
+  </item>
+  <item id="928" name="Otherworldly Necklace" type="Armor">
+    <set name="bodypart" val="neck" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="164" />
+    <set name="material" val="SILVER" />
+    <set name="weight" val="150" />
+    <set name="price" val="1230000" />
+    <for>
+      <add order="0x10" stat="mDef" val="72" />
+      <enchant order="0x0C" stat="mDef" val="0" />
+    </for>
+  </item>
+  <item id="929" name="Elemental Necklace" type="Armor">
+    <set name="bodypart" val="neck" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="164" />
+    <set name="material" val="SILVER" />
+    <set name="weight" val="150" />
+    <set name="price" val="1230000" />
+    <for>
+      <add order="0x10" stat="mDef" val="72" />
+      <enchant order="0x0C" stat="mDef" val="0" />
+    </for>
+  </item>
+  <item id="930" name="Necklace of Phantom" type="Armor">
+    <set name="bodypart" val="neck" />
+    <set name="crystal_type" val="A" />
+    <set name="crystal_count" val="208" />
+    <set name="material" val="SILVER" />
+    <set name="weight" val="150" />
+    <set name="price" val="2600000" />
+    <for>
+      <add order="0x10" stat="mDef" val="80" />
+      <enchant order="0x0C" stat="mDef" val="0" />
+    </for>
+  </item>
+  <item id="931" name="Necklace of Grace" type="Armor">
+    <set name="bodypart" val="neck" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="107" />
+    <set name="material" val="SILVER" />
+    <set name="weight" val="150" />
+    <set name="price" val="808000" />
+    <for>
+      <add order="0x10" stat="mDef" val="68" />
+      <enchant order="0x0C" stat="mDef" val="0" />
+    </for>
+  </item>
+  <item id="932" name="Necklace of Holy Spirit" type="Armor">
+    <set name="bodypart" val="neck" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="164" />
+    <set name="material" val="SILVER" />
+    <set name="weight" val="150" />
+    <set name="price" val="1230000" />
+    <for>
+      <add order="0x10" stat="mDef" val="72" />
+      <enchant order="0x0C" stat="mDef" val="0" />
+    </for>
+  </item>
+  <item id="933" name="Phoenix Necklace" type="Armor">
+    <set name="bodypart" val="neck" />
+    <set name="crystal_type" val="A" />
+    <set name="crystal_count" val="208" />
+    <set name="material" val="SILVER" />
+    <set name="weight" val="150" />
+    <set name="price" val="2600000" />
+    <for>
+      <add order="0x10" stat="mDef" val="80" />
+      <add order="0x60" stat="maxMp" val="26" />
+      <enchant order="0x0C" stat="mDef" val="0" />
+    </for>
+  </item>
+  <item id="934" name="Cerberus Necklace" type="Armor">
+    <set name="bodypart" val="neck" />
+    <set name="crystal_type" val="A" />
+    <set name="crystal_count" val="208" />
+    <set name="material" val="SILVER" />
+    <set name="weight" val="150" />
+    <set name="price" val="2600000" />
+    <for>
+      <add order="0x10" stat="mDef" val="80" />
+      <enchant order="0x0C" stat="mDef" val="0" />
+    </for>
+  </item>
+  <item id="935" name="Necklace of Aid" type="Armor">
+    <set name="bodypart" val="neck" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="107" />
+    <set name="material" val="SILVER" />
+    <set name="weight" val="150" />
+    <set name="price" val="808000" />
+    <for>
+      <add order="0x10" stat="mDef" val="68" />
+      <enchant order="0x0C" stat="mDef" val="0" />
+    </for>
+  </item>
+  <item id="936" name="Necklace of Blessing" type="Armor">
+    <set name="bodypart" val="neck" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="107" />
+    <set name="material" val="SILVER" />
+    <set name="weight" val="150" />
+    <set name="price" val="808000" />
+    <for>
+      <add order="0x10" stat="mDef" val="68" />
+      <enchant order="0x0C" stat="mDef" val="0" />
+    </for>
+  </item>
+  <item id="937" name="Directions to Ruins" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="938" name="Deck" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="SILVER" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_tradable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="939" name="Gara's Quest Item #11" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="940" name="Gara's Quest Item #12" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="941" name="Gara's Proof of Bravery" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="942" name="Gara's Proof of Justice" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="943" name="Gara's Proof of Despair" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="944" name="Deathknight Skull" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="945" name="Skeleton Buckler" type="Armor">
+    <set name="bodypart" val="lhand" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="WOOD" />
+    <set name="weight" val="1400" />
+    <set name="price" val="3440" />
+    <for>
+      <sub order="0x10" stat="rEvas" val="8" />
+      <set order="0x08" stat="sDef" val="69" />
+      <set order="0x08" stat="rShld" val="20" />
+      <enchant order="0x0C" stat="pDef" val="0" />
+    </for>
+  </item>
+  <item id="946" name="Skeleton Dagger" type="Weapon">
+    <set name="weapon_type" val="DAGGER" />
+    <set name="bodypart" val="rhand" />
+    <set name="random_damage" val="5" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="1100" />
+    <set name="price" val="66600" />
+    <set name="soulshots" val="2" />
+    <set name="spiritshots" val="2" />
+    <for>
+      <set order="0x08" stat="pAtk" val="16" />
+      <set order="0x08" stat="mAtk" val="13" />
+      <set order="0x08" stat="rCrit" val="12" />
+      <add order="0x10" stat="accCombat" val="-3" />
+      <set order="0x08" stat="pAtkSpd" val="433" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="947" name="Scroll: Enchant Weapon (B)" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="120" />
+    <set name="price" val="500000" />
+    <set name="handler" val="EnchantScrolls" />
+  </item>
+  <item id="948" name="Scroll: Enchant Armor (B)" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="120" />
+    <set name="price" val="80000" />
+    <set name="handler" val="EnchantScrolls" />
+  </item>
+  <item id="949" name="Crystal Scroll: Enchant Weapon (B)" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="120" />
+    <set name="price" val="80000" />
+    <set name="handler" val="EnchantScrolls" />
+  </item>
+  <item id="950" name="Crystal Scroll: Enchant Armor (B)" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="120" />
+    <set name="price" val="80000" />
+    <set name="handler" val="EnchantScrolls" />
+  </item>
+  <item id="951" name="Scroll: Enchant Weapon (C)" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="120" />
+    <set name="price" val="110000" />
+    <set name="handler" val="EnchantScrolls" />
+  </item>
+  <item id="952" name="Scroll: Enchant Armor (C)" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="120" />
+    <set name="price" val="15000" />
+    <set name="handler" val="EnchantScrolls" />
+  </item>
+  <item id="953" name="Crystal Scroll: Enchant Weapon (C)" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="120" />
+    <set name="price" val="15000" />
+    <set name="handler" val="EnchantScrolls" />
+  </item>
+  <item id="954" name="Crystal Scroll: Enchant Armor (C)" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="120" />
+    <set name="price" val="15000" />
+    <set name="handler" val="EnchantScrolls" />
+  </item>
+  <item id="955" name="Scroll: Enchant Weapon (D)" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="120" />
+    <set name="price" val="50000" />
+    <set name="handler" val="EnchantScrolls" />
+  </item>
+  <item id="956" name="Scroll: Enchant Armor (D)" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="120" />
+    <set name="price" val="6000" />
+    <set name="handler" val="EnchantScrolls" />
+  </item>
+  <item id="957" name="Crystal Scroll: Enchant Weapon (D)" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="120" />
+    <set name="price" val="6000" />
+    <set name="handler" val="EnchantScrolls" />
+  </item>
+  <item id="958" name="Crystal Scroll: Enchant Armor (D)" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="120" />
+    <set name="price" val="6000" />
+    <set name="handler" val="EnchantScrolls" />
+  </item>
+  <item id="959" name="Scroll: Enchant Weapon (S)" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="120" />
+    <set name="price" val="5000000" />
+    <set name="handler" val="EnchantScrolls" />
+  </item>
+  <item id="960" name="Scroll: Enchant Armor (S)" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="120" />
+    <set name="price" val="500000" />
+    <set name="handler" val="EnchantScrolls" />
+  </item>
+  <item id="961" name="Crystal Scroll: Enchant Weapon (S)" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="120" />
+    <set name="price" val="500000" />
+    <set name="handler" val="EnchantScrolls" />
+  </item>
+  <item id="962" name="Crystal Scroll: Enchant Armor (S)" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="120" />
+    <set name="price" val="500000" />
+    <set name="handler" val="EnchantScrolls" />
+  </item>
+  <item id="963" name="Orcish Arrowhead" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="964" name="Alberius's Letter" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="965" name="Evergreen Amulet" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="966" name="Dryad's Tears" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="967" name="Cobendell Medicine" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="968" name="Karrod's Letter" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="969" name="Cecktinon's First Voucher" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="970" name="Cecktinon's Second Voucher" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="971" name="Soul Catcher" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="972" name="Preserving Oil" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="973" name="Zombie Head" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="974" name="Steelbender Head" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="975" name="Blood Saber" type="Weapon">
+    <set name="weapon_type" val="SWORD" />
+    <set name="bodypart" val="rhand" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="ORIHARUKON" />
+    <set name="weight" val="1450" />
+    <set name="price" val="33600" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <for>
+      <set order="0x08" stat="pAtk" val="14" />
+      <set order="0x08" stat="mAtk" val="11" />
+      <set order="0x08" stat="rCrit" val="8" />
+      <add order="0x10" stat="accCombat" val="0" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="976" name="1st Mark of Sentinel" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="977" name="2nd Mark of Sentinel" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="978" name="Skullcrusher Amulet" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="979" name="Bloodspear Amulet" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="980" name="0" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="981" name="Red Sunset Sword" type="Weapon">
+    <set name="weapon_type" val="BIGSWORD" />
+    <set name="bodypart" val="lrhand" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="1300" />
+    <set name="price" val="25500" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <for>
+      <set order="0x08" stat="pAtk" val="16" />
+      <set order="0x08" stat="mAtk" val="10" />
+      <set order="0x08" stat="rCrit" val="8" />
+      <add order="0x10" stat="accCombat" val="0" />
+      <set order="0x08" stat="pAtkSpd" val="325" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="982" name="Esrandell's Letter" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="983" name="Kendell's Letter" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="984" name="1st Onyx Talisman" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="985" name="2nd Onyx Talisman" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="986" name="Ancient Scroll" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="987" name="Ancient Clay Tablet" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="988" name="Kartia's Translation" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="989" name="Eldritch Dagger" type="Weapon">
+    <set name="weapon_type" val="DAGGER" />
+    <set name="bodypart" val="rhand" />
+    <set name="random_damage" val="5" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="1130" />
+    <set name="price" val="25500" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <for>
+      <set order="0x08" stat="pAtk" val="11" />
+      <set order="0x08" stat="mAtk" val="10" />
+      <set order="0x08" stat="rCrit" val="12" />
+      <add order="0x10" stat="accCombat" val="-3" />
+      <set order="0x08" stat="pAtkSpd" val="433" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="990" name="Mandragora Essence" type="Armor">
+    <set name="bodypart" val="gloves" />
+    <set name="material" val="CLOTH" />
+    <set name="weight" val="60" />
+    <set name="price" val="37" />
+    <for>
+      <add order="0x10" stat="pDef" val="9" />
+    </for>
+  </item>
+  <item id="991" name="Royen's Key" type="Armor">
+    <set name="bodypart" val="gloves" />
+    <set name="material" val="CLOTH" />
+    <set name="weight" val="60" />
+    <set name="price" val="37" />
+    <for>
+      <add order="0x10" stat="pDef" val="9" />
+    </for>
+  </item>
+  <item id="992" name="Shilen's 1st Mark" type="Armor">
+    <set name="bodypart" val="gloves" />
+    <set name="material" val="CLOTH" />
+    <set name="weight" val="60" />
+    <set name="price" val="37" />
+    <for>
+      <add order="0x10" stat="pDef" val="9" />
+    </for>
+  </item>
+  <item id="993" name="Shilen's 2nd Mark" type="Armor">
+    <set name="bodypart" val="gloves" />
+    <set name="material" val="CLOTH" />
+    <set name="weight" val="60" />
+    <set name="price" val="37" />
+    <for>
+      <add order="0x10" stat="pDef" val="9" />
+    </for>
+  </item>
+  <item id="994" name="Eye of Abyss" type="Armor">
+    <set name="bodypart" val="gloves" />
+    <set name="material" val="CLOTH" />
+    <set name="weight" val="60" />
+    <set name="price" val="37" />
+    <for>
+      <add order="0x10" stat="pDef" val="9" />
+    </for>
+  </item>
+  <item id="995" name="Wanted Poster" type="Armor">
+    <set name="bodypart" val="gloves" />
+    <set name="material" val="CLOTH" />
+    <set name="weight" val="60" />
+    <set name="price" val="37" />
+    <for>
+      <add order="0x10" stat="pDef" val="9" />
+    </for>
+  </item>
+  <item id="996" name="Alex's Dagger" type="Armor">
+    <set name="bodypart" val="gloves" />
+    <set name="material" val="CLOTH" />
+    <set name="weight" val="60" />
+    <set name="price" val="37" />
+    <for>
+      <add order="0x10" stat="pDef" val="9" />
+    </for>
+  </item>
+  <item id="997" name="Pinter's Bill" type="Armor">
+    <set name="bodypart" val="gloves" />
+    <set name="material" val="CLOTH" />
+    <set name="weight" val="60" />
+    <set name="price" val="37" />
+    <for>
+      <add order="0x10" stat="pDef" val="9" />
+    </for>
+  </item>
+  <item id="998" name="Book of Aklantoth - Part 1" type="Armor">
+    <set name="bodypart" val="gloves" />
+    <set name="material" val="CLOTH" />
+    <set name="weight" val="60" />
+    <set name="price" val="37" />
+    <for>
+      <add order="0x10" stat="pDef" val="9" />
+    </for>
+  </item>
+  <item id="999" name="Book of Aklantoth - Part 2" type="Armor">
+    <set name="bodypart" val="gloves" />
+    <set name="material" val="CLOTH" />
+    <set name="weight" val="60" />
+    <set name="price" val="37" />
+    <for>
+      <add order="0x10" stat="pDef" val="9" />
+    </for>
+  </item>
+</list>

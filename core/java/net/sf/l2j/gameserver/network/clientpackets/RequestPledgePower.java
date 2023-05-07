@@ -14,8 +14,6 @@
  */
 package net.sf.l2j.gameserver.network.clientpackets;
 
-import java.util.logging.Logger;
-
 import net.sf.l2j.gameserver.model.L2Clan;
 import net.sf.l2j.gameserver.model.L2ClanMember;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
@@ -25,7 +23,6 @@ import net.sf.l2j.gameserver.network.serverpackets.UserInfo;
 
 public class RequestPledgePower extends L2GameClientPacket
 {
-	private static Logger _log = Logger.getLogger(RequestPledgePower.class.getName());
 	private static final String _C__C0_REQUESTPLEDGEPOWER = "[C] C0 RequestPledgePower";
 	
 	private int _clanMemberId;

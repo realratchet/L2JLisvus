@@ -39,10 +39,9 @@ import net.sf.l2j.util.Log;
  */
 public class Pdam implements ISkillHandler
 {
-	// All the items ids that this handler knows
 	private static Logger _log = Logger.getLogger(Pdam.class.getName());
 
-	private static SkillType[] _skillIds =
+	private static SkillType[] SKILL_TYPES =
 	{
 		SkillType.PDAM,
 		SkillType.FATAL
@@ -219,8 +218,8 @@ public class Pdam implements ISkillHandler
 	}
 	
 	@Override
-	public SkillType[] getSkillIds()
+	public SkillType[] getSkillTypes()
 	{
-		return _skillIds;
+		return SKILL_TYPES;
 	}
 }

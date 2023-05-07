@@ -40,7 +40,7 @@ import net.sf.l2j.util.Rnd;
  */
 public class Disablers implements ISkillHandler
 {
-	protected SkillType[] _skillIds =
+	private static SkillType[] SKILL_TYPES =
 	{
 		L2Skill.SkillType.STUN,
 		L2Skill.SkillType.ROOT,
@@ -526,8 +526,8 @@ public class Disablers implements ISkillHandler
 	}
 	
 	@Override
-	public SkillType[] getSkillIds()
+	public SkillType[] getSkillTypes()
 	{
-		return _skillIds;
+		return SKILL_TYPES;
 	}
 }

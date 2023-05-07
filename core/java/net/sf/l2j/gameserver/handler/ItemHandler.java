@@ -59,7 +59,7 @@ public class ItemHandler
 {
 	private static final Logger _log = Logger.getLogger(ItemHandler.class.getName());
 	
-	private final Map<Integer, IItemHandler> _dataTable = new HashMap<>();
+	public final Map<Integer, IItemHandler> _dataTable = new HashMap<>();
 	
 	/**
 	 * Create ItemHandler if doesn't exist and returns ItemHandler

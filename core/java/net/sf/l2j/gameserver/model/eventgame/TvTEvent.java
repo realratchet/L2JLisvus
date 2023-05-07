@@ -714,7 +714,7 @@ public class TvTEvent extends L2Event
 		}
 		
 		// If no participants left, abort event
-		if ((player.getEventTeam() > 0) && (_blueTeam.size() == 0) && (_redTeam.size() == 0))
+		if ((player.getEventTeam() > 0) && _blueTeam.isEmpty() && _redTeam.isEmpty())
 		{
 			_state = EventState.INITIAL;
 		}

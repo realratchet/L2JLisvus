@@ -217,7 +217,7 @@ class OlympiadManager implements Runnable
             {
             }
 
-            if (_gamesQueue.size() == 0)
+            if (_gamesQueue.isEmpty())
                 allGamesTerminated = true;
             else
             {

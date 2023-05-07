@@ -26,7 +26,7 @@ import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
  */
 public class BeastFeed implements ISkillHandler
 {
-	protected SkillType[] _skillIds =
+	private SkillType[] SKILL_TYPES =
 	{
 		SkillType.BEAST_FEED
 	};
@@ -50,8 +50,8 @@ public class BeastFeed implements ISkillHandler
 	}
 	
 	@Override
-	public SkillType[] getSkillIds()
+	public SkillType[] getSkillTypes()
 	{
-		return _skillIds;
+		return SKILL_TYPES;
 	}
 }

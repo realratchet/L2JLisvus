@@ -37,19 +37,13 @@ import net.sf.l2j.gameserver.skills.funcs.FuncTemplate;
  */
 public final class L2Weapon extends L2Item
 {
+	private final L2WeaponType _type;
 	private final int _soulShotCount;
 	private final int _spiritShotCount;
-	private final int _pDam;
 	private final int _rndDam;
-	private final int _critical;
-	private final double _hitModifier;
-	private final int _avoidModifier;
-	private final int _shieldDef;
-	private final double _shieldDefRate;
-	private final int _atkSpeed;
 	private final int _atkReuse;
 	private final int _mpConsume;
-	private final int _mDam;
+	private final int _baseAttackRange;
 	private final boolean _isMagical;
 
 	private L2Skill _itemSkill = null; // for passive skill
@@ -58,66 +52,64 @@ public final class L2Weapon extends L2Item
 	protected L2Skill[] _skillsOnCast;
 	protected L2Skill[] _skillsOnCrit;
 
+	public L2Skill _castSkill;
+	public int _castChance;
+	public L2Skill _critSkill;
+	public int _critChance;
+
 	/**
-	 * Constructor for Weapon.<BR>
-	 * <BR>
-	 * <U><I>Variables filled :</I></U><BR>
-	 * <LI>_soulShotCount & _spiritShotCount</LI>
-	 * <LI>_pDam & _mDam & _rndDam</LI>
-	 * <LI>_critical</LI>
-	 * <LI>_hitModifier</LI>
-	 * <LI>_avoidModifier</LI>
-	 * <LI>_shieldDes & _shieldDefRate</LI>
-	 * <LI>_atkSpeed & _AtkReuse</LI>
-	 * <LI>_mpConsume</LI>
-	 * @param type : L2ArmorType designating the type of armor
+	 * Constructor for Weapon.
+	 * 
 	 * @param set : StatsSet designating the set of couples (key,value) characterizing the armor
 	 * @see L2Item constructor
 	 */
-	public L2Weapon(L2WeaponType type, StatsSet set)
+	public L2Weapon(StatsSet set)
 	{
-		super(type, set);
-		_soulShotCount = set.getInteger("soulshots");
-		_spiritShotCount = set.getInteger("spiritshots");
-		_pDam = set.getInteger("p_dam");
-		_rndDam = set.getInteger("rnd_dam");
-		_critical = set.getInteger("critical");
-		_hitModifier = set.getDouble("hit_modify");
-		_avoidModifier = set.getInteger("avoid_modify");
-		_shieldDef = set.getInteger("shield_def");
-		_shieldDefRate = set.getDouble("shield_def_rate");
-		_atkSpeed = set.getInteger("atk_speed");
-		_atkReuse = set.getInteger("atk_reuse", type == L2WeaponType.BOW ? 1500 : 0);
-		_mpConsume = set.getInteger("mp_consume");
-		_mDam = set.getInteger("m_dam");
-		_isMagical = set.getBool("is_magical");
+		super(set);
 
-		int sId = set.getInteger("item_skill_id");
-		int sLv = set.getInteger("item_skill_lvl");
-		if ((sId > 0) && (sLv > 0))
-		{
-			_itemSkill = SkillTable.getInstance().getInfo(sId, sLv);
-		}
+		_type = set.getEnum("weapon_type", L2WeaponType.class, L2WeaponType.NONE);
 
-		sId = set.getInteger("onCast_skill_id");
-		sLv = set.getInteger("onCast_skill_lvl");
-		int sCh = set.getInteger("onCast_skill_chance");
-		if ((sId > 0) && (sLv > 0) && (sCh > 0))
-		{
-			L2Skill skill = SkillTable.getInstance().getInfo(sId, sLv);
-			skill.attach(new ConditionGameChance(sCh), true);
-			attachOnCast(skill);
-		}
+		_type1 = L2Item.TYPE1_WEAPON_RING_EARRING_NECKLACE;
+		_type2 = L2Item.TYPE2_WEAPON;
 
-		sId = set.getInteger("onCrit_skill_id");
-		sLv = set.getInteger("onCrit_skill_lvl");
-		sCh = set.getInteger("onCrit_skill_chance");
-		if ((sId > 0) && (sLv > 0) && (sCh > 0))
-		{
-			L2Skill skill = SkillTable.getInstance().getInfo(sId, sLv);
-			skill.attach(new ConditionGameChance(sCh), true);
-			attachOnCrit(skill);
-		}
+		_soulShotCount = set.getInteger("soulshots", 0);
+		_spiritShotCount = set.getInteger("spiritshots", 0);
+		_rndDam = set.getInteger("rnd_dam", 0);
+		_atkReuse = set.getInteger("reuse_delay", 0);
+		_mpConsume = set.getInteger("mp_consume", 0);
+		_baseAttackRange = set.getInteger("attack_range", 40);
+		_isMagical = set.getBool("is_magical", false);
+
+		// int sId = set.getInteger("item_skill_id");
+		// int sLv = set.getInteger("item_skill_lvl");
+		// if ((sId > 0) && (sLv > 0))
+		// {
+		// 	_itemSkill = SkillTable.getInstance().getInfo(sId, sLv);
+		// }
+
+		// sId = set.getInteger("onCast_skill_id");
+		// sLv = set.getInteger("onCast_skill_lvl");
+		// int sCh = set.getInteger("onCast_skill_chance");
+		// if ((sId > 0) && (sLv > 0) && (sCh > 0))
+		// {
+		// 	L2Skill skill = SkillTable.getInstance().getInfo(sId, sLv);
+		// 	_castSkill = skill;
+		// 	_castChance = sCh;
+		// 	skill.attach(new ConditionGameChance(sCh), true);
+		// 	attachOnCast(skill);
+		// }
+
+		// sId = set.getInteger("onCrit_skill_id");
+		// sLv = set.getInteger("onCrit_skill_lvl");
+		// sCh = set.getInteger("onCrit_skill_chance");
+		// if ((sId > 0) && (sLv > 0) && (sCh > 0))
+		// {
+		// 	L2Skill skill = SkillTable.getInstance().getInfo(sId, sLv);
+		// 	_critSkill = skill;
+		// 	_critChance = sCh;
+		// 	skill.attach(new ConditionGameChance(sCh), true);
+		// 	attachOnCrit(skill);
+		// }
 	}
 
 	/**
@@ -127,7 +119,7 @@ public final class L2Weapon extends L2Item
 	@Override
 	public L2WeaponType getItemType()
 	{
-		return (L2WeaponType) super._type;
+		return _type;
 	}
 
 	/**
@@ -159,30 +151,12 @@ public final class L2Weapon extends L2Item
 	}
 	
 	/**
-	 * Returns the physical damage.
-	 * @return int
-	 */
-	public int getPDamage()
-	{
-		return _pDam;
-	}
-	
-	/**
 	 * Returns the random damage inflicted by the weapon
 	 * @return int
 	 */
 	public int getRandomDamage()
 	{
 		return _rndDam;
-	}
-	
-	/**
-	 * Returns the attack speed of the weapon
-	 * @return int
-	 */
-	public int getAttackSpeed()
-	{
-		return _atkSpeed;
 	}
 	
 	/**
@@ -194,42 +168,6 @@ public final class L2Weapon extends L2Item
 	{
 		return _atkReuse;
 	}
-	
-	/**
-	 * Returns the avoid modifier of the weapon
-	 * @return int
-	 */
-	public int getAvoidModifier()
-	{
-		return _avoidModifier;
-	}
-	
-	/**
-	 * Returns the rate of critical hit
-	 * @return int
-	 */
-	public int getCritical()
-	{
-		return _critical;
-	}
-	
-	/**
-	 * Returns the hit modifier of the weapon
-	 * @return double
-	 */
-	public double getHitModifier()
-	{
-		return _hitModifier;
-	}
-	
-	/**
-	 * Returns the magical damage inflicted by the weapon
-	 * @return int
-	 */
-	public int getMDamage()
-	{
-		return _mDam;
-	}
 
 	/**
 	 * Returns the MP consumption with the weapon
@@ -239,23 +177,14 @@ public final class L2Weapon extends L2Item
 	{
 		return _mpConsume;
 	}
-	
+
 	/**
-	 * Returns the shield defense of the weapon
+	 * Returns the weapon attack range
 	 * @return int
 	 */
-	public int getShieldDef()
+	public int getBaseAttackRange()
 	{
-		return _shieldDef;
-	}
-	
-	/**
-	 * Returns the rate of shield defense of the weapon
-	 * @return double
-	 */
-	public double getShieldDefRate()
-	{
-		return _shieldDefRate;
+		return _baseAttackRange;
 	}
 	
 	public boolean isMagical()
@@ -328,10 +257,10 @@ public final class L2Weapon extends L2Item
 
 		for (L2Skill skill : _skillsOnCrit)
 		{
-			if (!skill.checkCondition(caster, target, true))
-			{
-				continue;
-			}
+			// if (!skill.checkCondition(caster, target, true))
+			// {
+			// 	continue;
+			// }
 
 			L2Character[] targets = new L2Character[] {target};
 			try
@@ -390,10 +319,10 @@ public final class L2Weapon extends L2Item
 		
 		for (L2Skill skill : _skillsOnCast)
 		{
-			if (!skill.checkCondition(caster, target, true))
-			{
-				continue;
-			}
+			// if (!skill.checkCondition(caster, target, true))
+			// {
+			// 	continue;
+			// }
 
 			if (trigger.isOffensive() != skill.isOffensive() || trigger.isMagic() != skill.isMagic())
 			{

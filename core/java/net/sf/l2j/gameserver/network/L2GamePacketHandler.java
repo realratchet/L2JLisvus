@@ -671,7 +671,7 @@ public final class L2GamePacketHandler implements IPacketHandler<L2GameClient>, 
 						msg = new DlgAnswer();
 						break;
 					case 0xc6:
-						msg = new RequestWearItem();
+						msg = new RequestPreviewItem();
 						break;
 					case 0xc7:
 						msg = new RequestSSQStatus();

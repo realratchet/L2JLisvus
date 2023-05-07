@@ -1860,16 +1860,6 @@ public class SevenSignsFestival implements SpawnListener
             festivalId += (oracle == SevenSigns.CABAL_DUSK) ? 10 : 20;
             return _festivalInstances.get(festivalId);            
         }
-        
-        /**
-         * Returns the number of currently running festivals <b>WITH</b> participants.
-         * 
-         * @return int Count
-         */
-        public final int getInstanceCount()
-        {
-            return _festivalInstances.size();
-        }
     }
     
     
@@ -2074,15 +2064,6 @@ public class SevenSignsFestival implements SpawnListener
                 festivalMob.setRunning();
                 festivalMob.getAI().setIntention(CtrlIntention.AI_INTENTION_MOVE_TO, loc);
             }
-        }
-        
-        public void setSpawnRate(int respawnDelay)
-        {
-            if (Config.DEBUG)
-                _log.info("SevenSignsFestival: Modifying spawn rate of festival mobs to " + respawnDelay + " ms for festival " + SevenSigns.getCabalShortName(_cabal) + " (" + getFestivalName(_levelRange) + ")");
-            
-            for (L2FestivalMonsterInstance monsterInst : _npcInsts)
-                monsterInst.getSpawn().setRespawnDelay(respawnDelay);
         }
         
         /**

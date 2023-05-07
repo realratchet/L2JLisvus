@@ -53,7 +53,8 @@ public abstract class L2Effect
 	public static enum EffectType
 	{
 		BUFF,
-		DEBUFF,
+		DEBUFF,
+
 		DMG_OVER_TIME,
 		HEAL_OVER_TIME,
 		COMBAT_POINT_HEAL_OVER_TIME,
@@ -77,7 +78,8 @@ public abstract class L2Effect
 		SILENCE_MAGIC_PHYSICAL,
 		PETRIFICATION,
 		NOBLESSE_BLESSING,
-		MP_CONSUME_PER_LEVEL,
+		MP_CONSUME_PER_LEVEL,
+
 		BLUFF,
 		REMOVE_TARGET,
 		CHARM_OF_LUCK,
@@ -185,7 +187,8 @@ public abstract class L2Effect
 	protected L2Effect(Env env, EffectTemplate template)
 	{
 		_state = EffectState.CREATED;
-		_skill = env.skill;
+		_skill = env.skill;
+
 		_effected = env.target;
 		_effector = env.player;
 		_lambda = template._lambda;
@@ -524,7 +527,8 @@ public abstract class L2Effect
 				SystemMessage smsg = new SystemMessage(110);
 				smsg.addString(_skill.getName());
 				getEffected().sendPacket(smsg);
-			}
+			}
+
 			if (_count > 1)
 			{
 				startEffectTaskAtFixedRate(5, _period * 1000);
@@ -578,14 +582,16 @@ public abstract class L2Effect
 				{
 					onExit();
 				}
-			}
+			}
+
 			//If the time left is equal to zero, send the message
 			if (_count == 0 && _icon && getEffected() instanceof L2PcInstance)
 			{
 				SystemMessage smsg3 = new SystemMessage(92);
 				smsg3.addString(_skill.getName());
 				getEffected().sendPacket(smsg3);
-			}
+			}
+
 			if (_currentFuture == null && _effected != null)
 			{
 				_effected.removeEffect(this);
@@ -616,7 +622,7 @@ public abstract class L2Effect
 				funcs.add(f);
 			}
 		}
-		if (funcs.size() == 0)
+		if (funcs.isEmpty())
 		{
 			return _emptyFunctionSet;
 		}

@@ -315,7 +315,7 @@ public class TradeList
 			return null;
 		}
 		
-		if (!item.isTradeable())
+		if (!item.isTradable())
 		{
 			return null;
 		}
@@ -396,7 +396,7 @@ public class TradeList
 			return null;
 		}
 		
-		if (!item.isTradeable())
+		if (!item.isTradable())
 		{
 			return null;
 		}
@@ -861,7 +861,7 @@ public class TradeList
 
 			// Check if requested item is available for manipulation
 			L2ItemInstance oldItem = _owner.checkItemManipulation(item.getObjectId(), item.getCount(), "sell");
-			if (oldItem == null || !oldItem.isTradeable())
+			if (oldItem == null || !oldItem.isTradable())
 			{
 				// Private store sell invalid item - disable it
 				lock();
@@ -1117,7 +1117,7 @@ public class TradeList
 				}
 			}
 			
-			if (!oldItem.isTradeable())
+			if (!oldItem.isTradable())
 			{
 				continue;
 			}

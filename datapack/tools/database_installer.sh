@@ -254,7 +254,6 @@ else
 echo "Upgrading gameserver content"
 fi
 $MYG < ../sql/aio_buffer.sql &> /dev/null
-$MYG < ../sql/armor.sql &> /dev/null
 $MYG < ../sql/armorsets.sql &> /dev/null
 $MYG < ../sql/auction.sql &> /dev/null
 $MYG < ../sql/auction_bid.sql &> /dev/null
@@ -289,7 +288,6 @@ $MYG < ../sql/clanhall_functions.sql &> /dev/null
 $MYG < ../sql/dimensional_rift.sql &> /dev/null
 $MYG < ../sql/droplist.sql &> /dev/null
 $MYG < ../sql/enchant_skill_trees.sql &> /dev/null
-$MYG < ../sql/etcitem.sql &> /dev/null
 $MYG < ../sql/fish.sql &> /dev/null
 $MYG < ../sql/fishing_skill_trees.sql &> /dev/null
 $MYG < ../sql/forums.sql &> /dev/null
@@ -336,7 +334,6 @@ $MYG < ../sql/spawnlist.sql &> /dev/null
 $MYG < ../sql/teleport.sql &> /dev/null
 $MYG < ../sql/topic.sql &> /dev/null
 $MYG < ../sql/walker_routes.sql &> /dev/null
-$MYG < ../sql/weapon.sql &> /dev/null
 $MYG < ../sql/weddings.sql &> /dev/null
 }
 

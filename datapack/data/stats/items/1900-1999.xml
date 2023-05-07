@@ -1,0 +1,703 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<list>
+    <item id="1900" name="Enchanted Necklace Chain" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="1828" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1901" name="Tiger's Eye Earring Stone" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="1448" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1902" name="Elven Earring Beads" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="1974" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1903" name="Elven Ring Piece" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="1199" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1904" name="Elven Necklace Beads" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="2143" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1905" name="Omen Beast's Eye Earring Gemstone" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="2056" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1906" name="Mithril Ring Wire" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="1455" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1907" name="Necklace of Darkness Gem" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="2875" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1908" name="Moonstone Earring Wire" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="2112" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1909" name="Aquastone Ring Wire" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="1481" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1910" name="Aquastone Necklace Chain" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="2656" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1911" name="Earring of Protection Gemstone" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="2689" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1912" name="Ring of Protection Gemstone" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="1856" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1913" name="Necklace of Protection Gemstone" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="3289" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1914" name="Earring of Binding Gemstone" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="3560" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1915" name="Ring of Ages Gemstone" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="2270" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1916" name="Necklace of Mermaid Teardrop" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="4700" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1917" name="Sage's Necklace Chain" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="5845" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1918" name="Nassen's Earring Gemstone" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="4618" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1919" name="Ring of Sage Gemstone" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="3482" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1920" name="Necklace of Binding Chain" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="5845" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1921" name="Leather Shoes Texture" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="310" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1922" name="Leather Tunic Pattern" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="784" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1923" name="Leather Stocking Pattern" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="488" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1924" name="Leather Helmet Design" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="620" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1925" name="Leather Gloves Lining" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="305" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1926" name="Piece Bone Breastplate Fragment" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="1980" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1927" name="Hard Leather Shirt Pattern" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="2507" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1928" name="Piece Bone Gaiters Fragment" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="1373" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1929" name="Hard Leather Gaiters Material" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="1550" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1930" name="Boot Lining" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="780" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1931" name="Leather Boot Lining" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="1530" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1932" name="Bone Helmet Design" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="1260" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1933" name="Dark Stocking Fabric" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="1700" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1934" name="Crafted Leather Gloves Lining" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="1530" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1935" name="Scale Mail Fragment" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="3580" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1936" name="White Tunic Pattern" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="2444" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1937" name="Scale Gaiters Fragment" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="2328" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1938" name="Mithril Banded Mail Material" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="2975" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1939" name="Mithril Banded Gaiters Material" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="2277" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1940" name="Iron Boots Design" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="1340" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1941" name="Brigandine Temper" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="5029" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1942" name="Manticore Skin Shirt Texture" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="3921" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1943" name="Manticore Skin Gaiters Pattern" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="2518" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1944" name="Mithril Tunic Fabric" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="3921" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1945" name="Mithril Stocking Design" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="2518" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1946" name="Rip Gauntlets Pattern" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="1480" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1947" name="Kite Shield Fragment" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="1389" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1948" name="Boots of Power Pattern" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="1480" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1949" name="Mithril Gloves Design" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="1792" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1950" name="Half Plate Temper" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="6162" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1951" name="Plate Gaiters Part" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="3962" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1952" name="Salamander Skin Mail Texture" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="6244" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1953" name="Sage's Rag Lining" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="6244" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1954" name="Karmian Stocking Design" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="3762" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1955" name="Chain Helmet Design" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="2481" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1956" name="Square Shield Fragment" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="1762" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1957" name="Assault Boots Part" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="1792" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1958" name="Mithril Boots Design" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="1120" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1959" name="Chain Mail Shirt Material" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="7425" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1960" name="Chain Gaiters Part" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="3650" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1961" name="Mithril Shirt Fabric" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="6250" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1962" name="Karmian Tunic Pattern" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="6250" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1963" name="Ogre Power Gauntlets Part" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="1792" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1964" name="Eldarake Temper" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="2475" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1965" name="Metal Plate Helmet Material" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="2967" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1966" name="Plated Leather Fragment" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="5478" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1967" name="Plated Leather Gaiters Material" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="3667" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1968" name="Dwarven Chain Mail Shirt Material" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="8300" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1969" name="Dwarven Chain Gaiters Material" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="5233" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1970" name="Robe of Seal Fabric" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="8956" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1971" name="Great Helmet Material" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="3267" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1972" name="Knight's Shield Fragment" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="2500" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1973" name="Pa'agrian Hand Design" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="2378" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1974" name="Crimson Boot Fabric" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="2378" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1975" name="Rind Leather Armor Design" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="6089" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1976" name="Rind Leather Gaiters Material" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="3289" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1977" name="Composite Armor Temper" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="13520" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1978" name="Tower Shield Fragment" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="3120" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1979" name="Demon's Tunic Fabric" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="8240" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1980" name="Demon's Stocking Pattern" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="4700" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1981" name="Mithril Gauntlets Design" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="3400" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1982" name="Forgotten Boots Pattern" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="3400" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1983" name="Shining Circlet Pattern" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="4560" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1984" name="Theca Leather Armor Pattern" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="9330" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1985" name="Theca Leather Gaiters Pattern" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="5800" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1986" name="Full Plate Armor Temper" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="18927" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1987" name="Drake Leather Armor Texture" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="13109" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1988" name="Divine Tunic Fabric" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="10409" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1989" name="Divine Stocking Pattern" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="6636" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1990" name="Mithril Helmet Design" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="5782" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1991" name="Cap of Mana Pattern" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="5782" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1992" name="Paradia Hood Material" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="5782" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1993" name="Hood of Solar Eclipse Texture" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="5782" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1994" name="Hood of Summoning Texture" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="5782" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1995" name="Elemental Hood Material" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="5782" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1996" name="Hood of Grace Texture" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="5782" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1997" name="Phoenix Hood Material" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="5782" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1998" name="Hood of Aid Material" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="5782" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="1999" name="Flame Helm Design" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="5782" />
+        <set name="is_stackable" val="true" />
+    </item>
+</list>

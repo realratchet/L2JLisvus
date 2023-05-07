@@ -20,7 +20,7 @@ import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PlayableInstance;
 import net.sf.l2j.gameserver.network.serverpackets.MagicSkillUse;
 import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
-import net.sf.l2j.gameserver.templates.L2Item;
+import net.sf.l2j.gameserver.templates.CrystalType;
 import net.sf.l2j.gameserver.templates.L2Weapon;
 import net.sf.l2j.gameserver.util.Broadcast;
 
@@ -91,8 +91,9 @@ public class BlessedSpiritShot implements IItemHandler
 		}
 
 		// Check for correct grade
-		int weaponGrade = weaponItem.getCrystalType();
-		if (((weaponGrade == L2Item.CRYSTAL_NONE) && (itemId != 3947)) || ((weaponGrade == L2Item.CRYSTAL_D) && (itemId != 3948)) || ((weaponGrade == L2Item.CRYSTAL_C) && (itemId != 3949)) || ((weaponGrade == L2Item.CRYSTAL_B) && (itemId != 3950)) || ((weaponGrade == L2Item.CRYSTAL_A) && (itemId != 3951)) || ((weaponGrade == L2Item.CRYSTAL_S) && (itemId != 3952)))
+		CrystalType weaponGrade = weaponItem.getCrystalType();
+		if (((weaponGrade == CrystalType.NONE) && (itemId != 3947)) || ((weaponGrade == CrystalType.D) && (itemId != 3948)) 
+			|| ((weaponGrade == CrystalType.C) && (itemId != 3949)) || ((weaponGrade == CrystalType.B) && (itemId != 3950)) || ((weaponGrade == CrystalType.A) && (itemId != 3951)) || ((weaponGrade == CrystalType.S) && (itemId != 3952)))
 		{
 			if (!activeChar.getAutoSoulShot().contains(itemId))
 			{
@@ -116,7 +117,7 @@ public class BlessedSpiritShot implements IItemHandler
 
 		// Send message to client
 		activeChar.sendPacket(new SystemMessage(SystemMessage.ENABLED_SPIRITSHOT));
-		Broadcast.toSelfAndKnownPlayersInRadius(activeChar, new MagicSkillUse(activeChar, activeChar, _skillIds[weaponGrade], 1, 0, 0), 360000);
+		Broadcast.toSelfAndKnownPlayersInRadius(activeChar, new MagicSkillUse(activeChar, activeChar, _skillIds[weaponGrade.getId()], 1, 0, 0), 360000);
 	}
 
 	@Override

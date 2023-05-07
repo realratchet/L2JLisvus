@@ -114,7 +114,7 @@ import net.sf.l2j.util.Rnd;
  */
 public abstract class L2Character extends L2Object
 {
-	protected static final Logger _log = Logger.getLogger(L2Character.class.getName());
+	public static final Logger _log = Logger.getLogger(L2Character.class.getName());
 
 	// =========================================================
 	// Data Field
@@ -830,7 +830,7 @@ public abstract class L2Character extends L2Object
 
 		if (weaponItem != null)
 		{
-			ssGrade = weaponItem.getCrystalType();
+			ssGrade = weaponItem.getCrystalType().getId();
 		}
 
 		// Create a Server->Client packet Attack

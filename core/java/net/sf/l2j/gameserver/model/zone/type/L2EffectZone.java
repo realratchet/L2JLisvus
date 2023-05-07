@@ -212,7 +212,7 @@ public class L2EffectZone extends L2ZoneType
 
 								L2Skill skill = SkillTable.getInstance().getInfo(skillId, skillLvl);
 
-								if (_bypassConditions || skill.checkCondition(temp, null, false))
+								if (_bypassConditions || skill.checkCondition(temp, null))
 								{
 									// If target hasn't got the skill effect yet, cast it on him
 									if (temp.getFirstEffect(skillId) == null)

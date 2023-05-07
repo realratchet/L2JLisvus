@@ -89,7 +89,7 @@ public class Remedy implements IItemHandler
 		else if (itemId == 1833) // bandage
 		{
 			activeChar.negateEffects(L2Skill.SkillType.BLEED, 3, 0);
-			MagicSkillUse MSU = new MagicSkillUse(playable, playable, 34, 1, 0, 0);
+			MagicSkillUse MSU = new MagicSkillUse(playable, playable, 2044, 1, 0, 0);
 			activeChar.sendPacket(MSU);
 			activeChar.broadcastPacket(MSU);
 			playable.destroyItem("Consume", item.getObjectId(), 1, null, false);

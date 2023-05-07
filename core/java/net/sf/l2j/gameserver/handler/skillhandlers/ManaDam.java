@@ -33,7 +33,7 @@ import net.sf.l2j.gameserver.skills.Formulas;
  */
 public class ManaDam implements ISkillHandler
 {
-	private static SkillType[] _skillIds =
+	private static SkillType[] SKILL_TYPES =
 	{
 		SkillType.MANADAM
 	};
@@ -120,8 +120,8 @@ public class ManaDam implements ISkillHandler
 	}
 
 	@Override
-	public SkillType[] getSkillIds()
+	public SkillType[] getSkillTypes()
 	{
-		return _skillIds;
+		return SKILL_TYPES;
 	}
 }

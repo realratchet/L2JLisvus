@@ -39,7 +39,7 @@ import net.sf.l2j.gameserver.skills.Formulas;
  */
 public class Continuous implements ISkillHandler
 {
-	private static SkillType[] _skillIds =
+	private static SkillType[] SKILL_TYPES =
 	{
 		L2Skill.SkillType.BUFF,
 		L2Skill.SkillType.DEBUFF,
@@ -231,8 +231,8 @@ public class Continuous implements ISkillHandler
 	}
 	
 	@Override
-	public SkillType[] getSkillIds()
+	public SkillType[] getSkillTypes()
 	{
-		return _skillIds;
+		return SKILL_TYPES;
 	}
 }

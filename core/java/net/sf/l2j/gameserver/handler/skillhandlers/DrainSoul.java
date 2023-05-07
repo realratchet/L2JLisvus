@@ -26,7 +26,7 @@ import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
  */
 public class DrainSoul implements ISkillHandler
 {
-	protected SkillType[] _skillIds =
+	private static SkillType[] SKILL_TYPES =
 	{
 		SkillType.DRAIN_SOUL
 	};
@@ -50,8 +50,8 @@ public class DrainSoul implements ISkillHandler
 	}
 	
 	@Override
-	public SkillType[] getSkillIds()
+	public SkillType[] getSkillTypes()
 	{
-		return _skillIds;
+		return SKILL_TYPES;
 	}
 }

@@ -1,0 +1,1003 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<list>
+    <item id="3600" name="Confirmation Document 12" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3601" name="Confirmation Document 13" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3602" name="Confirmation Document 14" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3603" name="Confirmation Document 15" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3604" name="Confirmation Document 16" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3605" name="Confirmation Document 17" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3606" name="Confirmation Document 18" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3607" name="Confirmation Document 19" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3608" name="Confirmation Document 20" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3609" name="Confirmation Document 21" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3610" name="Confirmation Document 22" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3611" name="Confirmation Document 23" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3612" name="Confirmation Document 24" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3613" name="Confirmation Document 25" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3614" name="Confirmation Document 26" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3615" name="Confirmation Document 27" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3616" name="Confirmation Document 28" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3617" name="Confirmation Document 29" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3618" name="Confirmation Document 30" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3619" name="Confirmation Document 31" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3620" name="Confirmation Document 32" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3621" name="Confirmation Document 33" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3622" name="Confirmation Document 34" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3623" name="Confirmation Document 35" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3624" name="Confirmation Document 36" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3625" name="Confirmation Document 37" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3626" name="Confirmation Document 38" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3627" name="Confirmation Document 39" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3628" name="Confirmation Document 40" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3629" name="Confirmation Document 41" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3630" name="Confirmation Document 42" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3631" name="Confirmation Document 43" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3632" name="Confirmation Document 44" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3633" name="Confirmation Document 45" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3634" name="Confirmation Document 46" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3635" name="Confirmation Document 47" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3636" name="Confirmation Document 48" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3637" name="Confirmation Document 49" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3638" name="Confirmation Document 50" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3639" name="Confirmation Document 51" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3640" name="Confirmation Document 52" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3641" name="Confirmation Document 53" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3642" name="Confirmation Document 54" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3643" name="Confirmation Document 55" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3644" name="Confirmation Document 56" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3645" name="Confirmation Document 57" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3646" name="Confirmation Document 58" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3647" name="Confirmation Document 59" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3648" name="Confirmation Document 60" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3649" name="Confirmation Document 61" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3650" name="Confirmation Document 62" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3651" name="Confirmation Document 63" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3652" name="Confirmation Document 64" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3653" name="Confirmation Document 65" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3654" name="Confirmation Document 66" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3655" name="Confirmation Document 67" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3656" name="Eye of Seer" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3657" name="Pincher Claw" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3658" name="Ol Mahum Uniform" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3659" name="Enku Orc Champion's Head" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3660" name="Bloody Bee Stinger" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3661" name="Ignition of Ghost Fire" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3662" name="Ethereal Blood" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3663" name="Returned Delivery Goods 10" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3664" name="Returned Delivery Goods 15" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3665" name="Returned Delivery Goods 30" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3666" name="Returned Delivery Goods 33" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3667" name="Returned Delivery Goods 37" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3668" name="Returned Delivery Goods 45" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3669" name="Returned Delivery Goods 55" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3670" name="Returned Delivery Goods 60" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3671" name="Sophya's 1st Order" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3672" name="Sophya's 2nd Order" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3673" name="Sophya's 3rd Order" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3674" name="Sophya's 4th Order" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3675" name="Lion's Claw" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3676" name="Lion's Eye" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3677" name="Guild Coin" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3678" name="Alchemy Text" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3679" name="Secret Book of Potion" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3680" name="1st Potion Recipe" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3681" name="2nd Potion Recipe" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3682" name="Matild's Orb" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3683" name="Forbidden Love Scroll" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3684" name="Amber Scale" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3685" name="Wind Soulstone" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3686" name="Glass Eye" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3687" name="Horror Ectoplasm" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3688" name="Silenos Horn" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3689" name="Ant Soldier Aphid" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3690" name="Tyrant's Chitin" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3691" name="Bugbear Blood" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3692" name="1st Circle Hunter License" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3693" name="2nd Circle Hunter License" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3694" name="Laurel Leaf Pin" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3695" name="1st Test Instructions" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3696" name="2nd Test Instructions" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3697" name="Cybellin's Request" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3698" name="Blood Crystal: Purity 1" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+    <item id="3699" name="Blood Crystal: Purity 2" type="EtcItem">
+        <set name="etcitem_type" val="QUEST" />
+        <set name="material" val="STEEL" />
+        <set name="weight" val="0" />
+        <set name="price" val="0" />
+        <set name="is_stackable" val="true" />
+        <set name="is_tradable" val="false" />
+        <set name="is_dropable" val="false" />
+        <set name="is_sellable" val="false" />
+    </item>
+</list>

@@ -39,7 +39,7 @@ public class Mdam implements ISkillHandler
 {
 	// private static Logger _log = Logger.getLogger(Mdam.class.getName());
 
-	private static SkillType[] _skillIds =
+	private static SkillType[] SKILL_TYPES =
 	{
 		SkillType.MDAM,
 		SkillType.DEATHLINK
@@ -213,8 +213,8 @@ public class Mdam implements ISkillHandler
 	}
 	
 	@Override
-	public SkillType[] getSkillIds()
+	public SkillType[] getSkillTypes()
 	{
-		return _skillIds;
+		return SKILL_TYPES;
 	}
 }

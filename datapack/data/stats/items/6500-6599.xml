@@ -1,0 +1,1268 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<list>
+  <item id="6500" name="Big Blue Treasure Chest" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="435" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6501" name="Small Yellow Treasure Chest" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="452" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6502" name="Yellow Treasure Chest" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="568" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6503" name="Big Yellow Treasure Chest" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="608" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6504" name="Small Orange Treasure Chest" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="649" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6505" name="Orange Treasure Chest" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="792" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6506" name="Big Orange Treasure Chest" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="858" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6507" name="Small Purple Treasure Chest" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="910" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6508" name="Purple Treasure Chest" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="1090" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6509" name="Big Purple Treasure Chest" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="1157" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6510" name="Small Red Treasure Chest" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="1326" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6511" name="Red Treasure Chest" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="1402" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6512" name="Big Red Treasure Chest" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="1715" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6513" name="Small White Treasure Chest" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="1814" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6514" name="White Treasure Chest" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="1923" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6515" name="Big White Treasure Chest" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="2039" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6516" name="Small Black Treasure Chest" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="2166" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6517" name="Black Treasure Chest" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="2403" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6518" name="Big Black Treasure Chest" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6519" name="Green Colored Lure - Low Grade" type="EtcItem">
+    <set name="etcitem_type" val="LURE" />
+    <set name="bodypart" val="lhand" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="5" />
+    <set name="price" val="100" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="6520" name="Green Colored Lure" type="EtcItem">
+    <set name="etcitem_type" val="LURE" />
+    <set name="bodypart" val="lhand" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="4" />
+    <set name="price" val="120" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="6521" name="Green Colored Lure - High Grade" type="EtcItem">
+    <set name="etcitem_type" val="LURE" />
+    <set name="bodypart" val="lhand" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="3" />
+    <set name="price" val="150" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="6522" name="Purple Colored Lure - Low Grade" type="EtcItem">
+    <set name="etcitem_type" val="LURE" />
+    <set name="bodypart" val="lhand" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="5" />
+    <set name="price" val="150" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="6523" name="Purple Colored Lure" type="EtcItem">
+    <set name="etcitem_type" val="LURE" />
+    <set name="bodypart" val="lhand" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="4" />
+    <set name="price" val="180" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="6524" name="Purple Colored Lure - High Grade" type="EtcItem">
+    <set name="etcitem_type" val="LURE" />
+    <set name="bodypart" val="lhand" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="3" />
+    <set name="price" val="200" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="6525" name="Yellow Colored Lure - Low Grade" type="EtcItem">
+    <set name="etcitem_type" val="LURE" />
+    <set name="bodypart" val="lhand" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="5" />
+    <set name="price" val="120" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="6526" name="Yellow Colored Lure" type="EtcItem">
+    <set name="etcitem_type" val="LURE" />
+    <set name="bodypart" val="lhand" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="4" />
+    <set name="price" val="150" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="6527" name="Yellow Colored Lure - High Grade" type="EtcItem">
+    <set name="etcitem_type" val="LURE" />
+    <set name="bodypart" val="lhand" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="3" />
+    <set name="price" val="180" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="6528" name="Event bait" type="EtcItem">
+    <set name="etcitem_type" val="LURE" />
+    <set name="bodypart" val="lhand" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="3" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="6529" name="Baby Duck Rod" type="Weapon">
+    <set name="weapon_type" val="FISHINGROD" />
+    <set name="bodypart" val="lrhand" />
+    <set name="random_damage" val="1" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="BONE" />
+    <set name="weight" val="1000" />
+    <set name="price" val="30000" />
+    <for>
+      <set order="0x08" stat="pAtk" val="1" />
+      <set order="0x08" stat="mAtk" val="1" />
+      <set order="0x08" stat="rCrit" val="0" />
+      <add order="0x10" stat="accCombat" val="-3" />
+      <set order="0x08" stat="pAtkSpd" val="325" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="6530" name="Albatross Rod" type="Weapon">
+    <set name="weapon_type" val="FISHINGROD" />
+    <set name="bodypart" val="lrhand" />
+    <set name="crystal_type" val="D" />
+    <set name="random_damage" val="1" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="BONE" />
+    <set name="weight" val="1000" />
+    <set name="price" val="100000" />
+    <for>
+      <set order="0x08" stat="pAtk" val="1" />
+      <set order="0x08" stat="mAtk" val="1" />
+      <set order="0x08" stat="rCrit" val="0" />
+      <add order="0x10" stat="accCombat" val="-3" />
+      <set order="0x08" stat="pAtkSpd" val="325" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="6531" name="Pelican Rod" type="Weapon">
+    <set name="weapon_type" val="FISHINGROD" />
+    <set name="bodypart" val="lrhand" />
+    <set name="crystal_type" val="C" />
+    <set name="random_damage" val="1" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="BONE" />
+    <set name="weight" val="1000" />
+    <set name="price" val="400000" />
+    <for>
+      <set order="0x08" stat="pAtk" val="1" />
+      <set order="0x08" stat="mAtk" val="1" />
+      <set order="0x08" stat="rCrit" val="0" />
+      <add order="0x10" stat="accCombat" val="-3" />
+      <set order="0x08" stat="pAtkSpd" val="325" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="6532" name="KingFisher Rod" type="Weapon">
+    <set name="weapon_type" val="FISHINGROD" />
+    <set name="bodypart" val="lrhand" />
+    <set name="crystal_type" val="B" />
+    <set name="random_damage" val="1" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="BONE" />
+    <set name="weight" val="1000" />
+    <set name="price" val="1200000" />
+    <for>
+      <set order="0x08" stat="pAtk" val="1" />
+      <set order="0x08" stat="mAtk" val="1" />
+      <set order="0x08" stat="rCrit" val="0" />
+      <add order="0x10" stat="accCombat" val="-3" />
+      <set order="0x08" stat="pAtkSpd" val="325" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="6533" name="Cygnus Pole" type="Weapon">
+    <set name="weapon_type" val="FISHINGROD" />
+    <set name="bodypart" val="lrhand" />
+    <set name="crystal_type" val="A" />
+    <set name="random_damage" val="1" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="BONE" />
+    <set name="weight" val="1000" />
+    <set name="price" val="4000000" />
+    <for>
+      <set order="0x08" stat="pAtk" val="1" />
+      <set order="0x08" stat="mAtk" val="1" />
+      <set order="0x08" stat="rCrit" val="0" />
+      <add order="0x10" stat="accCombat" val="-3" />
+      <set order="0x08" stat="pAtkSpd" val="325" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="6534" name="Triton Pole" type="Weapon">
+    <set name="weapon_type" val="FISHINGROD" />
+    <set name="bodypart" val="lrhand" />
+    <set name="crystal_type" val="S" />
+    <set name="random_damage" val="1" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="BONE" />
+    <set name="weight" val="1000" />
+    <set name="price" val="10000000" />
+    <for>
+      <set order="0x08" stat="pAtk" val="1" />
+      <set order="0x08" stat="mAtk" val="1" />
+      <set order="0x08" stat="rCrit" val="0" />
+      <add order="0x10" stat="accCombat" val="-3" />
+      <set order="0x08" stat="pAtkSpd" val="325" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="6535" name="Fishing Shot: non-grade" type="EtcItem">
+    <set name="etcitem_type" val="SHOT" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="3" />
+    <set name="price" val="3" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="FishShots" />
+    <set name="item_skill" val="2181-1" />
+  </item>
+  <item id="6536" name="Fishing Shot: D-grade" type="EtcItem">
+    <set name="etcitem_type" val="SHOT" />
+    <set name="crystal_type" val="D" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="3" />
+    <set name="price" val="5" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="FishShots" />
+    <set name="item_skill" val="2182-1" />
+  </item>
+  <item id="6537" name="Fishing Shot: C-grade" type="EtcItem">
+    <set name="etcitem_type" val="SHOT" />
+    <set name="crystal_type" val="C" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="3" />
+    <set name="price" val="7" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="FishShots" />
+    <set name="item_skill" val="2183-1" />
+  </item>
+  <item id="6538" name="Fishing Shot: B-grade" type="EtcItem">
+    <set name="etcitem_type" val="SHOT" />
+    <set name="crystal_type" val="B" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="3" />
+    <set name="price" val="25" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="FishShots" />
+    <set name="item_skill" val="2184-1" />
+  </item>
+  <item id="6539" name="Fishing Shot: A-grade" type="EtcItem">
+    <set name="etcitem_type" val="SHOT" />
+    <set name="crystal_type" val="A" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="3" />
+    <set name="price" val="40" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="FishShots" />
+    <set name="item_skill" val="2185-1" />
+  </item>
+  <item id="6540" name="Fishing Shot: S-grade" type="EtcItem">
+    <set name="etcitem_type" val="SHOT" />
+    <set name="crystal_type" val="S" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="3" />
+    <set name="price" val="50" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="FishShots" />
+    <set name="item_skill" val="2186-1" />
+  </item>
+  <item id="6541" name="Blue Coba" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="2" />
+    <set name="price" val="1250" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="6542" name="Red Coba" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="2" />
+    <set name="price" val="1500" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="6543" name="Gold Coba" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="2" />
+    <set name="price" val="1750" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="6544" name="Desert Coba" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="2" />
+    <set name="price" val="2000" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="6545" name="Sea Coba" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="2" />
+    <set name="price" val="2250" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="6546" name="Twin Coba" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="2" />
+    <set name="price" val="2500" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="6547" name="King Coba" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="2" />
+    <set name="price" val="2750" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="6548" name="Alternative Blue Coba" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="2" />
+    <set name="price" val="1250" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="6549" name="Alternative Red Coba" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="2" />
+    <set name="price" val="1500" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="6550" name="Alternative Gold Coba" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="2" />
+    <set name="price" val="1750" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="6551" name="Alternative Desert Coba" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="2" />
+    <set name="price" val="2000" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="6552" name="Alternative Sea Coba" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="2" />
+    <set name="price" val="2250" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="6553" name="Alternative Twin Coba" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="2" />
+    <set name="price" val="2500" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="6554" name="Alternative King Coba" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="2" />
+    <set name="price" val="2750" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="6555" name="Ripe Blue Coba" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="6556" name="Ripe Red Coba" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="6557" name="Ripe Gold Coba" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="6558" name="Ripe Desert Coba" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="6559" name="Ripe Sea Coba" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="6560" name="Ripe Twin Coba" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="6561" name="Ripe King Coba" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="6562" name="Ripe Alternative Clue Coba" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="6563" name="Ripe Alternative Red Coba" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="6564" name="Ripe Alternative Gold Coba" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="6565" name="Ripe Alternative Desert Coba" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="6566" name="Ripe Alternative Sea Coba" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="6567" name="Ripe Alternative Twin Coba" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="6568" name="Ripe Alternative King Coba" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="6569" name="Blessed Scroll: Enchant Weapon (A)" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="120" />
+    <set name="price" val="1750000" />
+    <set name="handler" val="EnchantScrolls" />
+  </item>
+  <item id="6570" name="Blessed Scroll: Enchant Armor (A)" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="120" />
+    <set name="price" val="750000" />
+    <set name="handler" val="EnchantScrolls" />
+  </item>
+  <item id="6571" name="Blessed Scroll: Enchant Weapon (B)" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="120" />
+    <set name="price" val="1250000" />
+    <set name="handler" val="EnchantScrolls" />
+  </item>
+  <item id="6572" name="Blessed Scroll: Enchant Armor (B)" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="120" />
+    <set name="price" val="250000" />
+    <set name="handler" val="EnchantScrolls" />
+  </item>
+  <item id="6573" name="Blessed Scroll: Enchant Weapon (C)" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="120" />
+    <set name="price" val="250000" />
+    <set name="handler" val="EnchantScrolls" />
+  </item>
+  <item id="6574" name="Blessed Scroll: Enchant Armor (C)" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="120" />
+    <set name="price" val="100000" />
+    <set name="handler" val="EnchantScrolls" />
+  </item>
+  <item id="6575" name="Blessed Scroll: Enchant Weapon (D)" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="120" />
+    <set name="price" val="150000" />
+    <set name="handler" val="EnchantScrolls" />
+  </item>
+  <item id="6576" name="Blessed Scroll: Enchant Armor (D)" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="120" />
+    <set name="price" val="50000" />
+    <set name="handler" val="EnchantScrolls" />
+  </item>
+  <item id="6577" name="Blessed Scroll: Enchant Weapon (S)" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="120" />
+    <set name="price" val="2250000" />
+    <set name="handler" val="EnchantScrolls" />
+  </item>
+  <item id="6578" name="Blessed Scroll: Enchant Armor (S)" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="120" />
+    <set name="price" val="1250000" />
+    <set name="handler" val="EnchantScrolls" />
+  </item>
+  <item id="6579" name="Arcana Mace" type="Weapon">
+    <set name="weapon_type" val="BLUNT" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="S" />
+    <set name="crystal_count" val="2440" />
+    <set name="random_damage" val="20" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="ADAMANTAITE" />
+    <set name="weight" val="1300" />
+    <set name="price" val="48800000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <set name="is_magical" val="true" />
+    <for>
+      <set order="0x08" stat="pAtk" val="225" />
+      <set order="0x08" stat="mAtk" val="175" />
+      <set order="0x08" stat="rCrit" val="4" />
+      <add order="0x10" stat="accCombat" val="4" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="6580" name="Tallum Blade*Dark Legion's Edge" type="Weapon">
+    <set name="weapon_type" val="DUAL" />
+    <set name="bodypart" val="lrhand" />
+    <set name="crystal_type" val="S" />
+    <set name="crystal_count" val="2440" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="ADAMANTAITE" />
+    <set name="weight" val="2080" />
+    <set name="price" val="48800000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <for>
+      <set order="0x08" stat="pAtk" val="342" />
+      <set order="0x08" stat="mAtk" val="132" />
+      <set order="0x08" stat="rCrit" val="8" />
+      <add order="0x10" stat="accCombat" val="0" />
+      <set order="0x08" stat="pAtkSpd" val="325" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+      <mul order="0x30" stat="maxHp" val="1.15">
+        <and>
+          <using minEnchantLevel="4" />
+        </and>
+      </mul>
+      <mul order="0x30" stat="maxMp" val="1.2">
+        <and>
+          <using minEnchantLevel="4" />
+        </and>
+      </mul>
+      <mul order="0x30" stat="maxCp" val="1.3">
+        <and>
+          <using minEnchantLevel="4" />
+        </and>
+      </mul>
+
+      <mul order="0x30" stat="pvpPhysDmg" val="1.05" />
+      <mul order="0x30" stat="pvpPhysSkillsDmg" val="1.05" />
+      <mul order="0x30" stat="pvpMagicalDmg" val="1.05" />
+    </for>
+  </item>
+  <item id="6581" name="Forgotten Blade - Haste" type="Weapon">
+    <set name="weapon_type" val="SWORD" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="S" />
+    <set name="crystal_count" val="2440" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="ADAMANTAITE" />
+    <set name="weight" val="1300" />
+    <set name="price" val="48800000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <set name="item_skill" val="3564-1" />
+    <for>
+      <set order="0x08" stat="pAtk" val="281" />
+      <set order="0x08" stat="mAtk" val="132" />
+      <set order="0x08" stat="rCrit" val="8" />
+      <add order="0x10" stat="accCombat" val="0" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+
+      <mul order="0x30" stat="pAtkSpd" val="1.07" />
+
+      <mul order="0x30" stat="pvpPhysDmg" val="1.05" />
+      <mul order="0x30" stat="pvpPhysSkillsDmg" val="1.05" />
+      <mul order="0x30" stat="pvpMagicalDmg" val="1.05" />
+    </for>
+  </item>
+  <item id="6582" name="Forgotten Blade - Health" type="Weapon">
+    <set name="weapon_type" val="SWORD" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="S" />
+    <set name="crystal_count" val="2440" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="ADAMANTAITE" />
+    <set name="weight" val="1300" />
+    <set name="price" val="48800000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <set name="item_skill" val="3013-4" />
+    <for>
+      <set order="0x08" stat="pAtk" val="281" />
+      <set order="0x08" stat="mAtk" val="132" />
+      <set order="0x08" stat="rCrit" val="8" />
+      <add order="0x10" stat="accCombat" val="0" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="6583" name="Forgotten Blade - Focus" type="Weapon">
+    <set name="weapon_type" val="SWORD" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="S" />
+    <set name="crystal_count" val="2440" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="ADAMANTAITE" />
+    <set name="weight" val="1300" />
+    <set name="price" val="48800000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <set name="item_skill" val="3566-1" />
+    <for>
+      <set order="0x08" stat="pAtk" val="281" />
+      <set order="0x08" stat="mAtk" val="132" />
+      <set order="0x08" stat="rCrit" val="8" />
+      <add order="0x10" stat="accCombat" val="0" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+
+      <add order="0x40" stat="rCrit" val="84" />
+
+      <mul order="0x30" stat="pvpPhysDmg" val="1.05" />
+      <mul order="0x30" stat="pvpPhysSkillsDmg" val="1.05" />
+      <mul order="0x30" stat="pvpMagicalDmg" val="1.05" />
+    </for>
+  </item>
+  <item id="6584" name="Basalt Battlehammer - HP Drain" type="Weapon">
+    <set name="weapon_type" val="BLUNT" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="S" />
+    <set name="crystal_count" val="2440" />
+    <set name="random_damage" val="20" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="ADAMANTAITE" />
+    <set name="weight" val="1570" />
+    <set name="price" val="48800000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <set name="oncrit_skill" val="3022-7" />
+    <set name="oncrit_chance" val="20" />
+    <for>
+      <set order="0x08" stat="pAtk" val="281" />
+      <set order="0x08" stat="mAtk" val="132" />
+      <set order="0x08" stat="rCrit" val="4" />
+      <add order="0x10" stat="accCombat" val="4" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+
+      <mul order="0x30" stat="pvpPhysDmg" val="1.05" />
+      <mul order="0x30" stat="pvpPhysSkillsDmg" val="1.05" />
+      <mul order="0x30" stat="pvpMagicalDmg" val="1.05" />
+    </for>
+  </item>
+  <item id="6585" name="Basalt Battlehammer - Health" type="Weapon">
+    <set name="weapon_type" val="BLUNT" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="S" />
+    <set name="crystal_count" val="2440" />
+    <set name="random_damage" val="20" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="ADAMANTAITE" />
+    <set name="weight" val="1570" />
+    <set name="price" val="48800000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <set name="item_skill" val="3013-1" />
+    <for>
+      <set order="0x08" stat="pAtk" val="281" />
+      <set order="0x08" stat="mAtk" val="132" />
+      <set order="0x08" stat="rCrit" val="4" />
+      <add order="0x10" stat="accCombat" val="4" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="6586" name="Basalt Battlehammer - HP Regeneration" type="Weapon">
+    <set name="weapon_type" val="BLUNT" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="S" />
+    <set name="crystal_count" val="2440" />
+    <set name="random_damage" val="20" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="ADAMANTAITE" />
+    <set name="weight" val="1570" />
+    <set name="price" val="48800000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <set name="item_skill" val="3569-1" />
+    <for>
+      <set order="0x08" stat="pAtk" val="281" />
+      <set order="0x08" stat="mAtk" val="132" />
+      <set order="0x08" stat="rCrit" val="4" />
+      <add order="0x10" stat="accCombat" val="4" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+
+      <add order="0x40" stat="regHp" val="2.04" />
+
+      <mul order="0x30" stat="pvpPhysDmg" val="1.05" />
+      <mul order="0x30" stat="pvpPhysSkillsDmg" val="1.05" />
+      <mul order="0x30" stat="pvpMagicalDmg" val="1.05" />
+    </for>
+  </item>
+  <item id="6587" name="Imperial Staff - Empower" type="Weapon">
+    <set name="weapon_type" val="BIGBLUNT" />
+    <set name="bodypart" val="lrhand" />
+    <set name="crystal_type" val="S" />
+    <set name="crystal_count" val="2440" />
+    <set name="random_damage" val="20" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="ADAMANTAITE" />
+    <set name="weight" val="910" />
+    <set name="price" val="48800000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <set name="is_magical" val="true" />
+    <set name="item_skill" val="3575-1" />
+    <for>
+      <set order="0x08" stat="pAtk" val="274" />
+      <set order="0x08" stat="mAtk" val="175" />
+      <set order="0x08" stat="rCrit" val="4" />
+      <add order="0x10" stat="accCombat" val="4" />
+      <set order="0x08" stat="pAtkSpd" val="325" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+
+      <add order="0x40" stat="mAtk" val="60" />
+
+      <mul order="0x30" stat="pvpPhysDmg" val="1.05" />
+      <mul order="0x30" stat="pvpPhysSkillsDmg" val="1.05" />
+      <mul order="0x30" stat="pvpMagicalDmg" val="1.05" />
+    </for>
+  </item>
+  <item id="6588" name="Imperial Staff - MP Regeneration" type="Weapon">
+    <set name="weapon_type" val="BIGBLUNT" />
+    <set name="bodypart" val="lrhand" />
+    <set name="crystal_type" val="S" />
+    <set name="crystal_count" val="2440" />
+    <set name="random_damage" val="20" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="ADAMANTAITE" />
+    <set name="weight" val="910" />
+    <set name="price" val="48800000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <set name="is_magical" val="true" />
+    <set name="item_skill" val="3576-1" />
+    <for>
+      <set order="0x08" stat="pAtk" val="274" />
+      <set order="0x08" stat="mAtk" val="175" />
+      <set order="0x08" stat="rCrit" val="4" />
+      <add order="0x10" stat="accCombat" val="4" />
+      <set order="0x08" stat="pAtkSpd" val="325" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+
+      <add order="0x40" stat="regMp" val="0.54" />
+
+      <mul order="0x30" stat="pvpPhysDmg" val="1.05" />
+      <mul order="0x30" stat="pvpPhysSkillsDmg" val="1.05" />
+      <mul order="0x30" stat="pvpMagicalDmg" val="1.05" />
+    </for>
+  </item>
+  <item id="6589" name="Imperial Staff - Magic Hold" type="Weapon">
+    <set name="weapon_type" val="BIGBLUNT" />
+    <set name="bodypart" val="lrhand" />
+    <set name="crystal_type" val="S" />
+    <set name="crystal_count" val="2440" />
+    <set name="random_damage" val="20" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="ADAMANTAITE" />
+    <set name="weight" val="910" />
+    <set name="price" val="48800000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <set name="is_magical" val="true" />
+    <set name="oncast_skill" val="3577-1" />
+    <set name="oncast_chance" val="30" />
+    <for>
+      <set order="0x08" stat="pAtk" val="274" />
+      <set order="0x08" stat="mAtk" val="175" />
+      <set order="0x08" stat="rCrit" val="4" />
+      <add order="0x10" stat="accCombat" val="4" />
+      <set order="0x08" stat="pAtkSpd" val="325" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+
+      <mul order="0x30" stat="pvpPhysDmg" val="1.05" />
+      <mul order="0x30" stat="pvpPhysSkillsDmg" val="1.05" />
+      <mul order="0x30" stat="pvpMagicalDmg" val="1.05" />
+    </for>
+  </item>
+  <item id="6590" name="Angel Slayer - Crt. Damage" type="Weapon">
+    <set name="weapon_type" val="DAGGER" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="S" />
+    <set name="crystal_count" val="2440" />
+    <set name="random_damage" val="5" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="ADAMANTAITE" />
+    <set name="weight" val="950" />
+    <set name="price" val="48800000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <set name="item_skill" val="3572-1" />
+    <for>
+      <set order="0x08" stat="pAtk" val="246" />
+      <set order="0x08" stat="mAtk" val="132" />
+      <set order="0x08" stat="rCrit" val="12" />
+      <add order="0x10" stat="accCombat" val="-3" />
+      <set order="0x08" stat="pAtkSpd" val="433" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+
+      <add order="0x40" stat="cAtkAdd" val="265" />
+
+      <mul order="0x30" stat="pvpPhysDmg" val="1.05" />
+      <mul order="0x30" stat="pvpPhysSkillsDmg" val="1.05" />
+      <mul order="0x30" stat="pvpMagicalDmg" val="1.05" />
+    </for>
+  </item>
+  <item id="6591" name="Angel Slayer - HP Drain" type="Weapon">
+    <set name="weapon_type" val="DAGGER" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="S" />
+    <set name="crystal_count" val="2440" />
+    <set name="random_damage" val="5" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="ADAMANTAITE" />
+    <set name="weight" val="950" />
+    <set name="price" val="48800000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <set name="oncrit_skill" val="3022-7" />
+    <set name="oncrit_chance" val="20" />
+    <for>
+      <set order="0x08" stat="pAtk" val="246" />
+      <set order="0x08" stat="mAtk" val="132" />
+      <set order="0x08" stat="rCrit" val="12" />
+      <add order="0x10" stat="accCombat" val="-3" />
+      <set order="0x08" stat="pAtkSpd" val="433" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+
+      <add order="0x40" stat="absorbDam" val="3" />
+
+      <mul order="0x30" stat="pvpPhysDmg" val="1.05" />
+      <mul order="0x30" stat="pvpPhysSkillsDmg" val="1.05" />
+      <mul order="0x30" stat="pvpMagicalDmg" val="1.05" />
+    </for>
+  </item>
+  <item id="6592" name="Angel Slayer - Haste" type="Weapon">
+    <set name="weapon_type" val="DAGGER" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="S" />
+    <set name="crystal_count" val="2440" />
+    <set name="random_damage" val="5" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="ADAMANTAITE" />
+    <set name="weight" val="950" />
+    <set name="price" val="48800000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <set name="item_skill" val="3564-1" />
+    <for>
+      <set order="0x08" stat="pAtk" val="246" />
+      <set order="0x08" stat="mAtk" val="132" />
+      <set order="0x08" stat="rCrit" val="12" />
+      <add order="0x10" stat="accCombat" val="-3" />
+      <set order="0x08" stat="pAtkSpd" val="433" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+
+      <mul order="0x30" stat="pAtkSpd" val="1.07" />
+
+      <mul order="0x30" stat="pvpPhysDmg" val="1.05" />
+      <mul order="0x30" stat="pvpPhysSkillsDmg" val="1.05" />
+      <mul order="0x30" stat="pvpMagicalDmg" val="1.05" />
+    </for>
+  </item>
+  <item id="6593" name="Shining Bow - Cheap Shot" type="Weapon">
+    <set name="weapon_type" val="BOW" />
+    <set name="bodypart" val="lrhand" />
+    <set name="crystal_type" val="S" />
+    <set name="crystal_count" val="2440" />
+    <set name="random_damage" val="5" />
+    <set name="attack_range" val="500" />
+    <set name="material" val="ADAMANTAITE" />
+    <set name="weight" val="1650" />
+    <set name="price" val="48800000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <set name="reuse_delay" val="1500" />
+    <set name="mp_consume" val="11" />
+    <for>
+      <set order="0x08" stat="pAtk" val="581" />
+      <set order="0x08" stat="mAtk" val="132" />
+      <set order="0x08" stat="rCrit" val="12" />
+      <add order="0x10" stat="accCombat" val="-3" />
+      <set order="0x08" stat="pAtkSpd" val="293" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+
+      <set order="0x08" stat="MpConsume" val="1">
+        <and>
+          <game chance="26" skill="false" />
+        </and>
+      </set>
+      <mul order="0x30" stat="pvpPhysDmg" val="1.05" />
+      <mul order="0x30" stat="pvpPhysSkillsDmg" val="1.05" />
+      <mul order="0x30" stat="pvpMagicalDmg" val="1.05" />
+    </for>
+  </item>
+  <item id="6594" name="Shining Bow - Focus" type="Weapon">
+    <set name="weapon_type" val="BOW" />
+    <set name="bodypart" val="lrhand" />
+    <set name="crystal_type" val="S" />
+    <set name="crystal_count" val="2440" />
+    <set name="random_damage" val="5" />
+    <set name="attack_range" val="500" />
+    <set name="material" val="ADAMANTAITE" />
+    <set name="weight" val="1650" />
+    <set name="price" val="48800000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <set name="reuse_delay" val="1500" />
+    <set name="mp_consume" val="11" />
+    <set name="item_skill" val="3567-1" />
+    <for>
+      <set order="0x08" stat="pAtk" val="581" />
+      <set order="0x08" stat="mAtk" val="132" />
+      <set order="0x08" stat="rCrit" val="12" />
+      <add order="0x10" stat="accCombat" val="-3" />
+      <set order="0x08" stat="pAtkSpd" val="293" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="6595" name="Shining Bow - Crt. Slow" type="Weapon">
+    <set name="weapon_type" val="BOW" />
+    <set name="bodypart" val="lrhand" />
+    <set name="crystal_type" val="S" />
+    <set name="crystal_count" val="2440" />
+    <set name="random_damage" val="5" />
+    <set name="attack_range" val="500" />
+    <set name="material" val="ADAMANTAITE" />
+    <set name="weight" val="1650" />
+    <set name="price" val="48800000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <set name="reuse_delay" val="1500" />
+    <set name="mp_consume" val="11" />
+    <set name="oncrit_skill" val="3574-1" />
+    <set name="oncrit_chance" val="10" />
+    <for>
+      <set order="0x08" stat="pAtk" val="581" />
+      <set order="0x08" stat="mAtk" val="132" />
+      <set order="0x08" stat="rCrit" val="12" />
+      <add order="0x10" stat="accCombat" val="-3" />
+      <set order="0x08" stat="pAtkSpd" val="293" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+      <mul order="0x30" stat="pvpPhysDmg" val="1.05" />
+      <mul order="0x30" stat="pvpPhysSkillsDmg" val="1.05" />
+      <mul order="0x30" stat="pvpMagicalDmg" val="1.05" />
+    </for>
+  </item>
+  <item id="6596" name="Dragon Hunter Axe - HP Regeneration" type="Weapon">
+    <set name="weapon_type" val="BIGBLUNT" />
+    <set name="bodypart" val="lrhand" />
+    <set name="crystal_type" val="S" />
+    <set name="crystal_count" val="2440" />
+    <set name="random_damage" val="20" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="ADAMANTAITE" />
+    <set name="weight" val="1820" />
+    <set name="price" val="48800000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <set name="item_skill" val="3569-1" />
+    <for>
+      <set order="0x08" stat="pAtk" val="342" />
+      <set order="0x08" stat="mAtk" val="132" />
+      <set order="0x08" stat="rCrit" val="4" />
+      <add order="0x10" stat="accCombat" val="4" />
+      <set order="0x08" stat="pAtkSpd" val="325" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+
+      <add order="0x40" stat="regHp" val="2.04" />
+
+      <mul order="0x30" stat="pvpPhysDmg" val="1.05" />
+      <mul order="0x30" stat="pvpPhysSkillsDmg" val="1.05" />
+      <mul order="0x30" stat="pvpMagicalDmg" val="1.05" />
+    </for>
+  </item>
+  <item id="6597" name="Dragon Hunter Axe - Health" type="Weapon">
+    <set name="weapon_type" val="BIGBLUNT" />
+    <set name="bodypart" val="lrhand" />
+    <set name="crystal_type" val="S" />
+    <set name="crystal_count" val="2440" />
+    <set name="random_damage" val="20" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="ADAMANTAITE" />
+    <set name="weight" val="1820" />
+    <set name="price" val="48800000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <set name="item_skill" val="3013-1" />
+    <for>
+      <set order="0x08" stat="pAtk" val="342" />
+      <set order="0x08" stat="mAtk" val="132" />
+      <set order="0x08" stat="rCrit" val="4" />
+      <add order="0x10" stat="accCombat" val="4" />
+      <set order="0x08" stat="pAtkSpd" val="325" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="6598" name="Dragon Hunter Axe - HP Drain" type="Weapon">
+    <set name="weapon_type" val="BIGBLUNT" />
+    <set name="bodypart" val="lrhand" />
+    <set name="crystal_type" val="S" />
+    <set name="crystal_count" val="2440" />
+    <set name="random_damage" val="20" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="ADAMANTAITE" />
+    <set name="weight" val="1820" />
+    <set name="price" val="48800000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <set name="oncrit_skill" val="3022-7" />
+    <set name="oncrit_chance" val="20" />
+    <for>
+      <set order="0x08" stat="pAtk" val="342" />
+      <set order="0x08" stat="mAtk" val="132" />
+      <set order="0x08" stat="rCrit" val="4" />
+      <add order="0x10" stat="accCombat" val="4" />
+      <set order="0x08" stat="pAtkSpd" val="325" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+
+      <add order="0x40" stat="absorbDam" val="3" />
+
+      <mul order="0x30" stat="pvpPhysDmg" val="1.05" />
+      <mul order="0x30" stat="pvpPhysSkillsDmg" val="1.05" />
+      <mul order="0x30" stat="pvpMagicalDmg" val="1.05" />
+    </for>
+  </item>
+  <item id="6599" name="Saint Spear - Health" type="Weapon">
+    <set name="weapon_type" val="POLE" />
+    <set name="bodypart" val="lrhand" />
+    <set name="crystal_type" val="S" />
+    <set name="crystal_count" val="2440" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="66" />
+    <set name="material" val="ADAMANTAITE" />
+    <set name="weight" val="1800" />
+    <set name="price" val="48800000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <set name="item_skill" val="3013-4" />
+    <for>
+      <set order="0x08" stat="pAtk" val="281" />
+      <set order="0x08" stat="mAtk" val="132" />
+      <set order="0x08" stat="rCrit" val="8" />
+      <set order="0x08" stat="pAtkRange" val="66" />
+      <add order="0x10" stat="accCombat" val="-3" />
+      <set order="0x08" stat="pAtkSpd" val="325" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+</list>

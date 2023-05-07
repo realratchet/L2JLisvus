@@ -1,0 +1,1065 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<list>
+  <item id="3900" name="Wolf's Luxury Plate" type="Armor">
+    <set name="armor_type" val="PET" />
+    <set name="bodypart" val="wolf" />
+    <set name="material" val="LEATHER" />
+    <set name="weight" val="160" />
+    <set name="price" val="640000" />
+    <for>
+      <add order="0x10" stat="pDef" val="43" />
+      <add order="0x10" stat="mDef" val="38" />
+    </for>
+  </item>
+  <item id="3901" name="Wolf's Mithril Armor" type="Armor">
+    <set name="armor_type" val="PET" />
+    <set name="bodypart" val="wolf" />
+    <set name="material" val="LEATHER" />
+    <set name="weight" val="160" />
+    <set name="price" val="940000" />
+    <for>
+      <add order="0x10" stat="pDef" val="47" />
+      <add order="0x10" stat="mDef" val="41" />
+    </for>
+  </item>
+  <item id="3902" name="Ghost Canine" type="Weapon">
+    <set name="weapon_type" val="PET" />
+    <set name="bodypart" val="wolf" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="100" />
+    <set name="price" val="61000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <for>
+      <add order="0x10" stat="pAtk" val="11" />
+      <add order="0x10" stat="mAtk" val="10" />
+      <set order="0x08" stat="rCrit" val="80" />
+      <set order="0x08" stat="pAtkSpd" val="304" />
+    </for>
+  </item>
+  <item id="3903" name="Mithril Canine" type="Weapon">
+    <set name="weapon_type" val="PET" />
+    <set name="bodypart" val="wolf" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="100" />
+    <set name="price" val="100000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <for>
+      <add order="0x10" stat="pAtk" val="16" />
+      <add order="0x10" stat="mAtk" val="14" />
+      <set order="0x08" stat="rCrit" val="80" />
+      <set order="0x08" stat="pAtkSpd" val="304" />
+    </for>
+  </item>
+  <item id="3904" name="Sylvan Canine" type="Weapon">
+    <set name="weapon_type" val="PET" />
+    <set name="bodypart" val="wolf" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="100" />
+    <set name="price" val="160000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <for>
+      <add order="0x10" stat="pAtk" val="23" />
+      <add order="0x10" stat="mAtk" val="18" />
+      <set order="0x08" stat="rCrit" val="80" />
+      <set order="0x08" stat="pAtkSpd" val="304" />
+    </for>
+  </item>
+  <item id="3905" name="Orikarukon Canine" type="Weapon">
+    <set name="weapon_type" val="PET" />
+    <set name="bodypart" val="wolf" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="100" />
+    <set name="price" val="240000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <for>
+      <add order="0x10" stat="pAtk" val="31" />
+      <add order="0x10" stat="mAtk" val="24" />
+      <set order="0x08" stat="rCrit" val="80" />
+      <set order="0x08" stat="pAtkSpd" val="304" />
+    </for>
+  </item>
+  <item id="3906" name="Fang of Saltydog" type="Weapon">
+    <set name="weapon_type" val="PET" />
+    <set name="bodypart" val="wolf" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="100" />
+    <set name="price" val="350000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <for>
+      <add order="0x10" stat="pAtk" val="40" />
+      <add order="0x10" stat="mAtk" val="30" />
+      <set order="0x08" stat="rCrit" val="80" />
+      <set order="0x08" stat="pAtkSpd" val="304" />
+    </for>
+  </item>
+  <item id="3907" name="Fang of Cerberus" type="Weapon">
+    <set name="weapon_type" val="PET" />
+    <set name="bodypart" val="wolf" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="100" />
+    <set name="price" val="450000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <for>
+      <add order="0x10" stat="pAtk" val="49" />
+      <add order="0x10" stat="mAtk" val="36" />
+      <set order="0x08" stat="rCrit" val="80" />
+      <set order="0x08" stat="pAtkSpd" val="304" />
+    </for>
+  </item>
+  <item id="3908" name="Fang of Coyote" type="Weapon">
+    <set name="weapon_type" val="PET" />
+    <set name="bodypart" val="wolf" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="100" />
+    <set name="price" val="570000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <for>
+      <add order="0x10" stat="pAtk" val="58" />
+      <add order="0x10" stat="mAtk" val="42" />
+      <set order="0x08" stat="rCrit" val="80" />
+      <set order="0x08" stat="pAtkSpd" val="304" />
+    </for>
+  </item>
+  <item id="3909" name="Crystalized Ice Canine" type="Weapon">
+    <set name="weapon_type" val="PET" />
+    <set name="bodypart" val="wolf" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="100" />
+    <set name="price" val="720000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <for>
+      <add order="0x10" stat="pAtk" val="69" />
+      <add order="0x10" stat="mAtk" val="50" />
+      <set order="0x08" stat="rCrit" val="80" />
+      <set order="0x08" stat="pAtkSpd" val="304" />
+    </for>
+  </item>
+  <item id="3910" name="Fang of The Blue Wolf" type="Weapon">
+    <set name="weapon_type" val="PET" />
+    <set name="bodypart" val="wolf" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="100" />
+    <set name="price" val="1100000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <for>
+      <add order="0x10" stat="pAtk" val="80" />
+      <add order="0x10" stat="mAtk" val="58" />
+      <set order="0x08" stat="rCrit" val="80" />
+      <set order="0x08" stat="pAtkSpd" val="304" />
+    </for>
+  </item>
+  <item id="3911" name="Fang of Fenril" type="Weapon">
+    <set name="weapon_type" val="PET" />
+    <set name="bodypart" val="wolf" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="100" />
+    <set name="price" val="1500000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <for>
+      <add order="0x10" stat="pAtk" val="93" />
+      <add order="0x10" stat="mAtk" val="66" />
+      <set order="0x08" stat="rCrit" val="80" />
+      <set order="0x08" stat="pAtkSpd" val="304" />
+    </for>
+  </item>
+  <item id="3912" name="Hatchling's Soft Leather" type="Armor">
+    <set name="armor_type" val="PET" />
+    <set name="bodypart" val="hatchling" />
+    <set name="material" val="LEATHER" />
+    <set name="weight" val="160" />
+    <set name="price" val="200000" />
+    <for>
+      <add order="0x10" stat="pDef" val="26" />
+      <add order="0x10" stat="mDef" val="26" />
+    </for>
+  </item>
+  <item id="3913" name="Hatchling's Scale Mail" type="Armor">
+    <set name="armor_type" val="PET" />
+    <set name="bodypart" val="hatchling" />
+    <set name="material" val="LEATHER" />
+    <set name="weight" val="160" />
+    <set name="price" val="310000" />
+    <for>
+      <add order="0x10" stat="pDef" val="29" />
+      <add order="0x10" stat="mDef" val="29" />
+    </for>
+  </item>
+  <item id="3914" name="Hatchling's Brigandine" type="Armor">
+    <set name="armor_type" val="PET" />
+    <set name="bodypart" val="hatchling" />
+    <set name="material" val="LEATHER" />
+    <set name="weight" val="160" />
+    <set name="price" val="420000" />
+    <for>
+      <add order="0x10" stat="pDef" val="31" />
+      <add order="0x10" stat="mDef" val="31" />
+    </for>
+  </item>
+  <item id="3915" name="Hatchling's Bronze Coat" type="Armor">
+    <set name="armor_type" val="PET" />
+    <set name="bodypart" val="hatchling" />
+    <set name="material" val="LEATHER" />
+    <set name="weight" val="160" />
+    <set name="price" val="570000" />
+    <for>
+      <add order="0x10" stat="pDef" val="33" />
+      <add order="0x10" stat="mDef" val="33" />
+    </for>
+  </item>
+  <item id="3916" name="Hatchling's Steel Coat" type="Armor">
+    <set name="armor_type" val="PET" />
+    <set name="bodypart" val="hatchling" />
+    <set name="material" val="LEATHER" />
+    <set name="weight" val="160" />
+    <set name="price" val="760000" />
+    <for>
+      <add order="0x10" stat="pDef" val="36" />
+      <add order="0x10" stat="mDef" val="36" />
+    </for>
+  </item>
+  <item id="3917" name="Hatchling's Shadowplate" type="Armor">
+    <set name="armor_type" val="PET" />
+    <set name="bodypart" val="hatchling" />
+    <set name="material" val="LEATHER" />
+    <set name="weight" val="160" />
+    <set name="price" val="1100000" />
+    <for>
+      <add order="0x10" stat="pDef" val="38" />
+      <add order="0x10" stat="mDef" val="38" />
+    </for>
+  </item>
+  <item id="3918" name="Hatchling's Mithril Coat" type="Armor">
+    <set name="armor_type" val="PET" />
+    <set name="bodypart" val="hatchling" />
+    <set name="material" val="LEATHER" />
+    <set name="weight" val="160" />
+    <set name="price" val="1600000" />
+    <for>
+      <add order="0x10" stat="pDef" val="41" />
+      <add order="0x10" stat="mDef" val="41" />
+    </for>
+  </item>
+  <item id="3919" name="Serpent Fang" type="Weapon">
+    <set name="weapon_type" val="PET" />
+    <set name="bodypart" val="hatchling" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="100" />
+    <set name="price" val="200000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <for>
+      <add order="0x10" stat="pAtk" val="8" />
+      <add order="0x10" stat="mAtk" val="7" />
+      <set order="0x08" stat="rCrit" val="80" />
+      <set order="0x08" stat="pAtkSpd" val="304" />
+    </for>
+  </item>
+  <item id="3920" name="Viperbite" type="Weapon">
+    <set name="weapon_type" val="PET" />
+    <set name="bodypart" val="hatchling" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="100" />
+    <set name="price" val="310000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <for>
+      <add order="0x10" stat="pAtk" val="9" />
+      <add order="0x10" stat="mAtk" val="10" />
+      <set order="0x08" stat="rCrit" val="80" />
+      <set order="0x08" stat="pAtkSpd" val="304" />
+    </for>
+  </item>
+  <item id="3921" name="Shadow Fang" type="Weapon">
+    <set name="weapon_type" val="PET" />
+    <set name="bodypart" val="hatchling" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="100" />
+    <set name="price" val="420000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <for>
+      <add order="0x10" stat="pAtk" val="10" />
+      <add order="0x10" stat="mAtk" val="11" />
+      <set order="0x08" stat="rCrit" val="80" />
+      <set order="0x08" stat="pAtkSpd" val="304" />
+    </for>
+  </item>
+  <item id="3922" name="Alya Fang" type="Weapon">
+    <set name="weapon_type" val="PET" />
+    <set name="bodypart" val="hatchling" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="100" />
+    <set name="price" val="570000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <for>
+      <add order="0x10" stat="pAtk" val="12" />
+      <add order="0x10" stat="mAtk" val="13" />
+      <set order="0x08" stat="rCrit" val="80" />
+      <set order="0x08" stat="pAtkSpd" val="304" />
+    </for>
+  </item>
+  <item id="3923" name="Torturer" type="Weapon">
+    <set name="weapon_type" val="PET" />
+    <set name="bodypart" val="hatchling" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="100" />
+    <set name="price" val="760000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <for>
+      <add order="0x10" stat="pAtk" val="13" />
+      <add order="0x10" stat="mAtk" val="16" />
+      <set order="0x08" stat="rCrit" val="80" />
+      <set order="0x08" stat="pAtkSpd" val="304" />
+    </for>
+  </item>
+  <item id="3924" name="Unuk Alhay Fang" type="Weapon">
+    <set name="weapon_type" val="PET" />
+    <set name="bodypart" val="hatchling" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="100" />
+    <set name="price" val="1100000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <for>
+      <add order="0x10" stat="pAtk" val="15" />
+      <add order="0x10" stat="mAtk" val="18" />
+      <set order="0x08" stat="rCrit" val="80" />
+      <set order="0x08" stat="pAtkSpd" val="304" />
+    </for>
+  </item>
+  <item id="3925" name="Antiplague" type="Weapon">
+    <set name="weapon_type" val="PET" />
+    <set name="bodypart" val="hatchling" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="100" />
+    <set name="price" val="1600000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <for>
+      <add order="0x10" stat="pAtk" val="17" />
+      <add order="0x10" stat="mAtk" val="21" />
+      <set order="0x08" stat="rCrit" val="80" />
+      <set order="0x08" stat="pAtkSpd" val="304" />
+    </for>
+  </item>
+  <item id="3926" name="L2Day - Scroll of Guidance" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="120" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Scrolls" />
+    <set name="item_skill" val="2050-1" />
+  </item>
+  <item id="3927" name="L2Day - Scroll of Death Whisper" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="120" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Scrolls" />
+    <set name="item_skill" val="2051-1" />
+  </item>
+  <item id="3928" name="L2Day - Scroll of Focus" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="120" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Scrolls" />
+    <set name="item_skill" val="2052-1" />
+  </item>
+  <item id="3929" name="L2Day - Scroll of Greater Acumen" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="120" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Scrolls" />
+    <set name="item_skill" val="2053-1" />
+  </item>
+  <item id="3930" name="L2Day - Scroll of Haste" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="120" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Scrolls" />
+    <set name="item_skill" val="2054-1" />
+  </item>
+  <item id="3931" name="L2Day - Scroll of Agility" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="120" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Scrolls" />
+    <set name="item_skill" val="2055-1" />
+  </item>
+  <item id="3932" name="L2Day - Scroll of Mystic Empower" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="120" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Scrolls" />
+    <set name="item_skill" val="2056-1" />
+  </item>
+  <item id="3933" name="L2Day - Scroll of Might" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="120" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Scrolls" />
+    <set name="item_skill" val="2057-1" />
+  </item>
+  <item id="3934" name="L2Day - Scroll of Windwalk" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="120" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Scrolls" />
+    <set name="item_skill" val="2058-1" />
+  </item>
+  <item id="3935" name="L2Day - Scroll of Shield" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="120" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Scrolls" />
+    <set name="item_skill" val="2059-1" />
+  </item>
+  <item id="3936" name="Blessed Scroll of Resurrection" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="120" />
+    <set name="price" val="400000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ScrollOfResurrection" />
+    <set name="item_skill" val="2049-1" />
+  </item>
+  <item id="3937" name="Giant Bar" type="Weapon">
+    <set name="weapon_type" val="POLE" />
+    <set name="bodypart" val="lrhand" />
+    <set name="crystal_type" val="D" />
+    <set name="crystal_count" val="743" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="66" />
+    <set name="material" val="BRONZE" />
+    <set name="weight" val="300" />
+    <set name="price" val="409000" />
+    <set name="soulshots" val="2" />
+    <set name="spiritshots" val="2" />
+    <for>
+      <set order="0x08" stat="pAtk" val="50" />
+      <set order="0x08" stat="mAtk" val="26" />
+      <set order="0x08" stat="rCrit" val="8" />
+      <set order="0x08" stat="pAtkRange" val="66" />
+      <add order="0x10" stat="accCombat" val="-3" />
+      <set order="0x08" stat="pAtkSpd" val="325" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="3938" name="Giant Rod" type="Weapon">
+    <set name="weapon_type" val="POLE" />
+    <set name="bodypart" val="lrhand" />
+    <set name="crystal_type" val="D" />
+    <set name="crystal_count" val="743" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="66" />
+    <set name="material" val="BRONZE" />
+    <set name="weight" val="300" />
+    <set name="price" val="409000" />
+    <set name="soulshots" val="2" />
+    <set name="spiritshots" val="2" />
+    <for>
+      <set order="0x08" stat="pAtk" val="50" />
+      <set order="0x08" stat="mAtk" val="26" />
+      <set order="0x08" stat="rCrit" val="8" />
+      <set order="0x08" stat="pAtkRange" val="66" />
+      <add order="0x10" stat="accCombat" val="-3" />
+      <set order="0x08" stat="pAtkSpd" val="325" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="3939" name="Lady's Fan" type="Weapon">
+    <set name="weapon_type" val="POLE" />
+    <set name="bodypart" val="lrhand" />
+    <set name="crystal_type" val="D" />
+    <set name="crystal_count" val="743" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="66" />
+    <set name="material" val="BRONZE" />
+    <set name="weight" val="300" />
+    <set name="price" val="409000" />
+    <set name="soulshots" val="2" />
+    <set name="spiritshots" val="2" />
+    <for>
+      <set order="0x08" stat="pAtk" val="50" />
+      <set order="0x08" stat="mAtk" val="26" />
+      <set order="0x08" stat="rCrit" val="8" />
+      <set order="0x08" stat="pAtkRange" val="66" />
+      <add order="0x10" stat="accCombat" val="-3" />
+      <set order="0x08" stat="pAtkSpd" val="325" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="3940" name="Blueprint: Summon Siege Golem" type="EtcItem">
+    <set name="etcitem_type" val="SPELLBOOK" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="120" />
+    <set name="price" val="4800" />
+  </item>
+  <item id="3941" name="Spellbook: Mass Resurrection" type="EtcItem">
+    <set name="etcitem_type" val="SPELLBOOK" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="120" />
+    <set name="price" val="4600" />
+  </item>
+  <item id="3942" name="Spellbook: Party Return" type="EtcItem">
+    <set name="etcitem_type" val="SPELLBOOK" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="120" />
+    <set name="price" val="4600" />
+  </item>
+  <item id="3943" name="Amulet: Pa'agrio's Heart" type="EtcItem">
+    <set name="etcitem_type" val="SPELLBOOK" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="120" />
+    <set name="price" val="3850" />
+  </item>
+  <item id="3944" name="Spellbook: Decrease Weight" type="EtcItem">
+    <set name="etcitem_type" val="SPELLBOOK" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="120" />
+    <set name="price" val="2450" />
+  </item>
+  <item id="3945" name="Boat Ticket: Talking Island to Giran" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="20" />
+    <set name="price" val="8000" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="3946" name="Boat Ticket: Giran to Talking Island" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="20" />
+    <set name="price" val="8000" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="3947" name="Blessed Spiritshot: No Grade" type="EtcItem">
+    <set name="etcitem_type" val="SHOT" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="5" />
+    <set name="price" val="35" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="BlessedSpiritShot" />
+  </item>
+  <item id="3948" name="Blessed Spiritshot: D-Grade" type="EtcItem">
+    <set name="etcitem_type" val="SHOT" />
+    <set name="crystal_type" val="D" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="5" />
+    <set name="price" val="45" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="BlessedSpiritShot" />
+  </item>
+  <item id="3949" name="Blessed Spiritshot: C-Grade" type="EtcItem">
+    <set name="etcitem_type" val="SHOT" />
+    <set name="crystal_type" val="C" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="3" />
+    <set name="price" val="90" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="BlessedSpiritShot" />
+  </item>
+  <item id="3950" name="Blessed Spiritshot: B-Grade" type="EtcItem">
+    <set name="etcitem_type" val="SHOT" />
+    <set name="crystal_type" val="B" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="3" />
+    <set name="price" val="245" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="BlessedSpiritShot" />
+  </item>
+  <item id="3951" name="Blessed Spiritshot: A-Grade" type="EtcItem">
+    <set name="etcitem_type" val="SHOT" />
+    <set name="crystal_type" val="A" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="2" />
+    <set name="price" val="290" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="BlessedSpiritShot" />
+  </item>
+  <item id="3952" name="Blessed Spiritshot: S Grade" type="EtcItem">
+    <set name="etcitem_type" val="SHOT" />
+    <set name="crystal_type" val="S" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="2" />
+    <set name="price" val="350" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="BlessedSpiritShot" />
+  </item>
+  <item id="3953" name="Recipe: Blessed Spiritshot D" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="5000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="3954" name="Recipe: Blessed Spiritshot C" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="60000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="3955" name="Recipe: Blessed Spiritshot B" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="100000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="3956" name="Recipe: Blessed Spiritshot A" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="150000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="3957" name="Recipe: Blessed Spiritshot S" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="450000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="3958" name="L2Day - Blessed Scroll of Escape" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="120" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ScrollOfEscape" />
+    <set name="item_skill" val="2036-1" />
+  </item>
+  <item id="3959" name="L2Day - Blessed Scroll of Resurrection" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="120" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ScrollOfResurrection" />
+    <set name="item_skill" val="2062-1" />
+  </item>
+  <item id="3960" name="Mercenary Posting Ticket (Sword/Stationary)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="30000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="MercTicket" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="3961" name="Mercenary Posting Ticket (Spear/Stationary)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="40000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="MercTicket" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="3962" name="Mercenary Posting Ticket (Bow/Stationary)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="50000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="MercTicket" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="3963" name="Mercenary Posting Ticket (Cleric/Stationary)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="150000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="MercTicket" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="3964" name="Mercenary Posting Ticket (Wizard/Stationary)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="150000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="MercTicket" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="3965" name="Mercenary Posting Ticket (Sword/Mobile)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="30000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="MercTicket" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="3966" name="Mercenary Posting Ticket (Spear/Mobile)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="40000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="MercTicket" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="3967" name="Mercenary Posting Ticket (Bow/Mobile)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="50000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="MercTicket" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="3968" name="Mercenary Posting Ticket (Cleric/Mobile)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="150000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="MercTicket" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="3969" name="Mercenary Posting Ticket (Wizard/Mobile)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="150000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="MercTicket" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="3970" name="Mercenary Posting Ticket (Teleporter1)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="100000" />
+    <set name="is_stackable" val="true" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="3971" name="Mercenary Posting Ticket (Teleporter2)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="100000" />
+    <set name="is_stackable" val="true" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="3972" name="Mercenary Posting Ticket (Teleporter3)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="100000" />
+    <set name="is_stackable" val="true" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="3973" name="Mercenary Posting Ticket (Sword/Stationary)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="30000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="MercTicket" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="3974" name="Mercenary Posting Ticket (Spear/Stationary)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="40000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="MercTicket" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="3975" name="Mercenary Posting Ticket (Bow/Stationary)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="50000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="MercTicket" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="3976" name="Mercenary Posting Ticket (Cleric/Stationary)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="150000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="MercTicket" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="3977" name="Mercenary Posting Ticket (Wizard/Stationary)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="150000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="MercTicket" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="3978" name="Mercenary Posting Ticket (Sword/Mobile)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="30000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="MercTicket" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="3979" name="Mercenary Posting Ticket (Spear/Mobile)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="40000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="MercTicket" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="3980" name="Mercenary Posting Ticket (Bow/Mobile)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="50000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="MercTicket" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="3981" name="Mercenary Posting Ticket (Cleric/Mobile)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="150000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="MercTicket" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="3982" name="Mercenary Posting Ticket (Wizard/Mobile)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="150000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="MercTicket" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="3983" name="Mercenary Posting Ticket (Teleporter1)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="100000" />
+    <set name="is_stackable" val="true" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="3984" name="Mercenary Posting Ticket (Teleporter2)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="100000" />
+    <set name="is_stackable" val="true" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="3985" name="Mercenary Posting Ticket (Teleporter3)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="100000" />
+    <set name="is_stackable" val="true" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="3986" name="Mercenary Posting Ticket (Sword/Stationary)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="30000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="MercTicket" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="3987" name="Mercenary Posting Ticket (Spear/Stationary)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="40000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="MercTicket" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="3988" name="Mercenary Posting Ticket (Bow/Stationary)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="50000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="MercTicket" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="3989" name="Mercenary Posting Ticket (Cleric/Stationary)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="150000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="MercTicket" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="3990" name="Mercenary Posting Ticket (Wizard/Stationary)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="150000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="MercTicket" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="3991" name="Mercenary Posting Ticket (Sword/Mobile)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="30000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="MercTicket" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="3992" name="Mercenary Posting Ticket (Spear/Mobile)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="40000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="MercTicket" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="3993" name="Mercenary Posting Ticket (Bow/Mobile)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="50000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="MercTicket" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="3994" name="Mercenary Posting Ticket (Cleric/Mobile)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="150000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="MercTicket" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="3995" name="Mercenary Posting Ticket (Wizard/Mobile)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="150000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="MercTicket" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="3996" name="Mercenary Posting Ticket (Teleporter1)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="100000" />
+    <set name="is_stackable" val="true" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="3997" name="Mercenary Posting Ticket (Teleporter2)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="100000" />
+    <set name="is_stackable" val="true" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="3998" name="Mercenary Posting Ticket (Teleporter3)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="100000" />
+    <set name="is_stackable" val="true" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="3999" name="Mercenary Posting Ticket (Sword/Stationary)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="30000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="MercTicket" />
+    <set name="is_dropable" val="false" />
+  </item>
+</list>

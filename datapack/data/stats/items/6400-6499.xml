@@ -1,0 +1,808 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<list>
+  <item id="6400" name="Badge of Hyena" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="CRYSTAL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="6401" name="Badge of Fox" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="CRYSTAL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="6402" name="Badge of Wolf" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="CRYSTAL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="6403" name="Elven Firecracker" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Firework" />
+    <set name="item_skill" val="2023-1" />
+  </item>
+  <item id="6404" name="Gunpowder" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="6405" name="Magnesium" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="6406" name="Firework" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Firework" />
+    <set name="item_skill" val="2024-1" />
+  </item>
+  <item id="6407" name="Large Firework" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Firework" />
+    <set name="item_skill" val="2025-1" />
+  </item>
+  <item id="6408" name="Formal Wear" type="Armor">
+    <set name="bodypart" val="fullarmor" />
+    <set name="material" val="CLOTH" />
+    <set name="weight" val="1000" />
+    <set name="price" val="5000000" />
+    <for>
+    </for>
+  </item>
+  <item id="6409" name="2005 Battle Tournament - CP Potion" type="EtcItem">
+    <set name="etcitem_type" val="POTION" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="500" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="6410" name="2005 Battle Tournament - Quick Healing Potion" type="EtcItem">
+    <set name="etcitem_type" val="POTION" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="180" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="6411" name="Small Nimble Green Fish" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="138" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6412" name="Small Ugly Green Fish" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="141" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6413" name="Small Pudgy Green Fish" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="153" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6414" name="Nimble Green Fish" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="167" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6415" name="Ugly Green Fish" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="187" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6416" name="Pudgy Green Fish" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="208" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6417" name="Large Nimble Green Fish" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6418" name="Large Ugly Green Fish" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="248" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6419" name="Large Pudgy Green Fish" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="265" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6420" name="Small Jade Nimble Fish" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="285" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6421" name="Small Jade Ugly Fish" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="295" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6422" name="Small Jade Fat Fish" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="310" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6423" name="Jade Nimble Fish" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="325" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6424" name="Jade Ugly Fish" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="340" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6425" name="Jade Fat Fish" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="355" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6426" name="Big Jade Nimble Fish" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="365" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6427" name="Big Jade Ugly Fish" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="375" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6428" name="Big Jade Fat Fish" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="385" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6429" name="Small Blue Nimble Fish" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="395" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6430" name="Small Blue Ugly Fish" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="400" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6431" name="Small Blue Fat Fish" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="410" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6432" name="Blue Nimble Fish" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="415" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6433" name="Blue Ugly Fish" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="418" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6434" name="Blue Fat Fish" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="420" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6435" name="Big Blue Nimble Fish" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="425" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6436" name="Big Blue Ugly Fish" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="431" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6437" name="Big Blue Fat Fish" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="435" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6438" name="Small Yellow Nimble Fish" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="442" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6439" name="Small Yellow Ugly Fish" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="447" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6440" name="Small Yellow Fat Fish" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="452" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6441" name="Yellow Nimble Fish" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="540" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6442" name="Yellow Ugly Fish" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="553" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6443" name="Yellow Fat Fish" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="568" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6444" name="Big Yellow Nimble Fish" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="580" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6445" name="Big Yellow Ugly Fish" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="594" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6446" name="Big Yellow Fat Fish" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="608" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6447" name="Small Orange Nimble Fish" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="622" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6448" name="Small Orange Ugly Fish" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="635" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6449" name="Small Orange Fat Fish" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="649" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6450" name="Orange Nimble Fish" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="663" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6451" name="Orange Ugly Fish" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="776" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6452" name="Orange Fat Fish" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6453" name="Big Orange Nimble Fish" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="816" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6454" name="Big Orange Ugly Fish" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="840" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6455" name="Big Orange Fat Fish" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="858" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6456" name="Small Purple Nimble Fish" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="875" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6457" name="Small Purple Ugly Fish" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="893" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6458" name="Small Purple Fat Fish" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="910" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6459" name="Purple Nimble Fish" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="930" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6460" name="Purple Ugly Fish" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="948" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6461" name="Purple Fat Fish" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="1090" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6462" name="Big Purple Nimble Fish" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="1111" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6463" name="Big Purple Ugly Fish" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="1133" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6464" name="Big Purple Fat Fish" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="1157" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6465" name="Small Red Nimble Fish" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="1277" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6466" name="Small Red Ugly Fish" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="1301" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6467" name="Small Red Fat Fish" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="1326" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6468" name="Red Nimble Fish" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="1351" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6469" name="Red Ugly Fish" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="1376" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6470" name="Red Fat Fish" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="1402" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6471" name="Big Red Nimble Fish" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="1577" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6472" name="Big Red Ugly Fish" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="1608" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6473" name="Big Red Fat Fish" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="1715" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6474" name="Small White Nimble Fish" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="1747" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6475" name="Small White Ugly Fish" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="1781" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6476" name="Small White Fat Fish" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="1814" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6477" name="White Nimble Fish" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="1849" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6478" name="White Ugly Fish" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="1887" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6479" name="White Fat Fish" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="1923" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6480" name="Big White Nimble Fish" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="1961" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6481" name="Big White Ugly Fish" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="2000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6482" name="Big White Fat Fish" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="2039" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6483" name="Small Black Nimble Fish" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6484" name="Small Black Ugly Fish" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6485" name="Small Black Fat Fish" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6486" name="Black Nimble Fish" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="2309" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6487" name="Black Ugly Fish" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="2357" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6488" name="Black Fat Fish" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6489" name="Big Black Nimble Fish" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6490" name="Big Black Ugly Fish" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="2502" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6491" name="Big Black Fat Fish" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6492" name="Small Green Treasure Chest" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="153" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6493" name="Green Treasure Chest" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="208" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6494" name="Big Green Treasure Chest" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="265" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6495" name="Small Jade Treasure Chest" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="285" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6496" name="Jade Treasure Chest" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="315" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6497" name="Big Jade Treasure Chest" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="345" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6498" name="Small Blue Treasure Chest" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="395" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6499" name="Blue Treasure Chest" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="100" />
+    <set name="price" val="419" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+</list>

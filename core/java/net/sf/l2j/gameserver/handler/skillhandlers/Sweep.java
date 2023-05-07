@@ -30,7 +30,7 @@ import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
 public class Sweep implements ISkillHandler
 {
 	// private static Logger _log = Logger.getLogger(Sweep.class.getName());
-	protected SkillType[] _skillIds =
+	private static SkillType[] SKILL_TYPES =
 	{
 		SkillType.SWEEP
 	};
@@ -105,8 +105,8 @@ public class Sweep implements ISkillHandler
 	}
 	
 	@Override
-	public SkillType[] getSkillIds()
+	public SkillType[] getSkillTypes()
 	{
-		return _skillIds;
+		return SKILL_TYPES;
 	}
 }

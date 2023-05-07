@@ -1,0 +1,781 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<list>
+    <item id="4100" name="Zubei's Gauntlets Part" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="3843" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="4101" name="Zubei's Shield Fragment" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="3450" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="4102" name="Zubei's Helmet Design" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="4453" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="4103" name="Pata Blade" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="32950" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="4104" name="Great Sword Blade" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="34950" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="4105" name="Heavy War Axe Head" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="34950" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="4106" name="Sprite's Staff Head" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="35533" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="4107" name="Keshanberk Blade" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="35500" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="4108" name="Sword of Valhalla Blade" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="35500" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="4109" name="Kris Edge" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="35500" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="4110" name="Hell Knife Edge" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="35500" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="4111" name="Arthro Nail Blade" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="34950" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="4112" name="Dark Elven Longbow Shaft" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="35325" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="4113" name="Great Axe Head" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="38867" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="4114" name="Sword of Damascus Blade" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="45692" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="4115" name="Lance Blade" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="45846" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="4116" name="Deadman's Glory Stone" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="45769" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="4117" name="Art of Battle Axe Blade" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="45769" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="4118" name="Evil Spirit Head" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="48308" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="4119" name="Demon Dagger Edge" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="45692" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="4120" name="Bellion Cestus Edge" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="45769" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="4121" name="Bow of Peril Shaft" type="EtcItem">
+        <set name="etcitem_type" val="MATERIAL" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="60" />
+        <set name="price" val="45923" />
+        <set name="is_stackable" val="true" />
+    </item>
+    <item id="4122" name="Recipe: Maestro Holder (100%)" type="EtcItem">
+        <set name="etcitem_type" val="RECIPE" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="30" />
+        <set name="price" val="4500" />
+        <set name="is_stackable" val="true" />
+        <set name="handler" val="Recipes" />
+    </item>
+    <item id="4123" name="Recipe: Maestro Anvil Lock (100%)" type="EtcItem">
+        <set name="etcitem_type" val="RECIPE" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="30" />
+        <set name="price" val="4500" />
+        <set name="is_stackable" val="true" />
+        <set name="handler" val="Recipes" />
+    </item>
+    <item id="4124" name="Recipe: Craftsman Mold (100%)" type="EtcItem">
+        <set name="etcitem_type" val="RECIPE" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="30" />
+        <set name="price" val="4500" />
+        <set name="is_stackable" val="true" />
+        <set name="handler" val="Recipes" />
+    </item>
+    <item id="4125" name="Recipe: Maestro Mold (100%)" type="EtcItem">
+        <set name="etcitem_type" val="RECIPE" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="30" />
+        <set name="price" val="4500" />
+        <set name="is_stackable" val="true" />
+        <set name="handler" val="Recipes" />
+    </item>
+    <item id="4126" name="Recipe: Adamantite Earrings (100%)" type="EtcItem">
+        <set name="etcitem_type" val="RECIPE" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="30" />
+        <set name="price" val="12120" />
+        <set name="is_stackable" val="true" />
+        <set name="handler" val="Recipes" />
+    </item>
+    <item id="4127" name="Recipe: Adamantite Ring (100%)" type="EtcItem">
+        <set name="etcitem_type" val="RECIPE" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="30" />
+        <set name="price" val="8080" />
+        <set name="is_stackable" val="true" />
+        <set name="handler" val="Recipes" />
+    </item>
+    <item id="4128" name="Recipe: Adamantite Necklace (100%)" type="EtcItem">
+        <set name="etcitem_type" val="RECIPE" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="30" />
+        <set name="price" val="16160" />
+        <set name="is_stackable" val="true" />
+        <set name="handler" val="Recipes" />
+    </item>
+    <item id="4129" name="Recipe: Earrings of Black Ore (100%)" type="EtcItem">
+        <set name="etcitem_type" val="RECIPE" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="30" />
+        <set name="price" val="18480" />
+        <set name="is_stackable" val="true" />
+        <set name="handler" val="Recipes" />
+    </item>
+    <item id="4130" name="Recipe: Ring of Black Ore (100%)" type="EtcItem">
+        <set name="etcitem_type" val="RECIPE" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="30" />
+        <set name="price" val="12320" />
+        <set name="is_stackable" val="true" />
+        <set name="handler" val="Recipes" />
+    </item>
+    <item id="4131" name="Recipe: Necklace of Black Ore (100%)" type="EtcItem">
+        <set name="etcitem_type" val="RECIPE" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="30" />
+        <set name="price" val="24600" />
+        <set name="is_stackable" val="true" />
+        <set name="handler" val="Recipes" />
+    </item>
+    <item id="4132" name="Recipe: Composite Shield (100%)" type="EtcItem">
+        <set name="etcitem_type" val="RECIPE" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="30" />
+        <set name="price" val="5160" />
+        <set name="is_stackable" val="true" />
+        <set name="handler" val="Recipes" />
+    </item>
+    <item id="4133" name="Recipe: Zubei's Breastplate (100%)" type="EtcItem">
+        <set name="etcitem_type" val="RECIPE" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="30" />
+        <set name="price" val="41600" />
+        <set name="is_stackable" val="true" />
+        <set name="handler" val="Recipes" />
+    </item>
+    <item id="4134" name="Recipe: Zubei's Gaiters (100%)" type="EtcItem">
+        <set name="etcitem_type" val="RECIPE" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="30" />
+        <set name="price" val="26000" />
+        <set name="is_stackable" val="true" />
+        <set name="handler" val="Recipes" />
+    </item>
+    <item id="4135" name="Recipe: Implosion Boots (100%)" type="EtcItem">
+        <set name="etcitem_type" val="RECIPE" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="30" />
+        <set name="price" val="16080" />
+        <set name="is_stackable" val="true" />
+        <set name="handler" val="Recipes" />
+    </item>
+    <item id="4136" name="Recipe: Boots of Silence (100%)" type="EtcItem">
+        <set name="etcitem_type" val="RECIPE" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="30" />
+        <set name="price" val="10380" />
+        <set name="is_stackable" val="true" />
+        <set name="handler" val="Recipes" />
+    </item>
+    <item id="4137" name="Recipe: Guardian's Boots (100%)" type="EtcItem">
+        <set name="etcitem_type" val="RECIPE" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="30" />
+        <set name="price" val="10380" />
+        <set name="is_stackable" val="true" />
+        <set name="handler" val="Recipes" />
+    </item>
+    <item id="4138" name="Recipe: Paradia Boots (100%)" type="EtcItem">
+        <set name="etcitem_type" val="RECIPE" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="30" />
+        <set name="price" val="16080" />
+        <set name="is_stackable" val="true" />
+        <set name="handler" val="Recipes" />
+    </item>
+    <item id="4139" name="Recipe: Elemental Boots (100%)" type="EtcItem">
+        <set name="etcitem_type" val="RECIPE" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="30" />
+        <set name="price" val="16080" />
+        <set name="is_stackable" val="true" />
+        <set name="handler" val="Recipes" />
+    </item>
+    <item id="4140" name="Recipe: Boots of Grace (100%)" type="EtcItem">
+        <set name="etcitem_type" val="RECIPE" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="30" />
+        <set name="price" val="16080" />
+        <set name="is_stackable" val="true" />
+        <set name="handler" val="Recipes" />
+    </item>
+    <item id="4141" name="Recipe: Avadon Breastplate (100%)" type="EtcItem">
+        <set name="etcitem_type" val="RECIPE" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="30" />
+        <set name="price" val="41600" />
+        <set name="is_stackable" val="true" />
+        <set name="handler" val="Recipes" />
+    </item>
+    <item id="4142" name="Recipe: Avadon Gaiters (100%)" type="EtcItem">
+        <set name="etcitem_type" val="RECIPE" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="30" />
+        <set name="price" val="26000" />
+        <set name="is_stackable" val="true" />
+        <set name="handler" val="Recipes" />
+    </item>
+    <item id="4143" name="Recipe: Zubei's Leather Shirt (100%)" type="EtcItem">
+        <set name="etcitem_type" val="RECIPE" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="30" />
+        <set name="price" val="31200" />
+        <set name="is_stackable" val="true" />
+        <set name="handler" val="Recipes" />
+    </item>
+    <item id="4144" name="Recipe: Zubei's Leather Gaiters (100%)" type="EtcItem">
+        <set name="etcitem_type" val="RECIPE" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="30" />
+        <set name="price" val="19460" />
+        <set name="is_stackable" val="true" />
+        <set name="handler" val="Recipes" />
+    </item>
+    <item id="4145" name="Recipe: Avadon Leather Armor (100%)" type="EtcItem">
+        <set name="etcitem_type" val="RECIPE" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="30" />
+        <set name="price" val="45600" />
+        <set name="is_stackable" val="true" />
+        <set name="handler" val="Recipes" />
+    </item>
+    <item id="4146" name="Recipe: Tunic of Zubei (100%)" type="EtcItem">
+        <set name="etcitem_type" val="RECIPE" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="30" />
+        <set name="price" val="31200" />
+        <set name="is_stackable" val="true" />
+        <set name="handler" val="Recipes" />
+    </item>
+    <item id="4147" name="Recipe: Stockings of Zubei (100%)" type="EtcItem">
+        <set name="etcitem_type" val="RECIPE" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="30" />
+        <set name="price" val="19460" />
+        <set name="is_stackable" val="true" />
+        <set name="handler" val="Recipes" />
+    </item>
+    <item id="4148" name="Recipe: Avadon Robe (100%)" type="EtcItem">
+        <set name="etcitem_type" val="RECIPE" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="30" />
+        <set name="price" val="45600" />
+        <set name="is_stackable" val="true" />
+        <set name="handler" val="Recipes" />
+    </item>
+    <item id="4149" name="Recipe: Avadon Circlet (100%)" type="EtcItem">
+        <set name="etcitem_type" val="RECIPE" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="30" />
+        <set name="price" val="15560" />
+        <set name="is_stackable" val="true" />
+        <set name="handler" val="Recipes" />
+    </item>
+    <item id="4150" name="Recipe: Avadon Gloves (100%)" type="EtcItem">
+        <set name="etcitem_type" val="RECIPE" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="30" />
+        <set name="price" val="10380" />
+        <set name="is_stackable" val="true" />
+        <set name="handler" val="Recipes" />
+    </item>
+    <item id="4151" name="Recipe: Chain Gloves of Silence (100%)" type="EtcItem">
+        <set name="etcitem_type" val="RECIPE" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="30" />
+        <set name="price" val="10380" />
+        <set name="is_stackable" val="true" />
+        <set name="handler" val="Recipes" />
+    </item>
+    <item id="4152" name="Recipe: Guardian's Gloves (100%)" type="EtcItem">
+        <set name="etcitem_type" val="RECIPE" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="30" />
+        <set name="price" val="10380" />
+        <set name="is_stackable" val="true" />
+        <set name="handler" val="Recipes" />
+    </item>
+    <item id="4153" name="Recipe: Gloves of Blessing (100%)" type="EtcItem">
+        <set name="etcitem_type" val="RECIPE" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="30" />
+        <set name="price" val="10380" />
+        <set name="is_stackable" val="true" />
+        <set name="handler" val="Recipes" />
+    </item>
+    <item id="4154" name="Recipe: Doom Shield (100%)" type="EtcItem">
+        <set name="etcitem_type" val="RECIPE" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="30" />
+        <set name="price" val="16900" />
+        <set name="is_stackable" val="true" />
+        <set name="handler" val="Recipes" />
+    </item>
+    <item id="4155" name="Recipe: Blue Wolf Breastplate (100%)" type="EtcItem">
+        <set name="etcitem_type" val="RECIPE" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="30" />
+        <set name="price" val="64400" />
+        <set name="is_stackable" val="true" />
+        <set name="handler" val="Recipes" />
+    </item>
+    <item id="4156" name="Recipe: Boots of Blessing (100%)" type="EtcItem">
+        <set name="etcitem_type" val="RECIPE" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="30" />
+        <set name="price" val="10380" />
+        <set name="is_stackable" val="true" />
+        <set name="handler" val="Recipes" />
+    </item>
+    <item id="4157" name="Recipe: Blue Wolf Gaiters (100%)" type="EtcItem">
+        <set name="etcitem_type" val="RECIPE" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="30" />
+        <set name="price" val="40200" />
+        <set name="is_stackable" val="true" />
+        <set name="handler" val="Recipes" />
+    </item>
+    <item id="4158" name="Recipe: Doom Plate Armor (100%)" type="EtcItem">
+        <set name="etcitem_type" val="RECIPE" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="30" />
+        <set name="price" val="94200" />
+        <set name="is_stackable" val="true" />
+        <set name="handler" val="Recipes" />
+    </item>
+    <item id="4159" name="Recipe: Blue Wolf Leather Armor (100%)" type="EtcItem">
+        <set name="etcitem_type" val="RECIPE" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="30" />
+        <set name="price" val="70600" />
+        <set name="is_stackable" val="true" />
+        <set name="handler" val="Recipes" />
+    </item>
+    <item id="4160" name="Recipe: Leather Armor of Doom (100%)" type="EtcItem">
+        <set name="etcitem_type" val="RECIPE" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="30" />
+        <set name="price" val="70600" />
+        <set name="is_stackable" val="true" />
+        <set name="handler" val="Recipes" />
+    </item>
+    <item id="4161" name="Recipe: Blue Wolf Tunic (100%)" type="EtcItem">
+        <set name="etcitem_type" val="RECIPE" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="30" />
+        <set name="price" val="48200" />
+        <set name="is_stackable" val="true" />
+        <set name="handler" val="Recipes" />
+    </item>
+    <item id="4162" name="Recipe: Tunic of Doom (100%)" type="EtcItem">
+        <set name="etcitem_type" val="RECIPE" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="30" />
+        <set name="price" val="48200" />
+        <set name="is_stackable" val="true" />
+        <set name="handler" val="Recipes" />
+    </item>
+    <item id="4163" name="Recipe: Blue Wolf Stockings (100%)" type="EtcItem">
+        <set name="etcitem_type" val="RECIPE" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="30" />
+        <set name="price" val="30200" />
+        <set name="is_stackable" val="true" />
+        <set name="handler" val="Recipes" />
+    </item>
+    <item id="4164" name="Recipe: Stockings of Doom (100%)" type="EtcItem">
+        <set name="etcitem_type" val="RECIPE" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="30" />
+        <set name="price" val="30200" />
+        <set name="is_stackable" val="true" />
+        <set name="handler" val="Recipes" />
+    </item>
+    <item id="4165" name="Recipe: Blue Wolf Helmet (100%)" type="EtcItem">
+        <set name="etcitem_type" val="RECIPE" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="30" />
+        <set name="price" val="24200" />
+        <set name="is_stackable" val="true" />
+        <set name="handler" val="Recipes" />
+    </item>
+    <item id="4166" name="Recipe: Doom Helmet (100%)" type="EtcItem">
+        <set name="etcitem_type" val="RECIPE" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="30" />
+        <set name="price" val="24200" />
+        <set name="is_stackable" val="true" />
+        <set name="handler" val="Recipes" />
+    </item>
+    <item id="4167" name="Recipe: Blue Wolf Boots (100%)" type="EtcItem">
+        <set name="etcitem_type" val="RECIPE" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="30" />
+        <set name="price" val="16080" />
+        <set name="is_stackable" val="true" />
+        <set name="handler" val="Recipes" />
+    </item>
+    <item id="4168" name="Recipe: Doom Gloves (100%)" type="EtcItem">
+        <set name="etcitem_type" val="RECIPE" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="30" />
+        <set name="price" val="16080" />
+        <set name="is_stackable" val="true" />
+        <set name="handler" val="Recipes" />
+    </item>
+    <item id="4169" name="Recipe: Elemental Gloves (100%)" type="EtcItem">
+        <set name="etcitem_type" val="RECIPE" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="30" />
+        <set name="price" val="16080" />
+        <set name="is_stackable" val="true" />
+        <set name="handler" val="Recipes" />
+    </item>
+    <item id="4170" name="Recipe: Gloves of Grace (100%)" type="EtcItem">
+        <set name="etcitem_type" val="RECIPE" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="30" />
+        <set name="price" val="16080" />
+        <set name="is_stackable" val="true" />
+        <set name="handler" val="Recipes" />
+    </item>
+    <item id="4171" name="Recipe: Implosion Gauntlets (100%)" type="EtcItem">
+        <set name="etcitem_type" val="RECIPE" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="30" />
+        <set name="price" val="16080" />
+        <set name="is_stackable" val="true" />
+        <set name="handler" val="Recipes" />
+    </item>
+    <item id="4172" name="Recipe: Paradia Gloves (100%)" type="EtcItem">
+        <set name="etcitem_type" val="RECIPE" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="30" />
+        <set name="price" val="16080" />
+        <set name="is_stackable" val="true" />
+        <set name="handler" val="Recipes" />
+    </item>
+    <item id="4173" name="Recipe: Blue Wolf Gloves (100%)" type="EtcItem">
+        <set name="etcitem_type" val="RECIPE" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="30" />
+        <set name="price" val="16080" />
+        <set name="is_stackable" val="true" />
+        <set name="handler" val="Recipes" />
+    </item>
+    <item id="4174" name="Recipe: Zubei's Boots (100%)" type="EtcItem">
+        <set name="etcitem_type" val="RECIPE" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="30" />
+        <set name="price" val="10380" />
+        <set name="is_stackable" val="true" />
+        <set name="handler" val="Recipes" />
+    </item>
+    <item id="4175" name="Recipe: Avadon Boots (100%)" type="EtcItem">
+        <set name="etcitem_type" val="RECIPE" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="30" />
+        <set name="price" val="10380" />
+        <set name="is_stackable" val="true" />
+        <set name="handler" val="Recipes" />
+    </item>
+    <item id="4176" name="Recipe: Doom Boots (100%)" type="EtcItem">
+        <set name="etcitem_type" val="RECIPE" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="30" />
+        <set name="price" val="16080" />
+        <set name="is_stackable" val="true" />
+        <set name="handler" val="Recipes" />
+    </item>
+    <item id="4177" name="Recipe: Zubei's Gauntlets (100%)" type="EtcItem">
+        <set name="etcitem_type" val="RECIPE" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="30" />
+        <set name="price" val="10380" />
+        <set name="is_stackable" val="true" />
+        <set name="handler" val="Recipes" />
+    </item>
+    <item id="4178" name="Recipe: Zubei's Shield (100%)" type="EtcItem">
+        <set name="etcitem_type" val="RECIPE" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="30" />
+        <set name="price" val="10900" />
+        <set name="is_stackable" val="true" />
+        <set name="handler" val="Recipes" />
+    </item>
+    <item id="4179" name="Recipe: Zubei's Helmet (100%)" type="EtcItem">
+        <set name="etcitem_type" val="RECIPE" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="30" />
+        <set name="price" val="15560" />
+        <set name="is_stackable" val="true" />
+        <set name="handler" val="Recipes" />
+    </item>
+    <item id="4180" name="Recipe: Silver Arrow (100%)" type="EtcItem">
+        <set name="etcitem_type" val="RECIPE" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="30" />
+        <set name="price" val="1800" />
+        <set name="is_stackable" val="true" />
+        <set name="handler" val="Recipes" />
+    </item>
+    <item id="4181" name="Recipe: Pata (100%)" type="EtcItem">
+        <set name="etcitem_type" val="RECIPE" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="30" />
+        <set name="price" val="156600" />
+        <set name="is_stackable" val="true" />
+        <set name="handler" val="Recipes" />
+    </item>
+    <item id="4182" name="Recipe: Great Sword (100%)" type="EtcItem">
+        <set name="etcitem_type" val="RECIPE" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="30" />
+        <set name="price" val="173600" />
+        <set name="is_stackable" val="true" />
+        <set name="handler" val="Recipes" />
+    </item>
+    <item id="4183" name="Recipe: Heavy War Axe (100%)" type="EtcItem">
+        <set name="etcitem_type" val="RECIPE" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="30" />
+        <set name="price" val="173600" />
+        <set name="is_stackable" val="true" />
+        <set name="handler" val="Recipes" />
+    </item>
+    <item id="4184" name="Recipe: Sprite's Staff (100%)" type="EtcItem">
+        <set name="etcitem_type" val="RECIPE" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="30" />
+        <set name="price" val="173600" />
+        <set name="is_stackable" val="true" />
+        <set name="handler" val="Recipes" />
+    </item>
+    <item id="4185" name="Recipe: Keshanberk (100%)" type="EtcItem">
+        <set name="etcitem_type" val="RECIPE" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="30" />
+        <set name="price" val="173600" />
+        <set name="is_stackable" val="true" />
+        <set name="handler" val="Recipes" />
+    </item>
+    <item id="4186" name="Recipe: Sword of Valhalla (100%)" type="EtcItem">
+        <set name="etcitem_type" val="RECIPE" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="30" />
+        <set name="price" val="173600" />
+        <set name="is_stackable" val="true" />
+        <set name="handler" val="Recipes" />
+    </item>
+    <item id="4187" name="Recipe: Kris (100%)" type="EtcItem">
+        <set name="etcitem_type" val="RECIPE" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="30" />
+        <set name="price" val="173600" />
+        <set name="is_stackable" val="true" />
+        <set name="handler" val="Recipes" />
+    </item>
+    <item id="4188" name="Recipe: Hell Knife (100%)" type="EtcItem">
+        <set name="etcitem_type" val="RECIPE" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="30" />
+        <set name="price" val="173600" />
+        <set name="is_stackable" val="true" />
+        <set name="handler" val="Recipes" />
+    </item>
+    <item id="4189" name="Recipe: Arthro Nail (100%)" type="EtcItem">
+        <set name="etcitem_type" val="RECIPE" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="30" />
+        <set name="price" val="173600" />
+        <set name="is_stackable" val="true" />
+        <set name="handler" val="Recipes" />
+    </item>
+    <item id="4190" name="Recipe: Dark Elven Long Bow (100%)" type="EtcItem">
+        <set name="etcitem_type" val="RECIPE" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="30" />
+        <set name="price" val="173600" />
+        <set name="is_stackable" val="true" />
+        <set name="handler" val="Recipes" />
+    </item>
+    <item id="4191" name="Recipe: Great Axe (100%)" type="EtcItem">
+        <set name="etcitem_type" val="RECIPE" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="30" />
+        <set name="price" val="173600" />
+        <set name="is_stackable" val="true" />
+        <set name="handler" val="Recipes" />
+    </item>
+    <item id="4192" name="Recipe: Sword of Damascus (100%)" type="EtcItem">
+        <set name="etcitem_type" val="RECIPE" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="30" />
+        <set name="price" val="262000" />
+        <set name="is_stackable" val="true" />
+        <set name="handler" val="Recipes" />
+    </item>
+    <item id="4193" name="Recipe: Lance (100%)" type="EtcItem">
+        <set name="etcitem_type" val="RECIPE" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="30" />
+        <set name="price" val="262000" />
+        <set name="is_stackable" val="true" />
+        <set name="handler" val="Recipes" />
+    </item>
+    <item id="4194" name="Recipe: Deadman's Glory (100%)" type="EtcItem">
+        <set name="etcitem_type" val="RECIPE" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="30" />
+        <set name="price" val="262000" />
+        <set name="is_stackable" val="true" />
+        <set name="handler" val="Recipes" />
+    </item>
+    <item id="4195" name="Recipe: Art of Battle Axe (100%)" type="EtcItem">
+        <set name="etcitem_type" val="RECIPE" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="30" />
+        <set name="price" val="262000" />
+        <set name="is_stackable" val="true" />
+        <set name="handler" val="Recipes" />
+    </item>
+    <item id="4196" name="Recipe: Staff of Evil Spirits (100%)" type="EtcItem">
+        <set name="etcitem_type" val="RECIPE" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="30" />
+        <set name="price" val="262000" />
+        <set name="is_stackable" val="true" />
+        <set name="handler" val="Recipes" />
+    </item>
+    <item id="4197" name="Recipe: Demon Dagger (100%)" type="EtcItem">
+        <set name="etcitem_type" val="RECIPE" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="30" />
+        <set name="price" val="262000" />
+        <set name="is_stackable" val="true" />
+        <set name="handler" val="Recipes" />
+    </item>
+    <item id="4198" name="Recipe: Bellion Cestus (100%)" type="EtcItem">
+        <set name="etcitem_type" val="RECIPE" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="30" />
+        <set name="price" val="262000" />
+        <set name="is_stackable" val="true" />
+        <set name="handler" val="Recipes" />
+    </item>
+    <item id="4199" name="Recipe: Bow of Peril (100%)" type="EtcItem">
+        <set name="etcitem_type" val="RECIPE" />
+        <set name="material" val="LIQUID" />
+        <set name="weight" val="30" />
+        <set name="price" val="262000" />
+        <set name="is_stackable" val="true" />
+        <set name="handler" val="Recipes" />
+    </item>
+</list>
