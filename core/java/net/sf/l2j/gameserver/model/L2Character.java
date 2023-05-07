@@ -5346,7 +5346,7 @@ public abstract class L2Character extends L2Object
 			return 0;
 		}
 
-		int reuse = weapon.getAttackReuseDelay();
+		int reuse = weapon.getReuseDelay();
 		// only bows should continue for now
 		if (reuse == 0)
 		{

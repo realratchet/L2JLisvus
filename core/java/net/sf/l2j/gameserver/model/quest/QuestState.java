@@ -284,7 +284,7 @@ public final class QuestState
 	 */
 	public String get(String var)
 	{
-		if (_vars != null && _vars.get(var) != null)
+		if (_vars != null && _vars.containsKey(var))
 			return _vars.get(var);
 		return null;
 	}

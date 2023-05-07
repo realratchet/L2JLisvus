@@ -41,7 +41,6 @@ public final class L2Weapon extends L2Item
 	private final int _soulShotCount;
 	private final int _spiritShotCount;
 	private final int _rndDam;
-	private final int _atkReuse;
 	private final int _mpConsume;
 	private final int _baseAttackRange;
 	private final boolean _isMagical;
@@ -75,7 +74,7 @@ public final class L2Weapon extends L2Item
 		_soulShotCount = set.getInteger("soulshots", 0);
 		_spiritShotCount = set.getInteger("spiritshots", 0);
 		_rndDam = set.getInteger("rnd_dam", 0);
-		_atkReuse = set.getInteger("reuse_delay", 0);
+		
 		_mpConsume = set.getInteger("mp_consume", 0);
 		_baseAttackRange = set.getInteger("attack_range", 40);
 		_isMagical = set.getBool("is_magical", false);
@@ -157,16 +156,6 @@ public final class L2Weapon extends L2Item
 	public int getRandomDamage()
 	{
 		return _rndDam;
-	}
-	
-	/**
-	 * Return the Attack Reuse Delay of the L2Weapon.<BR>
-	 * <BR>
-	 * @return int
-	 */
-	public int getAttackReuseDelay()
-	{
-		return _atkReuse;
 	}
 
 	/**

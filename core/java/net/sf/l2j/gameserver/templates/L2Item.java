@@ -111,6 +111,8 @@ public abstract class L2Item
 	private final CrystalType _crystalType; // default to no-grade
 	private final int _crystalCount;
 
+	private final int _reuseDelay;
+
 	private final boolean _stackable;
 	private final boolean _sellable;
 	private final boolean _dropable;
@@ -146,6 +148,8 @@ public abstract class L2Item
 		_referencePrice = set.getInteger("price", 0);
 		_crystalType = set.getEnum("crystal_type", CrystalType.class, CrystalType.NONE); // default to no-grade
 		_crystalCount = set.getInteger("crystal_count", 0);
+
+		_reuseDelay = set.getInteger("reuse_delay", 0);
 
 		_stackable = set.getBool("is_stackable", false);
 		_sellable = set.getBool("is_sellable", true);
@@ -279,6 +283,15 @@ public abstract class L2Item
 		else
 			return _crystalCount;
 	}
+
+	/**
+	 * Gets the item reuse delay time in milliseconds.
+	 * 
+	 * @return the reuse delay time
+	 */
+	public int getReuseDelay() {
+		return _reuseDelay;
+	}
 	
 	/**
 	 * Returns the name of the item
@@ -297,6 +310,15 @@ public abstract class L2Item
 	{
 		return _bodyPart;
 	}
+
+	/**
+	 * Returns the price of reference of the item
+	 * @return int
+	 */
+	public final int getReferencePrice()
+	{
+		return (isConsumable() ? (int) (_referencePrice * Config.RATE_CONSUMABLE_COST) : _referencePrice);
+	}
 	
 	/**
 	 * Returns the type 1 of the item
@@ -305,15 +327,6 @@ public abstract class L2Item
 	public final int getType1()
 	{
 		return _type1;
-	}
-	
-	/**
-	 * Returns if the item is stackable
-	 * @return boolean
-	 */
-	public final boolean isStackable()
-	{
-		return _stackable;
 	}
 	
 	/**
@@ -333,14 +346,14 @@ public abstract class L2Item
 	{
 		return false;
 	}
-	
+
 	/**
-	 * Returns the price of reference of the item
-	 * @return int
+	 * Returns if the item is stackable
+	 * @return boolean
 	 */
-	public final int getReferencePrice()
+	public final boolean isStackable()
 	{
-		return (isConsumable() ? (int) (_referencePrice * Config.RATE_CONSUMABLE_COST) : _referencePrice);
+		return _stackable;
 	}
 	
 	/**

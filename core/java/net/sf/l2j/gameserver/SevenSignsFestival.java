@@ -1565,7 +1565,7 @@ public class SevenSignsFestival implements SpawnListener
         if (playerCabal != SevenSigns.getInstance().getCabalHighestScore())
             return 0;
         
-        if (_festivalData.get(_signsCycle) != null)
+        if (_festivalData.containsKey(_signsCycle))
             for (StatsSet festivalData : _festivalData.get(_signsCycle).values())
             {
                 if (festivalData.getString("members").indexOf(playerName) > -1)
@@ -1711,10 +1711,10 @@ public class SevenSignsFestival implements SpawnListener
             // but only if they have participants signed up for them.
             for (int i = 0; i < FESTIVAL_COUNT; i++) 
             {
-                if (_duskFestivalParticipants.get(i) != null)
+                if (_duskFestivalParticipants.containsKey(i))
                     _festivalInstances.put(10 + i, new L2DarknessFestival(SevenSigns.CABAL_DUSK, i));
                 
-                if (_dawnFestivalParticipants.get(i) != null)
+                if (_dawnFestivalParticipants.containsKey(i))
                     _festivalInstances.put(20 + i, new L2DarknessFestival(SevenSigns.CABAL_DAWN, i));
             }
             

@@ -71,7 +71,7 @@ public class DimensionalRiftManager
 
     public DimensionalRiftRoom getRoom(byte type, byte room)
     {
-        return _rooms.get(type) == null ? null : _rooms.get(type).get(room);
+        return _rooms.containsKey(type) ? _rooms.get(type).get(room) : null;
     }
 
     private void loadRooms()

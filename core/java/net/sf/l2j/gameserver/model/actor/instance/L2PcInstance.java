@@ -4156,7 +4156,7 @@ public final class L2PcInstance extends L2PlayableInstance
 			{
 				int relation = getRelation(target);
 				
-				if ((getKnownList().getKnownRelations().get(target.getObjectId()) != null) && (getKnownList().getKnownRelations().get(target.getObjectId()) != relation))
+				if (getKnownList().getKnownRelations().containsKey(target.getObjectId()) && (getKnownList().getKnownRelations().get(target.getObjectId()) != relation))
 				{
 					target.sendPacket(new RelationChanged(this, relation, target.isAutoAttackable(this)));
 		            if (summon != null)
@@ -4184,7 +4184,7 @@ public final class L2PcInstance extends L2PlayableInstance
 				if (mov instanceof CharInfo)
 				{
 					int relation = getRelation(target);
-					if ((getKnownList().getKnownRelations().get(target.getObjectId()) != null) && (getKnownList().getKnownRelations().get(target.getObjectId()) != relation))
+					if (getKnownList().getKnownRelations().containsKey(target.getObjectId()) && (getKnownList().getKnownRelations().get(target.getObjectId()) != relation))
 					{
 						target.sendPacket(new RelationChanged(this, relation, target.isAutoAttackable(this)));
 			            if (summon != null)

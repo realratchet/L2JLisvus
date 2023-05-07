@@ -64,7 +64,8 @@ import net.sf.l2j.util.Rnd;
  */
 public class L2PetInstance extends L2Summon
 {
-	private static final Logger _logPet = Logger.getLogger(L2PetInstance.class.getName());	
+	private static final Logger _logPet = Logger.getLogger(L2PetInstance.class.getName());
+	
 	private int _curFed;
 	private final PetInventory _inventory;
 	private final int _controlItemObjectId;
@@ -339,7 +340,8 @@ public class L2PetInstance extends L2Summon
 			{
 				return item;
 			}
-		}		
+		}
+		
 		return null;
 	}
 	
@@ -482,7 +484,8 @@ public class L2PetInstance extends L2Summon
 			return;
 		}
 		
-		L2ItemInstance target = (L2ItemInstance) object;		
+		L2ItemInstance target = (L2ItemInstance) object;
+		
 		synchronized (target)
 		{
 			if (!target.isVisible())
@@ -538,10 +541,12 @@ public class L2PetInstance extends L2Summon
 				return;
 			}
 			
-			if ((target.getItemLootSchedule() != null) && ((target.getOwnerId() == getOwner().getObjectId())				|| getOwner().isInLooterParty(target.getOwnerId())))
+			if ((target.getItemLootSchedule() != null) && ((target.getOwnerId() == getOwner().getObjectId())
+				|| getOwner().isInLooterParty(target.getOwnerId())))
 			{
 				target.resetOwnerTimer();
-			}			
+			}
+			
 			target.pickupMe(this);
 			
 			if (Config.SAVE_DROPPED_ITEM)
@@ -864,7 +869,8 @@ public class L2PetInstance extends L2Summon
 					pet.getStat().setSp(rset.getInt("sp"));
 					
 					pet.getStatus().setCurrentHp(rset.getDouble("curHp"));
-					pet.getStatus().setCurrentMp(rset.getDouble("curMp"));					
+					pet.getStatus().setCurrentMp(rset.getDouble("curMp"));
+					
 					pet.getStatus().setCurrentCp(pet.getMaxCp());
 					
 					pet.setWeapon(rset.getInt("weapon"));
@@ -993,7 +999,8 @@ public class L2PetInstance extends L2Summon
 	{
 		// TODO Need Correct Penalty
 		int lvl = getStat().getLevel();
-		double percentLost = (-0.07 * lvl) + 6.5;		
+		double percentLost = (-0.07 * lvl) + 6.5;
+		
 		// Calculate the Experience loss
 		long lostExp = Math.round(((getStat().getExpForLevel(lvl+1) - getStat().getExpForLevel(lvl)) * percentLost) /100);
 		
@@ -1098,7 +1105,7 @@ public class L2PetInstance extends L2Summon
 	@Override
 	public final int getSkillLevel(int skillId)
 	{
-		if ((_skills == null) || (_skills.get(skillId) == null))
+		if (_skills == null || !_skills.containsKey(skillId))
 		{
 			return -1;
 		}

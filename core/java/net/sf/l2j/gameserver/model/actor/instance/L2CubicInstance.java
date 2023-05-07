@@ -256,9 +256,10 @@ public class L2CubicInstance
 			if (ownerTarget instanceof L2Character && ownerTarget != _owner.getPet() && ownerTarget != _owner)
 			{
 				// target mob which has aggro on you or your summon
-				if (ownerTarget instanceof L2Attackable)
+				if (ownerTarget instanceof L2Attackable && !((L2Attackable) ownerTarget).isDead())
 				{
-					if (((L2Attackable) ownerTarget).getAggroList().get(_owner) != null && !((L2Attackable) ownerTarget).isDead())
+
+					if (((L2Attackable) ownerTarget).getAggroList().containsKey(_owner))
 					{
 						_target = (L2Character) ownerTarget;
 						return;
@@ -267,7 +268,7 @@ public class L2CubicInstance
 					L2Summon ownerSummon = _owner.getPet();
 					if (ownerSummon != null)
 					{
-						if (((L2Attackable) ownerTarget).getAggroList().get(ownerSummon) != null && !((L2Attackable) ownerTarget).isDead())
+						if (((L2Attackable) ownerTarget).getAggroList().containsKey(ownerSummon))
 						{
 							_target = (L2Character) ownerTarget;
 							return;
