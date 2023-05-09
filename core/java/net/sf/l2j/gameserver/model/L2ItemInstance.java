@@ -327,17 +327,7 @@ public final class L2ItemInstance extends L2Object
 	
 	public static int getMaxItemCount(int itemId)
 	{
-		switch (itemId)
-		{
-			case Inventory.ADENA_ID:	// Adena
-			case Inventory.ANCIENT_ADENA_ID:	// Ancient Adena
-			case 6360:	// Blue Seal Stone
-			case 6361:	// Green Seal Stone
-			case 6362:	// Red Seal Stone
-				return 2000000000; // 2 billions
-		}
-		
-		return 1000000; // 1 million
+		return Integer.MAX_VALUE;
 	}
 
 	/**
