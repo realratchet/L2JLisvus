@@ -17,6 +17,8 @@ package net.sf.l2j.gameserver.templates;
 import java.util.HashMap;
 import java.util.Map;
 
+import net.sf.l2j.gameserver.model.holder.SkillHolder;
+
 /**
  * @author mkizub
  *         <BR>
@@ -42,12 +44,21 @@ public final class StatsSet
 	 */
 	public void add(StatsSet newSet)
 	{
-		Map<String, Object> newMap = newSet.getSet();
-		for (String key : newMap.keySet())
-		{
-			Object value = newMap.get(key);
-			_set.put(key, value);
-		}
+		_set.putAll(newSet.getSet());
+	}
+
+	/**
+	 * Verifies if the stat set is empty.
+	 * @return {@code true} if the stat set is empty, {@code false} otherwise
+	 */
+	public boolean isEmpty()
+	{
+		return _set.isEmpty();
+	}
+	
+	public boolean containsKey(String key)
+	{
+		return _set.containsKey(key);
 	}
 	
 	/**
@@ -449,6 +460,41 @@ public final class StatsSet
 		{
 			throw new IllegalArgumentException("Enum value of type " + enumClass.getName() + "required, but found: " + val);
 		}
+	}
+
+	/**
+	 * Returns the SkillHolder array associated to the key put in parameter ("name"). If the value associated to the key is null, this method returns the value of the parameter
+	 * deflt.
+	 * @param name : String designating the key in the set
+	 * @param deflt : SkillHolder[] designating the default value if value associated with the key is null
+	 * @return SkillHolder[] : value associated to the key
+	 */
+	public SkillHolder[] getSkillHolderArray(String name, SkillHolder[] deflt)
+	{
+		Object rawVal = _set.get(name);
+		if (rawVal == null)
+			return deflt;
+		
+		String val = String.valueOf(rawVal);
+		String[] splitDataset = val.split(";");
+		SkillHolder[] holders = new SkillHolder[splitDataset.length];
+		
+		try
+		{
+			for (int i = 0, length = splitDataset.length; i < length; i++)
+			{
+				String[] splitData = splitDataset[i].split("-");
+				int id = Integer.parseInt(splitData[0]);
+				int level = Integer.parseInt(splitData[1]);
+				holders[i] = new SkillHolder(id, level);
+			}
+		}
+		catch (Exception e)
+		{
+			throw new IllegalArgumentException("Failed to parse " + name + "(" + val + ")! Format: id0-level0;idn-leveln");
+		}
+
+		return holders;
 	}
 	
 	/**

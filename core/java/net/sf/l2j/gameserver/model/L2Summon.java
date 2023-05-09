@@ -851,7 +851,7 @@ public abstract class L2Summon extends L2PlayableInstance
 			return;
 		}
 		
-		// If all conditions are checked, create a new SkillDat object and set the owner _currentPetSkill
+		// If all conditions are checked, create a new SkillUseHolder and set the owner _currentPetSkill
 		_owner.setCurrentPetSkill(skill, forceUse, dontMove);
 		
 		// Notify the AI with AI_INTENTION_CAST and target

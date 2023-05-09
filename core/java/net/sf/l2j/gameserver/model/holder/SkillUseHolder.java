@@ -12,24 +12,32 @@
  * You should have received a copy of the GNU General Public License along with
  * this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package net.sf.l2j.gameserver.skills;
+package net.sf.l2j.gameserver.model.holder;
 
-import net.sf.l2j.gameserver.model.L2Character;
-import net.sf.l2j.gameserver.model.L2Effect;
-import net.sf.l2j.gameserver.model.L2ItemInstance;
 import net.sf.l2j.gameserver.model.L2Skill;
 
 /**
- * An Env object is just a class to pass parameters to a calculator such as L2PcInstance, L2ItemInstance, Initial value.
+ * @author UnAfraid
  */
-public final class Env
+public class SkillUseHolder extends SkillHolder
 {
-    public L2Character player;
-    public L2Character target;
-    public L2ItemInstance item;
-    public L2Skill skill;
-    public L2Effect effect;
-    public double baseValue;
-    public double value;
-    public boolean skillMastery = false;
+    private final boolean _ctrlPressed;
+    private final boolean _shiftPressed;
+    
+    public SkillUseHolder(L2Skill skill, boolean ctrlPressed, boolean shiftPressed)
+    {
+        super(skill);
+        _ctrlPressed = ctrlPressed;
+        _shiftPressed = shiftPressed;
+    }
+    
+    public boolean isCtrlPressed()
+    {
+        return _ctrlPressed;
+    }
+    
+    public boolean isShiftPressed()
+    {
+        return _shiftPressed;
+    }
 }

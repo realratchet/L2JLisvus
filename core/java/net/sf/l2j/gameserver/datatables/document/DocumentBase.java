@@ -31,10 +31,10 @@ import org.w3c.dom.Node;
 
 import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.datatables.BufferTable;
-import net.sf.l2j.gameserver.datatables.BufferTable.BuffInfo;
 import net.sf.l2j.gameserver.model.L2Character;
 import net.sf.l2j.gameserver.model.L2Skill;
 import net.sf.l2j.gameserver.model.base.Race;
+import net.sf.l2j.gameserver.model.holder.BuffSkillHolder;
 import net.sf.l2j.gameserver.skills.Env;
 import net.sf.l2j.gameserver.skills.Stats;
 import net.sf.l2j.gameserver.skills.conditions.Condition;
@@ -289,8 +289,8 @@ abstract class DocumentBase
 			// Set custom time if AIO or NPC buffer is enabled
 			if (Config.AIO_BUFFER_ENABLED || Config.NPC_BUFFER_ENABLED)
 			{
-				Map<Integer, BuffInfo> aioBuffs = BufferTable.getInstance().getAIOBuffs();
-				Map<Integer, BuffInfo> npcBuffs = BufferTable.getInstance().getNPCBuffs();
+				Map<Integer, BuffSkillHolder> aioBuffs = BufferTable.getInstance().getAIOBuffs();
+				Map<Integer, BuffSkillHolder> npcBuffs = BufferTable.getInstance().getNPCBuffs();
 				
 				if (aioBuffs.containsKey(((L2Skill) template).getId()))
 				{
@@ -357,17 +357,16 @@ abstract class DocumentBase
 		}
 		EffectTemplate lt = new EffectTemplate(attachCond, applayCond, name, lambda, count, time, altTime1, altTime2, abnormal, stackType, stackOrder, icon);
 		parseTemplate(n, lt);
-		if (template instanceof L2Item)
+		if (template instanceof L2Skill)
 		{
-			((L2Item) template).attach(lt);
-		}
-		else if ((template instanceof L2Skill) && !self)
-		{
-			((L2Skill) template).attach(lt);
-		}
-		else if ((template instanceof L2Skill) && self)
-		{
-			((L2Skill) template).attachSelf(lt);
+			if (self)
+			{
+				((L2Skill) template).attachSelf(lt);
+			}
+			else
+			{
+				((L2Skill) template).attach(lt);
+			}
 		}
 	}
 

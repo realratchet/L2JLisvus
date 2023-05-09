@@ -615,6 +615,7 @@ public abstract class L2Effect
 			Env env = new Env();
 			env.player = getEffector();
 			env.target = getEffected();
+			env.effect = this;
 			env.skill = getSkill();
 			Func f = t.getFunc(env, this); // effect is owner
 			if (f != null)

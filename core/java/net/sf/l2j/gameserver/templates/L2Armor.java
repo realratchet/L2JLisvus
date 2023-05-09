@@ -14,17 +14,6 @@
  */
 package net.sf.l2j.gameserver.templates;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import net.sf.l2j.gameserver.datatables.SkillTable;
-import net.sf.l2j.gameserver.model.L2Character;
-import net.sf.l2j.gameserver.model.L2ItemInstance;
-import net.sf.l2j.gameserver.model.L2Skill;
-import net.sf.l2j.gameserver.skills.Env;
-import net.sf.l2j.gameserver.skills.funcs.Func;
-import net.sf.l2j.gameserver.skills.funcs.FuncTemplate;
-
 /**
  * This class is dedicated to the management of armors.
  * @version $Revision: 1.2.2.1.2.6 $ $Date: 2005/03/27 15:30:10 $
@@ -32,8 +21,6 @@ import net.sf.l2j.gameserver.skills.funcs.FuncTemplate;
 public final class L2Armor extends L2Item
 {
 	private L2ArmorType _type;
-
-	private L2Skill _itemSkill = null; // for passive skill
 	
 	/**
 	 * Constructor for Armor.
@@ -80,38 +67,5 @@ public final class L2Armor extends L2Item
 	public final int getItemMask()
 	{
 		return getItemType().mask();
-	}
-	
-	/**
-	 * Returns passive skill linked to that armor
-	 * @return
-	 */
-	public L2Skill getSkill()
-	{
-		return _itemSkill;
-	}
-	
-	/**
-	 * Returns array of Func objects containing the list of functions used by the armor
-	 * @param instance : L2ItemInstance pointing out the armor
-	 * @param player : L2Character pointing out the player
-	 * @return Func[] : array of functions
-	 */
-	@Override
-	public Func[] getStatFuncs(L2ItemInstance instance, L2Character player)
-	{
-		List<Func> funcs = new ArrayList<>();
-		if (_funcTemplates != null)
-		{
-			for (FuncTemplate t : _funcTemplates)
-			{
-				Env env = new Env();
-				env.player = player;
-				Func f = t.getFunc(env, instance);
-				if (f != null)
-					funcs.add(f);
-			}
-		}
-		return funcs.toArray(new Func[funcs.size()]);
 	}
 }

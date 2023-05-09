@@ -24,9 +24,9 @@ import net.sf.l2j.gameserver.model.L2Character;
 import net.sf.l2j.gameserver.model.L2Effect;
 import net.sf.l2j.gameserver.model.L2ItemInstance;
 import net.sf.l2j.gameserver.model.L2Object;
-import net.sf.l2j.gameserver.model.L2Skill;
 import net.sf.l2j.gameserver.model.L2Summon;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.holder.SkillHolder;
 import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
 import net.sf.l2j.gameserver.skills.Env;
 import net.sf.l2j.gameserver.skills.conditions.Condition;
@@ -47,27 +47,27 @@ public abstract class L2Item
 	private static final Map<String, Integer> _slots = new HashMap<>();
 	{
 		_slots.put("chest", L2Item.SLOT_CHEST);
-        _slots.put("fullarmor", L2Item.SLOT_FULL_ARMOR);
-        _slots.put("head", L2Item.SLOT_HEAD);
-        _slots.put("hair", L2Item.SLOT_HAIR);
-        _slots.put("underwear", L2Item.SLOT_UNDERWEAR);
-        _slots.put("back", L2Item.SLOT_BACK);
-        _slots.put("neck", L2Item.SLOT_NECK);
-        _slots.put("legs", L2Item.SLOT_LEGS);
-        _slots.put("feet", L2Item.SLOT_FEET);
-        _slots.put("gloves", L2Item.SLOT_GLOVES);
-        _slots.put("chest;legs", L2Item.SLOT_CHEST | L2Item.SLOT_LEGS);
-        _slots.put("rhand", L2Item.SLOT_R_HAND);
-        _slots.put("lhand", L2Item.SLOT_L_HAND);
-        _slots.put("lrhand", L2Item.SLOT_LR_HAND);
-        _slots.put("rear;lear", L2Item.SLOT_R_EAR | L2Item.SLOT_L_EAR);
-        _slots.put("rfinger;lfinger", L2Item.SLOT_R_FINGER | L2Item.SLOT_L_FINGER);
-        _slots.put("none", L2Item.SLOT_NONE);
-        _slots.put("wolf", L2Item.SLOT_WOLF); // for wolf
-        _slots.put("hatchling", L2Item.SLOT_HATCHLING); // for hatchling
-        _slots.put("strider", L2Item.SLOT_STRIDER); // for strider
+		_slots.put("fullarmor", L2Item.SLOT_FULL_ARMOR);
+		_slots.put("head", L2Item.SLOT_HEAD);
+		_slots.put("hair", L2Item.SLOT_HAIR);
+		_slots.put("underwear", L2Item.SLOT_UNDERWEAR);
+		_slots.put("back", L2Item.SLOT_BACK);
+		_slots.put("neck", L2Item.SLOT_NECK);
+		_slots.put("legs", L2Item.SLOT_LEGS);
+		_slots.put("feet", L2Item.SLOT_FEET);
+		_slots.put("gloves", L2Item.SLOT_GLOVES);
+		_slots.put("chest;legs", L2Item.SLOT_CHEST | L2Item.SLOT_LEGS);
+		_slots.put("rhand", L2Item.SLOT_R_HAND);
+		_slots.put("lhand", L2Item.SLOT_L_HAND);
+		_slots.put("lrhand", L2Item.SLOT_LR_HAND);
+		_slots.put("rear;lear", L2Item.SLOT_R_EAR | L2Item.SLOT_L_EAR);
+		_slots.put("rfinger;lfinger", L2Item.SLOT_R_FINGER | L2Item.SLOT_L_FINGER);
+		_slots.put("none", L2Item.SLOT_NONE);
+		_slots.put("wolf", L2Item.SLOT_WOLF); // for wolf
+		_slots.put("hatchling", L2Item.SLOT_HATCHLING); // for hatchling
+		_slots.put("strider", L2Item.SLOT_STRIDER); // for strider
 	}
-
+	
 	public static final int TYPE1_WEAPON_RING_EARRING_NECKLACE = 0;
 	public static final int TYPE1_SHIELD_ARMOR = 1;
 	public static final int TYPE1_ITEM_QUESTITEM_ADENA = 4;
@@ -110,9 +110,11 @@ public abstract class L2Item
 	private final int _referencePrice;
 	private final CrystalType _crystalType; // default to no-grade
 	private final int _crystalCount;
-
+	
 	private final int _reuseDelay;
-
+	
+	private SkillHolder[] _skillHolders;
+	
 	private final boolean _stackable;
 	private final boolean _sellable;
 	private final boolean _dropable;
@@ -127,14 +129,12 @@ public abstract class L2Item
 	protected FuncTemplate[] _funcTemplates;
 	protected List<Condition> _preConditions;
 	protected EffectTemplate[] _effectTemplates;
-	protected L2Skill[] _skills;
 	
 	private static final Func[] _emptyFunctionSet = new Func[0];
 	protected static final L2Effect[] _emptyEffectSet = new L2Effect[0];
 	
 	/**
 	 * Constructor of the L2Item that fill class variables.
-	 * 
 	 * @param set : StatsSet corresponding to a set of couples (key,value) for description of the item
 	 */
 	protected L2Item(StatsSet set)
@@ -148,9 +148,14 @@ public abstract class L2Item
 		_referencePrice = set.getInteger("price", 0);
 		_crystalType = set.getEnum("crystal_type", CrystalType.class, CrystalType.NONE); // default to no-grade
 		_crystalCount = set.getInteger("crystal_count", 0);
-
+		
 		_reuseDelay = set.getInteger("reuse_delay", 0);
-
+		
+		if (set.containsKey("item_skill"))
+		{
+			_skillHolders = set.getSkillHolderArray("item_skill", new SkillHolder[0]);
+		}
+		
 		_stackable = set.getBool("is_stackable", false);
 		_sellable = set.getBool("is_sellable", true);
 		_dropable = set.getBool("is_dropable", true);
@@ -283,13 +288,13 @@ public abstract class L2Item
 		else
 			return _crystalCount;
 	}
-
+	
 	/**
 	 * Gets the item reuse delay time in milliseconds.
-	 * 
 	 * @return the reuse delay time
 	 */
-	public int getReuseDelay() {
+	public int getReuseDelay()
+	{
 		return _reuseDelay;
 	}
 	
@@ -310,7 +315,7 @@ public abstract class L2Item
 	{
 		return _bodyPart;
 	}
-
+	
 	/**
 	 * Returns the price of reference of the item
 	 * @return int
@@ -346,7 +351,16 @@ public abstract class L2Item
 	{
 		return false;
 	}
-
+	
+	/**
+	 * Method to retrieve skills linked to this item
+	 * @return Skills linked to this item as SkillHolder[]
+	 */
+	public final SkillHolder[] getSkills()
+	{
+		return _skillHolders;
+	}
+	
 	/**
 	 * Returns if the item is stackable
 	 * @return boolean
@@ -438,71 +452,21 @@ public abstract class L2Item
 	{
 		if (_funcTemplates == null)
 			return _emptyFunctionSet;
+
 		List<Func> funcs = new ArrayList<>();
 		for (FuncTemplate t : _funcTemplates)
 		{
 			Env env = new Env();
 			env.player = player;
 			env.target = player;
-			Func f = t.getFunc(env, this); // Skill is owner
+			env.item = instance;
+			Func f = t.getFunc(env, instance);
 			if (f != null)
 				funcs.add(f);
 		}
 		if (funcs.isEmpty())
 			return _emptyFunctionSet;
 		return funcs.toArray(new Func[funcs.size()]);
-	}
-	
-	/**
-	 * Returns the effects associated with the item.
-	 * @param instance : L2ItemInstance pointing out the item
-	 * @param player : L2Character pointing out the player
-	 * @return L2Effect[] : array of effects generated by the item
-	 */
-	public L2Effect[] getEffects(L2ItemInstance instance, L2Character player)
-	{
-		if (_effectTemplates == null)
-			return _emptyEffectSet;
-		List<L2Effect> effects = new ArrayList<>();
-		for (EffectTemplate et : _effectTemplates)
-		{
-			Env env = new Env();
-			env.player = player;
-			env.target = player;
-			L2Effect e = et.getEffect(env, this);
-			if (e != null)
-				effects.add(e);
-		}
-		if (effects.isEmpty())
-			return _emptyEffectSet;
-		return effects.toArray(new L2Effect[effects.size()]);
-	}
-	
-	/**
-	 * Returns effects of skills associated with the item.
-	 * @param caster : L2Character pointing out the caster
-	 * @param target : L2Character pointing out the target
-	 * @return L2Effect[] : array of effects generated by the skill
-	 */
-	public L2Effect[] getSkillEffects(L2Character caster, L2Character target)
-	{
-		if (_skills == null)
-			return _emptyEffectSet;
-		List<L2Effect> effects = new ArrayList<>();
-		
-		for (L2Skill skill : _skills)
-		{
-			if (!skill.checkCondition(caster, target))
-				continue; // Skill condition not met
-				
-			if (target.getFirstEffect(skill.getId()) != null)
-				target.removeEffect(target.getFirstEffect(skill.getId()));
-			for (L2Effect e : skill.getEffects(caster, target))
-				effects.add(e);
-		}
-		if (effects.isEmpty())
-			return _emptyEffectSet;
-		return effects.toArray(new L2Effect[effects.size()]);
 	}
 	
 	/**
@@ -528,56 +492,6 @@ public abstract class L2Item
 			System.arraycopy(_funcTemplates, 0, tmp, 0, len);
 			tmp[len] = f;
 			_funcTemplates = tmp;
-		}
-	}
-	
-	/**
-	 * Add the EffectTemplate effect to the list of effects generated by the item
-	 * @param effect : EffectTemplate
-	 */
-	public void attach(EffectTemplate effect)
-	{
-		if (_effectTemplates == null)
-		{
-			_effectTemplates = new EffectTemplate[]
-			{
-				effect
-			};
-		}
-		else
-		{
-			int len = _effectTemplates.length;
-			EffectTemplate[] tmp = new EffectTemplate[len + 1];
-			// Definition : arraycopy(array source, begins copy at this position of source, array destination, begins copy at this position in dest,
-			// number of components to be copied)
-			System.arraycopy(_effectTemplates, 0, tmp, 0, len);
-			tmp[len] = effect;
-			_effectTemplates = tmp;
-		}
-	}
-	
-	/**
-	 * Add the L2Skill skill to the list of skills generated by the item
-	 * @param skill : L2Skill
-	 */
-	public void attach(L2Skill skill)
-	{
-		if (_skills == null)
-		{
-			_skills = new L2Skill[]
-			{
-				skill
-			};
-		}
-		else
-		{
-			int len = _skills.length;
-			L2Skill[] tmp = new L2Skill[len + 1];
-			// Definition : arraycopy(array source, begins copy at this position of source, array destination, begins copy at this position in dest,
-			// number of components to be copied)
-			System.arraycopy(_skills, 0, tmp, 0, len);
-			tmp[len] = skill;
-			_skills = tmp;
 		}
 	}
 	

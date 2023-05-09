@@ -32,10 +32,9 @@ import net.sf.l2j.gameserver.model.L2Object;
 import net.sf.l2j.gameserver.model.L2Skill;
 import net.sf.l2j.gameserver.model.L2World;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.templates.L2Armor;
+import net.sf.l2j.gameserver.model.holder.SkillHolder;
 import net.sf.l2j.gameserver.templates.L2EtcItemType;
 import net.sf.l2j.gameserver.templates.L2Item;
-import net.sf.l2j.gameserver.templates.L2Weapon;
 import net.sf.l2j.gameserver.templates.L2WeaponType;
 
 /**
@@ -198,7 +197,7 @@ public abstract class Inventory extends ItemContainer
     	}
     }
 
-    final class ItemPassiveSkillsListener implements PaperdollListener
+    final class ItemSkillsListener implements PaperdollListener
     {
         @Override
 		public void notifyUnequiped(int slot, L2ItemInstance item)
@@ -208,19 +207,33 @@ public abstract class Inventory extends ItemContainer
 
             L2PcInstance player = (L2PcInstance)getOwner();
 
-            L2Skill passiveSkill = null;
+            L2Skill itemSkill = null;
             L2Item it = item.getItem();
+			boolean updated = false;
 
-            if (it instanceof L2Weapon)
-                passiveSkill = ((L2Weapon)it).getSkill();
-            else if (it instanceof L2Armor)
-                passiveSkill = ((L2Armor)it).getSkill();
+			final SkillHolder[] skills = it.getSkills();
+			if (skills != null)
+			{
+				
+				for (SkillHolder skillInfo : skills)
+				{
+					itemSkill = skillInfo.getSkill();
+					if (itemSkill != null)
+					{
+						player.removeSkill(itemSkill);
+						updated = true;
+					}
+					else
+					{
+						_log.warning(getClass().getSimpleName() + ": Attempted to remove an incorrect skill: " + skillInfo + ".");
+					}
+				}
+			}
 
-            if (passiveSkill != null)
-            {
-                player.removeSkill(passiveSkill);
-                player.sendSkillList();
-            }
+			if (updated)
+			{
+				player.sendSkillList();
+			}
     	}
 
     	@Override
@@ -231,19 +244,32 @@ public abstract class Inventory extends ItemContainer
 
             L2PcInstance player = (L2PcInstance)getOwner();
 
-            L2Skill passiveSkill = null;
+            L2Skill itemSkill = null;
             L2Item it = item.getItem();
+			boolean updated = false;
 
-            if (it instanceof L2Weapon)
-                passiveSkill = ((L2Weapon)it).getSkill();
-            else if (it instanceof L2Armor)
-                passiveSkill = ((L2Armor)it).getSkill();
+			final SkillHolder[] skills = it.getSkills();
+			if (skills != null)
+			{
+				for (SkillHolder skillInfo : skills)
+				{
+					itemSkill = skillInfo.getSkill();
+					if (itemSkill != null)
+					{
+						player.addSkill(itemSkill, false);
+						updated = true;
+					}
+					else
+					{
+						_log.warning(getClass().getSimpleName() + ": Attempted to add an incorrect skill: " + skillInfo + ".");
+					}
+				}
+			}
 
-            if (passiveSkill != null)
-            {
-                player.addSkill(passiveSkill, false);
-                player.sendSkillList();
-            }
+			if (updated)
+			{
+				player.sendSkillList();
+			}
         }
     }
 
@@ -279,7 +305,7 @@ public abstract class Inventory extends ItemContainer
                         player.sendSkillList();
                     }
                     else
-                        _log.warning("Inventory.ArmorSetListener: Incorrect skill: "+armorSet.getSkillId()+".");
+                        _log.warning(getClass().getSimpleName() + ": Attempted to add an incorrect skill: "+armorSet.getSkillId()+".");
 
                     if (armorSet.containShield(player)) // has shield from set
                     {
@@ -291,7 +317,7 @@ public abstract class Inventory extends ItemContainer
                             player.sendSkillList();
                         }
                         else
-                            _log.warning("Inventory.ArmorSetListener: Incorrect skill: "+armorSet.getShieldSkillId()+".");
+                            _log.warning(getClass().getSimpleName() + ": Attempted to add an incorrect skill: "+armorSet.getShieldSkillId()+".");
                     }
 
                 }
@@ -307,7 +333,7 @@ public abstract class Inventory extends ItemContainer
                         player.sendSkillList();
                     }
                     else
-                        _log.warning("Inventory.ArmorSetListener: Incorrect skill: "+armorSet.getShieldSkillId()+".");
+                        _log.warning(getClass().getSimpleName() + ": Attempted to add an incorrect skill: "+armorSet.getShieldSkillId()+".");
                 }
             }
         }
@@ -360,7 +386,7 @@ public abstract class Inventory extends ItemContainer
                     if (skill != null)
                         ((L2PcInstance)getOwner()).removeSkill(skill);
                     else
-                        _log.warning("Inventory.ArmorSetListener: Incorrect skill: "+removeSkillId1+".");
+                        _log.warning(getClass().getSimpleName() + ": Attempted to remove an incorrect skill: "+removeSkillId1+".");
                 }
 
                 if (removeSkillId2 != 0)
@@ -369,7 +395,7 @@ public abstract class Inventory extends ItemContainer
                     if (skill != null)
                         ((L2PcInstance)getOwner()).removeSkill(skill);
                     else
-                        _log.warning("Inventory.ArmorSetListener: Incorrect skill: "+removeSkillId2+".");
+                        _log.warning(getClass().getSimpleName() + ": Attempted to remove an incorrect skill: "+removeSkillId2+".");
                 }
                 
                 ((L2PcInstance)getOwner()).checkItemRestriction();
@@ -434,7 +460,7 @@ public abstract class Inventory extends ItemContainer
 		_paperdollListeners = new ArrayList<>();
         addPaperdollListener(new ArmorSetListener());
 		addPaperdollListener(new ConsumingWeaponListener());
-        addPaperdollListener(new ItemPassiveSkillsListener());
+        addPaperdollListener(new ItemSkillsListener());
 		addPaperdollListener(new StatsListener());
 		addPaperdollListener(new FormalWearListener());
 	}

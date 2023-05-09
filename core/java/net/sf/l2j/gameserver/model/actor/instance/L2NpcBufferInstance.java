@@ -24,13 +24,12 @@ import java.util.regex.Pattern;
 import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.cache.HtmCache;
 import net.sf.l2j.gameserver.datatables.BufferTable;
-import net.sf.l2j.gameserver.datatables.BufferTable.BuffInfo;
-import net.sf.l2j.gameserver.datatables.SkillTable;
 import net.sf.l2j.gameserver.model.L2Character;
 import net.sf.l2j.gameserver.model.L2ItemInstance;
 import net.sf.l2j.gameserver.model.L2Skill;
 import net.sf.l2j.gameserver.model.L2Summon;
 import net.sf.l2j.gameserver.model.eventgame.L2Event;
+import net.sf.l2j.gameserver.model.holder.BuffSkillHolder;
 import net.sf.l2j.gameserver.network.serverpackets.ActionFailed;
 import net.sf.l2j.gameserver.network.serverpackets.NpcHtmlMessage;
 import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
@@ -381,7 +380,7 @@ public class L2NpcBufferInstance extends L2FolkInstance
             	
             	int skillId = Integer.valueOf(id);
             	
-                BuffInfo buff = BufferTable.getInstance().getNPCBuffs().get(skillId);
+                BuffSkillHolder buff = BufferTable.getInstance().getNPCBuffs().get(skillId);
                 if (buff == null)
                 {
                     _log.warning("Player: " + player.getName() + " has tried to use a skill (" + skillId + ") not assigned to the NPC Buffer!");
@@ -414,7 +413,7 @@ public class L2NpcBufferInstance extends L2FolkInstance
                     }
                 }
 
-                L2Skill skill = SkillTable.getInstance().getInfo(skillId, buff.getSkillLevel());
+                L2Skill skill = buff.getSkill();
                 if (skill != null)
                 {
                     skill.getEffects(this, target);

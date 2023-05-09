@@ -50,7 +50,6 @@ import net.sf.l2j.gameserver.model.actor.instance.L2MonsterInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2NpcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2NpcWalkerInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance.SkillDat;
 import net.sf.l2j.gameserver.model.actor.instance.L2PetInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PlayableInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2RaidBossInstance;
@@ -62,6 +61,7 @@ import net.sf.l2j.gameserver.model.actor.knownlist.CharKnownList;
 import net.sf.l2j.gameserver.model.actor.stat.CharStat;
 import net.sf.l2j.gameserver.model.actor.status.CharStatus;
 import net.sf.l2j.gameserver.model.eventgame.L2Event;
+import net.sf.l2j.gameserver.model.holder.SkillUseHolder;
 import net.sf.l2j.gameserver.model.itemcontainer.Inventory;
 import net.sf.l2j.gameserver.model.quest.Quest;
 import net.sf.l2j.gameserver.model.quest.QuestState;
@@ -5088,7 +5088,7 @@ public abstract class L2Character extends L2Object
 			L2Weapon activeWeapon = getActiveWeaponItem();
 			if (activeWeapon != null)
 			{
-				activeWeapon.getSkillEffects(this, target);
+				activeWeapon.getSkillOnCritEffects(this, target);
 			}
 		}
 		
@@ -5347,7 +5347,6 @@ public abstract class L2Character extends L2Object
 		}
 
 		int reuse = weapon.getReuseDelay();
-		// only bows should continue for now
 		if (reuse == 0)
 		{
 			return 0;
@@ -5795,7 +5794,7 @@ public abstract class L2Character extends L2Object
 		if (this instanceof L2PcInstance)
 		{
 			L2PcInstance currPlayer = (L2PcInstance) this;
-			SkillDat queuedSkill = currPlayer.getQueuedSkill();
+			SkillUseHolder queuedSkill = currPlayer.getQueuedSkill();
 
 			currPlayer.setCurrentSkill(null, false, false);
 
@@ -6030,7 +6029,7 @@ public abstract class L2Character extends L2Object
 					L2Weapon activeWeapon = getActiveWeaponItem();
 					if ((activeWeapon != null) && !target.isDead())
 					{
-						activeWeapon.getSkillEffects(this, target, skill);
+						activeWeapon.getSkillOnCastEffects(this, target, skill);
 					}
 
 					// Check if over-hit is possible

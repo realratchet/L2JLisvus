@@ -56,7 +56,6 @@ import net.sf.l2j.gameserver.communitybbs.Manager.ForumsBBSManager;
 import net.sf.l2j.gameserver.communitybbs.Manager.RegionBBSManager;
 import net.sf.l2j.gameserver.datatables.AdminCommandRightsData;
 import net.sf.l2j.gameserver.datatables.BufferTable;
-import net.sf.l2j.gameserver.datatables.BufferTable.BuffInfo;
 import net.sf.l2j.gameserver.datatables.CharTemplateTable;
 import net.sf.l2j.gameserver.datatables.ClanTable;
 import net.sf.l2j.gameserver.datatables.FishTable;
@@ -122,6 +121,8 @@ import net.sf.l2j.gameserver.model.entity.Castle;
 import net.sf.l2j.gameserver.model.entity.Hero;
 import net.sf.l2j.gameserver.model.entity.Siege;
 import net.sf.l2j.gameserver.model.eventgame.L2Event;
+import net.sf.l2j.gameserver.model.holder.BuffSkillHolder;
+import net.sf.l2j.gameserver.model.holder.SkillUseHolder;
 import net.sf.l2j.gameserver.model.itemcontainer.Inventory;
 import net.sf.l2j.gameserver.model.itemcontainer.ItemContainer;
 import net.sf.l2j.gameserver.model.itemcontainer.PcFreight;
@@ -654,11 +655,11 @@ public final class L2PcInstance extends L2PlayableInstance
 	private Forum _forumMemo;
 	
 	/** Current skill in use */
-	private SkillDat _currentSkill;
-	private SkillDat _currentPetSkill;
+	private SkillUseHolder _currentSkill;
+	private SkillUseHolder _currentPetSkill;
 	
 	/** Skills queued because a skill is already in progress */
-	private SkillDat _queuedSkill;
+	private SkillUseHolder _queuedSkill;
 	
 	/** Store object used to summon the strider you are mounting **/
 	private int _mountObjectID = 0;
@@ -703,41 +704,6 @@ public final class L2PcInstance extends L2PlayableInstance
 	// NPC Buffer schemes
 	private String _editingSchemeName;
 	private final Map<String, List<String>> _schemes = new ConcurrentSkipListMap<>();
-	
-	/** Skill casting information (used to queue when several skills are cast in a short time) **/
-	public class SkillDat
-	{
-		private final L2Skill _skill;
-		private final boolean _ctrlPressed;
-		private final boolean _shiftPressed;
-		
-		protected SkillDat(L2Skill skill, boolean ctrlPressed, boolean shiftPressed)
-		{
-			_skill = skill;
-			_ctrlPressed = ctrlPressed;
-			_shiftPressed = shiftPressed;
-		}
-		
-		public boolean isCtrlPressed()
-		{
-			return _ctrlPressed;
-		}
-		
-		public boolean isShiftPressed()
-		{
-			return _shiftPressed;
-		}
-		
-		public L2Skill getSkill()
-		{
-			return _skill;
-		}
-		
-		public int getSkillId()
-		{
-			return (getSkill() != null) ? getSkill().getId() : -1;
-		}
-	}
 	
 	private final gatesRequest _gatesRequest = new gatesRequest();
 	
@@ -7945,12 +7911,12 @@ public final class L2PcInstance extends L2PlayableInstance
 		// If player is currently casting a skill, queue this one if this is not the same
 		// Note that this check is currently imperfect: getCurrentSkill() isn't always null when a skill has
 		// failed to cast, or the casting is not yet in progress when this is rechecked
-		final SkillDat currentSkill = getCurrentSkill();
-		final SkillDat queuedSkill = getQueuedSkill();
+		final SkillUseHolder currentSkill = getCurrentSkill();
+		final SkillUseHolder queuedSkill = getQueuedSkill();
 		if (currentSkill != null && isCastingNow())
 		{
 			// Check if new skill different from current skill in progress
-			if (skill.getId() == currentSkill.getSkillId())
+			if (skill.getId() == currentSkill.getId())
 			{
 				sendPacket(new ActionFailed());
 				return;
@@ -7958,16 +7924,16 @@ public final class L2PcInstance extends L2PlayableInstance
 			
 			if (Config.DEBUG && queuedSkill != null)
 			{
-				_log.info(queuedSkill.getSkill().getName() + " is already queued for " + getName() + ".");
+				_log.info("Skill " + queuedSkill.getId() + " is already queued for " + getName() + ".");
 			}
 			
-			// Create a new SkillDat object and queue it in the player _queuedSkill
+			// Create a new SkillUseHolder and queue it in the player _queuedSkill
 			setQueuedSkill(skill, forceUse, dontMove);
 			sendPacket(new ActionFailed());
 			return;
 		}
 		
-		// If all conditions are checked, create a new SkillDat object and set the player _currentSkill
+		// If all conditions are checked, create a new SkillUseHolder and set the player _currentSkill
 		setCurrentSkill(skill, forceUse, dontMove);
 		
 		if (queuedSkill != null)
@@ -8335,7 +8301,7 @@ public final class L2PcInstance extends L2PlayableInstance
 			final boolean checkIfOffensive = skill.isOffensive();
 			
 			// Get current skill depending on source character type
-			SkillDat currentPlayableSkill = null;
+			SkillUseHolder currentPlayableSkill = null;
 			if (srcIsSummon)
 			{
 				currentPlayableSkill = getCurrentPetSkill();
@@ -11246,13 +11212,13 @@ public final class L2PcInstance extends L2PlayableInstance
 	 * <BR>
 	 * @return 
 	 */
-	public SkillDat getCurrentSkill()
+	public SkillUseHolder getCurrentSkill()
 	{
 		return _currentSkill;
 	}
 	
 	/**
-	 * Create a new SkillDat object and set the player _currentSkill.<BR>
+	 * Create a new SkillUseHolder and set the player _currentSkill.<BR>
 	 * <BR>
 	 * @param currentSkill 
 	 * @param ctrlPressed 
@@ -11276,7 +11242,7 @@ public final class L2PcInstance extends L2PlayableInstance
 			_log.info("Setting current skill: " + currentSkill.getName() + " (ID: " + currentSkill.getId() + ") for " + getName() + ".");
 		}
 		
-		_currentSkill = new SkillDat(currentSkill, ctrlPressed, shiftPressed);
+		_currentSkill = new SkillUseHolder(currentSkill, ctrlPressed, shiftPressed);
 	}
 	
 	/**
@@ -11284,13 +11250,13 @@ public final class L2PcInstance extends L2PlayableInstance
 	 * <BR>
 	 * @return 
 	 */
-	public SkillDat getCurrentPetSkill()
+	public SkillUseHolder getCurrentPetSkill()
 	{
 		return _currentPetSkill;
 	}
 	
 	/**
-	 * Create a new SkillDat object and set the player _currentPetSkill.<BR>
+	 * Create a new SkillUseHolder and set the player _currentPetSkill.<BR>
 	 * <BR>
 	 * @param currentPetSkill 
 	 * @param ctrlPressed 
@@ -11314,16 +11280,16 @@ public final class L2PcInstance extends L2PlayableInstance
 			_log.info("Setting current pet skill: " + currentPetSkill.getName() + " (ID: " + currentPetSkill.getId() + ") for " + getName() + ".");
 		}
 		
-		_currentPetSkill = new SkillDat(currentPetSkill, ctrlPressed, shiftPressed);
+		_currentPetSkill = new SkillUseHolder(currentPetSkill, ctrlPressed, shiftPressed);
 	}
 	
-	public SkillDat getQueuedSkill()
+	public SkillUseHolder getQueuedSkill()
 	{
 		return _queuedSkill;
 	}
 	
 	/**
-	 * Create a new SkillDat object and queue it in the player _queuedSkill.<BR>
+	 * Create a new SkillUseHolder and queue it in the player _queuedSkill.<BR>
 	 * <BR>
 	 * @param queuedSkill 
 	 * @param ctrlPressed 
@@ -11347,7 +11313,7 @@ public final class L2PcInstance extends L2PlayableInstance
 			_log.info("Setting queued skill: " + queuedSkill.getName() + " (ID: " + queuedSkill.getId() + ") for " + getName() + ".");
 		}
 		
-		_queuedSkill = new SkillDat(queuedSkill, ctrlPressed, shiftPressed);
+		_queuedSkill = new SkillUseHolder(queuedSkill, ctrlPressed, shiftPressed);
 	}
 
 	public boolean isChatBanned()
@@ -12259,10 +12225,10 @@ public final class L2PcInstance extends L2PlayableInstance
         	}
     		
     		// Give AIO Buffer skills to character
-        	Map<Integer, BuffInfo> buffs = BufferTable.getInstance().getAIOBuffs();
-        	for (BuffInfo buff : buffs.values())
+        	Map<Integer, BuffSkillHolder> buffs = BufferTable.getInstance().getAIOBuffs();
+        	for (BuffSkillHolder buff : buffs.values())
         	{
-        		L2Skill skill = SkillTable.getInstance().getInfo(buff.getSkillId(), buff.getSkillLevel());
+        		L2Skill skill = buff.getSkill();
         		if (skill != null)
         		{
         			addSkill(skill, false);
