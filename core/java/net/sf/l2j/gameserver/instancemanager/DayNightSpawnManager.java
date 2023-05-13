@@ -57,9 +57,11 @@ public class DayNightSpawnManager
     	EventHandleManager.getInstance().addEventHandler(EventType.DAY_NIGHT_CHANGED, (e) ->
     	{
     		notifyChangeMode();
-    	});
+    	});
+
         _log.info("DayNightSpawnManager: Day/Night handler initialized");
-    }
+    }
+
     public void addDayCreature(L2Spawn spawnDat)
     { 
     	_dayCreatures.add(spawnDat);
@@ -111,7 +113,8 @@ public class DayNightSpawnManager
 					L2NpcInstance last = spawn.getLastSpawn();
 					if (last != null)
 					{
-						last.deleteMe();
+						// This method will reduce current spawn count as expected
+						last.onDecay();
 						i++;
 					}
 				}
