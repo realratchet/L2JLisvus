@@ -425,7 +425,6 @@ public class L2Spawn
 			_scheduledCount++;
 
 			// Create a new SpawnTask to launch after the respawn Delay
-			// ClientScheduler.getInstance().scheduleLow(new SpawnTask(npcId), _respawnDelay);
 			ThreadPoolManager.getInstance().scheduleGeneral(new SpawnTask(oldNpc), _respawnDelay);
 		}
 	}

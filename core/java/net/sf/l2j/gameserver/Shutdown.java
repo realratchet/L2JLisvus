@@ -115,7 +115,10 @@ public class Shutdown extends Thread
 				_log.warning("Error while removing UPnP port mappings!" + t);
 			}
 			
-			GeoEditorListener.getInstance().quit();
+			if (Config.ACCEPT_GEOEDITOR_CONN)
+			{
+				GeoEditorListener.getInstance().quit();
+			}
 			
 			try
 			{
