@@ -107,11 +107,6 @@ public class RequestDestroyItem extends L2GameClientPacket
 				return;
 			}
 		}
-		
-		if (itemToRemove.isWear())
-		{
-			return;
-		}
 
 		if (!activeChar.isGM() && !itemToRemove.isDestroyable())
 		{

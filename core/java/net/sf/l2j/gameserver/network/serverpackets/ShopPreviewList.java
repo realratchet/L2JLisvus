@@ -23,7 +23,7 @@ import net.sf.l2j.gameserver.templates.L2Item;
 
 public class ShopPreviewList extends L2GameServerPacket
 {
-	private static final String _S__EF_WEARLIST = "[S] EF WearList";
+	private static final String _S__EF_SHOPPREVIEWLIST = "[S] EF ShopPreviewList";
 	private final int _listId;
 	private final L2ItemInstance[] _list;
 	private final int _money;
@@ -94,6 +94,6 @@ public class ShopPreviewList extends L2GameServerPacket
 	@Override
 	public String getType()
 	{
-		return _S__EF_WEARLIST;
+		return _S__EF_SHOPPREVIEWLIST;
 	}
 }

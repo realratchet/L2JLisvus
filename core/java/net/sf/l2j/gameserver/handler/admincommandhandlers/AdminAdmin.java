@@ -98,7 +98,8 @@ public class AdminAdmin implements IAdminCommandHandler
         }
         else if (command.startsWith("admin_gmlistoff"))
         {
-            GmListTable.getInstance().hideGm(activeChar);
+            GmListTable.getInstance().hideGm(activeChar);
+
             activeChar.sendMessage("Removed from gm list.");
         }
         else if (command.startsWith("admin_silence"))
@@ -124,7 +125,8 @@ public class AdminAdmin implements IAdminCommandHandler
             catch(Exception e)
             {
                 e.printStackTrace();
-            }
+            }
+
         }
         else if (command.startsWith("admin_endolympiad"))
         {
@@ -443,7 +445,8 @@ public class AdminAdmin implements IAdminCommandHandler
      */
     public void adminAtmosphere(String type, String state, L2PcInstance activeChar)
     {
-        L2GameServerPacket packet = null;
+        L2GameServerPacket packet = null;
+
         if (type.equals("signsky"))
         {
             if (state.equals("dawn"))
@@ -473,7 +476,8 @@ public class AdminAdmin implements IAdminCommandHandler
         PlaySound snd = new PlaySound(1,sound,0,0,0,0,0);
         activeChar.sendPacket(snd);
         activeChar.broadcastPacket(snd);
-        showMainPage(activeChar);
+        showMainPage(activeChar);
+
         activeChar.sendMessage("Playing "+sound+".");
     }
 

@@ -574,6 +574,46 @@ public abstract class Inventory extends ItemContainer
 		return _paperdoll[slot];
 	}
 
+	public static int getPaperdollIndex(int slot)
+	{
+		switch (slot)
+        {
+			case L2Item.SLOT_UNDERWEAR:
+				return PAPERDOLL_UNDER;
+			case L2Item.SLOT_R_EAR:
+				return PAPERDOLL_REAR;
+			case L2Item.SLOT_L_EAR:
+				return PAPERDOLL_LEAR;
+			case L2Item.SLOT_NECK:
+				return PAPERDOLL_NECK;
+			case L2Item.SLOT_R_FINGER:
+				return PAPERDOLL_RFINGER;
+			case L2Item.SLOT_L_FINGER:
+				return PAPERDOLL_LFINGER;
+			case L2Item.SLOT_HEAD:
+				return PAPERDOLL_HEAD;
+			case L2Item.SLOT_R_HAND:
+			case L2Item.SLOT_LR_HAND:
+				return PAPERDOLL_RHAND;
+			case L2Item.SLOT_L_HAND:
+				return PAPERDOLL_LHAND;
+			case L2Item.SLOT_GLOVES:
+				return PAPERDOLL_GLOVES;
+			case L2Item.SLOT_CHEST:
+			case L2Item.SLOT_FULL_ARMOR:
+				return PAPERDOLL_CHEST; // Chest and full body armor
+			case L2Item.SLOT_LEGS:
+				return PAPERDOLL_LEGS;
+			case L2Item.SLOT_FEET:
+				return PAPERDOLL_FEET;
+			case L2Item.SLOT_BACK:
+				return PAPERDOLL_BACK;
+			case L2Item.SLOT_HAIR:
+				return PAPERDOLL_HAIR;	
+		}
+		return -1;
+	}
+
     /**
 	 * Returns the item in the paper doll L2Item slot
 	 * @param slot 
@@ -581,42 +621,12 @@ public abstract class Inventory extends ItemContainer
 	 */
 	public L2ItemInstance getPaperdollItemByL2ItemId(int slot)
 	{
-		switch (slot)
-        {
-			case L2Item.SLOT_UNDERWEAR:
-				return _paperdoll[0];
-			case L2Item.SLOT_R_EAR:
-				return _paperdoll[1];
-			case L2Item.SLOT_L_EAR:
-				return _paperdoll[2];
-			case L2Item.SLOT_NECK:
-				return _paperdoll[3];
-			case L2Item.SLOT_R_FINGER:
-				return _paperdoll[4];
-			case L2Item.SLOT_L_FINGER:
-				return _paperdoll[5];
-			case L2Item.SLOT_HEAD:
-				return _paperdoll[6];
-			case L2Item.SLOT_R_HAND:
-			case L2Item.SLOT_LR_HAND:
-				return _paperdoll[7];
-			case L2Item.SLOT_L_HAND:
-				return _paperdoll[8];
-			case L2Item.SLOT_GLOVES:
-				return _paperdoll[9];
-			case L2Item.SLOT_CHEST:
-			case L2Item.SLOT_FULL_ARMOR:
-				return _paperdoll[10]; // Chest and full body armor
-			case L2Item.SLOT_LEGS:
-				return _paperdoll[11];
-			case L2Item.SLOT_FEET:
-				return _paperdoll[12];
-			case L2Item.SLOT_BACK:
-				return _paperdoll[13];
-			case L2Item.SLOT_HAIR:
-				return _paperdoll[14];	
+		int index = getPaperdollIndex(slot);
+		if (index == -1)
+		{
+			return null;
 		}
-		return null;
+		return _paperdoll[index];
 	}
 
 	/**

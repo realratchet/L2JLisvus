@@ -110,9 +110,6 @@ public final class L2ItemInstance extends L2Object
 	
 	/** Price of the item for buying */
 	private int _priceBuy;
-	
-	/** Wear Item */
-	private boolean _wear;
 
 	/** Custom item types (used loto, race tickets) */
 	private int _type1;
@@ -441,16 +438,6 @@ public final class L2ItemInstance extends L2Object
 	{
 		return _dropTime;
 	}
-	
-	public boolean isWear()
-	{
-		return _wear;
-	}
-
-	public void setWear(boolean newwear)
-	{
-		_wear=  newwear;
-	}
 
 	/**
 	 * Returns the type of item
@@ -777,10 +764,7 @@ public final class L2ItemInstance extends L2Object
      */
     public void updateDatabase(boolean force)
     {
-        if (isWear()) // avoid saving wear items
-            return;
-
-        _dbLock.lock();
+       	_dbLock.lock();
         try
         {
             if (_existsInDb)
@@ -955,9 +939,6 @@ public final class L2ItemInstance extends L2Object
     {
         if (Config.ASSERT) assert _existsInDb;
 
-        if (_wear)
-            return;
-
         if (_storedInDb)
             return;
 
@@ -989,9 +970,6 @@ public final class L2ItemInstance extends L2Object
 	 */
 	private void insertIntoDb()
     {
-		if (_wear)
-			return;
-
 		if (Config.ASSERT) assert !_existsInDb && getObjectId() != 0;
 
 		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
@@ -1024,9 +1002,6 @@ public final class L2ItemInstance extends L2Object
      */
     private void removeFromDb()
     {
-        if (_wear)
-            return;
-
         if (Config.ASSERT) assert _existsInDb;
 
         try (Connection con = L2DatabaseFactory.getInstance().getConnection();

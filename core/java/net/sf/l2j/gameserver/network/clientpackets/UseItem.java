@@ -117,11 +117,6 @@ public class UseItem extends L2GameClientPacket
 			return;
 		}
 		
-		if (item.isWear())
-		{
-			return;
-		}
-		
 		if (item.getItem().getType2() == L2Item.TYPE2_QUEST)
 		{
 			activeChar.sendPacket(new SystemMessage(148));

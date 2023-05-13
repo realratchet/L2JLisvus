@@ -84,6 +84,12 @@ public class RequestBuyItem extends L2GameClientPacket
 	@Override
 	public void runImpl()
 	{
+		if (_count < 1)
+		{
+			sendPacket(new ActionFailed());
+			return;
+		}
+		
 		L2PcInstance player = getClient().getActiveChar();
 		if (player == null)
 		{
@@ -131,6 +137,7 @@ public class RequestBuyItem extends L2GameClientPacket
 					if (tradeList.getListId() == _listId)
 					{
 						list = tradeList;
+						break;
 					}
 				}
 			}
@@ -150,8 +157,6 @@ public class RequestBuyItem extends L2GameClientPacket
 			return;
 		}
 		
-		_listId = list.getListId();
-		
 		if (_listId > 1000000) // lease
 		{
 			if ((merchant != null) && (merchant.getTemplate().npcId != (_listId - 1000000)))
@@ -159,12 +164,6 @@ public class RequestBuyItem extends L2GameClientPacket
 				sendPacket(new ActionFailed());
 				return;
 			}
-		}
-		
-		if (_count < 1)
-		{
-			sendPacket(new ActionFailed());
-			return;
 		}
 		
 		double taxRate = 0;

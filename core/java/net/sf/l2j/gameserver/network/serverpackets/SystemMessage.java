@@ -541,6 +541,8 @@ public class SystemMessage extends L2GameServerPacket
 	public static final int CAN_BE_USED_BY_DAWN = 1301;
 	public static final int CAN_BE_USED_BY_DUSK = 1302;
 	public static final int CAN_BE_USED_DURING_QUEST_EVENT_PERIOD = 1303;
+	public static final int NO_LONGER_TRYING_ON = 1306;
+	public static final int YOU_CAN_NOT_TRY_THOSE_ITEMS_ON_AT_THE_SAME_TIME = 1368;
 	public static final int S1_HAS_BECOME_A_PARTY_LEADER = 1384;
 	public static final int NO_DISMOUNT_HERE = 1385;
 	public static final int PARTY_ROOM_CREATED = 1388;

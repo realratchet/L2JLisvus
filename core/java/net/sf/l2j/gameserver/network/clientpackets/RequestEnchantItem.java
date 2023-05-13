@@ -110,14 +110,6 @@ public class RequestEnchantItem extends L2GameClientPacket
 			return;
 		}
 		
-		if (item.isWear())
-		{
-			Util.handleIllegalPlayerAction(activeChar, "Player " + activeChar.getName() + " tried to enchant a weared Item", IllegalPlayerAction.PUNISH_KICK);
-			activeChar.setActiveEnchantItem(null);
-			activeChar.sendPacket(new EnchantResult(2));
-			return;
-		}
-		
 		switch (item.getLocation())
 		{
 			case INVENTORY:

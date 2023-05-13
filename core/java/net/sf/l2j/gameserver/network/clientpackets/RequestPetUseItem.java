@@ -62,11 +62,6 @@ public class RequestPetUseItem extends L2GameClientPacket
 			return;
 		}
 		
-		if (item.isWear())
-		{
-			return;
-		}
-		
 		int itemId = item.getItemId();
 		if (activeChar.isAlikeDead() || pet.isDead())
 		{

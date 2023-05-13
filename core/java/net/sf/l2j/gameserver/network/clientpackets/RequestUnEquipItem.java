@@ -60,12 +60,6 @@ public class RequestUnEquipItem extends L2GameClientPacket
 			return;
 		}
 		
-		L2ItemInstance item = activeChar.getInventory().getPaperdollItemByL2ItemId(_slot);
-		if (item != null && item.isWear())
-		{
-			return;
-		}
-		
 		L2ItemInstance[] unequiped = activeChar.getInventory().unEquipItemInBodySlotAndRecord(_slot);
 		
 		// show the update in the inventory

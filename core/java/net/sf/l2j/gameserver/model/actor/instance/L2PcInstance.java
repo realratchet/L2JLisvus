@@ -2189,42 +2189,6 @@ public final class L2PcInstance extends L2PlayableInstance
 		}
 		else
 		{
-			L2ItemInstance tempItem = getInventory().getPaperdollItemByL2ItemId(bodyPart);
-			if (tempItem != null && tempItem.isWear())
-			{
-				return;
-			}
-			else if ((bodyPart == L2Item.SLOT_LR_HAND) || (bodyPart == L2Item.SLOT_L_HAND) || (item.getItemId() == 6408))
-			{
-				// this may not remove left OR right hand equipment
-				tempItem = getInventory().getPaperdollItem(Inventory.PAPERDOLL_RHAND);
-				if ((tempItem != null) && tempItem.isWear())
-				{
-					return;
-				}
-				
-				tempItem = getInventory().getPaperdollItem(Inventory.PAPERDOLL_LHAND);
-				if ((tempItem != null) && tempItem.isWear())
-				{
-					return;
-				}
-			}
-			else if (bodyPart == L2Item.SLOT_FULL_ARMOR)
-			{
-				// this may not remove chest or leggings
-				tempItem = getInventory().getPaperdollItem(Inventory.PAPERDOLL_CHEST);
-				if ((tempItem != null) && tempItem.isWear())
-				{
-					return;
-				}
-				
-				tempItem = getInventory().getPaperdollItem(Inventory.PAPERDOLL_LEGS);
-				if ((tempItem != null) && tempItem.isWear())
-				{
-					return;
-				}
-			}
-			
 			_isEquippingNow = true;
 			items = getInventory().equipItemAndRecord(item);
 			_isEquippingNow = false;
@@ -3450,65 +3414,6 @@ public final class L2PcInstance extends L2PlayableInstance
 	}
 	
 	/**
-	 * Destroy all worn items from inventory and send a Server->Client InventoryUpdate packet to the L2PcInstance.
-	 * @param process : String Identifier of process triggering this action
-	 * @param reference : L2Object Object referencing current action like NPC selling item or previous item in transformation
-	 * @param sendMessage : boolean Specifies whether to send message to Client about this action
-	 */
-	public void destroyWearedItems(String process, L2Object reference, boolean sendMessage)
-	{
-
-		// Go through all Items of the inventory
-		
-		for (L2ItemInstance item : getInventory().getItems())
-		{
-			if (item == null)
-			{
-				continue;
-			}
-			
-			// Check if the item is a Try On item in order to remove it
-			if (item.isWear())
-			{
-
-				if (item.isEquipped())
-				{
-					getInventory().unEquipItemInSlotAndRecord(item.getEquipSlot());
-				}
-				
-				if (_inventory.destroyItem(process, item, this, reference) == null)
-				{
-					_log.warning("Player " + getName() + " can't destroy weared item: " + item.getName() + "[ " + item.getObjectId() + " ]");
-					continue;
-				}
-				
-				// Send an Unequipped Message in system window of the player for each Item
-				SystemMessage sm = new SystemMessage(0x1a1);
-				sm.addItemName(item.getItemId());
-				sendPacket(sm);
-				
-			}
-		}
-		
-		// Send the StatusUpdate Server->Client Packet to the player with new CUR_LOAD (0x0e) information
-		StatusUpdate su = new StatusUpdate(getObjectId());
-		su.addAttribute(StatusUpdate.CUR_LOAD, getCurrentLoad());
-		sendPacket(su);
-		
-		// Send the ItemList Server->Client Packet to the player in order to refresh its Inventory
-		ItemList il = new ItemList(getInventory().getItems(), true);
-		
-		sendPacket(il);
-		
-		// Send a Server->Client packet UserInfo to this L2PcInstance and CharInfo to all L2PcInstance in its _KnownPlayers
-		broadcastUserInfo();
-		
-		// Sends message to client if requested
-		sendMessage("Trying-on mode has ended.");
-		
-	}
-	
-	/**
 	 * Transfers item to another ItemContainer and send a Server->Client InventoryUpdate packet to the L2PcInstance.
 	 * @param process : String Identifier of process triggering this action
 	 * @param objectId 
@@ -3736,11 +3641,6 @@ public final class L2PcInstance extends L2PlayableInstance
 				_log.finest(getObjectId() + ":player tried to " + action + " an enchant scroll he was using");
 			}
 			
-			return null;
-		}
-		
-		if (item.isWear())
-		{
 			return null;
 		}
 		
@@ -5892,11 +5792,6 @@ public final class L2PcInstance extends L2PlayableInstance
 		L2ItemInstance wpn = getInventory().getPaperdollItem(Inventory.PAPERDOLL_RHAND);
 		if (wpn != null)
 		{
-			if (wpn.isWear())
-			{
-				return false;
-			}
-			
 			L2ItemInstance[] unequiped = getInventory().unEquipItemInBodySlotAndRecord(wpn.getItem().getBodyPart());
 			InventoryUpdate iu = new InventoryUpdate();
 			for (L2ItemInstance element : unequiped)
@@ -5931,11 +5826,6 @@ public final class L2PcInstance extends L2PlayableInstance
 		L2ItemInstance sld = getInventory().getPaperdollItem(Inventory.PAPERDOLL_LHAND);
 		if (sld != null)
 		{
-			if (sld.isWear())
-			{
-				return false;
-			}
-			
 			L2ItemInstance[] unequiped = getInventory().unEquipItemInBodySlotAndRecord(sld.getItem().getBodyPart());
 			InventoryUpdate iu = new InventoryUpdate();
 			for (L2ItemInstance element : unequiped)
@@ -10386,11 +10276,6 @@ public final class L2PcInstance extends L2PlayableInstance
 			return false;
 		}
 		
-		if (item.isWear())
-		{
-			return false;
-		}
-		
 		return true;
 	}
 	
@@ -12434,11 +12319,6 @@ public final class L2PcInstance extends L2PlayableInstance
 			L2ItemInstance equippedItem = getInventory().getPaperdollItem(i);
 			if (equippedItem != null && !equippedItem.getItem().checkCondition(this, this, false))
 			{
-				if (equippedItem.isWear())
-				{
-					continue;
-				}
-				
 				getInventory().unEquipItemInSlot(i);
 				if (iu != null)
 				{
