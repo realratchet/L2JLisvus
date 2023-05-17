@@ -270,7 +270,7 @@ public class L2DoorInstance extends L2Character
     	return _clanhall;
     }
 
-    public boolean isEnemyOf(@SuppressWarnings("unused") L2Character cha) 
+    public boolean isEnemyOf(L2Character cha) 
     {
         return true;
     }

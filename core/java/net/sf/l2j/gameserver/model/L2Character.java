@@ -3280,6 +3280,7 @@ public abstract class L2Character extends L2Object
 		 * @param y 
 		 * @param z 
 		 * @param offset 
+		 * @return 
 		 */
 		public boolean moveTo(int x, int y, int z, int offset)
 		{
@@ -3292,6 +3293,7 @@ public abstract class L2Character extends L2Object
 		 * @param x 
 		 * @param y 
 		 * @param z 
+		 * @return 
 		 */
 		public boolean moveTo(int x, int y, int z)
 		{
@@ -4885,7 +4887,7 @@ public abstract class L2Character extends L2Object
 	 * @param addToExp 
 	 * @param addToSp 
 	 */
-	public void addExpAndSp(@SuppressWarnings("unused") long addToExp, @SuppressWarnings("unused") int addToSp)
+	public void addExpAndSp(long addToExp, int addToSp)
 	{
 		// Dummy method (overridden by players and pets)
 	}
@@ -6456,7 +6458,7 @@ public abstract class L2Character extends L2Object
 	 * @param target 
 	 * @return 
 	 */
-	public final int getRandomDamage(@SuppressWarnings("unused") L2Character target)
+	public final int getRandomDamage(L2Character target)
 	{
 		L2Weapon weaponItem = getActiveWeaponItem();
 		
@@ -6821,7 +6823,7 @@ public abstract class L2Character extends L2Object
 	 * @param pcrit 
 	 * @param miss 
 	 */
-	public void sendDamageMessage(@SuppressWarnings("unused") L2Character target, int damage, boolean mcrit, boolean pcrit, boolean miss)
+	public void sendDamageMessage(L2Character target, int damage, boolean mcrit, boolean pcrit, boolean miss)
 	{
 	}
 	

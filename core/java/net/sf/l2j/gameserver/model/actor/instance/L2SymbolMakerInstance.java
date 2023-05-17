@@ -56,10 +56,12 @@ public class L2SymbolMakerInstance extends L2FolkInstance
     {
         StringBuilder sb = StringUtil.startAppend(100, "<html><body>");
         StringUtil.append(sb, "Select the symbol you wish to remove:<br><br>");
-        boolean hasHennas = false;
+        boolean hasHennas = false;
+
         for (int i=1;i<=3;i++)
         {
-	        L2HennaInstance henna = player.getHenna(i);
+	        L2HennaInstance henna = player.getHenna(i);
+
 	        if (henna != null)
             {
 		        hasHennas = true;
@@ -98,7 +100,7 @@ public class L2SymbolMakerInstance extends L2FolkInstance
      * @see net.sf.l2j.gameserver.model.L2Object#isAttackable()
      */
     @Override
-	public boolean isAutoAttackable(@SuppressWarnings("unused") L2Character attacker)
+	public boolean isAutoAttackable(L2Character attacker)
     {
         return false;
     }

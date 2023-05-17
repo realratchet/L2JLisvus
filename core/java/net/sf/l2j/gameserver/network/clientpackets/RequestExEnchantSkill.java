@@ -42,9 +42,8 @@ public class RequestExEnchantSkill extends L2GameClientPacket
 {
 	private static final String _C__D0_07_REQUESTEXENCHANTSKILL = "[C] D0:07 RequestExEnchantSkill";
 	private static Logger _log = Logger.getLogger(RequestExEnchantSkill.class.getName());
-	@SuppressWarnings("unused")
+
 	private int _skillID;
-	@SuppressWarnings("unused")
 	private int _skillLvl;
 	
 	@Override
