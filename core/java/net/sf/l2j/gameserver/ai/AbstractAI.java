@@ -548,7 +548,10 @@ abstract class AbstractAI implements Ctrl
 			}
 			
 			// Calculate movement data for a move to location action and add the actor to movingObjects of GameTimeController
-			_accessor.moveTo(pawn.getX(), pawn.getY(), pawn.getZ(), offset);
+			if (!_accessor.moveTo(pawn.getX(), pawn.getY(), pawn.getZ(), offset))
+			{
+				return;
+			}
 			
 			if (!_actor.isMoving())
 			{
@@ -599,11 +602,11 @@ abstract class AbstractAI implements Ctrl
 			_clientMovingToPawnOffset = 0;
 			
 			// Calculate movement data for a move to location action and add the actor to movingObjects of GameTimeController
-			_accessor.moveTo(x, y, z);
-			
-			// Send a Server->Client packet CharMoveToLocation to the actor and all L2PcInstance in its _knownPlayers
-			CharMoveToLocation msg = new CharMoveToLocation(_actor);
-			_actor.broadcastPacket(msg);
+			if (_accessor.moveTo(x, y, z))
+			{
+				// Send a Server->Client packet CharMoveToLocation to the actor and all L2PcInstance in its _knownPlayers
+				_actor.broadcastPacket(new CharMoveToLocation(_actor));
+			}
 		}
 		else
 		{
@@ -783,8 +786,7 @@ abstract class AbstractAI implements Ctrl
 			else
 			{
 				// Send a Server->Client packet CharMoveToLocation to the actor and all L2PcInstance in its _knownPlayers
-				CharMoveToLocation msg = new CharMoveToLocation(_actor);
-				player.sendPacket(msg);
+				player.sendPacket(new CharMoveToLocation(_actor));
 			}
 		}
 	}

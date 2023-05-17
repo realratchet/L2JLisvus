@@ -3281,9 +3281,9 @@ public abstract class L2Character extends L2Object
 		 * @param z 
 		 * @param offset 
 		 */
-		public void moveTo(int x, int y, int z, int offset)
+		public boolean moveTo(int x, int y, int z, int offset)
 		{
-			L2Character.this.moveToLocation(x, y, z, offset);
+			return L2Character.this.moveToLocation(x, y, z, offset);
 		}
 		
 		/**
@@ -3293,9 +3293,9 @@ public abstract class L2Character extends L2Object
 		 * @param y 
 		 * @param z 
 		 */
-		public void moveTo(int x, int y, int z)
+		public boolean moveTo(int x, int y, int z)
 		{
-			L2Character.this.moveToLocation(x, y, z, 0);
+			return L2Character.this.moveToLocation(x, y, z, 0);
 		}
 		
 		/**
@@ -4287,14 +4287,15 @@ public abstract class L2Character extends L2Object
 	 * @param y The Y position of the destination
 	 * @param z The Y position of the destination
 	 * @param offset The size of the interaction area of the L2Character targeted
+	 * @return 
 	 */
-	protected void moveToLocation(int x, int y, int z, int offset)
+	protected boolean moveToLocation(int x, int y, int z, int offset)
 	{
 		// Get the Move Speed of the L2Character
 		double speed = getMoveSpeed();
 		if ((speed <= 0) || isMovementDisabled())
 		{
-			return;
+			return false;
 		}
 
 		// Get current position of the L2Character
@@ -4368,8 +4369,7 @@ public abstract class L2Character extends L2Object
 				
 				// Notify the AI that the L2Character is arrived at destination
 				getAI().notifyEvent(CtrlEvent.EVT_ARRIVED, null);
-
-				return;
+				return false;
 			}
 			// Calculate movement angles needed
 			sin = dy / distance;
@@ -4421,7 +4421,7 @@ public abstract class L2Character extends L2Object
 					{
 						if ((gtx == _move.geoPathGtx) && (gty == _move.geoPathGty))
 						{
-							return;
+							return false;
 						}
 						_move.onGeodataPathIndex = -1; // Set not on geodata path
 					}
@@ -4441,13 +4441,13 @@ public abstract class L2Character extends L2Object
 					}
 					else if (this instanceof L2Summon)
 					{
-						return;
+						return false;
 					}
 					else
 					{
 						onDecay();
 					}
-					return;
+					return false;
 				}
 
 				if (!isInBoat)
@@ -4485,7 +4485,7 @@ public abstract class L2Character extends L2Object
 						{
 							final Location destination = GeoData.getInstance().moveCheck(curX, curY, curZ, x, y, z);
 							getAI().setIntention(CtrlIntention.AI_INTENTION_MOVE_TO, destination);
-							return;
+							return false;
 						}
 						m.disregardingGeodata = true;
 						x = originalX;
@@ -4511,7 +4511,7 @@ public abstract class L2Character extends L2Object
 						{
 							m.geoPath = null;
 							getAI().setIntention(CtrlIntention.AI_INTENTION_IDLE);
-							return;
+							return false;
 						}
 
 						for (int i = 0; i < (m.geoPath.size() - 1); i++)
@@ -4521,7 +4521,7 @@ public abstract class L2Character extends L2Object
 								m.geoPath = null;
 
 								getAI().setIntention(CtrlIntention.AI_INTENTION_IDLE);
-								return;
+								return false;
 							}
 						}
 
@@ -4533,7 +4533,6 @@ public abstract class L2Character extends L2Object
 						cos = dx / distance;
 
 					}
-
 				}
 			}
 
@@ -4545,7 +4544,7 @@ public abstract class L2Character extends L2Object
 					((L2Summon) this).setFollowStatus(false);
 				}
 				getAI().setIntention(CtrlIntention.AI_INTENTION_IDLE);
-				return;
+				return false;
 			}
 		}
 
@@ -4593,6 +4592,8 @@ public abstract class L2Character extends L2Object
 
 		// the CtrlEvent.EVT_ARRIVED will be sent when the character will actually arrive
 		// to destination by GameTimeController
+
+		return true;
 	}
 
 	public boolean moveToNextRoutePoint()
@@ -4682,8 +4683,7 @@ public abstract class L2Character extends L2Object
 		// to destination by GameTimeController
 
 		// Send a Server->Client packet CharMoveToLocation to the actor and all L2PcInstance in its _knownPlayers
-		CharMoveToLocation msg = new CharMoveToLocation(this);
-		broadcastPacket(msg);
+		broadcastPacket(new CharMoveToLocation(this));
 
 		return true;
 	}
