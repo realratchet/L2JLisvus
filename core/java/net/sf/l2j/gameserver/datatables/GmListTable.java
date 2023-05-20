@@ -34,7 +34,7 @@ public class GmListTable
 {
     private static Logger _log = Logger.getLogger(GmListTable.class.getName());
 
-    private Map<L2PcInstance, Boolean> _gmList;
+    private final Map<L2PcInstance, Boolean> _gmList = new ConcurrentHashMap<>();
 
     public static GmListTable getInstance()
     {
@@ -65,11 +65,6 @@ public class GmListTable
                 tmpGmList.add(entry.getKey().getName()+" (invis)");
         }
         return tmpGmList;
-    }
-
-    private GmListTable()
-    {
-        _gmList = new ConcurrentHashMap<>();
     }
 
     /**

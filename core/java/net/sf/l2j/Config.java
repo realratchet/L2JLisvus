@@ -819,7 +819,6 @@ public final class Config
 	public static boolean CUSTOM_NPC_TABLE;
 	public static boolean CUSTOM_NPC_SKILLS_TABLE;
 	public static boolean CUSTOM_MINIONS_TABLE;
-	public static boolean CUSTOM_ARMORSETS_TABLE;
 	public static boolean CUSTOM_TELEPORT_TABLE;
 	public static boolean CUSTOM_DROPLIST_TABLE;
 	public static boolean CUSTOM_MERCHANT_TABLES;
@@ -1957,7 +1956,6 @@ public final class Config
 			CUSTOM_NPC_TABLE = Boolean.valueOf(customSettings.getProperty("CustomNpcTable", "false"));
 			CUSTOM_NPC_SKILLS_TABLE = Boolean.valueOf(customSettings.getProperty("CustomNpcSkillsTable", "false"));
 			CUSTOM_MINIONS_TABLE = Boolean.valueOf(customSettings.getProperty("CustomMinionsTable", "false"));
-			CUSTOM_ARMORSETS_TABLE = Boolean.valueOf(customSettings.getProperty("CustomArmorSetsTable", "false"));
 			CUSTOM_TELEPORT_TABLE = Boolean.valueOf(customSettings.getProperty("CustomTeleportTable", "false"));
 			CUSTOM_DROPLIST_TABLE = Boolean.valueOf(customSettings.getProperty("CustomDroplistTable", "false"));
 			CUSTOM_MERCHANT_TABLES = Boolean.valueOf(customSettings.getProperty("CustomMerchantTables", "false"));

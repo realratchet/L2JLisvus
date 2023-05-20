@@ -17,6 +17,9 @@ package net.sf.l2j.gameserver.templates;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.w3c.dom.NamedNodeMap;
+import org.w3c.dom.Node;
+
 import net.sf.l2j.gameserver.model.holder.SkillHolder;
 
 /**
@@ -28,6 +31,23 @@ import net.sf.l2j.gameserver.model.holder.SkillHolder;
 public final class StatsSet
 {
 	private final Map<String, Object> _set = new HashMap<>();
+
+	public StatsSet()
+	{
+	}
+
+	public StatsSet(NamedNodeMap attrs)
+	{
+		int length = attrs.getLength();	
+		for (int i = 0; i < length; i++)
+		{
+			Node item = attrs.item(i);
+			if (item != null)
+			{
+				set(item.getNodeName(), item.getNodeValue());
+			}
+		}
+	}
 	
 	/**
 	 * Returns the set of values

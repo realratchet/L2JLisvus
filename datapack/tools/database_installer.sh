@@ -254,7 +254,6 @@ else
 echo "Upgrading gameserver content"
 fi
 $MYG < ../sql/aio_buffer.sql &> /dev/null
-$MYG < ../sql/armorsets.sql &> /dev/null
 $MYG < ../sql/auction.sql &> /dev/null
 $MYG < ../sql/auction_bid.sql &> /dev/null
 $MYG < ../sql/auction_watch.sql &> /dev/null

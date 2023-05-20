@@ -1,5 +1,4 @@
 DROP TABLE IF EXISTS aio_buffer;
-DROP TABLE IF EXISTS armorsets;
 DROP TABLE IF EXISTS auction;
 DROP TABLE IF EXISTS auction_bid;
 DROP TABLE IF EXISTS auction_watch;

@@ -294,9 +294,9 @@ public abstract class Inventory extends ItemContainer
                 return;
 
             // checks if equipped item is part of set
-            if (armorSet.containItem(slot, item.getItemId()))
+            if (armorSet.containsItem(slot, item.getItemId()))
             {
-                if (armorSet.containAll(player))
+                if (armorSet.containsAll(player))
                 {
                     L2Skill skill = SkillTable.getInstance().getInfo(armorSet.getSkillId(),1);
                     if (skill != null)
@@ -307,7 +307,7 @@ public abstract class Inventory extends ItemContainer
                     else
                         _log.warning(getClass().getSimpleName() + ": Attempted to add an incorrect skill: "+armorSet.getSkillId()+".");
 
-                    if (armorSet.containShield(player)) // has shield from set
+                    if (armorSet.containsShield(player)) // has shield from set
                     {
 
                         L2Skill skills = SkillTable.getInstance().getInfo(armorSet.getShieldSkillId(),1);
@@ -322,9 +322,9 @@ public abstract class Inventory extends ItemContainer
 
                 }
             }
-            else if (armorSet.containShield(item.getItemId()))
+            else if (armorSet.containsShield(item.getItemId()))
             {
-                if (armorSet.containAll(player))
+                if (armorSet.containsAll(player))
                 {
                     L2Skill skills = SkillTable.getInstance().getInfo(armorSet.getShieldSkillId(),1);
                     if (skills != null)
@@ -365,13 +365,13 @@ public abstract class Inventory extends ItemContainer
                 if (armorSet == null)
                     return;
 
-                if (armorSet.containItem(slot, item.getItemId())) // removed part of set
+                if (armorSet.containsItem(slot, item.getItemId())) // removed part of set
                 {
                     remove = true;
                     removeSkillId1 = armorSet.getSkillId();
                     removeSkillId2 = armorSet.getShieldSkillId();
                 }
-                else if (armorSet.containShield(item.getItemId())) // removed shield
+                else if (armorSet.containsShield(item.getItemId())) // removed shield
                 {
                     remove = true;
                     removeSkillId2 = armorSet.getShieldSkillId();

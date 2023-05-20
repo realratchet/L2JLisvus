@@ -510,7 +510,6 @@ gameservers.sql
 set dest=gs
 for %%i in (
 aio_buffer.sql
-armorsets.sql
 auction.sql
 auction_bid.sql
 auction_watch.sql
