@@ -14,6 +14,7 @@
  */
 package net.sf.l2j.gameserver.network.serverpackets;
 
+import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.GameTimeController;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.base.Experience;
@@ -84,8 +85,13 @@ public class CharSelected extends L2GameServerPacket
 		writeD(0x00); // c3 work
 		writeD(0x00); // c3 work
 		
+		int startTime = Config.START_TIME;
+
 		// extra info
-		writeD(GameTimeController.getInstance().getGameTime()); // in-game time
+		if (startTime < 0)
+			writeD(GameTimeController.getInstance().getGameTime()); // in-game time
+		else
+			writeD(startTime); // in-game time
 		
 		writeD(0x00); //
 		

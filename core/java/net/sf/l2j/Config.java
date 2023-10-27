@@ -1019,6 +1019,7 @@ public final class Config
 	public static float RAID_MAX_RESPAWN_MULTIPLIER;
 	/** Amount of adenas when starting a new character */
 	public static int STARTING_ADENA;
+	public static int START_TIME;
 	/** Starting level of a new character */
 	public static byte STARTING_LEVEL;
 	/** Starting level of a new subclass */
@@ -1626,6 +1627,7 @@ public final class Config
 			RAID_MAX_RESPAWN_MULTIPLIER = Float.parseFloat(otherSettings.getProperty("RaidMaxRespawnMultiplier", "1.0"));
 			
 			STARTING_ADENA = Integer.parseInt(otherSettings.getProperty("StartingAdena", "0"));
+			START_TIME = Integer.parseInt(otherSettings.getProperty("StartTime", "-1"));
 			STARTING_LEVEL = Byte.parseByte(otherSettings.getProperty("StartingLevel", "1"));
 			STARTING_SUB_LEVEL = Byte.parseByte(otherSettings.getProperty("StartingSubclassLevel", "40"));
 			
