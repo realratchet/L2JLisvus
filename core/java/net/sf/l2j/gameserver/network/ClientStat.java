@@ -74,6 +74,16 @@ public class ClientStat
 	 */
 	public void countUnderflowReads()
 	{
+		if (_client.getState() == GameClientState.CONNECTED)
+		{
+			if (Config.PACKET_HANDLER_DEBUG)
+			{
+				_log.severe("Client " + _client.toString() + " - Disconnected: Too many buffer underflow exceptions in non-authed state!");
+			}
+			_client.closeNow();
+			return;
+		}
+
 		if ((GameTimeController.getInstance().getGameTicks() - _underflowReadStartTick) > 600)
 		{
 			_underflowReadStartTick = GameTimeController.getInstance().getGameTicks();
