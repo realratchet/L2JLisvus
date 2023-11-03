@@ -16,7 +16,9 @@ package net.sf.l2j.gameserver.network;
 
 import java.util.logging.Logger;
 
+import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.GameTimeController;
+import net.sf.l2j.gameserver.network.L2GameClient.GameClientState;
 import net.sf.l2j.gameserver.network.serverpackets.ActionFailed;
 
 /**
@@ -93,6 +95,16 @@ public class ClientStat
 	 */
 	public void countUnknownPackets()
 	{
+		if (_client.getState() == GameClientState.CONNECTED)
+		{
+			if (Config.PACKET_HANDLER_DEBUG)
+			{
+				_log.severe("Client " + _client.toString() + " - Disconnected: Too many unknown packets sent in non-authed state!");
+			}
+			_client.closeNow();
+			return;
+		}
+
 		if ((GameTimeController.getInstance().getGameTicks() - _unknownPacketStartTick) > 600)
 		{
 			_unknownPacketStartTick = GameTimeController.getInstance().getGameTicks();
@@ -104,7 +116,7 @@ public class ClientStat
 			if (_unknownPacketsInMin > 5)
 			{
 				_client.closeNow();
-				_log.severe("Client " + _client.toString() + " - Disconnected: Too many unknown packets sent");
+				_log.severe("Client " + _client.toString() + " - Disconnected: Too many unknown packets sent!");
 			}
 		}
 	}
