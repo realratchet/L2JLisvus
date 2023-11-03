@@ -91,6 +91,7 @@ public final class Config
 	
 	/** Debug/release mode */
 	public static boolean DEBUG;
+	public static boolean PACKET_HANDLER_DEBUG;
 	/** Enable/disable assertions */
 	public static boolean ASSERT;
 	/** Enable/disable code 'in progress' */
@@ -1382,6 +1383,7 @@ public final class Config
 			DISPLAY_SERVER_VERSION = Boolean.parseBoolean(optionsSettings.getProperty("DisplayServerVersion", "false"));
 			
 			DEBUG = Boolean.parseBoolean(optionsSettings.getProperty("Debug", "false"));
+			PACKET_HANDLER_DEBUG = Boolean.parseBoolean(optionsSettings.getProperty("PacketHandlerDebug", "false"));
 			ASSERT = Boolean.parseBoolean(optionsSettings.getProperty("Assert", "false"));
 			DEVELOPER = Boolean.parseBoolean(optionsSettings.getProperty("Developer", "false"));
 			ACCEPT_GEOEDITOR_CONN = Boolean.parseBoolean(optionsSettings.getProperty("AcceptGeoeditorConn", "False"));
@@ -2376,6 +2378,7 @@ public final class Config
 			ACCEPT_CHAOTIC_THRONE_CLIENTS = Boolean.parseBoolean(serverSettings.getProperty("AcceptChaoticThroneClients", "False"));
 			
 			DEBUG = Boolean.parseBoolean(serverSettings.getProperty("Debug", "false"));
+			PACKET_HANDLER_DEBUG = Boolean.parseBoolean(serverSettings.getProperty("PacketHandlerDebug", "false"));
 			DEVELOPER = Boolean.parseBoolean(serverSettings.getProperty("Developer", "false"));
 			ASSERT = Boolean.parseBoolean(serverSettings.getProperty("Assert", "false"));
 			
