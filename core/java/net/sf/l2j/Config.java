@@ -986,6 +986,9 @@ public final class Config
 	public static int BLESSED_ENCHANT_CHANCE_WEAPON;
 	public static int BLESSED_ENCHANT_CHANCE_ARMOR;
 	public static int BLESSED_ENCHANT_CHANCE_JEWELRY;
+	public static int CRYSTAL_ENCHANT_CHANCE_WEAPON;
+	public static int CRYSTAL_ENCHANT_CHANCE_ARMOR;
+	public static int CRYSTAL_ENCHANT_CHANCE_JEWELRY;
 	/** Maximum level of enchantment */
 	public static int ENCHANT_MAX_WEAPON;
 	public static int ENCHANT_MAX_ARMOR;
@@ -1606,6 +1609,9 @@ public final class Config
 			BLESSED_ENCHANT_CHANCE_WEAPON = Integer.parseInt(otherSettings.getProperty("BlessedEnchantChanceWeapon", "68"));
 			BLESSED_ENCHANT_CHANCE_ARMOR = Integer.parseInt(otherSettings.getProperty("BlessedEnchantChanceArmor", "52"));
 			BLESSED_ENCHANT_CHANCE_JEWELRY = Integer.parseInt(otherSettings.getProperty("BlessedEnchantChanceJewelry", "54"));
+			CRYSTAL_ENCHANT_CHANCE_WEAPON = Integer.parseInt(otherSettings.getProperty("CrystalEnchantChanceWeapon", "68"));
+			CRYSTAL_ENCHANT_CHANCE_ARMOR = Integer.parseInt(otherSettings.getProperty("CrystalEnchantChanceArmor", "52"));
+			CRYSTAL_ENCHANT_CHANCE_JEWELRY = Integer.parseInt(otherSettings.getProperty("CrystalEnchantChanceJewelry", "54"));
 			/* limit on enchant */
 			ENCHANT_MAX_WEAPON = Integer.parseInt(otherSettings.getProperty("EnchantMaxWeapon", "25"));
 			ENCHANT_MAX_ARMOR = Integer.parseInt(otherSettings.getProperty("EnchantMaxArmor", "25"));
