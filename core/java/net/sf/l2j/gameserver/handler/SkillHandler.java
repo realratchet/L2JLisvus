@@ -21,6 +21,7 @@ import java.util.logging.Logger;
 import net.sf.l2j.gameserver.handler.skillhandlers.BalanceLife;
 import net.sf.l2j.gameserver.handler.skillhandlers.BeastFeed;
 import net.sf.l2j.gameserver.handler.skillhandlers.Blow;
+import net.sf.l2j.gameserver.handler.skillhandlers.CharAppearanceChange;
 import net.sf.l2j.gameserver.handler.skillhandlers.Charge;
 import net.sf.l2j.gameserver.handler.skillhandlers.CombatPointHeal;
 import net.sf.l2j.gameserver.handler.skillhandlers.Continuous;
@@ -32,6 +33,7 @@ import net.sf.l2j.gameserver.handler.skillhandlers.DrainSoul;
 import net.sf.l2j.gameserver.handler.skillhandlers.Fishing;
 import net.sf.l2j.gameserver.handler.skillhandlers.FishingSkill;
 import net.sf.l2j.gameserver.handler.skillhandlers.GetPlayer;
+import net.sf.l2j.gameserver.handler.skillhandlers.GiveSp;
 import net.sf.l2j.gameserver.handler.skillhandlers.Harvest;
 import net.sf.l2j.gameserver.handler.skillhandlers.Heal;
 import net.sf.l2j.gameserver.handler.skillhandlers.ManaDam;
@@ -67,6 +69,7 @@ public class SkillHandler
 	public void load()
 	{
 		registerSkillHandler(new Blow());
+		registerSkillHandler(new CharAppearanceChange());
 		registerSkillHandler(new Pdam());
 		registerSkillHandler(new Mdam());
 		registerSkillHandler(new Heal());
@@ -93,6 +96,7 @@ public class SkillHandler
 		registerSkillHandler(new DeluxeKey());
 		registerSkillHandler(new BeastFeed());
 		registerSkillHandler(new GetPlayer());
+		registerSkillHandler(new GiveSp());
 		
 		_log.config("SkillHandler: Loaded " + _dataTable.size() + " handlers.");
 	}

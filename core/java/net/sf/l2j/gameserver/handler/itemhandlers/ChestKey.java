@@ -14,14 +14,13 @@
  */
 package net.sf.l2j.gameserver.handler.itemhandlers;
 
-import net.sf.l2j.gameserver.datatables.SkillTable;
 import net.sf.l2j.gameserver.handler.IItemHandler;
 import net.sf.l2j.gameserver.model.L2ItemInstance;
 import net.sf.l2j.gameserver.model.L2Object;
-import net.sf.l2j.gameserver.model.L2Skill;
 import net.sf.l2j.gameserver.model.actor.instance.L2ChestInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PlayableInstance;
+import net.sf.l2j.gameserver.model.holder.SkillHolder;
 import net.sf.l2j.gameserver.network.serverpackets.ActionFailed;
 
 /**
@@ -30,24 +29,16 @@ import net.sf.l2j.gameserver.network.serverpackets.ActionFailed;
 public class ChestKey implements IItemHandler
 {
     public static final int INTERACTION_DISTANCE = 100;
-
-    private static int[] _itemIds =
-    {
-        5197, 5198, 5199, 5200, 5201, 5202, 5203, 5204, //chest key	
-        6665, 6666, 6667, 6668, 6669, 6670, 6671, 6672  //deluxe key
-    };
-
+    
     @Override
-	public void useItem(L2PlayableInstance playable, L2ItemInstance item)
+    public void useItem(L2PlayableInstance playable, L2ItemInstance item)
     {
         if (!(playable instanceof L2PcInstance))
             return;
-
+        
         L2PcInstance activeChar = (L2PcInstance) playable;
-        int itemId = item.getItemId();
-        L2Skill skill = SkillTable.getInstance().getInfo(2229, itemId-6664); // box key skill
         L2Object target = activeChar.getTarget();
-
+        
         if (target == null || !(target instanceof L2ChestInstance))
         {
             activeChar.sendMessage("Invalid target.");
@@ -62,14 +53,12 @@ public class ChestKey implements IItemHandler
                 activeChar.sendPacket(new ActionFailed());
                 return;
             }
-
-            activeChar.useMagic(skill, false, false);
+            
+            if (item.getItem().getSkills() != null)
+            {
+                SkillHolder holder = item.getItem().getSkills()[0];
+                activeChar.useMagic(holder.getSkill(), false, false);
+            }
         }
-    }
-
-    @Override
-	public int[] getItemIds()
-    {
-        return _itemIds;
     }
 }

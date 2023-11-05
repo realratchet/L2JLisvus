@@ -135,8 +135,11 @@
     <set name="weight" val="120" />
     <set name="price" val="0" />
     <set name="is_stackable" val="true" />
-    <set name="handler" val="Scrolls" />
+    <set name="handler" val="ItemSkills" />
     <set name="item_skill" val="2064-1" />
+    <cond msgId="1508">
+      <player olympiad="false" />
+    </cond>
   </item>
   <item id="4219" name="Dream Sword" type="Weapon">
     <set name="weapon_type" val="SWORD" />

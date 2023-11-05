@@ -843,8 +843,11 @@
     <set name="weight" val="20" />
     <set name="price" val="3600" />
     <set name="is_stackable" val="true" />
-    <set name="handler" val="Potions" />
+    <set name="handler" val="ItemSkills" />
     <set name="item_skill" val="2034-1" />
+    <cond msgId="1508">
+      <player olympiad="false" />
+    </cond>
   </item>
   <item id="1375" name="Greater Swift Attack Potion" type="EtcItem">
     <set name="etcitem_type" val="POTION" />
@@ -852,8 +855,11 @@
     <set name="weight" val="20" />
     <set name="price" val="7200" />
     <set name="is_stackable" val="true" />
-    <set name="handler" val="Potions" />
+    <set name="handler" val="ItemSkills" />
     <set name="item_skill" val="2035-1" />
+    <cond msgId="1508">
+      <player olympiad="false" />
+    </cond>
   </item>
   <item id="1376" name="Guard Spear" type="Weapon">
     <set name="weapon_type" val="POLE" />

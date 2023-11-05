@@ -51,6 +51,7 @@ import net.sf.l2j.gameserver.network.serverpackets.StopMove;
 import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
 import net.sf.l2j.gameserver.skills.Stats;
 import net.sf.l2j.gameserver.taskmanager.DecayTaskManager;
+import net.sf.l2j.gameserver.templates.L2EtcItem;
 import net.sf.l2j.gameserver.templates.L2Item;
 import net.sf.l2j.gameserver.templates.L2NpcTemplate;
 import net.sf.l2j.gameserver.templates.L2Weapon;
@@ -158,9 +159,9 @@ public class L2PetInstance extends L2Summon
 				
 				if (isHungry() && !isDead())
 				{
-					if (food != null)
+					if (food != null && food.getItem() instanceof L2EtcItem)
 					{
-						IItemHandler handler = ItemHandler.getInstance().getItemHandler(food.getItemId());
+						IItemHandler handler = ItemHandler.getInstance().getHandler((L2EtcItem)food.getItem());
 						if (handler != null)
 						{
 							SystemMessage sm = new SystemMessage(SystemMessage.PET_TOOK_S1_BECAUSE_HE_WAS_HUNGRY);

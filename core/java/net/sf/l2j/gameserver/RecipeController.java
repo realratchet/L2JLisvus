@@ -29,6 +29,7 @@ import java.util.WeakHashMap;
 import java.util.logging.Logger;
 
 import net.sf.l2j.Config;
+import net.sf.l2j.gameserver.datatables.ItemTable;
 import net.sf.l2j.gameserver.model.L2ItemInstance;
 import net.sf.l2j.gameserver.model.L2ManufactureItem;
 import net.sf.l2j.gameserver.model.L2RecipeInstance;
@@ -46,6 +47,7 @@ import net.sf.l2j.gameserver.network.serverpackets.SetupGauge;
 import net.sf.l2j.gameserver.network.serverpackets.StatusUpdate;
 import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
 import net.sf.l2j.gameserver.skills.Stats;
+import net.sf.l2j.gameserver.templates.L2Item;
 import net.sf.l2j.gameserver.util.Util;
 import net.sf.l2j.util.Rnd;
 
@@ -54,7 +56,7 @@ public class RecipeController
 	protected static final Logger _log = Logger.getLogger(RecipeController.class.getName());
 	
 	private Map<Integer, L2RecipeList> _lists;
-	protected final Map<L2PcInstance, RecipeItemMaker> _activeMakers = Collections.synchronizedMap(new WeakHashMap<L2PcInstance, RecipeItemMaker>());
+	protected final Map<L2PcInstance, RecipeItemMaker> _activeMakers = Collections.synchronizedMap(new WeakHashMap<>());
 	
 	public static RecipeController getInstance()
 	{
@@ -639,6 +641,13 @@ public class RecipeController
 		
 		private List<TempItem> listItems(boolean remove)
 		{
+			L2Item recipeListItem = ItemTable.getInstance().getTemplate(_recipeList.getItemId());
+			if (recipeListItem == null)
+			{
+				_log.warning(getClass().getSimpleName() + ": Missing template for recipe list item ID " + _recipeList.getItemId());
+				return null;
+			}
+
 			L2RecipeInstance[] recipes = _recipeList.getRecipes();
 			Inventory inv = _target.getInventory();
 			List<TempItem> materials = new ArrayList<>();
@@ -646,7 +655,7 @@ public class RecipeController
 			boolean aborted = false;
 			for (L2RecipeInstance recipe : recipes)
 			{
-				int quantity = _recipeList.isConsumable() ? (int) (recipe.getQuantity() * Config.RATE_CONSUMABLE_COST) : recipe.getQuantity();
+				int quantity = recipeListItem.isConsumable() ? (int) (recipe.getQuantity() * Config.RATE_CONSUMABLE_COST) : recipe.getQuantity();
 				if (quantity > 0)
 				{
 					L2ItemInstance item = inv.getItemByItemId(recipe.getItemId());
@@ -702,6 +711,10 @@ public class RecipeController
 			int itemCount = _recipeList.getCount();
 			
 			L2ItemInstance createdItem = _target.getInventory().addItem("Manufacture", itemId, itemCount, _target, _player);
+			if (createdItem == null)
+			{
+				return;
+			}
 			
 			// inform customer of earned item
             SystemMessage sm = null;

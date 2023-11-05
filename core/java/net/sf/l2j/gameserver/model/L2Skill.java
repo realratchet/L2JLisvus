@@ -54,6 +54,7 @@ import net.sf.l2j.gameserver.skills.l2skills.L2SkillEngrave;
 import net.sf.l2j.gameserver.skills.l2skills.L2SkillSeed;
 import net.sf.l2j.gameserver.skills.l2skills.L2SkillSiegeFlag;
 import net.sf.l2j.gameserver.skills.l2skills.L2SkillSummon;
+import net.sf.l2j.gameserver.skills.l2skills.L2SkillTeleport;
 import net.sf.l2j.gameserver.taskmanager.DecayTaskManager;
 import net.sf.l2j.gameserver.templates.StatsSet;
 import net.sf.l2j.gameserver.util.Util;
@@ -142,14 +143,12 @@ public abstract class L2Skill
 		CHARGE,
 		FEAR,
 		MHOT,
-		DRAIN(L2SkillDrain.class),
 
 		CANCEL,
 		SLEEP,
 		AGGREDUCE,
 		AGGREMOVE,
 		AGGREDUCE_CHAR,
-		CHARGEDAM(L2SkillChargeDmg.class),
 		CONFUSE_MOB_ONLY,
 		DEATHLINK,
 		ENCHANT_ARMOR,
@@ -166,16 +165,12 @@ public abstract class L2Skill
 		SPIRITSHOT,
 		SPOIL,
 		SWEEP,
-		SUMMON(L2SkillSummon.class),
 		WEAKNESS,
 		DEATHLINK_PET,
 		MANA_BY_LEVEL,
 		FAKE_DEATH,
 
-		SIEGEFLAG(L2SkillSiegeFlag.class),
-		TAKECASTLE(L2SkillEngrave.class),
 		UNDEAD_DEFENSE,
-		SEED(L2SkillSeed.class),
 		PARALYZE,
 		DRAIN_SOUL,
 		COMMON_CRAFT,
@@ -184,7 +179,6 @@ public abstract class L2Skill
 		FISHING,
 		PUMPING,
 		REELING,
-		CREATE_ITEM(L2SkillCreateItem.class),
 		AGGDEBUFF,
 		STRSIEGEASSAULT,
 		HEAL_STATIC,
@@ -200,6 +194,21 @@ public abstract class L2Skill
 		DELUXE_KEY_UNLOCK,
 		BEAST_FEED,
 		GET_PLAYER,
+
+		FACE_LIFT,
+		HAIR_COLOR,
+		HAIR_STYLE,
+
+		GIVE_SP,
+
+		DRAIN(L2SkillDrain.class),
+		CHARGEDAM(L2SkillChargeDmg.class),
+		SUMMON(L2SkillSummon.class),
+		SIEGEFLAG(L2SkillSiegeFlag.class),
+		TAKECASTLE(L2SkillEngrave.class),
+		SEED(L2SkillSeed.class),
+		CREATE_ITEM(L2SkillCreateItem.class),
+		TELEPORT(L2SkillTeleport.class),
 
 		// unimplemented
 		NOTDONE;
@@ -1244,7 +1253,7 @@ public abstract class L2Skill
 		// Init to null the target of the skill
 		L2Character target = null;
 
-		// Get the L2Objcet targeted by the user of the skill at this moment
+		// Get the L2Object targeted by the user of the skill at this moment
 		L2Object objTarget = activeChar.getTarget();
 
 		// Get the type of the skill
@@ -1362,7 +1371,6 @@ public abstract class L2Skill
 			}
 			case TARGET_CORPSE_PET:
 			{
-				target = activeChar.getPet();
 				if (target == null)
 				{
 					activeChar.sendPacket(new SystemMessage(SystemMessage.TARGET_CANT_FOUND));
@@ -1372,6 +1380,14 @@ public abstract class L2Skill
 				if (!target.isDead())
 				{
 					activeChar.sendPacket(new SystemMessage(SystemMessage.TARGET_IS_INCORRECT));
+					return null;
+				}
+
+				if (!(target instanceof L2PetInstance))
+				{
+					SystemMessage message = new SystemMessage(SystemMessage.S1_CANNOT_BE_USED);
+					message.addSkillName(this);
+					activeChar.sendPacket(message);
 					return null;
 				}
 

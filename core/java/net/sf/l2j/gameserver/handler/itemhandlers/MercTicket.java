@@ -128,11 +128,4 @@ public class MercTicket implements IItemHandler
         int npcId = MercTicketManager.getInstance().addTicket(item.getItemId(), activeChar, _messages);
         activeChar.sendMessage("Hired mercenary ("+itemId+","+npcId+") at coords:" + activeChar.getX() + "," + activeChar.getY() + "," + activeChar.getZ() + " heading:" + activeChar.getHeading());
     }
-
-    // left in here for backward compatibility
-    @Override
-	public int[] getItemIds()
-    {
-        return MercTicketManager.getInstance().getItemIds();
-    }
 }

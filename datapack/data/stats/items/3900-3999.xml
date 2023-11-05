@@ -394,8 +394,11 @@
     <set name="weight" val="120" />
     <set name="price" val="0" />
     <set name="is_stackable" val="true" />
-    <set name="handler" val="Scrolls" />
+    <set name="handler" val="ItemSkills" />
     <set name="item_skill" val="2050-1" />
+    <cond msgId="1508">
+      <player olympiad="false" />
+    </cond>
   </item>
   <item id="3927" name="L2Day - Scroll of Death Whisper" type="EtcItem">
     <set name="etcitem_type" val="SCROLL" />
@@ -403,8 +406,11 @@
     <set name="weight" val="120" />
     <set name="price" val="0" />
     <set name="is_stackable" val="true" />
-    <set name="handler" val="Scrolls" />
+    <set name="handler" val="ItemSkills" />
     <set name="item_skill" val="2051-1" />
+    <cond msgId="1508">
+      <player olympiad="false" />
+    </cond>
   </item>
   <item id="3928" name="L2Day - Scroll of Focus" type="EtcItem">
     <set name="etcitem_type" val="SCROLL" />
@@ -412,8 +418,11 @@
     <set name="weight" val="120" />
     <set name="price" val="0" />
     <set name="is_stackable" val="true" />
-    <set name="handler" val="Scrolls" />
+    <set name="handler" val="ItemSkills" />
     <set name="item_skill" val="2052-1" />
+    <cond msgId="1508">
+      <player olympiad="false" />
+    </cond>
   </item>
   <item id="3929" name="L2Day - Scroll of Greater Acumen" type="EtcItem">
     <set name="etcitem_type" val="SCROLL" />
@@ -421,8 +430,11 @@
     <set name="weight" val="120" />
     <set name="price" val="0" />
     <set name="is_stackable" val="true" />
-    <set name="handler" val="Scrolls" />
+    <set name="handler" val="ItemSkills" />
     <set name="item_skill" val="2053-1" />
+    <cond msgId="1508">
+      <player olympiad="false" />
+    </cond>
   </item>
   <item id="3930" name="L2Day - Scroll of Haste" type="EtcItem">
     <set name="etcitem_type" val="SCROLL" />
@@ -430,8 +442,11 @@
     <set name="weight" val="120" />
     <set name="price" val="0" />
     <set name="is_stackable" val="true" />
-    <set name="handler" val="Scrolls" />
+    <set name="handler" val="ItemSkills" />
     <set name="item_skill" val="2054-1" />
+    <cond msgId="1508">
+      <player olympiad="false" />
+    </cond>
   </item>
   <item id="3931" name="L2Day - Scroll of Agility" type="EtcItem">
     <set name="etcitem_type" val="SCROLL" />
@@ -439,8 +454,11 @@
     <set name="weight" val="120" />
     <set name="price" val="0" />
     <set name="is_stackable" val="true" />
-    <set name="handler" val="Scrolls" />
+    <set name="handler" val="ItemSkills" />
     <set name="item_skill" val="2055-1" />
+    <cond msgId="1508">
+      <player olympiad="false" />
+    </cond>
   </item>
   <item id="3932" name="L2Day - Scroll of Mystic Empower" type="EtcItem">
     <set name="etcitem_type" val="SCROLL" />
@@ -448,8 +466,11 @@
     <set name="weight" val="120" />
     <set name="price" val="0" />
     <set name="is_stackable" val="true" />
-    <set name="handler" val="Scrolls" />
+    <set name="handler" val="ItemSkills" />
     <set name="item_skill" val="2056-1" />
+    <cond msgId="1508">
+      <player olympiad="false" />
+    </cond>
   </item>
   <item id="3933" name="L2Day - Scroll of Might" type="EtcItem">
     <set name="etcitem_type" val="SCROLL" />
@@ -457,8 +478,11 @@
     <set name="weight" val="120" />
     <set name="price" val="0" />
     <set name="is_stackable" val="true" />
-    <set name="handler" val="Scrolls" />
+    <set name="handler" val="ItemSkills" />
     <set name="item_skill" val="2057-1" />
+    <cond msgId="1508">
+      <player olympiad="false" />
+    </cond>
   </item>
   <item id="3934" name="L2Day - Scroll of Windwalk" type="EtcItem">
     <set name="etcitem_type" val="SCROLL" />
@@ -466,8 +490,11 @@
     <set name="weight" val="120" />
     <set name="price" val="0" />
     <set name="is_stackable" val="true" />
-    <set name="handler" val="Scrolls" />
+    <set name="handler" val="ItemSkills" />
     <set name="item_skill" val="2058-1" />
+    <cond msgId="1508">
+      <player olympiad="false" />
+    </cond>
   </item>
   <item id="3935" name="L2Day - Scroll of Shield" type="EtcItem">
     <set name="etcitem_type" val="SCROLL" />
@@ -475,8 +502,11 @@
     <set name="weight" val="120" />
     <set name="price" val="0" />
     <set name="is_stackable" val="true" />
-    <set name="handler" val="Scrolls" />
+    <set name="handler" val="ItemSkills" />
     <set name="item_skill" val="2059-1" />
+    <cond msgId="1508">
+      <player olympiad="false" />
+    </cond>
   </item>
   <item id="3936" name="Blessed Scroll of Resurrection" type="EtcItem">
     <set name="etcitem_type" val="SCROLL" />
@@ -606,6 +636,7 @@
     <set name="weight" val="5" />
     <set name="price" val="35" />
     <set name="is_stackable" val="true" />
+    <set name="is_magical" val="true" />
     <set name="handler" val="BlessedSpiritShot" />
   </item>
   <item id="3948" name="Blessed Spiritshot: D-Grade" type="EtcItem">
@@ -615,6 +646,7 @@
     <set name="weight" val="5" />
     <set name="price" val="45" />
     <set name="is_stackable" val="true" />
+    <set name="is_magical" val="true" />
     <set name="handler" val="BlessedSpiritShot" />
   </item>
   <item id="3949" name="Blessed Spiritshot: C-Grade" type="EtcItem">
@@ -624,6 +656,7 @@
     <set name="weight" val="3" />
     <set name="price" val="90" />
     <set name="is_stackable" val="true" />
+    <set name="is_magical" val="true" />
     <set name="handler" val="BlessedSpiritShot" />
   </item>
   <item id="3950" name="Blessed Spiritshot: B-Grade" type="EtcItem">
@@ -633,6 +666,7 @@
     <set name="weight" val="3" />
     <set name="price" val="245" />
     <set name="is_stackable" val="true" />
+    <set name="is_magical" val="true" />
     <set name="handler" val="BlessedSpiritShot" />
   </item>
   <item id="3951" name="Blessed Spiritshot: A-Grade" type="EtcItem">
@@ -642,6 +676,7 @@
     <set name="weight" val="2" />
     <set name="price" val="290" />
     <set name="is_stackable" val="true" />
+    <set name="is_magical" val="true" />
     <set name="handler" val="BlessedSpiritShot" />
   </item>
   <item id="3952" name="Blessed Spiritshot: S Grade" type="EtcItem">
@@ -651,6 +686,7 @@
     <set name="weight" val="2" />
     <set name="price" val="350" />
     <set name="is_stackable" val="true" />
+    <set name="is_magical" val="true" />
     <set name="handler" val="BlessedSpiritShot" />
   </item>
   <item id="3953" name="Recipe: Blessed Spiritshot D" type="EtcItem">

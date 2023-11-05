@@ -71,16 +71,12 @@ public class L2SkillChargeDmg extends L2Skill
 	@Override
 	public void useSkill(L2Character activeChar, L2Object[] targets, boolean isFirstCritical)
 	{
-		if (!(activeChar instanceof L2PcInstance))
+		if (activeChar.isAlikeDead() || !(activeChar instanceof L2PcInstance))
 		{
 			return;
 		}
 		
 		L2PcInstance player = (L2PcInstance) activeChar;
-		if (activeChar.isAlikeDead())
-		{
-			return;
-		}
 		
 		// Formula tested by L2Guru
 		double modifier = 0;

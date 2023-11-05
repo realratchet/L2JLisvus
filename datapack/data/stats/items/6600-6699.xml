@@ -868,6 +868,7 @@
     <set name="weight" val="2" />
     <set name="price" val="40" />
     <set name="is_stackable" val="true" />
+    <set name="is_magical" val="true" />
     <set name="handler" val="BeastSpiritShot" />
     <set name="item_skill" val="2008-1" />
   </item>
@@ -877,6 +878,7 @@
     <set name="weight" val="2" />
     <set name="price" val="100" />
     <set name="is_stackable" val="true" />
+    <set name="is_magical" val="true" />
     <set name="handler" val="BeastSpiritShot" />
     <set name="item_skill" val="2009-1" />
   </item>
@@ -920,7 +922,7 @@
     <set name="weight" val="10" />
     <set name="price" val="100000" />
     <set name="is_stackable" val="true" />
-    <set name="handler" val="Scrolls" />
+    <set name="handler" val="ItemSkills" />
     <set name="item_skill" val="2231-1" />
   </item>
   <item id="6653" name="Amulet: Flames of Valakas" type="EtcItem">
@@ -936,7 +938,7 @@
     <set name="weight" val="10" />
     <set name="price" val="40000" />
     <set name="is_stackable" val="true" />
-    <set name="handler" val="Remedy" />
+    <set name="handler" val="ItemSkills" />
     <set name="item_skill" val="2233-1" />
   </item>
   <item id="6655" name="Amulet: Slay Valakas" type="EtcItem">
@@ -945,7 +947,7 @@
     <set name="weight" val="10" />
     <set name="price" val="0" />
     <set name="is_stackable" val="true" />
-    <set name="handler" val="Scrolls" />
+    <set name="handler" val="ItemSkills" />
     <set name="item_skill" val="2232-1" />
   </item>
   <item id="6656" name="Earring of Antharas" type="Armor">

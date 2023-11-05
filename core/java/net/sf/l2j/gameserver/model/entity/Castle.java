@@ -1377,10 +1377,10 @@ public class Castle
 	
 	public void resetManor()
 	{
-		setCropProcure(new ArrayList<CropProcure>(), CastleManorManager.PERIOD_CURRENT);
-		setCropProcure(new ArrayList<CropProcure>(), CastleManorManager.PERIOD_NEXT);
-		setSeedProduction(new ArrayList<SeedProduction>(), CastleManorManager.PERIOD_CURRENT);
-		setSeedProduction(new ArrayList<SeedProduction>(), CastleManorManager.PERIOD_NEXT);
+		setCropProcure(new ArrayList<>(), CastleManorManager.PERIOD_CURRENT);
+		setCropProcure(new ArrayList<>(), CastleManorManager.PERIOD_NEXT);
+		setSeedProduction(new ArrayList<>(), CastleManorManager.PERIOD_CURRENT);
+		setSeedProduction(new ArrayList<>(), CastleManorManager.PERIOD_NEXT);
 		if (Config.ALT_MANOR_SAVE_ALL_ACTIONS)
 		{
 			saveCropData();

@@ -5874,7 +5874,7 @@ public abstract class L2Character extends L2Object
 	{
 		if (_disabledSkills == null)
 		{
-			_disabledSkills = Collections.synchronizedList(new ArrayList<Integer>());
+			_disabledSkills = Collections.synchronizedList(new ArrayList<>());
 		}
 
 		_disabledSkills.add(skillId);

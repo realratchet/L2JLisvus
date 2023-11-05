@@ -31,17 +31,17 @@ import net.sf.l2j.util.Rnd;
  */
 public class L2SkillCreateItem extends L2Skill
 {
-	private final int create_item_id;
-	private final int create_item_count;
-	private final int random_count;
+	private final int _createItemId;
+	private final int _createItemCount;
+	private final int _randomCount;
 	
 	public L2SkillCreateItem(StatsSet set)
 	{
 		super(set);
 		
-		create_item_id = set.getInteger("create_item_id", 0);
-		create_item_count = set.getInteger("create_item_count", 0);
-		random_count = set.getInteger("random_count", 1);
+		_createItemId = set.getInteger("create_item_id", 0);
+		_createItemCount = set.getInteger("create_item_count", 0);
+		_randomCount = set.getInteger("random_count", 1);
 	}
 	
 	/**
@@ -55,19 +55,19 @@ public class L2SkillCreateItem extends L2Skill
 			return;
 		}
 		
-		if (create_item_id == 0 || create_item_count == 0)
+		if (_createItemId == 0 || _createItemCount == 0)
 		{
-			SystemMessage sm = new SystemMessage(SystemMessage.S1_PREPARED_FOR_REUSE);
-			activeChar.sendPacket(sm);
+			activeChar.sendPacket(new SystemMessage(SystemMessage.S1_PREPARED_FOR_REUSE));
 			return;
 		}
+
 		L2PcInstance player = (L2PcInstance) activeChar;
 		if (activeChar instanceof L2PcInstance)
 		{
-			int rnd = Rnd.nextInt(random_count) + 1;
-			int count = create_item_count * rnd;
+			int rnd = Rnd.nextInt(_randomCount) + 1;
+			int count = _createItemCount * rnd;
 			
-			giveItems(player, create_item_id, count);
+			giveItems(player, _createItemId, count);
 		}
 	}
 	

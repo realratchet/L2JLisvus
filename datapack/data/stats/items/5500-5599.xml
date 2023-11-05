@@ -445,7 +445,7 @@
     <set name="weight" val="10" />
     <set name="price" val="0" />
     <set name="is_stackable" val="true" />
-    <set name="handler" val="CrystalCarol" />
+    <set name="handler" val="ItemSkills" />
     <set name="item_skill" val="2140-1" />
   </item>
   <item id="5563" name="Echo Crystal - 2nd Carol" type="EtcItem">
@@ -454,7 +454,7 @@
     <set name="weight" val="10" />
     <set name="price" val="0" />
     <set name="is_stackable" val="true" />
-    <set name="handler" val="CrystalCarol" />
+    <set name="handler" val="ItemSkills" />
     <set name="item_skill" val="2141-1" />
   </item>
   <item id="5564" name="Echo Crystal - 3rd Carol" type="EtcItem">
@@ -463,7 +463,7 @@
     <set name="weight" val="10" />
     <set name="price" val="0" />
     <set name="is_stackable" val="true" />
-    <set name="handler" val="CrystalCarol" />
+    <set name="handler" val="ItemSkills" />
     <set name="item_skill" val="2142-1" />
   </item>
   <item id="5565" name="Echo Crystal - 4th Carol" type="EtcItem">
@@ -472,7 +472,7 @@
     <set name="weight" val="10" />
     <set name="price" val="0" />
     <set name="is_stackable" val="true" />
-    <set name="handler" val="CrystalCarol" />
+    <set name="handler" val="ItemSkills" />
     <set name="item_skill" val="2143-1" />
   </item>
   <item id="5566" name="Echo Crystal - 5th Carol" type="EtcItem">
@@ -481,7 +481,7 @@
     <set name="weight" val="10" />
     <set name="price" val="0" />
     <set name="is_stackable" val="true" />
-    <set name="handler" val="CrystalCarol" />
+    <set name="handler" val="ItemSkills" />
     <set name="item_skill" val="2144-1" />
   </item>
   <item id="5567" name="Letter of Greetings" type="EtcItem">
@@ -616,7 +616,7 @@
     <set name="weight" val="10" />
     <set name="price" val="0" />
     <set name="is_stackable" val="true" />
-    <set name="handler" val="CrystalCarol" />
+    <set name="handler" val="ItemSkills" />
     <set name="item_skill" val="2145-1" />
   </item>
   <item id="5584" name="Echo Crystal - 7th Carol" type="EtcItem">
@@ -625,7 +625,7 @@
     <set name="weight" val="10" />
     <set name="price" val="0" />
     <set name="is_stackable" val="true" />
-    <set name="handler" val="CrystalCarol" />
+    <set name="handler" val="ItemSkills" />
     <set name="item_skill" val="2146-1" />
   </item>
   <item id="5585" name="Echo Crystal - 8th Carol" type="EtcItem">
@@ -634,7 +634,7 @@
     <set name="weight" val="10" />
     <set name="price" val="0" />
     <set name="is_stackable" val="true" />
-    <set name="handler" val="CrystalCarol" />
+    <set name="handler" val="ItemSkills" />
     <set name="item_skill" val="2147-1" />
   </item>
   <item id="5586" name="Echo Crystal - 9th Carol" type="EtcItem">
@@ -643,7 +643,7 @@
     <set name="weight" val="10" />
     <set name="price" val="0" />
     <set name="is_stackable" val="true" />
-    <set name="handler" val="CrystalCarol" />
+    <set name="handler" val="ItemSkills" />
     <set name="item_skill" val="2148-1" />
   </item>
   <item id="5587" name="Echo Crystal - 10th Carol" type="EtcItem">
@@ -652,7 +652,7 @@
     <set name="weight" val="10" />
     <set name="price" val="0" />
     <set name="is_stackable" val="true" />
-    <set name="handler" val="CrystalCarol" />
+    <set name="handler" val="ItemSkills" />
     <set name="item_skill" val="2149-1" />
   </item>
   <item id="5588" name="Tutorial Guide" type="EtcItem">
@@ -669,7 +669,7 @@
     <set name="weight" val="10" />
     <set name="price" val="100" />
     <set name="is_stackable" val="true" />
-    <set name="handler" val="EnergyStone" />
+    <set name="handler" val="ItemSkills" />
     <set name="item_skill" val="2165-1" />
   </item>
   <item id="5590" name="Squeaking Shoes" type="Armor">
@@ -687,8 +687,11 @@
     <set name="weight" val="25" />
     <set name="price" val="240" />
     <set name="is_stackable" val="true" />
-    <set name="handler" val="Potions" />
+    <set name="handler" val="ItemSkills" />
     <set name="item_skill" val="2166-1" />
+    <cond msgId="1508">
+      <player olympiad="false" />
+    </cond>
   </item>
   <item id="5592" name="Greater CP Potion" type="EtcItem">
     <set name="etcitem_type" val="POTION" />
@@ -696,8 +699,11 @@
     <set name="weight" val="100" />
     <set name="price" val="600" />
     <set name="is_stackable" val="true" />
-    <set name="handler" val="Potions" />
+    <set name="handler" val="ItemSkills" />
     <set name="item_skill" val="2166-2" />
+    <cond msgId="1508">
+      <player olympiad="false" />
+    </cond>
   </item>
   <item id="5593" name="SP Scroll: Low Grade" type="EtcItem">
     <set name="etcitem_type" val="SCROLL" />
@@ -705,8 +711,11 @@
     <set name="weight" val="30" />
     <set name="price" val="2400" />
     <set name="is_stackable" val="true" />
-    <set name="handler" val="Scrolls" />
+    <set name="handler" val="ItemSkills" />
     <set name="item_skill" val="2167-1" />
+    <cond msgId="1508">
+      <player olympiad="false" />
+    </cond>
   </item>
   <item id="5594" name="SP Scroll: Medium Grade" type="EtcItem">
     <set name="etcitem_type" val="SCROLL" />
@@ -714,8 +723,11 @@
     <set name="weight" val="30" />
     <set name="price" val="24000" />
     <set name="is_stackable" val="true" />
-    <set name="handler" val="Scrolls" />
+    <set name="handler" val="ItemSkills" />
     <set name="item_skill" val="2167-2" />
+    <cond msgId="1508">
+      <player olympiad="false" />
+    </cond>
   </item>
   <item id="5595" name="SP Scroll: High Grade" type="EtcItem">
     <set name="etcitem_type" val="SCROLL" />
@@ -723,8 +735,11 @@
     <set name="weight" val="30" />
     <set name="price" val="480000" />
     <set name="is_stackable" val="true" />
-    <set name="handler" val="Scrolls" />
+    <set name="handler" val="ItemSkills" />
     <set name="item_skill" val="2167-3" />
+    <cond msgId="1508">
+      <player olympiad="false" />
+    </cond>
   </item>
   <item id="5596" name="Dasparion's Staff - Mana Up" type="Weapon">
     <set name="weapon_type" val="BIGBLUNT" />

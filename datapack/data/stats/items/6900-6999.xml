@@ -35,7 +35,7 @@
     <set name="weight" val="10" />
     <set name="price" val="0" />
     <set name="is_stackable" val="true" />
-    <set name="handler" val="CrystalCarol" />
+    <set name="handler" val="ItemSkills" />
     <set name="item_skill" val="2187-1" />
   </item>
   <item id="6904" name="Party Mask Fabric" type="EtcItem">

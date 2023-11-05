@@ -14,6 +14,7 @@
  */
 package net.sf.l2j.gameserver.network.clientpackets;
 
+import net.sf.l2j.gameserver.datatables.PetDataTable;
 import net.sf.l2j.gameserver.model.L2ItemInstance;
 import net.sf.l2j.gameserver.model.L2Summon;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
@@ -65,7 +66,7 @@ public class RequestAutoSoulShot extends L2GameClientPacket
 			if ((_itemId < 6535) || (_itemId > 6540))
 			{
 				// Attempt to charge first shot on activation
-				if ((_itemId == 6645) || (_itemId == 6646) || (_itemId == 6647))
+				if (PetDataTable.isPetShot(_itemId))
 				{
 					L2Summon summon = activeChar.getPet();
 					if (summon != null)

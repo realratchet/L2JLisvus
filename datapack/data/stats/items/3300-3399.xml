@@ -1,1003 +1,1003 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <list>
-    <item id="3300" name="Talisman of Kadesh" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3301" name="Talisman of Snake" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3302" name="Mithril Clip" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3303" name="Stakato Chitin" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3304" name="Reinforced Bowstring" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3305" name="Manashen's Horn" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3306" name="Blood of Lizardman" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3307" name="Mark of Witchcraft" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3308" name="Orim's Diagram" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3309" name="Alexandria's Book" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3310" name="Iker's List" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3311" name="Dire Wyrm Fang" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3312" name="Leto Lizardman Charm" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3313" name="Enchanted Golem Heartstone" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3314" name="Lara's Memo" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3315" name="Nestle's Memo" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3316" name="Leopold's Journal" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3317" name="Aklantoth 1st Gem" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3318" name="Aklantoth 2nd Gem" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3319" name="Aklantoth 3rd Gem" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3320" name="Aklantoth 4th Gem" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3321" name="Aklantoth 5th Gem" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3322" name="Aklantoth 6th Gem" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3323" name="1st Brimstone" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3324" name="Orim's Instructions" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3325" name="Orim's 1st Letter" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3326" name="Orim's 2nd Letter" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3327" name="Sir Vasper's Letter" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3328" name="Vadin's Crucifix" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3329" name="Tamlin Orc Amulet" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3330" name="Vadin's Sanctions" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3331" name="Iker's Amulet" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3332" name="Soultrap Crystal" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3333" name="Purgatory Key" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3334" name="Zeruel Bind Crystal" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3335" name="2nd Brimstone" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3336" name="Mark of Summoner" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3337" name="Leto Lizardman Amulet" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3338" name="Sac of Redspores" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3339" name="Karul Bugbear Totem" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3340" name="Shards of Manashen" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3341" name="Breka Orc Totem" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3342" name="Crimson Bloodstone" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3343" name="Talons of Tyrant" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3344" name="Wings of Droneant" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3345" name="Tusk of Windsus" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3346" name="Fangs of Wyrm" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3347" name="Lara's 1st List" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3348" name="Lara's 2nd List" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3349" name="Lara's 3rd List" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3350" name="Lara's 4th List" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3351" name="Lara's 5th List" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3352" name="Galatea's Letter" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3353" name="Beginner's Arcana" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3354" name="Almors's Arcana" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3355" name="Camoniell's Arcana" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3356" name="Belthus's Arcana" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3357" name="Basillia's Arcana" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3358" name="Celestiel's Arcana" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3359" name="Brynthea's Arcana" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3360" name="1st Crystal of Starting" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3361" name="1st Crystal of Inprogress" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3362" name="1st Crystal of Foul" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3363" name="1st Crystal of Defeat" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3364" name="1st Crystal of Victory" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3365" name="2nd Crystal of Starting" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3366" name="2nd Crystal of Inprogress" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3367" name="2nd Crystal of Foul" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3368" name="2nd Crystal of Defeat" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3369" name="2nd Crystal of Victory" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3370" name="3rd Crystal of Starting" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3371" name="3rd Crystal of Inprogress" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3372" name="3rd Crystal of Foul" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3373" name="3rd Crystal of Defeat" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3374" name="3rd Crystal of Victory" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3375" name="4th Crystal of Starting" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3376" name="4th Crystal of Inprogress" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3377" name="4th Crystal of Foul" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3378" name="4th Crystal of Defeat" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3379" name="4th Crystal of Victory" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3380" name="5th Crystal of Starting" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3381" name="5th Crystal of Inprogress" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3382" name="5th Crystal of Foul" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3383" name="5th Crystal of Defeat" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3384" name="5th Crystal of Victory" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3385" name="6th Crystal of Starting" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3386" name="6th Crystal of Inprogress" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3387" name="6th Crystal of Foul" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3388" name="6th Crystal of Defeat" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3389" name="6th Crystal of Victory" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3390" name="Mark of Lord" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3391" name="Ordeal Necklace" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3392" name="Varkee's Charm" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3393" name="Tantus's Charm" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3394" name="Hatos's Charm" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3395" name="Takuna's Charm" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3396" name="Chianta's Charm" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3397" name="Manakia's Orders" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3398" name="Breka Orc Fang" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
-    <item id="3399" name="Manakia's Amulet" type="EtcItem">
-        <set name="etcitem_type" val="QUEST" />
-        <set name="material" val="STEEL" />
-        <set name="weight" val="0" />
-        <set name="price" val="0" />
-        <set name="is_stackable" val="true" />
-        <set name="is_tradable" val="false" />
-        <set name="is_dropable" val="false" />
-        <set name="is_sellable" val="false" />
-    </item>
+  <item id="3300" name="Talisman of Kadesh" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3301" name="Talisman of Snake" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3302" name="Mithril Clip" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3303" name="Stakato Chitin" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3304" name="Reinforced Bowstring" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3305" name="Manashen's Horn" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3306" name="Blood of Lizardman" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3307" name="Mark of Witchcraft" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3308" name="Orim's Diagram" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3309" name="Alexandria's Book" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3310" name="Iker's List" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3311" name="Dire Wyrm Fang" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3312" name="Leto Lizardman Charm" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3313" name="Enchanted Golem Heartstone" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3314" name="Lara's Memo" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3315" name="Nestle's Memo" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3316" name="Leopold's Journal" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3317" name="Aklantoth 1st Gem" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3318" name="Aklantoth 2nd Gem" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3319" name="Aklantoth 3rd Gem" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3320" name="Aklantoth 4th Gem" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3321" name="Aklantoth 5th Gem" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3322" name="Aklantoth 6th Gem" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3323" name="1st Brimstone" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3324" name="Orim's Instructions" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3325" name="Orim's 1st Letter" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3326" name="Orim's 2nd Letter" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3327" name="Sir Vasper's Letter" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3328" name="Vadin's Crucifix" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3329" name="Tamlin Orc Amulet" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3330" name="Vadin's Sanctions" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3331" name="Iker's Amulet" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3332" name="Soultrap Crystal" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3333" name="Purgatory Key" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3334" name="Zeruel Bind Crystal" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3335" name="2nd Brimstone" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3336" name="Mark of Summoner" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3337" name="Leto Lizardman Amulet" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3338" name="Sac of Redspores" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3339" name="Karul Bugbear Totem" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3340" name="Shards of Manashen" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3341" name="Breka Orc Totem" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3342" name="Crimson Bloodstone" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3343" name="Talons of Tyrant" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3344" name="Wings of Droneant" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3345" name="Tusk of Windsus" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3346" name="Fangs of Wyrm" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3347" name="Lara's 1st List" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3348" name="Lara's 2nd List" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3349" name="Lara's 3rd List" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3350" name="Lara's 4th List" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3351" name="Lara's 5th List" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3352" name="Galatea's Letter" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3353" name="Beginner's Arcana" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3354" name="Almors's Arcana" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3355" name="Camoniell's Arcana" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3356" name="Belthus's Arcana" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3357" name="Basillia's Arcana" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3358" name="Celestiel's Arcana" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3359" name="Brynthea's Arcana" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3360" name="1st Crystal of Starting" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3361" name="1st Crystal of Inprogress" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3362" name="1st Crystal of Foul" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3363" name="1st Crystal of Defeat" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3364" name="1st Crystal of Victory" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3365" name="2nd Crystal of Starting" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3366" name="2nd Crystal of Inprogress" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3367" name="2nd Crystal of Foul" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3368" name="2nd Crystal of Defeat" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3369" name="2nd Crystal of Victory" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3370" name="3rd Crystal of Starting" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3371" name="3rd Crystal of Inprogress" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3372" name="3rd Crystal of Foul" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3373" name="3rd Crystal of Defeat" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3374" name="3rd Crystal of Victory" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3375" name="4th Crystal of Starting" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3376" name="4th Crystal of Inprogress" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3377" name="4th Crystal of Foul" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3378" name="4th Crystal of Defeat" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3379" name="4th Crystal of Victory" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3380" name="5th Crystal of Starting" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3381" name="5th Crystal of Inprogress" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3382" name="5th Crystal of Foul" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3383" name="5th Crystal of Defeat" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3384" name="5th Crystal of Victory" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3385" name="6th Crystal of Starting" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3386" name="6th Crystal of Inprogress" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3387" name="6th Crystal of Foul" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3388" name="6th Crystal of Defeat" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3389" name="6th Crystal of Victory" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3390" name="Mark of Lord" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3391" name="Ordeal Necklace" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3392" name="Varkee's Charm" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3393" name="Tantus's Charm" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3394" name="Hatos's Charm" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3395" name="Takuna's Charm" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3396" name="Chianta's Charm" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3397" name="Manakia's Orders" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3398" name="Breka Orc Fang" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="3399" name="Manakia's Amulet" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
 </list>

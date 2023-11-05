@@ -19,6 +19,7 @@ import net.sf.l2j.gameserver.model.L2ItemInstance;
 import net.sf.l2j.gameserver.model.L2Summon;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PlayableInstance;
+import net.sf.l2j.gameserver.model.holder.SkillHolder;
 import net.sf.l2j.gameserver.network.serverpackets.MagicSkillUse;
 import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
 import net.sf.l2j.gameserver.util.Broadcast;
@@ -29,12 +30,6 @@ import net.sf.l2j.gameserver.util.Broadcast;
  */
 public class BeastSoulShot implements IItemHandler
 {
-	// All the item IDs that this handler knows
-	private static int[] _itemIds =
-	{
-		6645
-	};
-
 	@Override
 	public void useItem(L2PlayableInstance playable, L2ItemInstance item)
 	{
@@ -43,26 +38,20 @@ public class BeastSoulShot implements IItemHandler
 			return;
 		}
 
-		L2PcInstance activeOwner = null;
-
 		if (playable instanceof L2Summon)
 		{
-			activeOwner = ((L2Summon) playable).getOwner();
-			activeOwner.sendPacket(new SystemMessage(SystemMessage.PET_CANNOT_USE_ITEM));
+			((L2Summon) playable).getOwner().sendPacket(new SystemMessage(SystemMessage.PET_CANNOT_USE_ITEM));
 			return;
 		}
 		
-		if (playable instanceof L2PcInstance)
-		{
-			activeOwner = (L2PcInstance) playable;
-		}
-
-		if (activeOwner == null)
+		if (!(playable instanceof L2PcInstance))
 		{
 			return;
 		}
 
+		L2PcInstance activeOwner = (L2PcInstance) playable;
 		L2Summon activePet = activeOwner.getPet();
+
 		if (activePet == null)
 		{
 			activeOwner.sendPacket(new SystemMessage(SystemMessage.NO_PETS_AVAILABLE));
@@ -92,12 +81,11 @@ public class BeastSoulShot implements IItemHandler
 
 		activePet.setChargedSoulShot(L2ItemInstance.CHARGED_SOULSHOT);
 		activeOwner.sendPacket(new SystemMessage(SystemMessage.PET_USES_SHOTS));
-		Broadcast.toSelfAndKnownPlayersInRadius(activeOwner, new MagicSkillUse(activePet, activePet, 2033, 1, 0, 0), 360000);
-	}
 
-	@Override
-	public int[] getItemIds()
-	{
-		return _itemIds;
+		if (item.getItem().getSkills() != null)
+		{
+			SkillHolder holder = item.getItem().getSkills()[0];
+			Broadcast.toSelfAndKnownPlayersInRadius(activeOwner, new MagicSkillUse(activePet, activePet, holder.getId(), holder.getLevel(), 0, 0), 360000);
+		}
 	}
 }

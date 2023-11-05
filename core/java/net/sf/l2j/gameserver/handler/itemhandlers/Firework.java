@@ -14,13 +14,11 @@
  */
 package net.sf.l2j.gameserver.handler.itemhandlers;
 
-import net.sf.l2j.gameserver.datatables.SkillTable;
 import net.sf.l2j.gameserver.handler.IItemHandler;
 import net.sf.l2j.gameserver.model.L2ItemInstance;
-import net.sf.l2j.gameserver.model.L2Skill;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PlayableInstance;
-import net.sf.l2j.gameserver.network.serverpackets.MagicSkillUse;
+import net.sf.l2j.gameserver.model.holder.SkillHolder;
 
 /**
  * This class ...
@@ -29,81 +27,30 @@ import net.sf.l2j.gameserver.network.serverpackets.MagicSkillUse;
 
 public class Firework implements IItemHandler
 {
-	// Modified by Baghak (Prograsso): Added Firework support
-	private static int[] _itemIds =
-	{
-		6403,
-		6406,
-		6407
-	};
-
 	@Override
 	public void useItem(L2PlayableInstance playable, L2ItemInstance item)
 	{
 		if (!(playable instanceof L2PcInstance))
 		{
-			return; // prevent Class cast exception
+			return;
 		}
-
+		
 		L2PcInstance activeChar = (L2PcInstance) playable;
-		int itemId = item.getItemId();
-
+		
 		if (!activeChar.getFloodProtectors().getFirework().tryPerformAction("firework"))
 		{
 			return;
 		}
-
-		/*
-		 * Elven Firecracker
-		 */
-		if (itemId == 6403) // elven_firecracker, xml: 2023
+		
+		if (!activeChar.destroyItem("Consume", item.getObjectId(), 1, null, false))
 		{
-			MagicSkillUse MSU = new MagicSkillUse(playable, activeChar, 2023, 1, 1, 0);
-			activeChar.sendPacket(MSU);
-			activeChar.broadcastPacket(MSU);
-			useFw(activeChar, item, 2023, 1);
+			return;
 		}
-
-		/*
-		 * Firework
-		 */
-		else if (itemId == 6406) // firework, xml: 2024
+		
+		if (item.getItem().getSkills() != null)
 		{
-			MagicSkillUse MSU = new MagicSkillUse(playable, activeChar, 2024, 1, 1, 0);
-			activeChar.sendPacket(MSU);
-			activeChar.broadcastPacket(MSU);
-			useFw(activeChar, item, 2024, 1);
+			SkillHolder holder = item.getItem().getSkills()[0];
+			activeChar.useMagic(holder.getSkill(), false, false);
 		}
-
-		/*
-		 * Lage Firework
-		 */
-		else if (itemId == 6407) // large_firework, xml: 2025
-		{
-			MagicSkillUse MSU = new MagicSkillUse(playable, activeChar, 2025, 1, 1, 0);
-			activeChar.sendPacket(MSU);
-			activeChar.broadcastPacket(MSU);
-			useFw(activeChar, item, 2025, 1);
-		}
-	}
-
-	public void useFw(L2PcInstance activeChar, L2ItemInstance item, int magicId, int level)
-	{
-		L2Skill skill = SkillTable.getInstance().getInfo(magicId, level);
-		if (skill != null)
-		{
-			if (!activeChar.destroyItem("Consume", item.getObjectId(), 1, null, false))
-			{
-				return;
-			}
-
-			activeChar.useMagic(skill, false, false);
-		}
-	}
-
-	@Override
-	public int[] getItemIds()
-	{
-		return _itemIds;
 	}
 }

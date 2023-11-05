@@ -21,7 +21,6 @@ import java.util.logging.Logger;
 
 import net.sf.l2j.Config;
 import net.sf.l2j.L2DatabaseFactory;
-import net.sf.l2j.gameserver.datatables.PetDataTable;
 import net.sf.l2j.gameserver.model.L2ItemInstance;
 import net.sf.l2j.gameserver.model.L2World;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
@@ -29,6 +28,7 @@ import net.sf.l2j.gameserver.network.serverpackets.InventoryUpdate;
 import net.sf.l2j.gameserver.network.serverpackets.ItemList;
 import net.sf.l2j.gameserver.network.serverpackets.StatusUpdate;
 import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
+import net.sf.l2j.gameserver.templates.L2EtcItemType;
 import net.sf.l2j.gameserver.util.Util;
 
 /**
@@ -137,8 +137,7 @@ public class RequestDestroyItem extends L2GameClientPacket
 			activeChar.broadcastUserInfo();
 		}
 
-		int itemId = itemToRemove.getItemId();
-		if (PetDataTable.isPetItem(itemId))
+		if (itemToRemove.getItem().getItemType() == L2EtcItemType.PET_COLLAR)
 		{
 			try (Connection con = L2DatabaseFactory.getInstance().getConnection();
 				PreparedStatement statement = con.prepareStatement("DELETE FROM pets WHERE item_obj_id=?"))

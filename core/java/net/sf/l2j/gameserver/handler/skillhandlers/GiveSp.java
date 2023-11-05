@@ -19,29 +19,29 @@ import net.sf.l2j.gameserver.model.L2Character;
 import net.sf.l2j.gameserver.model.L2Object;
 import net.sf.l2j.gameserver.model.L2Skill;
 import net.sf.l2j.gameserver.model.L2Skill.SkillType;
-import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 
-/**
- * This class ...
- * @version $Revision: 1.1.2.2.2.9 $ $Date: 2005/04/04 19:08:01 $
- */
-public class Charge implements ISkillHandler
+public class GiveSp implements ISkillHandler
 {
 	private static SkillType[] SKILL_TYPES =
 	{
-		L2Skill.SkillType.CHARGE
+		L2Skill.SkillType.GIVE_SP
 	};
 	
 	@Override
 	public void useSkill(L2Character activeChar, L2Skill skill, L2Object[] targets, boolean isFirstCritical)
 	{
-		if (!(activeChar instanceof L2PcInstance))
+		final int spToAdd = (int) skill.getPower();
+
+		for (L2Object obj : targets)
 		{
-			return;
+			if (!(obj instanceof L2Character))
+			{
+				continue;
+			}
+			
+			L2Character target = (L2Character) obj;
+			target.addExpAndSp(0, spToAdd);
 		}
-		L2PcInstance player = (L2PcInstance) activeChar;
-		// Increase charges
-		player.increaseCharges(1, skill.getMaxCharges(), true);
 	}
 	
 	@Override

@@ -40,7 +40,6 @@ public final class L2Weapon extends L2Item
 	private final int _rndDam;
 	private final int _mpConsume;
 	private final int _baseAttackRange;
-	private final boolean _isMagical;
 
 	// Attached skills for Special Abilities
 	private SkillHolder[] _skillOnCastHolders;
@@ -74,7 +73,6 @@ public final class L2Weapon extends L2Item
 		
 		_mpConsume = set.getInteger("mp_consume", 0);
 		_baseAttackRange = set.getInteger("attack_range", 40);
-		_isMagical = set.getBool("is_magical", false);
 
 		if (set.containsKey("oncast_skill"))
 		{
@@ -158,11 +156,6 @@ public final class L2Weapon extends L2Item
 	public int getBaseAttackRange()
 	{
 		return _baseAttackRange;
-	}
-	
-	public boolean isMagical()
-	{
-		return _isMagical;
 	}
 
 	/**

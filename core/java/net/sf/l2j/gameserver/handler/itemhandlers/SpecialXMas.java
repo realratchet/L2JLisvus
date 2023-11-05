@@ -26,8 +26,6 @@ import net.sf.l2j.gameserver.network.serverpackets.ShowXMasSeal;
  */
 public class SpecialXMas implements IItemHandler
 {
-	private static int[] _itemIds = { 5555 };
-
 	@Override
 	public void useItem(L2PlayableInstance playable, L2ItemInstance item)
 	{
@@ -36,14 +34,5 @@ public class SpecialXMas implements IItemHandler
 		
 	    // Token of Love
 	    playable.sendPacket(new ShowXMasSeal(item.getItemId()));
-	}
-	
-	/**
-	 * @see net.sf.l2j.gameserver.handler.IItemHandler#getItemIds()
-	 */
-	@Override
-	public int[] getItemIds()
-	{
-		return _itemIds;
 	}
 }

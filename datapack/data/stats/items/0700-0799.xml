@@ -240,8 +240,11 @@
     <set name="weight" val="180" />
     <set name="price" val="50" />
     <set name="is_stackable" val="true" />
-    <set name="handler" val="Potions" />
+    <set name="handler" val="ItemSkills" />
     <set name="item_skill" val="2002-1" />
+    <cond msgId="1508">
+      <player olympiad="false" />
+    </cond>
   </item>
   <item id="726" name="Mana Drug" type="EtcItem">
     <set name="etcitem_type" val="POTION" />
@@ -249,8 +252,11 @@
     <set name="weight" val="180" />
     <set name="price" val="80" />
     <set name="is_stackable" val="true" />
-    <set name="handler" val="Potions" />
+    <set name="handler" val="ItemSkills" />
     <set name="item_skill" val="2003-1" />
+    <cond msgId="1508">
+      <player olympiad="false" />
+    </cond>
   </item>
   <item id="727" name="Healing Potion" type="EtcItem">
     <set name="etcitem_type" val="POTION" />
@@ -258,8 +264,11 @@
     <set name="weight" val="180" />
     <set name="price" val="80" />
     <set name="is_stackable" val="true" />
-    <set name="handler" val="Potions" />
+    <set name="handler" val="ItemSkills" />
     <set name="item_skill" val="2032-1" />
+    <cond msgId="1508">
+      <player olympiad="false" />
+    </cond>
   </item>
   <item id="728" name="Mana Potion" type="EtcItem">
     <set name="etcitem_type" val="POTION" />
@@ -267,8 +276,11 @@
     <set name="weight" val="180" />
     <set name="price" val="2000" />
     <set name="is_stackable" val="true" />
-    <set name="handler" val="Potions" />
+    <set name="handler" val="ItemSkills" />
     <set name="item_skill" val="2005-1" />
+    <cond msgId="1508">
+      <player olympiad="false" />
+    </cond>
   </item>
   <item id="729" name="Scroll: Enchant Weapon (A)" type="EtcItem">
     <set name="etcitem_type" val="SCROLL" />
@@ -311,8 +323,11 @@
     <set name="weight" val="20" />
     <set name="price" val="1200" />
     <set name="is_stackable" val="true" />
-    <set name="handler" val="Potions" />
+    <set name="handler" val="ItemSkills" />
     <set name="item_skill" val="2011-1" />
+    <cond msgId="1508">
+      <player olympiad="false" />
+    </cond>
   </item>
   <item id="735" name="Potion of Alacrity" type="EtcItem">
     <set name="etcitem_type" val="POTION" />
@@ -320,8 +335,11 @@
     <set name="weight" val="20" />
     <set name="price" val="2400" />
     <set name="is_stackable" val="true" />
-    <set name="handler" val="Potions" />
+    <set name="handler" val="ItemSkills" />
     <set name="item_skill" val="2012-1" />
+    <cond msgId="1508">
+      <player olympiad="false" />
+    </cond>
   </item>
   <item id="736" name="Scroll of Escape" type="EtcItem">
     <set name="etcitem_type" val="SCROLL" />

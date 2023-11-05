@@ -18,9 +18,9 @@ import net.sf.l2j.gameserver.handler.IItemHandler;
 import net.sf.l2j.gameserver.model.L2ItemInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PlayableInstance;
+import net.sf.l2j.gameserver.model.holder.SkillHolder;
 import net.sf.l2j.gameserver.network.serverpackets.MagicSkillUse;
 import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
-import net.sf.l2j.gameserver.templates.CrystalType;
 import net.sf.l2j.gameserver.templates.L2Weapon;
 import net.sf.l2j.gameserver.templates.L2WeaponType;
 import net.sf.l2j.gameserver.util.Broadcast;
@@ -30,26 +30,6 @@ import net.sf.l2j.gameserver.util.Broadcast;
  */
 public class FishShots implements IItemHandler
 {
-	// All the item IDs that this handler knows.
-	private static int[] _itemIds =
-	{
-		6535,
-		6536,
-		6537,
-		6538,
-		6539,
-		6540
-	};
-	private static int[] _skillIds =
-	{
-		2181,
-		2182,
-		2183,
-		2184,
-		2185,
-		2186
-	};
-	
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -74,33 +54,23 @@ public class FishShots implements IItemHandler
 			return;
 		}
 		
-		int FishshotId = item.getItemId();
-		CrystalType grade = weaponItem.getCrystalType();
-		int count = item.getCount();
-		
-		if ((grade == CrystalType.NONE && FishshotId != 6535) || (grade == CrystalType.D && FishshotId != 6536) || (grade == CrystalType.C && FishshotId != 6537) 
-			|| (grade == CrystalType.B && FishshotId != 6538) || (grade == CrystalType.A && FishshotId != 6539) || (grade == CrystalType.S && FishshotId != 6540))
+		if (weaponItem.getCrystalType() != item.getItem().getCrystalType())
 		{
-			// 1479 - This fishing shot is not fit for the fishing pole crystal.
 			activeChar.sendPacket(new SystemMessage(SystemMessage.WRONG_FISHINGSHOT_GRADE));
 			return;
 		}
-		
-		if (count < 1)
+
+		if (!activeChar.destroyItemWithoutTrace("Consume", item.getObjectId(), 1, null, false))
 		{
 			return;
 		}
 		
 		weaponInst.setChargedFishShot(true);
-		activeChar.destroyItemWithoutTrace("Consume", item.getObjectId(), 1, null, false);
 		
-		MagicSkillUse MSU = new MagicSkillUse(activeChar, _skillIds[grade.getId()], 1, 0, 0);
-		Broadcast.toSelfAndKnownPlayers(activeChar, MSU);
-	}
-	
-	@Override
-	public int[] getItemIds()
-	{
-		return _itemIds;
+		if (item.getItem().getSkills() != null)
+		{
+			SkillHolder holder = item.getItem().getSkills()[0];
+			Broadcast.toSelfAndKnownPlayers(activeChar, new MagicSkillUse(activeChar, holder.getId(), holder.getLevel(), 0, 0));
+		}
 	}
 }

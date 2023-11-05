@@ -334,8 +334,11 @@
     <set name="weight" val="50" />
     <set name="price" val="12000" />
     <set name="is_stackable" val="true" />
-    <set name="handler" val="Potions" />
+    <set name="handler" val="ItemSkills" />
     <set name="item_skill" val="2103-1" />
+    <cond msgId="1508">
+      <player olympiad="false" />
+    </cond>
   </item>
   <item id="5235" name="Facelifting Potion - A" type="EtcItem">
     <set name="etcitem_type" val="POTION" />
@@ -343,8 +346,11 @@
     <set name="weight" val="50" />
     <set name="price" val="24000" />
     <set name="is_stackable" val="true" />
-    <set name="handler" val="CharChangePotions" />
-    <set name="item_skill" val="2003-1" />
+    <set name="handler" val="ItemSkills" />
+		<set name="item_skill" val="2122-1" />
+    <cond msgId="1508">
+      <player olympiad="false" />
+    </cond>
   </item>
   <item id="5236" name="Facelifting Potion - B" type="EtcItem">
     <set name="etcitem_type" val="POTION" />
@@ -352,8 +358,11 @@
     <set name="weight" val="50" />
     <set name="price" val="24000" />
     <set name="is_stackable" val="true" />
-    <set name="handler" val="CharChangePotions" />
-    <set name="item_skill" val="2003-1" />
+    <set name="handler" val="ItemSkills" />
+		<set name="item_skill" val="2123-1" />
+    <cond msgId="1508">
+      <player olympiad="false" />
+    </cond>
   </item>
   <item id="5237" name="Facelifting Potion - C" type="EtcItem">
     <set name="etcitem_type" val="POTION" />
@@ -361,8 +370,11 @@
     <set name="weight" val="50" />
     <set name="price" val="24000" />
     <set name="is_stackable" val="true" />
-    <set name="handler" val="CharChangePotions" />
-    <set name="item_skill" val="2003-1" />
+    <set name="handler" val="ItemSkills" />
+		<set name="item_skill" val="2124-1" />
+    <cond msgId="1508">
+      <player olympiad="false" />
+    </cond>
   </item>
   <item id="5238" name="Dye Potion - A" type="EtcItem">
     <set name="etcitem_type" val="POTION" />
@@ -370,8 +382,11 @@
     <set name="weight" val="50" />
     <set name="price" val="24000" />
     <set name="is_stackable" val="true" />
-    <set name="handler" val="CharChangePotions" />
-    <set name="item_skill" val="2003-1" />
+    <set name="handler" val="ItemSkills" />
+		<set name="item_skill" val="2125-1" />
+    <cond msgId="1508">
+      <player olympiad="false" />
+    </cond>
   </item>
   <item id="5239" name="Dye Potion - B" type="EtcItem">
     <set name="etcitem_type" val="POTION" />
@@ -379,8 +394,11 @@
     <set name="weight" val="50" />
     <set name="price" val="24000" />
     <set name="is_stackable" val="true" />
-    <set name="handler" val="CharChangePotions" />
-    <set name="item_skill" val="2003-1" />
+    <set name="handler" val="ItemSkills" />
+		<set name="item_skill" val="2126-1" />
+    <cond msgId="1508">
+      <player olympiad="false" />
+    </cond>
   </item>
   <item id="5240" name="Dye Potion - C" type="EtcItem">
     <set name="etcitem_type" val="POTION" />
@@ -388,8 +406,11 @@
     <set name="weight" val="50" />
     <set name="price" val="24000" />
     <set name="is_stackable" val="true" />
-    <set name="handler" val="CharChangePotions" />
-    <set name="item_skill" val="2003-1" />
+    <set name="handler" val="ItemSkills" />
+		<set name="item_skill" val="2127-1" />
+    <cond msgId="1508">
+      <player olympiad="false" />
+    </cond>
   </item>
   <item id="5241" name="Dye Potion - D" type="EtcItem">
     <set name="etcitem_type" val="POTION" />
@@ -397,8 +418,11 @@
     <set name="weight" val="50" />
     <set name="price" val="24000" />
     <set name="is_stackable" val="true" />
-    <set name="handler" val="CharChangePotions" />
-    <set name="item_skill" val="2003-1" />
+    <set name="handler" val="ItemSkills" />
+		<set name="item_skill" val="2128-1" />
+    <cond msgId="1508">
+      <player olympiad="false" />
+    </cond>
   </item>
   <item id="5242" name="Hair Style Change Potion - A" type="EtcItem">
     <set name="etcitem_type" val="POTION" />
@@ -406,8 +430,11 @@
     <set name="weight" val="50" />
     <set name="price" val="24000" />
     <set name="is_stackable" val="true" />
-    <set name="handler" val="CharChangePotions" />
-    <set name="item_skill" val="2003-1" />
+    <set name="handler" val="ItemSkills" />
+		<set name="item_skill" val="2129-1" />
+    <cond msgId="1508">
+      <player olympiad="false" />
+    </cond>
   </item>
   <item id="5243" name="Hair Style Change Potion - B" type="EtcItem">
     <set name="etcitem_type" val="POTION" />
@@ -415,8 +442,11 @@
     <set name="weight" val="50" />
     <set name="price" val="24000" />
     <set name="is_stackable" val="true" />
-    <set name="handler" val="CharChangePotions" />
-    <set name="item_skill" val="2003-1" />
+    <set name="handler" val="ItemSkills" />
+		<set name="item_skill" val="2130-1" />
+    <cond msgId="1508">
+      <player olympiad="false" />
+    </cond>
   </item>
   <item id="5244" name="Hair Style Change Potion - C" type="EtcItem">
     <set name="etcitem_type" val="POTION" />
@@ -424,8 +454,11 @@
     <set name="weight" val="50" />
     <set name="price" val="24000" />
     <set name="is_stackable" val="true" />
-    <set name="handler" val="CharChangePotions" />
-    <set name="item_skill" val="2003-1" />
+    <set name="handler" val="ItemSkills" />
+		<set name="item_skill" val="2131-1" />
+    <cond msgId="1508">
+      <player olympiad="false" />
+    </cond>
   </item>
   <item id="5245" name="Hair Style Change Potion - D" type="EtcItem">
     <set name="etcitem_type" val="POTION" />
@@ -433,8 +466,11 @@
     <set name="weight" val="50" />
     <set name="price" val="24000" />
     <set name="is_stackable" val="true" />
-    <set name="handler" val="CharChangePotions" />
-    <set name="item_skill" val="2003-1" />
+    <set name="handler" val="ItemSkills" />
+		<set name="item_skill" val="2132-1" />
+    <cond msgId="1508">
+      <player olympiad="false" />
+    </cond>
   </item>
   <item id="5246" name="Hair Style Change Potion - E" type="EtcItem">
     <set name="etcitem_type" val="POTION" />
@@ -442,8 +478,11 @@
     <set name="weight" val="50" />
     <set name="price" val="24000" />
     <set name="is_stackable" val="true" />
-    <set name="handler" val="CharChangePotions" />
-    <set name="item_skill" val="2003-1" />
+    <set name="handler" val="ItemSkills" />
+		<set name="item_skill" val="2133-1" />
+    <cond msgId="1508">
+      <player olympiad="false" />
+    </cond>
   </item>
   <item id="5247" name="Hair Style Change Potion - F" type="EtcItem">
     <set name="etcitem_type" val="POTION" />
@@ -451,8 +490,11 @@
     <set name="weight" val="50" />
     <set name="price" val="24000" />
     <set name="is_stackable" val="true" />
-    <set name="handler" val="CharChangePotions" />
-    <set name="item_skill" val="2003-1" />
+    <set name="handler" val="ItemSkills" />
+		<set name="item_skill" val="2134-1" />
+    <cond msgId="1508">
+      <player olympiad="false" />
+    </cond>
   </item>
   <item id="5248" name="Hair Style Change Potion - G" type="EtcItem">
     <set name="etcitem_type" val="POTION" />
@@ -460,8 +502,11 @@
     <set name="weight" val="50" />
     <set name="price" val="24000" />
     <set name="is_stackable" val="true" />
-    <set name="handler" val="CharChangePotions" />
-    <set name="item_skill" val="2003-1" />
+    <set name="handler" val="ItemSkills" />
+		<set name="item_skill" val="2135-1" />
+    <cond msgId="1508">
+      <player olympiad="false" />
+    </cond>
   </item>
   <item id="5249" name="Commemorative Item: First Anniversary of Lineage II Service" type="EtcItem">
     <set name="etcitem_type" val="OTHER" />
@@ -729,8 +774,11 @@
     <set name="weight" val="0" />
     <set name="price" val="0" />
     <set name="is_stackable" val="true" />
-    <set name="handler" val="Potions" />
+    <set name="handler" val="ItemSkills" />
     <set name="item_skill" val="2136-1" />
+    <cond msgId="1508">
+      <player olympiad="false" />
+    </cond>
   </item>
   <item id="5284" name="Zweihander" type="Weapon">
     <set name="weapon_type" val="BIGSWORD" />

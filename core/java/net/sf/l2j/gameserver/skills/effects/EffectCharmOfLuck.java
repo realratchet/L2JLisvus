@@ -18,10 +18,6 @@ import net.sf.l2j.gameserver.model.L2Effect;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.skills.Env;
 
-/**
- * TODO To change the template for this generated type comment go to
- * Window - Preferences - Java - Code Style - Code Templates
- */
 final class EffectCharmOfLuck extends L2Effect
 {
     public EffectCharmOfLuck(Env env, EffectTemplate template)

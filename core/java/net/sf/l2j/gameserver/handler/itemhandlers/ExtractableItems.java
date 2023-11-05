@@ -128,10 +128,4 @@ public class ExtractableItems implements IItemHandler
 			}
 		}
     }
-    
-    @Override
-	public int[] getItemIds()
-    {
-    	return ExtractableItemsData.getInstance().itemIDs();
-    }
 }

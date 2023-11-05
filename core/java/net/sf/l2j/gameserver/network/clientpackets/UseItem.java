@@ -24,7 +24,10 @@ import net.sf.l2j.gameserver.handler.ItemHandler;
 import net.sf.l2j.gameserver.instancemanager.CastleManager;
 import net.sf.l2j.gameserver.model.L2Clan;
 import net.sf.l2j.gameserver.model.L2ItemInstance;
+import net.sf.l2j.gameserver.model.L2Skill;
+import net.sf.l2j.gameserver.model.L2Skill.SkillType;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.holder.SkillHolder;
 import net.sf.l2j.gameserver.model.itemcontainer.Inventory;
 import net.sf.l2j.gameserver.network.serverpackets.ActionFailed;
 import net.sf.l2j.gameserver.network.serverpackets.ItemList;
@@ -32,6 +35,7 @@ import net.sf.l2j.gameserver.network.serverpackets.ShowCalculator;
 import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
 import net.sf.l2j.gameserver.templates.L2Armor;
 import net.sf.l2j.gameserver.templates.L2ArmorType;
+import net.sf.l2j.gameserver.templates.L2EtcItem;
 import net.sf.l2j.gameserver.templates.L2Item;
 import net.sf.l2j.gameserver.templates.L2Weapon;
 import net.sf.l2j.gameserver.templates.L2WeaponType;
@@ -77,7 +81,7 @@ public class UseItem extends L2GameClientPacket
 			_activeChar.useEquippableItem(item, false);
 		}
 	}
-
+	
 	@Override
 	protected void readImpl()
 	{
@@ -131,19 +135,20 @@ public class UseItem extends L2GameClientPacket
 			return;
 		}
 		
-		// Alt game - Karma punishment // SOE
+		// Alt game - Karma punishment (SOE)
 		if (!Config.ALT_GAME_KARMA_PLAYER_CAN_TELEPORT && (activeChar.getKarma() > 0))
 		{
-			switch (itemId)
+			SkillHolder[] holders = item.getItem().getSkills();
+			if (holders != null)
 			{
-				case 736:
-				case 1538:
-				case 1829:
-				case 1830:
-				case 3958:
-				case 5858:
-				case 5859:
-					return;
+				for (SkillHolder holder : holders)
+				{
+					L2Skill skill = holder.getSkill();
+					if (skill != null && skill.getSkillType() == SkillType.RECALL)
+					{
+						return;
+					}
+				}
 			}
 		}
 		
@@ -273,20 +278,20 @@ public class UseItem extends L2GameClientPacket
 				sm = null;
 				return;
 			}
-
+			
 			if (activeChar.isAttackingNow())
 			{
 				ThreadPoolManager.getInstance().scheduleGeneral(new WeaponEquipTask(item.getObjectId(), activeChar), (activeChar.getAttackEndTime() - GameTimeController.getInstance().getGameTicks()) * GameTimeController.MILLIS_IN_TICK);
 				return;
 			}
-
+			
 			// Equip or unEquip
 			activeChar.useEquippableItem(item, true);
 		}
 		else
 		{
 			L2Weapon weaponItem = activeChar.getActiveWeaponItem();
-
+			
 			if (itemId == 4393)
 			{
 				activeChar.sendPacket(new ShowCalculator(4393));
@@ -297,23 +302,25 @@ public class UseItem extends L2GameClientPacket
 				activeChar.broadcastUserInfo();
 				
 				// Send a Server->Client packet ItemList to this L2PcINstance to update left hand equipment
-				ItemList il = new ItemList(activeChar, false);
-				sendPacket(il);
+				sendPacket(new ItemList(activeChar, false));
 				return;
 			}
 			else
 			{
-				IItemHandler handler = ItemHandler.getInstance().getItemHandler(itemId);
-				if (handler == null)
+				if (item.getItem() instanceof L2EtcItem)
 				{
-					if (Config.DEBUG)
+					IItemHandler handler = ItemHandler.getInstance().getHandler(((L2EtcItem)item.getItem()));
+					if (handler == null)
 					{
-						_log.warning("No item handler registered for item ID " + itemId + ".");
+						if (Config.DEBUG)
+						{
+							_log.warning("No item handler registered for item ID " + itemId + ".");
+						}
 					}
-				}
-				else
-				{
-					handler.useItem(activeChar, item);
+					else
+					{
+						handler.useItem(activeChar, item);
+					}
 				}
 			}
 		}

@@ -718,7 +718,7 @@ public final class L2ItemInstance extends L2Object
 	 * Sets the type of charge with SoulShot of the item
 	 * @param type : int (CHARGED_NONE, CHARGED_SOULSHOT)
 	 */
-	public void setChargedSoulShot(int type) 
+	public void setChargedSoulShot(int type)
 	{
 		_chargedSoulShot = type;
 	}
@@ -727,11 +727,11 @@ public final class L2ItemInstance extends L2Object
 	 * Sets the type of charge with SpiritShot of the item
 	 * @param type : int (CHARGED_NONE, CHARGED_SPIRITSHOT, CHARGED_BLESSED_SPIRITSHOT)
 	 */
-	public void setChargedSpiritShot(int type) 
+	public void setChargedSpiritShot(int type)
 	{
 		_chargedSpiritShot = type;
 	}
-	public void setChargedFishShot(boolean type) 
+	public void setChargedFishShot(boolean type)
 	{
 		_chargedFishShot = type;
 	}

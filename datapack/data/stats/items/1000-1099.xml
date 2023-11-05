@@ -553,8 +553,11 @@
     <set name="weight" val="5" />
     <set name="price" val="90" />
     <set name="is_stackable" val="true" />
-    <set name="handler" val="Potions" />
+    <set name="handler" val="ItemSkills" />
     <set name="item_skill" val="2031-1" />
+    <cond msgId="1508">
+      <player olympiad="false" />
+    </cond>
   </item>
   <item id="1061" name="Healing Potion" type="EtcItem">
     <set name="etcitem_type" val="POTION" />
@@ -562,8 +565,11 @@
     <set name="weight" val="5" />
     <set name="price" val="330" />
     <set name="is_stackable" val="true" />
-    <set name="handler" val="Potions" />
+    <set name="handler" val="ItemSkills" />
     <set name="item_skill" val="2032-1" />
+    <cond msgId="1508">
+      <player olympiad="false" />
+    </cond>
   </item>
   <item id="1062" name="Haste Potion" type="EtcItem">
     <set name="etcitem_type" val="POTION" />
@@ -571,8 +577,11 @@
     <set name="weight" val="180" />
     <set name="price" val="5000" />
     <set name="is_stackable" val="true" />
-    <set name="handler" val="Potions" />
+    <set name="handler" val="ItemSkills" />
     <set name="item_skill" val="2033-1" />
+    <cond msgId="1508">
+      <player olympiad="false" />
+    </cond>
   </item>
   <item id="1063" name="Tutorial Parchment" type="EtcItem">
     <set name="etcitem_type" val="QUEST" />
@@ -680,8 +689,11 @@
     <set name="weight" val="5" />
     <set name="price" val="0" />
     <set name="is_stackable" val="true" />
-    <set name="handler" val="Potions" />
+    <set name="handler" val="ItemSkills" />
     <set name="item_skill" val="2031-1" />
+    <cond msgId="1508">
+      <player olympiad="false" />
+    </cond>
   </item>
   <item id="1074" name="Boat Ticket: Talking Island to Gludin" type="EtcItem">
     <set name="etcitem_type" val="OTHER" />

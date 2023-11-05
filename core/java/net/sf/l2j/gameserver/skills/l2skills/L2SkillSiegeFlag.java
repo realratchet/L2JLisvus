@@ -83,7 +83,7 @@ public class L2SkillSiegeFlag extends L2Skill
 	@Override
 	public void useSkill(L2Character activeChar, L2Object[] targets, boolean isFirstCritical)
 	{
-		if (!(activeChar instanceof L2PcInstance))
+		if (activeChar.isAlikeDead() || !(activeChar instanceof L2PcInstance))
 		{
 			return;
 		}

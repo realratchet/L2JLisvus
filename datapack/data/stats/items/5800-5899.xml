@@ -69,8 +69,11 @@
     <set name="weight" val="10" />
     <set name="price" val="300" />
     <set name="is_stackable" val="true" />
-    <set name="handler" val="Scrolls" />
+    <set name="handler" val="ItemSkills" />
     <set name="item_skill" val="2168-2" />
+    <cond msgId="1508">
+      <player olympiad="false" />
+    </cond>
   </item>
   <item id="5804" name="Lucky Charm: C-Grade" type="EtcItem">
     <set name="etcitem_type" val="SCROLL" />
@@ -78,8 +81,11 @@
     <set name="weight" val="10" />
     <set name="price" val="660" />
     <set name="is_stackable" val="true" />
-    <set name="handler" val="Scrolls" />
+    <set name="handler" val="ItemSkills" />
     <set name="item_skill" val="2168-3" />
+    <cond msgId="1508">
+      <player olympiad="false" />
+    </cond>
   </item>
   <item id="5805" name="Lucky Charm: B-Grade" type="EtcItem">
     <set name="etcitem_type" val="SCROLL" />
@@ -87,8 +93,11 @@
     <set name="weight" val="10" />
     <set name="price" val="1300" />
     <set name="is_stackable" val="true" />
-    <set name="handler" val="Scrolls" />
+    <set name="handler" val="ItemSkills" />
     <set name="item_skill" val="2168-4" />
+    <cond msgId="1508">
+      <player olympiad="false" />
+    </cond>
   </item>
   <item id="5806" name="Lucky Charm: A-Grade" type="EtcItem">
     <set name="etcitem_type" val="SCROLL" />
@@ -96,8 +105,11 @@
     <set name="weight" val="10" />
     <set name="price" val="2700" />
     <set name="is_stackable" val="true" />
-    <set name="handler" val="Scrolls" />
+    <set name="handler" val="ItemSkills" />
     <set name="item_skill" val="2168-5" />
+    <cond msgId="1508">
+      <player olympiad="false" />
+    </cond>
   </item>
   <item id="5807" name="Lucky Charm: S Grade" type="EtcItem">
     <set name="etcitem_type" val="SCROLL" />
@@ -105,8 +117,11 @@
     <set name="weight" val="10" />
     <set name="price" val="5000" />
     <set name="is_stackable" val="true" />
-    <set name="handler" val="Scrolls" />
+    <set name="handler" val="ItemSkills" />
     <set name="item_skill" val="2168-6" />
+    <cond msgId="1508">
+      <player olympiad="false" />
+    </cond>
   </item>
   <item id="5809" name="Spellbook: Aqua Splash" type="EtcItem">
     <set name="etcitem_type" val="SPELLBOOK" />

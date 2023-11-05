@@ -120,6 +120,7 @@ public abstract class L2Item
 	private final boolean _dropable;
 	private final boolean _destroyable;
 	private final boolean _tradable;
+	private final boolean _isMagical;
 	
 	private final boolean _heroItem;
 	
@@ -161,6 +162,7 @@ public abstract class L2Item
 		_dropable = set.getBool("is_dropable", true);
 		_destroyable = set.getBool("is_destroyable", true);
 		_tradable = set.getBool("is_tradable", true);
+		_isMagical = set.getBool("is_magical", false);
 		_heroItem = (_itemId >= 6611 && _itemId <= 6621) || _itemId == 6842;
 	}
 	
@@ -404,6 +406,11 @@ public abstract class L2Item
 	public final boolean isTradable()
 	{
 		return _tradable;
+	}
+
+	public boolean isMagical()
+	{
+		return _isMagical;
 	}
 	
 	/**

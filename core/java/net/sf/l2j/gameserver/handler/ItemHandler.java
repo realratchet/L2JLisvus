@@ -23,24 +23,19 @@ import net.sf.l2j.gameserver.handler.itemhandlers.BeastSpice;
 import net.sf.l2j.gameserver.handler.itemhandlers.BeastSpiritShot;
 import net.sf.l2j.gameserver.handler.itemhandlers.BlessedSpiritShot;
 import net.sf.l2j.gameserver.handler.itemhandlers.Book;
-import net.sf.l2j.gameserver.handler.itemhandlers.CharChangePotions;
 import net.sf.l2j.gameserver.handler.itemhandlers.ChestKey;
-import net.sf.l2j.gameserver.handler.itemhandlers.CrystalCarol;
 import net.sf.l2j.gameserver.handler.itemhandlers.EnchantScrolls;
-import net.sf.l2j.gameserver.handler.itemhandlers.EnergyStone;
 import net.sf.l2j.gameserver.handler.itemhandlers.ExtractableItems;
 import net.sf.l2j.gameserver.handler.itemhandlers.Firework;
 import net.sf.l2j.gameserver.handler.itemhandlers.FishShots;
 import net.sf.l2j.gameserver.handler.itemhandlers.Harvester;
+import net.sf.l2j.gameserver.handler.itemhandlers.ItemSkills;
 import net.sf.l2j.gameserver.handler.itemhandlers.MercTicket;
 import net.sf.l2j.gameserver.handler.itemhandlers.PetFood;
-import net.sf.l2j.gameserver.handler.itemhandlers.Potions;
 import net.sf.l2j.gameserver.handler.itemhandlers.Recipes;
-import net.sf.l2j.gameserver.handler.itemhandlers.Remedy;
 import net.sf.l2j.gameserver.handler.itemhandlers.RollingDice;
 import net.sf.l2j.gameserver.handler.itemhandlers.ScrollOfEscape;
 import net.sf.l2j.gameserver.handler.itemhandlers.ScrollOfResurrection;
-import net.sf.l2j.gameserver.handler.itemhandlers.Scrolls;
 import net.sf.l2j.gameserver.handler.itemhandlers.Seed;
 import net.sf.l2j.gameserver.handler.itemhandlers.SevenSignsRecord;
 import net.sf.l2j.gameserver.handler.itemhandlers.SoulCrystals;
@@ -49,17 +44,17 @@ import net.sf.l2j.gameserver.handler.itemhandlers.SpecialXMas;
 import net.sf.l2j.gameserver.handler.itemhandlers.SpiritShot;
 import net.sf.l2j.gameserver.handler.itemhandlers.SummonItems;
 import net.sf.l2j.gameserver.handler.itemhandlers.WorldMap;
+import net.sf.l2j.gameserver.templates.L2EtcItem;
 
 /**
  * This class manages handlers of items
- *
  * @version $Revision: 1.1.4.3 $ $Date: 2005/03/27 15:30:09 $
  */
 public class ItemHandler
 {
 	private static final Logger _log = Logger.getLogger(ItemHandler.class.getName());
 	
-	public final Map<Integer, IItemHandler> _dataTable = new HashMap<>();
+	public final Map<String, IItemHandler> _dataTable = new HashMap<>();
 	
 	/**
 	 * Create ItemHandler if doesn't exist and returns ItemHandler
@@ -83,18 +78,13 @@ public class ItemHandler
 		registerItemHandler(new ChestKey());
 		registerItemHandler(new WorldMap());
 		registerItemHandler(new PetFood());
-		registerItemHandler(new Potions());
+		registerItemHandler(new ItemSkills());
 		registerItemHandler(new Recipes());
 		registerItemHandler(new RollingDice());
 		registerItemHandler(new EnchantScrolls());
-		registerItemHandler(new EnergyStone());
 		registerItemHandler(new Book());
-		registerItemHandler(new Remedy());
-		registerItemHandler(new Scrolls());
-		registerItemHandler(new CrystalCarol());
 		registerItemHandler(new SoulCrystals());
 		registerItemHandler(new SevenSignsRecord());
-		registerItemHandler(new CharChangePotions());
 		registerItemHandler(new Firework());
 		registerItemHandler(new Seed());
 		registerItemHandler(new Harvester());
@@ -104,35 +94,34 @@ public class ItemHandler
 		registerItemHandler(new SummonItems());
 		registerItemHandler(new BeastSpice());
 		
-		_log.config("ItemHandler: Loaded " + _dataTable.size() + " handlers.");
+		_log.config(getClass().getSimpleName() + ": Loaded " + _dataTable.size() + " handlers.");
 	}
 	
 	/**
-	 * Adds handler of item type in <I>data table</I>.<BR><BR>
+	 * Adds handler of item type in <I>data table</I>.<BR>
+	 * <BR>
 	 * <B><I>Concept :</I></U><BR>
-	 * This handler is put in <I>data table</I> Map &lt;Integer ; IItemHandler &gt; for each ID corresponding to an item type 
-	 * (existing in classes of package item handlers) sets as key of the Map. 
+	 * This handler is put in <I>data table</I> Map &lt;Integer ; IItemHandler &gt; for each ID corresponding to an item type
+	 * (existing in classes of package item handlers) sets as key of the Map.
 	 * @param handler (IItemHandler)
 	 */
 	public void registerItemHandler(IItemHandler handler)
 	{
-		// Get all ID corresponding to the item type of the handler
-		int[] ids = handler.getItemIds();
-		// Add handler for each ID found
-		for (int i = 0; i < ids.length; i++)
-		{
-			_dataTable.put(Integer.valueOf(ids[i]), handler);
-		}
+		_dataTable.put(handler.getClass().getSimpleName(), handler);
 	}
 	
 	/**
 	 * Returns the handler of the item
-	 * @param itemId : int designating the itemID
+	 * @param item : The item template
 	 * @return IItemHandler
 	 */
-	public IItemHandler getItemHandler(int itemId)
+	public IItemHandler getHandler(L2EtcItem item)
 	{
-		return _dataTable.get(Integer.valueOf(itemId));
+		if (item == null || item.getHandlerName() == null)
+		{
+			return null;
+		}
+		return _dataTable.get(item.getHandlerName());
 	}
 	
 	private static class SingletonHolder

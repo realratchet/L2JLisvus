@@ -830,8 +830,11 @@
     <set name="weight" val="80" />
     <set name="price" val="40" />
     <set name="is_stackable" val="true" />
-    <set name="handler" val="Potions" />
+    <set name="handler" val="ItemSkills" />
     <set name="item_skill" val="2001-1" />
+    <cond msgId="1508">
+      <player olympiad="false" />
+    </cond>
   </item>
   <item id="66" name="Gladius" type="Weapon">
     <set name="weapon_type" val="SWORD" />

@@ -559,7 +559,7 @@
     <set name="weight" val="10" />
     <set name="price" val="0" />
     <set name="is_stackable" val="true" />
-    <set name="handler" val="CrystalCarol" />
+    <set name="handler" val="ItemSkills" />
     <set name="item_skill" val="2073-1" />
   </item>
   <item id="7062" name="Echo Crystal - Theme of Wedding" type="EtcItem">
@@ -568,7 +568,7 @@
     <set name="weight" val="10" />
     <set name="price" val="0" />
     <set name="is_stackable" val="true" />
-    <set name="handler" val="CrystalCarol" />
+    <set name="handler" val="ItemSkills" />
     <set name="item_skill" val="2230-1" />
   </item>
   <item id="7063" name="Map - Forest of the Dead" type="EtcItem">

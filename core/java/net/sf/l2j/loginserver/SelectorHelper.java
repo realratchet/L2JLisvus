@@ -37,7 +37,7 @@ public class SelectorHelper implements IMMOExecutor<L2LoginClient>, IClientFacto
 	
 	public SelectorHelper()
 	{
-		_generalPacketsThreadPool = new ThreadPoolExecutor(4, 6, 15L, TimeUnit.SECONDS, new LinkedBlockingQueue<Runnable>());
+		_generalPacketsThreadPool = new ThreadPoolExecutor(4, 6, 15L, TimeUnit.SECONDS, new LinkedBlockingQueue<>());
 		_ipv4filter = new IPv4Filter();
 	}
 	
