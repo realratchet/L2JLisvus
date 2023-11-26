@@ -502,7 +502,7 @@ public class TvTEvent extends L2Event
 	private void portTeamsToArena()
 	{
 		L2PcInstance player;
-		while (_registered.size() > 0)
+		while (!_registered.isEmpty())
 		{
 			player = _registered.get(Rnd.get(_registered.size()));
 			

@@ -4726,7 +4726,7 @@ public final class L2PcInstance extends L2PlayableInstance
 		}
 		
 		// Unsummon Cubics
-		if (_cubics.size() > 0)
+		if (!_cubics.isEmpty())
 		{
 			for (L2CubicInstance cubic : _cubics)
 			{
@@ -8935,7 +8935,7 @@ public final class L2PcInstance extends L2PlayableInstance
 			getPet().unSummon(this);
 		}
 		
-		if (_cubics.size() > 0)
+		if (!_cubics.isEmpty())
 		{
 			for (L2CubicInstance cubic : _cubics)
 			{
@@ -9559,7 +9559,7 @@ public final class L2PcInstance extends L2PlayableInstance
 				getPet().unSummon(this);
 			}
 			
-			if (_cubics.size() > 0)
+			if (!_cubics.isEmpty())
 			{
 				for (L2CubicInstance cubic : _cubics)
 				{

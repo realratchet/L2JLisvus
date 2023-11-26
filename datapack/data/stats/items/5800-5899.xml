@@ -477,7 +477,7 @@
     <set name="price" val="100000" />
     <set name="is_stackable" val="true" />
     <set name="handler" val="ScrollOfEscape" />
-    <set name="item_skill" val="2036-1" />
+    <set name="item_skill" val="2177-1" />
   </item>
   <item id="5859" name="Blessed Scroll of Escape: Castle" type="EtcItem">
     <set name="etcitem_type" val="SCROLL" />
@@ -486,7 +486,7 @@
     <set name="price" val="0" />
     <set name="is_stackable" val="true" />
     <set name="handler" val="ScrollOfEscape" />
-    <set name="item_skill" val="2036-1" />
+    <set name="item_skill" val="2178-1" />
   </item>
   <item id="5860" name="Lienrik Egg" type="EtcItem">
     <set name="etcitem_type" val="QUEST" />

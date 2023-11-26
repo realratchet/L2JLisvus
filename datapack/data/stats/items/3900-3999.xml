@@ -736,7 +736,7 @@
     <set name="price" val="0" />
     <set name="is_stackable" val="true" />
     <set name="handler" val="ScrollOfEscape" />
-    <set name="item_skill" val="2036-1" />
+    <set name="item_skill" val="2036-2" />
   </item>
   <item id="3959" name="L2Day - Blessed Scroll of Resurrection" type="EtcItem">
     <set name="etcitem_type" val="SCROLL" />

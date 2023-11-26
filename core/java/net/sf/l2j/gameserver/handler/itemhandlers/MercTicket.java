@@ -21,6 +21,7 @@ import net.sf.l2j.gameserver.model.L2ItemInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PlayableInstance;
 import net.sf.l2j.gameserver.model.entity.Castle;
+import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
 
 public class MercTicket implements IItemHandler
 {
@@ -56,67 +57,41 @@ public class MercTicket implements IItemHandler
         }
 
         int castleId = castle.getCastleId();
+        int ticketCastleId = MercTicketManager.getInstance().getTicketCastleId(itemId);
         
-    	//add check that certain tickets can only be placed in certain castles
-    	if (MercTicketManager.getInstance().getTicketCastleId(itemId) != castleId)
+    	if (ticketCastleId != castleId)
     	{
-            String castleName = null;
-            switch (MercTicketManager.getInstance().getTicketCastleId(itemId))
-            {
-                case 1:
-                    castleName = "Gludio";
-                    break;
-                case 2:
-                    castleName = "Dion";
-                    break;
-                case 3:
-                    castleName = "Giran";
-                    break;
-                case 4:
-                    castleName = "Oren";
-                    break;
-                case 5:
-                    castleName = "Aden";
-                    break;
-                case 6:
-                    castleName = "Innadril";
-                    break;
-                case 7:
-                    castleName = "Goddard";
-                    break;
-            }
-
-            activeChar.sendMessage("This Mercenary Ticket can only be used in " + castleName + " castle.");
+            activeChar.sendPacket(new SystemMessage(SystemMessage.MERCENARIES_CANNOT_BE_POSITIONED_HERE));
             return;
     	}
 
         if (!activeChar.isCastleLord(castleId))
         {
-            activeChar.sendMessage("You are not the lord of this castle.");
+            activeChar.sendPacket(new SystemMessage(SystemMessage.YOU_DO_NOT_HAVE_AUTHORITY_TO_POSITION_MERCENARIES));
             return;
         }
 
         if (castle.getSiege().getIsInProgress())
         {
-            activeChar.sendMessage("You cannot hire a mercenary while siege is in progress.");
+            activeChar.sendPacket(new SystemMessage(SystemMessage.THIS_MERCENARY_CANNOT_BE_POSITIONED_ANYMORE));
             return;
         }
 
         if (MercTicketManager.getInstance().isAtCastleLimit(item.getItemId()))
         {
-            activeChar.sendMessage("You cannot hire any more mercenaries.");
+            activeChar.sendPacket(new SystemMessage(SystemMessage.THIS_MERCENARY_CANNOT_BE_POSITIONED_ANYMORE));
             return;
         }
 
         if (MercTicketManager.getInstance().isAtTypeLimit(item.getItemId()))
         {
-            activeChar.sendMessage("You cannot hire any more mercenaries of this type.You may still hire other types of mercenaries.");
+            activeChar.sendPacket(new SystemMessage(SystemMessage.THIS_MERCENARY_CANNOT_BE_POSITIONED_ANYMORE));
             return;
         }
 
         if (MercTicketManager.getInstance().isTooCloseToAnotherTicket(activeChar.getX(), activeChar.getY(), activeChar.getZ()))
         {
-            activeChar.sendMessage("The distance between mercenaries is too short.");
+            activeChar.sendPacket(new SystemMessage(SystemMessage.POSITIONING_CANNOT_BE_DONE_BECAUSE_DISTANCE_BETWEEN_MERCENARIES_TOO_SHORT));
             return;
         }
 
@@ -125,6 +100,7 @@ public class MercTicket implements IItemHandler
     	{
         	return;
     	}
+
         int npcId = MercTicketManager.getInstance().addTicket(item.getItemId(), activeChar, _messages);
         activeChar.sendMessage("Hired mercenary ("+itemId+","+npcId+") at coords:" + activeChar.getX() + "," + activeChar.getY() + "," + activeChar.getZ() + " heading:" + activeChar.getHeading());
     }

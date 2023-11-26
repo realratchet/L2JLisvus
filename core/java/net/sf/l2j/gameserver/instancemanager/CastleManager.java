@@ -50,7 +50,7 @@ public class CastleManager
     // Constructor
     public CastleManager()
     {
-    	_log.info("Initializing CastleManager");
+    	_log.info(getClass().getSimpleName() + ": Initializing CastleManager");
     	load();
     }
 
@@ -92,11 +92,11 @@ public class CastleManager
                 getCastles().add(new Castle(rs.getInt("id")));
             }
 
-            _log.info("Loaded: " + getCastles().size() + " castles");
+            _log.info(getClass().getSimpleName() + ": Loaded: " + getCastles().size() + " castles");
         }
         catch (Exception e)
         {
-            _log.warning("Exception: loadCastleData(): " + e.getMessage());
+            _log.warning(getClass().getSimpleName() + ": Exception: loadCastleData(): " + e.getMessage());
         }
     }
 
@@ -277,7 +277,8 @@ public class CastleManager
                                 player.getInventory().unEquipItemInSlotAndRecord(crown.getEquipSlot());
                             player.destroyItemByItemId("CastleLordCrownRemoval", CASTLE_LORD_CROWN, 1, player, true);
                         }
-                    }
+                    }
+
                     return;
                 }
                 catch (NullPointerException e) 
@@ -303,7 +304,7 @@ public class CastleManager
             }
             catch (Exception e)
             {
-                _log.warning("Failed to remove castle circlets offline for player " + member.getName());
+                _log.warning(getClass().getSimpleName() + ": Failed to remove castle circlets for offline player " + member.getName());
                 e.printStackTrace();
             }
         }

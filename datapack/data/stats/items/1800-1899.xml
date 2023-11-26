@@ -222,7 +222,7 @@
     <set name="price" val="500" />
     <set name="is_stackable" val="true" />
     <set name="handler" val="ScrollOfEscape" />
-    <set name="item_skill" val="2013-1" />
+    <set name="item_skill" val="2040-1" />
   </item>
   <item id="1830" name="Scroll of Escape: Castle" type="EtcItem">
     <set name="etcitem_type" val="SCROLL" />
@@ -231,7 +231,7 @@
     <set name="price" val="500" />
     <set name="is_stackable" val="true" />
     <set name="handler" val="ScrollOfEscape" />
-    <set name="item_skill" val="2013-1" />
+    <set name="item_skill" val="2041-1" />
   </item>
   <item id="1831" name="Antidote" type="EtcItem">
     <set name="etcitem_type" val="POTION" />
@@ -287,7 +287,7 @@
     <set name="weight" val="4" />
     <set name="price" val="7" />
     <set name="is_stackable" val="true" />
-    <set name="handler" val="SoulShots" />
+    <set name="handler" val="SoulShot" />
     <set name="item_skill" val="2039-1" />
   </item>
   <item id="1836" name="Kendell's 1st Order" type="EtcItem">

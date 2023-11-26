@@ -21,14 +21,13 @@ import net.sf.l2j.gameserver.model.L2Skill;
 import net.sf.l2j.gameserver.model.L2Skill.SkillType;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 
-/**
- * @author _drunk_
- */
-public class BeastFeed implements ISkillHandler
+public class Dummy implements ISkillHandler
 {
-	private SkillType[] SKILL_TYPES =
+	private static final SkillType[] SKILL_TYPES =
 	{
-		SkillType.BEAST_FEED
+		SkillType.BEAST_FEED,
+		SkillType.DUMMY,
+		SkillType.DELUXE_KEY_UNLOCK
 	};
 	
 	@Override

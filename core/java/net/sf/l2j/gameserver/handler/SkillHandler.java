@@ -19,7 +19,6 @@ import java.util.Map;
 import java.util.logging.Logger;
 
 import net.sf.l2j.gameserver.handler.skillhandlers.BalanceLife;
-import net.sf.l2j.gameserver.handler.skillhandlers.BeastFeed;
 import net.sf.l2j.gameserver.handler.skillhandlers.Blow;
 import net.sf.l2j.gameserver.handler.skillhandlers.CharAppearanceChange;
 import net.sf.l2j.gameserver.handler.skillhandlers.Charge;
@@ -27,9 +26,9 @@ import net.sf.l2j.gameserver.handler.skillhandlers.CombatPointHeal;
 import net.sf.l2j.gameserver.handler.skillhandlers.Continuous;
 import net.sf.l2j.gameserver.handler.skillhandlers.CpDamPercent;
 import net.sf.l2j.gameserver.handler.skillhandlers.Craft;
-import net.sf.l2j.gameserver.handler.skillhandlers.DeluxeKey;
 import net.sf.l2j.gameserver.handler.skillhandlers.Disablers;
 import net.sf.l2j.gameserver.handler.skillhandlers.DrainSoul;
+import net.sf.l2j.gameserver.handler.skillhandlers.Dummy;
 import net.sf.l2j.gameserver.handler.skillhandlers.Fishing;
 import net.sf.l2j.gameserver.handler.skillhandlers.FishingSkill;
 import net.sf.l2j.gameserver.handler.skillhandlers.GetPlayer;
@@ -80,6 +79,7 @@ public class SkillHandler
 		registerSkillHandler(new Charge());
 		registerSkillHandler(new Continuous());
 		registerSkillHandler(new CpDamPercent());
+		registerSkillHandler(new Dummy());
 		registerSkillHandler(new Resurrect());
 		registerSkillHandler(new Spoil());
 		registerSkillHandler(new Sweep());
@@ -93,8 +93,6 @@ public class SkillHandler
 		registerSkillHandler(new FishingSkill());
 		registerSkillHandler(new Sow());
 		registerSkillHandler(new Harvest());
-		registerSkillHandler(new DeluxeKey());
-		registerSkillHandler(new BeastFeed());
 		registerSkillHandler(new GetPlayer());
 		registerSkillHandler(new GiveSp());
 		

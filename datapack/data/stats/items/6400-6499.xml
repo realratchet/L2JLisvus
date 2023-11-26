@@ -36,7 +36,7 @@
     <set name="weight" val="0" />
     <set name="price" val="0" />
     <set name="is_stackable" val="true" />
-    <set name="handler" val="Firework" />
+    <set name="handler" val="ItemSkills" />
     <set name="item_skill" val="2023-1" />
   </item>
   <item id="6404" name="Gunpowder" type="EtcItem">
@@ -59,7 +59,7 @@
     <set name="weight" val="0" />
     <set name="price" val="0" />
     <set name="is_stackable" val="true" />
-    <set name="handler" val="Firework" />
+    <set name="handler" val="ItemSkills" />
     <set name="item_skill" val="2024-1" />
   </item>
   <item id="6407" name="Large Firework" type="EtcItem">
@@ -68,7 +68,7 @@
     <set name="weight" val="0" />
     <set name="price" val="0" />
     <set name="is_stackable" val="true" />
-    <set name="handler" val="Firework" />
+    <set name="handler" val="ItemSkills" />
     <set name="item_skill" val="2025-1" />
   </item>
   <item id="6408" name="Formal Wear" type="Armor">

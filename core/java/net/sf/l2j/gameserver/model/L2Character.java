@@ -1256,10 +1256,11 @@ public abstract class L2Character extends L2Object
 	 * <li>Create a task MagicUseTask (that will call method onMagicUseTimer) to launch the Magic Skill at the end of the casting time</li><BR>
 	 * <BR>
 	 * @param skill The L2Skill to use
+	 * @param ignoreConditions 
 	 */
-	public void doCast(L2Skill skill)
+	public void doCast(L2Skill skill, boolean ignoreConditions)
 	{
-		if (!checkDoCastConditions(skill))
+		if (!ignoreConditions && !checkDoCastConditions(skill))
 		{
 			getAI().notifyEvent(CtrlEvent.EVT_CANCEL);
 			return;
@@ -1492,6 +1493,11 @@ public abstract class L2Character extends L2Object
 		{
 			onMagicLaunchedTimer(targets, skill, coolTime, true, crit);
 		}
+	}
+
+	public void doCast(L2Skill skill)
+	{
+		doCast(skill, false);
 	}
 
 	private boolean checkDoCastConditions(L2Skill skill)

@@ -548,7 +548,7 @@
     <set name="weight" val="3" />
     <set name="price" val="10" />
     <set name="is_stackable" val="true" />
-    <set name="handler" val="SoulShots" />
+    <set name="handler" val="SoulShot" />
     <set name="item_skill" val="2150-1" />
   </item>
   <item id="1464" name="Soulshot: C-grade" type="EtcItem">
@@ -558,7 +558,7 @@
     <set name="weight" val="3" />
     <set name="price" val="15" />
     <set name="is_stackable" val="true" />
-    <set name="handler" val="SoulShots" />
+    <set name="handler" val="SoulShot" />
     <set name="item_skill" val="2151-1" />
   </item>
   <item id="1465" name="Soulshot: B-grade" type="EtcItem">
@@ -568,7 +568,7 @@
     <set name="weight" val="2" />
     <set name="price" val="50" />
     <set name="is_stackable" val="true" />
-    <set name="handler" val="SoulShots" />
+    <set name="handler" val="SoulShot" />
     <set name="item_skill" val="2152-1" />
   </item>
   <item id="1466" name="Soulshot: A-grade" type="EtcItem">
@@ -578,7 +578,7 @@
     <set name="weight" val="2" />
     <set name="price" val="80" />
     <set name="is_stackable" val="true" />
-    <set name="handler" val="SoulShots" />
+    <set name="handler" val="SoulShot" />
     <set name="item_skill" val="2153-1" />
   </item>
   <item id="1467" name="Soulshot: S-grade" type="EtcItem">
@@ -588,7 +588,7 @@
     <set name="weight" val="2" />
     <set name="price" val="100" />
     <set name="is_stackable" val="true" />
-    <set name="handler" val="SoulShots" />
+    <set name="handler" val="SoulShot" />
     <set name="item_skill" val="2154-1" />
   </item>
   <item id="1468" name="Gludin Panacen" type="EtcItem">

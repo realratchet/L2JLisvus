@@ -352,6 +352,10 @@ public class SystemMessage extends L2GameServerPacket
 	public static final int ALREADY_REQUESTED_SIEGE_BATTLE = 638;
 	public static final int ALREADY_SUBMITTED_A_REQUEST_FOR_ANOTHER_SIEGE_BATTLE = 639;
 	public static final int NOT_AUTHORIZED_TO_REGISTER_RECIPE = 642;
+	public static final int YOU_DO_NOT_HAVE_AUTHORITY_TO_POSITION_MERCENARIES = 653;
+	public static final int MERCENARIES_CANNOT_BE_POSITIONED_HERE = 655;
+	public static final int THIS_MERCENARY_CANNOT_BE_POSITIONED_ANYMORE = 656;
+	public static final int POSITIONING_CANNOT_BE_DONE_BECAUSE_DISTANCE_BETWEEN_MERCENARIES_TOO_SHORT  = 657;
 	public static final int SPOIL_CANNOT_USE = 661;
 	public static final int THE_PLAYER_IS_REJECTING_FRIEND_INVITATIONS = 662;
 	public static final int S1_ADENA_DISAPPEARED = 672;

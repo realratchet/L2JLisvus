@@ -546,7 +546,7 @@
     <set name="weight" val="0" />
     <set name="price" val="400" />
     <set name="handler" val="ScrollOfEscape" />
-    <set name="item_skill" val="2013-1" />
+    <set name="item_skill" val="2214-1" />
     <set name="is_tradable" val="false" />
     <set name="is_dropable" val="false" />
     <set name="is_sellable" val="false" />
@@ -557,7 +557,7 @@
     <set name="weight" val="0" />
     <set name="price" val="400" />
     <set name="handler" val="ScrollOfEscape" />
-    <set name="item_skill" val="2013-1" />
+    <set name="item_skill" val="2214-2" />
     <set name="is_tradable" val="false" />
     <set name="is_dropable" val="false" />
     <set name="is_sellable" val="false" />
@@ -568,7 +568,7 @@
     <set name="weight" val="0" />
     <set name="price" val="400" />
     <set name="handler" val="ScrollOfEscape" />
-    <set name="item_skill" val="2013-1" />
+    <set name="item_skill" val="2214-3" />
     <set name="is_tradable" val="false" />
     <set name="is_dropable" val="false" />
     <set name="is_sellable" val="false" />
@@ -579,7 +579,7 @@
     <set name="weight" val="0" />
     <set name="price" val="400" />
     <set name="handler" val="ScrollOfEscape" />
-    <set name="item_skill" val="2013-1" />
+    <set name="item_skill" val="2214-4" />
     <set name="is_tradable" val="false" />
     <set name="is_dropable" val="false" />
     <set name="is_sellable" val="false" />
@@ -590,7 +590,7 @@
     <set name="weight" val="0" />
     <set name="price" val="400" />
     <set name="handler" val="ScrollOfEscape" />
-    <set name="item_skill" val="2013-1" />
+    <set name="item_skill" val="2214-5" />
     <set name="is_tradable" val="false" />
     <set name="is_dropable" val="false" />
     <set name="is_sellable" val="false" />
@@ -601,7 +601,7 @@
     <set name="weight" val="0" />
     <set name="price" val="400" />
     <set name="handler" val="ScrollOfEscape" />
-    <set name="item_skill" val="2013-1" />
+    <set name="item_skill" val="2214-10" />
     <set name="is_tradable" val="false" />
     <set name="is_dropable" val="false" />
     <set name="is_sellable" val="false" />

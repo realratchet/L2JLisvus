@@ -847,7 +847,6 @@ public final class Config
 	// --------------------------------------------------
 	public static FloodProtectorConfig FLOOD_PROTECTOR_USE_ITEM;
 	public static FloodProtectorConfig FLOOD_PROTECTOR_ROLL_DICE;
-	public static FloodProtectorConfig FLOOD_PROTECTOR_FIREWORK;
 	public static FloodProtectorConfig FLOOD_PROTECTOR_ITEM_PET_SUMMON;
 	public static FloodProtectorConfig FLOOD_PROTECTOR_HERO_VOICE;
 	public static FloodProtectorConfig FLOOD_PROTECTOR_GLOBAL_CHAT;
@@ -1292,7 +1291,6 @@ public final class Config
 		{
 			FLOOD_PROTECTOR_USE_ITEM = new FloodProtectorConfig("UseItemFloodProtector");
 			FLOOD_PROTECTOR_ROLL_DICE = new FloodProtectorConfig("RollDiceFloodProtector");
-			FLOOD_PROTECTOR_FIREWORK = new FloodProtectorConfig("FireworkFloodProtector");
 			FLOOD_PROTECTOR_ITEM_PET_SUMMON = new FloodProtectorConfig("ItemPetSummonFloodProtector");
 			FLOOD_PROTECTOR_HERO_VOICE = new FloodProtectorConfig("HeroVoiceFloodProtector");
 			FLOOD_PROTECTOR_GLOBAL_CHAT = new FloodProtectorConfig("GlobalChatFloodProtector");
@@ -2460,13 +2458,13 @@ public final class Config
 	
 	/**
 	 * Loads flood protector configurations.
+	 * 
 	 * @param properties
 	 */
 	private static void loadFloodProtectorConfigs(final Properties properties)
 	{
 		loadFloodProtectorConfig(properties, FLOOD_PROTECTOR_USE_ITEM, "UseItem", "4");
 		loadFloodProtectorConfig(properties, FLOOD_PROTECTOR_ROLL_DICE, "RollDice", "42");
-		loadFloodProtectorConfig(properties, FLOOD_PROTECTOR_FIREWORK, "Firework", "42");
 		loadFloodProtectorConfig(properties, FLOOD_PROTECTOR_ITEM_PET_SUMMON, "ItemPetSummon", "16");
 		loadFloodProtectorConfig(properties, FLOOD_PROTECTOR_HERO_VOICE, "HeroVoice", "100");
 		loadFloodProtectorConfig(properties, FLOOD_PROTECTOR_GLOBAL_CHAT, "GlobalChat", "5");

@@ -132,7 +132,7 @@
     <set name="price" val="5" />
     <set name="is_stackable" val="true" />
     <set name="handler" val="Seed" />
-    <set name="item_skill" val="2097-3" />
+    <set name="item_skill" val="2097-1" />
   </item>
   <item id="5017" name="Seed: Red Coda" type="EtcItem">
     <set name="etcitem_type" val="SEED" />
@@ -141,7 +141,7 @@
     <set name="price" val="5" />
     <set name="is_stackable" val="true" />
     <set name="handler" val="Seed" />
-    <set name="item_skill" val="2097-3" />
+    <set name="item_skill" val="2097-1" />
   </item>
   <item id="5018" name="Seed: Chilly Coda" type="EtcItem">
     <set name="etcitem_type" val="SEED" />
@@ -150,7 +150,7 @@
     <set name="price" val="5" />
     <set name="is_stackable" val="true" />
     <set name="handler" val="Seed" />
-    <set name="item_skill" val="2097-3" />
+    <set name="item_skill" val="2097-1" />
   </item>
   <item id="5019" name="Seed: Blue Coda" type="EtcItem">
     <set name="etcitem_type" val="SEED" />
@@ -159,7 +159,7 @@
     <set name="price" val="10" />
     <set name="is_stackable" val="true" />
     <set name="handler" val="Seed" />
-    <set name="item_skill" val="2097-3" />
+    <set name="item_skill" val="2097-1" />
   </item>
   <item id="5020" name="Seed: Golden Coda" type="EtcItem">
     <set name="etcitem_type" val="SEED" />
@@ -168,7 +168,7 @@
     <set name="price" val="20" />
     <set name="is_stackable" val="true" />
     <set name="handler" val="Seed" />
-    <set name="item_skill" val="2097-3" />
+    <set name="item_skill" val="2097-1" />
   </item>
   <item id="5021" name="Seed: Lute Coda" type="EtcItem">
     <set name="etcitem_type" val="SEED" />
@@ -177,7 +177,7 @@
     <set name="price" val="30" />
     <set name="is_stackable" val="true" />
     <set name="handler" val="Seed" />
-    <set name="item_skill" val="2097-3" />
+    <set name="item_skill" val="2097-1" />
   </item>
   <item id="5022" name="Seed: Desert Coda" type="EtcItem">
     <set name="etcitem_type" val="SEED" />
@@ -186,7 +186,7 @@
     <set name="price" val="20" />
     <set name="is_stackable" val="true" />
     <set name="handler" val="Seed" />
-    <set name="item_skill" val="2097-3" />
+    <set name="item_skill" val="2097-1" />
   </item>
   <item id="5023" name="Seed: Blue Cobol" type="EtcItem">
     <set name="etcitem_type" val="SEED" />
@@ -195,7 +195,7 @@
     <set name="price" val="50" />
     <set name="is_stackable" val="true" />
     <set name="handler" val="Seed" />
-    <set name="item_skill" val="2097-3" />
+    <set name="item_skill" val="2097-2" />
   </item>
   <item id="5024" name="Seed: Blue Coda" type="EtcItem">
     <set name="etcitem_type" val="SEED" />
@@ -204,7 +204,7 @@
     <set name="price" val="10" />
     <set name="is_stackable" val="true" />
     <set name="handler" val="Seed" />
-    <set name="item_skill" val="2097-3" />
+    <set name="item_skill" val="2097-1" />
   </item>
   <item id="5025" name="Seed: Golden Coda" type="EtcItem">
     <set name="etcitem_type" val="SEED" />
@@ -213,7 +213,7 @@
     <set name="price" val="20" />
     <set name="is_stackable" val="true" />
     <set name="handler" val="Seed" />
-    <set name="item_skill" val="2097-3" />
+    <set name="item_skill" val="2097-1" />
   </item>
   <item id="5026" name="Seed: Lute Coda" type="EtcItem">
     <set name="etcitem_type" val="SEED" />
@@ -222,7 +222,7 @@
     <set name="price" val="30" />
     <set name="is_stackable" val="true" />
     <set name="handler" val="Seed" />
-    <set name="item_skill" val="2097-3" />
+    <set name="item_skill" val="2097-1" />
   </item>
   <item id="5027" name="Seed: Desert Coda" type="EtcItem">
     <set name="etcitem_type" val="SEED" />
@@ -231,7 +231,7 @@
     <set name="price" val="20" />
     <set name="is_stackable" val="true" />
     <set name="handler" val="Seed" />
-    <set name="item_skill" val="2097-3" />
+    <set name="item_skill" val="2097-1" />
   </item>
   <item id="5028" name="Seed: Red Cobol" type="EtcItem">
     <set name="etcitem_type" val="SEED" />
@@ -240,7 +240,7 @@
     <set name="price" val="20" />
     <set name="is_stackable" val="true" />
     <set name="handler" val="Seed" />
-    <set name="item_skill" val="2097-3" />
+    <set name="item_skill" val="2097-2" />
   </item>
   <item id="5029" name="Seed: Chilly Cobol" type="EtcItem">
     <set name="etcitem_type" val="SEED" />
@@ -249,7 +249,7 @@
     <set name="price" val="25" />
     <set name="is_stackable" val="true" />
     <set name="handler" val="Seed" />
-    <set name="item_skill" val="2097-3" />
+    <set name="item_skill" val="2097-2" />
   </item>
   <item id="5030" name="Seed: Thorn Cobol" type="EtcItem">
     <set name="etcitem_type" val="SEED" />
@@ -258,7 +258,7 @@
     <set name="price" val="50" />
     <set name="is_stackable" val="true" />
     <set name="handler" val="Seed" />
-    <set name="item_skill" val="2097-3" />
+    <set name="item_skill" val="2097-2" />
   </item>
   <item id="5031" name="Seed: Golden Cobol" type="EtcItem">
     <set name="etcitem_type" val="SEED" />
@@ -267,7 +267,7 @@
     <set name="price" val="50" />
     <set name="is_stackable" val="true" />
     <set name="handler" val="Seed" />
-    <set name="item_skill" val="2097-3" />
+    <set name="item_skill" val="2097-2" />
   </item>
   <item id="5032" name="Seed: Great Cobol" type="EtcItem">
     <set name="etcitem_type" val="SEED" />
@@ -276,7 +276,7 @@
     <set name="price" val="50" />
     <set name="is_stackable" val="true" />
     <set name="handler" val="Seed" />
-    <set name="item_skill" val="2097-3" />
+    <set name="item_skill" val="2097-2" />
   </item>
   <item id="5033" name="Seed: Red Cobol" type="EtcItem">
     <set name="etcitem_type" val="SEED" />
@@ -285,7 +285,7 @@
     <set name="price" val="20" />
     <set name="is_stackable" val="true" />
     <set name="handler" val="Seed" />
-    <set name="item_skill" val="2097-3" />
+    <set name="item_skill" val="2097-2" />
   </item>
   <item id="5034" name="Seed: Chilly Cobol" type="EtcItem">
     <set name="etcitem_type" val="SEED" />
@@ -294,7 +294,7 @@
     <set name="price" val="25" />
     <set name="is_stackable" val="true" />
     <set name="handler" val="Seed" />
-    <set name="item_skill" val="2097-3" />
+    <set name="item_skill" val="2097-2" />
   </item>
   <item id="5035" name="Seed: Blue Cobol" type="EtcItem">
     <set name="etcitem_type" val="SEED" />
@@ -303,7 +303,7 @@
     <set name="price" val="50" />
     <set name="is_stackable" val="true" />
     <set name="handler" val="Seed" />
-    <set name="item_skill" val="2097-3" />
+    <set name="item_skill" val="2097-2" />
   </item>
   <item id="5036" name="Seed: Thorn Cobol" type="EtcItem">
     <set name="etcitem_type" val="SEED" />
@@ -312,7 +312,7 @@
     <set name="price" val="50" />
     <set name="is_stackable" val="true" />
     <set name="handler" val="Seed" />
-    <set name="item_skill" val="2097-3" />
+    <set name="item_skill" val="2097-2" />
   </item>
   <item id="5037" name="Seed: Golden Cobol" type="EtcItem">
     <set name="etcitem_type" val="SEED" />
@@ -321,7 +321,7 @@
     <set name="price" val="50" />
     <set name="is_stackable" val="true" />
     <set name="handler" val="Seed" />
-    <set name="item_skill" val="2097-3" />
+    <set name="item_skill" val="2097-2" />
   </item>
   <item id="5038" name="Seed: Great Cobol" type="EtcItem">
     <set name="etcitem_type" val="SEED" />
@@ -330,7 +330,7 @@
     <set name="price" val="50" />
     <set name="is_stackable" val="true" />
     <set name="handler" val="Seed" />
-    <set name="item_skill" val="2097-3" />
+    <set name="item_skill" val="2097-2" />
   </item>
   <item id="5039" name="Seed: Red Codran" type="EtcItem">
     <set name="etcitem_type" val="SEED" />
@@ -341,7 +341,7 @@
     <set name="handler" val="Seed" />
     <set name="item_skill" val="2097-3" />
   </item>
-  <item id="5040" name="Seed: Twin Codra" type="EtcItem">
+  <item id="5040" name="Seed: Twin Codran" type="EtcItem">
     <set name="etcitem_type" val="SEED" />
     <set name="material" val="PAPER" />
     <set name="weight" val="1" />
@@ -366,7 +366,7 @@
     <set name="price" val="5" />
     <set name="is_stackable" val="true" />
     <set name="handler" val="Seed" />
-    <set name="item_skill" val="2097-3" />
+    <set name="item_skill" val="2097-1" />
   </item>
   <item id="5043" name="Seed: Red Coda" type="EtcItem">
     <set name="etcitem_type" val="SEED" />
@@ -375,7 +375,7 @@
     <set name="price" val="5" />
     <set name="is_stackable" val="true" />
     <set name="handler" val="Seed" />
-    <set name="item_skill" val="2097-3" />
+    <set name="item_skill" val="2097-1" />
   </item>
   <item id="5044" name="Seed: Blue Coda" type="EtcItem">
     <set name="etcitem_type" val="SEED" />
@@ -384,7 +384,7 @@
     <set name="price" val="10" />
     <set name="is_stackable" val="true" />
     <set name="handler" val="Seed" />
-    <set name="item_skill" val="2097-3" />
+    <set name="item_skill" val="2097-1" />
   </item>
   <item id="5045" name="Seed: Red Cobol" type="EtcItem">
     <set name="etcitem_type" val="SEED" />
@@ -393,7 +393,7 @@
     <set name="price" val="20" />
     <set name="is_stackable" val="true" />
     <set name="handler" val="Seed" />
-    <set name="item_skill" val="2097-3" />
+    <set name="item_skill" val="2097-2" />
   </item>
   <item id="5046" name="Seed: Chilly Cobol" type="EtcItem">
     <set name="etcitem_type" val="SEED" />
@@ -402,7 +402,7 @@
     <set name="price" val="25" />
     <set name="is_stackable" val="true" />
     <set name="handler" val="Seed" />
-    <set name="item_skill" val="2097-3" />
+    <set name="item_skill" val="2097-2" />
   </item>
   <item id="5047" name="Seed: Blue Cobol" type="EtcItem">
     <set name="etcitem_type" val="SEED" />
@@ -411,7 +411,7 @@
     <set name="price" val="50" />
     <set name="is_stackable" val="true" />
     <set name="handler" val="Seed" />
-    <set name="item_skill" val="2097-3" />
+    <set name="item_skill" val="2097-2" />
   </item>
   <item id="5048" name="Seed: Thorn Cobol" type="EtcItem">
     <set name="etcitem_type" val="SEED" />
@@ -420,7 +420,7 @@
     <set name="price" val="50" />
     <set name="is_stackable" val="true" />
     <set name="handler" val="Seed" />
-    <set name="item_skill" val="2097-3" />
+    <set name="item_skill" val="2097-2" />
   </item>
   <item id="5049" name="Seed: Sea Codran" type="EtcItem">
     <set name="etcitem_type" val="SEED" />
@@ -465,7 +465,7 @@
     <set name="price" val="50" />
     <set name="is_stackable" val="true" />
     <set name="handler" val="Seed" />
-    <set name="item_skill" val="2097-3" />
+    <set name="item_skill" val="2097-2" />
   </item>
   <item id="5054" name="Seed: Golden Cobol" type="EtcItem">
     <set name="etcitem_type" val="SEED" />
@@ -474,7 +474,7 @@
     <set name="price" val="50" />
     <set name="is_stackable" val="true" />
     <set name="handler" val="Seed" />
-    <set name="item_skill" val="2097-3" />
+    <set name="item_skill" val="2097-2" />
   </item>
   <item id="5055" name="Seed: Great Cobol" type="EtcItem">
     <set name="etcitem_type" val="SEED" />
@@ -483,7 +483,7 @@
     <set name="price" val="50" />
     <set name="is_stackable" val="true" />
     <set name="handler" val="Seed" />
-    <set name="item_skill" val="2097-3" />
+    <set name="item_skill" val="2097-2" />
   </item>
   <item id="5056" name="Seed: Red Codran" type="EtcItem">
     <set name="etcitem_type" val="SEED" />

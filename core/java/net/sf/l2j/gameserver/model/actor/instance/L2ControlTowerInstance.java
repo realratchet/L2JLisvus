@@ -103,13 +103,14 @@ public class L2ControlTowerInstance extends L2NpcInstance
         {
             getCastle().getSiege().reduceControlTowerCount();
 
-            if (getGuards() != null && getGuards().size() > 0)
+            if (getGuards() != null && !getGuards().isEmpty())
             {
                 for (L2Spawn spawn: getGuards())
                 {
                     if (spawn == null)
                         continue;
-                    spawn.stopRespawn();
+                    spawn.stopRespawn();
+
                 }
             }
         }

@@ -60,28 +60,30 @@ public class ItemSkills implements IItemHandler
 			{
 				continue;
 			}
+
+			if (!skill.checkCondition(playable, playable))
+			{
+				return;
+			}
+			
+			if (playable.isSkillDisabled(skill.getId(), false))
+			{
+				return;
+			}
 			
 			if (skill.isPotion())
 			{
-				useInstantly(player, item, skill);
+				castInstantly(playable, item, skill);
 			}
 			else
 			{
-				player.doCast(skill);
+				playable.doCast(skill, true);
 			}
 		}
 	}
 	
-	private void useInstantly(L2PlayableInstance activeChar, L2ItemInstance item, L2Skill skill)
+	private void castInstantly(L2PlayableInstance activeChar, L2ItemInstance item, L2Skill skill)
 	{
-		if (activeChar.isSkillDisabled(skill.getId(), false))
-		{
-			SystemMessage sm = new SystemMessage(SystemMessage.S1_PREPARED_FOR_REUSE);
-			sm.addItemName(item.getItemId());
-			activeChar.sendPacket(sm);
-			return;
-		}
-		
 		if (activeChar instanceof L2PcInstance)
 		{
 			SystemMessage sm = new SystemMessage(SystemMessage.USE_S1);

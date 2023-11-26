@@ -19,14 +19,12 @@ import net.sf.l2j.gameserver.model.L2Character;
 import net.sf.l2j.gameserver.model.L2Object;
 import net.sf.l2j.gameserver.model.L2Skill;
 import net.sf.l2j.gameserver.model.L2Skill.SkillType;
+import net.sf.l2j.gameserver.model.actor.instance.L2MonsterInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 
-/**
- * @author _drunk_
- */
 public class DrainSoul implements ISkillHandler
 {
-	private static SkillType[] SKILL_TYPES =
+	private static final SkillType[] SKILL_TYPES =
 	{
 		SkillType.DRAIN_SOUL
 	};
@@ -38,15 +36,25 @@ public class DrainSoul implements ISkillHandler
 		{
 			return;
 		}
-		
+
+        L2PcInstance player = (L2PcInstance) activeChar;
 		L2Object[] targetList = skill.getTargetList(activeChar);
+
 		if (targetList == null)
 		{
 			return;
 		}
-		
-		// This is just a dummy skill handler for the soul crystal skill,
-		// since the Soul Crystal item handler already does everything.
+
+        for (L2Object trg : targets)
+		{
+			if (!(trg instanceof L2MonsterInstance))
+			{
+				continue;
+			}
+			
+			L2MonsterInstance target = (L2MonsterInstance) trg;
+            target.addAbsorber(player);
+        }
 	}
 	
 	@Override

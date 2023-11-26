@@ -63,7 +63,7 @@ public class MinionList
 
     public boolean hasMinions()
     {
-        return getSpawnedMinions().size() > 0;
+        return !getSpawnedMinions().isEmpty();
     }
 
     public List<L2MinionInstance> getSpawnedMinions()

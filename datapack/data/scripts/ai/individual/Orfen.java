@@ -160,7 +160,7 @@ public class Orfen extends Quest
 	public void setSpawnPoint(L2NpcInstance npc, int index)
 	{
 		((L2Attackable) npc).clearAggroList();
-		npc.getAI().setIntention(CtrlIntention.AI_INTENTION_IDLE, null, null);
+		npc.getAI().setIntention(CtrlIntention.AI_INTENTION_IDLE);
 		L2Spawn spawn = npc.getSpawn();
 		spawn.setLocX(POS[index][0]);
 		spawn.setLocY(POS[index][1]);
@@ -242,7 +242,7 @@ public class Orfen extends Quest
 				{
 					mob.teleToLocation(npc.getX(), npc.getY(), npc.getZ());
 					((L2Attackable) npc).clearAggroList();
-					npc.getAI().setIntention(CtrlIntention.AI_INTENTION_IDLE, null, null);
+					npc.getAI().setIntention(CtrlIntention.AI_INTENTION_IDLE);
 				}
 			}
 		}
@@ -307,7 +307,7 @@ public class Orfen extends Quest
 			}
 			if ((callerId != RIBA_IREN) && (caller.getCurrentHp() < (caller.getMaxHp() / 2)) && (Rnd.get(10) < chance))
 			{
-				npc.getAI().setIntention(CtrlIntention.AI_INTENTION_IDLE, null, null);
+				npc.getAI().setIntention(CtrlIntention.AI_INTENTION_IDLE);
 				npc.setTarget(caller);
 				npc.doCast(SkillTable.getInstance().getInfo(4516, 1));
 			}

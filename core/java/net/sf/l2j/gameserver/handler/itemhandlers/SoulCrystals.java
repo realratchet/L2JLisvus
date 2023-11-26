@@ -14,9 +14,7 @@
  */
 package net.sf.l2j.gameserver.handler.itemhandlers;
 
-import net.sf.l2j.gameserver.ThreadPoolManager;
 import net.sf.l2j.gameserver.handler.IItemHandler;
-import net.sf.l2j.gameserver.model.L2Attackable;
 import net.sf.l2j.gameserver.model.L2ItemInstance;
 import net.sf.l2j.gameserver.model.L2Object;
 import net.sf.l2j.gameserver.model.L2Skill;
@@ -45,8 +43,7 @@ public class SoulCrystals implements IItemHandler
         if (!(target instanceof L2MonsterInstance))
         {
             // Send a System Message to the caster
-            activeChar.sendPacket(new SystemMessage(109));
-            activeChar.sendPacket(new ActionFailed());
+            activeChar.sendPacket(new SystemMessage(SystemMessage.INCORRECT_TARGET));
             return;
         }
         
@@ -61,44 +58,8 @@ public class SoulCrystals implements IItemHandler
         {
             SkillHolder holder = item.getItem().getSkills()[0];
             L2Skill skill = holder.getSkill();
+            
             activeChar.useMagic(skill, false, false);
-            
-            // Continue execution later
-            CrystalFinalizer cf = new CrystalFinalizer(activeChar, target, item.getItemId());
-            ThreadPoolManager.getInstance().scheduleEffect(cf, skill.getHitTime());
-        }
-    }
-    
-    static class CrystalFinalizer implements Runnable
-    {
-        private L2PcInstance _activeChar;
-        private L2Attackable _target;
-        private int _crystalId;
-        
-        CrystalFinalizer(L2PcInstance activeChar, L2Object target, int crystalId)
-        {
-            _activeChar = activeChar;
-            _target = (L2Attackable) target;
-            _crystalId = crystalId;
-        }
-        
-        @Override
-        public void run()
-        {
-            if (_activeChar.isDead() || _target.isDead())
-                return;
-            
-            _activeChar.enableAllSkills();
-            
-            try
-            {
-                _target.addAbsorber(_activeChar, _crystalId);
-                _activeChar.setTarget(_target);
-            }
-            catch (Throwable e)
-            {
-                e.printStackTrace();
-            }
         }
     }
 }

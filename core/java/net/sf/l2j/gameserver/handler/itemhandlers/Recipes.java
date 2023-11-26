@@ -28,18 +28,6 @@ import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
  */
 public class Recipes implements IItemHandler
 {
-	private static int[] _itemIds = null;
-	
-	public Recipes()
-	{
-		RecipeController rc = RecipeController.getInstance();
-		_itemIds = new int[rc.getRecipesCount()];
-		for (int i = 0; i < rc.getRecipesCount(); i++)
-		{
-			_itemIds[i] = rc.getRecipeList(i).getRecipeId();
-		}
-	}
-	
 	@Override
 	public void useItem(L2PlayableInstance playable, L2ItemInstance item)
 	{

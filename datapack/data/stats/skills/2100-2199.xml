@@ -238,11 +238,13 @@
 </skill>
 <skill id="2137" levels="1" name="Summon Regular Tree">
   <set name="target" val="TARGET_NONE"/>
+  <set name="staticHitTime" val="true"/>
   <set name="skillType" val="NOTDONE"/>
   <set name="operateType" val="OP_ACTIVE"/>
 </skill>
 <skill id="2138" levels="1" name="Summon Special Tree">
   <set name="target" val="TARGET_NONE"/>
+  <set name="staticHitTime" val="true"/>
   <set name="skillType" val="NOTDONE"/>
   <set name="operateType" val="OP_ACTIVE"/>
 </skill>
@@ -510,6 +512,7 @@
 <skill id="2177" levels="1" name="Blessed Scroll of Escape: Clan Hall">
   <set name="target" val="TARGET_SELF"/>
   <set name="hitTime" val="200"/>
+  <set name="staticHitTime" val="true" />
   <set name="skillType" val="TELEPORT"/>
   <set name="teleportWhereType" val="ClanHall"/>
   <set name="operateType" val="OP_ACTIVE"/>
@@ -517,6 +520,7 @@
 <skill id="2178" levels="1" name="Blessed Scroll of Escape: Castle">
   <set name="target" val="TARGET_SELF"/>
   <set name="hitTime" val="200"/>
+  <set name="staticHitTime" val="true" />
   <set name="skillType" val="TELEPORT"/>
   <set name="teleportWhereType" val="Castle"/>
   <set name="operateType" val="OP_ACTIVE"/>
@@ -585,6 +589,7 @@
   <set name="power" val="0"/>
   <set name="target" val="TARGET_ONE"/>
   <set name="hitTime" val="1000"/>
+  <set name="staticHitTime" val="true"/>
   <set name="skillType" val="BEAST_FEED"/>
   <set name="operateType" val="OP_ACTIVE"/>
   <set name="itemConsumeId" val="6643" />
@@ -596,6 +601,7 @@
   <set name="power" val="0"/>
   <set name="target" val="TARGET_ONE"/>
   <set name="hitTime" val="1000"/>
+  <set name="staticHitTime" val="true"/>
   <set name="skillType" val="BEAST_FEED"/>
   <set name="itemConsumeId" val="6644" />
   <set name="itemConsumeCount" val="1"/>

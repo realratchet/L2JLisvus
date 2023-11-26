@@ -164,7 +164,7 @@
     <set name="price" val="400" />
     <set name="is_stackable" val="true" />
     <set name="handler" val="ScrollOfEscape" />
-    <set name="item_skill" val="2013-1" />
+    <set name="item_skill" val="2213-20" />
   </item>
   <item id="7619" name="Scroll of Escape: Varka Silenos Village" type="EtcItem">
     <set name="etcitem_type" val="OTHER" />
@@ -173,7 +173,7 @@
     <set name="price" val="400" />
     <set name="is_stackable" val="true" />
     <set name="handler" val="ScrollOfEscape" />
-    <set name="item_skill" val="2013-1" />
+    <set name="item_skill" val="2213-21" />
   </item>
   <item id="7620" name="Trash" type="EtcItem">
     <set name="etcitem_type" val="QUEST" />

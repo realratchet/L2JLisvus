@@ -26,7 +26,6 @@ import net.sf.l2j.gameserver.handler.itemhandlers.Book;
 import net.sf.l2j.gameserver.handler.itemhandlers.ChestKey;
 import net.sf.l2j.gameserver.handler.itemhandlers.EnchantScrolls;
 import net.sf.l2j.gameserver.handler.itemhandlers.ExtractableItems;
-import net.sf.l2j.gameserver.handler.itemhandlers.Firework;
 import net.sf.l2j.gameserver.handler.itemhandlers.FishShots;
 import net.sf.l2j.gameserver.handler.itemhandlers.Harvester;
 import net.sf.l2j.gameserver.handler.itemhandlers.ItemSkills;
@@ -39,7 +38,7 @@ import net.sf.l2j.gameserver.handler.itemhandlers.ScrollOfResurrection;
 import net.sf.l2j.gameserver.handler.itemhandlers.Seed;
 import net.sf.l2j.gameserver.handler.itemhandlers.SevenSignsRecord;
 import net.sf.l2j.gameserver.handler.itemhandlers.SoulCrystals;
-import net.sf.l2j.gameserver.handler.itemhandlers.SoulShots;
+import net.sf.l2j.gameserver.handler.itemhandlers.SoulShot;
 import net.sf.l2j.gameserver.handler.itemhandlers.SpecialXMas;
 import net.sf.l2j.gameserver.handler.itemhandlers.SpiritShot;
 import net.sf.l2j.gameserver.handler.itemhandlers.SummonItems;
@@ -69,7 +68,7 @@ public class ItemHandler
 	{
 		registerItemHandler(new ScrollOfEscape());
 		registerItemHandler(new ScrollOfResurrection());
-		registerItemHandler(new SoulShots());
+		registerItemHandler(new SoulShot());
 		registerItemHandler(new SpecialXMas());
 		registerItemHandler(new SpiritShot());
 		registerItemHandler(new BlessedSpiritShot());
@@ -85,7 +84,6 @@ public class ItemHandler
 		registerItemHandler(new Book());
 		registerItemHandler(new SoulCrystals());
 		registerItemHandler(new SevenSignsRecord());
-		registerItemHandler(new Firework());
 		registerItemHandler(new Seed());
 		registerItemHandler(new Harvester());
 		registerItemHandler(new MercTicket());

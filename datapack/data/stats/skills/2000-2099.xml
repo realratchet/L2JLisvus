@@ -96,6 +96,7 @@
 <skill id="2013" levels="1" name="Scroll of escape">
   <set name="target" val="TARGET_SELF"/>
   <set name="hitTime" val="20000"/>
+  <set name="staticHitTime" val="true" />
   <set name="skillType" val="TELEPORT"/>
   <set name="operateType" val="OP_ACTIVE"/>
 </skill>
@@ -152,17 +153,17 @@
 </skill>
 <skill id="2023" levels="1" name="Fairy Firecracker">
   <set name="target" val="TARGET_SELF"/>
-  <set name="skillType" val="HOT"/>
+  <set name="skillType" val="DUMMY"/>
   <set name="operateType" val="OP_ACTIVE"/>
 </skill>
 <skill id="2024" levels="1" name="Firecracker">
   <set name="target" val="TARGET_SELF"/>
-  <set name="skillType" val="HOT"/>
+  <set name="skillType" val="DUMMY"/>
   <set name="operateType" val="OP_ACTIVE"/>
 </skill>
 <skill id="2025" levels="1" name="Large Firecracker">
   <set name="target" val="TARGET_SELF"/>
-  <set name="skillType" val="HOT"/>
+  <set name="skillType" val="DUMMY"/>
   <set name="operateType" val="OP_ACTIVE"/>
 </skill>
 <skill id="2026" levels="1" name="Crystal scroll of enchant armor-C grade">
@@ -247,9 +248,9 @@
   </for>
 </skill>
 <skill id="2036" levels="2" name="Blessed scroll of escape">
-
   <set name="target" val="TARGET_SELF"/>
   <set name="hitTime" val="200"/>
+  <set name="staticHitTime" val="true" />
   <set name="skillType" val="TELEPORT"/>
   <set name="operateType" val="OP_ACTIVE"/>
 </skill>
@@ -278,6 +279,7 @@
 <skill id="2040" levels="1" name="Scroll of escape to Clan Hall">
   <set name="target" val="TARGET_SELF"/>
   <set name="hitTime" val="20000"/>
+  <set name="staticHitTime" val="true" />
   <set name="skillType" val="TELEPORT"/>
   <set name="teleportWhereType" val="ClanHall"/>
   <set name="operateType" val="OP_ACTIVE"/>
@@ -285,6 +287,7 @@
 <skill id="2041" levels="1" name="Scroll of escape to Castle">
   <set name="target" val="TARGET_SELF"/>
   <set name="hitTime" val="20000"/>
+  <set name="staticHitTime" val="true" />
   <set name="skillType" val="TELEPORT"/>
   <set name="teleportWhereType" val="Castle"/>
   <set name="operateType" val="OP_ACTIVE"/>
@@ -324,7 +327,8 @@
 <skill id="2046" levels="1" name="Wolves' necklace">
   <set name="target" val="TARGET_SELF"/>
   <set name="hitTime" val="5000"/>
-  <set name="skillType" val="NOTDONE"/>
+  <set name="staticHitTime" val="true"/>
+  <set name="skillType" val="SUMMON_PET"/>
   <set name="isMagic" val="true"/>
   <set name="operateType" val="OP_ACTIVE"/>
 </skill>
@@ -711,6 +715,7 @@
   <set name="mpConsume" val="26"/>
   <set name="target" val="TARGET_ONE"/>
   <set name="hitTime" val="1200"/>
+  <set name="staticHitTime" val="true"/>
   <set name="skillType" val="DRAIN_SOUL"/>
   <set name="reuseDelay" val="1300"/>
   <set name="operateType" val="OP_ACTIVE"/>
@@ -723,6 +728,7 @@
   <set name="nextActionAttack" val="true"/>
   <set name="target" val="TARGET_ONE"/>
   <set name="hitTime" val="1800"/>
+  <set name="staticHitTime" val="true"/>
   <set name="reuseDelay" val="8000"/>
   <set name="skillType" val="SOW"/>
   <set name="operateType" val="OP_ACTIVE"/>
@@ -733,6 +739,7 @@
   <set name="mpConsume" val="3"/>
   <set name="target" val="TARGET_CORPSE_MOB"/>
   <set name="hitTime" val="500"/>
+  <set name="staticHitTime" val="true"/>
   <set name="skillType" val="HARVEST"/>
   <set name="reuseDelay" val="8000"/>
   <set name="operateType" val="OP_ACTIVE"/>

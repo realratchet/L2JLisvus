@@ -165,7 +165,7 @@
     <set name="price" val="35000" />
     <set name="is_stackable" val="true" />
     <set name="handler" val="ScrollOfEscape" />
-    <set name="item_skill" val="2013-1" />
+    <set name="item_skill" val="2213-1" />
   </item>
   <item id="7118" name="Scroll of Escape: Elven Village" type="EtcItem">
     <set name="etcitem_type" val="OTHER" />
@@ -174,7 +174,7 @@
     <set name="price" val="35000" />
     <set name="is_stackable" val="true" />
     <set name="handler" val="ScrollOfEscape" />
-    <set name="item_skill" val="2013-1" />
+    <set name="item_skill" val="2213-2" />
   </item>
   <item id="7119" name="Scroll of Escape: Dark Elf Village" type="EtcItem">
     <set name="etcitem_type" val="OTHER" />
@@ -183,7 +183,7 @@
     <set name="price" val="35000" />
     <set name="is_stackable" val="true" />
     <set name="handler" val="ScrollOfEscape" />
-    <set name="item_skill" val="2013-1" />
+    <set name="item_skill" val="2213-3" />
   </item>
   <item id="7120" name="Scroll of Escape: Orc Village" type="EtcItem">
     <set name="etcitem_type" val="OTHER" />
@@ -192,7 +192,7 @@
     <set name="price" val="35000" />
     <set name="is_stackable" val="true" />
     <set name="handler" val="ScrollOfEscape" />
-    <set name="item_skill" val="2013-1" />
+    <set name="item_skill" val="2213-4" />
   </item>
   <item id="7121" name="Scroll of Escape: Dwarven Village" type="EtcItem">
     <set name="etcitem_type" val="OTHER" />
@@ -201,7 +201,7 @@
     <set name="price" val="35000" />
     <set name="is_stackable" val="true" />
     <set name="handler" val="ScrollOfEscape" />
-    <set name="item_skill" val="2013-1" />
+    <set name="item_skill" val="2213-5" />
   </item>
   <item id="7122" name="Scroll of Escape: Gludin Village" type="EtcItem">
     <set name="etcitem_type" val="OTHER" />
@@ -210,7 +210,7 @@
     <set name="price" val="35000" />
     <set name="is_stackable" val="true" />
     <set name="handler" val="ScrollOfEscape" />
-    <set name="item_skill" val="2013-1" />
+    <set name="item_skill" val="2213-6" />
   </item>
   <item id="7123" name="Scroll of Escape: the Town of Gludio" type="EtcItem">
     <set name="etcitem_type" val="OTHER" />
@@ -219,7 +219,7 @@
     <set name="price" val="35000" />
     <set name="is_stackable" val="true" />
     <set name="handler" val="ScrollOfEscape" />
-    <set name="item_skill" val="2013-1" />
+    <set name="item_skill" val="2213-7" />
   </item>
   <item id="7124" name="Scroll of Escape: the Town of Dion" type="EtcItem">
     <set name="etcitem_type" val="OTHER" />
@@ -228,7 +228,7 @@
     <set name="price" val="35000" />
     <set name="is_stackable" val="true" />
     <set name="handler" val="ScrollOfEscape" />
-    <set name="item_skill" val="2013-1" />
+    <set name="item_skill" val="2213-8" />
   </item>
   <item id="7125" name="Scroll of Escape: Floran" type="EtcItem">
     <set name="etcitem_type" val="OTHER" />
@@ -237,7 +237,7 @@
     <set name="price" val="35000" />
     <set name="is_stackable" val="true" />
     <set name="handler" val="ScrollOfEscape" />
-    <set name="item_skill" val="2013-1" />
+    <set name="item_skill" val="2213-9" />
   </item>
   <item id="7126" name="Scroll of Escape: Giran Castle Town" type="EtcItem">
     <set name="etcitem_type" val="OTHER" />
@@ -246,7 +246,7 @@
     <set name="price" val="35000" />
     <set name="is_stackable" val="true" />
     <set name="handler" val="ScrollOfEscape" />
-    <set name="item_skill" val="2013-1" />
+    <set name="item_skill" val="2213-10" />
   </item>
   <item id="7127" name="Scroll of Escape: Hardin's Private Academy" type="EtcItem">
     <set name="etcitem_type" val="OTHER" />
@@ -255,7 +255,7 @@
     <set name="price" val="35000" />
     <set name="is_stackable" val="true" />
     <set name="handler" val="ScrollOfEscape" />
-    <set name="item_skill" val="2013-1" />
+    <set name="item_skill" val="2213-11" />
   </item>
   <item id="7128" name="Scroll of Escape: Heine" type="EtcItem">
     <set name="etcitem_type" val="OTHER" />
@@ -264,7 +264,7 @@
     <set name="price" val="35000" />
     <set name="is_stackable" val="true" />
     <set name="handler" val="ScrollOfEscape" />
-    <set name="item_skill" val="2013-1" />
+    <set name="item_skill" val="2213-12" />
   </item>
   <item id="7129" name="Scroll of Escape: the Town of Oren" type="EtcItem">
     <set name="etcitem_type" val="OTHER" />
@@ -273,7 +273,7 @@
     <set name="price" val="35000" />
     <set name="is_stackable" val="true" />
     <set name="handler" val="ScrollOfEscape" />
-    <set name="item_skill" val="2013-1" />
+    <set name="item_skill" val="2213-13" />
   </item>
   <item id="7130" name="Scroll of Escape: Ivory Tower" type="EtcItem">
     <set name="etcitem_type" val="OTHER" />
@@ -282,7 +282,7 @@
     <set name="price" val="35000" />
     <set name="is_stackable" val="true" />
     <set name="handler" val="ScrollOfEscape" />
-    <set name="item_skill" val="2013-1" />
+    <set name="item_skill" val="2213-14" />
   </item>
   <item id="7131" name="Scroll of Escape: Hunters Village" type="EtcItem">
     <set name="etcitem_type" val="OTHER" />
@@ -291,7 +291,7 @@
     <set name="price" val="35000" />
     <set name="is_stackable" val="true" />
     <set name="handler" val="ScrollOfEscape" />
-    <set name="item_skill" val="2013-1" />
+    <set name="item_skill" val="2213-15" />
   </item>
   <item id="7132" name="Scroll of Escape: Aden Castle Town" type="EtcItem">
     <set name="etcitem_type" val="OTHER" />
@@ -300,7 +300,7 @@
     <set name="price" val="35000" />
     <set name="is_stackable" val="true" />
     <set name="handler" val="ScrollOfEscape" />
-    <set name="item_skill" val="2013-1" />
+    <set name="item_skill" val="2213-16" />
   </item>
   <item id="7133" name="Scroll of Escape: the Town of Goddard" type="EtcItem">
     <set name="etcitem_type" val="OTHER" />
@@ -309,7 +309,7 @@
     <set name="price" val="35000" />
     <set name="is_stackable" val="true" />
     <set name="handler" val="ScrollOfEscape" />
-    <set name="item_skill" val="2013-1" />
+    <set name="item_skill" val="2213-17" />
   </item>
   <item id="7134" name="Scroll of Escape: the Rune Township" type="EtcItem">
     <set name="etcitem_type" val="OTHER" />
@@ -318,7 +318,7 @@
     <set name="price" val="35000" />
     <set name="is_stackable" val="true" />
     <set name="handler" val="ScrollOfEscape" />
-    <set name="item_skill" val="2013-1" />
+    <set name="item_skill" val="2213-18" />
   </item>
   <item id="7135" name="Scroll of Escape: the Town of Schuttgart." type="EtcItem">
     <set name="etcitem_type" val="OTHER" />
@@ -327,7 +327,7 @@
     <set name="price" val="35000" />
     <set name="is_stackable" val="true" />
     <set name="handler" val="ScrollOfEscape" />
-    <set name="item_skill" val="2013-1" />
+    <set name="item_skill" val="2213-19" />
   </item>
   <item id="7136" name="Fruit Basket" type="EtcItem">
     <set name="etcitem_type" val="QUEST" />

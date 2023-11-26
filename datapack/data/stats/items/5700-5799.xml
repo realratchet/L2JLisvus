@@ -7,7 +7,7 @@
     <set name="price" val="40" />
     <set name="is_stackable" val="true" />
     <set name="handler" val="Seed" />
-    <set name="item_skill" val="2097-3" />
+    <set name="item_skill" val="2097-2" />
   </item>
   <item id="5701" name="Alternative Red Codran Seed" type="EtcItem">
     <set name="etcitem_type" val="SEED" />
@@ -986,7 +986,7 @@
     <set name="weight" val="1" />
     <set name="price" val="0" />
     <set name="is_stackable" val="true" />
-    <set name="handler" val="SoulShots" />
+    <set name="handler" val="SoulShot" />
     <set name="item_skill" val="2039-1" />
     <set name="is_tradable" val="false" />
     <set name="is_dropable" val="false" />

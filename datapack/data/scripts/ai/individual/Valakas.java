@@ -1354,7 +1354,7 @@ public class Valakas extends Quest
 		}
 		else
 		{
-			npc.getAI().setIntention(AI_INTENTION_FOLLOW, target, null);
+			npc.getAI().setIntention(AI_INTENTION_FOLLOW, target);
 		}
 	}
 	

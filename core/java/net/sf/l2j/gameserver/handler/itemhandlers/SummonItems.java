@@ -197,7 +197,7 @@ public class SummonItems implements IItemHandler
                 if (petSummon == null)
                     return;
                 
-                petSummon.setTitle(_activeChar.getName());
+                //petSummon.setTitle(_activeChar.getName());
                 
                 if (!petSummon.isRespawned())
                 {

@@ -210,6 +210,8 @@ public abstract class L2Skill
 		CREATE_ITEM(L2SkillCreateItem.class),
 		TELEPORT(L2SkillTeleport.class),
 
+		DUMMY,
+
 		// unimplemented
 		NOTDONE;
 
