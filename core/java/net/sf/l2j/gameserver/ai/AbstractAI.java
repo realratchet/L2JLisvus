@@ -334,7 +334,7 @@ abstract class AbstractAI implements Ctrl
 				onIntentionAttack((L2Character) arg0);
 				break;
 			case AI_INTENTION_CAST:
-				onIntentionCast((L2Skill) arg0, (L2Object) arg1, arg2 != null ? (int)arg2 : null);
+				onIntentionCast((L2Skill) arg0, (L2Object) arg1, arg2 != null ? (int)arg2 : 0);
 				break;
 			case AI_INTENTION_MOVE_TO:
 				onIntentionMoveTo((Location) arg0);
