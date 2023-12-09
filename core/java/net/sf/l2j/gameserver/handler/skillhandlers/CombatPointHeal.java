@@ -37,21 +37,25 @@ public class CombatPointHeal implements ISkillHandler
 	 * @see net.sf.l2j.gameserver.handler.ISkillHandler#useSkill(net.sf.l2j.gameserver.model.L2Character, net.sf.l2j.gameserver.model.L2Skill, net.sf.l2j.gameserver.model.L2Object[], boolean)
 	 */
 	@Override
-	public void useSkill(L2Character activeChar, L2Skill skill, L2Object[] targets, boolean isFirstCritical)
+	public void useSkill(L2Character activeChar, L2Skill skill, L2Object[] targets, boolean critOnFirstTarget)
 	{
-		for (L2Object target2 : targets)
+		for (L2Object target : targets)
 		{
-			L2Character target = (L2Character) target2;
-			
+			if (!(target instanceof L2Character))
+			{
+				return;
+			}
+
+			L2Character targetCharacter = (L2Character) target;
 			double cp = skill.getPower();
 			
 			SystemMessage sm = new SystemMessage(SystemMessage.S1_CP_WILL_BE_RESTORED);
 			sm.addNumber((int) cp);
-			target.sendPacket(sm);
-			target.setCurrentCp(cp + target.getCurrentCp());
-			StatusUpdate sump = new StatusUpdate(target.getObjectId());
-			sump.addAttribute(StatusUpdate.CUR_CP, (int) target.getCurrentCp());
-			target.sendPacket(sump);
+			targetCharacter.sendPacket(sm);
+			targetCharacter.setCurrentCp(cp + targetCharacter.getCurrentCp());
+			StatusUpdate su = new StatusUpdate(target.getObjectId());
+			su.addAttribute(StatusUpdate.CUR_CP, (int) targetCharacter.getCurrentCp());
+			targetCharacter.sendPacket(su);
 		}
 	}
 	

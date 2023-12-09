@@ -32,10 +32,10 @@ public interface ISkillHandler
 	 * @param activeChar
 	 * @param skill
 	 * @param targets
-	 * @param isFirstCritical
+	 * @param critOnFirstTarget
 	 * @throws IOException
 	 */
-	public void useSkill(L2Character activeChar, L2Skill skill, L2Object[] targets, boolean isFirstCritical) throws IOException;
+	public void useSkill(L2Character activeChar, L2Skill skill, L2Object[] targets, boolean critOnFirstTarget) throws IOException;
 	
 	/**
 	 * this is the working method that is called when using a skill.

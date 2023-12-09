@@ -23,11 +23,12 @@ import net.sf.l2j.gameserver.handler.ItemHandler;
 import net.sf.l2j.gameserver.model.L2ItemInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PetInstance;
-import net.sf.l2j.gameserver.network.serverpackets.PetItemList;
+import net.sf.l2j.gameserver.network.serverpackets.PetInventoryUpdate;
 import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
 import net.sf.l2j.gameserver.templates.L2ArmorType;
 import net.sf.l2j.gameserver.templates.L2EtcItem;
 import net.sf.l2j.gameserver.templates.L2Item;
+import net.sf.l2j.gameserver.templates.L2Weapon;
 
 public class RequestPetUseItem extends L2GameClientPacket
 {
@@ -164,23 +165,16 @@ public class RequestPetUseItem extends L2GameClientPacket
 			return;
 		}
 		
-		if (item.isEquipable())
+		if (item.getItem() instanceof L2EtcItem)
 		{
-			useItem(pet, item, activeChar);
-		}
-		else
-		{
-			if (item.getItem() instanceof L2EtcItem)
+			IItemHandler handler = ItemHandler.getInstance().getHandler((L2EtcItem) item.getItem());
+			if (handler != null)
 			{
-				IItemHandler handler = ItemHandler.getInstance().getHandler((L2EtcItem) item.getItem());
-				if (handler != null)
-				{
-					useItem(pet, item, activeChar);
-				}
-				else
-				{
-					_log.warning("No item handler registered for pet item: " + item.getItemId());
-				}
+				useItem(pet, item, activeChar);
+			}
+			else
+			{
+				_log.warning("No item handler registered for pet item: " + item.getItemId());
 			}
 		}
 	}
@@ -190,37 +184,24 @@ public class RequestPetUseItem extends L2GameClientPacket
 		if (item.isEquipped())
 		{
 			pet.getInventory().unEquipItemInSlot(item.getEquipSlot());
-			switch (item.getItem().getBodyPart())
+			if (item.getItem() instanceof L2Weapon)
 			{
-				case L2Item.SLOT_R_HAND:
-					pet.setWeapon(0);
-					break;
-				case L2Item.SLOT_CHEST:
-					pet.setArmor(0);
-					break;
-				case L2Item.SLOT_NECK:
-					pet.setJewel(0);
-					break;
+				pet.setWeapon(0);
+			}
+			else
+			{
+				pet.setArmor(0);
 			}
 		}
 		else
 		{
-			pet.getInventory().equipItem(item);
-			switch (item.getItem().getBodyPart())
-			{
-				case L2Item.SLOT_R_HAND:
-					pet.setWeapon(item.getItemId());
-					break;
-				case L2Item.SLOT_CHEST:
-					pet.setArmor(item.getItemId());
-					break;
-				case L2Item.SLOT_NECK:
-					pet.setJewel(item.getItemId());
-					break;
-			}
+			pet.getInventory().equipPetItem(item);
 		}
 		
-		activeChar.sendPacket(new PetItemList(pet));
+		PetInventoryUpdate petIU = new PetInventoryUpdate();
+		petIU.addModifiedItem(item);
+		
+		activeChar.sendPacket(petIU);
 		pet.updateAndBroadcastStatus(1);
 	}
 	

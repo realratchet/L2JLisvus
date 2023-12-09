@@ -28,8 +28,6 @@ import net.sf.l2j.gameserver.network.serverpackets.ActionFailed;
  */
 public class ChestKey implements IItemHandler
 {
-    public static final int INTERACTION_DISTANCE = 100;
-    
     @Override
     public void useItem(L2PlayableInstance playable, L2ItemInstance item)
     {
@@ -57,7 +55,7 @@ public class ChestKey implements IItemHandler
             if (item.getItem().getSkills() != null)
             {
                 SkillHolder holder = item.getItem().getSkills()[0];
-                activeChar.useMagic(holder.getSkill(), false, false);
+                activeChar.useMagic(holder.getSkill(), false, false, item.getObjectId());
             }
         }
     }

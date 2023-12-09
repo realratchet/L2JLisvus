@@ -77,7 +77,7 @@ public class ItemSkills implements IItemHandler
 			}
 			else
 			{
-				playable.doCast(skill, true);
+				playable.useMagic(skill, false, false, item.getObjectId());
 			}
 		}
 	}

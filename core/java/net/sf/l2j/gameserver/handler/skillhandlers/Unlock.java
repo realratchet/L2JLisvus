@@ -37,7 +37,7 @@ public class Unlock implements ISkillHandler
 	};
 
 	@Override
-	public void useSkill(L2Character activeChar, L2Skill skill, L2Object[] targets, boolean isFirstCritical)
+	public void useSkill(L2Character activeChar, L2Skill skill, L2Object[] targets, boolean critOnFirstTarget)
 	{
 		for (L2Object target : targets)
 		{
@@ -219,7 +219,7 @@ public class Unlock implements ISkillHandler
 					chest.setSpecialDrop();
 					chest.setMustRewardExpSp(false);
 					chest.setInteracted();
-					chest.reduceCurrentHp(99999999, activeChar);
+					chest.doDie(activeChar);
 				}
 				else
 				{

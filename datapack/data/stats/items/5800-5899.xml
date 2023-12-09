@@ -74,6 +74,9 @@
     <cond msgId="1508">
       <player olympiad="false" />
     </cond>
+    <cond msgId="113" addName="true">
+      <player expertiseIndex="1"/>
+    </cond>
   </item>
   <item id="5804" name="Lucky Charm: C-Grade" type="EtcItem">
     <set name="etcitem_type" val="SCROLL" />
@@ -85,6 +88,9 @@
     <set name="item_skill" val="2168-3" />
     <cond msgId="1508">
       <player olympiad="false" />
+    </cond>
+    <cond msgId="113" addName="true">
+      <player expertiseIndex="2"/>
     </cond>
   </item>
   <item id="5805" name="Lucky Charm: B-Grade" type="EtcItem">
@@ -98,6 +104,9 @@
     <cond msgId="1508">
       <player olympiad="false" />
     </cond>
+    <cond msgId="113" addName="true">
+      <player expertiseIndex="3"/>
+    </cond>
   </item>
   <item id="5806" name="Lucky Charm: A-Grade" type="EtcItem">
     <set name="etcitem_type" val="SCROLL" />
@@ -110,6 +119,9 @@
     <cond msgId="1508">
       <player olympiad="false" />
     </cond>
+    <cond msgId="113" addName="true">
+      <player expertiseIndex="4"/>
+    </cond>
   </item>
   <item id="5807" name="Lucky Charm: S Grade" type="EtcItem">
     <set name="etcitem_type" val="SCROLL" />
@@ -121,6 +133,9 @@
     <set name="item_skill" val="2168-6" />
     <cond msgId="1508">
       <player olympiad="false" />
+    </cond>
+    <cond msgId="113" addName="true">
+      <player expertiseIndex="5"/>
     </cond>
   </item>
   <item id="5809" name="Spellbook: Aqua Splash" type="EtcItem">

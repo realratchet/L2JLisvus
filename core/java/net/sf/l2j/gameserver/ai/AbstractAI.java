@@ -126,11 +126,13 @@ abstract class AbstractAI implements Ctrl
 	/** Different targets this AI maintains */
 	private L2Object _target;
 	private L2Character _castTarget;
+
+	/** The skill we are currently casting by INTENTION_CAST */
+	private L2Skill _skill;
+	private int _controlItemObjectId = 0;
+
 	protected L2Character _attackTarget;
 	protected L2Character _followTarget;
-	
-	/** The skill we are currently casting by INTENTION_CAST */
-	L2Skill _skill;
 	
 	/** Different internal state flags */
 	private int _moveToPawnTimeout;
@@ -174,6 +176,11 @@ abstract class AbstractAI implements Ctrl
 	
 	protected synchronized void setCastTarget(L2Character target)
 	{
+		if (target == null)
+		{
+			_skill = null;
+			_controlItemObjectId = 0;
+		}
 		_castTarget = target;
 	}
 	
@@ -200,6 +207,26 @@ abstract class AbstractAI implements Ctrl
 	public L2Character getAttackTarget()
 	{
 		return _attackTarget;
+	}
+
+	protected void setCurrentSkill(L2Skill skill)
+	{
+		_skill = skill;
+	}
+
+	public L2Skill getCurrentSkill()
+	{
+		return _skill;
+	}
+
+	protected void setCurrentControlItemObjectId(int objectId)
+	{
+		_controlItemObjectId = objectId;
+	}
+
+	public int getCurrentControlItemObjectId()
+	{
+		return _controlItemObjectId;
 	}
 	
 	/**
@@ -248,6 +275,21 @@ abstract class AbstractAI implements Ctrl
 	{
 		setIntention(intention, arg0, null);
 	}
+
+	/**
+	 * Launch the L2CharacterAI onIntention method corresponding to the new Intention.<BR>
+	 * <BR>
+	 * <FONT COLOR=#FF0000><B> <U>Caution</U> : Stop the FOLLOW mode if necessary</B></FONT><BR>
+	 * <BR>
+	 * @param intention The new Intention to set to the AI
+	 * @param arg0 The first parameter of the Intention (optional target)
+	 * @param arg1 The first parameter of the Intention (optional target)
+	 */
+	@Override
+	public final void setIntention(CtrlIntention intention, Object arg0, Object arg1)
+	{
+		setIntention(intention, arg0, null, null);
+	}
 	
 	/**
 	 * Launch the L2CharacterAI onIntention method corresponding to the new Intention.<BR>
@@ -257,9 +299,10 @@ abstract class AbstractAI implements Ctrl
 	 * @param intention The new Intention to set to the AI
 	 * @param arg0 The first parameter of the Intention (optional target)
 	 * @param arg1 The second parameter of the Intention (optional target)
+	 * @param arg2 The third parameter of the Intention (optional target)
 	 */
 	@Override
-	public final void setIntention(CtrlIntention intention, Object arg0, Object arg1)
+	public final void setIntention(CtrlIntention intention, Object arg0, Object arg1, Object arg2)
 	{
 		if (_actor instanceof L2PcInstance)
 		{
@@ -291,7 +334,7 @@ abstract class AbstractAI implements Ctrl
 				onIntentionAttack((L2Character) arg0);
 				break;
 			case AI_INTENTION_CAST:
-				onIntentionCast((L2Skill) arg0, (L2Object) arg1);
+				onIntentionCast((L2Skill) arg0, (L2Object) arg1, arg2 != null ? (int)arg2 : null);
 				break;
 			case AI_INTENTION_MOVE_TO:
 				onIntentionMoveTo((Location) arg0);
@@ -428,7 +471,7 @@ abstract class AbstractAI implements Ctrl
 	
 	protected abstract void onIntentionAttack(L2Character target);
 	
-	protected abstract void onIntentionCast(L2Skill skill, L2Object target);
+	protected abstract void onIntentionCast(L2Skill skill, L2Object target, int controlItemObjectId);
 	
 	protected abstract void onIntentionMoveTo(Location loc);
 	
@@ -757,7 +800,7 @@ abstract class AbstractAI implements Ctrl
 		_actor.broadcastPacket(msg);
 		
 		// Init AI
-		_intention = AI_INTENTION_IDLE;
+		changeIntention(AI_INTENTION_IDLE, null, null);
 		_target = null;
 		_castTarget = null;
 		_attackTarget = null;

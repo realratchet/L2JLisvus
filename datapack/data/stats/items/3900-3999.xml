@@ -638,6 +638,7 @@
     <set name="is_stackable" val="true" />
     <set name="is_magical" val="true" />
     <set name="handler" val="BlessedSpiritShot" />
+    <set name="item_skill" val="2061-1" />
   </item>
   <item id="3948" name="Blessed Spiritshot: D-Grade" type="EtcItem">
     <set name="etcitem_type" val="SHOT" />
@@ -648,6 +649,7 @@
     <set name="is_stackable" val="true" />
     <set name="is_magical" val="true" />
     <set name="handler" val="BlessedSpiritShot" />
+    <set name="item_skill" val="2160-1" />
   </item>
   <item id="3949" name="Blessed Spiritshot: C-Grade" type="EtcItem">
     <set name="etcitem_type" val="SHOT" />
@@ -658,6 +660,7 @@
     <set name="is_stackable" val="true" />
     <set name="is_magical" val="true" />
     <set name="handler" val="BlessedSpiritShot" />
+    <set name="item_skill" val="2161-1" />
   </item>
   <item id="3950" name="Blessed Spiritshot: B-Grade" type="EtcItem">
     <set name="etcitem_type" val="SHOT" />
@@ -668,6 +671,7 @@
     <set name="is_stackable" val="true" />
     <set name="is_magical" val="true" />
     <set name="handler" val="BlessedSpiritShot" />
+    <set name="item_skill" val="2162-1" />
   </item>
   <item id="3951" name="Blessed Spiritshot: A-Grade" type="EtcItem">
     <set name="etcitem_type" val="SHOT" />
@@ -678,6 +682,7 @@
     <set name="is_stackable" val="true" />
     <set name="is_magical" val="true" />
     <set name="handler" val="BlessedSpiritShot" />
+    <set name="item_skill" val="2163-1" />
   </item>
   <item id="3952" name="Blessed Spiritshot: S Grade" type="EtcItem">
     <set name="etcitem_type" val="SHOT" />
@@ -688,6 +693,7 @@
     <set name="is_stackable" val="true" />
     <set name="is_magical" val="true" />
     <set name="handler" val="BlessedSpiritShot" />
+    <set name="item_skill" val="2164-1" />
   </item>
   <item id="3953" name="Recipe: Blessed Spiritshot D" type="EtcItem">
     <set name="etcitem_type" val="RECIPE" />

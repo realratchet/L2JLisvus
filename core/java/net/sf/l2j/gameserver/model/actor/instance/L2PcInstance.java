@@ -3493,6 +3493,8 @@ public final class L2PcInstance extends L2PlayableInstance
 		}
 		else if (target instanceof PetInventory)
 		{
+			L2PetInstance targetPet = ((PetInventory) target).getOwner();
+
 			PetInventoryUpdate petIU = new PetInventoryUpdate();
 			if (newItem.getCount() > count)
 			{
@@ -3503,8 +3505,8 @@ public final class L2PcInstance extends L2PlayableInstance
 				petIU.addNewItem(newItem);
 			}
 			
-			((PetInventory) target).getOwner().getOwner().sendPacket(petIU);
-			getPet().getInventory().refreshWeight();
+			targetPet.getOwner().sendPacket(petIU);
+			targetPet.getInventory().refreshWeight();
 		}
 		
 		return newItem;
@@ -4217,7 +4219,8 @@ public final class L2PcInstance extends L2PlayableInstance
 	 * <BR>
 	 * @param object The L2ItemInstance to pick up
 	 */
-	protected void doPickupItem(L2Object object)
+	@Override
+	public void doPickupItem(L2Object object)
 	{
 		if (isAlikeDead() || isFakeDeath())
 		{
@@ -6645,6 +6648,7 @@ public final class L2PcInstance extends L2PlayableInstance
 	 * Update L2PcInstance stats in the characters table of the database.<BR>
 	 * <BR>
 	 */
+	@Override
 	public void store()
 	{
 		storeCharBase();
@@ -7725,8 +7729,10 @@ public final class L2PcInstance extends L2PlayableInstance
 	 * @param skill The L2Skill to use
 	 * @param forceUse used to force ATTACK on players
 	 * @param dontMove used to prevent movement, if not in range
+	 * @param controlItemObjectId used for pet collars and item cast distinction
 	 */
-	public void useMagic(L2Skill skill, boolean forceUse, boolean dontMove)
+	@Override
+	public void useMagic(L2Skill skill, boolean forceUse, boolean dontMove, int controlItemObjectId)
 	{
 		// Check if the skill is active
 		if (skill.isPassive())
@@ -7816,17 +7822,17 @@ public final class L2PcInstance extends L2PlayableInstance
 			}
 			
 			// Create a new SkillUseHolder and queue it in the player _queuedSkill
-			setQueuedSkill(skill, forceUse, dontMove);
+			setQueuedSkill(skill, forceUse, dontMove, controlItemObjectId);
 			sendPacket(new ActionFailed());
 			return;
 		}
 		
 		// If all conditions are checked, create a new SkillUseHolder and set the player _currentSkill
-		setCurrentSkill(skill, forceUse, dontMove);
+		setCurrentSkill(skill, forceUse, dontMove, controlItemObjectId);
 		
 		if (queuedSkill != null)
 		{
-			setQueuedSkill(null, false, false);
+			setQueuedSkill(null, false, false, 0);
 		}
 		
 		// ************************************* Check Target *******************************************
@@ -8061,7 +8067,7 @@ public final class L2PcInstance extends L2PlayableInstance
 		}
 		
 		// Notify the AI with AI_INTENTION_CAST and target
-		getAI().setIntention(CtrlIntention.AI_INTENTION_CAST, skill, target);
+		getAI().setIntention(CtrlIntention.AI_INTENTION_CAST, skill, target, controlItemObjectId);
 		
 	}
 	
@@ -11082,8 +11088,9 @@ public final class L2PcInstance extends L2PlayableInstance
 	 * @param currentSkill
 	 * @param ctrlPressed
 	 * @param shiftPressed
+	 * @param controlItemObjectId 
 	 */
-	public void setCurrentSkill(L2Skill currentSkill, boolean ctrlPressed, boolean shiftPressed)
+	public void setCurrentSkill(L2Skill currentSkill, boolean ctrlPressed, boolean shiftPressed, int controlItemObjectId)
 	{
 		if (currentSkill == null)
 		{
@@ -11101,7 +11108,7 @@ public final class L2PcInstance extends L2PlayableInstance
 			_log.info("Setting current skill: " + currentSkill.getName() + " (ID: " + currentSkill.getId() + ") for " + getName() + ".");
 		}
 		
-		_currentSkill = new SkillUseHolder(currentSkill, ctrlPressed, shiftPressed);
+		_currentSkill = new SkillUseHolder(currentSkill, ctrlPressed, shiftPressed, controlItemObjectId);
 	}
 	
 	/**
@@ -11120,8 +11127,9 @@ public final class L2PcInstance extends L2PlayableInstance
 	 * @param currentPetSkill
 	 * @param ctrlPressed
 	 * @param shiftPressed
+	 * @param controlItemObjectId 
 	 */
-	public void setCurrentPetSkill(L2Skill currentPetSkill, boolean ctrlPressed, boolean shiftPressed)
+	public void setCurrentPetSkill(L2Skill currentPetSkill, boolean ctrlPressed, boolean shiftPressed, int controlItemObjectId)
 	{
 		if (currentPetSkill == null)
 		{
@@ -11139,7 +11147,7 @@ public final class L2PcInstance extends L2PlayableInstance
 			_log.info("Setting current pet skill: " + currentPetSkill.getName() + " (ID: " + currentPetSkill.getId() + ") for " + getName() + ".");
 		}
 		
-		_currentPetSkill = new SkillUseHolder(currentPetSkill, ctrlPressed, shiftPressed);
+		_currentPetSkill = new SkillUseHolder(currentPetSkill, ctrlPressed, shiftPressed, controlItemObjectId);
 	}
 	
 	public SkillUseHolder getQueuedSkill()
@@ -11153,8 +11161,9 @@ public final class L2PcInstance extends L2PlayableInstance
 	 * @param queuedSkill
 	 * @param ctrlPressed
 	 * @param shiftPressed
+	 * @param controlItemObjectId 
 	 */
-	public void setQueuedSkill(L2Skill queuedSkill, boolean ctrlPressed, boolean shiftPressed)
+	public void setQueuedSkill(L2Skill queuedSkill, boolean ctrlPressed, boolean shiftPressed, int controlItemObjectId)
 	{
 		if (queuedSkill == null)
 		{
@@ -11172,7 +11181,7 @@ public final class L2PcInstance extends L2PlayableInstance
 			_log.info("Setting queued skill: " + queuedSkill.getName() + " (ID: " + queuedSkill.getId() + ") for " + getName() + ".");
 		}
 		
-		_queuedSkill = new SkillUseHolder(queuedSkill, ctrlPressed, shiftPressed);
+		_queuedSkill = new SkillUseHolder(queuedSkill, ctrlPressed, shiftPressed, controlItemObjectId);
 	}
 	
 	public boolean isChatBanned()

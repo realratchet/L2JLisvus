@@ -41,6 +41,7 @@ import net.sf.l2j.gameserver.model.SpawnListener;
 import net.sf.l2j.gameserver.model.actor.instance.L2FestivalMonsterInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2NpcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.network.clientpackets.Say2;
 import net.sf.l2j.gameserver.network.serverpackets.CreatureSay;
 import net.sf.l2j.gameserver.network.serverpackets.MagicSkillUse;
 import net.sf.l2j.gameserver.templates.L2NpcTemplate;
@@ -1595,10 +1596,10 @@ public class SevenSignsFestival implements SpawnListener
         if (_dawnChatGuide == null || _duskChatGuide == null) 
             return;
 
-        CreatureSay cs = new CreatureSay(_dawnChatGuide.getObjectId(), 1, senderName, message);
+        CreatureSay cs = new CreatureSay(_dawnChatGuide.getObjectId(), Say2.SHOUT, senderName, message);
         _dawnChatGuide.broadcastPacket(cs);
         
-        cs = new CreatureSay(_duskChatGuide.getObjectId(), 1, senderName, message);
+        cs = new CreatureSay(_duskChatGuide.getObjectId(), Say2.SHOUT, senderName, message);
         _duskChatGuide.broadcastPacket(cs);
     }
     
@@ -2167,7 +2168,7 @@ public class SevenSignsFestival implements SpawnListener
         {
         	if (_participants != null && !_participants.isEmpty())
 			{
-				_witchInst.broadcastPacket(new CreatureSay(_witchInst.getObjectId(), 0, "Festival Witch", message));
+				_witchInst.broadcastPacket(new CreatureSay(_witchInst.getObjectId(), Say2.ALL, "Festival Witch", message));
 			}
         }
         

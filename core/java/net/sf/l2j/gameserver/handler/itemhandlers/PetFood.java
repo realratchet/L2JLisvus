@@ -60,13 +60,17 @@ public class PetFood implements IItemHandler
 			L2PcInstance player = ((L2PcInstance) playable);
 			if (!player.isMounted())
 			{
-				player.sendPacket(new SystemMessage(SystemMessage.S1_CANNOT_BE_USED));
+				SystemMessage sm = new SystemMessage(SystemMessage.S1_CANNOT_BE_USED);
+				sm.addItemName(item.getItemId());
+				player.sendPacket(sm);
 				return;
 			}
 			
 			if (!canEatFood(player, item))
 			{
-				playable.sendPacket(new SystemMessage(SystemMessage.S1_CANNOT_BE_USED));
+				SystemMessage sm = new SystemMessage(SystemMessage.S1_CANNOT_BE_USED);
+				sm.addItemName(item.getItemId());
+				player.sendPacket(sm);
 				return;
 			}
 			
@@ -77,7 +81,7 @@ public class PetFood implements IItemHandler
 			}
 		}
 	}
-
+	
 	private boolean canEatFood(L2PcInstance player, L2ItemInstance item)
 	{
 		boolean canUse = false;
@@ -108,7 +112,7 @@ public class PetFood implements IItemHandler
 		{
 			canUse = true;
 		}
-
+		
 		return canUse;
 	}
 }

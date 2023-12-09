@@ -47,7 +47,7 @@ public class RollingDice implements IItemHandler
 
         if (!activeChar.getFloodProtectors().getRollDice().tryPerformAction("roll dice"))
         {
-            activeChar.sendPacket(new SystemMessage(835));
+            activeChar.sendPacket(new SystemMessage(SystemMessage.YOU_MAY_NOT_THROW_THE_DICE_AT_THIS_TIME_TRY_AGAIN_LATER));
             return;
         }
 

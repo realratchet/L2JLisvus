@@ -80,10 +80,15 @@ public class ScrollOfEscape implements IItemHandler
             return;
         }
         
+		if (!activeChar.destroyItem("Consume", item.getObjectId(), 1, null, false))
+		{
+			return;
+		}
+        
         if (item.getItem().getSkills() != null)
         {
             SkillHolder holder = item.getItem().getSkills()[0];
-            activeChar.useMagic(holder.getSkill(), true, true);
+            activeChar.useMagic(holder.getSkill(), false, false, item.getObjectId());
         }
     }
 }

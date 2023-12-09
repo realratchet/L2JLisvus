@@ -528,10 +528,10 @@
   </for>
 </skill>
 <skill id="2065" levels="8" name="Box Key">
-  <set name="target" val="TARGET_NONE"/>
+  <set name="target" val="TARGET_UNLOCKABLE"/>
   <set name="hitTime" val="500"/>
   <set name="staticHitTime" val="true" />
-  <set name="skillType" val="NOTDONE"/>
+  <set name="skillType" val="UNLOCK"/>
   <set name="operateType" val="OP_ACTIVE"/>
   <set name="castRange" val="40"/>
   <set name="effectRange" val="400"/>
@@ -747,9 +747,10 @@
   <set name="effectRange" val="100"/>
 </skill>
 <skill id="2099" levels="1" name="Escape: 5 minutes">
-  <set name="target" val="TARGET_NONE"/>
-  <set name="hitTime" val="100000"/>
-  <set name="skillType" val="NOTDONE"/>
+  <set name="target" val="TARGET_SELF"/>
+  <set name="hitTime" val="300000"/>
+  <set name="staticHitTime" val="true" />
+  <set name="skillType" val="TELEPORT"/>
   <set name="operateType" val="OP_ACTIVE"/>
 </skill>
 </list>

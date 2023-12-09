@@ -387,6 +387,7 @@ public class SystemMessage extends L2GameServerPacket
 	public static final int ONLY_VIEW_SIEGE = 780;
 	public static final int OBSERVERS_CANNOT_PARTICIPATE = 781;
 	public static final int YOU_ARE_NOT_AUTHORIZED = 794;
+	public static final int STUCK_TRANSPORT_IN_FIVE_MINUTES = 809;
 	public static final int MONSRACE_TICKETS_AVAILABLE_FOR_S1_RACE = 816;
 	public static final int MONSRACE_TICKETS_NOW_AVAILABLE_FOR_S1_RACE = 817;
 	public static final int MONSRACE_TICKETS_STOP_IN_S1_MINUTES = 818;
@@ -405,6 +406,7 @@ public class SystemMessage extends L2GameServerPacket
 	public static final int THAT_CHARACTER_IS_RECOMMENDED = 832;
 	public static final int NO_MORE_RECOMMENDATIONS_TO_HAVE = 833;
 	public static final int S1_ROLLED_S2 = 834;
+	public static final int YOU_MAY_NOT_THROW_THE_DICE_AT_THIS_TIME_TRY_AGAIN_LATER = 835;
 	public static final int RECIPE_ALREADY_REGISTERED = 840;
 	public static final int NO_FUTHER_RECIPES_CAN_BE_ADDED = 841;
 	public static final int SIEGE_OF_S1_HAS_BEEN_CANCELED_DUE_TO_LACK_OF_INTEREST = 846;
@@ -471,6 +473,7 @@ public class SystemMessage extends L2GameServerPacket
 	public static final int YOU_HAVE_EXCEEDED_QUANTITY_THAT_CAN_BE_INPUTTED = 1036;
 	public static final int ONLY_CLAN_LEADER_CAN_RETRIEVE_ITEMS_FROM_CLAN_WAREHOUSE = 1039;
 	public static final int PACKAGES_CAN_ONLY_BE_RETRIEVED_HERE = 1040;
+	public static final int NO_UNSTUCK_PLEASE_SEND_PETITION = 1043;
 	public static final int MONSRACE_NO_PAYOUT_INFO = 1044;
 	public static final int MONSRACE_TICKETS_NOT_AVAILABLE = 1046;
 	public static final int NO_CB_IN_MY_CLAN = 1050;

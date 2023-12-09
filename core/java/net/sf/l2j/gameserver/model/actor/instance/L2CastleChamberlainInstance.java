@@ -1218,7 +1218,7 @@ public class L2CastleChamberlainInstance extends L2FolkInstance
 				
 				try
 				{
-					int skill_id = Integer.parseInt(val);
+					int skillId = Integer.parseInt(val);
 					
 					try
 					{
@@ -1233,14 +1233,14 @@ public class L2CastleChamberlainInstance extends L2FolkInstance
 						}
 						
 						NpcHtmlMessage html = new NpcHtmlMessage(1);
-						int skill_lvl = 0;
+						int skillLevel = 0;
 						
 						if (st.countTokens() >= 1)
 						{
-							skill_lvl = Integer.parseInt(st.nextToken());
+							skillLevel = Integer.parseInt(st.nextToken());
 						}
 						
-						skill = SkillTable.getInstance().getInfo(skill_id, skill_lvl);
+						skill = SkillTable.getInstance().getInfo(skillId, skillLevel);
 						if (skill.getSkillType() == L2Skill.SkillType.SUMMON)
 						{
 							player.doCast(skill);

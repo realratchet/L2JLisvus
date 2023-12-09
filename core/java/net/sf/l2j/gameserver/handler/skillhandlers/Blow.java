@@ -45,7 +45,7 @@ public class Blow implements ISkillHandler
 	public final static byte BEHIND = 70;
 	
 	@Override
-	public void useSkill(L2Character activeChar, L2Skill skill, L2Object[] targets, boolean isFirstCritical)
+	public void useSkill(L2Character activeChar, L2Skill skill, L2Object[] targets, boolean critOnFirstTarget)
 	{
 		if (activeChar.isAlikeDead())
 		{
@@ -68,7 +68,7 @@ public class Blow implements ISkillHandler
 			}
 
 			// For the first target, it's already calculated
-			boolean success = i == 0 ? isFirstCritical : isCriticalHit(activeChar, skill, target);
+			boolean success = i == 0 ? critOnFirstTarget : isCriticalHit(activeChar, skill, target);
 			if (success)
 			{
 				L2ItemInstance weapon = activeChar.getActiveWeaponInstance();

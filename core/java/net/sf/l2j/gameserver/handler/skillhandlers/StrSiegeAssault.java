@@ -35,7 +35,7 @@ public class StrSiegeAssault implements ISkillHandler
 	};
 	
 	@Override
-	public void useSkill(L2Character activeChar, L2Skill skill, L2Object[] targets, boolean isFirstCritical)
+	public void useSkill(L2Character activeChar, L2Skill skill, L2Object[] targets, boolean critOnFirstTarget)
 	{
 		if ((activeChar == null) || !(activeChar instanceof L2PcInstance))
 		{
@@ -67,7 +67,7 @@ public class StrSiegeAssault implements ISkillHandler
 			L2ItemInstance weapon = activeChar.getActiveWeaponInstance();
 			boolean dual = activeChar.isUsingDualWeapon();
 			boolean shld = Formulas.getInstance().calcShldUse(activeChar, target);
-			boolean crit = (i == 0 ? isFirstCritical : isCriticalHit(activeChar, skill, target));
+			boolean crit = (i == 0 ? critOnFirstTarget : isCriticalHit(activeChar, skill, target));
 			boolean soul = (weapon != null && weapon.getChargedSoulShot() == L2ItemInstance.CHARGED_SOULSHOT);
 			
 			damage = (int) Formulas.getInstance().calcPhysDam(activeChar, target, skill, shld, crit, dual, soul);

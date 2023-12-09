@@ -236,7 +236,7 @@ public class RequestDropItem extends L2GameClientPacket
 		{
 			String msg = "Character (" + activeChar.getName() + ") has dropped (" + droppedItem.getCount() + ") adena at (" + _x + "," + _y + "," + _z + ")";
 			_log.warning(msg);
-			GmListTable.broadcastMessageToGMs(msg);
+			GmListTable.getInstance().broadcastMessageToGMs(msg);
 		}
 	}
 

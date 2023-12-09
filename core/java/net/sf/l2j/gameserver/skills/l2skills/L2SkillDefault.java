@@ -28,7 +28,7 @@ public class L2SkillDefault extends L2Skill
 	}
 	
 	@Override
-	public void useSkill(L2Character activeChar, L2Object[] targets, boolean isFirstCritical)
+	public void useSkill(L2Character activeChar, L2Object[] targets, boolean critOnFirstTarget)
 	{
 		activeChar.sendPacket(new ActionFailed());
 		activeChar.sendMessage("Skill not implemented.  Skill ID: " + getId() + " " + getSkillType());

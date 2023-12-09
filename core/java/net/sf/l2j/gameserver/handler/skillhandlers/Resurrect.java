@@ -39,18 +39,14 @@ public class Resurrect implements ISkillHandler
 	};
 	
 	@Override
-	public void useSkill(L2Character activeChar, L2Skill skill, L2Object[] targets, boolean isFirstCritical)
+	public void useSkill(L2Character activeChar, L2Skill skill, L2Object[] targets, boolean critOnFirstTarget)
 	{
-		L2PcInstance player = null;
-		if (activeChar instanceof L2PcInstance)
-		{
-			player = (L2PcInstance) activeChar;
-		}
-		
-		if (player == null)
+		if ((activeChar == null) || !(activeChar instanceof L2PcInstance))
 		{
 			return;
 		}
+
+		final L2PcInstance player = (L2PcInstance) activeChar;
 		
 		if (player.isFestivalParticipant())
 		{

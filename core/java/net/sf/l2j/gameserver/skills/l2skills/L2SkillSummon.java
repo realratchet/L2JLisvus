@@ -106,7 +106,7 @@ public class L2SkillSummon extends L2Skill
 	}
 	
 	@Override
-	public void useSkill(L2Character activeChar, L2Object[] targets, boolean isFirstCritical)
+	public void useSkill(L2Character activeChar, L2Object[] targets, boolean critOnFirstTarget)
 	{
 		if (activeChar.isAlikeDead() || !(activeChar instanceof L2PcInstance))
 		{

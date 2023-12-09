@@ -39,7 +39,7 @@ public class L2BoatAI extends L2CharacterAI
     }
 
     @Override
-    protected void onIntentionCast(L2Skill skill, L2Object target)
+    protected void onIntentionCast(L2Skill skill, L2Object target, int controlItemObjectId)
     {
     }
 

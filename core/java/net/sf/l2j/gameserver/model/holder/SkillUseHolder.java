@@ -23,12 +23,14 @@ public class SkillUseHolder extends SkillHolder
 {
     private final boolean _ctrlPressed;
     private final boolean _shiftPressed;
+    private final int _controlItemObjectId;
     
-    public SkillUseHolder(L2Skill skill, boolean ctrlPressed, boolean shiftPressed)
+    public SkillUseHolder(L2Skill skill, boolean ctrlPressed, boolean shiftPressed, int controlItemObjectId)
     {
         super(skill);
         _ctrlPressed = ctrlPressed;
         _shiftPressed = shiftPressed;
+        _controlItemObjectId = controlItemObjectId;
     }
     
     public boolean isCtrlPressed()
@@ -39,5 +41,10 @@ public class SkillUseHolder extends SkillHolder
     public boolean isShiftPressed()
     {
         return _shiftPressed;
+    }
+
+    public int getControlItemObjectId()
+    {
+        return _controlItemObjectId;
     }
 }

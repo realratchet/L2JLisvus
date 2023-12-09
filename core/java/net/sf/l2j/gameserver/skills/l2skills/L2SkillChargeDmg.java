@@ -69,7 +69,7 @@ public class L2SkillChargeDmg extends L2Skill
 	}
 	
 	@Override
-	public void useSkill(L2Character activeChar, L2Object[] targets, boolean isFirstCritical)
+	public void useSkill(L2Character activeChar, L2Object[] targets, boolean critOnFirstTarget)
 	{
 		if (activeChar.isAlikeDead() || !(activeChar instanceof L2PcInstance))
 		{
@@ -101,7 +101,7 @@ public class L2SkillChargeDmg extends L2Skill
 			boolean crit = false;
 			if (getBaseCritRate() > 0)
 			{
-				crit = i == 0 ? isFirstCritical : isCritical(activeChar, target);
+				crit = i == 0 ? critOnFirstTarget : isCritical(activeChar, target);
 			}
 			
 			double damage = Formulas.getInstance().calcPhysDam(activeChar, target, this, shld, false, false, soul);

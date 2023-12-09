@@ -617,19 +617,18 @@ public abstract class L2Summon extends L2PlayableInstance
         return null;
     }
 	
-	protected void doPickupItem(L2Object object)
+	@Override
+	public void doPickupItem(L2Object object)
 	{
-		
 	}
 	
 	public void giveAllToOwner()
 	{
-		
 	}
 	
+	@Override
 	public void store()
 	{
-		
 	}
 	
 	@Override
@@ -703,8 +702,10 @@ public abstract class L2Summon extends L2PlayableInstance
 	 * @param skill The L2Skill to use
 	 * @param forceUse used to force ATTACK on players
 	 * @param dontMove used to prevent movement, if not in range
+	 * @param controlItemObjectId
 	 */
-	public void useMagic(L2Skill skill, boolean forceUse, boolean dontMove)
+	@Override
+	public void useMagic(L2Skill skill, boolean forceUse, boolean dontMove, int controlItemObjectId)
 	{
 		if (skill == null || isDead())
 		{
@@ -854,10 +855,10 @@ public abstract class L2Summon extends L2PlayableInstance
 		}
 		
 		// If all conditions are checked, create a new SkillUseHolder and set the owner _currentPetSkill
-		_owner.setCurrentPetSkill(skill, forceUse, dontMove);
+		_owner.setCurrentPetSkill(skill, forceUse, dontMove, controlItemObjectId);
 		
 		// Notify the AI with AI_INTENTION_CAST and target
-		getAI().setIntention(CtrlIntention.AI_INTENTION_CAST, skill, target);
+		getAI().setIntention(CtrlIntention.AI_INTENTION_CAST, skill, target, controlItemObjectId);
 	}
 
 	public void setOwner(L2PcInstance newOwner)
@@ -897,14 +898,7 @@ public abstract class L2Summon extends L2PlayableInstance
 		}
 		
 		L2Skill skillToCast = SkillTable.getInstance().getInfo(skill.getId(), skillLevel);
-		if (skillToCast != null)
-		{
-			super.doCast(skillToCast);
-		}
-		else
-		{
-			super.doCast(skill);
-		}
+		super.doCast(skillToCast != null ? skillToCast : skill);
 	}
 	
 	@Override

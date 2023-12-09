@@ -14,8 +14,6 @@
  */
 package net.sf.l2j.gameserver.handler.itemhandlers;
 
-import net.sf.l2j.gameserver.GameTimeController;
-import net.sf.l2j.gameserver.ThreadPoolManager;
 import net.sf.l2j.gameserver.datatables.NpcTable;
 import net.sf.l2j.gameserver.datatables.SummonItemsData;
 import net.sf.l2j.gameserver.handler.IItemHandler;
@@ -26,14 +24,9 @@ import net.sf.l2j.gameserver.model.L2Spawn;
 import net.sf.l2j.gameserver.model.L2SummonItem;
 import net.sf.l2j.gameserver.model.L2World;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.model.actor.instance.L2PetInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PlayableInstance;
 import net.sf.l2j.gameserver.model.eventgame.L2Event;
 import net.sf.l2j.gameserver.model.holder.SkillHolder;
-import net.sf.l2j.gameserver.network.serverpackets.MagicSkillLaunched;
-import net.sf.l2j.gameserver.network.serverpackets.MagicSkillUse;
-import net.sf.l2j.gameserver.network.serverpackets.PetItemList;
-import net.sf.l2j.gameserver.network.serverpackets.SetupGauge;
 import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
 import net.sf.l2j.gameserver.templates.L2NpcTemplate;
 
@@ -45,6 +38,12 @@ public class SummonItems implements IItemHandler
     @Override
     public void useItem(L2PlayableInstance playable, L2ItemInstance item)
     {
+        L2SummonItem summonItem = SummonItemsData.getInstance().getSummonItem(item.getItemId());
+        if (summonItem == null)
+        {
+            return;
+        }
+        
         if (!(playable instanceof L2PcInstance))
             return;
         
@@ -78,13 +77,6 @@ public class SummonItems implements IItemHandler
         if (activeChar.isAllSkillsDisabled())
             return;
         
-        L2SummonItem summonItem = SummonItemsData.getInstance().getSummonItem(item.getItemId());
-        if ((activeChar.getPet() != null || activeChar.isMounted()) && summonItem.isPetSummon())
-        {
-            activeChar.sendPacket(new SystemMessage(SystemMessage.YOU_ALREADY_HAVE_A_PET));
-            return;
-        }
-        
         if (activeChar.isAttackingNow() || activeChar.isRooted())
         {
             activeChar.sendPacket(new SystemMessage(SystemMessage.YOU_CANNOT_SUMMON_IN_COMBAT));
@@ -99,13 +91,13 @@ public class SummonItems implements IItemHandler
         if (npcTemplate == null)
             return;
         
-        activeChar.stopMove(null);
-        
         switch (summonItem.getType())
         {
             case 0: // Static summons (like Christmas tree)
                 try
                 {
+                    activeChar.stopMove(null);
+                    
                     L2Spawn spawn = new L2Spawn(npcTemplate);
                     spawn.setId(IdFactory.getInstance().getNextId());
                     spawn.setLocX(activeChar.getX());
@@ -125,156 +117,16 @@ public class SummonItems implements IItemHandler
                 {
                     SkillHolder holder = item.getItem().getSkills()[0];
                     L2Skill skill = holder.getSkill();
-                    
-                    activeChar.broadcastPacket(new MagicSkillUse(activeChar, skill.getId(), skill.getLevel(), skill.getHitTime(), 0));
-                    activeChar.sendPacket(new SetupGauge(SetupGauge.BLUE, 5000));
-                    activeChar.sendPacket(new SystemMessage(SystemMessage.SUMMON_A_PET));
-                    
-                    activeChar.disableAllSkills();
-                    
-                    PetSummonFinalizer psf = new PetSummonFinalizer(activeChar, npcTemplate, item);
-                    activeChar.setSkillCast(ThreadPoolManager.getInstance().scheduleEffect(psf, skill.getHitTime()));
-                    activeChar.setSkillCastEndTime(10 + GameTimeController.getInstance().getGameTicks() + skill.getHitTime() / GameTimeController.MILLIS_IN_TICK);
+                    if (skill != null)
+                    {
+                        activeChar.useMagic(holder.getSkill(), false, false, item.getObjectId());
+                    }
                 }
                 break;
             case 2: // Wyvern
+                activeChar.stopMove(null);
                 activeChar.mount(summonItem.getNpcId(), item.getObjectId(), true);
                 break;
-        }
-    }
-    
-    static class PetSummonFeedWait implements Runnable
-    {
-        private L2PcInstance _activeChar;
-        private L2PetInstance _petSummon;
-        
-        PetSummonFeedWait(L2PcInstance activeChar, L2PetInstance petSummon)
-        {
-            _activeChar = activeChar;
-            _petSummon = petSummon;
-        }
-        
-        @Override
-        public void run()
-        {
-            try
-            {
-                if (_petSummon.getCurrentFed() <= 0)
-                    _petSummon.unSummon(_activeChar);
-                else
-                    _petSummon.startFeed();
-            }
-            catch (Throwable e)
-            {
-            }
-        }
-    }
-    
-    static class PetSummonFinalizer implements Runnable
-    {
-        private L2PcInstance _activeChar;
-        private L2ItemInstance _item;
-        private L2NpcTemplate _npcTemplate;
-        
-        PetSummonFinalizer(L2PcInstance activeChar, L2NpcTemplate npcTemplate, L2ItemInstance item)
-        {
-            _activeChar = activeChar;
-            _npcTemplate = npcTemplate;
-            _item = item;
-        }
-        
-        @Override
-        public void run()
-        {
-            try
-            {
-                SkillHolder holder = _item.getItem().getSkills()[0];
-                _activeChar.sendPacket(new MagicSkillLaunched(_activeChar, holder.getId(), holder.getLevel()));
-                
-                _activeChar.enableAllSkills();
-                
-                L2PetInstance petSummon = L2PetInstance.spawnPet(_npcTemplate, _activeChar, _item);
-                if (petSummon == null)
-                    return;
-                
-                //petSummon.setTitle(_activeChar.getName());
-                
-                if (!petSummon.isRespawned())
-                {
-                    petSummon.setCurrentHp(petSummon.getMaxHp());
-                    petSummon.setCurrentMp(petSummon.getMaxMp());
-                    petSummon.getStat().setExp(petSummon.getExpForThisLevel());
-                    petSummon.setCurrentFed(petSummon.getMaxFed());
-                }
-                
-                petSummon.setRunning();
-                
-                if (!petSummon.isRespawned())
-                    petSummon.store();
-                
-                _activeChar.setPet(petSummon);
-                
-                L2World.getInstance().storeObject(petSummon);
-                // Use the position that was already set in L2Summon constructor
-                petSummon.spawnMe(petSummon.getX(), petSummon.getY(), petSummon.getZ());
-                petSummon.startFeed();
-                _item.setEnchantLevel(petSummon.getLevel());
-                
-                if (petSummon.getCurrentFed() <= 0)
-                    ThreadPoolManager.getInstance().scheduleGeneral(new PetSummonFeedWait(_activeChar, petSummon), 60000);
-                else
-                    petSummon.startFeed();
-                
-                petSummon.setFollowStatus(true);
-                petSummon.setShowSummonAnimation(false);
-                int weaponId = petSummon.getWeapon();
-                int armorId = petSummon.getArmor();
-                int jewelId = petSummon.getJewel();
-                if (weaponId > 0 && petSummon.getOwner().getInventory().getItemByItemId(weaponId) != null)
-                {
-                    L2ItemInstance item = petSummon.getOwner().getInventory().getItemByItemId(weaponId);
-                    L2ItemInstance newItem = petSummon.getOwner().transferItem("Transfer", item.getObjectId(), 1, petSummon.getInventory(), petSummon);
-                    
-                    if (newItem == null)
-                        petSummon.setWeapon(0);
-                    else
-                        petSummon.getInventory().equipItem(newItem);
-                }
-                else
-                    petSummon.setWeapon(0);
-                
-                if (armorId > 0 && petSummon.getOwner().getInventory().getItemByItemId(armorId) != null)
-                {
-                    L2ItemInstance item = petSummon.getOwner().getInventory().getItemByItemId(armorId);
-                    L2ItemInstance newItem = petSummon.getOwner().transferItem("Transfer", item.getObjectId(), 1, petSummon.getInventory(), petSummon);
-                    
-                    if (newItem == null)
-                        petSummon.setArmor(0);
-                    else
-                        petSummon.getInventory().equipItem(newItem);
-                }
-                else
-                    petSummon.setArmor(0);
-                
-                if (jewelId > 0 && petSummon.getOwner().getInventory().getItemByItemId(jewelId) != null)
-                {
-                    L2ItemInstance item = petSummon.getOwner().getInventory().getItemByItemId(jewelId);
-                    L2ItemInstance newItem = petSummon.getOwner().transferItem("Transfer", item.getObjectId(), 1, petSummon.getInventory(), petSummon);
-                    
-                    if (newItem == null)
-                        petSummon.setJewel(0);
-                    else
-                        petSummon.getInventory().equipItem(newItem);
-                }
-                else
-                    petSummon.setJewel(0);
-                
-                petSummon.getOwner().sendPacket(new PetItemList(petSummon));
-                petSummon.broadcastStatusUpdate();
-            }
-            catch (Throwable e)
-            {
-            }
         }
     }
 }

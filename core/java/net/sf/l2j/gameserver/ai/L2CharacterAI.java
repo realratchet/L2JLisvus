@@ -284,7 +284,7 @@ public class L2CharacterAI extends AbstractAI
 	 * <BR>
 	 */
 	@Override
-	protected void onIntentionCast(L2Skill skill, L2Object target)
+	protected void onIntentionCast(L2Skill skill, L2Object target, int controlItemObjectId)
 	{
 		if ((getIntention() == AI_INTENTION_REST) && skill.isMagic())
 		{
@@ -303,7 +303,8 @@ public class L2CharacterAI extends AbstractAI
 		}
 
 		// Set the AI skill used by INTENTION_CAST
-		_skill = skill;
+		setCurrentSkill(skill);
+		setCurrentControlItemObjectId(controlItemObjectId);
 
 		// Change the Intention of this AbstractAI to AI_INTENTION_CAST
 		changeIntention(AI_INTENTION_CAST, skill, target);
@@ -929,7 +930,7 @@ public class L2CharacterAI extends AbstractAI
 		clientStopMoving(null);
 
 		// Init AI
-		_intention = AI_INTENTION_IDLE;
+		changeIntention(AI_INTENTION_IDLE, null, null);
 		setTarget(null);
 		setCastTarget(null);
 		setAttackTarget(null);

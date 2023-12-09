@@ -2,9 +2,10 @@
 <!DOCTYPE xml>
 <list>
 <skill id="2100" levels="1" name="Escape: 1 second">
-  <set name="target" val="TARGET_NONE"/>
+  <set name="target" val="TARGET_SELF"/>
   <set name="hitTime" val="1000"/>
-  <set name="skillType" val="NOTDONE"/>
+  <set name="staticHitTime" val="true" />
+  <set name="skillType" val="TELEPORT"/>
   <set name="operateType" val="OP_ACTIVE"/>
 </skill>
 <skill id="2101" levels="1" name="Feed: General Strider">

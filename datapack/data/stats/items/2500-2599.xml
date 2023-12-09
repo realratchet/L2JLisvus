@@ -173,7 +173,7 @@
     <set name="is_stackable" val="true" />
     <set name="is_magical" val="true" />
     <set name="handler" val="SpiritShot" />
-    <set name="item_skill" val="2061-1" />
+    <set name="item_skill" val="2047-1" />
   </item>
   <item id="2510" name="Spiritshot: D-grade" type="EtcItem">
     <set name="etcitem_type" val="SHOT" />

@@ -30,6 +30,7 @@ public class ScrollOfResurrection implements IItemHandler
 {
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see net.sf.l2j.gameserver.handler.IItemHandler#useItem(net.sf.l2j.gameserver.model.L2PcInstance, net.sf.l2j.gameserver.model.L2ItemInstance)
 	 */
 	@Override
@@ -83,9 +84,9 @@ public class ScrollOfResurrection implements IItemHandler
 		}
 		
 		if (item.getItem().getSkills() != null)
-        {
-            SkillHolder holder = item.getItem().getSkills()[0];
-            activeChar.useMagic(holder.getSkill(), true, true);
-        }
+		{
+			SkillHolder holder = item.getItem().getSkills()[0];
+			activeChar.useMagic(holder.getSkill(), false, false, item.getObjectId());
+		}
 	}
 }

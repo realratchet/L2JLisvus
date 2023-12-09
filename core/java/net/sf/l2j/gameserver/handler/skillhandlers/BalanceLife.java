@@ -35,7 +35,7 @@ public class BalanceLife implements ISkillHandler
 	};
 	
 	@Override
-	public void useSkill(L2Character activeChar, L2Skill skill, L2Object[] targets, boolean isFirstCritical)
+	public void useSkill(L2Character activeChar, L2Skill skill, L2Object[] targets, boolean critOnFirstTarget)
 	{
 		// Check for other effects
 		try
@@ -43,7 +43,7 @@ public class BalanceLife implements ISkillHandler
 			ISkillHandler handler = SkillHandler.getInstance().getSkillHandler(SkillType.BUFF);
 			if (handler != null)
 			{
-				handler.useSkill(activeChar, skill, targets, isFirstCritical);
+				handler.useSkill(activeChar, skill, targets, critOnFirstTarget);
 			}
 		}
 		catch (Exception e)

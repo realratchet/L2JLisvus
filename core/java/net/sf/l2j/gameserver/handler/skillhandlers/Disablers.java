@@ -60,7 +60,7 @@ public class Disablers implements ISkillHandler
 	};
 
 	@Override
-	public void useSkill(L2Character activeChar, L2Skill skill, L2Object[] targets, boolean isFirstCritical)
+	public void useSkill(L2Character activeChar, L2Skill skill, L2Object[] targets, boolean critOnFirstTarget)
 	{
 		SkillType type = skill.getSkillType();
 

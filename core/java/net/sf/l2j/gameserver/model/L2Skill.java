@@ -54,6 +54,7 @@ import net.sf.l2j.gameserver.skills.l2skills.L2SkillEngrave;
 import net.sf.l2j.gameserver.skills.l2skills.L2SkillSeed;
 import net.sf.l2j.gameserver.skills.l2skills.L2SkillSiegeFlag;
 import net.sf.l2j.gameserver.skills.l2skills.L2SkillSummon;
+import net.sf.l2j.gameserver.skills.l2skills.L2SkillSummonPet;
 import net.sf.l2j.gameserver.skills.l2skills.L2SkillTeleport;
 import net.sf.l2j.gameserver.taskmanager.DecayTaskManager;
 import net.sf.l2j.gameserver.templates.StatsSet;
@@ -204,6 +205,7 @@ public abstract class L2Skill
 		DRAIN(L2SkillDrain.class),
 		CHARGEDAM(L2SkillChargeDmg.class),
 		SUMMON(L2SkillSummon.class),
+		SUMMON_PET(L2SkillSummonPet.class),
 		SIEGEFLAG(L2SkillSiegeFlag.class),
 		TAKECASTLE(L2SkillEngrave.class),
 		SEED(L2SkillSeed.class),
@@ -590,7 +592,7 @@ public abstract class L2Skill
 		}
 	}
 
-	public abstract void useSkill(L2Character caster, L2Object[] targets, boolean isFirstCritical);
+	public abstract void useSkill(L2Character caster, L2Object[] targets, boolean critOnFirstTarget);
 	
 	public void useSkill(L2Character caster, L2Object[] targets)
 	{

@@ -79,7 +79,7 @@ public class Seed implements IItemHandler
         if (item.getItem().getSkills() != null)
 		{
 			SkillHolder holder = item.getItem().getSkills()[0];
-			activeChar.useMagic(holder.getSkill(), false, false);
+			activeChar.useMagic(holder.getSkill(), false, false, item.getObjectId());
 		}
     }
 }

@@ -38,6 +38,9 @@
     <cond msgId="1508">
       <player olympiad="false" />
     </cond>
+    <cond msgId="113" addName="true">
+      <player expertiseIndex="0"/>
+    </cond>
   </item>
   <item id="5704" name="Keshanberk*Keshanberk" type="Weapon">
     <set name="weapon_type" val="DUAL" />
@@ -1000,7 +1003,7 @@
     <set name="is_stackable" val="true" />
     <set name="is_magical" val="true" />
     <set name="handler" val="SpiritShot" />
-    <set name="item_skill" val="2061-1" />
+    <set name="item_skill" val="2047-1" />
     <set name="is_tradable" val="false" />
     <set name="is_dropable" val="false" />
     <set name="is_sellable" val="false" />

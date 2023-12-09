@@ -171,7 +171,7 @@ public abstract class L2Item
 	 * @return Enum
 	 */
 	public abstract Enum<?> getItemType();
-	
+
 	/**
 	 * Returns the ID of the item.
 	 * @return int
@@ -447,6 +447,11 @@ public abstract class L2Item
 	public boolean isForWolf()
 	{
 		return _bodyPart == SLOT_WOLF;
+	}
+
+	public boolean isPetItem()
+	{
+		return (getItemType() == L2ArmorType.PET || getItemType() == L2WeaponType.PET);
 	}
 	
 	/**

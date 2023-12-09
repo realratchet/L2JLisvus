@@ -58,6 +58,7 @@ public class Say2 extends L2GameClientPacket
 	public final static int CHANNEL_LEADER = 15; // (yellow)
 	public final static int CHANNEL_ALL = 16; // (blue)
 	public final static int HERO_VOICE = 17;
+	public final static int CRITICAL_ANNOUNCE = 18;
 
 	public final static String[] chatNames =
 	{
