@@ -18,6 +18,7 @@ import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.ai.CtrlIntention;
 import net.sf.l2j.gameserver.ai.L2CharacterAI;
 import net.sf.l2j.gameserver.ai.L2SummonAI;
+import net.sf.l2j.gameserver.datatables.PetDataTable;
 import net.sf.l2j.gameserver.datatables.SkillTable;
 import net.sf.l2j.gameserver.geoengine.GeoData;
 import net.sf.l2j.gameserver.handler.IItemHandler;
@@ -48,6 +49,7 @@ import net.sf.l2j.gameserver.network.serverpackets.RelationChanged;
 import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
 import net.sf.l2j.gameserver.network.serverpackets.ValidateLocation;
 import net.sf.l2j.gameserver.taskmanager.DecayTaskManager;
+import net.sf.l2j.gameserver.templates.L2EtcItem;
 import net.sf.l2j.gameserver.templates.L2NpcTemplate;
 import net.sf.l2j.gameserver.templates.L2Weapon;
 import net.sf.l2j.util.Rnd;
@@ -483,7 +485,7 @@ public abstract class L2Summon extends L2PlayableInstance
 			setTarget(null);
 			for (int itemId : owner.getAutoSoulShot())
 			{
-				if ((itemId == 6645) || (itemId == 6646) || (itemId == 6647))
+				if (PetDataTable.isPetShot(itemId))
 				{
 					owner.disableAutoShot(itemId);
 				}
@@ -615,19 +617,18 @@ public abstract class L2Summon extends L2PlayableInstance
         return null;
     }
 	
-	protected void doPickupItem(L2Object object)
+	@Override
+	public void doPickupItem(L2Object object)
 	{
-		
 	}
 	
 	public void giveAllToOwner()
 	{
-		
 	}
 	
+	@Override
 	public void store()
 	{
-		
 	}
 	
 	@Override
@@ -701,8 +702,10 @@ public abstract class L2Summon extends L2PlayableInstance
 	 * @param skill The L2Skill to use
 	 * @param forceUse used to force ATTACK on players
 	 * @param dontMove used to prevent movement, if not in range
+	 * @param controlItemObjectId
 	 */
-	public void useMagic(L2Skill skill, boolean forceUse, boolean dontMove)
+	@Override
+	public void useMagic(L2Skill skill, boolean forceUse, boolean dontMove, int controlItemObjectId)
 	{
 		if (skill == null || isDead())
 		{
@@ -851,11 +854,11 @@ public abstract class L2Summon extends L2PlayableInstance
 			return;
 		}
 		
-		// If all conditions are checked, create a new SkillDat object and set the owner _currentPetSkill
-		_owner.setCurrentPetSkill(skill, forceUse, dontMove);
+		// If all conditions are checked, create a new SkillUseHolder and set the owner _currentPetSkill
+		_owner.setCurrentPetSkill(skill, forceUse, dontMove, controlItemObjectId);
 		
 		// Notify the AI with AI_INTENTION_CAST and target
-		getAI().setIntention(CtrlIntention.AI_INTENTION_CAST, skill, target);
+		getAI().setIntention(CtrlIntention.AI_INTENTION_CAST, skill, target, controlItemObjectId);
 	}
 
 	public void setOwner(L2PcInstance newOwner)
@@ -895,22 +898,12 @@ public abstract class L2Summon extends L2PlayableInstance
 		}
 		
 		L2Skill skillToCast = SkillTable.getInstance().getInfo(skill.getId(), skillLevel);
-		if (skillToCast != null)
-		{
-			super.doCast(skillToCast);
-		}
-		else
-		{
-			super.doCast(skill);
-		}
+		super.doCast(skillToCast != null ? skillToCast : skill);
 	}
 	
 	@Override
 	public void rechargeShots(boolean physical, boolean magic)
 	{
-		L2ItemInstance item;
-		IItemHandler handler;
-		
 		if (_owner.getAutoSoulShot() == null || _owner.getAutoSoulShot().isEmpty())
 		{
 			return;
@@ -918,30 +911,21 @@ public abstract class L2Summon extends L2PlayableInstance
 		
 		for (int itemId : _owner.getAutoSoulShot())
 		{
-			item = _owner.getInventory().getItemByItemId(itemId);
+			if (!PetDataTable.isPetShot(itemId))
+			{
+				continue;
+			}
+			
+			L2ItemInstance item = _owner.getInventory().getItemByItemId(itemId);
 			if (item != null)
 			{
-				if (magic)
+				boolean isSuitable = item.getItem() instanceof L2EtcItem && (magic && item.getItem().isMagical() || physical && !item.getItem().isMagical());
+				if (isSuitable)
 				{
-					if ((itemId == 6646) || (itemId == 6647))
+					IItemHandler handler = ItemHandler.getInstance().getHandler((L2EtcItem) item.getItem());
+					if (handler != null)
 					{
-						handler = ItemHandler.getInstance().getItemHandler(itemId);
-						if (handler != null)
-						{
-							handler.useItem(_owner, item);
-						}
-					}
-				}
-				
-				if (physical)
-				{
-					if (itemId == 6645)
-					{
-						handler = ItemHandler.getInstance().getItemHandler(itemId);
-						if (handler != null)
-						{
-							handler.useItem(_owner, item);
-						}
+						handler.useItem(_owner, item);
 					}
 				}
 			}

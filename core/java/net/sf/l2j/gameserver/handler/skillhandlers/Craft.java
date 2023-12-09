@@ -29,7 +29,7 @@ import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
  */
 public class Craft implements ISkillHandler
 {
-	private static SkillType[] _skillIds =
+	private static SkillType[] SKILL_TYPES =
 	{
 		SkillType.COMMON_CRAFT,
 		SkillType.DWARVEN_CRAFT
@@ -39,7 +39,7 @@ public class Craft implements ISkillHandler
 	 * @see net.sf.l2j.gameserver.handler.ISkillHandler#useSkill(net.sf.l2j.gameserver.model.L2Character, net.sf.l2j.gameserver.model.L2Skill, net.sf.l2j.gameserver.model.L2Object[], boolean)
 	 */
 	@Override
-	public void useSkill(L2Character activeChar, L2Skill skill, L2Object[] targets, boolean isFirstCritical)
+	public void useSkill(L2Character activeChar, L2Skill skill, L2Object[] targets, boolean critOnFirstTarget)
 	{
 		if ((activeChar == null) || !(activeChar instanceof L2PcInstance))
 		{
@@ -53,12 +53,12 @@ public class Craft implements ISkillHandler
 			player.sendPacket(new SystemMessage(SystemMessage.CANNOT_CREATED_WHILE_ENGAGED_IN_TRADING));
 			return;
 		}
-		RecipeController.getInstance().requestBookOpen(player, (skill.getSkillType() == SkillType.DWARVEN_CRAFT) ? true : false);
+		RecipeController.getInstance().requestBookOpen(player, (skill.getSkillType() == SkillType.DWARVEN_CRAFT));
 	}
 	
 	@Override
-	public SkillType[] getSkillIds()
+	public SkillType[] getSkillTypes()
 	{
-		return _skillIds;
+		return SKILL_TYPES;
 	}
 }

@@ -1,0 +1,808 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<list>
+  <item id="5000" name="Recipe: Sword of Damascus (60%)" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="262000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="5001" name="Recipe: Lance (60%)" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="262000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="5002" name="Recipe: Deadman's Glory (60%)" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="262000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="5003" name="Recipe: Art of Battle Axe (60%)" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="262000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="5004" name="Recipe: Staff of Evil Spirits (60%)" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="262000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="5005" name="Recipe: Demon Dagger (60%)" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="262000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="5006" name="Recipe: Bellion Cestus (60%)" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="262000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="5007" name="Recipe: Bow of Peril (60%)" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="262000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="5008" name="Recipe: Pata (60%)" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="5009" name="Trophy of Alliance" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="5010" name="Echo Crystal - Theme of Victory" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="10" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ItemSkills" />
+    <set name="item_skill" val="2066-1" />
+  </item>
+  <item id="5011" name="Star of Destiny" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_tradable" val="false" />
+    <set name="is_dropable" val="false" />
+    <set name="is_sellable" val="false" />
+  </item>
+  <item id="5012" name="Leikan's Letter" type="EtcItem">
+    <set name="etcitem_type" val="QUEST" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5013" name="Spellbook: Elemental Assault" type="EtcItem">
+    <set name="etcitem_type" val="SPELLBOOK" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="120" />
+    <set name="price" val="7200" />
+  </item>
+  <item id="5014" name="Spellbook: Elemental Symphony" type="EtcItem">
+    <set name="etcitem_type" val="SPELLBOOK" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="120" />
+    <set name="price" val="7200" />
+  </item>
+  <item id="5015" name="Spellbook: Elemental Storm" type="EtcItem">
+    <set name="etcitem_type" val="SPELLBOOK" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="120" />
+    <set name="price" val="7200" />
+  </item>
+  <item id="5016" name="Seed: Dark Coda" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="5" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Seed" />
+    <set name="item_skill" val="2097-1" />
+  </item>
+  <item id="5017" name="Seed: Red Coda" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="5" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Seed" />
+    <set name="item_skill" val="2097-1" />
+  </item>
+  <item id="5018" name="Seed: Chilly Coda" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="5" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Seed" />
+    <set name="item_skill" val="2097-1" />
+  </item>
+  <item id="5019" name="Seed: Blue Coda" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="10" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Seed" />
+    <set name="item_skill" val="2097-1" />
+  </item>
+  <item id="5020" name="Seed: Golden Coda" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="20" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Seed" />
+    <set name="item_skill" val="2097-1" />
+  </item>
+  <item id="5021" name="Seed: Lute Coda" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="30" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Seed" />
+    <set name="item_skill" val="2097-1" />
+  </item>
+  <item id="5022" name="Seed: Desert Coda" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="20" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Seed" />
+    <set name="item_skill" val="2097-1" />
+  </item>
+  <item id="5023" name="Seed: Blue Cobol" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="50" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Seed" />
+    <set name="item_skill" val="2097-2" />
+  </item>
+  <item id="5024" name="Seed: Blue Coda" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="10" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Seed" />
+    <set name="item_skill" val="2097-1" />
+  </item>
+  <item id="5025" name="Seed: Golden Coda" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="20" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Seed" />
+    <set name="item_skill" val="2097-1" />
+  </item>
+  <item id="5026" name="Seed: Lute Coda" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="30" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Seed" />
+    <set name="item_skill" val="2097-1" />
+  </item>
+  <item id="5027" name="Seed: Desert Coda" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="20" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Seed" />
+    <set name="item_skill" val="2097-1" />
+  </item>
+  <item id="5028" name="Seed: Red Cobol" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="20" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Seed" />
+    <set name="item_skill" val="2097-2" />
+  </item>
+  <item id="5029" name="Seed: Chilly Cobol" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="25" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Seed" />
+    <set name="item_skill" val="2097-2" />
+  </item>
+  <item id="5030" name="Seed: Thorn Cobol" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="50" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Seed" />
+    <set name="item_skill" val="2097-2" />
+  </item>
+  <item id="5031" name="Seed: Golden Cobol" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="50" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Seed" />
+    <set name="item_skill" val="2097-2" />
+  </item>
+  <item id="5032" name="Seed: Great Cobol" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="50" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Seed" />
+    <set name="item_skill" val="2097-2" />
+  </item>
+  <item id="5033" name="Seed: Red Cobol" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="20" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Seed" />
+    <set name="item_skill" val="2097-2" />
+  </item>
+  <item id="5034" name="Seed: Chilly Cobol" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="25" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Seed" />
+    <set name="item_skill" val="2097-2" />
+  </item>
+  <item id="5035" name="Seed: Blue Cobol" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="50" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Seed" />
+    <set name="item_skill" val="2097-2" />
+  </item>
+  <item id="5036" name="Seed: Thorn Cobol" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="50" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Seed" />
+    <set name="item_skill" val="2097-2" />
+  </item>
+  <item id="5037" name="Seed: Golden Cobol" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="50" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Seed" />
+    <set name="item_skill" val="2097-2" />
+  </item>
+  <item id="5038" name="Seed: Great Cobol" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="50" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Seed" />
+    <set name="item_skill" val="2097-2" />
+  </item>
+  <item id="5039" name="Seed: Red Codran" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="40" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Seed" />
+    <set name="item_skill" val="2097-3" />
+  </item>
+  <item id="5040" name="Seed: Twin Codran" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="50" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Seed" />
+    <set name="item_skill" val="2097-3" />
+  </item>
+  <item id="5041" name="Seed: Desert Codran" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="100" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Seed" />
+    <set name="item_skill" val="2097-3" />
+  </item>
+  <item id="5042" name="Seed: Dark Coda" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="5" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Seed" />
+    <set name="item_skill" val="2097-1" />
+  </item>
+  <item id="5043" name="Seed: Red Coda" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="5" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Seed" />
+    <set name="item_skill" val="2097-1" />
+  </item>
+  <item id="5044" name="Seed: Blue Coda" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="10" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Seed" />
+    <set name="item_skill" val="2097-1" />
+  </item>
+  <item id="5045" name="Seed: Red Cobol" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="20" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Seed" />
+    <set name="item_skill" val="2097-2" />
+  </item>
+  <item id="5046" name="Seed: Chilly Cobol" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="25" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Seed" />
+    <set name="item_skill" val="2097-2" />
+  </item>
+  <item id="5047" name="Seed: Blue Cobol" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="50" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Seed" />
+    <set name="item_skill" val="2097-2" />
+  </item>
+  <item id="5048" name="Seed: Thorn Cobol" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="50" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Seed" />
+    <set name="item_skill" val="2097-2" />
+  </item>
+  <item id="5049" name="Seed: Sea Codran" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="50" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Seed" />
+    <set name="item_skill" val="2097-3" />
+  </item>
+  <item id="5050" name="Seed: Chilly Codran" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="40" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Seed" />
+    <set name="item_skill" val="2097-3" />
+  </item>
+  <item id="5051" name="Seed: Blue Codran" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="50" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Seed" />
+    <set name="item_skill" val="2097-3" />
+  </item>
+  <item id="5052" name="Seed: Twin Codran" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="50" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Seed" />
+    <set name="item_skill" val="2097-3" />
+  </item>
+  <item id="5053" name="Seed: Thorn Cobol" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="50" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Seed" />
+    <set name="item_skill" val="2097-2" />
+  </item>
+  <item id="5054" name="Seed: Golden Cobol" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="50" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Seed" />
+    <set name="item_skill" val="2097-2" />
+  </item>
+  <item id="5055" name="Seed: Great Cobol" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="50" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Seed" />
+    <set name="item_skill" val="2097-2" />
+  </item>
+  <item id="5056" name="Seed: Red Codran" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="40" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Seed" />
+    <set name="item_skill" val="2097-3" />
+  </item>
+  <item id="5057" name="Seed: Chilly Codran" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="40" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Seed" />
+    <set name="item_skill" val="2097-3" />
+  </item>
+  <item id="5058" name="Seed: Blue Codran" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="50" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Seed" />
+    <set name="item_skill" val="2097-3" />
+  </item>
+  <item id="5059" name="Seed: Twin Codran" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="50" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Seed" />
+    <set name="item_skill" val="2097-3" />
+  </item>
+  <item id="5060" name="Seed: Great Codran" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="75" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Seed" />
+    <set name="item_skill" val="2097-3" />
+  </item>
+  <item id="5061" name="Seed: Desert Codran" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="100" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Seed" />
+    <set name="item_skill" val="2097-3" />
+  </item>
+  <item id="5062" name="Trash" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="20" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5063" name="Trash" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="20" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5064" name="Trash" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="20" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5065" name="Chilly Coda" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="2" />
+    <set name="price" val="50" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5066" name="Burning Coda" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="2" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5067" name="Blue Coda" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="2" />
+    <set name="price" val="100" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5068" name="Red Coda" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="2" />
+    <set name="price" val="50" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5069" name="Golden Coda" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="2" />
+    <set name="price" val="200" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5070" name="Desert Coda" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="2" />
+    <set name="price" val="200" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5071" name="Lute Coda" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="2" />
+    <set name="price" val="300" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5072" name="Twin Coda" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="2" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5073" name="Dark Coda" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="2" />
+    <set name="price" val="50" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5074" name="Shining Coda" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="2" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5075" name="Chilly Cobol" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="2" />
+    <set name="price" val="250" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5076" name="Burning Cobol" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="2" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5077" name="Blue Cobol" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="2" />
+    <set name="price" val="500" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5078" name="Red Cobol" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="2" />
+    <set name="price" val="200" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5079" name="Golden Cobol" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="2" />
+    <set name="price" val="500" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5080" name="Desert Cobol" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="2" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5081" name="Sea Cobol" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="2" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5082" name="Thorn Cobol" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="2" />
+    <set name="price" val="500" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5083" name="Dapple Cobol" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="2" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5084" name="Great Cobol" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="2" />
+    <set name="price" val="500" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5085" name="Chilly Codran" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="2" />
+    <set name="price" val="400" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5086" name="Burning Codran" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="2" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5087" name="Blue Codran" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="2" />
+    <set name="price" val="500" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5088" name="Red Codran" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="2" />
+    <set name="price" val="400" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5089" name="Dapple Codran" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="2" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5090" name="Desert Codran" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="2" />
+    <set name="price" val="1000" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5091" name="Sea Codran" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="2" />
+    <set name="price" val="500" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5092" name="Twin Codran" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="2" />
+    <set name="price" val="500" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5093" name="Thorn Codran" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="2" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5094" name="Great Codran" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="2" />
+    <set name="price" val="750" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5095" name="Mature Chilly Coda" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5096" name="Mature Burning Coda" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5097" name="Mature Blue Coda" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5098" name="Mature Red Coda" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5099" name="Mature Golden Coda" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+</list>

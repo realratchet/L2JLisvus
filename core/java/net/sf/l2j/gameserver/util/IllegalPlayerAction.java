@@ -75,7 +75,7 @@ public final class IllegalPlayerAction implements Runnable
 		});
 		_logAudit.log(record);
 		
-		GmListTable.broadcastMessageToGMs(_message);
+		GmListTable.getInstance().broadcastMessageToGMs(_message);
 		
 		switch (_punishment)
 		{

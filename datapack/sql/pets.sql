@@ -13,6 +13,5 @@ CREATE TABLE IF NOT EXISTS pets (
   fed decimal(11) ,
   weapon int(5) ,
   armor int(5) ,
-  jewel int(5) ,
   PRIMARY KEY  (item_obj_id)
 );

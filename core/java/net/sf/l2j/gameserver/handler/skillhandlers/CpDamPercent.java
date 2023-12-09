@@ -28,13 +28,13 @@ import net.sf.l2j.gameserver.skills.Formulas;
  */
 public class CpDamPercent implements ISkillHandler
 {
-	private static final SkillType[] _skillIds =
+	private static final SkillType[] SKILL_TYPES =
 	{
 		SkillType.CPDAMPERCENT
 	};
 	
 	@Override
-	public void useSkill(L2Character activeChar, L2Skill skill, L2Object[] targets, boolean isFirstCritical)
+	public void useSkill(L2Character activeChar, L2Skill skill, L2Object[] targets, boolean critOnFirstTarget)
 	{
 		if (activeChar.isAlikeDead())
 		{
@@ -107,8 +107,8 @@ public class CpDamPercent implements ISkillHandler
 	}
 	
 	@Override
-	public SkillType[] getSkillIds()
+	public SkillType[] getSkillTypes()
 	{
-		return _skillIds;
+		return SKILL_TYPES;
 	}
 }

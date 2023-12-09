@@ -39,17 +39,16 @@ import net.sf.l2j.util.Log;
  */
 public class Pdam implements ISkillHandler
 {
-	// All the items ids that this handler knows
 	private static Logger _log = Logger.getLogger(Pdam.class.getName());
 
-	private static SkillType[] _skillIds =
+	private static SkillType[] SKILL_TYPES =
 	{
 		SkillType.PDAM,
 		SkillType.FATAL
 	};
 
 	@Override
-	public void useSkill(L2Character activeChar, L2Skill skill, L2Object[] targets, boolean isFirstCritical)
+	public void useSkill(L2Character activeChar, L2Skill skill, L2Object[] targets, boolean critOnFirstTarget)
 	{
 		if (activeChar.isAlikeDead())
 		{
@@ -88,7 +87,7 @@ public class Pdam implements ISkillHandler
 			boolean crit = false;
 			if (skill.getBaseCritRate() > 0)
 			{
-				crit = (i == 0 ? isFirstCritical : isCriticalHit(activeChar, skill, target));
+				crit = (i == 0 ? critOnFirstTarget : isCriticalHit(activeChar, skill, target));
 			}
 
 			double damage = Formulas.getInstance().calcPhysDam(activeChar, target, skill, shld, false, dual, soul);
@@ -219,8 +218,8 @@ public class Pdam implements ISkillHandler
 	}
 	
 	@Override
-	public SkillType[] getSkillIds()
+	public SkillType[] getSkillTypes()
 	{
-		return _skillIds;
+		return SKILL_TYPES;
 	}
 }

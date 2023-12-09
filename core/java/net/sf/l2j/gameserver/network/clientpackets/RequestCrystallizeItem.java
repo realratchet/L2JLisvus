@@ -14,20 +14,17 @@
  */
 package net.sf.l2j.gameserver.network.clientpackets;
 
-import java.util.logging.Logger;
-
 import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.model.L2ItemInstance;
 import net.sf.l2j.gameserver.model.L2Skill;
 import net.sf.l2j.gameserver.model.L2World;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.model.itemcontainer.PcInventory;
 import net.sf.l2j.gameserver.network.serverpackets.ActionFailed;
 import net.sf.l2j.gameserver.network.serverpackets.InventoryUpdate;
 import net.sf.l2j.gameserver.network.serverpackets.ItemList;
 import net.sf.l2j.gameserver.network.serverpackets.StatusUpdate;
 import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
-import net.sf.l2j.gameserver.templates.L2Item;
+import net.sf.l2j.gameserver.templates.CrystalType;
 import net.sf.l2j.gameserver.util.IllegalPlayerAction;
 import net.sf.l2j.gameserver.util.Util;
 
@@ -38,8 +35,7 @@ import net.sf.l2j.gameserver.util.Util;
 public class RequestCrystallizeItem extends L2GameClientPacket
 {
 	private static final String _C__72_REQUESTDCRYSTALLIZEITEM = "[C] 72 RequestCrystallizeItem";
-	private static Logger _log = Logger.getLogger(RequestCrystallizeItem.class.getName());
-	
+
 	private int _objectId;
 	private int _count;
 	
@@ -54,7 +50,6 @@ public class RequestCrystallizeItem extends L2GameClientPacket
 	public void runImpl()
 	{
 		L2PcInstance activeChar = getClient().getActiveChar();
-		
 		if (activeChar == null)
 		{
 			return;
@@ -81,73 +76,30 @@ public class RequestCrystallizeItem extends L2GameClientPacket
 		int skillLevel = activeChar.getSkillLevel(L2Skill.SKILL_CRYSTALLIZE);
 		if (skillLevel <= 0)
 		{
-			SystemMessage sm = new SystemMessage(SystemMessage.CRYSTALLIZE_LEVEL_TOO_LOW);
-			activeChar.sendPacket(sm);
-			sm = null;
-			ActionFailed af = new ActionFailed();
-			activeChar.sendPacket(af);
-			return;
-		}
-		
-		PcInventory inventory = activeChar.getInventory();
-		if (inventory != null)
-		{
-			L2ItemInstance item = inventory.getItemByObjectId(_objectId);
-			if ((item == null) || item.isWear())
-			{
-				activeChar.sendPacket(new ActionFailed());
-				return;
-			}
-			
-			if (!item.isDestroyable())
-			{
-				return;
-			}
-			
-			if (_count > item.getCount())
-			{
-				_count = activeChar.getInventory().getItemByObjectId(_objectId).getCount();
-			}
-		}
-		
-		L2ItemInstance itemToRemove = activeChar.getInventory().getItemByObjectId(_objectId);
-		if ((itemToRemove == null) || itemToRemove.isWear())
-		{
-			return;
-		}
-		
-		if (!itemToRemove.getItem().isCrystallizable() || (itemToRemove.getItem().getCrystalCount() <= 0) || (itemToRemove.getItem().getCrystalType() == L2Item.CRYSTAL_NONE))
-		{
-			_log.warning(activeChar.getName() + " (" + activeChar.getObjectId() + ") tried to crystallize " + itemToRemove.getItem().getItemId());
-			return;
-		}
-		
-		// Check if the char can crystallize C items and return if false
-		if ((itemToRemove.getItem().getCrystalType() == L2Item.CRYSTAL_C) && (skillLevel <= 1))
-		{
 			activeChar.sendPacket(new SystemMessage(SystemMessage.CRYSTALLIZE_LEVEL_TOO_LOW));
 			activeChar.sendPacket(new ActionFailed());
 			return;
 		}
 		
-		// Check if the user can crystallize B items and return if false
-		if ((itemToRemove.getItem().getCrystalType() == L2Item.CRYSTAL_B) && (skillLevel <= 2))
+		L2ItemInstance item = activeChar.getInventory().getItemByObjectId(_objectId);
+		if (item == null || !item.isDestroyable())
 		{
-			activeChar.sendPacket(new SystemMessage(SystemMessage.CRYSTALLIZE_LEVEL_TOO_LOW));
-			activeChar.sendPacket(new ActionFailed());
 			return;
 		}
-		
-		// Check if the user can crystallize A items and return if false
-		if ((itemToRemove.getItem().getCrystalType() == L2Item.CRYSTAL_A) && (skillLevel <= 3))
+
+		if (_count > item.getCount())
 		{
-			activeChar.sendPacket(new SystemMessage(SystemMessage.CRYSTALLIZE_LEVEL_TOO_LOW));
-			activeChar.sendPacket(new ActionFailed());
-			return;
+			_count = item.getCount();
 		}
 		
-		// Check if the user can crystallize S items and return if false;
-		if ((itemToRemove.getItem().getCrystalType() == L2Item.CRYSTAL_S) && (skillLevel <= 4))
+		if (!item.getItem().isCrystallizable() || (item.getItem().getCrystalCount() <= 0) || (item.getItem().getCrystalType() == CrystalType.NONE))
+		{
+			return;
+		}
+
+		// Check if player can crystallize item based on grade and crystallization skill level
+		int maximumRequiredLevel = item.getItem().getCrystalType().getId() - 1;
+		if (skillLevel <= maximumRequiredLevel)
 		{
 			activeChar.sendPacket(new SystemMessage(SystemMessage.CRYSTALLIZE_LEVEL_TOO_LOW));
 			activeChar.sendPacket(new ActionFailed());
@@ -157,9 +109,9 @@ public class RequestCrystallizeItem extends L2GameClientPacket
 		activeChar.setInCrystallize(true);
 		
 		// Unequip if needed
-		if (itemToRemove.isEquipped())
+		if (item.isEquipped())
 		{
-			L2ItemInstance[] unequiped = activeChar.getInventory().unEquipItemInSlotAndRecord(itemToRemove.getEquipSlot());
+			L2ItemInstance[] unequiped = activeChar.getInventory().unEquipItemInSlotAndRecord(item.getEquipSlot());
 			InventoryUpdate iu = new InventoryUpdate();
 			for (L2ItemInstance element : unequiped)
 			{
@@ -169,12 +121,12 @@ public class RequestCrystallizeItem extends L2GameClientPacket
 		}
 		
 		// Remove from inventory
-		L2ItemInstance removedItem = activeChar.getInventory().destroyItem("Crystalize", _objectId, _count, activeChar, null);
+		L2ItemInstance removedItem = activeChar.getInventory().destroyItem("Crystallize", _objectId, _count, activeChar, null);
 		
 		// Add crystals
-		int crystalId = itemToRemove.getItem().getCrystalItemId();
-		int crystalAmount = itemToRemove.getCrystalCount();
-		L2ItemInstance createditem = activeChar.getInventory().addItem("Crystalize", crystalId, crystalAmount, activeChar, itemToRemove);
+		int crystalId = item.getItem().getCrystalItemId();
+		int crystalAmount = item.getCrystalCount();
+		L2ItemInstance createditem = activeChar.getInventory().addItem("Crystallize", crystalId, crystalAmount, activeChar, item);
 		
 		SystemMessage sm = new SystemMessage(SystemMessage.EARNED_S2_S1_s);
 		sm.addItemName(crystalId);
@@ -216,9 +168,7 @@ public class RequestCrystallizeItem extends L2GameClientPacket
 		activeChar.sendPacket(su);
 		
 		activeChar.broadcastUserInfo();
-		
 		L2World.getInstance().removeObject(removedItem);
-		
 		activeChar.setInCrystallize(false);
 	}
 	

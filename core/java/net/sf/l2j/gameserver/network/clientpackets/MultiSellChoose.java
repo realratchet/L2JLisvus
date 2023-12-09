@@ -237,7 +237,7 @@ public class MultiSellChoose extends L2GameClientPacket
 			L2ItemInstance itemToTake = inv.getItemByItemId(e.getItemId()); // initialize and initial guess for the item to take.
 			
 			// This is a cheat, transaction will be aborted and if any items are already taken, they will not be returned back to inventory!
-			if (itemToTake == null || itemToTake.isWear())
+			if (itemToTake == null)
 			{
 				_log.severe("Character: " + player.getName() + " is trying to cheat in multisell, merchant id:" + merchant.getNpcId());
 				return;
@@ -328,7 +328,7 @@ public class MultiSellChoose extends L2GameClientPacket
 		// Generate the appropriate items
 		for (MultiSellIngredient e : entry.getProducts())
 		{
-			L2ItemInstance tempItem = ItemTable.getInstance().createDummyItem(e.getItemId());
+			L2Item tempItem = ItemTable.getInstance().getTemplate(e.getItemId());
 			if (tempItem == null)
 			{
 				_log.severe("Problem with multisell ID:" + _listId + " entry ID:" + _entryId + " - Product ID:" + e.getItemId() + " does not exist.");
@@ -439,8 +439,8 @@ public class MultiSellChoose extends L2GameClientPacket
 			// If it is an armor/weapon, modify the enchantment level appropriately, if necessary
 			else if (maintainEnchantment && newIngredient.getItemId() > 0)
 			{
-				L2Item tempItem = ItemTable.getInstance().createDummyItem(newIngredient.getItemId()).getItem();
-				if ((tempItem instanceof L2Armor) || (tempItem instanceof L2Weapon))
+				L2Item tempItem = ItemTable.getInstance().getTemplate(newIngredient.getItemId());
+				if (tempItem != null && (tempItem instanceof L2Armor || tempItem instanceof L2Weapon))
 				{
 					newIngredient.setEnchantmentLevel(enchantLevel);
 					hasIngredient = true;
@@ -471,8 +471,8 @@ public class MultiSellChoose extends L2GameClientPacket
 			{
 				// If it is an armor/weapon, modify the enchantment level appropriately
 				// (note, if maintain enchantment is "false" this modification will result to a +0)
-				L2Item tempItem = ItemTable.getInstance().createDummyItem(newIngredient.getItemId()).getItem();
-				if ((tempItem instanceof L2Armor) || (tempItem instanceof L2Weapon))
+				L2Item tempItem = ItemTable.getInstance().getTemplate(newIngredient.getItemId());
+				if (tempItem != null && (tempItem instanceof L2Armor || tempItem instanceof L2Weapon))
 				{
 					newIngredient.setEnchantmentLevel(enchantLevel);
 				}

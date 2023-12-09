@@ -54,6 +54,8 @@ import net.sf.l2j.gameserver.skills.l2skills.L2SkillEngrave;
 import net.sf.l2j.gameserver.skills.l2skills.L2SkillSeed;
 import net.sf.l2j.gameserver.skills.l2skills.L2SkillSiegeFlag;
 import net.sf.l2j.gameserver.skills.l2skills.L2SkillSummon;
+import net.sf.l2j.gameserver.skills.l2skills.L2SkillSummonPet;
+import net.sf.l2j.gameserver.skills.l2skills.L2SkillTeleport;
 import net.sf.l2j.gameserver.taskmanager.DecayTaskManager;
 import net.sf.l2j.gameserver.templates.StatsSet;
 import net.sf.l2j.gameserver.util.Util;
@@ -142,14 +144,12 @@ public abstract class L2Skill
 		CHARGE,
 		FEAR,
 		MHOT,
-		DRAIN(L2SkillDrain.class),
 
 		CANCEL,
 		SLEEP,
 		AGGREDUCE,
 		AGGREMOVE,
 		AGGREDUCE_CHAR,
-		CHARGEDAM(L2SkillChargeDmg.class),
 		CONFUSE_MOB_ONLY,
 		DEATHLINK,
 		ENCHANT_ARMOR,
@@ -166,16 +166,12 @@ public abstract class L2Skill
 		SPIRITSHOT,
 		SPOIL,
 		SWEEP,
-		SUMMON(L2SkillSummon.class),
 		WEAKNESS,
 		DEATHLINK_PET,
 		MANA_BY_LEVEL,
 		FAKE_DEATH,
 
-		SIEGEFLAG(L2SkillSiegeFlag.class),
-		TAKECASTLE(L2SkillEngrave.class),
 		UNDEAD_DEFENSE,
-		SEED(L2SkillSeed.class),
 		PARALYZE,
 		DRAIN_SOUL,
 		COMMON_CRAFT,
@@ -184,7 +180,6 @@ public abstract class L2Skill
 		FISHING,
 		PUMPING,
 		REELING,
-		CREATE_ITEM(L2SkillCreateItem.class),
 		AGGDEBUFF,
 		STRSIEGEASSAULT,
 		HEAL_STATIC,
@@ -200,6 +195,24 @@ public abstract class L2Skill
 		DELUXE_KEY_UNLOCK,
 		BEAST_FEED,
 		GET_PLAYER,
+
+		FACE_LIFT,
+		HAIR_COLOR,
+		HAIR_STYLE,
+
+		GIVE_SP,
+
+		DRAIN(L2SkillDrain.class),
+		CHARGEDAM(L2SkillChargeDmg.class),
+		SUMMON(L2SkillSummon.class),
+		SUMMON_PET(L2SkillSummonPet.class),
+		SIEGEFLAG(L2SkillSiegeFlag.class),
+		TAKECASTLE(L2SkillEngrave.class),
+		SEED(L2SkillSeed.class),
+		CREATE_ITEM(L2SkillCreateItem.class),
+		TELEPORT(L2SkillTeleport.class),
+
+		DUMMY,
 
 		// unimplemented
 		NOTDONE;
@@ -413,8 +426,7 @@ public abstract class L2Skill
 
 	private final int _baseCritRate;
 
-	protected Condition[] _preCondition;
-	protected Condition[] _itemPreCondition;
+	protected List<Condition> _preConditions;
 	protected FuncTemplate[] _funcTemplates;
 	protected EffectTemplate[] _effectTemplates;
 	protected EffectTemplate[] _effectTemplatesSelf;
@@ -580,7 +592,7 @@ public abstract class L2Skill
 		}
 	}
 
-	public abstract void useSkill(L2Character caster, L2Object[] targets, boolean isFirstCritical);
+	public abstract void useSkill(L2Character caster, L2Object[] targets, boolean critOnFirstTarget);
 	
 	public void useSkill(L2Character caster, L2Object[] targets)
 	{
@@ -1159,7 +1171,7 @@ public abstract class L2Skill
 		return false;
 	}
 
-	public boolean checkCondition(L2Character activeChar, L2Object target, boolean itemOrWeapon)
+	public boolean checkCondition(L2Character activeChar, L2Object target)
 	{
 		if (activeChar instanceof L2PcInstance)
     	{
@@ -1175,8 +1187,7 @@ public abstract class L2Skill
 			return true;
 		}
 		
-		final Condition[] preCondition = itemOrWeapon ? _itemPreCondition : _preCondition;
-		if (preCondition == null)
+		if (_preConditions == null || _preConditions.isEmpty())
 		{
 			return true;
 		}
@@ -1186,7 +1197,7 @@ public abstract class L2Skill
 		env.target = target != null && target instanceof L2Character ? (L2Character)target : null;
 		env.skill = this;
 		
-		for (Condition cond : preCondition)
+		for (Condition cond : _preConditions)
 		{
 			if (!cond.test(env, this))
 			{
@@ -1246,7 +1257,7 @@ public abstract class L2Skill
 		// Init to null the target of the skill
 		L2Character target = null;
 
-		// Get the L2Objcet targeted by the user of the skill at this moment
+		// Get the L2Object targeted by the user of the skill at this moment
 		L2Object objTarget = activeChar.getTarget();
 
 		// Get the type of the skill
@@ -1364,7 +1375,6 @@ public abstract class L2Skill
 			}
 			case TARGET_CORPSE_PET:
 			{
-				target = activeChar.getPet();
 				if (target == null)
 				{
 					activeChar.sendPacket(new SystemMessage(SystemMessage.TARGET_CANT_FOUND));
@@ -1374,6 +1384,14 @@ public abstract class L2Skill
 				if (!target.isDead())
 				{
 					activeChar.sendPacket(new SystemMessage(SystemMessage.TARGET_IS_INCORRECT));
+					return null;
+				}
+
+				if (!(target instanceof L2PetInstance))
+				{
+					SystemMessage message = new SystemMessage(SystemMessage.S1_CANNOT_BE_USED);
+					message.addSkillName(this);
+					activeChar.sendPacket(message);
 					return null;
 				}
 
@@ -2499,43 +2517,15 @@ public abstract class L2Skill
 		}
 	}
 
-	public final void attach(Condition cond, boolean itemOrWeapon)
+	public final void attach(Condition c)
 	{
-		if (itemOrWeapon)
+		if (_preConditions == null)
 		{
-			if (_itemPreCondition == null)
-			{
-				_itemPreCondition = new Condition[]
-				{
-					cond
-				};
-			}
-			else
-			{
-				int len = _itemPreCondition.length;
-				Condition[] tmp = new Condition[len + 1];
-				System.arraycopy(_itemPreCondition, 0, tmp, 0, len);
-				tmp[len] = cond;
-				_itemPreCondition = tmp;
-			}
+			_preConditions = new ArrayList<>();
 		}
-		else
+		if (!_preConditions.contains(c))
 		{
-			if (_preCondition == null)
-			{
-				_preCondition = new Condition[]
-				{
-					cond
-				};
-			}
-			else
-			{
-				int len = _preCondition.length;
-				Condition[] tmp = new Condition[len + 1];
-				System.arraycopy(_preCondition, 0, tmp, 0, len);
-				tmp[len] = cond;
-				_preCondition = tmp;
-			}
+			_preConditions.add(c);
 		}
 	}
 

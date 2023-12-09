@@ -31,51 +31,40 @@ import net.sf.l2j.util.Rnd;
  */
 public class RollingDice implements IItemHandler
 {
-    private static int[] _itemIds = { 4625, 4626, 4627, 4628 };
-
     @Override
 	public void useItem(L2PlayableInstance playable, L2ItemInstance item)
     {
         if (!(playable instanceof L2PcInstance))
-            return;
+            return;
 
         L2PcInstance activeChar = (L2PcInstance)playable;
-        int itemId = item.getItemId();
 
-        if (activeChar.isInOlympiadMode())
+        if (activeChar.isInOlympiadMode())
         {
             activeChar.sendPacket(new SystemMessage(SystemMessage.THIS_ITEM_IS_NOT_AVAILABLE_FOR_THE_OLYMPIAD_EVENT));
             return;
         }
 
-        if (itemId == 4625 || itemId == 4626 || itemId == 4627 || itemId == 4628)
+        if (!activeChar.getFloodProtectors().getRollDice().tryPerformAction("roll dice"))
         {
-            if (!activeChar.getFloodProtectors().getRollDice().tryPerformAction("roll dice"))
-            {
-                activeChar.sendPacket(new SystemMessage(835));
-                return;
-            }
-
-            int number = Rnd.get(1, 6);
-
-            Dice d = new Dice (activeChar.getObjectId(),item.getItemId(),number,activeChar.getX()-30,activeChar.getY()-30,activeChar.getZ());
-            Broadcast.toSelfAndKnownPlayers(activeChar, d);
-
-            SystemMessage sm = new SystemMessage(SystemMessage.S1_ROLLED_S2);
-            sm.addString(activeChar.getName());
-            sm.addNumber(number);
-
-            activeChar.sendPacket(sm);
-            if (activeChar.isInsideZone(L2Character.ZONE_PEACE))
-                Broadcast.toKnownPlayers(activeChar, sm);
-            else if (activeChar.isInParty())
-                activeChar.getParty().broadcastToPartyMembers(activeChar,sm);
+            activeChar.sendPacket(new SystemMessage(SystemMessage.YOU_MAY_NOT_THROW_THE_DICE_AT_THIS_TIME_TRY_AGAIN_LATER));
+            return;
         }
-    }
 
-    @Override
-	public int[] getItemIds()
-    {
-        return _itemIds;
+        int number = Rnd.get(1, 6);
+
+        Dice d = new Dice (activeChar.getObjectId(),item.getItemId(),number,activeChar.getX()-30,activeChar.getY()-30,activeChar.getZ());
+        Broadcast.toSelfAndKnownPlayers(activeChar, d);
+
+        SystemMessage sm = new SystemMessage(SystemMessage.S1_ROLLED_S2);
+        sm.addString(activeChar.getName());
+        sm.addNumber(number);
+
+        activeChar.sendPacket(sm);
+
+        if (activeChar.isInsideZone(L2Character.ZONE_PEACE))
+            Broadcast.toKnownPlayers(activeChar, sm);
+        else if (activeChar.isInParty())
+            activeChar.getParty().broadcastToPartyMembers(activeChar,sm);
     }
 }

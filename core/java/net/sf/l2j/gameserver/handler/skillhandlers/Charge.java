@@ -27,22 +27,26 @@ import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
  */
 public class Charge implements ISkillHandler
 {
-	private static SkillType[] _skillIds =
+	private static SkillType[] SKILL_TYPES =
 	{
 		L2Skill.SkillType.CHARGE
 	};
 	
 	@Override
-	public void useSkill(L2Character activeChar, L2Skill skill, L2Object[] targets, boolean isFirstCritical)
+	public void useSkill(L2Character activeChar, L2Skill skill, L2Object[] targets, boolean critOnFirstTarget)
 	{
+		if (!(activeChar instanceof L2PcInstance))
+		{
+			return;
+		}
 		L2PcInstance player = (L2PcInstance) activeChar;
 		// Increase charges
 		player.increaseCharges(1, skill.getMaxCharges(), true);
 	}
 	
 	@Override
-	public SkillType[] getSkillIds()
+	public SkillType[] getSkillTypes()
 	{
-		return _skillIds;
+		return SKILL_TYPES;
 	}
 }

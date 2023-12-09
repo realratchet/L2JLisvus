@@ -469,8 +469,6 @@ public final class Config
 	
 	/** The highest access level */
 	public static int MASTER_ACCESS_LEVEL;
-	/** General GM AccessLevel to unstuck without 5min delay */
-	public static int GM_ESCAPE;
 	/** General GM AccessLevel to resurrect fixed after death */
 	public static int GM_FIXED;
 	/** General GM AccessLevel to attack in the peace zone */
@@ -748,9 +746,6 @@ public final class Config
 	/** Wedding System */
 	public static boolean ALLOW_WEDDING;
 	public static int WEDDING_PRICE;
-	public static boolean WEDDING_TELEPORT;
-	public static int WEDDING_TELEPORT_PRICE;
-	public static int WEDDING_TELEPORT_DURATION;
 	public static boolean WEDDING_SAME_SEX;
 	public static boolean WEDDING_FORMAL_WEAR;
 	
@@ -819,8 +814,6 @@ public final class Config
 	public static boolean CUSTOM_NPC_TABLE;
 	public static boolean CUSTOM_NPC_SKILLS_TABLE;
 	public static boolean CUSTOM_MINIONS_TABLE;
-	public static boolean CUSTOM_ITEM_TABLES;
-	public static boolean CUSTOM_ARMORSETS_TABLE;
 	public static boolean CUSTOM_TELEPORT_TABLE;
 	public static boolean CUSTOM_DROPLIST_TABLE;
 	public static boolean CUSTOM_MERCHANT_TABLES;
@@ -849,7 +842,6 @@ public final class Config
 	// --------------------------------------------------
 	public static FloodProtectorConfig FLOOD_PROTECTOR_USE_ITEM;
 	public static FloodProtectorConfig FLOOD_PROTECTOR_ROLL_DICE;
-	public static FloodProtectorConfig FLOOD_PROTECTOR_FIREWORK;
 	public static FloodProtectorConfig FLOOD_PROTECTOR_ITEM_PET_SUMMON;
 	public static FloodProtectorConfig FLOOD_PROTECTOR_HERO_VOICE;
 	public static FloodProtectorConfig FLOOD_PROTECTOR_GLOBAL_CHAT;
@@ -1047,7 +1039,6 @@ public final class Config
 	
 	/** Deep Blue Mobs' Drop Rules Enabled */
 	public static boolean DEEPBLUE_DROP_RULES;
-	public static int UNSTUCK_INTERVAL;
 	
 	/** Player Protection control */
 	public static int PLAYER_SPAWN_PROTECTION;
@@ -1294,7 +1285,6 @@ public final class Config
 		{
 			FLOOD_PROTECTOR_USE_ITEM = new FloodProtectorConfig("UseItemFloodProtector");
 			FLOOD_PROTECTOR_ROLL_DICE = new FloodProtectorConfig("RollDiceFloodProtector");
-			FLOOD_PROTECTOR_FIREWORK = new FloodProtectorConfig("FireworkFloodProtector");
 			FLOOD_PROTECTOR_ITEM_PET_SUMMON = new FloodProtectorConfig("ItemPetSummonFloodProtector");
 			FLOOD_PROTECTOR_HERO_VOICE = new FloodProtectorConfig("HeroVoiceFloodProtector");
 			FLOOD_PROTECTOR_GLOBAL_CHAT = new FloodProtectorConfig("GlobalChatFloodProtector");
@@ -1650,8 +1640,6 @@ public final class Config
 				_log.warning("Invalid max player level! Level was set to " + MAX_PLAYER_LEVEL);
 			}
 			
-			UNSTUCK_INTERVAL = Integer.parseInt(otherSettings.getProperty("UnstuckInterval", "300"));
-			
 			/* Player protection after teleport or login */
 			PLAYER_SPAWN_PROTECTION = Integer.parseInt(otherSettings.getProperty("PlayerSpawnProtection", "0"));
 			
@@ -1958,8 +1946,6 @@ public final class Config
 			CUSTOM_NPC_TABLE = Boolean.valueOf(customSettings.getProperty("CustomNpcTable", "false"));
 			CUSTOM_NPC_SKILLS_TABLE = Boolean.valueOf(customSettings.getProperty("CustomNpcSkillsTable", "false"));
 			CUSTOM_MINIONS_TABLE = Boolean.valueOf(customSettings.getProperty("CustomMinionsTable", "false"));
-			CUSTOM_ITEM_TABLES = Boolean.valueOf(customSettings.getProperty("CustomItemTables", "false"));
-			CUSTOM_ARMORSETS_TABLE = Boolean.valueOf(customSettings.getProperty("CustomArmorSetsTable", "false"));
 			CUSTOM_TELEPORT_TABLE = Boolean.valueOf(customSettings.getProperty("CustomTeleportTable", "false"));
 			CUSTOM_DROPLIST_TABLE = Boolean.valueOf(customSettings.getProperty("CustomDroplistTable", "false"));
 			CUSTOM_MERCHANT_TABLES = Boolean.valueOf(customSettings.getProperty("CustomMerchantTables", "false"));
@@ -2050,9 +2036,6 @@ public final class Config
 			
 			ALLOW_WEDDING = Boolean.parseBoolean(customSettings.getProperty("AllowWedding", "False"));
 			WEDDING_PRICE = Integer.parseInt(customSettings.getProperty("WeddingPrice", "25000000"));
-			WEDDING_TELEPORT = Boolean.parseBoolean(customSettings.getProperty("WeddingTeleport", "True"));
-			WEDDING_TELEPORT_PRICE = Integer.parseInt(customSettings.getProperty("WeddingTeleportPrice", "50000"));
-			WEDDING_TELEPORT_DURATION = Integer.parseInt(customSettings.getProperty("WeddingTeleportDuration", "60"));
 			WEDDING_SAME_SEX = Boolean.parseBoolean(customSettings.getProperty("WeddingAllowSameSex", "False"));
 			WEDDING_FORMAL_WEAR = Boolean.parseBoolean(customSettings.getProperty("WeddingFormalWear", "True"));
 			
@@ -2234,7 +2217,6 @@ public final class Config
 			}
 			
 			MASTER_ACCESS_LEVEL = Integer.parseInt(accessLevelSettings.getProperty("MasterAccessLevel", "100"));
-			GM_ESCAPE = Integer.parseInt(accessLevelSettings.getProperty("GMFastUnstuck", "100"));
 			GM_FIXED = Integer.parseInt(accessLevelSettings.getProperty("GMResurrectFixed", "100"));
 			GM_PEACE_ATTACK = Integer.parseInt(accessLevelSettings.getProperty("GMPeaceAttack", "100"));
 			GM_TRANSACTION = Integer.parseInt(accessLevelSettings.getProperty("GMTransaction", "100"));
@@ -2464,13 +2446,13 @@ public final class Config
 	
 	/**
 	 * Loads flood protector configurations.
+	 * 
 	 * @param properties
 	 */
 	private static void loadFloodProtectorConfigs(final Properties properties)
 	{
 		loadFloodProtectorConfig(properties, FLOOD_PROTECTOR_USE_ITEM, "UseItem", "4");
 		loadFloodProtectorConfig(properties, FLOOD_PROTECTOR_ROLL_DICE, "RollDice", "42");
-		loadFloodProtectorConfig(properties, FLOOD_PROTECTOR_FIREWORK, "Firework", "42");
 		loadFloodProtectorConfig(properties, FLOOD_PROTECTOR_ITEM_PET_SUMMON, "ItemPetSummon", "16");
 		loadFloodProtectorConfig(properties, FLOOD_PROTECTOR_HERO_VOICE, "HeroVoice", "100");
 		loadFloodProtectorConfig(properties, FLOOD_PROTECTOR_GLOBAL_CHAT, "GlobalChat", "5");

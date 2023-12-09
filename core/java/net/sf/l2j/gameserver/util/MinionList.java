@@ -43,7 +43,8 @@ public class MinionList
     /** List containing the current spawned minions for this L2MonsterInstance */
     private final List<L2MinionInstance> _minionReferences;
     protected Map<Long,Integer> _respawnTasks = new ConcurrentHashMap<>();
-    private final L2MonsterInstance master;
+    private final L2MonsterInstance master;
+
     public MinionList(L2MonsterInstance pMaster)
     {
         _minionReferences = new CopyOnWriteArrayList<>();
@@ -62,7 +63,7 @@ public class MinionList
 
     public boolean hasMinions()
     {
-        return getSpawnedMinions().size() > 0;
+        return !getSpawnedMinions().isEmpty();
     }
 
     public List<L2MinionInstance> getSpawnedMinions()
@@ -95,14 +96,14 @@ public class MinionList
     	Long current = System.currentTimeMillis();
     	_minionReferences.remove(minion);
     	
-        if (_respawnTasks.get(current) == null)
+        if (!_respawnTasks.containsKey(current))
         	_respawnTasks.put(current,minion.getNpcId());
         else 
         {
         	// nice AoE
         	for (int i = 1; i < 30; i++)
         	{
-        		if (_respawnTasks.get(current+i) == null)
+        		if (!_respawnTasks.containsKey(current+i))
         		{
         			_respawnTasks.put(current+i,minion.getNpcId());
         			break;

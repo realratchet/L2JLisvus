@@ -33,24 +33,20 @@ import net.sf.l2j.gameserver.skills.Formulas;
  */
 public class Resurrect implements ISkillHandler
 {
-	private static SkillType[] _skillIds =
+	private static SkillType[] SKILL_TYPES =
 	{
 		SkillType.RESURRECT
 	};
 	
 	@Override
-	public void useSkill(L2Character activeChar, L2Skill skill, L2Object[] targets, boolean isFirstCritical)
+	public void useSkill(L2Character activeChar, L2Skill skill, L2Object[] targets, boolean critOnFirstTarget)
 	{
-		L2PcInstance player = null;
-		if (activeChar instanceof L2PcInstance)
-		{
-			player = (L2PcInstance) activeChar;
-		}
-		
-		if (player == null)
+		if ((activeChar == null) || !(activeChar instanceof L2PcInstance))
 		{
 			return;
 		}
+
+		final L2PcInstance player = (L2PcInstance) activeChar;
 		
 		if (player.isFestivalParticipant())
 		{
@@ -133,8 +129,8 @@ public class Resurrect implements ISkillHandler
 	}
 	
 	@Override
-	public SkillType[] getSkillIds()
+	public SkillType[] getSkillTypes()
 	{
-		return _skillIds;
+		return SKILL_TYPES;
 	}
 }

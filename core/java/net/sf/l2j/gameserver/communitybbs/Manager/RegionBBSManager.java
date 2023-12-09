@@ -215,7 +215,8 @@ public class RegionBBSManager extends BaseBBSManager
             			"</td></tr></table></body></html>");
                     separateAndSend(htmlCode.toString(), activeChar);
                     return;
-            	}
+            	}
+
 
                 if (Config.JAIL_DISABLE_CHAT && receiver.isInJail())
                 {
@@ -612,7 +613,7 @@ public class RegionBBSManager extends BaseBBSManager
 
     public String getCommunityPage(int page, String type)
     {
-        if (_communityPages.get(page) != null)
+        if (_communityPages.containsKey(page))
             return _communityPages.get(page).get(type);
         return null;
     }

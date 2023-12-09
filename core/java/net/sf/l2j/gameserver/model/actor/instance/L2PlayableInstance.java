@@ -17,6 +17,7 @@ package net.sf.l2j.gameserver.model.actor.instance;
 import net.sf.l2j.gameserver.model.L2Character;
 import net.sf.l2j.gameserver.model.L2Effect;
 import net.sf.l2j.gameserver.model.L2Object;
+import net.sf.l2j.gameserver.model.L2Skill;
 import net.sf.l2j.gameserver.model.actor.knownlist.PlayableKnownList;
 import net.sf.l2j.gameserver.model.actor.stat.PlayableStat;
 import net.sf.l2j.gameserver.model.actor.status.PlayableStatus;
@@ -48,7 +49,8 @@ public abstract class L2PlayableInstance extends L2Character
      */
     public L2PlayableInstance(int objectId, L2CharTemplate template)
     {
-        super(objectId, template);
+        super(objectId, template);
+
         getKnownList();
         getStat();
         getStatus();
@@ -117,7 +119,8 @@ public abstract class L2PlayableInstance extends L2Character
             return false;                                 // Target player has karma
 
         return true;
-    }
+    }
+
     /**
      * Return True.<BR><BR>
      */
@@ -196,7 +199,15 @@ public abstract class L2PlayableInstance extends L2Character
 	{
 		_effects.updateEffectIcons(partyOnly);
 	}
+
+    public void useMagic(L2Skill skill, boolean forceUse, boolean dontMove)
+    {
+        useMagic(skill, forceUse, dontMove, 0);
+    }
     
+    public abstract void store();
+    public abstract void doPickupItem(L2Object object);
+    public abstract void useMagic(L2Skill skill, boolean forceUse, boolean dontMove, int controlItemObjectId);
     public abstract boolean destroyItemByItemId(String process, int itemId, int count, L2Object reference, boolean sendMessage);
     public abstract boolean destroyItem(String process, int objectId, int count, L2Object reference, boolean sendMessage);
 }

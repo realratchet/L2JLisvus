@@ -475,7 +475,7 @@ public class L2ControllableMobAI extends L2AttackableAI
                 potentialTarget.add(target);
         }
 
-        if (potentialTarget.size() == 0) // nothing to do
+        if (potentialTarget.isEmpty()) // nothing to do
             return null;
 
         // we choose a random target

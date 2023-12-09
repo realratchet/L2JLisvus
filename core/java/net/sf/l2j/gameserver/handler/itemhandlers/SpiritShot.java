@@ -18,9 +18,9 @@ import net.sf.l2j.gameserver.handler.IItemHandler;
 import net.sf.l2j.gameserver.model.L2ItemInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PlayableInstance;
+import net.sf.l2j.gameserver.model.holder.SkillHolder;
 import net.sf.l2j.gameserver.network.serverpackets.MagicSkillUse;
 import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
-import net.sf.l2j.gameserver.templates.L2Item;
 import net.sf.l2j.gameserver.templates.L2Weapon;
 import net.sf.l2j.gameserver.util.Broadcast;
 
@@ -30,27 +30,6 @@ import net.sf.l2j.gameserver.util.Broadcast;
  */
 public class SpiritShot implements IItemHandler
 {
-	// All the item IDs that this handler knows.
-	private static int[] _itemIds =
-	{
-		5790,
-		2509,
-		2510,
-		2511,
-		2512,
-		2513,
-		2514
-	};
-	private static int[] _skillIds =
-	{
-		2061,
-		2155,
-		2156,
-		2157,
-		2158,
-		2159
-	};
-
 	/*
 	 * (non-Javadoc)
 	 * @see net.sf.l2j.gameserver.handler.IItemHandler#useItem(net.sf.l2j.gameserver.model.L2PcInstance, net.sf.l2j.gameserver.model.L2ItemInstance)
@@ -85,8 +64,7 @@ public class SpiritShot implements IItemHandler
 		}
 
 		// Check for correct grade
-		int weaponGrade = weaponItem.getCrystalType();
-		if (((weaponGrade == L2Item.CRYSTAL_NONE) && (itemId != 5790) && (itemId != 2509)) || ((weaponGrade == L2Item.CRYSTAL_D) && (itemId != 2510)) || ((weaponGrade == L2Item.CRYSTAL_C) && (itemId != 2511)) || ((weaponGrade == L2Item.CRYSTAL_B) && (itemId != 2512)) || ((weaponGrade == L2Item.CRYSTAL_A) && (itemId != 2513)) || ((weaponGrade == L2Item.CRYSTAL_S) && (itemId != 2514)))
+		if (weaponItem.getCrystalType() != item.getItem().getCrystalType())
 		{
 			if (!activeChar.getAutoSoulShot().contains(itemId))
 			{
@@ -110,12 +88,11 @@ public class SpiritShot implements IItemHandler
 
 		// Send message to client
 		activeChar.sendPacket(new SystemMessage(SystemMessage.ENABLED_SPIRITSHOT));
-		Broadcast.toSelfAndKnownPlayersInRadius(activeChar, new MagicSkillUse(activeChar, activeChar, _skillIds[weaponGrade], 1, 0, 0), 360000);
-	}
 
-	@Override
-	public int[] getItemIds()
-	{
-		return _itemIds;
+		if (item.getItem().getSkills() != null)
+		{
+			SkillHolder holder = item.getItem().getSkills()[0];
+			Broadcast.toSelfAndKnownPlayersInRadius(activeChar, new MagicSkillUse(activeChar, activeChar, holder.getId(), holder.getLevel(), 0, 0), 360000);
+		}
 	}
 }

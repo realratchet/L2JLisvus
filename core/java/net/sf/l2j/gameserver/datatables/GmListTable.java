@@ -26,7 +26,7 @@ import net.sf.l2j.gameserver.network.serverpackets.L2GameServerPacket;
 import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
 
 /**
- * This class stores references to all online game masters. (access level > 100)
+ * This class stores references to all online game masters.
  * 
  * @version $Revision: 1.2.2.1.2.7 $ $Date: 2005/04/05 19:41:24 $
  */
@@ -34,7 +34,7 @@ public class GmListTable
 {
     private static Logger _log = Logger.getLogger(GmListTable.class.getName());
 
-    private Map<L2PcInstance, Boolean> _gmList;
+    private final Map<L2PcInstance, Boolean> _gmList = new ConcurrentHashMap<>();
 
     public static GmListTable getInstance()
     {
@@ -67,11 +67,6 @@ public class GmListTable
         return tmpGmList;
     }
 
-    private GmListTable()
-    {
-        _gmList = new ConcurrentHashMap<>();
-    }
-
     /**
      * Add a L2PcInstance player to the Set _gmList
      * @param player 
@@ -81,7 +76,7 @@ public class GmListTable
     {
         if (Config.DEBUG)
             _log.fine("added gm: "+player.getName());
-        _gmList.put(player,hidden);
+        _gmList.put(player, hidden);
     }
 
     public void deleteGm(L2PcInstance player)
@@ -124,7 +119,7 @@ public class GmListTable
     public void sendListToPlayer(L2PcInstance player)
     {
         if (!isGmOnline(player.isGM()))
-            player.sendPacket(new SystemMessage(SystemMessage.NO_GM_PROVIDING_SERVICE_NOW)); //There are not any GMs that are providing customer service currently.
+            player.sendPacket(new SystemMessage(SystemMessage.NO_GM_PROVIDING_SERVICE_NOW)); // There are not any GMs that are providing customer service currently.
         else
         {
             SystemMessage sm = new SystemMessage(SystemMessage.GM_LIST);
@@ -139,19 +134,19 @@ public class GmListTable
         }
     }
 
-    public static void broadcastToGMs(L2GameServerPacket packet)
+    public void broadcastToGMs(L2GameServerPacket packet)
     {
-        for (L2PcInstance gm : getInstance().getAllGms(true))
+        for (L2PcInstance gm :getAllGms(true))
         {
             gm.sendPacket(packet);
         }
     }
 
-    public static void broadcastMessageToGMs(String message)
+    public void broadcastMessageToGMs(String message)
     {
-        for (L2PcInstance gm : getInstance().getAllGms(true))
+        for (L2PcInstance gm : getAllGms(true))
         {
-            gm.sendPacket(SystemMessage.sendString(message));
+            gm.sendMessage(message);
         }
     }
     

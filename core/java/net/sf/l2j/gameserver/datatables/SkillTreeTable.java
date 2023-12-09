@@ -664,7 +664,7 @@ public class SkillTreeTable
         final int maxLvl = SkillTable.getInstance().getMaxLevel(skill.getId());
         int hashCode = SkillTable.getSkillHashCode(skill.getId(), level);
 
-        if (_enchantSkillTrees.get(hashCode) != null)
+        if (_enchantSkillTrees.containsKey(hashCode))
         {
             level = _enchantSkillTrees.get(hashCode).getBaseLevel();
         }

@@ -18,7 +18,9 @@ import net.sf.l2j.gameserver.datatables.ItemTable;
 import net.sf.l2j.gameserver.model.L2ItemInstance;
 import net.sf.l2j.gameserver.model.L2ItemInstance.ItemLocation;
 import net.sf.l2j.gameserver.model.actor.instance.L2PetInstance;
+import net.sf.l2j.gameserver.templates.L2Armor;
 import net.sf.l2j.gameserver.templates.L2Item;
+import net.sf.l2j.gameserver.templates.L2Weapon;
 
 public class PetInventory extends Inventory 
 {
@@ -30,7 +32,7 @@ public class PetInventory extends Inventory
     }
 
     @Override
-	public L2PetInstance getOwner() 
+	public L2PetInstance getOwner()
     { 
         return _owner; 
     }
@@ -60,7 +62,8 @@ public class PetInventory extends Inventory
         super.refreshWeight();
         getOwner().updateAndBroadcastStatus(1);
     }
-
+
+
     public boolean validateCapacity(L2ItemInstance item)
     {
         int slots = 0;
@@ -92,6 +95,36 @@ public class PetInventory extends Inventory
     {
         return (_totalWeight + weight <= _owner.getMaxLoad());
     }
+
+    /**
+	 * Equips item in slot of pet paperdoll.
+	 * @param item : L2ItemInstance designating the item and slot used.
+	 */
+	public void equipPetItem(L2ItemInstance item)
+	{
+		L2Item template = item.getItem();
+		if (template.isPetItem())
+		{
+			if (template instanceof L2Weapon)
+			{
+				setPaperdollItem(PAPERDOLL_RHAND, item);
+				_owner.setWeapon(item.getItemId());
+			}
+			else if (template instanceof L2Armor)
+			{
+				setPaperdollItem(PAPERDOLL_CHEST, item);
+				_owner.setArmor(item.getItemId());
+			}
+			else
+			{
+				_log.warning("Unknown pet item type");
+			}
+		}
+		else
+		{
+			_log.warning("Attempted to equip a non-pet item to pet. Item: " + item.getItemId());
+		}
+	}
 
     @Override
 	protected ItemLocation getBaseLocation() 

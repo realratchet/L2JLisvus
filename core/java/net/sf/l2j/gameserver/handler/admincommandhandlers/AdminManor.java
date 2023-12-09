@@ -21,8 +21,6 @@ import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.handler.IAdminCommandHandler;
 import net.sf.l2j.gameserver.instancemanager.CastleManager;
 import net.sf.l2j.gameserver.instancemanager.CastleManorManager;
-import net.sf.l2j.gameserver.instancemanager.CastleManorManager.CropProcure;
-import net.sf.l2j.gameserver.instancemanager.CastleManorManager.SeedProduction;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.entity.Castle;
 import net.sf.l2j.gameserver.network.serverpackets.NpcHtmlMessage;
@@ -89,10 +87,10 @@ public class AdminManor implements IAdminCommandHandler
             if (castleId > 0)
             {
                 Castle castle = CastleManager.getInstance().getCastleById(castleId);
-                castle.setCropProcure(new ArrayList<CropProcure>(), CastleManorManager.PERIOD_CURRENT);
-                castle.setCropProcure(new ArrayList<CropProcure>(), CastleManorManager.PERIOD_NEXT);
-                castle.setSeedProduction(new ArrayList<SeedProduction>(), CastleManorManager.PERIOD_CURRENT);
-                castle.setSeedProduction(new ArrayList<SeedProduction>(), CastleManorManager.PERIOD_NEXT);
+                castle.setCropProcure(new ArrayList<>(), CastleManorManager.PERIOD_CURRENT);
+                castle.setCropProcure(new ArrayList<>(), CastleManorManager.PERIOD_NEXT);
+                castle.setSeedProduction(new ArrayList<>(), CastleManorManager.PERIOD_CURRENT);
+                castle.setSeedProduction(new ArrayList<>(), CastleManorManager.PERIOD_NEXT);
 
                 if (Config.ALT_MANOR_SAVE_ALL_ACTIONS)
                 {
@@ -105,10 +103,10 @@ public class AdminManor implements IAdminCommandHandler
             {
                 for (Castle castle : CastleManager.getInstance().getCastles())
                 {
-                    castle.setCropProcure(new ArrayList<CropProcure>(), CastleManorManager.PERIOD_CURRENT);
-                    castle.setCropProcure(new ArrayList<CropProcure>(), CastleManorManager.PERIOD_NEXT);
-                    castle.setSeedProduction(new ArrayList<SeedProduction>(), CastleManorManager.PERIOD_CURRENT);
-                    castle.setSeedProduction(new ArrayList<SeedProduction>(), CastleManorManager.PERIOD_NEXT);
+                    castle.setCropProcure(new ArrayList<>(), CastleManorManager.PERIOD_CURRENT);
+                    castle.setCropProcure(new ArrayList<>(), CastleManorManager.PERIOD_NEXT);
+                    castle.setSeedProduction(new ArrayList<>(), CastleManorManager.PERIOD_CURRENT);
+                    castle.setSeedProduction(new ArrayList<>(), CastleManorManager.PERIOD_NEXT);
 
                     if (Config.ALT_MANOR_SAVE_ALL_ACTIONS)
                     {

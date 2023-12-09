@@ -270,10 +270,17 @@ public class L2PlayerAI extends L2CharacterAI
 
 	private void thinkCast()
 	{
+		L2Skill skill = getCurrentSkill();
+		if (skill == null)
+		{
+			return;
+		}
+		
 		L2Character target = getCastTarget();
+
 		if (checkTargetLost(target))
 		{
-			if (_skill.isOffensive() && getAttackTarget() != null)
+			if (skill.isOffensive() && getAttackTarget() != null)
 			{
 				// Notify the target
 				setCastTarget(null);
@@ -283,13 +290,13 @@ public class L2PlayerAI extends L2CharacterAI
 
 		if (target != null)
 		{
-			if (maybeMoveToPawn(target, _actor.getMagicalAttackRange(_skill)))
+			if (maybeMoveToPawn(target, _actor.getMagicalAttackRange(skill)))
 			{
 				return;
 			}
 		}
 
-		if (_skill.getHitTime() > 50)
+		if (skill.getHitTime() > 50)
 		{
 			clientStopMoving(null);
 		}
@@ -304,7 +311,7 @@ public class L2PlayerAI extends L2CharacterAI
 			}
 
 			// Launch the Cast of the skill
-			_accessor.doCast(_skill);
+			_accessor.doCast(skill);
 
 			// Restore the initial target
 			if ((target != null) && (oldTarget != target))
@@ -314,7 +321,7 @@ public class L2PlayerAI extends L2CharacterAI
 		}
 		else
 		{
-			_accessor.doCast(_skill);
+			_accessor.doCast(skill);
 		}
 	}
 

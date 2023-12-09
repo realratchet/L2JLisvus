@@ -181,7 +181,7 @@ public abstract class SagaSuperclass extends Quest
 				st.startQuestTimer("Archon Hellisha has despawned", 600000, archon);
 				autoChat(archon, _texts[13].replace("PLAYERNAME", st.getPlayer().getName()));
 				((L2Attackable) archon).addDamageHate(st.getPlayer(), 0, 99999);
-				archon.getAI().setIntention(CtrlIntention.AI_INTENTION_ATTACK, st.getPlayer(), null);
+				archon.getAI().setIntention(CtrlIntention.AI_INTENTION_ATTACK, st.getPlayer());
 			}
 		}
 	}
@@ -475,8 +475,8 @@ public abstract class SagaSuperclass extends Quest
 				{
 					((L2Attackable) npc).addDamageHate(mob, 0, 99999);
 				}
-				npc.getAI().setIntention(CtrlIntention.AI_INTENTION_ATTACK, mob, null);
-				mob.getAI().setIntention(CtrlIntention.AI_INTENTION_ATTACK, npc, null);
+				npc.getAI().setIntention(CtrlIntention.AI_INTENTION_ATTACK, mob);
+				mob.getAI().setIntention(CtrlIntention.AI_INTENTION_ATTACK, npc);
 				autoChat(npc, _texts[14].replace("PLAYERNAME", player.getName()));
 			}
 			else

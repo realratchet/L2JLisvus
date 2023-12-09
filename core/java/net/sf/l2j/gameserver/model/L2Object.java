@@ -212,7 +212,8 @@ public abstract class L2Object
             
             getPosition().setWorldPosition(x, y ,z);
             getPosition().setWorldRegion(L2World.getInstance().getRegion(getPosition().getWorldPosition()));
-        }
+        }
+
         // Add the L2Object spawn in the _allobjects of L2World
         L2World.getInstance().storeObject(this);
 
@@ -317,7 +318,8 @@ public abstract class L2Object
     public L2PcInstance getActingPlayer()
     {
         return null;
-    }
+    }
+
     /**
 	 * Sends the Server->Client info packet for the object.<br><br>
 	 * It's Overridden in:

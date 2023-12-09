@@ -19,7 +19,6 @@ import net.sf.l2j.gameserver.model.L2ItemInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.skills.Env;
 import net.sf.l2j.gameserver.skills.Stats;
-import net.sf.l2j.gameserver.templates.L2Item;
 import net.sf.l2j.gameserver.templates.L2WeaponType;
 
 public class FuncEnchant extends Func
@@ -75,19 +74,19 @@ public class FuncEnchant extends Func
         {
             switch (item.getItem().getCrystalType())
             {
-                case L2Item.CRYSTAL_S:
+                case S:
                     env.value += 4 * enchant + 8 * overenchant;
                     break;
-                case L2Item.CRYSTAL_A:
+                case A:
                     env.value += 3 * enchant + 6 * overenchant;
                     break;
-                case L2Item.CRYSTAL_B:
+                case B:
                     env.value += 3 * enchant + 6 * overenchant;
                     break;
-                case L2Item.CRYSTAL_C:
+                case C:
                     env.value += 3 * enchant + 6 * overenchant;
                     break;
-                case L2Item.CRYSTAL_D:
+                case D:
                     env.value += 2 * enchant + 4 * overenchant;
                     break;
             }
@@ -96,32 +95,32 @@ public class FuncEnchant extends Func
 
         switch (item.getItem().getCrystalType())
         {
-            case L2Item.CRYSTAL_S:
+            case S:
                 if (item.getItemType() == L2WeaponType.BOW)
                     env.value += 10 * enchant + 20 * overenchant;
                 else
                     env.value += 5 * enchant + 10 * overenchant;
                 break;
-            case L2Item.CRYSTAL_A:
+            case A:
                 if (item.getItemType() == L2WeaponType.BOW)
                     env.value += 8 * enchant + 16 * overenchant;
                 else
                     env.value += 4 * enchant + 8 * overenchant;
                 break;
-            case L2Item.CRYSTAL_B:
+            case B:
                 if (item.getItemType() == L2WeaponType.BOW)
                     env.value += 6 * enchant + 12 * overenchant;
                 else
                     env.value += 3 * enchant + 6 * overenchant;
                 break;
-            case L2Item.CRYSTAL_C:
+            case C:
                 if (item.getItemType() == L2WeaponType.BOW)
                     env.value += 6 * enchant + 12 * overenchant;
                 else
                     env.value += 3 * enchant + 6 * overenchant;
                 break;
-            case L2Item.CRYSTAL_D:
-            case L2Item.CRYSTAL_NONE:
+            case D:
+            case NONE:
                 if (item.getItemType() == L2WeaponType.BOW)
                     env.value += 4 * enchant + 8 * overenchant;
                 else

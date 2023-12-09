@@ -612,8 +612,8 @@ public class L2Multisell
         	// If it is an armor/weapon, modify the enchantment level appropriately, if necessary
         	else if (maintainEnchantment && newIngredient.getItemId() > 0 && newIngredient.getEnchantmentLevel() == 0)
         	{
-            	L2Item tempItem = ItemTable.getInstance().createDummyItem(ing.getItemId()).getItem();
-            	if ((tempItem instanceof L2Armor) || (tempItem instanceof L2Weapon))
+                L2Item tempItem = ItemTable.getInstance().getTemplate(ing.getItemId());
+            	if (tempItem != null && (tempItem instanceof L2Armor || tempItem instanceof L2Weapon))
             	{
             		newIngredient.setEnchantmentLevel(enchantLevel);
             	}
@@ -643,8 +643,8 @@ public class L2Multisell
             {
             	// if it is an armor/weapon, modify the enchantment level appropriately
             	// (note, if maintain enchantment is "false" this modification will result to a +0)
-            	L2Item tempItem = ItemTable.getInstance().createDummyItem(ing.getItemId()).getItem();
-            	if ((tempItem instanceof L2Armor) || (tempItem instanceof L2Weapon))
+                L2Item tempItem = ItemTable.getInstance().getTemplate(ing.getItemId());
+            	if (tempItem != null && (tempItem instanceof L2Armor || tempItem instanceof L2Weapon))
             	{
             		newIngredient.setEnchantmentLevel(enchantLevel);
             	}

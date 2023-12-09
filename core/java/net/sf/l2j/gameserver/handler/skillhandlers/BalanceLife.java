@@ -29,13 +29,13 @@ import net.sf.l2j.gameserver.network.serverpackets.StatusUpdate;
 
 public class BalanceLife implements ISkillHandler
 {
-	private static SkillType[] _skillIds =
+	private static SkillType[] SKILL_TYPES =
 	{
 		SkillType.BALANCE_LIFE
 	};
 	
 	@Override
-	public void useSkill(L2Character activeChar, L2Skill skill, L2Object[] targets, boolean isFirstCritical)
+	public void useSkill(L2Character activeChar, L2Skill skill, L2Object[] targets, boolean critOnFirstTarget)
 	{
 		// Check for other effects
 		try
@@ -43,7 +43,7 @@ public class BalanceLife implements ISkillHandler
 			ISkillHandler handler = SkillHandler.getInstance().getSkillHandler(SkillType.BUFF);
 			if (handler != null)
 			{
-				handler.useSkill(activeChar, skill, targets, isFirstCritical);
+				handler.useSkill(activeChar, skill, targets, critOnFirstTarget);
 			}
 		}
 		catch (Exception e)
@@ -88,8 +88,8 @@ public class BalanceLife implements ISkillHandler
 	}
 	
 	@Override
-	public SkillType[] getSkillIds()
+	public SkillType[] getSkillTypes()
 	{
-		return _skillIds;
+		return SKILL_TYPES;
 	}
 }

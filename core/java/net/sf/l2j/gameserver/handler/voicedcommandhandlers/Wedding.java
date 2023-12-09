@@ -14,12 +14,7 @@
  */
 package net.sf.l2j.gameserver.handler.voicedcommandhandlers;
 
-import java.util.logging.Logger;
-
 import net.sf.l2j.Config;
-import net.sf.l2j.gameserver.GameTimeController;
-import net.sf.l2j.gameserver.ThreadPoolManager;
-import net.sf.l2j.gameserver.ai.CtrlIntention;
 import net.sf.l2j.gameserver.handler.IVoicedCommandHandler;
 import net.sf.l2j.gameserver.instancemanager.CoupleManager;
 import net.sf.l2j.gameserver.instancemanager.GrandBossManager;
@@ -30,10 +25,7 @@ import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.entity.Siege;
 import net.sf.l2j.gameserver.model.eventgame.L2Event;
 import net.sf.l2j.gameserver.network.serverpackets.ConfirmDlg;
-import net.sf.l2j.gameserver.network.serverpackets.MagicSkillUse;
-import net.sf.l2j.gameserver.network.serverpackets.SetupGauge;
 import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
-import net.sf.l2j.gameserver.util.Broadcast;
 
 /**
  * @author evill33t
@@ -41,13 +33,10 @@ import net.sf.l2j.gameserver.util.Broadcast;
  */
 public class Wedding implements IVoicedCommandHandler
 {
-	private static final Logger _log = Logger.getLogger(Wedding.class.getName());
-	
 	private static final String[] VOICED_COMMANDS =
 	{
 		"divorce",
-		"engage",
-		"gotolove"
+		"engage"
 	};
 	
 	/**
@@ -69,10 +58,6 @@ public class Wedding implements IVoicedCommandHandler
 		else if (command.startsWith("divorce"))
 		{
 			return divorce(activeChar);
-		}
-		else if (command.startsWith("gotolove"))
-		{
-			return goToLove(activeChar);
 		}
 		return false;
 	}
@@ -178,110 +163,6 @@ public class Wedding implements IVoicedCommandHandler
 		dlg.addString(activeChar.getName() + " is asking to engage you. Do you want to start a new relationship?");
 		pTarget.sendPacket(dlg);
 		activeChar.sendMessage("Engage request has been sent to " + pTarget.getName() + ".");
-		return true;
-	}
-	
-	private boolean goToLove(L2PcInstance activeChar)
-	{
-		if (activeChar.isMovementDisabled() || activeChar.isAlikeDead() || activeChar.isAllSkillsDisabled())
-		{
-            return false;
-		}
-		
-		if (!activeChar.isMarried())
-		{
-			activeChar.sendMessage("You are not married.");
-			return false;
-		}
-		
-		if (activeChar.getPartnerId() == 0)
-		{
-			activeChar.sendMessage("Couldn't find your fiance in the Database - Inform a Gamemaster.");
-			_log.severe("Married but couldn't find partner for " + activeChar.getName());
-			return false;
-		}
-		
-		// Check if partner is reachable
-		if (getPartner(activeChar) == null)
-		{
-			return false;
-		}
-
-		if (activeChar.isInJail())
-		{
-			activeChar.sendMessage("You are in Jail!");
-			return false;
-		}
-		
-		if (GrandBossManager.getInstance().getZone(activeChar) != null)
-		{
-			activeChar.sendMessage("You are inside a Boss Zone.");
-			return false;
-		}
-		
-		if (activeChar.isInOlympiadMode())
-		{
-			activeChar.sendMessage("You are in the Olympiad.");
-			return false;
-		}
-		
-		L2Event event = activeChar.getEvent();
-		if (event != null && event.isStarted())
-		{
-			activeChar.sendMessage("You are in an event.");
-			return false;
-		}
-		
-		if (activeChar.isFestivalParticipant())
-		{
-			activeChar.sendMessage("You are in a festival.");
-			return false;
-		}
-		
-		L2Party party = activeChar.getParty();
-		if (party != null && party.isInDimensionalRift())
-		{
-			activeChar.sendMessage("You are in the dimensional rift.");
-			return false;
-		}
-		
-		if (activeChar.inObserverMode())
-		{
-			activeChar.sendMessage("You are in observation mode.");
-			return false;
-		}
-		
-		Siege siege = SiegeManager.getInstance().getSiege(activeChar);
-		if (siege != null && siege.getIsInProgress())
-		{
-			activeChar.sendMessage("You are in a siege, you cannot go to your partner.");
-			return false;
-		}
-		
-		// Check if player has enough adena
-		if (!activeChar.reduceAdena("Wedding Teleport", Config.WEDDING_TELEPORT_PRICE, null, true))
-		{
-			return false;
-		}
-		
-		int teleportTimer = Config.WEDDING_TELEPORT_DURATION * 1000;
-		activeChar.sendMessage("You will be teleported to your partner in " + teleportTimer / 60000 + " minute(s).");
-		
-		// SoE Animation section
-		activeChar.getAI().setIntention(CtrlIntention.AI_INTENTION_IDLE);
-		activeChar.disableAllSkills();
-		
-		MagicSkillUse msk = new MagicSkillUse(activeChar, 1050, 1, teleportTimer, 0);
-		Broadcast.toSelfAndKnownPlayersInRadius(activeChar, msk, 810000);
-		SetupGauge sg = new SetupGauge(SetupGauge.BLUE, teleportTimer);
-		activeChar.sendPacket(sg);
-		// End SoE Animation section
-		
-		EscapeFinalizer ef = new EscapeFinalizer(activeChar);
-		// Continue execution later
-		activeChar.setSkillCast(ThreadPoolManager.getInstance().scheduleGeneral(ef, teleportTimer));
-		activeChar.setSkillCastEndTime(10 + GameTimeController.getInstance().getGameTicks() + teleportTimer / GameTimeController.MILLIS_IN_TICK);
-		
 		return true;
 	}
 	

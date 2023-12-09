@@ -148,7 +148,7 @@ public class RaidBossSpawnManager
                 
                 _storedInfo.put(bossId, info);
                 
-                GmListTable.broadcastMessageToGMs("Spawning Raid Boss " + raidboss.getName());
+                GmListTable.getInstance().broadcastMessageToGMs("Spawning Raid Boss " + raidboss.getName());
                 
                 _bosses.put(bossId, raidboss);
             }
@@ -264,7 +264,8 @@ public class RaidBossSpawnManager
                 statement.setInt(3, spawnDat.getLocX());
                 statement.setInt(4, spawnDat.getLocY());
                 statement.setInt(5, spawnDat.getLocZ());
-                statement.setInt(6, spawnDat.getHeading());
+                statement.setInt(6, spawnDat.getHeading());
+
                 statement.setLong(7, respawnTime);
                 statement.setDouble(8, currentHP);
                 statement.setDouble(9, currentMP);
@@ -425,7 +426,7 @@ public class RaidBossSpawnManager
 
         _storedInfo.put(raidboss.getNpcId(), info);
 
-        GmListTable.broadcastMessageToGMs("Spawning Raid Boss " + raidboss.getName());
+        GmListTable.getInstance().broadcastMessageToGMs("Spawning Raid Boss " + raidboss.getName());
         
         _bosses.put(raidboss.getNpcId(), raidboss);
     }

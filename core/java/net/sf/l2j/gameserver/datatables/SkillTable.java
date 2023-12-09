@@ -17,8 +17,8 @@ package net.sf.l2j.gameserver.datatables;
 import java.util.HashMap;
 import java.util.Map;
 
+import net.sf.l2j.gameserver.datatables.document.DocumentEngine;
 import net.sf.l2j.gameserver.model.L2Skill;
-import net.sf.l2j.gameserver.skills.SkillsEngine;
 import net.sf.l2j.gameserver.templates.L2WeaponType;
 
 /**
@@ -39,12 +39,13 @@ public class SkillTable
         _skills = new HashMap<>();
         _skillMaxLevel = new HashMap<>();
         reload();
-    }
+    }
+
 
     public void reload()
     {
         _skills.clear();
-        SkillsEngine.getInstance().loadAllSkills(_skills);
+        DocumentEngine.getInstance().loadAllSkills(_skills);
 
         _skillMaxLevel.clear();
         for (final L2Skill skill : _skills.values())
@@ -79,7 +80,8 @@ public class SkillTable
     public static int getSkillHashCode(int skillId, int skillLevel)
     {
         return skillId*256+skillLevel;
-    }
+    }
+
 
     public final L2Skill getInfo(final int skillId, final int level)
     {
@@ -109,9 +111,11 @@ public class SkillTable
     public int calcWeaponsAllowed(int mask)
     {
         if (mask == 0)
-            return 0;
+            return 0;
 
-        int weaponsAllowed = 0;
+
+        int weaponsAllowed = 0;
+
 
         for (int i=0; i < weaponDbMasks.length; i++)
         {

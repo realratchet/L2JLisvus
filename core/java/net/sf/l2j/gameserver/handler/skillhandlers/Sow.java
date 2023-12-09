@@ -32,13 +32,13 @@ import net.sf.l2j.util.Rnd;
  */
 public class Sow implements ISkillHandler
 {
-	private static final SkillType[] SKILL_IDS =
+	private static final SkillType[] SKILL_TYPES =
 	{
 		SkillType.SOW
 	};
 	
 	@Override
-	public void useSkill(L2Character activeChar, L2Skill skill, L2Object[] targets, boolean isFirstCritical)
+	public void useSkill(L2Character activeChar, L2Skill skill, L2Object[] targets, boolean critOnFirstTarget)
 	{
 		if (!(activeChar instanceof L2PcInstance))
 		{
@@ -149,8 +149,8 @@ public class Sow implements ISkillHandler
 	}
 	
 	@Override
-	public SkillType[] getSkillIds()
+	public SkillType[] getSkillTypes()
 	{
-		return SKILL_IDS;
+		return SKILL_TYPES;
 	}
 }

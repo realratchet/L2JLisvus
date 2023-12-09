@@ -73,7 +73,7 @@ final class EffectConfuseMob extends L2Effect
         }
 
         // if there is no target, exit function
-        if (targetList.size()==0)
+        if (targetList.isEmpty())
             return true;
 
         // Choosing randomly a new target
@@ -81,7 +81,7 @@ final class EffectConfuseMob extends L2Effect
         L2Object target = targetList.get(nextTargetIdx);
 
         // Attacking the target
-        getEffected().getAI().setIntention(CtrlIntention.AI_INTENTION_ATTACK,target);
+        getEffected().getAI().setIntention(CtrlIntention.AI_INTENTION_ATTACK, target);
     	return true;
     }
 }

@@ -31,9 +31,9 @@ public class L2SkillEngrave extends L2Skill
 	}
 	
 	@Override
-	public void useSkill(L2Character activeChar, L2Object[] targets, boolean isFirstCritical)
+	public void useSkill(L2Character activeChar, L2Object[] targets, boolean critOnFirstTarget)
 	{
-		if (!(activeChar instanceof L2PcInstance))
+		if (activeChar.isAlikeDead() || !(activeChar instanceof L2PcInstance))
 		{
 			return;
 		}
