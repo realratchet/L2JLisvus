@@ -794,6 +794,7 @@
     <set name="material" val="STEEL" />
     <set name="weight" val="20" />
     <set name="price" val="200" />
+    <set name="handler" val="Calculator" />
   </item>
   <item id="4394" name="Hanellin's White Flower" type="EtcItem">
     <set name="etcitem_type" val="OTHER" />

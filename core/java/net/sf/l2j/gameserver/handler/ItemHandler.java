@@ -23,6 +23,7 @@ import net.sf.l2j.gameserver.handler.itemhandlers.BeastSpice;
 import net.sf.l2j.gameserver.handler.itemhandlers.BeastSpiritShot;
 import net.sf.l2j.gameserver.handler.itemhandlers.BlessedSpiritShot;
 import net.sf.l2j.gameserver.handler.itemhandlers.Book;
+import net.sf.l2j.gameserver.handler.itemhandlers.Calculator;
 import net.sf.l2j.gameserver.handler.itemhandlers.ChestKey;
 import net.sf.l2j.gameserver.handler.itemhandlers.EnchantScrolls;
 import net.sf.l2j.gameserver.handler.itemhandlers.ExtractableItems;
@@ -66,6 +67,7 @@ public class ItemHandler
 	
 	public void load()
 	{
+		registerItemHandler(new Calculator());
 		registerItemHandler(new ScrollOfEscape());
 		registerItemHandler(new ScrollOfResurrection());
 		registerItemHandler(new SoulShot());

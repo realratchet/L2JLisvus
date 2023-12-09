@@ -524,7 +524,7 @@ public abstract class L2Effect
 
 			if (_skill.isPvpSkill() && _icon && getEffected() instanceof L2PcInstance)
 			{
-				SystemMessage smsg = new SystemMessage(110);
+				SystemMessage smsg = new SystemMessage(SystemMessage.YOU_FEEL_S1_EFFECT);
 				smsg.addString(_skill.getName());
 				getEffected().sendPacket(smsg);
 			}

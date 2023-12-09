@@ -27,6 +27,7 @@ import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PlayableInstance;
 import net.sf.l2j.gameserver.model.itemcontainer.Inventory;
 import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
+import net.sf.l2j.gameserver.templates.L2Item;
 import net.sf.l2j.util.Rnd;
 
 /**
@@ -92,15 +93,15 @@ public class ExtractableItems implements IItemHandler
 				continue;
 			}
 			
-			L2ItemInstance dummyItem = ItemTable.getInstance().createDummyItem(id);
-			if (dummyItem == null)
+			L2Item templateItem = ItemTable.getInstance().getTemplate(id);
+			if (templateItem == null)
 			{
 				_log.warning(getClass().getSimpleName() + ": Item " + id + " doesn't have a template!");
 				activeChar.sendPacket(new SystemMessage(SystemMessage.NOTHING_INSIDE_THAT));
 				continue;
 			}
 			
-			if (dummyItem.isStackable())
+			if (templateItem.isStackable())
 			{
 				activeChar.addItem("Extract", id, amount, activeChar, false);
 			}

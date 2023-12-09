@@ -1373,11 +1373,10 @@ public abstract class L2Character extends L2Object
 		
 		return true;
 	}
-
+	
 	/**
 	 * Manage the casting task (casting and interrupt time, re-use delay...) and display the casting bar and animation on client.
 	 * Method does not check for casting conditions.
-	 * 
 	 * @param skill
 	 */
 	public void beginCast(L2Skill skill)
@@ -1467,10 +1466,13 @@ public abstract class L2Character extends L2Object
 			hitTime = skill.getHitTime();
 			coolTime = skill.getCoolTime();
 		}
-		// if basic hitTime is higher than 500 than the min hitTime is 500
-		else if (skill.getHitTime() >= 500 && hitTime < 500)
+		else
 		{
-			hitTime = 500;
+			// if basic hitTime is higher than 500 then the min hitTime is 500
+			if (skill.getHitTime() >= 500 && hitTime < 500)
+			{
+				hitTime = 500;
+			}
 		}
 		
 		// Set the _castEndTime and _castInterruptTime. +10 ticks for lag situations, will be reset in onMagicFinalizer

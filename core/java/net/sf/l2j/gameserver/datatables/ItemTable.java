@@ -203,22 +203,15 @@ public class ItemTable
 	 */
 	public L2ItemInstance createDummyItem(int itemId)
 	{
-		L2Item item = getTemplate(itemId);
-		if (item == null)
-			return null;
-		L2ItemInstance temp = new L2ItemInstance(0, item);
+		L2ItemInstance temp = null;
+
 		try
 		{
 			temp = new L2ItemInstance(0, itemId);
 		} 
-		catch (ArrayIndexOutOfBoundsException e)
+		catch (Exception e)
 		{
-			// this can happen if the item templates were not initialized
-		}
-		
-		if (temp.getItem() == null)
-		{
-			_log.warning(getClass().getSimpleName() + ": Item Template missing for ID: " + itemId);
+			_log.log(Level.SEVERE, getClass().getSimpleName() + ": Item template missing for ID: " + itemId, e);
 		}
 		
 		return temp; 	

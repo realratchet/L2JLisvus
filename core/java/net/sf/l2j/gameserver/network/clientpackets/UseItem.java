@@ -31,10 +31,7 @@ import net.sf.l2j.gameserver.model.holder.SkillHolder;
 import net.sf.l2j.gameserver.model.itemcontainer.Inventory;
 import net.sf.l2j.gameserver.network.serverpackets.ActionFailed;
 import net.sf.l2j.gameserver.network.serverpackets.ItemList;
-import net.sf.l2j.gameserver.network.serverpackets.ShowCalculator;
 import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
-import net.sf.l2j.gameserver.templates.L2Armor;
-import net.sf.l2j.gameserver.templates.L2ArmorType;
 import net.sf.l2j.gameserver.templates.L2EtcItem;
 import net.sf.l2j.gameserver.templates.L2Item;
 import net.sf.l2j.gameserver.templates.L2Weapon;
@@ -269,10 +266,9 @@ public class UseItem extends L2GameClientPacket
 				}
 			}
 			
-			// Char cannot use pet items
-			if (((item.getItem() instanceof L2Armor) && (item.getItem().getItemType() == L2ArmorType.PET)) || ((item.getItem() instanceof L2Weapon) && (item.getItem().getItemType() == L2WeaponType.PET)))
+			if (item.getItem().isPetItem())
 			{
-				sm = new SystemMessage(600); // You cannot equip a pet item.
+				sm = new SystemMessage(SystemMessage.CANNOT_EQUIP_PET_ITEM);
 				sm.addItemName(itemId);
 				activeChar.sendPacket(sm);
 				sm = null;
@@ -291,19 +287,13 @@ public class UseItem extends L2GameClientPacket
 		else
 		{
 			L2Weapon weaponItem = activeChar.getActiveWeaponItem();
-			
-			if (itemId == 4393)
-			{
-				activeChar.sendPacket(new ShowCalculator(4393));
-			}
-			else if (weaponItem != null && weaponItem.getItemType() == L2WeaponType.FISHINGROD && (itemId >= 6519 && itemId <= 6527 || itemId >= 7610 && itemId <= 7613 || itemId >= 7807 && itemId <= 7809))
+			if (weaponItem != null && weaponItem.getItemType() == L2WeaponType.FISHINGROD && (itemId >= 6519 && itemId <= 6527 || itemId >= 7610 && itemId <= 7613 || itemId >= 7807 && itemId <= 7809))
 			{
 				activeChar.getInventory().setPaperdollItem(Inventory.PAPERDOLL_LHAND, item);
 				activeChar.broadcastUserInfo();
 				
 				// Send a Server->Client packet ItemList to this L2PcINstance to update left hand equipment
 				sendPacket(new ItemList(activeChar, false));
-				return;
 			}
 			else
 			{

@@ -8838,7 +8838,7 @@ public final class L2PcInstance extends L2PlayableInstance
 			
 			reduceCurrentHp(reduceHp, L2PcInstance.this, false, false);
 			// reduced hp, because of not resting
-			SystemMessage sm = new SystemMessage(297);
+			SystemMessage sm = new SystemMessage(SystemMessage.DROWN_DAMAGE_S1);
 			sm.addNumber((int) reduceHp);
 			sendPacket(sm);
 		}

@@ -609,7 +609,7 @@ public class RecipeController
 				
 				if (_target == _player)
 				{
-					SystemMessage sm = new SystemMessage(368); // you equipped ...
+					SystemMessage sm = new SystemMessage(SystemMessage.S1_S2_EQUIPPED);
 					sm.addNumber(count);
 					sm.addItemName(item.getItemId());
 					_player.sendPacket(sm);

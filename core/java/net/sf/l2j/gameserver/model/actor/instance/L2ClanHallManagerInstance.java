@@ -889,7 +889,7 @@ public class L2ClanHallManagerInstance extends L2FolkInstance
 			{
 				// you cannot teleport to village that is in siege Not sure about this one though
 
-				player.sendPacket(new SystemMessage(707));
+				player.sendPacket(new SystemMessage(SystemMessage.CANNOT_TELEPORT_TO_A_VILLAGE_THAT_IS_IN_A_SIEGE));
 				return;
 
 			}

@@ -47,20 +47,15 @@ public class ItemSkills implements IItemHandler
 			return;
 		}
 		
-		if (!player.destroyItem("Consume", item.getObjectId(), 1, null, false))
+		if (item.getItem().getSkills() != null)
 		{
-			return;
-		}
-		
-		SkillHolder[] holders = item.getItem().getSkills();
-		for (SkillHolder holder : holders)
-		{
+			SkillHolder holder = item.getItem().getSkills()[0];
 			L2Skill skill = holder.getSkill();
 			if (skill == null)
 			{
-				continue;
+				return;
 			}
-
+			
 			if (!skill.checkCondition(playable, playable))
 			{
 				return;
@@ -68,16 +63,24 @@ public class ItemSkills implements IItemHandler
 			
 			if (playable.isSkillDisabled(skill.getId(), false))
 			{
+				SystemMessage sm = new SystemMessage(SystemMessage.S1_PREPARED_FOR_REUSE);
+				sm.addItemName(item.getItemId());
+				playable.sendPacket(sm);
 				return;
 			}
 			
-			if (skill.isPotion())
+			if (!player.destroyItem("Consume", item.getObjectId(), 1, null, false))
 			{
-				castInstantly(playable, item, skill);
+				return;
+			}
+			
+			if (skill.getHitTime() > 0)
+			{
+				playable.useMagic(skill, false, false, item.getObjectId());
 			}
 			else
 			{
-				playable.useMagic(skill, false, false, item.getObjectId());
+				castInstantly(playable, item, skill);
 			}
 		}
 	}

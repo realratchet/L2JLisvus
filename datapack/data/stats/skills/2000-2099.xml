@@ -195,6 +195,7 @@
   <set name="power" val="1.0"/>
   <set name="target" val="TARGET_SELF"/>
   <set name="skillType" val="HOT"/>
+  <set name="reuseDelay" val="9000"/>
   <set name="operateType" val="OP_ACTIVE"/>
   <set name="isPotion" val="true"/>
   <for>
@@ -205,6 +206,7 @@
   <set name="power" val="2.0"/>
   <set name="target" val="TARGET_SELF"/>
   <set name="skillType" val="HOT"/>
+  <set name="reuseDelay" val="9000"/>
   <set name="operateType" val="OP_ACTIVE"/>
   <set name="isPotion" val="true"/>
   <for>
@@ -258,6 +260,7 @@
   <set name="power" val="3.0"/>
   <set name="target" val="TARGET_SELF"/>
   <set name="skillType" val="HOT"/>
+  <set name="reuseDelay" val="9000"/>
   <set name="operateType" val="OP_ACTIVE"/>
   <set name="isPotion" val="true"/>
   <for>

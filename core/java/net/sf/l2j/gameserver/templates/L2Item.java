@@ -451,7 +451,7 @@ public abstract class L2Item
 
 	public boolean isPetItem()
 	{
-		return (getItemType() == L2ArmorType.PET || getItemType() == L2WeaponType.PET);
+		return (this instanceof L2Armor) && getItemType() == L2ArmorType.PET || (this instanceof L2Weapon) && getItemType() == L2WeaponType.PET;
 	}
 	
 	/**
