@@ -38,8 +38,6 @@ public class L2PetData
     public static final String PET_MAX_FEED = "feedMax";
     public static final String PET_FEED_BATTLE = "feedbattle";
     public static final String PET_FEED_NORMAL = "feednormal";
-    //  public static final String PET_LOAD = "load";  
-    public static final String PET_MAX_LOAD = "loadMax";
     public static final String PET_REGEN_HP = "hpregen";
     public static final String PET_REGEN_MP = "mpregen";
     public static final String OWNER_EXP_TAKEN = "owner_exp_taken";
@@ -63,7 +61,6 @@ public class L2PetData
     private int petMaxFeed;
     private int petFeedBattle;
     private int petFeedNormal;
-    private int petMaxLoad;
     private int petRegenHP;
     private int petRegenMP;
 
@@ -128,10 +125,6 @@ public class L2PetData
         else if (stat.equalsIgnoreCase(PET_FEED_BATTLE))
         {
             setPetFeedBattle(value);
-        }
-        else if (stat.equalsIgnoreCase(PET_MAX_LOAD))
-        {
-            setPetMaxLoad(value);
         }
         else if (stat.equalsIgnoreCase(PET_REGEN_HP))
         {
@@ -363,17 +356,6 @@ public class L2PetData
         petFeedBattle = pPetFeedBattle;
     }
 
-    //  Max Load     
-    public int getPetMaxLoad()
-    {
-        return petMaxLoad;
-    }
-
-    public void setPetMaxLoad(int pPetMaxLoad)
-    {
-        petMaxLoad = pPetMaxLoad;
-    }
-
     //  Regen HP     
     public int getPetRegenHP()
     {
@@ -415,7 +397,6 @@ public class L2PetData
             PET_MAX_FEED + ": " + getPetMaxFeed() + " \t" + PET_FEED_BATTLE + ": " + getPetFeedBattle()
             + " \t" + PET_FEED_NORMAL + ": " + getPetFeedNormal() + " \t" +
             //        PET_LOAD + ": " + getPetLoad() + " \t" + 
-            PET_MAX_LOAD + ": " + getPetMaxLoad() + " \t" + PET_REGEN_HP + ": " + getPetRegenHP()
-            + " \t" + PET_REGEN_MP + ": " + getPetRegenMP();
+            PET_REGEN_HP + ": " + getPetRegenHP() + " \t" + PET_REGEN_MP + ": " + getPetRegenMP();
     }
 }

@@ -49,6 +49,7 @@ import net.sf.l2j.gameserver.network.serverpackets.PetItemList;
 import net.sf.l2j.gameserver.network.serverpackets.StatusUpdate;
 import net.sf.l2j.gameserver.network.serverpackets.StopMove;
 import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
+import net.sf.l2j.gameserver.skills.BaseStats;
 import net.sf.l2j.gameserver.skills.Stats;
 import net.sf.l2j.gameserver.taskmanager.DecayTaskManager;
 import net.sf.l2j.gameserver.templates.L2EtcItem;
@@ -70,7 +71,6 @@ public class L2PetInstance extends L2Summon
 	private final int _controlItemObjectId;
 	private boolean _respawned;
 	private final boolean _mountable;
-	private int _maxload;
 	
 	private Future<?> _feedTask;
 	
@@ -112,7 +112,6 @@ public class L2PetInstance extends L2Summon
 		_mountable = PetDataTable.isMountable(npcId);
 		
 		_petData = PetDataTable.getInstance().getPetData(getTemplate().npcId, getStat().getLevel());
-		_maxload = _petData.getPetMaxLoad();
 	}
 	
 	public static L2PetInstance spawnPet(L2NpcTemplate template, L2PcInstance owner, L2ItemInstance control)
@@ -1071,15 +1070,11 @@ public class L2PetInstance extends L2Summon
 		return _inventory.getTotalWeight();
 	}
 	
-	public final void setMaxLoad(int maxLoad)
-	{
-		_maxload = maxLoad;
-	}
-	
 	@Override
 	public final int getMaxLoad()
 	{
-		return _maxload;
+		double baseLoad = Math.floor(BaseStats.CON.calcBonus(this) * 34500 * Config.ALT_WEIGHT_LIMIT);
+		return (int) calcStat(Stats.MAX_LOAD, baseLoad, this, null);
 	}
 	
 	public int getInventoryLimit()
@@ -1254,11 +1249,12 @@ public class L2PetInstance extends L2Summon
 						food = getInventory().getItemByItemId(foodIds[1]);
 					}
 				}
-				if (isRunning() && isHungry())
+
+				if (isHungry())
 				{
 					setWalking();
 				}
-				else if (!isHungry() && !isRunning())
+				else
 				{
 					setRunning();
 				}

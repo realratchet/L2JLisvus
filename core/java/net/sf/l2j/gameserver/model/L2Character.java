@@ -3692,32 +3692,38 @@ public abstract class L2Character extends L2Object
 		
 		StatusUpdate su = null;
 		
-		for (Stats stat : stats)
+		if (this instanceof L2Summon)
 		{
-			if (this instanceof L2Summon)
+			L2Summon summon = (L2Summon) this;
+			if (summon.getOwner() != null)
 			{
-				((L2Summon) this).updateAndBroadcastStatus(1);
-				break;
+				summon.updateAndBroadcastStatus(1);
 			}
-			else if (stat == Stats.POWER_ATTACK_SPEED)
+		}
+		else
+		{
+			for (Stats stat : stats)
 			{
-				if (su == null)
+				if (stat == Stats.POWER_ATTACK_SPEED)
 				{
-					su = new StatusUpdate(getObjectId());
+					if (su == null)
+					{
+						su = new StatusUpdate(getObjectId());
+					}
+					su.addAttribute(StatusUpdate.ATK_SPD, getPAtkSpd());
 				}
-				su.addAttribute(StatusUpdate.ATK_SPD, getPAtkSpd());
-			}
-			else if (stat == Stats.MAGIC_ATTACK_SPEED)
-			{
-				if (su == null)
+				else if (stat == Stats.MAGIC_ATTACK_SPEED)
 				{
-					su = new StatusUpdate(getObjectId());
+					if (su == null)
+					{
+						su = new StatusUpdate(getObjectId());
+					}
+					su.addAttribute(StatusUpdate.CAST_SPD, getMAtkSpd());
 				}
-				su.addAttribute(StatusUpdate.CAST_SPD, getMAtkSpd());
-			}
-			else if (stat == Stats.RUN_SPEED)
-			{
-				broadcastFull = true;
+				else if (stat == Stats.RUN_SPEED)
+				{
+					broadcastFull = true;
+				}
 			}
 		}
 		

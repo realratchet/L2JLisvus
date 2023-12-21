@@ -45,7 +45,7 @@ public class PetDataTable
     public void loadPetData()
     { 
     	try (Connection con = L2DatabaseFactory.getInstance().getConnection();
-            PreparedStatement statement = con.prepareStatement("SELECT typeID, level, expMax, hpMax, mpMax, patk, pdef, matk, mdef, acc, evasion, crit, speed, atk_speed, cast_speed, feedMax, feedbattle, feednormal, loadMax, hpregen, mpregen, owner_exp_taken FROM pets_stats");
+            PreparedStatement statement = con.prepareStatement("SELECT typeID, level, expMax, hpMax, mpMax, patk, pdef, matk, mdef, acc, evasion, crit, speed, atk_speed, cast_speed, feedMax, feedbattle, feednormal, hpregen, mpregen, owner_exp_taken FROM pets_stats");
             ResultSet rset = statement.executeQuery())
         {
             int petId, petLevel;
@@ -63,21 +63,20 @@ public class PetDataTable
                 petData.setPetMaxExp(rset.getLong("expMax"));
                 petData.setPetMaxHP(rset.getInt("hpMax"));                        
                 petData.setPetMaxMP(rset.getInt("mpMax"));
-                petData.setPetPAtk(rset.getInt("patk")); 
-                petData.setPetPDef(rset.getInt("pdef")); 
-                petData.setPetMAtk(rset.getInt("matk")); 
-                petData.setPetMDef(rset.getInt("mdef")); 
-                petData.setPetAccuracy(rset.getInt("acc")); 
-                petData.setPetEvasion(rset.getInt("evasion")); 
-                petData.setPetCritical(rset.getInt("crit")); 
-                petData.setPetSpeed(rset.getInt("speed")); 
-                petData.setPetAtkSpeed(rset.getInt("atk_speed")); 
-                petData.setPetCastSpeed(rset.getInt("cast_speed")); 
-                petData.setPetMaxFeed(rset.getInt("feedMax")); 
-                petData.setPetFeedNormal(rset.getInt("feednormal")); 
-                petData.setPetFeedBattle(rset.getInt("feedbattle")); 
-                petData.setPetMaxLoad(rset.getInt("loadMax")); 
-                petData.setPetRegenHP(rset.getInt("hpregen")); 
+                petData.setPetPAtk(rset.getInt("patk"));
+                petData.setPetPDef(rset.getInt("pdef"));
+                petData.setPetMAtk(rset.getInt("matk"));
+                petData.setPetMDef(rset.getInt("mdef"));
+                petData.setPetAccuracy(rset.getInt("acc"));
+                petData.setPetEvasion(rset.getInt("evasion"));
+                petData.setPetCritical(rset.getInt("crit"));
+                petData.setPetSpeed(rset.getInt("speed"));
+                petData.setPetAtkSpeed(rset.getInt("atk_speed"));
+                petData.setPetCastSpeed(rset.getInt("cast_speed"));
+                petData.setPetMaxFeed(rset.getInt("feedMax"));
+                petData.setPetFeedNormal(rset.getInt("feednormal"));
+                petData.setPetFeedBattle(rset.getInt("feedbattle"));
+                petData.setPetRegenHP(rset.getInt("hpregen"));
                 petData.setPetRegenMP(rset.getInt("mpregen"));
                 petData.setOwnerExpTaken(rset.getFloat("owner_exp_taken"));
 
