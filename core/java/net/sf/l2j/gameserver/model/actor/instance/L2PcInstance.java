@@ -2038,10 +2038,8 @@ public final class L2PcInstance extends L2PlayableInstance
 	 * @return
 	 */
 	@Override
-	public int getMaxLoad()
+	public final int getMaxLoad()
 	{
-		// Weight Limit = (CON Modifier*69000) * Skills
-		// Source
 		double baseLoad = Math.floor(BaseStats.CON.calcBonus(this) * 69000 * Config.ALT_WEIGHT_LIMIT);
 		return (int) calcStat(Stats.MAX_LOAD, baseLoad, this, null);
 	}
