@@ -24,7 +24,8 @@
     <property name="build.dist" location="${build}/dist"/>
     <property name="build.dist.login" location="${build.dist}/login"/>
     <property name="build.dist.game" location="${build.dist}/gameserver"/>
-    <property name="build.dist.libs" location="${build.dist}/libs"/>
+    <property name="build.dist.game.libs" location="${build.dist}/gameserver/libs"/>
+    <property name="build.dist.login.libs" location="${build.dist}/login/libs"/>
     <path id="classpath">
         <fileset dir="${lib}">
             <include name="*.jar" />
@@ -103,7 +104,13 @@
 			</fileset>
         </copy>
     	
-    	<copy todir="${build.dist.libs}">
+    	<copy todir="${build.dist.game.libs}">
+            <fileset dir="${src}/../lib">
+                <include name="*"/>
+            </fileset>
+        </copy>
+
+        <copy todir="${build.dist.login.libs}">
             <fileset dir="${src}/../lib">
                 <include name="*"/>
             </fileset>

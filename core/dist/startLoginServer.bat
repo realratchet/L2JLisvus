@@ -3,7 +3,7 @@ title Lisvus LoginServer Console
 :start
 echo Starting L2JLisvus Login Server.
 echo.
-java -Xms128m -Xmx256m -cp ./../libs/*;L2JLisvus.jar net.sf.l2j.loginserver.L2LoginServer
+java -Xms128m -Xmx256m -cp ./libs/*;L2JLisvus.jar net.sf.l2j.loginserver.L2LoginServer
 if ERRORLEVEL 2 goto restart
 if ERRORLEVEL 1 goto error
 goto end

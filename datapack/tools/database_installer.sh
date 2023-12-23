@@ -180,7 +180,7 @@ $MYL < login_install.sql &> /dev/null
 }
 
 loginupgrade(){
-echo "Installling new loginserver content."
+echo "Installing new loginserver content."
 $MYL < ../sql/accounts.sql &> /dev/null
 $MYL < ../sql/gameservers.sql &> /dev/null
 }
@@ -249,7 +249,7 @@ $MYG < full_install.sql &> /dev/null
 
 upgradeinstall(){
 if [ "$1" == "I" ]; then 
-echo "Installling new gameserver content."
+echo "Installing new gameserver content."
 else
 echo "Upgrading gameserver content"
 fi
