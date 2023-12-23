@@ -260,8 +260,7 @@ public class GameServerTable
 		private int _status;
 		
 		// network
-		private String _internalIp;
-		private String _externalIp;
+		private String _internalHost;
 		private String _externalHost;
 		private int _port;
 		
@@ -337,24 +336,14 @@ public class GameServerTable
 			return _gst.getPlayerCount();
 		}
 		
-		public void setInternalIp(String internalIp)
+		public void setInternalHost(String internalHost)
 		{
-			_internalIp = internalIp;
+			_internalHost = internalHost;
 		}
 		
-		public String getInternalIp()
+		public String getInternalHost()
 		{
-			return _internalIp;
-		}
-		
-		public void setExternalIp(String externalIp)
-		{
-			_externalIp = externalIp;
-		}
-		
-		public String getExternalIp()
-		{
-			return _externalIp;
+			return _internalHost;
 		}
 		
 		public void setExternalHost(String externalHost)
