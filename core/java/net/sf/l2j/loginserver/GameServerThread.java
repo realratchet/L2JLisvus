@@ -513,11 +513,11 @@ public class GameServerThread extends Thread
 			_gsi.setInternalHost(_connectionIp);
 		}
 		
-		_log.info("Updated Gameserver [" + getServerId() + "] " + GameServerTable.getInstance().getServerNameById(getServerId()) + " IP's:");
-		if (oldInternal == null || !oldInternal.equalsIgnoreCase(gameInternalHost))
-			_log.info("InternalIP: " + gameInternalHost);
-		if (oldExternal == null || !oldExternal.equalsIgnoreCase(gameExternalHost))
-			_log.info("ExternalIP: " + gameExternalHost);
+		_log.info("Updated IPs for Gameserver [" + getServerId() + "] " + GameServerTable.getInstance().getServerNameById(getServerId()) + ":");
+		if (oldInternal == null || !oldInternal.equalsIgnoreCase(_gsi.getInternalHost()))
+			_log.info("InternalIP: " + _gsi.getInternalHost());
+		if (oldExternal == null || !oldExternal.equalsIgnoreCase(_gsi.getExternalHost()))
+			_log.info("ExternalIP: " + _gsi.getExternalHost());
 	}
 	
 	/**
