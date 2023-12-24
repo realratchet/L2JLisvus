@@ -178,8 +178,8 @@ public final class Config
 	public static String DEFAULT_GLOBAL_CHAT;
 	/** Trade chat state */
 	public static String DEFAULT_TRADE_CHAT;
-	/** For test servers - everybody has admin rights */
-	public static boolean EVERYBODY_HAS_ADMIN_RIGHTS;
+	/** For test servers - everybody has the access level set */
+	public static int ACCESS_LEVEL_FOR_EVERYBODY;
 	/** Display server version */
 	public static boolean DISPLAY_SERVER_VERSION;
 	/** Alternative game crafting */
@@ -1371,7 +1371,7 @@ public final class Config
 				throw new Error("Failed to Load " + OPTIONS_FILE + " File.");
 			}
 			
-			EVERYBODY_HAS_ADMIN_RIGHTS = Boolean.parseBoolean(optionsSettings.getProperty("EverybodyHasAdminRights", "false"));
+			ACCESS_LEVEL_FOR_EVERYBODY = Integer.parseInt(optionsSettings.getProperty("AccessLevelForEverybody", "0"));
 			
 			DISPLAY_SERVER_VERSION = Boolean.parseBoolean(optionsSettings.getProperty("DisplayServerVersion", "false"));
 			
