@@ -415,10 +415,11 @@ public class GameServer
 		}
 		_selectorThread.start();
 
+		AutoAnnounceTaskManager.getInstance();
+
 		_log.config("Maximum Number of Connected Players: " + Config.MAXIMUM_ONLINE_USERS);
 		_log.log(Level.INFO, getClass().getSimpleName() + ": Server loaded in " + ((System.currentTimeMillis() - serverLoadStart) / 1000) + " seconds.");
 
-		AutoAnnounceTaskManager.getInstance();
 		UPnPService.getInstance();
 	}
 

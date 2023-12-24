@@ -20,20 +20,19 @@ import java.util.logging.Logger;
 
 /**
  * This class ...
- * 
  * @version $Revision: 1.4.2.1.2.5 $ $Date: 2005/03/27 15:29:33 $
  */
 public class L2TradeList
 {
-    @SuppressWarnings("unused")
+	@SuppressWarnings("unused")
 	private static Logger _log = Logger.getLogger(L2TradeList.class.getName());
-    
+	
 	private List<L2ItemInstance> _items;
 	private int _listId;
 	private boolean _confirmed;
-	private String _Buystorename,_Sellstorename;
-    
-    private String _npcId;
+	private String _buyStoreName, _sellStoreName;
+	
+	private String _npcId;
 	
 	public L2TradeList(int listId)
 	{
@@ -42,61 +41,52 @@ public class L2TradeList
 		_confirmed = false;
 	}
 	
-    public void setNpcId(String id)
-    {
-        _npcId = id;
-    }
-    
-    public String getNpcId()
-    {
-        return _npcId;
-    }
-    
+	public void setNpcId(String id)
+	{
+		_npcId = id;
+	}
+	
+	public String getNpcId()
+	{
+		return _npcId;
+	}
+	
 	public void addItem(L2ItemInstance item)
 	{
 		_items.add(item);
 	}
 	
-    public void replaceItem(int itemID, int price)
-    {
-        for (int i = 0; i < _items.size(); i++)
-        {
-            L2ItemInstance item = _items.get(i);
-            if (item.getItemId() == itemID)
-            {
-                item.setPriceToSell(price);
-            }
-        }
-    }
-
-    public boolean decreaseCount(int itemID, int count)
-    {
-        for (int i = 0; i < _items.size(); i++)
-        {
-            L2ItemInstance item = _items.get(i);
-            if (item.getItemId() == itemID)
-            {
-                if (item.getCount() >= count)
-                {
-                    item.setCount(item.getCount()-count);
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
-    public void removeItem(int itemID)
-    {
-        for (int i = 0; i < _items.size(); i++)
-        {
-            L2ItemInstance item = _items.get(i);
-            if (item.getItemId() == itemID)
-            {
-                _items.remove(i);
-            }
-        }
-    }
+	public void replaceItem(int itemID, int price)
+	{
+		for (L2ItemInstance item : _items)
+		{
+			if (item.getItemId() == itemID)
+			{
+				item.setPriceToSell(price);
+			}
+		}
+	}
+	
+	public boolean decreaseCount(int itemID, int count)
+	{
+		for (L2ItemInstance item : _items)
+		{
+			if (item.getItemId() == itemID)
+			{
+				if (item.getCount() >= count)
+				{
+					item.setCount(item.getCount() - count);
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	
+	public void removeItem(int itemID)
+	{
+		_items.removeIf(item -> item.getItemId() == itemID);
+	}
 	
 	/**
 	 * @return Returns the listId.
@@ -105,25 +95,25 @@ public class L2TradeList
 	{
 		return _listId;
 	}
-
+	
 	public void setSellStoreName(String name)
 	{
-		_Sellstorename = name;
+		_sellStoreName = name;
 	}
 	
 	public String getSellStoreName()
 	{
-		return _Sellstorename;
+		return _sellStoreName;
 	}
 	
 	public void setBuyStoreName(String name)
 	{
-		_Buystorename = name;
+		_buyStoreName = name;
 	}
 	
 	public String getBuyStoreName()
 	{
-		return _Buystorename;
+		return _buyStoreName;
 	}
 	
 	/**
@@ -133,17 +123,16 @@ public class L2TradeList
 	{
 		return _items;
 	}
-
-    public List<L2ItemInstance> getItems(int start, int end)
-    {
-    	return _items.subList(start, end);
-    }
+	
+	public List<L2ItemInstance> getItems(int start, int end)
+	{
+		return _items.subList(start, end);
+	}
 	
 	public int getPriceForItemId(int itemId)
 	{
-		for (int i = 0; i < _items.size(); i++)
+		for (L2ItemInstance item : _items)
 		{
-			L2ItemInstance item = _items.get(i);
 			if (item.getItemId() == itemId)
 			{
 				return item.getPriceToSell();
@@ -151,33 +140,31 @@ public class L2TradeList
 		}
 		return -1;
 	}
-
-    public boolean countDecrease(int itemId)
-    {
-        for (int i = 0; i < _items.size(); i++)
-        {
-            L2ItemInstance item = _items.get(i);
-            if (item.getItemId() == itemId)
-                return item.getCountDecrease();
-        }
-        return false;
-    }
-
-    public boolean containsItemId(int itemId)
-    {
-        for (L2ItemInstance item : _items)
-        {
-            if (item.getItemId() == itemId)
-                return true;
-        }
-        return false;
-    }
-
+	
+	public boolean countDecrease(int itemId)
+	{
+		for (L2ItemInstance item : _items)
+		{
+			if (item.getItemId() == itemId)
+				return item.getCountDecrease();
+		}
+		return false;
+	}
+	
+	public boolean containsItemId(int itemId)
+	{
+		for (L2ItemInstance item : _items)
+		{
+			if (item.getItemId() == itemId)
+				return true;
+		}
+		return false;
+	}
+	
 	public L2ItemInstance getItem(int ObjectId)
 	{
-		for (int i = 0; i < _items.size(); i++)
+		for (L2ItemInstance item : _items)
 		{
-			L2ItemInstance item = _items.get(i);
 			if (item.getObjectId() == ObjectId)
 			{
 				return item;
@@ -185,7 +172,7 @@ public class L2TradeList
 		}
 		return null;
 	}
-
+	
 	public synchronized void setConfirmedTrade(boolean x)
 	{
 		_confirmed = x;
@@ -194,40 +181,5 @@ public class L2TradeList
 	public synchronized boolean hasConfirmed()
 	{
 		return _confirmed;
-	}
-	
-	public void removeItem(int objId,int count)
-	{
-		L2ItemInstance temp;
-		for(int y = 0 ; y < _items.size(); y++)
-		{
-			temp = _items.get(y);
-			if (temp.getObjectId()  == objId)
-			{
-				if (count == temp.getCount())
-				{
-					_items.remove(temp);
-				}
-				
-				break;
-			}
-		}
-	}
-	
-	public boolean contains(int objId)
-	{
-		boolean bool = false;
-		L2ItemInstance temp;
-		for(int y = 0 ; y < _items.size(); y++)
-		{
-			temp = _items.get(y);
-			if (temp.getObjectId()  == objId)
-			{
-				bool = true;
-				break;
-			}
-		}
-		
-		return bool;
 	}
 }

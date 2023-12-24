@@ -100,12 +100,11 @@ public class RecipeController
 	
 	public L2RecipeList getRecipeByItemId(int itemId)
 	{
-		for (int i = 0; i < _lists.size(); i++)
+		for (L2RecipeList list : _lists.values())
 		{
-			L2RecipeList find = _lists.get(Integer.valueOf(i));
-			if (find.getRecipeId() == itemId)
+			if (list.getRecipeId() == itemId)
 			{
-				return find;
+				return list;
 			}
 		}
 		return null;
@@ -113,12 +112,11 @@ public class RecipeController
     
     public L2RecipeList getRecipeById(int recId)
     {
-        for (int i = 0; i < _lists.size(); i++)
+        for (L2RecipeList list : _lists.values())
         {
-            L2RecipeList find = _lists.get(Integer.valueOf(i));
-            if (find.getId() == recId)
+            if (list.getId() == recId)
             {
-                return find;
+                return list;
             }
         }
         return null;

@@ -32,7 +32,7 @@ import net.sf.l2j.gameserver.model.entity.Castle;
 
 public class CastleManager
 {
-	private final static Logger _log = Logger.getLogger(CastleManager.class.getName());
+    private final static Logger _log = Logger.getLogger(CastleManager.class.getName());
     
     public static final CastleManager getInstance()
     {
@@ -43,17 +43,27 @@ public class CastleManager
     // Data Field
     private List<Castle> _castles;
     
-    private static final int _castleCirclets[] = { 0, 6838, 6835, 6839, 6837, 6840, 6834, 6836 };
+    private static final int _castleCirclets[] =
+    {
+        0,
+        6838,
+        6835,
+        6839,
+        6837,
+        6840,
+        6834,
+        6836
+    };
     public static final int CASTLE_LORD_CROWN = 6841;
-
+    
     // =========================================================
     // Constructor
     public CastleManager()
     {
-    	_log.info(getClass().getSimpleName() + ": Initializing CastleManager");
-    	load();
+        _log.info(getClass().getSimpleName() + ": Initializing CastleManager");
+        load();
     }
-
+    
     public final int findNearestCastleIndex(L2Object obj)
     {
         int index = getCastleIndex(obj);
@@ -62,12 +72,14 @@ public class CastleManager
             double closestDistance = 99999999;
             double distance;
             Castle castle;
-            for (int i = 0; i < getCastles().size(); i++)
+            
+            int size = getCastles().size();
+            for (int i = 0; i < size; i++)
             {
                 castle = getCastles().get(i);
                 if (castle == null)
                     continue;
-
+                
                 distance = castle.getDistance(obj);
                 if (closestDistance > distance)
                 {
@@ -78,7 +90,7 @@ public class CastleManager
         }
         return index;
     }
-
+    
     // =========================================================
     // Method - Private
     private final void load()
@@ -91,7 +103,7 @@ public class CastleManager
             {
                 getCastles().add(new Castle(rs.getInt("id")));
             }
-
+            
             _log.info(getClass().getSimpleName() + ": Loaded: " + getCastles().size() + " castles");
         }
         catch (Exception e)
@@ -99,7 +111,7 @@ public class CastleManager
             _log.warning(getClass().getSimpleName() + ": Exception: loadCastleData(): " + e.getMessage());
         }
     }
-
+    
     // =========================================================
     // Property - Public
     public final Castle getCastleById(int castleId)
@@ -111,7 +123,7 @@ public class CastleManager
         }
         return null;
     }
-
+    
     public final Castle getCastleByOwner(L2Clan clan)
     {
         for (Castle temp : getCastles())
@@ -121,7 +133,7 @@ public class CastleManager
         }
         return null;
     }
-
+    
     public final Castle getCastle(String name)
     {
         for (Castle temp : getCastles())
@@ -131,7 +143,7 @@ public class CastleManager
         }
         return null;
     }
-
+    
     public final Castle getCastle(int x, int y, int z)
     {
         for (Castle temp : getCastles())
@@ -141,32 +153,37 @@ public class CastleManager
         }
         return null;
     }
-
+    
     public final Castle getCastle(L2Object activeObject)
     {
         return getCastle(activeObject.getX(), activeObject.getY(), activeObject.getZ());
     }
-
+    
     public final int getCastleIndex(int castleId)
     {
         Castle castle;
-        for (int i = 0; i < getCastles().size(); i++)
+
+        int size = getCastles().size();
+        for (int i = 0; i < size; i++)
         {
             castle = getCastles().get(i);
-            if (castle != null && castle.getCastleId() == castleId) return i;
+            if (castle != null && castle.getCastleId() == castleId)
+                return i;
         }
         return -1;
     }
-
+    
     public final int getCastleIndex(L2Object activeObject)
     {
         return getCastleIndex(activeObject.getX(), activeObject.getY(), activeObject.getZ());
     }
-
+    
     public final int getCastleIndex(int x, int y, int z)
     {
         Castle castle;
-        for (int i = 0; i < getCastles().size(); i++)
+        
+        int size = getCastles().size();
+        for (int i = 0; i < size; i++)
         {
             castle = getCastles().get(i);
             if (castle != null && castle.checkIfInZone(x, y, z))
@@ -174,17 +191,18 @@ public class CastleManager
         }
         return -1;
     }
-
+    
     public final List<Castle> getCastles()
     {
-        if (_castles == null) _castles = new ArrayList<>();
+        if (_castles == null)
+            _castles = new ArrayList<>();
         return _castles;
     }
-
+    
     public final void validateTaxes(int sealStrifeOwner)
     {
         int maxTax;
-        switch(sealStrifeOwner)
+        switch (sealStrifeOwner)
         {
             case SevenSigns.CABAL_DUSK:
                 maxTax = 5;
@@ -196,7 +214,7 @@ public class CastleManager
                 maxTax = 15;
                 break;
         }
-
+        
         for (Castle castle : _castles)
         {
             if (castle.getTaxPercent() > maxTax)
@@ -208,57 +226,55 @@ public class CastleManager
     
     public final void loadDoorUpgrades()
     {
-    	for (Castle temp : getCastles())
-    	{
-    		temp.loadDoorUpgrade();
-    	}
+        for (Castle temp : getCastles())
+        {
+            temp.loadDoorUpgrade();
+        }
     }
-
+    
     public int getCircletByCastleId(int castleId)
     {
         if (castleId > 0 && castleId < 8)
             return _castleCirclets[castleId];
-
+        
         return 0;
     }
-
+    
     /**
      * Removes castle circlets from all members.
-     * 
      * @param clan
      * @param castleId
      */
     public void removeCirclet(L2Clan clan, int castleId)
-	{
-		for (L2ClanMember member : clan.getMembers())
-		{
-			removeCirclet(member, castleId, member.getObjectId() == clan.getLeaderId());
-		}
-	}
+    {
+        for (L2ClanMember member : clan.getMembers())
+        {
+            removeCirclet(member, castleId, member.getObjectId() == clan.getLeaderId());
+        }
+    }
     
     /**
      * Removes castle circlets from member.
-     * 
      * @param member
      * @param castleId
-     * @param isLeader 
+     * @param isLeader
      */
     public void removeCirclet(L2ClanMember member, int castleId, boolean isLeader)
     {
         if (member == null)
         {
-        	return;
+            return;
         }
-
+        
         L2PcInstance player = member.getPlayerInstance();
         int circletId = getCircletByCastleId(castleId);
-
+        
         if (circletId != 0)
         {
             // Online-player circlet removal
-            if (player != null) 
+            if (player != null)
             {
-                try 
+                try
                 {
                     L2ItemInstance circlet = player.getInventory().getItemByItemId(circletId);
                     if (circlet != null)
@@ -267,7 +283,7 @@ public class CastleManager
                             player.getInventory().unEquipItemInSlotAndRecord(circlet.getEquipSlot());
                         player.destroyItemByItemId("CastleCircletRemoval", circletId, 1, player, true);
                     }
-
+                    
                     if (isLeader)
                     {
                         L2ItemInstance crown = player.getInventory().getItemByItemId(CASTLE_LORD_CROWN);
@@ -278,28 +294,28 @@ public class CastleManager
                             player.destroyItemByItemId("CastleLordCrownRemoval", CASTLE_LORD_CROWN, 1, player, true);
                         }
                     }
-
+                    
                     return;
                 }
-                catch (NullPointerException e) 
-                { 
-                    // Continue removing offline 
+                catch (NullPointerException e)
+                {
+                    // Continue removing offline
                 }
             }
-
+            
             // Else offline-player circlet removal
             try (Connection con = L2DatabaseFactory.getInstance().getConnection();
-            	PreparedStatement statement = con.prepareStatement("DELETE FROM items WHERE owner_id = ? and item_id = ?"))
+                PreparedStatement statement = con.prepareStatement("DELETE FROM items WHERE owner_id = ? and item_id = ?"))
             {
-            	statement.setInt(1, member.getObjectId());
+                statement.setInt(1, member.getObjectId());
                 statement.setInt(2, circletId);
                 statement.execute();
                 
                 // If member is leader, delete castle lord's crown too
                 if (isLeader)
                 {
-                	statement.setInt(2, CASTLE_LORD_CROWN);
-                	statement.execute();
+                    statement.setInt(2, CASTLE_LORD_CROWN);
+                    statement.execute();
                 }
             }
             catch (Exception e)
@@ -311,7 +327,7 @@ public class CastleManager
     }
     
     private static class SingletonHolder
-	{
-		protected static final CastleManager _instance = new CastleManager();
-	}
+    {
+        protected static final CastleManager _instance = new CastleManager();
+    }
 }

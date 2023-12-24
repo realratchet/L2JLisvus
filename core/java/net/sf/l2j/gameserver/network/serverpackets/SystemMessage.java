@@ -781,11 +781,13 @@ public class SystemMessage extends L2GameServerPacket
 	protected final void writeImpl()
 	{
 		writeC(0x64);
+
+		int typeSize = _types.size();
 		
 		writeD(_messageId);
-		writeD(_types.size());
+		writeD(typeSize);
 		
-		for (int i = 0; i < _types.size(); i++)
+		for (int i = 0; i < typeSize; i++)
 		{
 			int t = _types.get(i).intValue();
 			

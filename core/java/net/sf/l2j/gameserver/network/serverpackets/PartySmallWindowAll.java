@@ -49,9 +49,8 @@ public class PartySmallWindowAll extends L2GameServerPacket
 		writeD(_lootDistribution);// c3 party loot type (0,1,2,....)
 		writeD(_partyMembers.size() - 1);
 		
-		for (int i = 0; i < _partyMembers.size(); i++)
+		for (L2PcInstance member : _partyMembers)
 		{
-			L2PcInstance member = _partyMembers.get(i);
 			if (!member.equals(player))
 			{
 				writeD(member.getObjectId());

@@ -815,7 +815,9 @@ public final class L2PcInstance extends L2PlayableInstance
 		if ((getParty() != null) && (getParty() == target.getParty()))
 		{
 			result |= RelationChanged.RELATION_HAS_PARTY;
-			for (int i = 0; i < getParty().getPartyMembers().size(); i++)
+
+			int size = getParty().getPartyMembers().size();
+			for (int i = 0; i < size; i++)
 			{
 				if (getParty().getPartyMembers().get(i) != this)
 				{
