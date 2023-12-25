@@ -45,23 +45,23 @@ public class CommunityBoard
                 activeChar.sendPacket(new SystemMessage(SystemMessage.CB_OFFLINE));
                 break;
             case 1: // old
-                RegionBBSManager.getInstance().parsecmd(command,activeChar);
+                RegionBBSManager.getInstance().parseCmd(command,activeChar);
                 break;
             case 2: // new
                 if (command.startsWith("_bbsclan"))
-                    ClanBBSManager.getInstance().parsecmd(command,activeChar);
+                    ClanBBSManager.getInstance().parseCmd(command,activeChar);
                 else if (command.startsWith("_bbsmemo"))
-                    TopicBBSManager.getInstance().parsecmd(command,activeChar);
+                    TopicBBSManager.getInstance().parseCmd(command,activeChar);
                 else if (command.startsWith("_bbstopics"))
-                    TopicBBSManager.getInstance().parsecmd(command,activeChar);
+                    TopicBBSManager.getInstance().parseCmd(command,activeChar);
                 else if (command.startsWith("_bbsposts"))
-                    PostBBSManager.getInstance().parsecmd(command,activeChar);
+                    PostBBSManager.getInstance().parseCmd(command,activeChar);
                 else if (command.startsWith("_bbstop"))
-                    TopBBSManager.getInstance().parsecmd(command,activeChar);
+                    TopBBSManager.getInstance().parseCmd(command,activeChar);
                 else if (command.startsWith("_bbshome"))
-                    TopBBSManager.getInstance().parsecmd(command,activeChar);
+                    TopBBSManager.getInstance().parseCmd(command,activeChar);
                 else if (command.startsWith("_bbsloc"))
-                    RegionBBSManager.getInstance().parsecmd(command,activeChar);
+                    RegionBBSManager.getInstance().parseCmd(command,activeChar);
                 else
                 {
                     ShowBoard sb = new ShowBoard("<html><body><br><br><center>the command: "+command+" is not implemented yet</center><br><br></body></html>","101");
@@ -92,11 +92,11 @@ public class CommunityBoard
         {
             case 2:
                 if (url.equals("Topic"))
-                    TopicBBSManager.getInstance().parsewrite(arg1, arg2, arg3, arg4, arg5, activeChar);
+                    TopicBBSManager.getInstance().parseWrite(arg1, arg2, arg3, arg4, arg5, activeChar);
                 else if (url.equals("Post"))
-                    PostBBSManager.getInstance().parsewrite(arg1, arg2, arg3, arg4, arg5, activeChar);
+                    PostBBSManager.getInstance().parseWrite(arg1, arg2, arg3, arg4, arg5, activeChar);
                 else if (url.equals("Region"))
-                    RegionBBSManager.getInstance().parsewrite(arg1, arg2, arg3, arg4, arg5, activeChar);
+                    RegionBBSManager.getInstance().parseWrite(arg1, arg2, arg3, arg4, arg5, activeChar);
                 else
                 {
                     ShowBoard sb = new ShowBoard("<html><body><br><br><center>the command: " + url + " is not implemented yet</center><br><br></body></html>", "101");
@@ -106,7 +106,7 @@ public class CommunityBoard
                 }
                 break;
             case 1:
-                RegionBBSManager.getInstance().parsewrite(arg1, arg2, arg3, arg4, arg5, activeChar);
+                RegionBBSManager.getInstance().parseWrite(arg1, arg2, arg3, arg4, arg5, activeChar);
                 break;
             default:
             case 0:

@@ -412,9 +412,9 @@ public class L2Clan
             Forum forum = ForumsBBSManager.getInstance().getForumByName("ClanRoot");
             if (forum != null)
             {
-                _forum = forum.GetChildByName(_name);
+                _forum = forum.getChildByName(_name);
                 if (_forum == null)
-                    _forum = ForumsBBSManager.getInstance().CreateNewForum(_name, ForumsBBSManager.getInstance().getForumByName("ClanRoot"), Forum.CLAN, Forum.CLANMEMBERONLY, getClanId());
+                    _forum = ForumsBBSManager.getInstance().createNewForum(_name, ForumsBBSManager.getInstance().getForumByName("ClanRoot"), Forum.CLAN, Forum.CLANMEMBERONLY, getClanId());
             }
 	    }
 	}
