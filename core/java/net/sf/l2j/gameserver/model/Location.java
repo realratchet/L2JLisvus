@@ -60,4 +60,10 @@ public final class Location
 	{
 		return _heading;
 	}
+
+	@Override
+	public String toString()
+	{
+		return "[" + getClass().getSimpleName() + "] X: " + _x + " Y: " + _y + " Z: " + _z + " Heading: " + _heading;
+	}
 }
