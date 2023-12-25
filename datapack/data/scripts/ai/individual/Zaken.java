@@ -14,6 +14,8 @@
  */
 package ai.individual;
 
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Logger;
 
 import net.sf.l2j.Config;
@@ -31,6 +33,7 @@ import net.sf.l2j.gameserver.model.L2Character;
 import net.sf.l2j.gameserver.model.L2Effect;
 import net.sf.l2j.gameserver.model.L2Object;
 import net.sf.l2j.gameserver.model.L2Skill;
+import net.sf.l2j.gameserver.model.Location;
 import net.sf.l2j.gameserver.model.actor.instance.L2DoorInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2GrandBossInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2NpcInstance;
@@ -46,7 +49,7 @@ import net.sf.l2j.util.Rnd;
  */
 public class Zaken extends Quest
 {
-	protected static final Logger log = Logger.getLogger(Zaken.class.getName());
+	private static final Logger _log = Logger.getLogger(Zaken.class.getName());
 	
 	private static final int ZAKEN = 12374;
 	private static final int DOLL_BLADER_B = 12376;
@@ -54,83 +57,44 @@ public class Zaken extends Quest
 	private static final int PIRATES_ZOMBIE_CAPTAIN_B = 12544;
 	private static final int PIRATES_ZOMBIE_B = 12545;
 	
-	private static final int[] Xcoords =
+	private static final Location[] LOCS =
 	{
-		53950,
-		55980,
-		54950,
-		55970,
-		53930,
-		55970,
-		55980,
-		54960,
-		53950,
-		53930,
-		55970,
-		55980,
-		54960,
-		53950,
-		53930
-	};
-	private static final int[] Ycoords =
-	{
-		219860,
-		219820,
-		218790,
-		217770,
-		217760,
-		217770,
-		219920,
-		218790,
-		219860,
-		217760,
-		217770,
-		219920,
-		218790,
-		219860,
-		217760
-	};
-	private static final int[] Zcoords =
-	{
-		-3488,
-		-3488,
-		-3488,
-		-3488,
-		-3488,
-		-3216,
-		-3216,
-		-3216,
-		-3216,
-		-3216,
-		-2944,
-		-2944,
-		-2944,
-		-2944,
-		-2944
+		new Location(53950, 219860, -3488),
+		new Location(55980, 219820, -3488),
+		new Location(54950, 218790, -3488),
+		new Location(55970, 217770, -3488),
+		new Location(53930, 217760, -3488),
+		
+		new Location(55970, 217770, -3216),
+		new Location(55980, 219920, -3216),
+		new Location(54960, 218790, -3216),
+		new Location(53950, 219860, -3216),
+		new Location(53930, 217760, -3216),
+		
+		new Location(55970, 217770, -2944),
+		new Location(55980, 219920, -2944),
+		new Location(54960, 218790, -2944),
+		new Location(53950, 219860, -2944),
+		new Location(53930, 217760, -2944)
 	};
 	
-	// ZAKEN Status Tracking :
-	private static final byte ALIVE = 0; // Zaken is spawned.
-	private static final byte DEAD = 1; // Zaken has been killed.
+	// ZAKEN status tracking
+	private static final byte ALIVE = 0; // Zaken is spawned
+	private static final byte DEAD = 1; // Zaken has been killed
 	
-	private int _1001 = 0; // used for first cancel of QuestTimer "1001"
-	private int _ai0 = 0; // used for zaken coords updater
-	private int _ai1 = 0; // used for X coord tracking for non-random teleporting in zaken's self teleport skill
-	private int _ai2 = 0; // used for Y coord tracking for non-random teleporting in zaken's self teleport skill
-	private int _ai3 = 0; // used for Z coord tracking for non-random teleporting in zaken's self teleport skill
-	private int _ai4 = 0; // used for spawning minions cycles
-	private int _quest0 = 0; // used for teleporting progress
-	private int _quest1 = 0; // used for most hated players progress
-	private int _quest2 = 0; // used for zaken HP check for teleport
-	private L2PcInstance c_quest0 = null; // 1st player used for area teleport
-	private L2PcInstance c_quest1 = null; // 2nd player used for area teleport
-	private L2PcInstance c_quest2 = null; // 3rd player used for area teleport
-	private L2PcInstance c_quest3 = null; // 4th player used for area teleport
-	private L2PcInstance c_quest4 = null; // 5th player used for area teleport
+	private int _minionStatus;
+	private int _hate;
+	
+	private boolean _hasTeleported;
+	private L2Character _mostHated;
+	
+	private final Location _zakenLocation = new Location(0, 0, 0);
+	private final Set<L2PcInstance> _victims = ConcurrentHashMap.newKeySet();
+	
+	private int _teleportCheck = 0; // used for zaken HP check for teleport
 	
 	// Zaken door handling
-	private final EventHandler<GameTimeEvent> callback = (e) ->
-	{
+	private final EventHandler<GameTimeEvent> callback = (e) -> {
 		if (e.getHour() == 0)
 		{
 			L2DoorInstance door = DoorTable.getInstance().getDoor(21240006);
@@ -144,10 +108,10 @@ public class Zaken extends Quest
 	private final L2BossZone _zone;
 	
 	public static void main(String[] args)
-    {
-        // Quest class
-        new Zaken();
-    }
+	{
+		// Quest class
+		new Zaken();
+	}
 	
 	public Zaken()
 	{
@@ -157,9 +121,9 @@ public class Zaken extends Quest
 		registerNPC(VALE_MASTER_B);
 		registerNPC(PIRATES_ZOMBIE_CAPTAIN_B);
 		registerNPC(PIRATES_ZOMBIE_B);
-
+		
 		// Register this event for features based on game time change (e.g. door state)
-    	EventHandleManager.getInstance().addEventHandler(EventType.HOUR_CHANGED, callback);
+		EventHandleManager.getInstance().addEventHandler(EventType.HOUR_CHANGED, callback);
 		
 		_zone = GrandBossManager.getInstance().getZone(55312, 219168, -3223);
 		StatsSet info = GrandBossManager.getInstance().getStatsSet(ZAKEN);
@@ -208,35 +172,34 @@ public class Zaken extends Quest
 	{
 		if (npc == null)
 		{
-			log.warning("Zaken AI failed to load, missing Zaken in grandboss_data.sql");
+			_log.warning("Zaken AI failed to load, missing Zaken in grandboss_data.sql");
 			return;
 		}
 		
 		GrandBossManager.getInstance().addBoss(npc);
 		npc.broadcastPacket(new PlaySound(1, "BS01_A", 1, npc.getObjectId(), npc.getX(), npc.getY(), npc.getZ()));
 		
-		_ai0 = 0;
-		_ai1 = npc.getX();
-		_ai2 = npc.getY();
-		_ai3 = npc.getZ();
-		_quest0 = 0;
-		_quest1 = 0;
-		_quest2 = 3;
+		_hasTeleported = false;
+		_hate = 0;
+		_teleportCheck = 3;
+		_mostHated = null;
+
+		_zakenLocation.setXYZ(npc.getX(), npc.getY(), npc.getZ());
+		_victims.clear();
 		
 		if (_zone == null)
 		{
-			log.warning("Zaken AI failed to load, missing zone for Zaken");
+			_log.warning("Zaken AI failed to load, missing zone for Zaken");
 			return;
 		}
 		
 		if (_zone.isInsideZone(npc))
 		{
-			_ai4 = 1;
+			_minionStatus = 1;
 			startQuestTimer("1003", 1700, null, null, true);
 		}
 		
-		_1001 = 1;
-		startQuestTimer("1001", 1000, npc, null, true); // buffs, random teleports
+		startQuestTimer("1001", 1000, npc, null, false); // Buffs, random teleports, etc
 	}
 	
 	@Override
@@ -251,14 +214,9 @@ public class Zaken extends Quest
 		if (event.equalsIgnoreCase("1001"))
 		{
 			boolean isInNightMode = (npc.getAbnormalEffect() & L2Character.ABNORMAL_EFFECT_TEXTURE_CHANGE) == L2Character.ABNORMAL_EFFECT_TEXTURE_CHANGE;
-			// First run since server startup
-			if (_1001 == 1)
+			if (!isInNightMode)
 			{
-				if (!isInNightMode)
-				{
-					isInNightMode = true;
-				}
-				cancelQuestTimer("1001", npc, null);
+				isInNightMode = true;
 			}
 			
 			int sk_4227 = 0;
@@ -275,208 +233,94 @@ public class Zaken extends Quest
 				}
 			}
 			
-			if (getTimeHour() < 6)
+			if (GameTimeController.getInstance().isNight())
 			{
+				final L2Character mostHated = ((L2Attackable) npc).getMostHated();
+				
 				// Use night face if zaken have day face
 				if ((npc.getAbnormalEffect() & L2Character.ABNORMAL_EFFECT_TEXTURE_CHANGE) != L2Character.ABNORMAL_EFFECT_TEXTURE_CHANGE)
 				{
 					npc.startAbnormalEffect(L2Character.ABNORMAL_EFFECT_TEXTURE_CHANGE);
-					_ai1 = npc.getX();
-					_ai2 = npc.getY();
-					_ai3 = npc.getZ();
+					_zakenLocation.setXYZ(npc.getX(), npc.getY(), npc.getZ());
 				}
 				
 				if (sk_4227 == 0) // use zaken regeneration
 				{
-					npc.setTarget(npc);
-					npc.doCast(SkillTable.getInstance().getInfo(4227, 1));
+					L2Skill skill = SkillTable.getInstance().getInfo(4227, 1);
+					skill.getEffects(npc, npc);
 				}
 				
-				if ((npc.getAI().getIntention() == CtrlIntention.AI_INTENTION_ATTACK) && (_ai0 == 0))
+				if ((npc.getAI().getIntention() == CtrlIntention.AI_INTENTION_ATTACK) && !_hasTeleported)
 				{
-					int i0 = 0;
-					int i1 = 1;
+					boolean willTeleport = true;
 					
-					if (((L2Attackable) npc).getMostHated() != null)
+					// Check most hated distance. If distance is low, Zaken doesn't teleport.
+					if (mostHated != null && mostHated.isInsideRadius(_zakenLocation.getX(), _zakenLocation.getY(), _zakenLocation.getZ(), 1500, true, false))
+						willTeleport = false;
+					
+					// We're still under willTeleport possibility. Now we check each victim distance. If at least one is near Zaken, we cancel the teleport possibility.
+					if (willTeleport)
 					{
-						if ((((((L2Attackable) npc).getMostHated().getX() - _ai1) * (((L2Attackable) npc).getMostHated().getX() - _ai1)) + ((((L2Attackable) npc).getMostHated().getY() - _ai2) * (((L2Attackable) npc).getMostHated().getY() - _ai2))) > (1500 * 1500))
+						for (L2PcInstance victim : _victims)
 						{
-							i0 = 1;
+							if (victim.isInsideRadius(_zakenLocation.getX(), _zakenLocation.getY(), _zakenLocation.getZ(), 1500, true, false))
+							{
+								willTeleport = false;
+								continue;
+							}
 						}
+					}
+					
+					// All targets are far, clear victims list and Zaken teleport
+					if (willTeleport)
+					{
+						_victims.clear();
+						
+						npc.setTarget(npc);
+						npc.doCast(SkillTable.getInstance().getInfo(4222, 1));
+					}
+				}
+				
+				if (!_hasTeleported && (Rnd.get(20) < 1))
+				{
+					_zakenLocation.setXYZ(npc.getX(), npc.getY(), npc.getZ());
+				}
+				
+				// Process to cleanup hate from most hated upon 5 straight AI loops.
+				if (npc.getAI().getIntention() == CtrlIntention.AI_INTENTION_ATTACK && mostHated != null)
+				{
+					if (_hate == 0)
+					{
+						_mostHated = mostHated;
+						_hate = 1;
+					}
+					else
+					{
+						if (_mostHated == mostHated)
+							_hate++;
 						else
 						{
-							i0 = 0;
-						}
-						
-						if (i0 == 0)
-						{
-							i1 = 0;
-						}
-						
-						if (_quest0 > 0)
-						{
-							if (c_quest0 == null)
-							{
-								i0 = 0;
-							}
-							else if ((((c_quest0.getX() - _ai1) * (c_quest0.getX() - _ai1)) + ((c_quest0.getY() - _ai2) * (c_quest0.getY() - _ai2))) > (1500 * 1500))
-							{
-								i0 = 1;
-							}
-							else
-							{
-								i0 = 0;
-							}
-							
-							if (i0 == 0)
-							{
-								i1 = 0;
-							}
-						}
-						
-						if (_quest0 > 1)
-						{
-							if (c_quest1 == null)
-							{
-								i0 = 0;
-							}
-							else if ((((c_quest1.getX() - _ai1) * (c_quest1.getX() - _ai1)) + ((c_quest1.getY() - _ai2) * (c_quest1.getY() - _ai2))) > (1500 * 1500))
-							{
-								i0 = 1;
-							}
-							else
-							{
-								i0 = 0;
-							}
-							
-							if (i0 == 0)
-							{
-								i1 = 0;
-							}
-						}
-						
-						if (_quest0 > 2)
-						{
-							if (c_quest2 == null)
-							{
-								i0 = 0;
-							}
-							else if ((((c_quest2.getX() - _ai1) * (c_quest2.getX() - _ai1)) + ((c_quest2.getY() - _ai2) * (c_quest2.getY() - _ai2))) > (1500 * 1500))
-							{
-								i0 = 1;
-							}
-							else
-							{
-								i0 = 0;
-							}
-							
-							if (i0 == 0)
-							{
-								i1 = 0;
-							}
-						}
-						
-						if (_quest0 > 3)
-						{
-							if (c_quest3 == null)
-							{
-								i0 = 0;
-							}
-							else if ((((c_quest3.getX() - _ai1) * (c_quest3.getX() - _ai1)) + ((c_quest3.getY() - _ai2) * (c_quest3.getY() - _ai2))) > (1500 * 1500))
-							{
-								i0 = 1;
-							}
-							else
-							{
-								i0 = 0;
-							}
-							
-							if (i0 == 0)
-							{
-								i1 = 0;
-							}
-						}
-						
-						if (_quest0 > 4)
-						{
-							if (c_quest4 == null)
-							{
-								i0 = 0;
-							}
-							else if ((((c_quest4.getX() - _ai1) * (c_quest4.getX() - _ai1)) + ((c_quest4.getY() - _ai2) * (c_quest4.getY() - _ai2))) > (1500 * 1500))
-							{
-								i0 = 1;
-							}
-							else
-							{
-								i0 = 0;
-							}
-							
-							if (i0 == 0)
-							{
-								i1 = 0;
-							}
-						}
-						
-						if (i1 == 1)
-						{
-							_quest0 = 0;
-							int i2 = Rnd.get(15);
-							_ai1 = Xcoords[i2] + Rnd.get(650);
-							_ai2 = Ycoords[i2] + Rnd.get(650);
-							_ai3 = Zcoords[i2];
-							npc.setTarget(npc);
-							npc.doCast(SkillTable.getInstance().getInfo(4222, 1));
+							_hate = 1;
+							_mostHated = mostHated;
 						}
 					}
 				}
 				
-				if ((Rnd.get(20) < 1) && (_ai0 == 0))
-				{
-					_ai1 = npc.getX();
-					_ai2 = npc.getY();
-					_ai3 = npc.getZ();
-				}
-				
-				L2Character c_ai0 = null;
-				if ((npc.getAI().getIntention() == CtrlIntention.AI_INTENTION_ATTACK) && (_quest1 == 0))
-				{
-					if (((L2Attackable) npc).getMostHated() != null)
-					{
-						c_ai0 = ((L2Attackable) npc).getMostHated();
-						_quest1 = 1;
-					}
-				}
-				else if ((npc.getAI().getIntention() == CtrlIntention.AI_INTENTION_ATTACK) && (_quest1 != 0))
-				{
-					if (((L2Attackable) npc).getMostHated() != null)
-					{
-						if (c_ai0 == ((L2Attackable) npc).getMostHated())
-						{
-							_quest1 = (_quest1 + 1);
-						}
-						else
-						{
-							_quest1 = 1;
-							c_ai0 = ((L2Attackable) npc).getMostHated();
-						}
-					}
-				}
-				
+				// Cleanup hate towards idle state
 				if (npc.getAI().getIntention() == CtrlIntention.AI_INTENTION_IDLE)
-				{
-					_quest1 = 0;
-				}
+					_hate = 0;
 				
-				if (_quest1 > 5)
+				// We built enough hate ; release the current most hated target, reset the hate counter
+				if (_hate > 5)
 				{
-					((L2Attackable) npc).stopHating(c_ai0);
+					((L2Attackable) npc).stopHating(_mostHated);
 					L2Character nextTarget = ((L2Attackable) npc).getMostHated();
 					if (nextTarget != null)
 					{
 						npc.getAI().setIntention(CtrlIntention.AI_INTENTION_ATTACK, nextTarget);
 					}
-					_quest1 = 0;
+					
+					_hate = 0;
 				}
 			}
 			// Use day face in day time
@@ -486,7 +330,7 @@ public class Zaken extends Quest
 				{
 					npc.stopAbnormalEffect(L2Character.ABNORMAL_EFFECT_TEXTURE_CHANGE);
 				}
-				_quest2 = 3;
+				_teleportCheck = 3;
 			}
 			
 			if (sk_4227 == 1) // when switching to day time, cancel zaken night regen
@@ -498,53 +342,48 @@ public class Zaken extends Quest
 			
 			if (Rnd.get(40) < 1)
 			{
-				int i2 = Rnd.get(15);
-				_ai1 = Xcoords[i2] + Rnd.get(650);
-				_ai2 = Ycoords[i2] + Rnd.get(650);
-				_ai3 = Zcoords[i2];
 				npc.setTarget(npc);
 				npc.doCast(SkillTable.getInstance().getInfo(4222, 1));
 			}
-			startQuestTimer("1001", 30000, npc, null, true);
+
+			startQuestTimer("1001", 30000, npc, null, false);
 		}
-		
-		if (event.equalsIgnoreCase("1002"))
+		else if (event.equalsIgnoreCase("1002"))
 		{
-			_quest0 = 0;
 			npc.doCast(SkillTable.getInstance().getInfo(4222, 1));
-			_ai0 = 0;
+			_hasTeleported = false;
 		}
-		
-		if (event.equalsIgnoreCase("1003"))
+		else if (event.equalsIgnoreCase("1003"))
 		{
-			if (_ai4 == 1)
+			if (_minionStatus == 1)
 			{
-				int rr = Rnd.get(15);
-				addSpawn(PIRATES_ZOMBIE_CAPTAIN_B, Xcoords[rr] + Rnd.get(650), Ycoords[rr] + Rnd.get(650), Zcoords[rr], Rnd.get(65536), false, 0);
-				_ai4 = 2;
+				Location loc = LOCS[Rnd.get(LOCS.length)];
+				addSpawn(PIRATES_ZOMBIE_CAPTAIN_B, loc.getX() + Rnd.get(650), loc.getY() + Rnd.get(650), loc.getZ(), Rnd.get(65536), false, 0);
+				_minionStatus = 2;
 			}
-			else if (_ai4 == 2)
+			else if (_minionStatus == 2)
 			{
-				int rr = Rnd.get(15);
-				addSpawn(DOLL_BLADER_B, Xcoords[rr] + Rnd.get(650), Ycoords[rr] + Rnd.get(650), Zcoords[rr], Rnd.get(65536), false, 0);
-				_ai4 = 3;
+				Location loc = LOCS[Rnd.get(LOCS.length)];
+				addSpawn(DOLL_BLADER_B, loc.getX() + Rnd.get(650), loc.getY() + Rnd.get(650), loc.getZ(), Rnd.get(65536), false, 0);
+				_minionStatus = 3;
 			}
-			else if (_ai4 == 3)
+			else if (_minionStatus == 3)
 			{
-				addSpawn(VALE_MASTER_B, Xcoords[Rnd.get(15)] + Rnd.get(650), Ycoords[Rnd.get(15)] + Rnd.get(650), Zcoords[Rnd.get(15)], Rnd.get(65536), false, 0);
-				addSpawn(VALE_MASTER_B, Xcoords[Rnd.get(15)] + Rnd.get(650), Ycoords[Rnd.get(15)] + Rnd.get(650), Zcoords[Rnd.get(15)], Rnd.get(65536), false, 0);
-				_ai4 = 4;
+				for (int i = 0; i < 2; i++)
+				{
+					addSpawn(VALE_MASTER_B, LOCS[Rnd.get(LOCS.length)].getX() + Rnd.get(650), LOCS[Rnd.get(LOCS.length)].getY() + Rnd.get(650), LOCS[Rnd.get(LOCS.length)].getZ(), Rnd.get(65536), false, 0);
+				}
+				_minionStatus = 4;
 			}
-			else if (_ai4 == 4)
+			else if (_minionStatus == 4)
 			{
-				addSpawn(PIRATES_ZOMBIE_B, Xcoords[Rnd.get(15)] + Rnd.get(650), Ycoords[Rnd.get(15)] + Rnd.get(650), Zcoords[Rnd.get(15)], Rnd.get(65536), false, 0);
-				addSpawn(PIRATES_ZOMBIE_B, Xcoords[Rnd.get(15)] + Rnd.get(650), Ycoords[Rnd.get(15)] + Rnd.get(650), Zcoords[Rnd.get(15)], Rnd.get(65536), false, 0);
-				addSpawn(PIRATES_ZOMBIE_B, Xcoords[Rnd.get(15)] + Rnd.get(650), Ycoords[Rnd.get(15)] + Rnd.get(650), Zcoords[Rnd.get(15)], Rnd.get(65536), false, 0);
-				addSpawn(PIRATES_ZOMBIE_B, Xcoords[Rnd.get(15)] + Rnd.get(650), Ycoords[Rnd.get(15)] + Rnd.get(650), Zcoords[Rnd.get(15)], Rnd.get(65536), false, 0);
-				addSpawn(PIRATES_ZOMBIE_B, Xcoords[Rnd.get(15)] + Rnd.get(650), Ycoords[Rnd.get(15)] + Rnd.get(650), Zcoords[Rnd.get(15)], Rnd.get(65536), false, 0);
-				_ai4 = 5;
+				for (int i = 0; i < 5; i++)
+				{
+					addSpawn(PIRATES_ZOMBIE_B, LOCS[Rnd.get(LOCS.length)].getX() + Rnd.get(650), LOCS[Rnd.get(LOCS.length)].getY() + Rnd.get(650), LOCS[Rnd.get(LOCS.length)].getZ(), Rnd.get(65536), false, 0);
+				}
+				_minionStatus = 5;
 			}
-			else if (_ai4 == 5)
+			else if (_minionStatus == 5)
 			{
 				addSpawn(DOLL_BLADER_B, 52675, 219371, -3290, Rnd.get(65536), false, 0);
 				addSpawn(DOLL_BLADER_B, 52687, 219596, -3368, Rnd.get(65536), false, 0);
@@ -574,9 +413,9 @@ public class Zaken extends Quest
 				addSpawn(VALE_MASTER_B, 54394, 219067, -3488, Rnd.get(65536), false, 0);
 				addSpawn(PIRATES_ZOMBIE_B, 54139, 219253, -3488, Rnd.get(65536), false, 0);
 				addSpawn(DOLL_BLADER_B, 54262, 219480, -3488, Rnd.get(65536), false, 0);
-				_ai4 = 6;
+				_minionStatus = 6;
 			}
-			else if (_ai4 == 6)
+			else if (_minionStatus == 6)
 			{
 				addSpawn(PIRATES_ZOMBIE_B, 53412, 218077, -3488, Rnd.get(65536), false, 0);
 				addSpawn(VALE_MASTER_B, 54413, 217132, -3488, Rnd.get(65536), false, 0);
@@ -606,9 +445,9 @@ public class Zaken extends Quest
 				addSpawn(PIRATES_ZOMBIE_CAPTAIN_B, 55202, 217940, -3216, Rnd.get(65536), false, 0);
 				addSpawn(PIRATES_ZOMBIE_B, 55225, 218236, -3216, Rnd.get(65536), false, 0);
 				addSpawn(PIRATES_ZOMBIE_B, 54973, 218075, -3216, Rnd.get(65536), false, 0);
-				_ai4 = 7;
+				_minionStatus = 7;
 			}
-			else if (_ai4 == 7)
+			else if (_minionStatus == 7)
 			{
 				addSpawn(PIRATES_ZOMBIE_B, 54228, 217504, -3216, Rnd.get(65536), false, 0);
 				addSpawn(VALE_MASTER_B, 54181, 217168, -3216, Rnd.get(65536), false, 0);
@@ -639,7 +478,7 @@ public class Zaken extends Quest
 				addSpawn(PIRATES_ZOMBIE_CAPTAIN_B, 55202, 217940, -2944, Rnd.get(65536), false, 0);
 				addSpawn(PIRATES_ZOMBIE_B, 55225, 218236, -2944, Rnd.get(65536), false, 0);
 				addSpawn(PIRATES_ZOMBIE_B, 54973, 218075, -2944, Rnd.get(65536), false, 0);
-				_ai4 = 8;
+				_minionStatus = 8;
 				cancelQuestTimer("1003", null, null);
 			}
 		}
@@ -665,18 +504,12 @@ public class Zaken extends Quest
 			return super.onFactionCall(npc, caller, attacker, isPet);
 		}
 		
-		int npcId = npc.getNpcId();
-		int callerId = caller.getNpcId();
-		
-		if (getTimeHour() < 6 && callerId != ZAKEN && npcId == ZAKEN)
+		if (caller.getNpcId() == ZAKEN && GameTimeController.getInstance().isNight())
 		{
-			int damage = 0; // well damage required :x
-			if ((npc.getAI().getIntention() == CtrlIntention.AI_INTENTION_IDLE) && (_ai0 == 0) && (damage < 10) && (Rnd.get((30 * 15)) < 1))// todo - damage missing
+			if ((npc.getAI().getIntention() == CtrlIntention.AI_INTENTION_IDLE) && !_hasTeleported && caller.getCurrentHp() < (0.9 * caller.getMaxHp()) && Rnd.get(450) < 1)
 			{
-				_ai0 = 1;
-				_ai1 = caller.getX();
-				_ai2 = caller.getY();
-				_ai3 = caller.getZ();
+				_hasTeleported = true;
+				_zakenLocation.setXYZ(npc.getX(), npc.getY(), npc.getZ());
 				startQuestTimer("1002", 300, caller, null);
 			}
 		}
@@ -691,14 +524,15 @@ public class Zaken extends Quest
 			int skillId = skill.getId();
 			if (skillId == 4222)
 			{
-				npc.teleToLocation(_ai1, _ai2, _ai3);
+				npc.teleToLocation(_zakenLocation.getX(), _zakenLocation.getY(), _zakenLocation.getZ());
 				npc.getAI().setIntention(CtrlIntention.AI_INTENTION_IDLE);
 			}
 			else if (skillId == 4216)
 			{
-				int i1 = Rnd.get(15);
-				player.teleToLocation(Xcoords[i1] + Rnd.get(650), Ycoords[i1] + Rnd.get(650), Zcoords[i1]);
+				Location loc = LOCS[Rnd.get(LOCS.length)];
+				player.teleToLocation(loc.getX(), loc.getY(), loc.getZ());
 				((L2Attackable) npc).stopHating(player);
+				
 				L2Character nextTarget = ((L2Attackable) npc).getMostHated();
 				if (nextTarget != null)
 				{
@@ -707,106 +541,23 @@ public class Zaken extends Quest
 			}
 			else if (skillId == 4217)
 			{
-				int i0 = 0;
-				int i1 = Rnd.get(15);
-				player.teleToLocation(Xcoords[i1] + Rnd.get(650), Ycoords[i1] + Rnd.get(650), Zcoords[i1]);
+				Location loc;
+				
+				for (L2PcInstance victim : _victims)
+				{
+					if (victim.isInsideRadius(player, 250, true, false))
+					{
+						loc = LOCS[Rnd.get(LOCS.length)];
+						
+						victim.teleToLocation(loc.getX(), loc.getY(), loc.getZ());
+						((L2Attackable) npc).stopHating(victim);
+					}
+				}
+				
+				loc = LOCS[Rnd.get(LOCS.length)];
+				player.teleToLocation(loc.getX(), loc.getY(), loc.getZ());
 				((L2Attackable) npc).stopHating(player);
-				
-				if ((c_quest0 != null) && (_quest0 > 0) && (c_quest0 != player) && (c_quest0.getZ() > (player.getZ() - 100)) && (c_quest0.getZ() < (player.getZ() + 100)))
-				{
-					if ((((c_quest0.getX() - player.getX()) * (c_quest0.getX() - player.getX())) + ((c_quest0.getY() - player.getY()) * (c_quest0.getY() - player.getY()))) > (250 * 250))
-					{
-						i0 = 1;
-					}
-					else
-					{
-						i0 = 0;
-					}
-					
-					if (i0 == 0)
-					{
-						i1 = Rnd.get(15);
-						c_quest0.teleToLocation(Xcoords[i1] + Rnd.get(650), Ycoords[i1] + Rnd.get(650), Zcoords[i1]);
-						((L2Attackable) npc).stopHating(c_quest0);
-					}
-				}
-				
-				if ((c_quest1 != null) && (_quest0 > 1) && (c_quest1 != player) && (c_quest1.getZ() > (player.getZ() - 100)) && (c_quest1.getZ() < (player.getZ() + 100)))
-				{
-					if ((((c_quest1.getX() - player.getX()) * (c_quest1.getX() - player.getX())) + ((c_quest1.getY() - player.getY()) * (c_quest1.getY() - player.getY()))) > (250 * 250))
-					{
-						i0 = 1;
-					}
-					else
-					{
-						i0 = 0;
-					}
-					
-					if (i0 == 0)
-					{
-						i1 = Rnd.get(15);
-						c_quest1.teleToLocation(Xcoords[i1] + Rnd.get(650), Ycoords[i1] + Rnd.get(650), Zcoords[i1]);
-						((L2Attackable) npc).stopHating(c_quest1);
-					}
-				}
-				
-				if ((c_quest2 != null) && (_quest0 > 2) && (c_quest2 != player) && (c_quest2.getZ() > (player.getZ() - 100)) && (c_quest2.getZ() < (player.getZ() + 100)))
-				{
-					if ((((c_quest2.getX() - player.getX()) * (c_quest2.getX() - player.getX())) + ((c_quest2.getY() - player.getY()) * (c_quest2.getY() - player.getY()))) > (250 * 250))
-					{
-						i0 = 1;
-					}
-					else
-					{
-						i0 = 0;
-					}
-					
-					if (i0 == 0)
-					{
-						i1 = Rnd.get(15);
-						c_quest2.teleToLocation(Xcoords[i1] + Rnd.get(650), Ycoords[i1] + Rnd.get(650), Zcoords[i1]);
-						((L2Attackable) npc).stopHating(c_quest2);
-					}
-				}
-				
-				if ((c_quest3 != null) && (_quest0 > 3) && (c_quest3 != player) && (c_quest3.getZ() > (player.getZ() - 100)) && (c_quest3.getZ() < (player.getZ() + 100)))
-				{
-					if ((((c_quest3.getX() - player.getX()) * (c_quest3.getX() - player.getX())) + ((c_quest3.getY() - player.getY()) * (c_quest3.getY() - player.getY()))) > (250 * 250))
-					{
-						i0 = 1;
-					}
-					else
-					{
-						i0 = 0;
-					}
-					
-					if (i0 == 0)
-					{
-						i1 = Rnd.get(15);
-						c_quest3.teleToLocation(Xcoords[i1] + Rnd.get(650), Ycoords[i1] + Rnd.get(650), Zcoords[i1]);
-						((L2Attackable) npc).stopHating(c_quest3);
-					}
-				}
-				
-				if ((c_quest4 != null) && (_quest0 > 4) && (c_quest4 != player) && (c_quest4.getZ() > (player.getZ() - 100)) && (c_quest4.getZ() < (player.getZ() + 100)))
-				{
-					if ((((c_quest4.getX() - player.getX()) * (c_quest4.getX() - player.getX())) + ((c_quest4.getY() - player.getY()) * (c_quest4.getY() - player.getY()))) > (250 * 250))
-					{
-						i0 = 1;
-					}
-					else
-					{
-						i0 = 0;
-					}
-					
-					if (i0 == 0)
-					{
-						i1 = Rnd.get(15);
-						c_quest4.teleToLocation(Xcoords[i1] + Rnd.get(650), Ycoords[i1] + Rnd.get(650), Zcoords[i1]);
-						((L2Attackable) npc).stopHating(c_quest4);
-					}
-				}
-				
+
 				L2Character nextTarget = ((L2Attackable) npc).getMostHated();
 				if (nextTarget != null)
 				{
@@ -851,7 +602,7 @@ public class Zaken extends Quest
 			((L2Attackable) npc).addDamageHate(originalAttacker, 0, hate);
 			if (Rnd.get(10) < 1)
 			{
-				int i0 = Rnd.get((15 * 15));
+				int i0 = Rnd.get(LOCS.length * LOCS.length);
 				if (i0 < 1)
 				{
 					npc.setTarget(attacker);
@@ -899,13 +650,10 @@ public class Zaken extends Quest
 				}
 			}
 			
-			if (getTimeHour() > 5 && (npc.getCurrentHp() < ((npc.getMaxHp() * _quest2) / 4)))
+			if (!GameTimeController.getInstance().isNight() && (npc.getCurrentHp() < ((npc.getMaxHp() * _teleportCheck) / 4)))
 			{
-				_quest2 = (_quest2 - 1);
-				int i2 = Rnd.get(15);
-				_ai1 = Xcoords[i2] + Rnd.get(650);
-				_ai2 = Ycoords[i2] + Rnd.get(650);
-				_ai3 = Zcoords[i2];
+				_teleportCheck -= 1;
+				
 				npc.setTarget(npc);
 				npc.doCast(SkillTable.getInstance().getInfo(4222, 1));
 			}
@@ -923,7 +671,7 @@ public class Zaken extends Quest
 			npc.broadcastPacket(new PlaySound(1, "BS02_D", 1, npc.getObjectId(), npc.getX(), npc.getY(), npc.getZ()));
 			GrandBossManager.getInstance().setBossStatus(ZAKEN, DEAD);
 			// Time is 60hour +/- 20hour
-			long respawnTime = ((long)Config.ZAKEN_SPAWN_INTERVAL + Rnd.get(-Config.ZAKEN_SPAWN_RANDOM_INTERVAL, Config.ZAKEN_SPAWN_RANDOM_INTERVAL)) * 3600000L;
+			long respawnTime = ((long) Config.ZAKEN_SPAWN_INTERVAL + Rnd.get(-Config.ZAKEN_SPAWN_RANDOM_INTERVAL, Config.ZAKEN_SPAWN_RANDOM_INTERVAL)) * 3600000L;
 			startQuestTimer("zaken_unlock", respawnTime, null, null);
 			cancelQuestTimer("1001", npc, null);
 			cancelQuestTimer("1003", npc, null);
@@ -950,7 +698,7 @@ public class Zaken extends Quest
 		{
 			if (Rnd.get(12) < 1)
 			{
-				int i0 = Rnd.get((15 * 15));
+				int i0 = Rnd.get(LOCS.length * LOCS.length);
 				if (i0 < 1)
 				{
 					npc.setTarget(caster);
@@ -1016,55 +764,35 @@ public class Zaken extends Quest
 			
 			if ((player.getZ() > (npc.getZ() - 100)) && (player.getZ() < (npc.getZ() + 100)))
 			{
-				if ((_quest0 < 5) && (Rnd.get(3) < 1))
+				if (Rnd.get(3) < 1 && _victims.size() < 5)
 				{
-					if (_quest0 == 0)
-					{
-						c_quest0 = player;
-					}
-					else if (_quest0 == 1)
-					{
-						c_quest1 = player;
-					}
-					else if (_quest0 == 2)
-					{
-						c_quest2 = player;
-					}
-					else if (_quest0 == 3)
-					{
-						c_quest3 = player;
-					}
-					else if (_quest0 == 4)
-					{
-						c_quest4 = player;
-					}
-					_quest0++;
+					_victims.add(player);
 				}
 				
-				if (Rnd.get(15) < 1)
+				if (Rnd.get(LOCS.length) < 1)
 				{
-					int i0 = Rnd.get((15 * 15));
-					if (i0 < 1)
+					int chance = Rnd.get(LOCS.length * LOCS.length);
+					if (chance < 1)
 					{
 						npc.setTarget(player);
 						npc.doCast(SkillTable.getInstance().getInfo(4216, 1));
 					}
-					else if (i0 < 2)
+					else if (chance < 2)
 					{
 						npc.setTarget(player);
 						npc.doCast(SkillTable.getInstance().getInfo(4217, 1));
 					}
-					else if (i0 < 4)
+					else if (chance < 4)
 					{
 						npc.setTarget(player);
 						npc.doCast(SkillTable.getInstance().getInfo(4219, 1));
 					}
-					else if (i0 < 8)
+					else if (chance < 8)
 					{
 						npc.setTarget(player);
 						npc.doCast(SkillTable.getInstance().getInfo(4218, 1));
 					}
-					else if (i0 < 15)
+					else if (chance < 15)
 					{
 						for (L2Character character : npc.getKnownList().getKnownCharactersInRadius(100))
 						{
@@ -1094,10 +822,5 @@ public class Zaken extends Quest
 		}
 		
 		return super.onAggroRangeEnter(npc, player, isPet);
-	}
-	
-	public int getTimeHour()
-	{
-		return (GameTimeController.getInstance().getGameTime() / 60) % 24;
 	}
 }
