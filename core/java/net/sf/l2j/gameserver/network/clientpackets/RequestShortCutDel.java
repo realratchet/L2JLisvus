@@ -30,9 +30,9 @@ public class RequestShortCutDel extends L2GameClientPacket
 	@Override
 	protected void readImpl()
 	{
-		int id = readD();
-		_slot = id % 12;
-		_page = id / 12;
+		int slot = readD();
+		_slot = slot % 12;
+		_page = slot / 12;
 	}
 
 	@Override
