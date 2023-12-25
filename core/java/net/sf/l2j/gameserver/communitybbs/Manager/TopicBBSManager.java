@@ -142,7 +142,7 @@ public class TopicBBSManager extends BaseBBSManager
 				else
 				{
 					//CPost cp = null;
-					Post p = PostBBSManager.getInstance().getGPosttByTopic(t);
+					Post p = PostBBSManager.getInstance().getGPostByTopic(t);
 					if (p != null)
 					{
 						p.deleteMe(t);
@@ -229,7 +229,7 @@ public class TopicBBSManager extends BaseBBSManager
 				else
 				{
 					//CPost cp = null;
-					Post p = PostBBSManager.getInstance().getGPosttByTopic(t);
+					Post p = PostBBSManager.getInstance().getGPostByTopic(t);
 					if (p != null)
 					{
 						p.deleteMe(t);
@@ -264,7 +264,7 @@ public class TopicBBSManager extends BaseBBSManager
 		}
 		else if (forum.getType() == Forum.MEMO)
 		{
-			ShowMemoNewTopics(forum, activeChar);
+			showMemoNewTopics(forum, activeChar);
 		}
 		else
 		{
@@ -279,7 +279,7 @@ public class TopicBBSManager extends BaseBBSManager
 	 * @param forum
 	 * @param activeChar
 	 */
-	private void ShowMemoNewTopics(Forum forum, L2PcInstance activeChar)
+	private void showMemoNewTopics(Forum forum, L2PcInstance activeChar)
 	{
         String html = StringUtil.concat(
         	"<html>",
@@ -347,7 +347,7 @@ public class TopicBBSManager extends BaseBBSManager
 		}
 		else if (forum.getType() == Forum.MEMO)
 		{
-			ShowMemoTopics(forum, activeChar, index);
+			showMemoTopics(forum, activeChar, index);
 		}
 		else
 		{
@@ -363,7 +363,7 @@ public class TopicBBSManager extends BaseBBSManager
 	 * @param activeChar
 	 * @param index 
 	 */
-	private void ShowMemoTopics(Forum forum, L2PcInstance activeChar, int index)
+	private void showMemoTopics(Forum forum, L2PcInstance activeChar, int index)
 	{
 		forum.vload();
         StringBuilder html = new StringBuilder(2000);
