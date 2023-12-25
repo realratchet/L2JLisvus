@@ -19,7 +19,7 @@ package net.sf.l2j.gameserver.model;
  * 
  * @version $Revision: 1.1.4.1 $ $Date: 2005/03/27 15:29:33 $
  */
-public final class Location
+public class Location implements IPositionable
 {
 	private int _x;
 	private int _y;
@@ -41,24 +41,60 @@ public final class Location
 		_heading = heading;
 	}
 	
+	@Override
 	public int getX()
 	{
 		return _x;
 	}
+
+	@Override
+    public final void setX(int x)
+    {
+        _x = x;
+    }
 	
+	@Override
 	public int getY()
 	{
 		return _y;
 	}
+
+	@Override
+    public final void setY(int y)
+    {
+        _y = y;
+    }
 	
+	@Override
 	public int getZ()
 	{
 		return _z;
 	}
+
+	@Override
+    public final void setZ(int z)
+    {
+        _z = z;
+    }
 	
+	@Override
 	public int getHeading()
 	{
 		return _heading;
+	}
+
+	@Override
+	public final void setHeading(int heading)
+	{
+		_heading = heading;
+	}
+
+	@Override
+	public void setXYZ(int x, int y, int z)
+	{
+		_x = x;
+		_y = y;
+		_z = z;
 	}
 
 	@Override
