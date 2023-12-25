@@ -19,7 +19,7 @@ package net.sf.l2j.gameserver.model;
  * 
  * @version $Revision: 1.1.4.1 $ $Date: 2005/03/27 15:29:33 $
  */
-public class Location implements IPositionable
+public final class Location implements IPositionable
 {
 	private int _x;
 	private int _y;
