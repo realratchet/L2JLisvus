@@ -44,11 +44,14 @@ public class RequestShortCutReg extends L2GameClientPacket
 		
 		_slot = slot % 12;
 		_page = slot / 12;
+
+		System.out.println("Read: Register shortcut for slot " + _slot);
 	}
 
 	@Override
 	public void runImpl()
 	{
+		System.out.println("Run: Register shortcut for slot " + _slot + " " + System.currentTimeMillis());
 		L2PcInstance activeChar = getClient().getActiveChar();
 		if (activeChar == null)
 		{

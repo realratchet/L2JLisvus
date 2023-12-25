@@ -33,11 +33,15 @@ public class RequestShortCutDel extends L2GameClientPacket
 		int slot = readD();
 		_slot = slot % 12;
 		_page = slot / 12;
+
+		System.out.println("Read: Delete shortcut for slot " + _slot);
+		System.out.println(_buf.remaining());
 	}
 
 	@Override
 	public void runImpl()
 	{
+		System.out.println("Run: Delete shortcut for slot " + _slot);
 		L2PcInstance activeChar = getClient().getActiveChar();
 		if (activeChar == null)
 		{

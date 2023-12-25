@@ -2744,7 +2744,7 @@ public final class L2PcInstance extends L2PlayableInstance
 	 */
 	public boolean removeItemShortCuts(L2ItemInstance item)
 	{
-		return _shortCuts.deleteShortCutsByItem(item);
+		return _shortCuts.deleteShortCutsByItem(item) > 0;
 	}
 	
 	/**
