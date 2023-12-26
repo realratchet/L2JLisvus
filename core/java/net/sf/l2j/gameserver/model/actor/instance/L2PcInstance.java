@@ -2308,12 +2308,8 @@ public final class L2PcInstance extends L2PlayableInstance
 				getClan().broadcastToOtherOnlineMembers(new PledgeShowMemberListUpdate(this), this);
 			}
 			
-			if (Config.AUTO_LEARN_SKILLS)
-			{
-				rewardSkills();
-			}
+			rewardSkills();
 		}
-		
 		finally
 		{
 			_classLock.unlock();
