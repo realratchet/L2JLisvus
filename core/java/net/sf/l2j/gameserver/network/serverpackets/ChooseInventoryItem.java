@@ -18,18 +18,18 @@ public class ChooseInventoryItem extends L2GameServerPacket
 {
 	private static final String _S__6F_CHOOSEINVENTORYITEM = "[S] 6f ChooseInventoryItem";
 	
-	private final int _itemID;
+	private final int _itemId;
 	
-	public ChooseInventoryItem(int Item)
+	public ChooseInventoryItem(int itemId)
 	{
-		_itemID = Item;
+		_itemId = itemId;
 	}
 	
 	@Override
 	protected final void writeImpl()
 	{
 		writeC(0x6f);
-		writeD(_itemID);
+		writeD(_itemId);
 	}
 	
 	/*
