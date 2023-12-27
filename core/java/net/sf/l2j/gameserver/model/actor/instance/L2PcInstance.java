@@ -77,6 +77,7 @@ import net.sf.l2j.gameserver.instancemanager.CastleManager;
 import net.sf.l2j.gameserver.instancemanager.CoupleManager;
 import net.sf.l2j.gameserver.instancemanager.DimensionalRiftManager;
 import net.sf.l2j.gameserver.instancemanager.ItemsOnGroundManager;
+import net.sf.l2j.gameserver.instancemanager.PartyMatchRoomManager;
 import net.sf.l2j.gameserver.instancemanager.QuestManager;
 import net.sf.l2j.gameserver.instancemanager.SiegeManager;
 import net.sf.l2j.gameserver.model.BlockList;
@@ -107,7 +108,6 @@ import net.sf.l2j.gameserver.model.L2World;
 import net.sf.l2j.gameserver.model.L2WorldRegion;
 import net.sf.l2j.gameserver.model.MacroList;
 import net.sf.l2j.gameserver.model.PartyMatchRoom;
-import net.sf.l2j.gameserver.model.PartyMatchRoomList;
 import net.sf.l2j.gameserver.model.ShortCuts;
 import net.sf.l2j.gameserver.model.TradeList;
 import net.sf.l2j.gameserver.model.actor.appearance.PcAppearance;
@@ -5258,7 +5258,7 @@ public final class L2PcInstance extends L2PlayableInstance
 			return true;
 		}
 		
-		PartyMatchRoom room = PartyMatchRoomList.getInstance().getRoom(_partyroom);
+		PartyMatchRoom room = PartyMatchRoomManager.getInstance().getRoom(_partyroom);
 		if (room != null)
 		{
 			if (room.getOwner() == this)
@@ -10421,7 +10421,7 @@ public final class L2PcInstance extends L2PlayableInstance
 		{
 			if (_partyroom != 0)
 			{
-				PartyMatchRoom room = PartyMatchRoomList.getInstance().getRoom(_partyroom);
+				PartyMatchRoom room = PartyMatchRoomManager.getInstance().getRoom(_partyroom);
 				if (room != null)
 				{
 					room.deleteMember(this);

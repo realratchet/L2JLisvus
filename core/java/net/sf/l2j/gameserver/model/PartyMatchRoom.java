@@ -14,11 +14,13 @@
  */
 package net.sf.l2j.gameserver.model;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 import net.sf.l2j.gameserver.datatables.MapRegionTable;
+import net.sf.l2j.gameserver.instancemanager.PartyMatchRoomManager;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.network.serverpackets.ExClosePartyRoom;
 import net.sf.l2j.gameserver.network.serverpackets.ExManagePartyRoomMember;
 import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
 
@@ -36,7 +38,7 @@ public class PartyMatchRoom
     private int _maxlvl;
     private int _maxmem;
 
-    private final List<L2PcInstance> _members = new ArrayList<>();
+    private final List<L2PcInstance> _members = new CopyOnWriteArrayList<>();
 
     public PartyMatchRoom(int id, String title, int loot, int minlvl, int maxlvl, int maxmem, L2PcInstance owner)
     {
@@ -68,7 +70,7 @@ public class PartyMatchRoom
             notifyMembersAboutExit(player);
         }
         else if (_members.size() == 1)
-            PartyMatchRoomList.getInstance().deleteRoom(_id);
+            PartyMatchRoomManager.getInstance().deleteRoom(_id);
         else
         {
             changeLeader(_members.get(1));
@@ -78,12 +80,12 @@ public class PartyMatchRoom
 
     public void notifyMembersAboutExit(L2PcInstance player)
     {
-        for (L2PcInstance _member : _members)
+        for (L2PcInstance member : _members)
         {
             SystemMessage sm = new SystemMessage(SystemMessage.S1_LEFT_PARTY_ROOM);
             sm.addString(player.getName());
-            _member.sendPacket(sm);
-            _member.sendPacket(new ExManagePartyRoomMember(player, this, 2));
+            member.sendPacket(sm);
+            member.sendPacket(new ExManagePartyRoomMember(player, this, 2));
         }
     }
 
@@ -105,6 +107,18 @@ public class PartyMatchRoom
             member.sendPacket(new ExManagePartyRoomMember(oldLeader, this, 1));
             member.sendPacket(new SystemMessage(SystemMessage.PARTY_ROOM_LEADER_CHANGED));
         }
+    }
+
+    public void disband()
+    {
+        for (L2PcInstance member : _members)
+		{
+			member.sendPacket(new ExClosePartyRoom());
+			member.sendPacket(new SystemMessage(SystemMessage.PARTY_ROOM_DISBANDED));
+			
+			member.setPartyRoom(0);
+			member.broadcastUserInfo();
+		}
     }
 
     public int getId()

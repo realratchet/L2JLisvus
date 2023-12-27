@@ -14,8 +14,8 @@
  */
 package net.sf.l2j.gameserver.network.clientpackets;
 
+import net.sf.l2j.gameserver.instancemanager.PartyMatchRoomManager;
 import net.sf.l2j.gameserver.model.PartyMatchRoom;
-import net.sf.l2j.gameserver.model.PartyMatchRoomList;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 
 /**
@@ -49,13 +49,13 @@ public class RequestDismissPartyRoom extends L2GameClientPacket
 			return;
 		}
 		
-		PartyMatchRoom _room = PartyMatchRoomList.getInstance().getRoom(_roomId);
+		PartyMatchRoom _room = PartyMatchRoomManager.getInstance().getRoom(_roomId);
 		if (_room == null)
 		{
 			return;
 		}
 		
-		PartyMatchRoomList.getInstance().deleteRoom(_roomId);
+		PartyMatchRoomManager.getInstance().deleteRoom(_roomId);
 	}
 	
 	/*

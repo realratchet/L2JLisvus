@@ -17,8 +17,8 @@ package net.sf.l2j.gameserver.network.clientpackets;
 import java.util.logging.Logger;
 
 import net.sf.l2j.Config;
+import net.sf.l2j.gameserver.instancemanager.PartyMatchRoomManager;
 import net.sf.l2j.gameserver.model.PartyMatchRoom;
-import net.sf.l2j.gameserver.model.PartyMatchRoomList;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.network.serverpackets.ExPartyRoomMember;
 import net.sf.l2j.gameserver.network.serverpackets.PartyMatchDetail;
@@ -68,7 +68,7 @@ public class RequestPartyMatchList extends L2GameClientPacket
 		
 		if (_roomid > 0)
 		{
-			PartyMatchRoom _room = PartyMatchRoomList.getInstance().getRoom(_roomid);
+			PartyMatchRoom _room = PartyMatchRoomManager.getInstance().getRoom(_roomid);
 			if (_room != null)
 			{
 				if (Config.DEBUG)
@@ -96,7 +96,7 @@ public class RequestPartyMatchList extends L2GameClientPacket
 		}
 		else
 		{
-			int _newId = PartyMatchRoomList.getInstance().getAutoIncrementId();
+			int _newId = PartyMatchRoomManager.getInstance().getAutoIncrementId();
 			PartyMatchRoom _room = new PartyMatchRoom(_newId, _roomtitle, _loot, _lvlmin, _lvlmax, _membersmax, activeChar);
 			
 			if (Config.DEBUG)
@@ -104,7 +104,7 @@ public class RequestPartyMatchList extends L2GameClientPacket
 				_log.info("PartyMatchRoom #" + _newId + " created by " + activeChar.getName());
 			}
 			
-			PartyMatchRoomList.getInstance().addPartyMatchRoom(_room);
+			PartyMatchRoomManager.getInstance().addPartyMatchRoom(_room);
 			
 			if (activeChar.isInParty())
 			{

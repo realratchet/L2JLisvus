@@ -24,11 +24,11 @@ import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.datatables.MapRegionTable;
 import net.sf.l2j.gameserver.handler.IVoicedCommandHandler;
 import net.sf.l2j.gameserver.handler.VoicedCommandHandler;
+import net.sf.l2j.gameserver.instancemanager.PartyMatchRoomManager;
 import net.sf.l2j.gameserver.instancemanager.PetitionManager;
 import net.sf.l2j.gameserver.model.BlockList;
 import net.sf.l2j.gameserver.model.L2World;
 import net.sf.l2j.gameserver.model.PartyMatchRoom;
-import net.sf.l2j.gameserver.model.PartyMatchRoomList;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.network.serverpackets.CreatureSay;
 import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
@@ -373,7 +373,7 @@ public class Say2 extends L2GameClientPacket
 			case PARTY_ROOM:
 				if (activeChar.isInPartyMatchRoom())
 				{
-					PartyMatchRoom _room = PartyMatchRoomList.getInstance().getPlayerRoom(activeChar);
+					PartyMatchRoom _room = PartyMatchRoomManager.getInstance().getPlayerRoom(activeChar);
 					if (_room != null)
 					{
 						for (L2PcInstance member : _room.getPartyMembers())

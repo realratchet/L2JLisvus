@@ -12,52 +12,39 @@
  * You should have received a copy of the GNU General Public License along with
  * this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package net.sf.l2j.gameserver.model;
+package net.sf.l2j.gameserver.instancemanager;
 
-import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
+import net.sf.l2j.gameserver.model.PartyMatchRoom;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.network.serverpackets.ExClosePartyRoom;
-import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
 
 /**
  * @author Gnacik
  */
-public class PartyMatchRoomList
+public class PartyMatchRoomManager
 {
 	private int _maxId;
-	private Map<Integer, PartyMatchRoom> _rooms;
+	private final Map<Integer, PartyMatchRoom> _rooms = new ConcurrentHashMap<>();
 	
-	public static PartyMatchRoomList getInstance()
+	public static PartyMatchRoomManager getInstance()
 	{
 		return SingletonHolder._instance;
 	}
 	
-	private PartyMatchRoomList()
-	{
-		_rooms = new HashMap<>();
-	}
-	
-	public synchronized void addPartyMatchRoom(PartyMatchRoom room)
+	public void addPartyMatchRoom(PartyMatchRoom room)
 	{
 		_rooms.put(room.getId(), room);
 	}
 	
 	public void deleteRoom(int id)
 	{
-		for (L2PcInstance _member : getRoom(id).getPartyMembers())
+		final PartyMatchRoom room = _rooms.remove(id);
+		if (room != null)
 		{
-			if (_member == null)
-				continue;
-			
-			_member.sendPacket(new ExClosePartyRoom());
-			_member.sendPacket(new SystemMessage(SystemMessage.PARTY_ROOM_DISBANDED));
-			
-			_member.setPartyRoom(0);
-			_member.broadcastUserInfo();
+			room.disband();
 		}
-		_rooms.remove(id);
 	}
 	
 	public PartyMatchRoom getRoom(int id)
@@ -113,6 +100,6 @@ public class PartyMatchRoomList
 	
 	private static class SingletonHolder
 	{
-		protected static final PartyMatchRoomList _instance = new PartyMatchRoomList();
+		protected static final PartyMatchRoomManager _instance = new PartyMatchRoomManager();
 	}
 }

@@ -21,6 +21,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.SevenSignsFestival;
 import net.sf.l2j.gameserver.datatables.ItemTable;
+import net.sf.l2j.gameserver.instancemanager.PartyMatchRoomManager;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PetInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PlayableInstance;
@@ -366,7 +367,7 @@ public class L2Party
 		
 		if (player.isInPartyMatchRoom())
 		{
-			PartyMatchRoom _room = PartyMatchRoomList.getInstance().getPlayerRoom(player);
+			PartyMatchRoom _room = PartyMatchRoomManager.getInstance().getPlayerRoom(player);
 			if (_room != null)
 			{
 				player.sendPacket(new PartyMatchDetail(_room));
@@ -421,7 +422,7 @@ public class L2Party
 					
 					if (player.isInPartyMatchRoom())
 					{
-						PartyMatchRoom room = PartyMatchRoomList.getInstance().getPlayerRoom(player);
+						PartyMatchRoom room = PartyMatchRoomManager.getInstance().getPlayerRoom(player);
 						room.changeLeader(player);
 					}
 				}
