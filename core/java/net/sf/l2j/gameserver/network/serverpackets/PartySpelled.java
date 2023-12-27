@@ -49,18 +49,13 @@ public class PartySpelled extends L2GameServerPacket
 
 	public PartySpelled(L2Character cha)
 	{
-		_effects = new ArrayList<>();
 		_char = cha;
+		_effects = new ArrayList<>();
 	}
 
 	@Override
 	protected final void writeImpl()
 	{
-		if (_char == null)
-		{
-			return;
-		}
-
 		writeC(0xee);
 		writeD(_char instanceof L2SummonInstance ? 2 : _char instanceof L2PetInstance ? 1 : 0);
 		writeD(_char.getObjectId());

@@ -25,19 +25,18 @@ public class TradeStart extends L2GameServerPacket
 {
 	private static final String _S__2E_TRADESTART = "[S] 1E TradeStart";
 	private final L2PcInstance _player;
-	private final L2ItemInstance[] _itemList;
+	private final L2ItemInstance[] _items;
 	
 	public TradeStart(L2PcInstance player)
 	{
 		_player = player;
-		_itemList = _player.getInventory().getAvailableItems(true);
+		_items = _player.getInventory().getAvailableItems(true);
 	}
 	
 	@Override
 	protected final void writeImpl()
 	{
-		// 0x2e TradeStart d h (h dddhh dhhh)
-		if ((_player.getActiveTradeList() == null) || (_player.getActiveTradeList().getPartner() == null))
+		if (_player.getActiveTradeList() == null || _player.getActiveTradeList().getPartner() == null)
 		{
 			return;
 		}
@@ -45,8 +44,8 @@ public class TradeStart extends L2GameServerPacket
 		writeC(0x1E);
 		writeD(_player.getActiveTradeList().getPartner().getObjectId());
 		
-		writeH(_itemList.length);
-		for (L2ItemInstance item : _itemList)// int i = 0; i < count; i++)
+		writeH(_items.length);
+		for (L2ItemInstance item : _items)
 		{
 			if (item == null)
 			{

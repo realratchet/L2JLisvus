@@ -189,7 +189,7 @@ public class EnterWorld extends L2GameClientPacket
 		sendPacket(new ShortCutInit(activeChar));
 		sendPacket(new HennaInfo(activeChar));
 		Quest.playerEnter(activeChar);
-		activeChar.sendPacket(new QuestList());
+		activeChar.sendPacket(new QuestList(activeChar));
 		
 		/**
 		 * A dummy magic skill cast packet for fixing heading issues 

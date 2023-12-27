@@ -189,7 +189,7 @@ public final class QuestState
 			}
 			
 			Quest.updateQuestInDb(this);
-			getPlayer().sendPacket(new QuestList());
+			getPlayer().sendPacket(new QuestList(getPlayer()));
 		}
 		return state;
 	}
@@ -244,9 +244,7 @@ public final class QuestState
 		
 		if (var.equals("cond"))
 		{
-			QuestList ql = new QuestList();
-			
-			getPlayer().sendPacket(ql);
+			getPlayer().sendPacket(new QuestList(getPlayer()));
 			
 			int questId = getQuest().getQuestIntId();
 			if (questId > 0 && questId < 999 && !val.equals("0"))

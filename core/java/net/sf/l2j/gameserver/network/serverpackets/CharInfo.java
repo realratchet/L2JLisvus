@@ -61,17 +61,20 @@ import net.sf.l2j.gameserver.templates.L2NpcTemplate;
 public class CharInfo extends L2GameServerPacket
 {
 	private static final Logger _log = Logger.getLogger(CharInfo.class.getName());
-
+	
 	private static final String _S__03_CHARINFO = "[S] 03 CharInfo";
-
+	
 	private final L2PcInstance _cha;
 	private final Inventory _inv;
 	private final int _x, _y, _z, _heading;
 	private final int _mAtkSpd, _pAtkSpd;
 	private final int _runSpd, _walkSpd, _swimRunSpd, _swimWalkSpd;
 	private final int _flRunSpd, _flWalkSpd, _flyRunSpd, _flyWalkSpd;
+	
+	private double _collisionRadius, _collisionHeight;
+	private boolean _isMorphed;
 	private boolean _isInvisible;
-
+	
 	/**
 	 * @param cha
 	 */
@@ -89,14 +92,36 @@ public class CharInfo extends L2GameServerPacket
 		_walkSpd = cha.getStat().getBaseWalkSpeed();
 		_swimRunSpd = _flRunSpd = _flyRunSpd = _runSpd;
 		_swimWalkSpd = _flWalkSpd = _flyWalkSpd = _walkSpd;
-		_isInvisible = _cha.getAppearance().getInvisible();
+		
+		_collisionRadius = cha.getCollisionRadius();
+		_collisionHeight = cha.getCollisionHeight();
+		
+		if (cha.getPoly().isMorphed())
+		{
+			L2NpcTemplate template = NpcTable.getInstance().getTemplate(cha.getPoly().getPolyId());
+			if (template != null)
+			{
+				_isMorphed = true;
+				_collisionRadius = template.collisionRadius;
+				_collisionHeight = template.collisionHeight;
+			}
+			else
+			{
+				if (Config.DEVELOPER)
+				{
+					_log.warning("Character " + _cha.getName() + " (" + _cha.getObjectId() + ") morphed into an NPC (" + _cha.getPoly().getPolyId() + ") without template");
+				}
+			}
+		}
+		
+		_isInvisible = cha.getAppearance().getInvisible();
 	}
-
+	
 	@Override
 	protected final void writeImpl()
 	{
 		boolean gmSeeInvis = false;
-
+		
 		final L2PcInstance tmp = getClient().getActiveChar();
 		if (tmp != null)
 		{
@@ -116,16 +141,9 @@ public class CharInfo extends L2GameServerPacket
 				}
 			}
 		}
-
-		if (_cha.getPoly().isMorphed())
+		
+		if (_isMorphed)
 		{
-			L2NpcTemplate template = NpcTable.getInstance().getTemplate(_cha.getPoly().getPolyId());
-			if (template == null)
-			{
-				_log.warning("Character " + _cha.getName() + " (" + _cha.getObjectId() + ") morphed in a Npc (" + _cha.getPoly().getPolyId() + ") w/o template.");
-				return;
-			}
-
 			writeC(0x16);
 			writeD(_cha.getObjectId());
 			writeD(_cha.getPoly().getPolyId() + 1000000); // npctype id
@@ -147,8 +165,8 @@ public class CharInfo extends L2GameServerPacket
 			writeD(_flyWalkSpd);
 			writeF(_cha.getMovementSpeedMultiplier());
 			writeF(_cha.getAttackSpeedMultiplier());
-			writeF(template.collisionRadius);
-			writeF(template.collisionHeight);
+			writeF(_collisionRadius);
+			writeF(_collisionHeight);
 			writeD(_inv.getPaperdollItemId(Inventory.PAPERDOLL_RHAND)); // right hand weapon
 			writeD(0);
 			writeD(_inv.getPaperdollItemId(Inventory.PAPERDOLL_LHAND)); // left hand weapon
@@ -156,15 +174,15 @@ public class CharInfo extends L2GameServerPacket
 			writeC(_cha.isRunning() ? 1 : 0);
 			writeC(_cha.isInCombat() ? 1 : 0);
 			writeC(_cha.isAlikeDead() ? 1 : 0);
-
+			
 			writeC(!_isInvisible || gmSeeInvis ? 0 : 1); // invisible ?? 0=false 1=true 2=summoned (only works if model has a summon animation)
 			writeS(_cha.getName());
 			writeS(gmSeeInvis ? "Invisible" : _cha.getTitle());
-
+			
 			writeD(0);
 			writeD(0);
 			writeD(0000); // hmm karma ??
-
+			
 			writeH(_cha.getAbnormalEffect()); // C2
 			writeH(0x00); // C2
 			writeD(0); // C2
@@ -181,12 +199,12 @@ public class CharInfo extends L2GameServerPacket
 			writeD(_z);
 			writeD(_heading);
 			writeD(_cha.getObjectId());
-
+			
 			writeS(_cha.getName());
 			writeD(_cha.getRace().ordinal());
 			writeD(_cha.getAppearance().getSex() ? 1 : 0);
 			writeD(_cha.getClassIndex() == 0 ? _cha.getClassId().getId() : _cha.getBaseClass());
-
+			
 			writeD(0); // Hair All, but there are no such items in C4
 			writeD(_inv.getPaperdollItemId(Inventory.PAPERDOLL_HEAD));
 			writeD(_inv.getPaperdollItemId(Inventory.PAPERDOLL_RHAND));
@@ -198,16 +216,16 @@ public class CharInfo extends L2GameServerPacket
 			writeD(_inv.getPaperdollItemId(Inventory.PAPERDOLL_BACK));
 			writeD(_inv.getPaperdollItemId(Inventory.PAPERDOLL_RHAND));
 			writeD(_inv.getPaperdollItemId(Inventory.PAPERDOLL_HAIR));
-
+			
 			writeD(_cha.getPvpFlag());
 			writeD(_cha.getKarma());
-
+			
 			writeD(_mAtkSpd);
 			writeD(_pAtkSpd);
-
+			
 			writeD(_cha.getPvpFlag());
 			writeD(_cha.getKarma());
-
+			
 			writeD(_runSpd);
 			writeD(_walkSpd);
 			writeD(_swimRunSpd); // swimspeed
@@ -219,15 +237,15 @@ public class CharInfo extends L2GameServerPacket
 			writeF(_cha.getMovementSpeedMultiplier());
 			writeF(_cha.getAttackSpeedMultiplier());
 			
-			writeF(_cha.getCollisionRadius());
-			writeF(_cha.getCollisionHeight());
+			writeF(_collisionRadius);
+			writeF(_collisionHeight);
 			
 			writeD(_cha.getAppearance().getHairStyle());
 			writeD(_cha.getAppearance().getHairColor());
 			writeD(_cha.getAppearance().getFace());
-
+			
 			writeS(gmSeeInvis ? "Invisible" : _cha.getTitle());
-
+			
 			writeD(_cha.getClanId());
 			writeD(_cha.getClanCrestId());
 			writeD(_cha.getAllyId());
@@ -235,54 +253,55 @@ public class CharInfo extends L2GameServerPacket
 			// In UserInfo leader rights and siege flags, but here found nothing??
 			// Therefore RelationChanged packet with that info is required
 			writeD(0);
-
+			
 			writeC(_cha.isSitting() ? 0 : 1); // standing = 1 sitting = 0
 			writeC(_cha.isRunning() ? 1 : 0); // running = 1 walking = 0
 			writeC(_cha.isInCombat() ? 1 : 0);
 			writeC(_cha.isAlikeDead() ? 1 : 0);
-
+			
 			writeC(!_isInvisible || gmSeeInvis ? 0 : 1); // invisible = 1 visible = 0
-
+			
 			writeC(_cha.getMountType()); // 1 on strider 2 on wyvern 0 no mount
 			writeC(_cha.getPrivateStoreType().getId()); // 1 - sellshop
-
+			
 			writeH(_cha.getCubics().size());
 			for (L2CubicInstance cubic : _cha.getCubics())
 			{
 				writeH(cubic.getId());
 			}
-
+			
 			writeC(_cha.isLookingForParty() ? 1 : 0);
-
+			
 			writeD(_cha.getAbnormalEffect());
-
+			
 			writeC(_cha.getRecomLeft()); // Changed by Thorgrim
 			writeH(_cha.getRecomHave()); // Blue value for name (0 = white, 255 = pure blue)
 			writeD(_cha.getMountNpcId() + 1000000);
-
+			
 			writeD(_cha.getClassId().getId());
-
+			
 			writeD(0x00); // ??
-
+			
 			writeC(_cha.isMounted() ? 0 : _cha.getEnchantEffect());
-
+			
 			writeC(_cha.getEventTeam() > 0 ? _cha.getEventTeam() : _cha.getAuraColor()); // team circle around feet 1= Blue, 2 = red
-
+			
 			writeD(_cha.getClanCrestLargeId());
 			writeC(_cha.isNoble() ? 1 : 0); // Symbol on char menu ctrl+I
 			writeC((_cha.isHero() || (_cha.isGM() && Config.GM_HERO_AURA)) ? 1 : 0); // Hero Aura
-
+			
 			writeC(_cha.isFishing() ? 1 : 0); // Fishing Mode
 			writeD(_cha.getFishx());
 			writeD(_cha.getFishy());
 			writeD(_cha.getFishz());
-
+			
 			writeD(_cha.getAppearance().getNameColor());
 		}
 	}
-
+	
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see net.sf.l2j.gameserver.serverpackets.L2GameServerPacket#getType()
 	 */
 	@Override

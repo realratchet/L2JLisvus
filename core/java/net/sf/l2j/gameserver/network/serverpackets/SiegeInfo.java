@@ -45,29 +45,26 @@ public class SiegeInfo extends L2GameServerPacket
 {
 	private static final String _S__C9_SIEGEINFO = "[S] c9 SiegeInfo";
 	private static Logger _log = Logger.getLogger(SiegeInfo.class.getName());
-	private final Castle _Castle;
+
+	private final L2PcInstance _player;
+	private final Castle _castle;
 	
-	public SiegeInfo(Castle castle)
+	public SiegeInfo(L2PcInstance player, Castle castle)
 	{
-		_Castle = castle;
+		_player = player;
+		_castle = castle;
 	}
 	
 	@Override
 	protected final void writeImpl()
 	{
-		L2PcInstance activeChar = getClient().getActiveChar();
-		if (activeChar == null)
-		{
-			return;
-		}
-		
 		writeC(0xc9);
-		writeD(_Castle.getCastleId());
-		writeD(((_Castle.getOwnerId() == activeChar.getClanId()) && (activeChar.isClanLeader())) ? 0x07 : 0x00);
-		writeD(_Castle.getOwnerId());
-		if (_Castle.getOwnerId() > 0)
+		writeD(_castle.getCastleId());
+		writeD((_castle.getOwnerId() == _player.getClanId() && _player.isClanLeader()) ? 0x07 : 0x00);
+		writeD(_castle.getOwnerId());
+		if (_castle.getOwnerId() > 0)
 		{
-			L2Clan owner = ClanTable.getInstance().getClan(_Castle.getOwnerId());
+			L2Clan owner = ClanTable.getInstance().getClan(_castle.getOwnerId());
 			if (owner != null)
 			{
 				writeS(owner.getName()); // Clan Name
@@ -77,7 +74,7 @@ public class SiegeInfo extends L2GameServerPacket
 			}
 			else
 			{
-				_log.warning("Null owner for castle: " + _Castle.getName());
+				_log.warning("Null owner for castle: " + _castle.getName());
 			}
 		}
 		else
@@ -89,7 +86,7 @@ public class SiegeInfo extends L2GameServerPacket
 		}
 		
 		writeD((int) (Calendar.getInstance().getTimeInMillis() / 1000));
-		writeD((int) (_Castle.getSiege().getSiegeDate().getTimeInMillis() / 1000));
+		writeD((int) (_castle.getSiege().getSiegeDate().getTimeInMillis() / 1000));
 		writeD(0x00); // number of choices?
 	}
 	

@@ -242,9 +242,7 @@ public class L2Party
 			if (member != null)
 			{
 				member.sendPacket(new PartySmallWindowDeleteAll());
-				PartySmallWindowAll window = new PartySmallWindowAll(_itemDistribution);
-				window.setPartyList(getPartyMembers());
-				member.sendPacket(window);
+				member.sendPacket(new PartySmallWindowAll(member, this));
 				member.updateEffectIcons(true);
 			}
 		}
@@ -258,9 +256,7 @@ public class L2Party
 	{
 		// sends new member party window for all members
 		// we do all actions before adding member to a list, this speeds things up a little
-		PartySmallWindowAll window = new PartySmallWindowAll(_itemDistribution);
-		window.setPartyList(getPartyMembers());
-		player.sendPacket(window);
+		player.sendPacket(new PartySmallWindowAll(player, this));
 		
 		SystemMessage msg = new SystemMessage(SystemMessage.YOU_JOINED_S1_PARTY);
 		msg.addString(getPartyMembers().get(0).getName());
@@ -269,7 +265,7 @@ public class L2Party
 		msg = new SystemMessage(SystemMessage.S1_JOINED_PARTY);
 		msg.addString(player.getName());
 		broadcastToPartyMembers(msg);
-		broadcastToPartyMembers(new PartySmallWindowAdd(player));
+		broadcastToPartyMembers(new PartySmallWindowAdd(player, this));
 		
 		if (!player.isInBoat())
 		{

@@ -15,7 +15,6 @@
 package net.sf.l2j.gameserver.network.serverpackets;
 
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.model.quest.Quest;
 import net.sf.l2j.gameserver.model.quest.QuestState;
 
 /**
@@ -27,42 +26,25 @@ public class QuestList extends L2GameServerPacket
 {
 	private static final String _S__98_QUESTLIST = "[S] 80 QuestList";
 	
-	private Quest[] _quests;
 	private L2PcInstance _activeChar;
+	private QuestState[] _questStates;
+
+	public QuestList(L2PcInstance activeChar)
+	{
+		_activeChar = activeChar;
+		_questStates = _activeChar.getAllActiveQuestStates();
+	}
+
 	
 	@Override
 	protected final void writeImpl()
 	{
-		/**
-		 * This text was wrote by XaKa QuestList packet structure: { 1 byte - 0x80 2 byte - Number of Quests for Quest in AvailableQuests { 4 byte - Quest ID 4 byte - Quest Status }
-		 */
-		if ((getClient() != null) && (getClient().getActiveChar() != null))
-		{
-			_activeChar = getClient().getActiveChar();
-			_quests = _activeChar.getAllActiveQuests();
-		}
-		
-		if ((_quests == null) || (_quests.length == 0))
-		{
-			writeC(0x80);
-			writeH(0);
-			writeH(0);
-			return;
-		}
-		
 		writeC(0x80);
-		writeH(_quests.length);
-		for (Quest q : _quests)
+		writeH(_questStates.length);
+
+		for (QuestState qs : _questStates)
 		{
-			writeD(q.getQuestIntId());
-			QuestState qs = _activeChar.getQuestState(q.getName());
-			if (qs == null)
-			{
-				writeD(0);
-				
-				continue;
-			}
-			
+			writeD(qs.getQuest().getQuestIntId());
 			writeD(qs.getInt("cond")); // stage of quest progress
 		}
 	}

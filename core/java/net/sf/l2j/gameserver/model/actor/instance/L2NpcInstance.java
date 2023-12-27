@@ -1436,8 +1436,8 @@ public class L2NpcInstance extends L2Character
 			{
 				if ((q.getQuestIntId() >= 1) && (q.getQuestIntId() < 1000))
 				{
-					Quest[] questList = player.getAllActiveQuests();
-					if (questList.length >= 15) // if too many ongoing quests, don't show window and send message
+					QuestState[] questStates = player.getAllActiveQuestStates();
+					if (questStates.length >= 15) // if too many ongoing quests, don't show window and send message
 					{
 						player.sendPacket(new SystemMessage(401));
 						return;

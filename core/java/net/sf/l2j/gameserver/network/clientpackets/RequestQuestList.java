@@ -14,6 +14,7 @@
  */
 package net.sf.l2j.gameserver.network.clientpackets;
 
+import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.network.serverpackets.QuestList;
 
 /**
@@ -33,7 +34,13 @@ public class RequestQuestList extends L2GameClientPacket
 	@Override
 	public void runImpl()
 	{
-		sendPacket(new QuestList());
+		L2PcInstance activeChar = getClient().getActiveChar();
+		if (activeChar == null)
+		{
+			return;
+		}
+
+		activeChar.sendPacket(new QuestList(activeChar));
 	}
 
 	/*
