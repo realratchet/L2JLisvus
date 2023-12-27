@@ -23,9 +23,6 @@ import java.util.zip.ZipFile;
 
 /**
  * @author Luis Arias
- *
- * TODO To change the template for this generated type comment go to
- * Window - Preferences - Java - Code Style - Code Templates
  */
 public class ScriptPackage
 {
@@ -63,9 +60,9 @@ public class ScriptPackage
      */
     private void addFiles(ZipFile pack)
     {
-        for (Enumeration<? extends ZipEntry> e = pack.entries(); e.hasMoreElements();)
+        for (Enumeration<? extends ZipEntry> entries = pack.entries(); entries.hasMoreElements();)
         {
-            ZipEntry entry = e.nextElement();
+            ZipEntry entry = entries.nextElement();
             if (entry.getName().endsWith(".xml"))
             {
                 try
@@ -73,10 +70,9 @@ public class ScriptPackage
                     ScriptDocument newScript = new ScriptDocument(entry.getName(), pack.getInputStream(entry)); 
                     scriptFiles.add(newScript);
                 }
-                catch (IOException e1)
+                catch (IOException e)
                 {
-                    // TODO Auto-generated catch block
-                    e1.printStackTrace();
+                    e.printStackTrace();
                 }
             }
             else if (!entry.isDirectory())

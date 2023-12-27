@@ -19,6 +19,8 @@ package net.sf.l2j.gameserver.network.serverpackets;
  */
 public class ExShowQuestMark extends L2GameServerPacket
 {
+	private static final String _S__FE_1A_EXSHOWQUESTMARK = "[S] FE:1A EXSHOWQUESTMARK";
+
 	private final int _questId;
 	
 	public ExShowQuestMark(int questId)
@@ -44,7 +46,6 @@ public class ExShowQuestMark extends L2GameServerPacket
 	@Override
 	public String getType()
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return _S__FE_1A_EXSHOWQUESTMARK;
 	}
 }

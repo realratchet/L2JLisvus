@@ -660,7 +660,7 @@ public class L2DoorInstance extends L2Character
     @Override
     public void sendInfo(L2PcInstance activeChar)
     {
-    	activeChar.sendPacket(new DoorInfo(activeChar, this));
+    	activeChar.sendPacket(new DoorInfo(this));
 		activeChar.sendPacket(new DoorStatusUpdate(this));
     }
 }

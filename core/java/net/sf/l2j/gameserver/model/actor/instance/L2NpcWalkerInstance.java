@@ -119,14 +119,6 @@ public class L2NpcWalkerInstance extends L2NpcInstance
 
     private class L2NpcWalkerAIAccessor extends L2Character.AIAccessor
     {
-        /**
-		 * 
-		 */
-		public L2NpcWalkerAIAccessor()
-		{
-			// TODO Auto-generated constructor stub
-		}
-
 		/**
          * AI can't be deattached.
          */

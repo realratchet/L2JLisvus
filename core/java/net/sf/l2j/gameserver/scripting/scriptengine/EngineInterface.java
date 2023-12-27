@@ -32,9 +32,6 @@ import net.sf.l2j.gameserver.model.L2World;
 
 /**
  * @author Luis Arias
- *
- * TODO To change the template for this generated type comment go to
- * Window - Preferences - Java - Code Style - Code Templates
  */
 public interface EngineInterface
 {

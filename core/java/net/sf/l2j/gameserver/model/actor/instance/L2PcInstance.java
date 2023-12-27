@@ -1367,13 +1367,13 @@ public final class L2PcInstance extends L2PlayableInstance
 	}
 	
 	/**
-	 * Return an array containing all Quest in progress from the map _quests.<BR>
+	 * Return an array containing all quest states in progress from the map _quests.<BR>
 	 * <BR>
 	 * @return
 	 */
-	public Quest[] getAllActiveQuests()
+	public QuestState[] getAllActiveQuestStates()
 	{
-		List<Quest> quests = new ArrayList<>();
+		List<QuestState> questStates = new ArrayList<>();
 		
 		for (QuestState qs : _quests.values())
 		{
@@ -1392,10 +1392,10 @@ public final class L2PcInstance extends L2PlayableInstance
 				continue;
 			}
 			
-			quests.add(qs.getQuest());
+			questStates.add(qs);
 		}
 		
-		return quests.toArray(new Quest[quests.size()]);
+		return questStates.toArray(new QuestState[questStates.size()]);
 	}
 	
 	/**
@@ -1539,7 +1539,7 @@ public final class L2PcInstance extends L2PlayableInstance
 		}
 		
 		QuestState qs = getQuestState(quest);
-		if ((qs == null) && (event.length() == 0))
+		if (qs == null && event.length() == 0)
 		{
 			return retval;
 		}
@@ -1580,7 +1580,7 @@ public final class L2PcInstance extends L2PlayableInstance
 							}
 						}
 						
-						sendPacket(new QuestList());
+						sendPacket(new QuestList(this));
 					}
 				}
 			}
@@ -3137,7 +3137,7 @@ public final class L2PcInstance extends L2PlayableInstance
 			}
 			
 			// Add the item to inventory
-			L2ItemInstance newitem = _inventory.addItem(process, item, this, reference);
+			L2ItemInstance newItem = _inventory.addItem(process, item, this, reference);
 			
 			// Update current load as well
 			StatusUpdate su = new StatusUpdate(getObjectId());
@@ -3154,7 +3154,7 @@ public final class L2PcInstance extends L2PlayableInstance
 			if (!Config.FORCE_INVENTORY_UPDATE)
 			{
 				InventoryUpdate playerIU = new InventoryUpdate();
-				playerIU.addItem(newitem);
+				playerIU.addItem(newItem);
 				sendPacket(playerIU);
 			}
 			else
