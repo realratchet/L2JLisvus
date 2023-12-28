@@ -6030,7 +6030,7 @@ public final class L2PcInstance extends L2PlayableInstance
 	{
 		_accessLevel = level;
 		
-		if (_accessLevel > 0 || Config.ACCESS_LEVEL_FOR_EVERYBODY > 0)
+		if (_accessLevel > 0 || (_accessLevel == 0 && Config.ACCESS_LEVEL_FOR_EVERYBODY > 0))
 		{
 			setIsGM(true);
 		}
@@ -6048,7 +6048,7 @@ public final class L2PcInstance extends L2PlayableInstance
 	 */
 	public int getAccessLevel()
 	{
-		if (Config.ACCESS_LEVEL_FOR_EVERYBODY > 0 && _accessLevel < Config.ACCESS_LEVEL_FOR_EVERYBODY)
+		if (_accessLevel >= 0 && Config.ACCESS_LEVEL_FOR_EVERYBODY > 0 && _accessLevel < Config.ACCESS_LEVEL_FOR_EVERYBODY)
 		{
 			return Config.ACCESS_LEVEL_FOR_EVERYBODY;
 		}

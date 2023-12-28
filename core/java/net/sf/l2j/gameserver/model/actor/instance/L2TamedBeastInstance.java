@@ -39,13 +39,14 @@ import net.sf.l2j.util.Rnd;
 // The (mostly optional) AI on feeding the spawn is handled by the datapack ai script
 public final class L2TamedBeastInstance extends L2FeedableBeastInstance
 {
-	private int _foodSkillId;
 	private static final int MAX_DISTANCE_FROM_HOME = 30000;
 	private static final int MAX_DISTANCE_FROM_OWNER = 2000;
 	private static final int MAX_DURATION = 1200000; // 20 minutes
 	private static final int DURATION_CHECK_INTERVAL = 60000; // 1 minute
 	private static final int DURATION_INCREASE_INTERVAL = 20000; // 20 secs (gained upon feeding)
 	private static final int BUFF_INTERVAL = 5000; // 5 seconds
+	
+	private int _foodSkillId;
 	private int _remainingTime = MAX_DURATION;
 	private int _homeX, _homeY, _homeZ;
 	private L2PcInstance _owner;
