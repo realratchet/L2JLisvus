@@ -399,7 +399,7 @@ public class FeedableBeasts extends Quest
             L2TamedBeastInstance oldTrained = player.getTrainedBeast();
             if (oldTrained != null)
             {
-                oldTrained.doDespawn();
+                oldTrained.deleteMe();
             }
                 
             L2NpcTemplate template = NpcTable.getInstance().getTemplate(nextNpcId);
