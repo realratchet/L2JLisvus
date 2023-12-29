@@ -36,8 +36,6 @@ public class AttackStanceTaskManager
 {
     protected static Logger _log = Logger.getLogger(AttackStanceTaskManager.class.getName());
     
-    public static AttackStanceTaskManager _instance;
-    
     protected final Map<L2Character, Long> _attackStanceTasks = new ConcurrentHashMap<>();
     
     public AttackStanceTaskManager()

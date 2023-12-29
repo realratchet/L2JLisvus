@@ -56,15 +56,10 @@ public class RaidBossSpawnManager
         UNDEFINED
     }
 
-    private static RaidBossSpawnManager _instance;
-    
-    public static RaidBossSpawnManager getInstance()
-    {
-        if (_instance == null)
-            _instance = new RaidBossSpawnManager();
-
-        return _instance;
-    }
+    public static final RaidBossSpawnManager getInstance()
+	{
+		return SingletonHolder._instance;
+	}
     
     public RaidBossSpawnManager()
     {
@@ -480,4 +475,9 @@ public class RaidBossSpawnManager
         _storedInfo.clear();
         _spawns.clear();
     }
+
+    private static class SingletonHolder
+	{
+		protected static final RaidBossSpawnManager _instance = new RaidBossSpawnManager();
+	}
 }

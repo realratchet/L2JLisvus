@@ -38,7 +38,7 @@ public class L2SummonInstance extends L2Summon
     private final int _timeLostActive;
     private int _timeRemaining;
     private int _nextItemConsumeTime;
-    protected int lastShowntimeRemaining;  // Following FbiAgent's example to avoid sending useless packets
+    private int _lastShownTimeRemaining;  // Following FbiAgent's example to avoid sending useless packets
 
     private Future<?> _summonLifeTask;
 
@@ -65,7 +65,7 @@ public class L2SummonInstance extends L2Summon
             _timeLostActive = 1000;
         }
         _timeRemaining = _totalLifeTime;
-        lastShowntimeRemaining = _totalLifeTime;
+        _lastShownTimeRemaining = _totalLifeTime;
 
         if (_itemConsumeId == 0)
             _nextItemConsumeTime = -1;      // do not consume
@@ -147,6 +147,16 @@ public class L2SummonInstance extends L2Summon
     {
         return _timeRemaining;
     }
+
+    public int getLastShownTimeRemaining()
+    {
+        return _lastShownTimeRemaining;
+    }
+
+    public void setLastShownTimeRemaining(int value)
+    {
+        _lastShownTimeRemaining = value;
+    }
     
     public void setNextItemConsumeTime(int value)
     {
@@ -184,7 +194,8 @@ public class L2SummonInstance extends L2Summon
             _summonLifeTask.cancel(true);
             _summonLifeTask = null;
         }
-        return true;
+        return true;
+
     }
 
     static class SummonLifetime implements Runnable
@@ -208,7 +219,7 @@ public class L2SummonInstance extends L2Summon
             {
                 double oldTimeRemaining = _summon.getTimeRemaining();
                 int maxTime = _summon.getTotalLifeTime();
-                double newTimeRemaining;
+                int newTimeRemaining;
 
                 // if pet is attacking
                 if (_summon.isAttackingNow())
@@ -218,7 +229,8 @@ public class L2SummonInstance extends L2Summon
 
                 newTimeRemaining = _summon.getTimeRemaining();
                 // check if the summon's lifetime has ran out
-                if (newTimeRemaining < 0)
+                if (newTimeRemaining < 0)
+
                     _summon.unSummon(_activeChar);
                 // check if it is time to consume another item
                 else if ((newTimeRemaining <= _summon.getNextItemConsumeTime()) && (oldTimeRemaining > _summon.getNextItemConsumeTime()))
@@ -234,10 +246,10 @@ public class L2SummonInstance extends L2Summon
                 }
 
                 // prevent useless packet-sending when the difference isn't visible.
-                if ((_summon.lastShowntimeRemaining - newTimeRemaining) > maxTime/352)
+                if ((_summon.getLastShownTimeRemaining() - newTimeRemaining) > maxTime/352)
                 {
-                    _summon.getOwner().sendPacket(new SetSummonRemainTime(maxTime,(int) newTimeRemaining));
-                    _summon.lastShowntimeRemaining = (int) newTimeRemaining;
+                    _summon.getOwner().sendPacket(new SetSummonRemainTime(maxTime, newTimeRemaining));
+                    _summon.setLastShownTimeRemaining(newTimeRemaining);
                 }
             }
             catch (Throwable e)

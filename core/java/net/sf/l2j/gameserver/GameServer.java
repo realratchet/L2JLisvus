@@ -87,6 +87,7 @@ import net.sf.l2j.gameserver.instancemanager.RaidBossSpawnManager;
 import net.sf.l2j.gameserver.instancemanager.SiegeManager;
 import net.sf.l2j.gameserver.instancemanager.ZoneManager;
 import net.sf.l2j.gameserver.instancemanager.games.Lottery;
+import net.sf.l2j.gameserver.instancemanager.games.MonsterRace;
 import net.sf.l2j.gameserver.model.AutoChatHandler;
 import net.sf.l2j.gameserver.model.AutoSpawnHandler;
 import net.sf.l2j.gameserver.model.L2Manor;
@@ -218,6 +219,8 @@ public class GameServer
 			PathFinding.getInstance();
 		}
 
+		MonsterRace.getInstance();
+
 		NpcTable.getInstance();
 
 		HennaTable.getInstance();
@@ -261,6 +264,7 @@ public class GameServer
 		AuctionManager.getInstance();
 		
 		Lottery.getInstance();
+		MonsterRace.getInstance().scheduleTimers();
 
 		BoatManager.getInstance();
 		CastleManorManager.getInstance();
@@ -285,8 +289,6 @@ public class GameServer
 		{
 			ItemsAutoDestroy.getInstance();
 		}
-
-		MonsterRace.getInstance();
 
 		DoorTable.getInstance();
 		CastleManager.getInstance().loadDoorUpgrades();
