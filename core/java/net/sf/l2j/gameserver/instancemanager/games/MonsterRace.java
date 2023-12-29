@@ -18,6 +18,8 @@ import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 import net.sf.l2j.gameserver.ThreadPoolManager;
 import net.sf.l2j.gameserver.datatables.NpcTable;
@@ -91,15 +93,16 @@ public class MonsterRace
     // Time Constants
     private static final int SECOND_IN_MILLIS = 1000;
     private static final int MINUTE_IN_MILLIS = 60 * SECOND_IN_MILLIS;
+
+    private static final int BASE_RACE_NUMBER = 4;
     
     private final L2NpcInstance[] _monsters;
     
-    // Map npcs by ID so that managers can be replaced in case of server npc reload
-    private final List<L2RaceManagerInstance> _managers;
+    private final Set<L2RaceManagerInstance> _managers;
     private final int[][] _speeds;
     private final int[] _first, _second;
     
-    private int _raceNumber = 4;
+    private int _raceNumber = BASE_RACE_NUMBER;
     private int _minutesLeft = 5;
     private byte _state = RACE_END;
     
@@ -111,7 +114,7 @@ public class MonsterRace
     private MonsterRace()
     {
         _monsters = new L2NpcInstance[8];
-        _managers = new ArrayList<>();
+        _managers = ConcurrentHashMap.newKeySet();
         _speeds = new int[8][20];
         _first = new int[2];
         _second = new int[2];
@@ -185,7 +188,6 @@ public class MonsterRace
                 e.printStackTrace();
             }
         }
-        calculateSpeeds();
     }
     
     public void calculateSpeeds()
@@ -239,8 +241,16 @@ public class MonsterRace
     {
         makeAnnouncement(SystemMessage.MONSRACE_FIRST_PLACE_S1_SECOND_S2);
         makeAnnouncement(SystemMessage.MONSRACE_RACE_END);
-        
-        _raceNumber++;
+
+        // Reset race number if it ever reaches maximum
+        if (_raceNumber == Integer.MAX_VALUE)
+        {
+            _raceNumber = BASE_RACE_NUMBER;
+        }
+        else
+        {
+            _raceNumber++;
+        }
         
         for (L2NpcInstance npc : _monsters)
         {
