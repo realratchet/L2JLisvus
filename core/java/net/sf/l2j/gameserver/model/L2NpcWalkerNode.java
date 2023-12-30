@@ -17,10 +17,7 @@ package net.sf.l2j.gameserver.model;
 import net.sf.l2j.gameserver.templates.StatsSet;
 
 /**
- * 
  * @author Rayan RPG
- * @since 927
- *
  */
 public class L2NpcWalkerNode 
 {

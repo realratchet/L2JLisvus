@@ -29,10 +29,8 @@ public class GMAudit
     {
         if (Config.GMAUDIT)
         {
-            String today;
-            SimpleDateFormat formatter;
-            formatter = new SimpleDateFormat("dd/MM/yyyy H:mm:ss");
-            today = formatter.format(new Date());
+            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy H:mm:ss");
+            String today = formatter.format(new Date());
 
             _log.log(Level.INFO, today + ">" + gmName + ">" + action + ">" +target + ">" + params);
         }
