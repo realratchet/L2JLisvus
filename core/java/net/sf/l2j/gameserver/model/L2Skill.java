@@ -2380,7 +2380,7 @@ public abstract class L2Skill
 		if (effector instanceof L2PlayableInstance && effected instanceof L2PcInstance)
 		{
 			// e.g. Antibuff Shield
-			if (!isOffensive() && !((L2PcInstance)effected).isInOlympiadMode())
+			if (!isPotion() && !isOffensive() && !((L2PcInstance)effected).isInOlympiadMode())
 			{
 				double vulnerability = effected.calcStat(Stats.BUFF_VULN, 1, null, null);
 				if (vulnerability == 0)
