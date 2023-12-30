@@ -852,7 +852,7 @@ public class L2PetInstance extends L2Summon
 		String req;
 		if (!isRespawned())
 		{
-			req = "INSERT INTO pets (name,level,curHp,curMp,exp,sp,fed,weapon,armor,item_obj_id) " + "VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+			req = "INSERT INTO pets (name,level,curHp,curMp,exp,sp,fed,weapon,armor,item_obj_id) " + "VALUES (?,?,?,?,?,?,?,?,?,?)";
 		}
 		else
 		{
