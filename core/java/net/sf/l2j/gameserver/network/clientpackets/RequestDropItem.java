@@ -189,7 +189,7 @@ public class RequestDropItem extends L2GameClientPacket
 		
 		if (item.isEquipped())
 		{
-			L2ItemInstance[] unequipped = activeChar.getInventory().unEquipItemInBodySlotAndRecord(item.getItem().getBodyPart());
+			L2ItemInstance[] unequipped = activeChar.getInventory().unEquipItemInSlotAndRecord(item.getEquipSlot());
 			if (unequipped.length > 0)
 			{
 				if (iu != null)

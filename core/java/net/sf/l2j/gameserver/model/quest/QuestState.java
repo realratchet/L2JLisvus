@@ -729,8 +729,9 @@ public final class QuestState
 		else
 		{
 			if (item.isEquipped())
-				player.getInventory().unEquipItemInBodySlotAndRecord(item.getItem().getBodyPart());
-			
+			{
+				player.getInventory().unEquipItemInSlotAndRecord(item.getEquipSlot());
+			}
 			player.destroyItemByItemId("Quest", itemId, count, player, true);
 		}
 		return item;

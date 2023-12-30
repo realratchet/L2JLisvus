@@ -815,9 +815,9 @@ public final class L2PcInstance extends L2PlayableInstance
 		if (getParty() != null && getParty() == target.getParty())
 		{
 			List<L2PcInstance> partyMembers = getParty().getPartyMembers();
-
+			
 			result |= RelationChanged.RELATION_HAS_PARTY;
-
+			
 			int size = partyMembers.size();
 			for (int i = 0; i < size; i++)
 			{
@@ -2169,7 +2169,6 @@ public final class L2PcInstance extends L2PlayableInstance
 		L2ItemInstance[] items = null;
 		SystemMessage sm = null;
 		boolean isEquipped = item.isEquipped();
-		int bodyPart = item.getItem().getBodyPart();
 		
 		if (isEquipped)
 		{
@@ -2187,7 +2186,7 @@ public final class L2PcInstance extends L2PlayableInstance
 			sendPacket(sm);
 			
 			_isEquippingNow = true;
-			items = getInventory().unEquipItemInBodySlotAndRecord(bodyPart);
+			items = getInventory().unEquipItemInSlotAndRecord(item.getEquipSlot());
 			_isEquippingNow = false;
 		}
 		else
@@ -3492,7 +3491,7 @@ public final class L2PcInstance extends L2PlayableInstance
 		else if (target instanceof PetInventory)
 		{
 			L2PetInstance targetPet = ((PetInventory) target).getOwner();
-
+			
 			PetInventoryUpdate petIU = new PetInventoryUpdate();
 			if (newItem.getCount() > count)
 			{
@@ -5788,35 +5787,37 @@ public final class L2PcInstance extends L2PlayableInstance
 	 */
 	public boolean disarmWeapons()
 	{
+		InventoryUpdate iu = null;
+		
+		abortAttack();
+		
 		// Unequip the weapon
 		L2ItemInstance wpn = getInventory().getPaperdollItem(Inventory.PAPERDOLL_RHAND);
 		if (wpn != null)
 		{
-			L2ItemInstance[] unequiped = getInventory().unEquipItemInBodySlotAndRecord(wpn.getItem().getBodyPart());
-			InventoryUpdate iu = new InventoryUpdate();
-			for (L2ItemInstance element : unequiped)
+			L2ItemInstance[] unequipped = getInventory().unEquipItemInSlotAndRecord(wpn.getEquipSlot());
+			if (unequipped.length > 0)
 			{
-				iu.addModifiedItem(element);
-			}
-			sendPacket(iu);
-			
-			abortAttack();
-			broadcastUserInfo();
-			
-			// this can be 0 if the user pressed the right mouse button twice very fast
-			if (unequiped.length > 0)
-			{
+				iu = new InventoryUpdate();
+				
+				for (L2ItemInstance element : unequipped)
+				{
+					iu.addModifiedItem(element);
+				}
+				
+				// this can be 0 if the user pressed the right mouse button twice very fast
+				
 				SystemMessage sm = null;
-				if (unequiped[0].getEnchantLevel() > 0)
+				if (unequipped[0].getEnchantLevel() > 0)
 				{
 					sm = new SystemMessage(SystemMessage.EQUIPMENT_S1_S2_REMOVED);
-					sm.addNumber(unequiped[0].getEnchantLevel());
-					sm.addItemName(unequiped[0].getItemId());
+					sm.addNumber(unequipped[0].getEnchantLevel());
+					sm.addItemName(unequipped[0].getItemId());
 				}
 				else
 				{
 					sm = new SystemMessage(SystemMessage.S1_DISARMED);
-					sm.addItemName(unequiped[0].getItemId());
+					sm.addItemName(unequipped[0].getItemId());
 				}
 				sendPacket(sm);
 			}
@@ -5826,34 +5827,41 @@ public final class L2PcInstance extends L2PlayableInstance
 		L2ItemInstance sld = getInventory().getPaperdollItem(Inventory.PAPERDOLL_LHAND);
 		if (sld != null)
 		{
-			L2ItemInstance[] unequiped = getInventory().unEquipItemInBodySlotAndRecord(sld.getItem().getBodyPart());
-			InventoryUpdate iu = new InventoryUpdate();
-			for (L2ItemInstance element : unequiped)
+			L2ItemInstance[] unequipped = getInventory().unEquipItemInSlotAndRecord(sld.getEquipSlot());
+			if (unequipped.length > 0)
 			{
-				iu.addModifiedItem(element);
-			}
-			sendPacket(iu);
-			
-			abortAttack();
-			broadcastUserInfo();
-			
-			// this can be 0 if the user pressed the right mouse button twice very fast
-			if (unequiped.length > 0)
-			{
+				if (iu == null)
+				{
+					iu = new InventoryUpdate();
+				}
+				
+				for (L2ItemInstance element : unequipped)
+				{
+					iu.addModifiedItem(element);
+				}
+				
+				// this can be 0 if the user pressed the right mouse button twice very fast
+				
 				SystemMessage sm = null;
-				if (unequiped[0].getEnchantLevel() > 0)
+				if (unequipped[0].getEnchantLevel() > 0)
 				{
 					sm = new SystemMessage(SystemMessage.EQUIPMENT_S1_S2_REMOVED);
-					sm.addNumber(unequiped[0].getEnchantLevel());
-					sm.addItemName(unequiped[0].getItemId());
+					sm.addNumber(unequipped[0].getEnchantLevel());
+					sm.addItemName(unequipped[0].getItemId());
 				}
 				else
 				{
 					sm = new SystemMessage(SystemMessage.S1_DISARMED);
-					sm.addItemName(unequiped[0].getItemId());
+					sm.addItemName(unequipped[0].getItemId());
 				}
 				sendPacket(sm);
 			}
+		}
+		
+		if (iu != null)
+		{
+			sendPacket(iu);
+			broadcastUserInfo();
 		}
 		return true;
 	}
@@ -8714,7 +8722,7 @@ public final class L2PcInstance extends L2PlayableInstance
 			{
 				continue;
 			}
-
+			
 			L2ItemInstance item = getInventory().getItemByItemId(itemId);
 			if (item != null)
 			{
@@ -11086,7 +11094,7 @@ public final class L2PcInstance extends L2PlayableInstance
 	 * @param currentSkill
 	 * @param ctrlPressed
 	 * @param shiftPressed
-	 * @param controlItemObjectId 
+	 * @param controlItemObjectId
 	 */
 	public void setCurrentSkill(L2Skill currentSkill, boolean ctrlPressed, boolean shiftPressed, int controlItemObjectId)
 	{
@@ -11125,7 +11133,7 @@ public final class L2PcInstance extends L2PlayableInstance
 	 * @param currentPetSkill
 	 * @param ctrlPressed
 	 * @param shiftPressed
-	 * @param controlItemObjectId 
+	 * @param controlItemObjectId
 	 */
 	public void setCurrentPetSkill(L2Skill currentPetSkill, boolean ctrlPressed, boolean shiftPressed, int controlItemObjectId)
 	{
@@ -11159,7 +11167,7 @@ public final class L2PcInstance extends L2PlayableInstance
 	 * @param queuedSkill
 	 * @param ctrlPressed
 	 * @param shiftPressed
-	 * @param controlItemObjectId 
+	 * @param controlItemObjectId
 	 */
 	public void setQueuedSkill(L2Skill queuedSkill, boolean ctrlPressed, boolean shiftPressed, int controlItemObjectId)
 	{
