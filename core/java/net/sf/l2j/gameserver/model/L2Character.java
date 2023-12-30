@@ -4542,7 +4542,6 @@ public abstract class L2Character extends L2Object
 							if (DoorTable.getInstance().checkIfDoorsBetween(m.geoPath.get(i), m.geoPath.get(i + 1)))
 							{
 								m.geoPath = null;
-								
 								getAI().setIntention(CtrlIntention.AI_INTENTION_IDLE);
 								return false;
 							}
@@ -4554,7 +4553,6 @@ public abstract class L2Character extends L2Object
 						distance = verticalMovementOnly ? Math.abs(dz * dz) : Math.sqrt((dx * dx) + (dy * dy));
 						sin = dy / distance;
 						cos = dx / distance;
-						
 					}
 				}
 			}

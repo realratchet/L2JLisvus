@@ -89,10 +89,10 @@ abstract class AbstractAI implements Ctrl
 				{
 					// If the target is not a summon and is too far, stop following target
 					if (!(_actor instanceof L2Summon) && !_actor.isInsideRadius(_followTarget, 3000, true, false))
-                    {
-                        setIntention(AI_INTENTION_IDLE);
-                        return;
-                    }
+					{
+						setIntention(AI_INTENTION_IDLE);
+						return;
+					}
 					moveToPawn(_followTarget, _range);
 				}
 			}
@@ -126,11 +126,11 @@ abstract class AbstractAI implements Ctrl
 	/** Different targets this AI maintains */
 	private L2Object _target;
 	private L2Character _castTarget;
-
+	
 	/** The skill we are currently casting by INTENTION_CAST */
 	private L2Skill _skill;
 	private int _controlItemObjectId = 0;
-
+	
 	protected L2Character _attackTarget;
 	protected L2Character _followTarget;
 	
@@ -208,22 +208,22 @@ abstract class AbstractAI implements Ctrl
 	{
 		return _attackTarget;
 	}
-
+	
 	protected void setCurrentSkill(L2Skill skill)
 	{
 		_skill = skill;
 	}
-
+	
 	public L2Skill getCurrentSkill()
 	{
 		return _skill;
 	}
-
+	
 	protected void setCurrentControlItemObjectId(int objectId)
 	{
 		_controlItemObjectId = objectId;
 	}
-
+	
 	public int getCurrentControlItemObjectId()
 	{
 		return _controlItemObjectId;
@@ -275,7 +275,7 @@ abstract class AbstractAI implements Ctrl
 	{
 		setIntention(intention, arg0, null);
 	}
-
+	
 	/**
 	 * Launch the L2CharacterAI onIntention method corresponding to the new Intention.<BR>
 	 * <BR>
@@ -334,7 +334,7 @@ abstract class AbstractAI implements Ctrl
 				onIntentionAttack((L2Character) arg0);
 				break;
 			case AI_INTENTION_CAST:
-				onIntentionCast((L2Skill) arg0, (L2Object) arg1, arg2 != null ? (int)arg2 : 0);
+				onIntentionCast((L2Skill) arg0, (L2Object) arg1, arg2 != null ? (int) arg2 : 0);
 				break;
 			case AI_INTENTION_MOVE_TO:
 				onIntentionMoveTo((Location) arg0);
@@ -591,10 +591,7 @@ abstract class AbstractAI implements Ctrl
 			}
 			
 			// Calculate movement data for a move to location action and add the actor to movingObjects of GameTimeController
-			if (!_accessor.moveTo(pawn.getX(), pawn.getY(), pawn.getZ(), offset))
-			{
-				return;
-			}
+			_accessor.moveTo(pawn.getX(), pawn.getY(), pawn.getZ(), offset);
 			
 			if (!_actor.isMoving())
 			{
@@ -645,11 +642,10 @@ abstract class AbstractAI implements Ctrl
 			_clientMovingToPawnOffset = 0;
 			
 			// Calculate movement data for a move to location action and add the actor to movingObjects of GameTimeController
-			if (_accessor.moveTo(x, y, z))
-			{
-				// Send a Server->Client packet CharMoveToLocation to the actor and all L2PcInstance in its _knownPlayers
-				_actor.broadcastPacket(new CharMoveToLocation(_actor));
-			}
+			_accessor.moveTo(x, y, z);
+			
+			// Send a Server->Client packet CharMoveToLocation to the actor and all L2PcInstance in its _knownPlayers
+			_actor.broadcastPacket(new CharMoveToLocation(_actor));
 		}
 		else
 		{
