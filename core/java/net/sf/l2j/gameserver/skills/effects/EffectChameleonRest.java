@@ -66,26 +66,30 @@ class EffectChameleonRest extends L2Effect
     @Override
 	public boolean onActionTime()
     {
-        L2PcInstance effected = (L2PcInstance)getEffected();
+        // Only cont skills shouldn't end
+        if (getSkill().getSkillType() != SkillType.CONT)
+            return false;
 
         if (getEffected().isDead())
         	return false;
-        
-        // Only cont skills shouldn't end
-        if (getSkill().getSkillType() != SkillType.CONT)
-            return false;
-        if (!effected.isSitting())
-        	return false;
+
+        if (getEffected() instanceof L2PcInstance)
+        {
+            if (!((L2PcInstance)getEffected()).isSitting())
+            {
+                return false;
+            }
+        }
 
         double manaDam = calc();
-        if (manaDam > effected.getCurrentMp())
+        if (manaDam > getEffected().getCurrentMp())
         {
             SystemMessage sm = new SystemMessage(140);
-            effected.sendPacket(sm);
+            getEffected().sendPacket(sm);
             return false;
         }
 
-        effected.reduceCurrentMp(manaDam);
+        getEffected().reduceCurrentMp(manaDam);
         return true;
     }
 }
