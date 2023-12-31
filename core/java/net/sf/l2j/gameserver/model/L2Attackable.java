@@ -168,7 +168,7 @@ public class L2Attackable extends L2NpcInstance
 			return attacker.getObjectId();
 		}
 	}
-
+	
 	/**
 	 * This class is used to create item reward lists instead of creating item instances.<BR>
 	 * <BR>
@@ -809,18 +809,24 @@ public class L2Attackable extends L2NpcInstance
 		ai.damage += damage;
 		ai.hate += aggro;
 		
-		L2PcInstance targetPlayer = attacker.getActingPlayer();
-		if (targetPlayer != null && aggro == 0)
+		if (aggro == 0)
 		{
-			if (getTemplate().getEventQuests(Quest.QuestEventType.ON_AGGRO_RANGE_ENTER) != null)
+			aggro = 1;
+			ai.hate += aggro;
+
+			L2PcInstance targetPlayer = attacker.getActingPlayer();
+			if (targetPlayer != null)
 			{
-				for (Quest quest : getTemplate().getEventQuests(Quest.QuestEventType.ON_AGGRO_RANGE_ENTER))
+				if (getTemplate().getEventQuests(Quest.QuestEventType.ON_AGGRO_RANGE_ENTER) != null)
 				{
-					quest.notifyAggroRangeEnter(this, targetPlayer, (attacker instanceof L2Summon));
+					for (Quest quest : getTemplate().getEventQuests(Quest.QuestEventType.ON_AGGRO_RANGE_ENTER))
+					{
+						quest.notifyAggroRangeEnter(this, targetPlayer, (attacker instanceof L2Summon));
+					}
 				}
 			}
 		}
-		
+
 		// Set the intention to the L2Attackable to AI_INTENTION_ACTIVE
 		if (aggro > 0 && getAI().getIntention() == CtrlIntention.AI_INTENTION_IDLE)
 		{
