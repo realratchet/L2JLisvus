@@ -1077,6 +1077,22 @@ public abstract class L2Skill
 		}
 	}
 
+	public final boolean isSourceTargetSelf()
+	{
+		switch (_targetType)
+		{
+			case TARGET_AURA:
+			case TARGET_AURA_UNDEAD:
+			case TARGET_PARTY:
+			case TARGET_ALLY:
+			case TARGET_CLAN:
+			case TARGET_SELF:
+				return true;
+			default:
+				return false;
+		}
+	}
+
 	public final boolean isOffensive()
 	{
 		return _isOffensive;
@@ -2203,6 +2219,11 @@ public abstract class L2Skill
 		final L2PcInstance targetPlayer = target.getActingPlayer();
 		if (player != null)
 		{
+			if (player.isInOlympiadMode() && !player.isOlympiadStart())
+			{
+				return false;
+			}
+			
 			if (targetPlayer != null)
 			{
 				// In the case of summons, targetPlayer equals owner

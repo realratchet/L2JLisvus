@@ -7844,26 +7844,11 @@ public final class L2PcInstance extends L2PlayableInstance
 		// ************************************* Check Target *******************************************
 		
 		// Create and set a L2Object containing the target of the skill
-		L2Object target = null;
-		
+		boolean isSrcTargetSelf = skill.isSourceTargetSelf();
 		SkillTargetType sklTargetType = skill.getTargetType();
 		SkillType sklType = skill.getSkillType();
 		
-		switch (sklTargetType)
-		{
-			// Target the player if skill type is AURA, PARTY, CLAN or SELF
-			case TARGET_AURA:
-			case TARGET_AURA_UNDEAD:
-			case TARGET_PARTY:
-			case TARGET_ALLY:
-			case TARGET_CLAN:
-			case TARGET_SELF:
-				target = this;
-				break;
-			default:
-				target = skill.getFirstOfTargetList(this);
-				break;
-		}
+		final L2Object target = isSrcTargetSelf ? this : skill.getFirstOfTargetList(this);
 		
 		// Check the validity of the target
 		if (target == null)
@@ -7914,45 +7899,40 @@ public final class L2PcInstance extends L2PlayableInstance
 		// Check if this is offensive magic skill
 		if (skill.isOffensive())
 		{
-			if (isInsidePeaceZone(this, target) && getAccessLevel() < Config.GM_PEACE_ATTACK)
+			if (getAccessLevel() < Config.GM_PEACE_ATTACK)
 			{
-				// If L2Character or target is in a peace zone, send a system message TARGET_IN_PEACEZONE a Server->Client packet ActionFailed
-				sendPacket(new SystemMessage(SystemMessage.TARGET_IN_PEACEZONE));
-				sendPacket(new ActionFailed());
-				return;
-			}
-			
-			if (isInOlympiadMode() && !isOlympiadStart())
-			{
-				// if L2PcInstance is in Olympiad and the match isn't already start, send a Server->Client packet ActionFailed
-				sendPacket(new ActionFailed());
-				return;
-			}
-			
-			// Check if the target is attackable
-			if (!target.isAttackable() && getAccessLevel() < Config.GM_PEACE_ATTACK)
-			{
-				// If target is not attackable, send a Server->Client packet ActionFailed
-				sendPacket(new ActionFailed());
-				return;
-			}
-			
-			// Check if a Forced ATTACK is in progress on non-attackable target
-			if (!target.isAutoAttackable(this) && !forceUse)
-			{
-				switch (sklTargetType)
+				if (isInsidePeaceZone(this, target))
 				{
-					case TARGET_AURA:
-					case TARGET_AURA_UNDEAD:
-					case TARGET_CLAN:
-					case TARGET_ALLY:
-					case TARGET_PARTY:
-					case TARGET_SELF:
-						break;
-					default:
-						// Send a Server->Client packet ActionFailed to the L2PcInstance
-						sendPacket(new ActionFailed());
-						return;
+					// If L2Character or target is in a peace zone, send a system message TARGET_IN_PEACEZONE a Server->Client packet ActionFailed
+					sendPacket(new SystemMessage(SystemMessage.TARGET_IN_PEACEZONE));
+					sendPacket(new ActionFailed());
+					return;
+				}
+				
+				// Check if the target is attackable
+				if (!target.isAttackable())
+				{
+					// If target is not attackable, send a Server->Client packet ActionFailed
+					sendPacket(new ActionFailed());
+					return;
+				}
+			}
+			
+			if (!isSrcTargetSelf)
+			{
+				if (isInOlympiadMode() && !isOlympiadStart())
+				{
+					// if L2PcInstance is in Olympiad and the match isn't already start, send a Server->Client packet ActionFailed
+					sendPacket(new ActionFailed());
+					return;
+				}
+				
+				// Check if a Forced ATTACK is in progress on non-attackable target
+				if (!target.isAutoAttackable(this) && !forceUse)
+				{
+					// Send a Server->Client packet ActionFailed to the L2PcInstance
+					sendPacket(new ActionFailed());
+					return;
 				}
 			}
 			
@@ -7960,7 +7940,6 @@ public final class L2PcInstance extends L2PlayableInstance
 			if (dontMove)
 			{
 				// Calculate the distance between the L2PcInstance and the target
-				
 				if ((skill.getCastRange() > 0) && !isInsideRadius(target, skill.getCastRange() + (int) getTemplate().collisionRadius, false, false))
 				{
 					// Send a System Message to the caster
@@ -7972,12 +7951,10 @@ public final class L2PcInstance extends L2PlayableInstance
 				}
 			}
 		}
-		
-		// Check if the skill is defensive
-		if (!skill.isOffensive())
+		else
 		{
 			// check if the target is a monster and if force attack is set.. if not then we don't want to cast.
-			if ((target instanceof L2MonsterInstance) && !forceUse && sklTargetType != SkillTargetType.TARGET_PET && sklTargetType != SkillTargetType.TARGET_AURA && sklTargetType != SkillTargetType.TARGET_AURA_UNDEAD && sklTargetType != SkillTargetType.TARGET_CLAN && sklTargetType != SkillTargetType.TARGET_SELF && sklTargetType != SkillTargetType.TARGET_PARTY && sklTargetType != SkillTargetType.TARGET_ALLY && sklTargetType != SkillTargetType.TARGET_CORPSE_MOB && sklTargetType != SkillTargetType.TARGET_AREA_CORPSE_MOB && sklType != SkillType.BEAST_FEED && sklType != SkillType.DELUXE_KEY_UNLOCK && sklType != SkillType.UNLOCK)
+			if ((target instanceof L2MonsterInstance) && !forceUse && !isSrcTargetSelf && sklTargetType != SkillTargetType.TARGET_PET && sklTargetType != SkillTargetType.TARGET_CORPSE_MOB && sklTargetType != SkillTargetType.TARGET_AREA_CORPSE_MOB && sklType != SkillType.BEAST_FEED && sklType != SkillType.DELUXE_KEY_UNLOCK && sklType != SkillType.UNLOCK)
 			{
 				// send the action failed so that the skill doesn't go off.
 				sendPacket(new ActionFailed());
@@ -8043,25 +8020,14 @@ public final class L2PcInstance extends L2PlayableInstance
 		}
 		
 		// Check if this is a Pvp skill and target isn't a non-flagged/non-karma player
-		switch (sklTargetType)
+		if (!isSrcTargetSelf && !checkPvpSkill(target, skill) && getAccessLevel() < Config.GM_PEACE_ATTACK)
 		{
-			case TARGET_PARTY:
-			case TARGET_ALLY: // For such skills, checkPvpSkill() is called from L2Skill.getTargetList()
-			case TARGET_CLAN: // For such skills, checkPvpSkill() is called from L2Skill.getTargetList()
-			case TARGET_AURA:
-			case TARGET_AURA_UNDEAD:
-			case TARGET_SELF:
-				break;
-			default:
-				if (!checkPvpSkill(target, skill) && getAccessLevel() < Config.GM_PEACE_ATTACK)
-				{
-					// Send a System Message to the L2PcInstance
-					sendPacket(new SystemMessage(SystemMessage.TARGET_IS_INCORRECT));
-					
-					// Send a Server->Client packet ActionFailed to the L2PcInstance
-					sendPacket(new ActionFailed());
-					return;
-				}
+			// Send a System Message to the L2PcInstance
+			sendPacket(new SystemMessage(SystemMessage.TARGET_IS_INCORRECT));
+			
+			// Send a Server->Client packet ActionFailed to the L2PcInstance
+			sendPacket(new ActionFailed());
+			return;
 		}
 		
 		// GeoData Los Check here

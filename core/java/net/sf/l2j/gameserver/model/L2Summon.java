@@ -24,7 +24,6 @@ import net.sf.l2j.gameserver.geoengine.GeoData;
 import net.sf.l2j.gameserver.handler.IItemHandler;
 import net.sf.l2j.gameserver.handler.ItemHandler;
 import net.sf.l2j.gameserver.model.L2Attackable.AggroInfo;
-import net.sf.l2j.gameserver.model.L2Skill.SkillTargetType;
 import net.sf.l2j.gameserver.model.actor.instance.L2DoorInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2NpcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
@@ -37,6 +36,7 @@ import net.sf.l2j.gameserver.model.base.Experience;
 import net.sf.l2j.gameserver.model.itemcontainer.PetInventory;
 import net.sf.l2j.gameserver.network.L2GameClient;
 import net.sf.l2j.gameserver.network.serverpackets.ActionFailed;
+import net.sf.l2j.gameserver.network.serverpackets.L2GameServerPacket;
 import net.sf.l2j.gameserver.network.serverpackets.MoveToPawn;
 import net.sf.l2j.gameserver.network.serverpackets.MyTargetSelected;
 import net.sf.l2j.gameserver.network.serverpackets.NpcInfo;
@@ -111,7 +111,7 @@ public abstract class L2Summon extends L2PlayableInstance
 		
 		updateAndBroadcastStatus(0);
 		
-		_owner.sendPacket(new RelationChanged(this, _owner.getRelation(_owner), false));
+		sendPacket(new RelationChanged(this, _owner.getRelation(_owner), false));
 		
 		for (L2PcInstance player : _owner.getKnownList().getKnownPlayersInRadius(800))
 		{
@@ -205,9 +205,7 @@ public abstract class L2Summon extends L2PlayableInstance
 			}
 			
 			player.setTarget(this);
-			MyTargetSelected my = new MyTargetSelected(getObjectId(), player.getLevel() - getLevel());
-			player.sendPacket(my);
-			
+			player.sendPacket(new MyTargetSelected(getObjectId(), player.getLevel() - getLevel()));
 			player.sendPacket(new ValidateLocation(this));
 		}
 		else if (player == _owner)
@@ -294,8 +292,7 @@ public abstract class L2Summon extends L2PlayableInstance
 		if (player.getTarget() != this)
 		{
 			player.setTarget(this);
-			MyTargetSelected my = new MyTargetSelected(getObjectId(), player.getLevel() - getLevel());
-			player.sendPacket(my);
+			player.sendPacket(new MyTargetSelected(getObjectId(), player.getLevel() - getLevel()));
 		}
 		
 		player.sendPacket(new ValidateLocation(this));
@@ -409,8 +406,8 @@ public abstract class L2Summon extends L2PlayableInstance
 			return;
 		}
 		
-		_owner.sendPacket(new PetInfo(this, val));
-		_owner.sendPacket(new PetStatusUpdate(this));
+		sendPacket(new PetInfo(this, val));
+		sendPacket(new PetStatusUpdate(this));
 		if (isVisible())
 		{
 			broadcastNpcInfo(val);
@@ -475,6 +472,7 @@ public abstract class L2Summon extends L2PlayableInstance
 			L2WorldRegion oldRegion = getWorldRegion();
 			
 			decayMe();
+
 			if (oldRegion != null)
 			{
 				oldRegion.removeFromZones(this);
@@ -612,10 +610,10 @@ public abstract class L2Summon extends L2PlayableInstance
 	}
 	
 	@Override
-    public PetInventory getInventory()
-    {
-        return null;
-    }
+	public PetInventory getInventory()
+	{
+		return null;
+	}
 	
 	@Override
 	public void doPickupItem(L2Object object)
@@ -707,7 +705,7 @@ public abstract class L2Summon extends L2PlayableInstance
 	@Override
 	public void useMagic(L2Skill skill, boolean forceUse, boolean dontMove, int controlItemObjectId)
 	{
-		if (skill == null || isDead())
+		if (skill == null || _owner == null || isDead())
 		{
 			return;
 		}
@@ -731,6 +729,7 @@ public abstract class L2Summon extends L2PlayableInstance
 		
 		// Get the target for the skill
 		L2Object target = null;
+		boolean isSrcTargetSelf = skill.isSourceTargetSelf();
 		
 		switch (skill.getTargetType())
 		{
@@ -738,39 +737,34 @@ public abstract class L2Summon extends L2PlayableInstance
 			case TARGET_OWNER_PET:
 				target = _owner;
 				break;
-			// PARTY, AURA, SELF should be cast even if no target has been found
-			case TARGET_PARTY:
-			case TARGET_AURA:
-			case TARGET_SELF:
-				target = this;
-				break;
 			default:
 				// Get the first target of the list
-				target = skill.getFirstOfTargetList(this);
+				if (isSrcTargetSelf)
+				{
+					target = this;
+				}
+				else
+				{
+					target = skill.getFirstOfTargetList(this);
+				}
 				break;
 		}
 		
 		// Check the validity of the target
 		if (target == null)
 		{
-			if (_owner != null)
-			{
-				_owner.sendPacket(new SystemMessage(SystemMessage.TARGET_CANT_FOUND));
-			}
+			sendPacket(new SystemMessage(SystemMessage.TARGET_CANT_FOUND));
 			return;
 		}
-
+		
 		// ************************************* Check skill availability *******************************************
 		
 		// Check if this skill is enabled (e.g. reuse time)
 		if (isSkillDisabled(skill.getId()))
 		{
-			if (_owner != null)
-			{
-				SystemMessage sm = new SystemMessage(SystemMessage.S1_PREPARED_FOR_REUSE);
-				sm.addSkillName(skill.getId(), skill.getLevel());
-				_owner.sendPacket(sm);
-			}
+			SystemMessage sm = new SystemMessage(SystemMessage.S1_PREPARED_FOR_REUSE);
+			sm.addSkillName(skill.getId(), skill.getLevel());
+			sendPacket(sm);
 			return;
 		}
 		
@@ -786,10 +780,7 @@ public abstract class L2Summon extends L2PlayableInstance
 		if (getCurrentMp() < (getStat().getMpConsume(skill) + getStat().getMpInitialConsume(skill)))
 		{
 			// Send a System Message to the caster
-			if (_owner != null)
-			{
-				_owner.sendPacket(new SystemMessage(SystemMessage.NOT_ENOUGH_MP));
-			}
+			sendPacket(new SystemMessage(SystemMessage.NOT_ENOUGH_MP));
 			return;
 		}
 		
@@ -797,10 +788,7 @@ public abstract class L2Summon extends L2PlayableInstance
 		if (getCurrentHp() <= skill.getHpConsume())
 		{
 			// Send a System Message to the caster
-			if (_owner != null)
-			{
-				_owner.sendPacket(new SystemMessage(SystemMessage.NOT_ENOUGH_HP));
-			}
+			sendPacket(new SystemMessage(SystemMessage.NOT_ENOUGH_HP));
 			return;
 		}
 		
@@ -809,16 +797,16 @@ public abstract class L2Summon extends L2PlayableInstance
 		// Check if this is offensive magic skill
 		if (skill.isOffensive())
 		{
-			if (isInsidePeaceZone(this, target) && _owner != null && _owner.getAccessLevel() < Config.GM_PEACE_ATTACK)
+			if (isInsidePeaceZone(this, target) && _owner.getAccessLevel() < Config.GM_PEACE_ATTACK)
 			{
 				// If summon or target is in a peace zone, send a system message TARGET_IN_PEACEZONE
-				_owner.sendPacket(new SystemMessage(SystemMessage.TARGET_IN_PEACEZONE));
+				sendPacket(new SystemMessage(SystemMessage.TARGET_IN_PEACEZONE));
 				return;
 			}
 			
-			if (_owner != null && _owner.isInOlympiadMode() && !_owner.isOlympiadStart())
+			if (!isSrcTargetSelf && _owner.isInOlympiadMode() && !_owner.isOlympiadStart())
 			{
-				// if L2PcInstance is in Olympiad and the match isn't already start, send a Server->Client packet ActionFailed
+				// if owner is in Olympiad and the match isn't already start, send a Server->Client packet ActionFailed
 				sendPacket(new ActionFailed());
 				return;
 			}
@@ -833,13 +821,13 @@ public abstract class L2Summon extends L2PlayableInstance
 			}
 			else
 			{
-				if (!target.isAttackable() && _owner != null && _owner.getAccessLevel() < Config.GM_PEACE_ATTACK)
+				if (!target.isAttackable() && _owner.getAccessLevel() < Config.GM_PEACE_ATTACK)
 				{
 					return;
 				}
 				
 				// Check if a Forced ATTACK is in progress on non-attackable target
-				if (!target.isAutoAttackable(this) && !forceUse && (skill.getTargetType() != SkillTargetType.TARGET_AURA) && (skill.getTargetType() != SkillTargetType.TARGET_CLAN) && (skill.getTargetType() != SkillTargetType.TARGET_ALLY) && (skill.getTargetType() != SkillTargetType.TARGET_PARTY) && (skill.getTargetType() != SkillTargetType.TARGET_SELF))
+				if (!target.isAutoAttackable(this) && !forceUse && !isSrcTargetSelf)
 				{
 					return;
 				}
@@ -849,7 +837,7 @@ public abstract class L2Summon extends L2PlayableInstance
 		// GeoData Los Check here
 		if ((skill.getCastRange() > 0) && !GeoData.getInstance().canSeeTarget(this, target))
 		{
-			_owner.sendPacket(new SystemMessage(SystemMessage.CANT_SEE_TARGET));
+			sendPacket(new SystemMessage(SystemMessage.CANT_SEE_TARGET));
 			sendPacket(new ActionFailed());
 			return;
 		}
@@ -860,15 +848,15 @@ public abstract class L2Summon extends L2PlayableInstance
 		// Notify the AI with AI_INTENTION_CAST and target
 		getAI().setIntention(CtrlIntention.AI_INTENTION_CAST, skill, target, controlItemObjectId);
 	}
-
+	
 	public void setOwner(L2PcInstance newOwner)
 	{
 		_owner = newOwner;
 	}
 	
 	/**
-	 * Servitor skills automatically change their level based on the servitor's level. Until level 70, 
-	 * the servitor gets 1 lvl of skill per 10 levels. After that, it is 1 skill level per 5 servitor levels. 
+	 * Servitor skills automatically change their level based on the servitor's level. Until level 70,
+	 * the servitor gets 1 lvl of skill per 10 levels. After that, it is 1 skill level per 5 servitor levels.
 	 * If the resulting skill level doesn't exist use the max that does exist!
 	 * @see net.sf.l2j.gameserver.model.L2Character#doCast(net.sf.l2j.gameserver.model.L2Skill)
 	 */
@@ -946,7 +934,7 @@ public abstract class L2Summon extends L2PlayableInstance
 	public void sendInfo(L2PcInstance activeChar)
 	{
 		// Check if the L2PcInstance is the owner of the Pet
-		if (activeChar.equals(getOwner()))
+		if (activeChar == _owner)
 		{
 			activeChar.sendPacket(new PetInfo(this, 0));
 			updateEffectIcons(true);
@@ -958,6 +946,15 @@ public abstract class L2Summon extends L2PlayableInstance
 		else
 		{
 			activeChar.sendPacket(new NpcInfo(this, activeChar, 0));
+		}
+	}
+	
+	@Override
+	public void sendPacket(L2GameServerPacket mov)
+	{
+		if (_owner != null)
+		{
+			_owner.sendPacket(mov);
 		}
 	}
 }
