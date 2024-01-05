@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE xml>
 <list>
-	<zone id="11070" maxZ="-3000" minZ="-3100" shape="Cuboid" type="OlympiadStadiumZone">
+	<zone id="11070" maxZ="-2700" minZ="-3100" shape="Cuboid" type="OlympiadStadiumZone">
 		<stat name="stadiumId" val="1"/>
 		<node X="-18889" Y="-19464" />
 		<node X="-22768" Y="-22568" />
