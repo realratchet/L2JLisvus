@@ -225,8 +225,10 @@ public abstract class L2Character extends L2Object
 	public static final byte ZONE_BOSS = 12;
 	public static final byte ZONE_DANGER_AREA = 13;
 	public static final byte ZONE_NO_STORE = 14;
+
+	public static final int ZONE_TYPE_LENGTH = 15;
 	
-	private final byte[] _zones = new byte[15];
+	private final byte[] _zones = new byte[ZONE_TYPE_LENGTH];
 	
 	protected byte _zoneValidateCounter = 4;
 	
@@ -378,7 +380,6 @@ public abstract class L2Character extends L2Object
 		{
 			reg.removeFromZones(this);
 		}
-		
 	}
 	
 	@Override

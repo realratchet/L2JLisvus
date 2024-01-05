@@ -87,9 +87,9 @@ public class ZoneManager
 		// Clear zones
 		for (L2WorldRegion[] worldRegion : worldRegions)
 		{
-			for (L2WorldRegion element : worldRegion)
+			for (L2WorldRegion reg : worldRegion)
 			{
-				element.getZones().clear();
+				reg.getZones().clear();
 				count++;
 			}
 		}
@@ -108,9 +108,19 @@ public class ZoneManager
 		// Re-validate all characters in zones
 		for (L2Object obj : L2World.getInstance().getAllVisibleObjects())
 		{
-			if (obj instanceof L2Character && !((L2Character) obj).isTeleporting())
+			if (!(obj instanceof L2Character))
 			{
-				((L2Character) obj).revalidateZone(true);
+				continue;
+			}
+
+			L2Character activeChar = (L2Character) obj;
+			if (!activeChar.isTeleporting())
+			{
+				for (byte i = 0; i < L2Character.ZONE_TYPE_LENGTH; i++)
+				{
+					activeChar.setInsideZone(i, false);
+				}
+				activeChar.revalidateZone(true);
 			}
 		}
 	}

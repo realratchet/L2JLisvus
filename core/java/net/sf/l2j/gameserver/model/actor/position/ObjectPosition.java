@@ -231,7 +231,6 @@ public class ObjectPosition implements IPositionable
     public final void setWorldPosition(int x, int y, int z)
     {
         getWorldPosition().setXYZ(x, y, z);
-        
     }
     
     public final void setWorldPosition(Point3D newPosition)
@@ -247,6 +246,5 @@ public class ObjectPosition implements IPositionable
     public final void setWorldRegion(L2WorldRegion value)
     {
         _worldRegion = value;
-        
     }
 }
