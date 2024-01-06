@@ -372,7 +372,7 @@ public class L2ControllableMobAI extends L2AttackableAI
             if (hated != attackTarget)
             {
                 setAttackTarget(hated);
-                attackTarget = getAttackTarget();
+                attackTarget = hated;
             }
 
             if (!_actor.isMuted() && skills.length > 0 && Rnd.nextInt(5) == 3) 
