@@ -35,24 +35,24 @@ import net.sf.l2j.gameserver.network.serverpackets.PartySpelled;
 public class CharEffectList
 {
 	private static final L2Effect[] EMPTY_EFFECTS = new L2Effect[0];
-
+	
 	private List<L2Effect> _buffs;
 	private List<L2Effect> _debuffs;
-
+	
 	// The table containing the List of all stacked effect in progress for each Stack group Identifier
 	private Map<String, List<L2Effect>> _stackedEffects;
-
+	
 	private boolean _queuesInitialized = false;
 	private LinkedBlockingQueue<L2Effect> _addQueue;
 	private LinkedBlockingQueue<L2Effect> _removeQueue;
 	private AtomicBoolean queueLock = new AtomicBoolean();
-
+	
 	// only party icons need to be updated
 	private boolean _partyOnly = false;
-
+	
 	// Owner of this list
 	private L2Character _owner;
-
+	
 	public CharEffectList(L2Character owner)
 	{
 		_owner = owner;
@@ -69,12 +69,12 @@ public class CharEffectList
 		{
 			return EMPTY_EFFECTS;
 		}
-
+		
 		// Create a copy of the effects
 		List<L2Effect> temp = new ArrayList<>();
-
+		
 		// Add all buffs and all debuffs
-		if (_buffs != null) 
+		if (_buffs != null)
 		{
 			if (!_buffs.isEmpty())
 				temp.addAll(_buffs);
@@ -84,7 +84,7 @@ public class CharEffectList
 			if (!_debuffs.isEmpty())
 				temp.addAll(_debuffs);
 		}
-
+		
 		// Return all effects in an array
 		L2Effect[] tempArray = new L2Effect[temp.size()];
 		temp.toArray(tempArray);
@@ -93,19 +93,18 @@ public class CharEffectList
 	
 	/**
 	 * Returns the first effect matching the given EffectType.
-	 * 
 	 * @param tp
 	 * @return
 	 */
 	public final L2Effect getFirstEffect(EffectType tp)
 	{
 		L2Effect effectNotInUse = null;
-
+		
 		if (_buffs != null)
 		{
 			if (!_buffs.isEmpty())
 			{
-				for (L2Effect e: _buffs)
+				for (L2Effect e : _buffs)
 				{
 					if (e == null)
 						continue;
@@ -122,7 +121,7 @@ public class CharEffectList
 		{
 			if (!_debuffs.isEmpty())
 			{
-				for (L2Effect e: _debuffs)
+				for (L2Effect e : _debuffs)
 				{
 					if (e == null)
 						continue;
@@ -140,23 +139,22 @@ public class CharEffectList
 	
 	/**
 	 * Returns the first effect matching the given L2Skill.
-	 * 
 	 * @param skill
 	 * @return
 	 */
 	public final L2Effect getFirstEffect(L2Skill skill)
 	{
 		L2Effect effectNotInUse = null;
-
+		
 		if (skill.isOffensive())
 		{
 			if (_debuffs == null)
 				return null;
-
+			
 			if (_debuffs.isEmpty())
 				return null;
-
-			for (L2Effect e: _debuffs)
+			
+			for (L2Effect e : _debuffs)
 			{
 				if (e == null)
 					continue;
@@ -169,14 +167,14 @@ public class CharEffectList
 			}
 			return effectNotInUse;
 		}
-
+		
 		if (_buffs == null)
 			return null;
-
+		
 		if (_buffs.isEmpty())
 			return null;
-
-		for (L2Effect e: _buffs)
+		
+		for (L2Effect e : _buffs)
 		{
 			if (e == null)
 				continue;
@@ -192,19 +190,18 @@ public class CharEffectList
 	
 	/**
 	 * Returns the first effect matching the given skillId.
-	 * 
-	 * @param skillId 
+	 * @param skillId
 	 * @return
 	 */
 	public final L2Effect getFirstEffect(int skillId)
 	{
 		L2Effect effectNotInUse = null;
-
+		
 		if (_buffs != null)
 		{
 			if (!_buffs.isEmpty())
 			{
-				for (L2Effect e: _buffs)
+				for (L2Effect e : _buffs)
 				{
 					if (e == null)
 						continue;
@@ -222,7 +219,7 @@ public class CharEffectList
 		{
 			if (!_debuffs.isEmpty())
 			{
-				for (L2Effect e: _debuffs)
+				for (L2Effect e : _debuffs)
 				{
 					if (e == null)
 						continue;
@@ -241,24 +238,18 @@ public class CharEffectList
 	
 	/**
 	 * Checks if the given skill stacks with an existing one.
-	 *
 	 * @param checkSkill the skill to be checked
-	 *
 	 * @return Returns whether or not this skill will stack
 	 */
 	private boolean doesStack(L2Skill checkSkill)
 	{
-		if ( (_buffs == null || _buffs.isEmpty()) ||
-				checkSkill._effectTemplates == null ||
-				checkSkill._effectTemplates.length < 1 ||
-				checkSkill._effectTemplates[0]._stackType == null ||
-				"none".equals(checkSkill._effectTemplates[0]._stackType))
+		if ((_buffs == null || _buffs.isEmpty()) || checkSkill._effectTemplates == null || checkSkill._effectTemplates.length < 1 || checkSkill._effectTemplates[0]._stackType == null || "none".equals(checkSkill._effectTemplates[0]._stackType))
 		{
 			return false;
 		}
-
+		
 		String stackType = checkSkill._effectTemplates[0]._stackType;
-
+		
 		for (L2Effect e : _buffs)
 		{
 			if (e.getStackType() != null && e.getStackType().equals(stackType))
@@ -271,24 +262,23 @@ public class CharEffectList
 	
 	private boolean isIncludedInBuffCount(L2Effect effect)
 	{
-		return effect.getShowIcon() && !effect.getSkill().isToggle() && !effect.getStackType().equals("hp_recover");
+		return effect.getShowIcon() && !effect.getSkill().isToggle() && !effect.getStackType().equals("hp_recover") && !effect.getStackType().equals("life_force_orc");
 	}
 	
 	/**
 	 * Return the number of buffs in this CharEffectList.
-	 * 
 	 * @return
 	 */
 	public int getBuffCount()
 	{
 		if (_buffs == null)
 			return 0;
-
+		
 		int effectCount = 0;
-
+		
 		if (_buffs.isEmpty())
 			return 0;
-
+		
 		for (L2Effect e : _buffs)
 		{
 			if (e != null && isIncludedInBuffCount(e))
@@ -296,25 +286,24 @@ public class CharEffectList
 				effectCount++;
 			}
 		}
-
+		
 		return effectCount;
 	}
 	
 	/**
 	 * Return the number of debuffs in this CharEffectList.
-	 * 
 	 * @return
 	 */
 	public int getDebuffCount()
 	{
 		if (_debuffs == null)
 			return 0;
-
+		
 		int effectCount = 0;
-
+		
 		if (_debuffs.isEmpty())
 			return 0;
-
+		
 		for (L2Effect e : _debuffs)
 		{
 			if (e != null && e.getShowIcon())
@@ -322,25 +311,24 @@ public class CharEffectList
 				effectCount++;
 			}
 		}
-
+		
 		return effectCount;
 	}
 	
 	/**
 	 * Return the number of Songs/Dances in this CharEffectList.
-	 * 
 	 * @return
 	 */
 	public int getDanceCount()
 	{
 		if (_buffs == null)
 			return 0;
-
+		
 		int effectCount = 0;
-
+		
 		if (_buffs.isEmpty())
 			return 0;
-
+		
 		for (L2Effect e : _buffs)
 		{
 			if (e != null && e.getSkill().isDance() && e.getInUse())
@@ -356,7 +344,7 @@ public class CharEffectList
 	{
 		// Get all active skills effects from this list
 		L2Effect[] effects = getAllEffects();
-
+		
 		// Remove them
 		for (L2Effect e : effects)
 		{
@@ -365,18 +353,17 @@ public class CharEffectList
 				e.exit(true);
 			}
 		}
- 	}
+	}
 	
 	/**
 	 * Exit all effects having a specified type.
-	 * 
 	 * @param type
 	 */
 	public final void stopEffects(EffectType type)
 	{
 		// Go through all active skills effects
 		List<L2Effect> temp = new ArrayList<>();
-		if (_buffs != null) 
+		if (_buffs != null)
 		{
 			if (!_buffs.isEmpty())
 			{
@@ -388,7 +375,7 @@ public class CharEffectList
 				}
 			}
 		}
-		if (_debuffs != null) 
+		if (_debuffs != null)
 		{
 			if (!_debuffs.isEmpty())
 			{
@@ -400,7 +387,7 @@ public class CharEffectList
 				}
 			}
 		}
-
+		
 		if (!temp.isEmpty())
 		{
 			for (L2Effect e : temp)
@@ -413,14 +400,13 @@ public class CharEffectList
 	
 	/**
 	 * Exits all effects created by a specific skillId.
-	 * 
 	 * @param skillId
 	 */
 	public final void stopSkillEffects(int skillId)
 	{
 		// Go through all active skills effects
 		List<L2Effect> temp = new ArrayList<>();
-		if (_buffs != null) 
+		if (_buffs != null)
 		{
 			if (!_buffs.isEmpty())
 			{
@@ -431,7 +417,7 @@ public class CharEffectList
 				}
 			}
 		}
-		if (_debuffs != null) 
+		if (_debuffs != null)
 		{
 			if (!_debuffs.isEmpty())
 			{
@@ -442,7 +428,7 @@ public class CharEffectList
 				}
 			}
 		}
-
+		
 		if (!temp.isEmpty())
 		{
 			for (L2Effect e : temp)
@@ -457,7 +443,7 @@ public class CharEffectList
 	{
 		if (_buffs == null && _debuffs == null)
 			return;
-
+		
 		if (partyOnly)
 			_partyOnly = true;
 		
@@ -466,11 +452,12 @@ public class CharEffectList
 	
 	public void queueEffect(L2Effect effect, boolean remove)
 	{
-		if (effect == null) return;
-
+		if (effect == null)
+			return;
+		
 		if (!_queuesInitialized)
 			init();
-
+		
 		if (remove)
 		{
 			_removeQueue.offer(effect);
@@ -481,24 +468,24 @@ public class CharEffectList
 		}
 		queueRunner();
 	}
-
+	
 	private synchronized void init()
 	{
 		if (_queuesInitialized)
 		{
 			return;
 		}
-
+		
 		_addQueue = new LinkedBlockingQueue<>();
 		_removeQueue = new LinkedBlockingQueue<>();
 		_queuesInitialized = true;
 	}
-
+	
 	private void queueRunner()
 	{
 		if (!queueLock.compareAndSet(false, true))
 			return;
-
+		
 		try
 		{
 			L2Effect effect;
@@ -510,7 +497,7 @@ public class CharEffectList
 					removeEffectFromQueue(effect);
 					_partyOnly = false;
 				}
-
+				
 				if ((effect = _addQueue.poll()) != null)
 				{
 					addEffectFromQueue(effect);
@@ -529,8 +516,9 @@ public class CharEffectList
 	
 	protected void removeEffectFromQueue(L2Effect effect)
 	{
-		if (effect == null) return;
-
+		if (effect == null)
+			return;
+		
 		List<L2Effect> effectList;
 		
 		if (effect.getSkill().isOffensive())
@@ -545,7 +533,7 @@ public class CharEffectList
 				return;
 			effectList = _buffs;
 		}
-
+		
 		if ("none".equals(effect.getStackType()))
 		{
 			// Remove Func added by this effect from the L2Character Calculator
@@ -555,14 +543,14 @@ public class CharEffectList
 		{
 			if (_stackedEffects == null)
 				return;
-
+			
 			// Get the list of all stacked effects corresponding to the stack type of the L2Effect to add
 			List<L2Effect> stackQueue = _stackedEffects.get(effect.getStackType());
 			if (stackQueue == null || stackQueue.isEmpty())
 				return;
-
+			
 			int index = stackQueue.indexOf(effect);
-
+			
 			// Remove the effect from the stack group
 			if (index >= 0)
 			{
@@ -572,7 +560,7 @@ public class CharEffectList
 				{
 					// Remove all its Func objects from the L2Character calculator set
 					_owner.removeStatsOwner(effect);
-
+					
 					// Check if there's another effect in the Stack Group
 					if (!stackQueue.isEmpty())
 					{
@@ -615,17 +603,14 @@ public class CharEffectList
 			{
 				_debuffs = new CopyOnWriteArrayList<>();
 			}
-
+			
 			for (L2Effect e : _debuffs)
 			{
-				if (e != null && e.getEffectType() == newEffect.getEffectType()
-						&& e.getStackOrder() == newEffect.getStackOrder()
-						&& (e.getSkill().getId() == newEffect.getSkill().getId() 
-						|| !e.getStackType().equals("none") && e.getStackType().equals(newEffect.getStackType())))
+				if (e != null && e.getEffectType() == newEffect.getEffectType() && e.getStackOrder() == newEffect.getStackOrder() && (e.getSkill().getId() == newEffect.getSkill().getId() || !e.getStackType().equals("none") && e.getStackType().equals(newEffect.getStackType())))
 				{
 					// Started scheduled timer needs to be cancelled.
-					newEffect.stopEffectTask(); 
-					return; 
+					newEffect.stopEffectTask();
+					return;
 				}
 			}
 		}
@@ -635,21 +620,18 @@ public class CharEffectList
 			{
 				_buffs = new CopyOnWriteArrayList<>();
 			}
-
+			
 			for (L2Effect e : _buffs)
 			{
-				if (e != null && e.getEffectType() == newEffect.getEffectType()
-						&& e.getStackOrder() == newEffect.getStackOrder()
-						&& (e.getSkill().getId() == newEffect.getSkill().getId() 
-						|| !e.getStackType().equals("none") && e.getStackType().equals(newEffect.getStackType())))
+				if (e != null && e.getEffectType() == newEffect.getEffectType() && e.getStackOrder() == newEffect.getStackOrder() && (e.getSkill().getId() == newEffect.getSkill().getId() || !e.getStackType().equals("none") && e.getStackType().equals(newEffect.getStackType())))
 				{
 					// If restore type is less than 0, then this effect is an AIO/NPC buff
 					if (e.getRestoreType() < 0)
 					{
 						/**
-				         * Some servers set custom effect durations, so this is for players' convenience when trying 
-				         * to use the same or a stackable effect that has less duration than old effect.
-				         */
+						 * Some servers set custom effect durations, so this is for players' convenience when trying
+						 * to use the same or a stackable effect that has less duration than old effect.
+						 */
 						if (e.getRemainingTime() > newEffect.getEffectDuration())
 						{
 							return;
@@ -664,7 +646,7 @@ public class CharEffectList
 				}
 			}
 		}
-
+		
 		// Check if any effects should be removed
 		if (!doesStack(newSkill) && !newSkill.isToggle() && !newEffect.getStackType().equals("hp_recover") && newEffect.getShowIcon())
 		{
@@ -677,7 +659,7 @@ public class CharEffectList
 				// If yes, allow debuffs to consume buff slots
 				buffCount += debuffCount - Config.DEBUFFS_MAX_AMOUNT;
 			}
-				
+			
 			// Remove first buff(s) when buff list is full
 			if (buffCount >= Config.BUFFS_MAX_AMOUNT && (!newSkill.isOffensive() || debuffCount >= Config.DEBUFFS_MAX_AMOUNT))
 			{
@@ -688,7 +670,7 @@ public class CharEffectList
 					{
 						if (e == null || e.getSkill().isOffensive())
 							continue;
-		
+						
 						e.exit();
 						effectsToRemove--;
 						if (effectsToRemove < 0)
@@ -707,23 +689,23 @@ public class CharEffectList
 		else
 		{
 			// Toggle and 7 signs effects
-			if (newSkill.isToggle() || (newSkill.getId() > 4360  && newSkill.getId() < 4367))
+			if (newSkill.isToggle() || (newSkill.getId() > 4360 && newSkill.getId() < 4367))
 			{
 				_buffs.add(newEffect);
 			}
 			// Common buffs
 			else
 			{
-				int pos=0;
+				int pos = 0;
 				for (L2Effect e : _buffs)
 				{
 					if (e == null)
 					{
 						continue;
 					}
-	
+					
 					int skillid = e.getSkill().getId();
-					if (e.getSkill().isToggle() || (skillid > 4360  && skillid < 4367))
+					if (e.getSkill().isToggle() || (skillid > 4360 && skillid < 4367))
 					{
 						break;
 					}
@@ -744,13 +726,13 @@ public class CharEffectList
 			}
 			return;
 		}
-
+		
 		List<L2Effect> stackQueue;
 		L2Effect effectToAdd = null;
 		L2Effect effectToRemove = null;
 		if (_stackedEffects == null)
 			_stackedEffects = new HashMap<>();
-					
+		
 		// Get the list of all stacked effects corresponding to the stack type of the L2Effect to add
 		stackQueue = _stackedEffects.get(newEffect.getStackType());
 		
@@ -761,20 +743,20 @@ public class CharEffectList
 			{
 				// Get the first stacked effect of the Stack group selected
 				effectToRemove = listsContains(stackQueue.get(0));
-
+				
 				// Create an Iterator to go through the list of stacked effects in progress on the L2Character
 				Iterator<L2Effect> queueIterator = stackQueue.iterator();
-
+				
 				while (queueIterator.hasNext())
 				{
-		            if (newEffect.getStackOrder() < queueIterator.next().getStackOrder())
-		            	pos++;
-		            else
-		            	break;
-		        }
+					if (newEffect.getStackOrder() < queueIterator.next().getStackOrder())
+						pos++;
+					else
+						break;
+				}
 				// Add the new effect to the Stack list in function of its position in the Stack group
 				stackQueue.add(pos, newEffect);
-
+				
 				// skill.exit() could be used, if the users don't wish to see "effect
 				// removed" always when a timer goes off, even if the buff isn't active
 				// any more (has been replaced). but then check e.g. npc hold and raid petrification.
@@ -798,23 +780,23 @@ public class CharEffectList
 			stackQueue = new ArrayList<>();
 			stackQueue.add(0, newEffect);
 		}
-
+		
 		// Update the Stack Group table _stackedEffects of the L2Character
 		_stackedEffects.put(newEffect.getStackType(), stackQueue);
-
+		
 		// Get the first stacked effect of the Stack group selected
 		if (!stackQueue.isEmpty())
 		{
 			effectToAdd = listsContains(stackQueue.get(0));
 		}
-
+		
 		if (effectToRemove != effectToAdd)
 		{
 			if (effectToRemove != null)
 			{
 				// Remove all Func objects corresponding to this stacked effect from the Calculator set of the L2Character
 				_owner.removeStatsOwner(effectToRemove);
-
+				
 				// Set the L2Effect to Not In Use
 				effectToRemove.setInUse(false);
 			}
@@ -834,7 +816,7 @@ public class CharEffectList
 	{
 		if (_owner == null || !(_owner instanceof L2PlayableInstance))
 			return;
-
+		
 		MagicEffectIcons mi = null;
 		PartySpelled ps = null;
 		ExOlympiadSpelledInfo os = null;
@@ -842,15 +824,15 @@ public class CharEffectList
 		if (_owner instanceof L2PcInstance)
 		{
 			L2PcInstance player = (L2PcInstance) _owner;
-
+			
 			if (_partyOnly)
 				_partyOnly = false;
 			else
 				mi = new MagicEffectIcons();
-
+			
 			if (_owner.isInParty())
 				ps = new PartySpelled(_owner);
-
+			
 			if (player.isInOlympiadMode() && player.isOlympiadStart())
 			{
 				os = new ExOlympiadSpelledInfo(player);
@@ -861,7 +843,7 @@ public class CharEffectList
 			if (_owner instanceof L2Summon)
 				ps = new PartySpelled(_owner);
 		}
-
+		
 		if (mi == null && ps == null && os == null)
 		{
 			return; // Nothing to do (should not happen)
@@ -880,10 +862,15 @@ public class CharEffectList
 				{
 					if (mi != null)
 					{
-						// Potion HOT effects have their own slot in user interface
-						if (_owner instanceof L2PcInstance && e.getStackType().equals("hp_recover"))
+						/**
+						 * C3 notes: Previously, various kinds of abnormal character states (buffs and debuffs) were effective up to 20,
+						 * but now additional effects over 20 are shown for the following cases:
+						 * - The Chant of Life and Heart of Paagrio skills are now effective even if the abnormal state windows are over 20.
+						 * However, only one of the skills is valid and both skills cannot be effective at the same time.
+						 */
+						if (_owner instanceof L2PcInstance && e.getStackType().equals("life_force_orc"))
 						{
-							if (e != ((L2PcInstance)_owner).getShortBuff())
+							if (e != ((L2PcInstance) _owner).getShortBuff())
 							{
 								shortBuff = e;
 							}
@@ -906,14 +893,14 @@ public class CharEffectList
 				}
 			}
 		}
-
+		
 		if (_debuffs != null && !_debuffs.isEmpty())
 		{
 			for (L2Effect e : _debuffs)
 			{
 				if (e == null || !e.getShowIcon())
 					continue;
-
+				
 				if (e.getInUse())
 				{
 					if (mi != null)
@@ -933,17 +920,17 @@ public class CharEffectList
 				}
 			}
 		}
-
+		
 		if (mi != null)
 		{
 			_owner.sendPacket(mi);
 		}
-
+		
 		if (ps != null)
 		{
 			if (_owner instanceof L2Summon)
 			{
-				L2PcInstance summonOwner = ((L2Summon)_owner).getOwner();
+				L2PcInstance summonOwner = ((L2Summon) _owner).getOwner();
 				if (summonOwner != null)
 				{
 					summonOwner.sendPacket(ps);
@@ -959,7 +946,7 @@ public class CharEffectList
 		if (_owner instanceof L2PcInstance)
 		{
 			L2PcInstance player = (L2PcInstance) _owner;
-
+			
 			// Short buff packet
 			if (shortBuff != null)
 			{
@@ -985,7 +972,7 @@ public class CharEffectList
 			}
 		}
 	}
-
+	
 	/**
 	 * Returns effect if contains in _buffs or _debuffs and null if not found
 	 * @param effect
@@ -993,13 +980,13 @@ public class CharEffectList
 	 */
 	private L2Effect listsContains(L2Effect effect)
 	{
-		if (_buffs != null && !_buffs.isEmpty()&& _buffs.contains(effect))
+		if (_buffs != null && !_buffs.isEmpty() && _buffs.contains(effect))
 			return effect;
 		if (_debuffs != null && !_debuffs.isEmpty() && _debuffs.contains(effect))
 			return effect;
 		return null;
 	}
-
+	
 	/**
 	 * Clear and null all queues and lists
 	 * Use only during delete character from the world.
@@ -1019,7 +1006,7 @@ public class CharEffectList
 				_removeQueue = null;
 			}
 			_queuesInitialized = false;
-
+			
 			if (_buffs != null)
 			{
 				_buffs.clear();
@@ -1030,7 +1017,7 @@ public class CharEffectList
 				_debuffs.clear();
 				_debuffs = null;
 			}
-
+			
 			if (_stackedEffects != null)
 			{
 				_stackedEffects.clear();

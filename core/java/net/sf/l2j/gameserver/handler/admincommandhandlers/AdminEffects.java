@@ -30,12 +30,10 @@ import net.sf.l2j.gameserver.model.L2World;
 import net.sf.l2j.gameserver.model.actor.instance.L2ChestInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2NpcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.network.serverpackets.CharInfo;
 import net.sf.l2j.gameserver.network.serverpackets.Earthquake;
 import net.sf.l2j.gameserver.network.serverpackets.MagicSkillUse;
 import net.sf.l2j.gameserver.network.serverpackets.SocialAction;
 import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
-import net.sf.l2j.gameserver.network.serverpackets.UserInfo;
 
 public class AdminEffects implements IAdminCommandHandler
 {
@@ -269,10 +267,7 @@ public class AdminEffects implements IAdminCommandHandler
 				String id = st.nextToken();
 				activeChar.getPoly().setPolyInfo("npc", id);
 				activeChar.teleToLocation(activeChar.getX(), activeChar.getY(), activeChar.getZ(), false);
-				CharInfo info1 = new CharInfo(activeChar);
-				activeChar.broadcastPacket(info1);
-				UserInfo info2 = new UserInfo(activeChar);
-				activeChar.sendPacket(info2);
+				activeChar.broadcastUserInfo();
 			}
 			catch (Exception e)
 			{
@@ -283,10 +278,7 @@ public class AdminEffects implements IAdminCommandHandler
 			activeChar.getPoly().setPolyInfo(null, "1");
 			activeChar.decayMe();
 			activeChar.spawnMe(activeChar.getX(), activeChar.getY(), activeChar.getZ());
-			CharInfo info1 = new CharInfo(activeChar);
-			activeChar.broadcastPacket(info1);
-			UserInfo info2 = new UserInfo(activeChar);
-			activeChar.sendPacket(info2);
+			activeChar.broadcastUserInfo();
 		}
 		else if (command.equals("admin_clear_teams"))
 		{
@@ -400,7 +392,7 @@ public class AdminEffects implements IAdminCommandHandler
 			try
 			{
 				L2Object obj = activeChar.getTarget();
-				int level = 1, hittime = 1;
+				int level = 1, hitTime = 1;
 				int skill = Integer.parseInt(st.nextToken());
 
 				if (st.hasMoreTokens())
@@ -409,7 +401,7 @@ public class AdminEffects implements IAdminCommandHandler
 				}
 				if (st.hasMoreTokens())
 				{
-					hittime = Integer.parseInt(st.nextToken());
+					hitTime = Integer.parseInt(st.nextToken());
 				}
 
 				if (obj == null)
@@ -424,7 +416,7 @@ public class AdminEffects implements IAdminCommandHandler
 				else
 				{
 					L2Character target = (L2Character) obj;
-					target.broadcastPacket(new MagicSkillUse(target, activeChar, skill, level, hittime, 0));
+					target.broadcastPacket(new MagicSkillUse(target, activeChar, skill, level, hitTime, 0));
 					activeChar.sendMessage(obj.getName() + " performs MSU " + skill + "/" + level + " by your request.");
 				}
 			}
