@@ -17,6 +17,7 @@ package net.sf.l2j.gameserver.model;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Level;
 
@@ -196,27 +197,7 @@ public class L2Attackable extends L2NpcInstance
 	}
 	
 	private final Map<L2Character, AggroInfo> _aggroList = new ConcurrentHashMap<>();
-	
-	/**
-	 * Use this to Remove Object from this Map This Should be Synchronized While Iterating over This Map - if u cannot iterating and removing object at once
-	 * @return
-	 */
-	public final Map<L2Character, AggroInfo> getAggroList()
-	{
-		return _aggroList;
-	}
-	
-	private boolean _isReturningToSpawnPoint = false;
-	
-	public final boolean isReturningToSpawnPoint()
-	{
-		return _isReturningToSpawnPoint;
-	}
-	
-	public final void setIsReturningToSpawnPoint(boolean value)
-	{
-		_isReturningToSpawnPoint = value;
-	}
+	private final Set<L2Character> _attackByList = ConcurrentHashMap.newKeySet();
 	
 	/** Table containing all Items that a Dwarf can Sweep on this L2Attackable */
 	private RewardItem[] _sweepItems;
@@ -241,6 +222,7 @@ public class L2Attackable extends L2NpcInstance
 	
 	private boolean _isChampion = false;
 	private boolean _isRaid = false;
+	private boolean _isReturningToSpawnPoint = false;
 	
 	/**
 	 * Constructor of L2Attackable (use L2Character and L2NpcInstance constructor).<BR>
@@ -400,6 +382,8 @@ public class L2Attackable extends L2NpcInstance
 			_log.log(Level.SEVERE, "", e);
 		}
 		
+		_attackByList.clear();
+
 		return true;
 	}
 	
@@ -813,7 +797,7 @@ public class L2Attackable extends L2NpcInstance
 		{
 			aggro = 1;
 			ai.hate += aggro;
-
+			
 			L2PcInstance targetPlayer = attacker.getActingPlayer();
 			if (targetPlayer != null)
 			{
@@ -826,7 +810,7 @@ public class L2Attackable extends L2NpcInstance
 				}
 			}
 		}
-
+		
 		// Set the intention to the L2Attackable to AI_INTENTION_ACTIVE
 		if (aggro > 0 && getAI().getIntention() == CtrlIntention.AI_INTENTION_IDLE)
 		{
@@ -1308,27 +1292,24 @@ public class L2Attackable extends L2NpcInstance
 			int highestLevel = lastAttacker.getLevel();
 			
 			// Check to prevent very high level player to nearly kill mob and let low level player do the last hit
-			List<L2Character> attackers = getAttackByList();
-			if (attackers != null)
+			Set<L2Character> attackers = getAttackByList();
+			for (L2Character attacker : attackers)
 			{
-				for (L2Character attacker : attackers)
+				if (attacker == null)
 				{
-					if (attacker == null)
-					{
-						continue;
-					}
-					
-					int attackerLevel = attacker.getLevel();
-					// In the case of a raid boss, do not consider high level players since aggressive bosses may attack and add them to attack list
-					if (isRaid() && attackerLevel > (level + L2Character.RAID_LEVEL_MAX_DIFFERENCE))
-					{
-						continue;
-					}
-					
-					if (attackerLevel > highestLevel)
-					{
-						highestLevel = attackerLevel;
-					}
+					continue;
+				}
+				
+				int attackerLevel = attacker.getLevel();
+				// In the case of a raid boss, do not consider high level players since aggressive bosses may attack and add them to attack list
+				if (isRaid() && attackerLevel > (level + L2Character.RAID_LEVEL_MAX_DIFFERENCE))
+				{
+					continue;
+				}
+				
+				if (attackerLevel > highestLevel)
+				{
+					highestLevel = attackerLevel;
 				}
 			}
 			
@@ -1852,6 +1833,56 @@ public class L2Attackable extends L2NpcInstance
 	public boolean isAttackable()
 	{
 		return true;
+	}
+	
+	/**
+	 * Add L2Character instance that is attacking to the attacker list.<BR>
+	 * <BR>
+	 * @param activeChar The L2Character that attacks this one
+	 */
+	@Override
+	public void addAttackerToAttackByList(L2Character activeChar)
+	{
+		if (activeChar == null || activeChar == this || _attackByList.contains(activeChar))
+		{
+			return;
+		}
+		
+		_attackByList.add(activeChar);
+	}
+
+	@Override
+	public boolean hasAttackerInAttackByList(L2Character activeChar)
+	{
+		return _attackByList.contains(activeChar);
+	}
+	
+	/**
+	 * Return a list of L2Character that attacked.
+	 * @return
+	 */
+	public final Set<L2Character> getAttackByList()
+	{
+		return _attackByList;
+	}
+	
+	/**
+	 * Use this to Remove Object from this Map This Should be Synchronized While Iterating over This Map - if u cannot iterating and removing object at once
+	 * @return
+	 */
+	public final Map<L2Character, AggroInfo> getAggroList()
+	{
+		return _aggroList;
+	}
+	
+	public final boolean isReturningToSpawnPoint()
+	{
+		return _isReturningToSpawnPoint;
+	}
+	
+	public final void setIsReturningToSpawnPoint(boolean value)
+	{
+		_isReturningToSpawnPoint = value;
 	}
 	
 	@Override

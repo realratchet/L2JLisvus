@@ -306,7 +306,7 @@ public class L2ControllableMobAI extends L2AttackableAI
 
                     if (_actor.isInsideRadius(npc, (npc.getFactionRange() + npc.getAggroRange()), false, true) 
                             && Math.abs(getAttackTarget().getZ() - npc.getZ()) < 600
-                            && _actor.getAttackByList().contains(getAttackTarget())
+                            && _actor.hasAttackerInAttackByList(getAttackTarget())
                             && npc.getAI() != null
                             && npc.getAI()._intention != CtrlIntention.AI_INTENTION_ATTACK)
                         npc.getAI().notifyEvent(CtrlEvent.EVT_AGGRESSION, getAttackTarget(), 1);

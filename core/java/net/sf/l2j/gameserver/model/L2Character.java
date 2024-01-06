@@ -118,7 +118,6 @@ public abstract class L2Character extends L2Object
 	
 	// =========================================================
 	// Data Field
-	private List<L2Character> _attackByList;
 	private L2Skill _lastSkillCast;
 	private boolean _isAfraid = false; // Flee in a random direction
 	private boolean _isAiDisabled = false;
@@ -225,7 +224,7 @@ public abstract class L2Character extends L2Object
 	public static final byte ZONE_BOSS = 12;
 	public static final byte ZONE_DANGER_AREA = 13;
 	public static final byte ZONE_NO_STORE = 14;
-
+	
 	public static final int ZONE_TYPE_LENGTH = 15;
 	
 	private final byte[] _zones = new byte[ZONE_TYPE_LENGTH];
@@ -428,21 +427,6 @@ public abstract class L2Character extends L2Object
 	// Method - Public
 	
 	/**
-	 * Add L2Character instance that is attacking to the attacker list.<BR>
-	 * <BR>
-	 * @param player The L2Character that attacks this one
-	 */
-	public void addAttackerToAttackByList(L2Character player)
-	{
-		if ((player == null) || (player == this) || (getAttackByList() == null) || getAttackByList().contains(player))
-		{
-			return;
-		}
-		
-		getAttackByList().add(player);
-	}
-	
-	/**
 	 * Send a packet to the L2Character AND to all L2PcInstance in the _KnownPlayers of the L2Character.<BR>
 	 * <BR>
 	 * <B><U> Concept</U> :</B><BR>
@@ -540,9 +524,16 @@ public abstract class L2Character extends L2Object
 		}
 	}
 	
+	public void addAttackerToAttackByList(L2Character player)
+	{
+	}
+	
+	public boolean hasAttackerInAttackByList(L2Character player)
+	{
+		return false;
+	}
+	
 	/**
-	 * Not Implemented.<BR>
-	 * <BR>
 	 * <B><U> Overridden in </U> :</B><BR>
 	 * <BR>
 	 * <li>L2PcInstance</li><BR>
@@ -1741,8 +1732,6 @@ public abstract class L2Character extends L2Object
 		}
 		
 		getNotifyQuestOfDeath().clear();
-		
-		getAttackByList().clear();
 		return true;
 	}
 	
@@ -1869,19 +1858,6 @@ public abstract class L2Character extends L2Object
 		}
 		
 		return 8500;
-	}
-	
-	/**
-	 * Return a list of L2Character that attacked.
-	 * @return
-	 */
-	public final List<L2Character> getAttackByList()
-	{
-		if (_attackByList == null)
-		{
-			_attackByList = new ArrayList<>();
-		}
-		return _attackByList;
 	}
 	
 	public final L2Skill getLastSkillCast()
@@ -5605,12 +5581,14 @@ public abstract class L2Character extends L2Object
 			{
 				if (target instanceof L2Character)
 				{
-					if (!isInsideRadius(target, escapeRange, true, false))
+					L2Character activeTarget = (L2Character) target;
+
+					if (!isInsideRadius(activeTarget, escapeRange, true, false))
 					{
 						continue;
 					}
 					
-					if (!GeoData.getInstance().canSeeTarget(this, target))
+					if (!GeoData.getInstance().canSeeTarget(this, activeTarget))
 					{
 						continue;
 					}
@@ -5619,21 +5597,21 @@ public abstract class L2Character extends L2Object
 					{
 						if (this instanceof L2PcInstance)
 						{
-							if (((L2Character) target).isInsidePeaceZone((L2PcInstance) this))
+							if (activeTarget.isInsidePeaceZone((L2PcInstance) this))
 							{
 								continue;
 							}
 						}
 						else
 						{
-							if (((L2Character) target).isInsidePeaceZone(this, target))
+							if (activeTarget.isInsidePeaceZone(this, target))
 							{
 								continue;
 							}
 						}
 					}
 					
-					targetList.add((L2Character) target);
+					targetList.add(activeTarget);
 				}
 			}
 			
@@ -6029,8 +6007,8 @@ public abstract class L2Character extends L2Object
 					L2Character targetsCastTarget = target.getAI().getCastTarget();
 					
 					// Check Raid boss attack
-					if ((target.isRaid() && (level > (target.getLevel() + RAID_LEVEL_MAX_DIFFERENCE))) || (!skill.isOffensive() && (targetsAttackTarget != null) && targetsAttackTarget.isRaid() && targetsAttackTarget.getAttackByList().contains(target) // has attacked raid
-						&& (level > (targetsAttackTarget.getLevel() + RAID_LEVEL_MAX_DIFFERENCE))) || (!skill.isOffensive() && (targetsCastTarget != null) && targetsCastTarget.isRaid() && targetsCastTarget.getAttackByList().contains(target) // has attacked raid
+					if ((target.isRaid() && (level > (target.getLevel() + RAID_LEVEL_MAX_DIFFERENCE))) || (!skill.isOffensive() && (targetsAttackTarget != null) && targetsAttackTarget.isRaid() && targetsAttackTarget.hasAttackerInAttackByList(target) // has attacked raid
+						&& (level > (targetsAttackTarget.getLevel() + RAID_LEVEL_MAX_DIFFERENCE))) || (!skill.isOffensive() && (targetsCastTarget != null) && targetsCastTarget.isRaid() && targetsCastTarget.hasAttackerInAttackByList(target) // has attacked raid
 							&& (level > (targetsCastTarget.getLevel() + RAID_LEVEL_MAX_DIFFERENCE))))
 					{
 						L2Skill tempSkill = SkillTable.getInstance().getInfo(4215, 1);
@@ -6203,21 +6181,26 @@ public abstract class L2Character extends L2Object
 											level = ((L2Summon) this).getOwner().getLevel() > getLevel() ? ((L2Summon) this).getOwner().getLevel() : getLevel();
 										}
 										
-										if (level > (npcMob.getLevel() + RAID_LEVEL_MAX_DIFFERENCE) && npcMob.getAttackByList().contains(target))
+										if (target instanceof L2Character)
 										{
-											L2Skill tempSkill = SkillTable.getInstance().getInfo(4215, 1);
-											if (tempSkill != null)
-											{
-												tempSkill.getEffects(npcMob, this);
-											}
-											else
-											{
-												_log.warning("Skill 4215 at level 1 is missing in DP.");
-											}
+											L2Character activeTarget = (L2Character) target;
 											
-											// Set character as cursed
-											isRaidCursed = true;
-											break;
+											if (level > (npcMob.getLevel() + RAID_LEVEL_MAX_DIFFERENCE) && npcMob.hasAttackerInAttackByList(activeTarget))
+											{
+												L2Skill tempSkill = SkillTable.getInstance().getInfo(4215, 1);
+												if (tempSkill != null)
+												{
+													tempSkill.getEffects(npcMob, this);
+												}
+												else
+												{
+													_log.warning("Skill 4215 at level 1 is missing in DP.");
+												}
+												
+												// Set character as cursed
+												isRaidCursed = true;
+												break;
+											}
 										}
 									}
 									
