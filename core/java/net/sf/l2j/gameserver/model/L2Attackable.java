@@ -924,7 +924,7 @@ public class L2Attackable extends L2NpcInstance
 		}
 		
 		result.add(mostHated);
-		if (getAttackByList().contains(secondMostHated))
+		if (secondMostHated != null && _attackByList.contains(secondMostHated))
 		{
 			result.add(secondMostHated);
 		}
@@ -1292,14 +1292,8 @@ public class L2Attackable extends L2NpcInstance
 			int highestLevel = lastAttacker.getLevel();
 			
 			// Check to prevent very high level player to nearly kill mob and let low level player do the last hit
-			Set<L2Character> attackers = getAttackByList();
-			for (L2Character attacker : attackers)
+			for (L2Character attacker : _attackByList)
 			{
-				if (attacker == null)
-				{
-					continue;
-				}
-				
 				int attackerLevel = attacker.getLevel();
 				// In the case of a raid boss, do not consider high level players since aggressive bosses may attack and add them to attack list
 				if (isRaid() && attackerLevel > (level + L2Character.RAID_LEVEL_MAX_DIFFERENCE))
