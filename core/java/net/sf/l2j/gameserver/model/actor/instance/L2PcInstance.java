@@ -2169,6 +2169,7 @@ public final class L2PcInstance extends L2PlayableInstance
 		L2ItemInstance[] items = null;
 		SystemMessage sm = null;
 		boolean isEquipped = item.isEquipped();
+		boolean needShotRecharge = false;
 		
 		if (isEquipped)
 		{
@@ -2216,8 +2217,9 @@ public final class L2PcInstance extends L2PlayableInstance
 					// Discharge weapon
 					item.setChargedSoulShot(L2ItemInstance.CHARGED_NONE);
 					item.setChargedSpiritShot(L2ItemInstance.CHARGED_NONE);
-					// Now, re-charge using active shots
-					rechargeShots(true, true);
+					
+					// Wait for client to update equipment
+					needShotRecharge = true;
 				}
 			}
 		}
@@ -2235,6 +2237,13 @@ public final class L2PcInstance extends L2PlayableInstance
 		}
 		
 		updateAndBroadcastStatus(2);
+		
+		// Recharge shots right after equip update or else animation will break
+		if (needShotRecharge)
+		{
+			// Now, re-charge using active shots
+			rechargeShots(true, true);
+		}
 	}
 	
 	/**
