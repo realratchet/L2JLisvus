@@ -648,7 +648,7 @@ public class CharEffectList
 		}
 		
 		// Check if any effects should be removed
-		if (!doesStack(newSkill) && !newSkill.isToggle() && !newEffect.getStackType().equals("hp_recover") && newEffect.getShowIcon())
+		if (!doesStack(newSkill) && isIncludedInBuffCount(newEffect))
 		{
 			int buffCount = getBuffCount() - removedBuffCount;
 			int debuffCount = getDebuffCount();
