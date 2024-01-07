@@ -266,7 +266,7 @@ public final class L2AuctioneerInstance extends L2FolkInstance
 				int start;
 				int i = 1;
 				double npage = Math.ceil((float) auctions.size() / limit);
-				if (val == "")
+				if (val.isEmpty())
 				{
 					start = 1;
 				}
