@@ -45,6 +45,7 @@ import net.sf.l2j.gameserver.network.serverpackets.MyTargetSelected;
 import net.sf.l2j.gameserver.network.serverpackets.NpcHtmlMessage;
 import net.sf.l2j.gameserver.network.serverpackets.ValidateLocation;
 import net.sf.l2j.gameserver.templates.L2DoorTemplate;
+import net.sf.l2j.gameserver.templates.L2Item;
 import net.sf.l2j.gameserver.templates.L2Weapon;
 import net.sf.l2j.util.StringUtil;
 
@@ -341,7 +342,7 @@ public class L2DoorInstance extends L2Character
     }
 
     @Override
-	public L2Weapon getSecondaryWeaponItem() 
+	public L2Item getSecondaryWeaponItem() 
     {
         return null;
     }

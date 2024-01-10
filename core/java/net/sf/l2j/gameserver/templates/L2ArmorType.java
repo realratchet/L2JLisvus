@@ -19,7 +19,7 @@ package net.sf.l2j.gameserver.templates;
  */
 public enum L2ArmorType
 {
-	NONE(1, "None"),
+	NONE(1, "None"), // Shields are also defined as none in retail
 	LIGHT(2, "Light"),
 	HEAVY(3, "Heavy"),
 	MAGIC(4, "Magic"),
@@ -47,7 +47,7 @@ public enum L2ArmorType
 	 */
 	public int mask()
 	{
-		return 1 << (_id + 16);
+		return 1 << (_id + L2WeaponType.values().length);
 	}
 	
 	/**

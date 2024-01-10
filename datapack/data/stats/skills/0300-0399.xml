@@ -532,7 +532,7 @@
   <table name="#ench2val"> 0.39 0.39 0.39 0.38 0.38 0.38 0.37 0.37 0.37 0.36 0.36 0.36 0.35 0.35 0.35 0.34 0.34 0.34 0.33 0.33 0.33 0.32 0.32 0.32 0.31 0.31 0.31 0.3 0.3 0.3 </table>
   <table name="#mpConsume_Init"> 12 13 13 13 14 14 </table>
   <table name="#ShieldDef"> 446 468 491 514 537 560 </table>
-  <set name="weaponsAllowed" val="2"/>
+  <set name="weaponsAllowed" val="1048576"/>
   <set name="mpInitialConsume" val="#mpConsume_Init"/>
   <set name="target" val="TARGET_SELF"/>
   <set name="skillType" val="CONT"/>
@@ -925,7 +925,7 @@
 </skill>
 <skill id="350" levels="1" name="Physical Mirror">
   <set name="mpConsume" val="71"/>
-  <set name="weaponsAllowed" val="2"/>
+  <set name="weaponsAllowed" val="1048576"/>
   <set name="target" val="TARGET_SELF"/>
   <set name="skillType" val="BUFF"/>
   <set name="operateType" val="OP_ACTIVE"/>
@@ -941,7 +941,7 @@
 </skill>
 <skill id="351" levels="1" name="Magical Mirror">
   <set name="mpConsume" val="71"/>
-  <set name="weaponsAllowed" val="2"/>
+  <set name="weaponsAllowed" val="1048576"/>
   <set name="target" val="TARGET_SELF"/>
   <set name="skillType" val="BUFF"/>
   <set name="operateType" val="OP_ACTIVE"/>
@@ -957,7 +957,7 @@
 </skill>
 <skill id="352" levels="1" name="Shield Bash">
   <set name="magicLvl" val="77"/>
-  <set name="weaponsAllowed" val="2"/>
+  <set name="weaponsAllowed" val="1048576"/>
   <set name="power" val="80"/>
   <set name="mpConsume" val="35"/>
   <set name="nextActionAttack" val="true"/>
@@ -975,7 +975,7 @@
 </skill>
 <skill id="353" levels="1" name="Shield Slam">
   <set name="magicLvl" val="77"/>
-  <set name="weaponsAllowed" val="2"/>
+  <set name="weaponsAllowed" val="1048576"/>
   <set name="power" val="40"/>
   <set name="mpConsume" val="70"/>
   <set name="nextActionAttack" val="true"/>
@@ -1316,7 +1316,7 @@
   </for>
 </skill>
 <skill id="368" levels="1" name="Vengeance">
-  <set name="weaponsAllowed" val="2"/>
+  <set name="weaponsAllowed" val="1048576"/>
   <set name="mpConsume" val="105"/>
   <set name="power" val="3994"/>
   <set name="target" val="TARGET_AURA"/>

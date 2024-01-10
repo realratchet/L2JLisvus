@@ -42,6 +42,7 @@ import net.sf.l2j.gameserver.network.serverpackets.VehicleDeparture;
 import net.sf.l2j.gameserver.network.serverpackets.VehicleInfo;
 import net.sf.l2j.gameserver.network.serverpackets.VehicleStarted;
 import net.sf.l2j.gameserver.templates.L2CharTemplate;
+import net.sf.l2j.gameserver.templates.L2Item;
 import net.sf.l2j.gameserver.templates.L2Weapon;
 import net.sf.l2j.gameserver.util.Util;
 
@@ -612,7 +613,7 @@ public class L2BoatInstance extends L2Character
      * @see net.sf.l2j.gameserver.model.L2Character#getSecondaryWeaponItem()
      */
     @Override
-    public L2Weapon getSecondaryWeaponItem()
+    public L2Item getSecondaryWeaponItem()
     {
         return null;
     }

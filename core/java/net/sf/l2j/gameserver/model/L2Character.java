@@ -89,6 +89,7 @@ import net.sf.l2j.gameserver.skills.Formulas;
 import net.sf.l2j.gameserver.skills.Stats;
 import net.sf.l2j.gameserver.skills.funcs.Func;
 import net.sf.l2j.gameserver.templates.L2CharTemplate;
+import net.sf.l2j.gameserver.templates.L2Item;
 import net.sf.l2j.gameserver.templates.L2Weapon;
 import net.sf.l2j.gameserver.templates.L2WeaponType;
 import net.sf.l2j.gameserver.util.Broadcast;
@@ -4922,7 +4923,7 @@ public abstract class L2Character extends L2Object
 	public abstract L2ItemInstance getSecondaryWeaponInstance();
 	
 	/**
-	 * Return the secondary weapon item (always equipped in the left hand).<BR>
+	 * Return the secondary L2Item item (always equipped in the left hand).<BR>
 	 * <BR>
 	 * <B><U> Overridden in </U> :</B><BR>
 	 * <BR>
@@ -4930,7 +4931,7 @@ public abstract class L2Character extends L2Object
 	 * <BR>
 	 * @return
 	 */
-	public abstract L2Weapon getSecondaryWeaponItem();
+	public abstract L2Item getSecondaryWeaponItem();
 	
 	/**
 	 * Manage hit process (called by Hit Task).<BR>

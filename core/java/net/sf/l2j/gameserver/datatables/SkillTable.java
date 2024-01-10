@@ -19,7 +19,6 @@ import java.util.Map;
 
 import net.sf.l2j.gameserver.datatables.document.DocumentEngine;
 import net.sf.l2j.gameserver.model.L2Skill;
-import net.sf.l2j.gameserver.templates.L2WeaponType;
 
 /**
  *
@@ -91,39 +90,6 @@ public class SkillTable
     public final int getMaxLevel(final int skillId)
     {
         return _skillMaxLevel.get(skillId);
-    }
-
-    private static final L2WeaponType[] weaponDbMasks =
-    {
-        L2WeaponType.ETC,
-        L2WeaponType.BOW,
-        L2WeaponType.POLE,
-        L2WeaponType.DUALFIST,
-        L2WeaponType.DUAL,
-        L2WeaponType.BLUNT,
-        L2WeaponType.SWORD,
-        L2WeaponType.DAGGER,
-        L2WeaponType.BIGSWORD,
-        L2WeaponType.FISHINGROD,
-        L2WeaponType.BIGBLUNT
-    };
-
-    public int calcWeaponsAllowed(int mask)
-    {
-        if (mask == 0)
-            return 0;
-
-
-        int weaponsAllowed = 0;
-
-
-        for (int i=0; i < weaponDbMasks.length; i++)
-        {
-            if ((mask & (1<<i)) != 0)
-                weaponsAllowed |= weaponDbMasks[i].mask();
-        }
-
-        return weaponsAllowed;
     }
     
     private static class SingletonHolder

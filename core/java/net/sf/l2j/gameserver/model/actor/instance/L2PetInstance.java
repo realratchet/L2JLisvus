@@ -309,14 +309,12 @@ public class L2PetInstance extends L2Summon
 	@Override
 	public L2ItemInstance getSecondaryWeaponInstance()
 	{
-		// temporary? unavailable
 		return null;
 	}
 	
 	@Override
-	public L2Weapon getSecondaryWeaponItem()
+	public L2Item getSecondaryWeaponItem()
 	{
-		// temporary? unavailable
 		return null;
 	}
 	

@@ -1254,11 +1254,11 @@ public class L2NpcInstance extends L2Character
 	}
 	
 	/**
-	 * Return the weapon item equipped in the left hand of the L2NpcInstance or null.<BR>
+	 * Return the L2Item item equipped in the left hand of the L2NpcInstance or null.<BR>
 	 * <BR>
 	 */
 	@Override
-	public L2Weapon getSecondaryWeaponItem()
+	public L2Item getSecondaryWeaponItem()
 	{
 		// Get the weapon identifier equipped in the right hand of the L2NpcInstance
 		int weaponId = getTemplate().lhand;
@@ -1267,14 +1267,8 @@ public class L2NpcInstance extends L2Character
 			return null;
 		}
 		
-		// Get the weapon item equipped in the right hand of the L2NpcInstance
-		L2Item item = ItemTable.getInstance().getTemplate(getTemplate().lhand);
-		if (!(item instanceof L2Weapon))
-		{
-			return null;
-		}
-		
-		return (L2Weapon) item;
+		// Get the item equipped in the right hand of the L2NpcInstance
+		return ItemTable.getInstance().getTemplate(getTemplate().lhand);
 	}
 	
 	/**

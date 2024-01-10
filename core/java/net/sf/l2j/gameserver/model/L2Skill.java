@@ -57,6 +57,8 @@ import net.sf.l2j.gameserver.skills.l2skills.L2SkillSummon;
 import net.sf.l2j.gameserver.skills.l2skills.L2SkillSummonPet;
 import net.sf.l2j.gameserver.skills.l2skills.L2SkillTeleport;
 import net.sf.l2j.gameserver.taskmanager.DecayTaskManager;
+import net.sf.l2j.gameserver.templates.L2Armor;
+import net.sf.l2j.gameserver.templates.L2ArmorType;
 import net.sf.l2j.gameserver.templates.StatsSet;
 import net.sf.l2j.gameserver.util.Util;
 
@@ -1170,9 +1172,9 @@ public abstract class L2Skill
 			mask |= activeChar.getActiveWeaponItem().getItemType().mask();
 		}
 		
-		if (activeChar.getSecondaryWeaponItem() != null)
+		if (activeChar.getSecondaryWeaponItem() != null && activeChar.getSecondaryWeaponItem() instanceof L2Armor)
 		{
-			mask |= activeChar.getSecondaryWeaponItem().getItemType().mask();
+			mask |= ((L2ArmorType) activeChar.getSecondaryWeaponItem().getItemType()).mask();
 		}
 
 		if ((mask & weaponsAllowed) != 0)

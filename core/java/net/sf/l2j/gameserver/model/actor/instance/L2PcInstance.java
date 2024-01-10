@@ -4641,25 +4641,14 @@ public final class L2PcInstance extends L2PlayableInstance
 	}
 	
 	/**
-	 * Return the secondary weapon item (always equipped in the left hand) or the fists weapon.<BR>
+	 * Return the secondary L2Item item (always equipped in the left hand).<BR>
 	 * <BR>
 	 */
 	@Override
-	public L2Weapon getSecondaryWeaponItem()
+	public L2Item getSecondaryWeaponItem()
 	{
-		L2ItemInstance weapon = getSecondaryWeaponInstance();
-		if (weapon == null)
-		{
-			return getFistsWeaponItem();
-		}
-		
-		L2Item item = weapon.getItem();
-		if (item instanceof L2Weapon)
-		{
-			return (L2Weapon) item;
-		}
-		
-		return null;
+		L2ItemInstance item = getSecondaryWeaponInstance();
+		return item != null ? item.getItem() : null;
 	}
 	
 	/**
@@ -5704,7 +5693,7 @@ public final class L2PcInstance extends L2PlayableInstance
 	@Override
 	protected void reduceArrowCount()
 	{
-		L2ItemInstance arrows = getInventory().getPaperdollItem(Inventory.PAPERDOLL_LHAND);
+		L2ItemInstance arrows = getSecondaryWeaponInstance();
 		if (arrows == null)
 		{
 			getInventory().unEquipItemInSlot(Inventory.PAPERDOLL_LHAND);
@@ -5759,14 +5748,14 @@ public final class L2PcInstance extends L2PlayableInstance
 	}
 	
 	/**
-	 * Equip arrows needed in left hand and send a Server->Client packet ItemList to the L2PcINstance then return True.<BR>
+	 * Equip arrows needed in left hand and send a Server->Client packet ItemList to the L2PcInstance then return True.<BR>
 	 * <BR>
 	 */
 	@Override
 	protected boolean checkAndEquipArrows()
 	{
 		// Check if nothing is equipped in left hand
-		if (getInventory().getPaperdollItem(Inventory.PAPERDOLL_LHAND) == null)
+		if (getSecondaryWeaponInstance() == null)
 		{
 			// Get the L2ItemInstance of the arrows needed for this bow
 			_arrowItem = getInventory().findArrowForBow(getActiveWeaponItem());
@@ -5783,7 +5772,7 @@ public final class L2PcInstance extends L2PlayableInstance
 		else
 		{
 			// Get the L2ItemInstance of arrows equipped in left hand
-			_arrowItem = getInventory().getPaperdollItem(Inventory.PAPERDOLL_LHAND);
+			_arrowItem = getSecondaryWeaponInstance();
 		}
 		
 		return _arrowItem != null;
@@ -5833,7 +5822,7 @@ public final class L2PcInstance extends L2PlayableInstance
 		}
 		
 		// Unequip the shield
-		L2ItemInstance sld = getInventory().getPaperdollItem(Inventory.PAPERDOLL_LHAND);
+		L2ItemInstance sld = getSecondaryWeaponInstance();
 		if (sld != null)
 		{
 			L2ItemInstance[] unequipped = getInventory().unEquipItemInSlotAndRecord(sld.getEquipSlot());

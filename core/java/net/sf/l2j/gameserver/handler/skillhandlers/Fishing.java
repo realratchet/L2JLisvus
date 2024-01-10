@@ -24,7 +24,6 @@ import net.sf.l2j.gameserver.model.L2Object;
 import net.sf.l2j.gameserver.model.L2Skill;
 import net.sf.l2j.gameserver.model.L2Skill.SkillType;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.model.itemcontainer.Inventory;
 import net.sf.l2j.gameserver.model.zone.L2ZoneType;
 import net.sf.l2j.gameserver.model.zone.type.L2FishingZone;
 import net.sf.l2j.gameserver.model.zone.type.L2WaterZone;
@@ -82,7 +81,7 @@ public class Fishing implements ISkillHandler
 			return;
 		}
 		
-		L2ItemInstance lure = player.getInventory().getPaperdollItem(Inventory.PAPERDOLL_LHAND);
+		L2ItemInstance lure = player.getSecondaryWeaponInstance();
 		if (lure == null)
 		{
 			// Bait not equipped.

@@ -20,7 +20,7 @@ package net.sf.l2j.gameserver.templates;
  */
 public enum L2WeaponType
 {
-	NONE      	( 1, "Shield"), // Shields!!!
+	NONE      	( 1, "None"),
 	SWORD     	( 2, "Sword"),
 	BLUNT     	( 3, "Blunt"),
 	DAGGER    	( 4, "Dagger"),
@@ -55,7 +55,7 @@ public enum L2WeaponType
 	 */
 	public int mask()
 	{
-		return 1<<_id;
+		return 1 << _id;
 	}
 	
     /**
