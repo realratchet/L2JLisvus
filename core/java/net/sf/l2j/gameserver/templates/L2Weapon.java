@@ -47,6 +47,8 @@ public final class L2Weapon extends L2Item
 	private SkillHolder[] _skillOnCritHolders;
 	private Condition _skillOnCritCondition;
 
+	private static final L2Effect[] _emptyEffectSet = new L2Effect[0];
+
 	public L2Skill _castSkill;
 	public int _castChance;
 	public L2Skill _critSkill;

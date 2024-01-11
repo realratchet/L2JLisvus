@@ -22,6 +22,27 @@ import net.sf.l2j.gameserver.model.zone.type.L2TownZone;
 
 public class TownManager
 {
+	private static final int[] CASTLE_ID_ARRAY =
+	{
+		0,
+		0,
+		0,
+		0,
+		0,
+		1,
+		0,
+		2,
+		3,
+		4,
+		5,
+		0,
+		0,
+		6,
+		0,
+		7,
+		2
+	};
+	
 	public static final L2TownZone getClosestTown(L2Object activeObject)
 	{
 		switch (MapRegionTable.getInstance().getMapRegion(activeObject.getPosition().getX(), activeObject.getPosition().getY()))
@@ -67,29 +88,10 @@ public class TownManager
 	
 	public static final boolean townHasCastleInSiege(int x, int y)
 	{
-		int curtown = (MapRegionTable.getInstance().getMapRegion(x, y));
-		int[] castleidarray =
-		{
-			0,
-			0,
-			0,
-			0,
-			0,
-			1,
-			0,
-			2,
-			3,
-			4,
-			5,
-			0,
-			0,
-			6,
-			0,
-			7,
-			2
-		};
-		// find an instance of the castle for this town.
-		int castleIndex = castleidarray[curtown];
+		int townRegion = MapRegionTable.getInstance().getMapRegion(x, y);
+		
+		// find an instance of the castle for this town
+		int castleIndex = CASTLE_ID_ARRAY[townRegion];
 		if (castleIndex > 0)
 		{
 			Castle castle = CastleManager.getInstance().getCastles().get(CastleManager.getInstance().getCastleIndex(castleIndex));

@@ -19,10 +19,10 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.LineNumberReader;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.StringTokenizer;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -45,12 +45,12 @@ public class Announcements
 {
     private static Logger _log = Logger.getLogger(Announcements.class.getName());
 
-    private List<String> _announcements = new ArrayList<>();
-    private List<DateRange> _eventAnnouncements = new ArrayList<>();
+    private List<String> _announcements = new CopyOnWriteArrayList<>();
+    private List<DateRange> _eventAnnouncements = new CopyOnWriteArrayList<>();
 
     public Announcements()
     {
-        loadAnnouncements();
+        load();
     }
 
     public static Announcements getInstance()
@@ -58,9 +58,14 @@ public class Announcements
         return SingletonHolder._instance;
     }
 
-    public void loadAnnouncements()
+    public void reload()
     {
         _announcements.clear();
+        load();
+    }
+
+    private void load()
+    {
         File file = new File(Config.DATAPACK_ROOT, "data/announcements.txt");
         if (file.exists())
             readFromDisk(file);

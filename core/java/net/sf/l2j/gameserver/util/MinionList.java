@@ -41,13 +41,12 @@ public class MinionList
     private static Logger _log = Logger.getLogger(L2MonsterInstance.class.getName());
 
     /** List containing the current spawned minions for this L2MonsterInstance */
-    private final List<L2MinionInstance> _minionReferences;
-    protected Map<Long,Integer> _respawnTasks = new ConcurrentHashMap<>();
+    private final List<L2MinionInstance> _minionReferences = new CopyOnWriteArrayList<>();
+    private final Map<Long,Integer> _respawnTasks = new ConcurrentHashMap<>();
     private final L2MonsterInstance master;
 
     public MinionList(L2MonsterInstance pMaster)
     {
-        _minionReferences = new CopyOnWriteArrayList<>();
         master = pMaster;
     }
 

@@ -36,7 +36,7 @@ public class NpcWalkerRoutesTable
 {
     private static Logger _log = Logger.getLogger(NpcWalkerRoutesTable.class.getName());
 
-    private List<L2NpcWalkerNode> _routes = new ArrayList<>();
+    private final List<L2NpcWalkerNode> _routes = new ArrayList<>();
 
     public static NpcWalkerRoutesTable getInstance()
     {

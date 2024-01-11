@@ -53,7 +53,7 @@ public class SiegeManager
 	private int _defenderMaxClans = 500; // Max number of clans
 	
 	// Siege settings
-	private Map<Integer, List<SiegeSpawn>> _controlTowerSpawnList;
+	private final Map<Integer, List<SiegeSpawn>> _controlTowerSpawnList = new HashMap<>();
 	
 	private int _flagMaxCount = 1;
 	private int _siegeClanMinLevel = 4;
@@ -145,7 +145,6 @@ public class SiegeManager
 		_siegeLength = Integer.parseInt(siegeSettings.getProperty("SiegeLength", "2"));
 		
 		// Siege spawns settings
-		_controlTowerSpawnList = new HashMap<>();
 		
 		for (Castle castle : CastleManager.getInstance().getCastles())
 		{

@@ -37,7 +37,7 @@ public class QuestManager extends ScriptManager<Quest>
 
     // =========================================================
     // Data Field
-    private Map<String, Quest> _quests = new ConcurrentHashMap<>();
+    private final Map<String, Quest> _quests = new ConcurrentHashMap<>();
 
     // =========================================================
     // Constructor

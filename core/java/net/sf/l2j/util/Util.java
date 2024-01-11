@@ -55,10 +55,10 @@ public class Util
 			{
 				result.append("   ");
 
-				int charpoint = i - 15;
+				int charPoint = i - 15;
 				for (int a = 0; a < 16; a++)
 				{
-					int t1 = data[charpoint++];
+					int t1 = data[charPoint++];
 					if ((t1 > 0x1f) && (t1 < 0x80))
 					{
 						result.append((char) t1);
@@ -82,10 +82,10 @@ public class Util
 				result.append("   ");
 			}
 			
-			int charpoint = data.length - rest;
+			int charPoint = data.length - rest;
 			for (int a = 0; a < rest; a++)
 			{
-				int t1 = data[charpoint++];
+				int t1 = data[charPoint++];
 				if ((t1 > 0x1f) && (t1 < 0x80))
 				{
 					result.append((char) t1);

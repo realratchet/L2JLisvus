@@ -18,8 +18,8 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.net.Socket;
 import java.net.SocketException;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.logging.Logger;
 
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
@@ -49,7 +49,7 @@ public class GeoEditorThread extends Thread
 	{
 		_geSocket = ge;
 		_working = true;
-		_gms = new ArrayList<>();
+		_gms = new CopyOnWriteArrayList<>();
 	}
 	
 	@Override

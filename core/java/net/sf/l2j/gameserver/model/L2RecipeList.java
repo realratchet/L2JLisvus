@@ -14,6 +14,9 @@
  */
 package net.sf.l2j.gameserver.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * This class describes a Recipe used by Dwarf to craft Item.
  * All L2RecipeList are made of L2RecipeInstance (1 line of the recipe : Item-Quantity needed).<BR><BR>
@@ -21,8 +24,8 @@ package net.sf.l2j.gameserver.model;
  */
 public class L2RecipeList
 {
-	/** The table containing all L2RecipeInstance (1 line of the recipe : Item-Quantity needed) of the L2RecipeList */
-	private L2RecipeInstance[] _recipes;
+	/** The list containing all L2RecipeInstance (1 line of the recipe : Item-Quantity needed) of the L2RecipeList */
+	private final List<L2RecipeInstance> _recipes = new ArrayList<>();
 
 	/** The Identifier of the Instance */
 	private int _id;
@@ -49,7 +52,7 @@ public class L2RecipeList
 	private int _count;
 
 	/** If this a common or a dwarven recipe */ 
-	private boolean _IsDwarvenRecipe; 
+	private boolean _isDwarvenRecipe; 
 
 	/**
 	 * Constructor of L2RecipeList (create a new Recipe).<BR><BR>
@@ -66,7 +69,6 @@ public class L2RecipeList
 	public L2RecipeList(int id, int level, int recipeId, String recipeName, int successRate, int mpCost, int itemId, int count, boolean isDwarvenRecipe)
 	{
 		_id = id;
-		_recipes = new L2RecipeInstance[0];
 		_level = level;
 		_recipeId = recipeId;
 		_recipeName = recipeName;
@@ -74,7 +76,7 @@ public class L2RecipeList
 		_mpCost = mpCost;
 		_itemId = itemId;
 		_count = count;
-		_IsDwarvenRecipe = isDwarvenRecipe;
+		_isDwarvenRecipe = isDwarvenRecipe;
 	}
 
 	/**
@@ -83,13 +85,8 @@ public class L2RecipeList
 	 */
 	public void addRecipe(L2RecipeInstance recipe)
 	{
-		int len = _recipes.length;
-		L2RecipeInstance[] tmp = new L2RecipeInstance[len+1];
-		System.arraycopy(_recipes, 0, tmp, 0, len);
-		tmp[len] = recipe;
-		_recipes = tmp;
+		_recipes.add(recipe);
 	}
-
 
 	/**
 	 * Return the Identifier of the Instance.<BR><BR>
@@ -169,14 +166,14 @@ public class L2RecipeList
 	 */ 
 	public boolean isDwarvenRecipe() 
 	{ 
-		return _IsDwarvenRecipe; 
+		return _isDwarvenRecipe; 
 	} 
 
 	/**
-	 * Return the table containing all L2RecipeInstance (1 line of the recipe : Item-Quantity needed) of the L2RecipeList.<BR><BR>
+	 * Return the list containing all L2RecipeInstance (1 line of the recipe : Item-Quantity needed) of the L2RecipeList.<BR><BR>
 	 * @return 
 	 */
-	public L2RecipeInstance[] getRecipes()
+	public List<L2RecipeInstance> getRecipes()
 	{
 		return _recipes;
 	}

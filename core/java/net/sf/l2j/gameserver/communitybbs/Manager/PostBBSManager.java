@@ -16,10 +16,10 @@ package net.sf.l2j.gameserver.communitybbs.Manager;
 
 import java.text.DateFormat;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 import java.util.StringTokenizer;
+import java.util.concurrent.ConcurrentHashMap;
 
 import net.sf.l2j.gameserver.communitybbs.BB.Forum;
 import net.sf.l2j.gameserver.communitybbs.BB.Post;
@@ -31,7 +31,7 @@ import net.sf.l2j.util.StringUtil;
 
 public class PostBBSManager extends BaseBBSManager
 {
-	private Map<Topic, Post> _postByTopic;
+	private final Map<Topic, Post> _postByTopic;
 	
 	public static PostBBSManager getInstance()
 	{
@@ -40,7 +40,7 @@ public class PostBBSManager extends BaseBBSManager
 	
 	public PostBBSManager()
 	{
-		_postByTopic = new HashMap<>();
+		_postByTopic = new ConcurrentHashMap<>();
 	}
 	
 	public Post getGPostByTopic(Topic t)

@@ -36,7 +36,7 @@ public class BoatManager
 
     // =========================================================
     // Data Field
-    private Map<Integer, L2BoatInstance> _staticItems = new HashMap<>();
+    private final Map<Integer, L2BoatInstance> _boats = new HashMap<>();
 
     public static final BoatManager getInstance()
     {
@@ -72,7 +72,7 @@ public class BoatManager
                 L2BoatInstance boat = parseLine(line);
                 boat.beginCycle();
 
-                _staticItems.put(boat.getObjectId(), boat);
+                _boats.put(boat.getObjectId(), boat);
 
                 if (Config.DEBUG)
                     _log.info("Boat ID : " + boat.getObjectId());
@@ -190,9 +190,7 @@ public class BoatManager
      */
     public L2BoatInstance getBoat(int boatId)
     {			
-        if (_staticItems == null)
-            _staticItems = new HashMap<>();
-        return _staticItems.get(boatId);
+        return _boats.get(boatId);
     }
     
     private static class SingletonHolder

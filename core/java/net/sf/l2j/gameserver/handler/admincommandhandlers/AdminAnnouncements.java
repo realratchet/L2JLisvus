@@ -49,10 +49,12 @@ public class AdminAnnouncements implements IAdminCommandHandler
 	public boolean useAdminCommand(String command, L2PcInstance activeChar)
     {
         if (command.equals("admin_list_announcements"))
+        {
             Announcements.getInstance().listAnnouncements(activeChar);
+        }
         else if (command.equals("admin_reload_announcements"))
         {
-            Announcements.getInstance().loadAnnouncements();
+            Announcements.getInstance().reload();
             Announcements.getInstance().listAnnouncements(activeChar);
         } 
         else if (command.startsWith("admin_announce_menu"))

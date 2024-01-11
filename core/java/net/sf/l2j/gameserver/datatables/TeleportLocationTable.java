@@ -34,7 +34,7 @@ public class TeleportLocationTable
 {
     private static Logger _log = Logger.getLogger(TeleportLocationTable.class.getName());
 
-    private Map<Integer, L2TeleportLocation> _teleports;
+    private final Map<Integer, L2TeleportLocation> _teleports = new HashMap<>();
 
     public static TeleportLocationTable getInstance()
     {
@@ -48,7 +48,7 @@ public class TeleportLocationTable
 
     public void reloadAll()
     {
-        _teleports = new HashMap<>();
+        _teleports.clear();
 
         try (Connection con = L2DatabaseFactory.getInstance().getConnection();
             PreparedStatement statement = con.prepareStatement("SELECT Description, id, loc_x, loc_y, loc_z, price, fornoble FROM teleport");

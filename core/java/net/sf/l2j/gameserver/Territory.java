@@ -18,8 +18,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Logger;
 
 import net.sf.l2j.L2DatabaseFactory;
@@ -35,9 +35,9 @@ import net.sf.l2j.gameserver.model.L2Territory;
  */
 public class Territory
 {
-	private static Logger _log = Logger.getLogger(TradeController.class.getName());
+	private static Logger _log = Logger.getLogger(Territory.class.getName());
 	
-	private Map<Integer,L2Territory> _territory;
+	private final Map<Integer,L2Territory> _territory = new ConcurrentHashMap<>();
 	
 	public static Territory getInstance()
 	{
@@ -62,7 +62,7 @@ public class Territory
 
 	public void reload()
 	{
-		_territory = new HashMap<>();
+		_territory.clear();
 
 		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
 			PreparedStatement statement = con.prepareStatement("SELECT loc_id, loc_x, loc_y, loc_zmin, loc_zmax, proc FROM locations WHERE loc_id > ?"))
@@ -74,8 +74,7 @@ public class Territory
 				{
 					int locationId = rset.getInt(1);
 					
-					L2Territory terr = _territory.get(locationId);
-					if (terr == null)
+					if (!_territory.containsKey(locationId))
 					{
 						_territory.put(locationId, new L2Territory(locationId));
 					}

@@ -428,10 +428,11 @@ public abstract class L2Skill
 
 	private final int _baseCritRate;
 
-	protected List<Condition> _preConditions;
-	protected FuncTemplate[] _funcTemplates;
-	protected EffectTemplate[] _effectTemplates;
-	protected EffectTemplate[] _effectTemplatesSelf;
+	private List<Condition> _preConditions;
+	private List<FuncTemplate> _funcTemplates;
+	private List<EffectTemplate> _effectTemplates;
+	private List<EffectTemplate> _effectTemplatesSelf;
+
 
 	protected L2Skill(StatsSet set)
 	{
@@ -2370,7 +2371,7 @@ public abstract class L2Skill
 
 	public boolean hasEffects()
 	{
-		return (_effectTemplates != null && _effectTemplates.length > 0);
+		return (_effectTemplates != null && !_effectTemplates.isEmpty());
 	}
 
 	public final L2Effect[] getEffects(L2Character effector, L2Character effected)
@@ -2487,57 +2488,30 @@ public abstract class L2Skill
 	{
 		if (_funcTemplates == null)
 		{
-			_funcTemplates = new FuncTemplate[]
-			{
-				f
-			};
+			_funcTemplates = new ArrayList<>(1);
 		}
-		else
-		{
-			int len = _funcTemplates.length;
-			FuncTemplate[] tmp = new FuncTemplate[len + 1];
-			System.arraycopy(_funcTemplates, 0, tmp, 0, len);
-			tmp[len] = f;
-			_funcTemplates = tmp;
-		}
+
+		_funcTemplates.add(f);
 	}
 
 	public final void attach(EffectTemplate effect)
 	{
 		if (_effectTemplates == null)
 		{
-			_effectTemplates = new EffectTemplate[]
-			{
-				effect
-			};
+			_effectTemplates = new ArrayList<>(1);
 		}
-		else
-		{
-			int len = _effectTemplates.length;
-			EffectTemplate[] tmp = new EffectTemplate[len + 1];
-			System.arraycopy(_effectTemplates, 0, tmp, 0, len);
-			tmp[len] = effect;
-			_effectTemplates = tmp;
-		}
+
+		_effectTemplates.add(effect);
 	}
 
 	public final void attachSelf(EffectTemplate effect)
 	{
 		if (_effectTemplatesSelf == null)
 		{
-			_effectTemplatesSelf = new EffectTemplate[]
-			{
-				effect
-			};
+			_effectTemplatesSelf = new ArrayList<>(1);
 		}
-		else
-		{
-			int len = _effectTemplatesSelf.length;
-			EffectTemplate[] tmp = new EffectTemplate[len + 1];
-			System.arraycopy(_effectTemplatesSelf, 0, tmp, 0, len);
-			tmp[len] = effect;
-			_effectTemplatesSelf = tmp;
-		}
+
+		_effectTemplatesSelf.add(effect);
 	}
 
 	public final void attach(Condition c)

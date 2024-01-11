@@ -44,17 +44,17 @@ public class RaidBossSpawnManager
 {
     private final static Logger _log = Logger.getLogger(RaidBossSpawnManager.class.getName());
     
-    private final Map<Integer, L2RaidBossInstance> _bosses = new ConcurrentHashMap<>();
-    private final Map<Integer, L2Spawn> _spawns = new ConcurrentHashMap<>();
-    private final Map<Integer, StatsSet> _storedInfo = new ConcurrentHashMap<>();
-    private final Map<Integer, ScheduledFuture<?>> _schedules = new ConcurrentHashMap<>();
-    
     public static enum StatusEnum
     {
         ALIVE,
         DEAD,
         UNDEFINED
     }
+
+    private final Map<Integer, L2RaidBossInstance> _bosses = new ConcurrentHashMap<>();
+    private final Map<Integer, L2Spawn> _spawns = new ConcurrentHashMap<>();
+    private final Map<Integer, StatsSet> _storedInfo = new ConcurrentHashMap<>();
+    private final Map<Integer, ScheduledFuture<?>> _schedules = new ConcurrentHashMap<>();
 
     public static final RaidBossSpawnManager getInstance()
 	{

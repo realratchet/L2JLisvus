@@ -23,6 +23,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.ScheduledFuture;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -106,9 +108,9 @@ public class FourSepulchersManager extends GrandBossManager
 		},
 	};
 	
-	protected Map<Integer, Boolean> _archonSpawned = new HashMap<>();
-	protected Map<Integer, Boolean> _hallInUse = new HashMap<>();
-	protected Map<Integer, int[]> _startHallSpawns = new HashMap<>();
+	protected Map<Integer, Boolean> _archonSpawned = new ConcurrentHashMap<>();
+	protected Map<Integer, Boolean> _hallInUse = new ConcurrentHashMap<>();
+	protected Map<Integer, int[]> _startHallSpawns = new ConcurrentHashMap<>();
 	protected Map<Integer, Integer> _hallGateKeepers = new HashMap<>();
 	protected Map<Integer, Integer> _keyBoxNpc = new HashMap<>();
 	protected Map<Integer, Integer> _victim = new HashMap<>();
@@ -128,7 +130,7 @@ public class FourSepulchersManager extends GrandBossManager
 	protected List<L2Spawn> _managers;
 	protected List<L2Spawn> _dukeFinalSpawns;
 	protected List<L2Spawn> _emperorsGraveSpawns;
-	protected List<L2NpcInstance> _allMobs = new ArrayList<>();
+	protected List<L2NpcInstance> _allMobs = new CopyOnWriteArrayList<>();
 	
 	protected long _coolDownTimeEnd = 0;
 	protected long _pendingTimeEnd = 0;
@@ -242,7 +244,7 @@ public class FourSepulchersManager extends GrandBossManager
 		deleteAllMobs();
 		closeAllDoors();
 		
-		if (_archonSpawned.size() != 0)
+		if (!_archonSpawned.isEmpty())
 		{
 			Set<Integer> npcIdSet = _archonSpawned.keySet();
 			for (int npcId : npcIdSet)
@@ -254,7 +256,7 @@ public class FourSepulchersManager extends GrandBossManager
 	
 	protected void spawnManagers()
 	{
-		_managers = new ArrayList<>();
+		_managers = new CopyOnWriteArrayList<>();
 		
 		int i = 13189;
 		for (L2Spawn spawnDat; i <= 13192; i++)

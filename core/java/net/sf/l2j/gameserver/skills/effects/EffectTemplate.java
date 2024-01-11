@@ -16,6 +16,8 @@ package net.sf.l2j.gameserver.skills.effects;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Logger;
 
 import net.sf.l2j.gameserver.model.L2Effect;
@@ -26,15 +28,14 @@ import net.sf.l2j.gameserver.skills.funcs.Lambda;
 
 /**
  * @author mkizub
- *
  */
 public final class EffectTemplate
 {
-    private static final Logger _log = Logger.getLogger(EffectTemplate.class.getName());
-
+	private static final Logger _log = Logger.getLogger(EffectTemplate.class.getName());
+	
 	private final Class<?> _func;
 	private final Constructor<?> _constructor;
-
+	
 	public final Condition _attachCond;
 	public final Condition _applyCond;
 	public final Lambda _lambda;
@@ -43,11 +44,11 @@ public final class EffectTemplate
 	public final int _altPeriod1; // in seconds
 	public final int _altPeriod2; // in seconds
 	public final int _abnormalEffect;
-	public FuncTemplate[] _funcTemplates;
+	private List<FuncTemplate> _funcTemplates;
 	
 	public final String _stackType;
 	public final float _stackOrder;
-    public final boolean _icon;
+	public final boolean _icon;
 	
 	public EffectTemplate(Condition attachCond, Condition applyCond, String func, Lambda lambda, int counter, int period, int altPeriod1, int altPeriod2, int abnormalEffect, String stackType, float stackOrder, boolean showIcon)
 	{
@@ -61,22 +62,22 @@ public final class EffectTemplate
 		_abnormalEffect = abnormalEffect;
 		_stackType = stackType;
 		_stackOrder = stackOrder;
-        _icon = showIcon;
-
+		_icon = showIcon;
+		
 		try
-        {
-			_func = Class.forName("net.sf.l2j.gameserver.skills.effects.Effect"+func);
+		{
+			_func = Class.forName("net.sf.l2j.gameserver.skills.effects.Effect" + func);
 		}
-        catch (ClassNotFoundException e)
-        {
+		catch (ClassNotFoundException e)
+		{
 			throw new RuntimeException(e);
 		}
 		try
-        {
+		{
 			_constructor = _func.getConstructor(Env.class, EffectTemplate.class);
 		}
-        catch (NoSuchMethodException e)
-        {
+		catch (NoSuchMethodException e)
+		{
 			throw new RuntimeException(e);
 		}
 	}
@@ -86,41 +87,36 @@ public final class EffectTemplate
 		if (_attachCond != null && !_attachCond.test(env, owner))
 			return null;
 		try
-        {
-			L2Effect effect = (L2Effect)_constructor.newInstance(env, this);
+		{
+			L2Effect effect = (L2Effect) _constructor.newInstance(env, this);
 			return effect;
 		}
-        catch (IllegalAccessException e)
-        {
+		catch (IllegalAccessException e)
+		{
 			e.printStackTrace();
 			return null;
 		}
-        catch (InstantiationException e)
-        {
+		catch (InstantiationException e)
+		{
 			e.printStackTrace();
 			return null;
 		}
-        catch (InvocationTargetException e)
-        {
-            _log.warning("Error creating new instance of Class "+_func+" Exception was:");
+		catch (InvocationTargetException e)
+		{
+			_log.warning("Error creating new instance of Class " + _func + " Exception was:");
 			e.getTargetException().printStackTrace();
 			return null;
 		}
 	}
-
-    public void attach(FuncTemplate f)
-    {
-    	if (_funcTemplates == null)
-    	{
-    		_funcTemplates = new FuncTemplate[]{f};
-    	}
-    	else
-    	{
-    		int len = _funcTemplates.length;
-    		FuncTemplate[] tmp = new FuncTemplate[len+1];
-    		System.arraycopy(_funcTemplates, 0, tmp, 0, len);
-    		tmp[len] = f;
-    		_funcTemplates = tmp;
-    	}
-    }
+	
+	public void attach(FuncTemplate f)
+	{
+		if (_funcTemplates == null)
+		{
+			_funcTemplates = new ArrayList<>();
+		}
+		
+		_funcTemplates.add(f);
+		
+	}
 }

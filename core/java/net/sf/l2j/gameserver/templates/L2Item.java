@@ -21,7 +21,6 @@ import java.util.Map;
 
 import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.model.L2Character;
-import net.sf.l2j.gameserver.model.L2Effect;
 import net.sf.l2j.gameserver.model.L2ItemInstance;
 import net.sf.l2j.gameserver.model.L2Object;
 import net.sf.l2j.gameserver.model.L2Summon;
@@ -30,7 +29,6 @@ import net.sf.l2j.gameserver.model.holder.SkillHolder;
 import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
 import net.sf.l2j.gameserver.skills.Env;
 import net.sf.l2j.gameserver.skills.conditions.Condition;
-import net.sf.l2j.gameserver.skills.effects.EffectTemplate;
 import net.sf.l2j.gameserver.skills.funcs.Func;
 import net.sf.l2j.gameserver.skills.funcs.FuncTemplate;
 
@@ -101,6 +99,8 @@ public abstract class L2Item
 	public static final int SLOT_HATCHLING = 0x040000;
 	public static final int SLOT_STRIDER = 0x080000;
 	
+	private static final Func[] _emptyFunctionSet = new Func[0];
+	
 	private final int _itemId;
 	private final String _name;
 	private final int _weight;
@@ -127,12 +127,8 @@ public abstract class L2Item
 	protected int _type1; // needed for item list (inventory)
 	protected int _type2; // different lists for armor, weapon, etc
 	
-	protected FuncTemplate[] _funcTemplates;
-	protected List<Condition> _preConditions;
-	protected EffectTemplate[] _effectTemplates;
-	
-	private static final Func[] _emptyFunctionSet = new Func[0];
-	protected static final L2Effect[] _emptyEffectSet = new L2Effect[0];
+	private List<FuncTemplate> _funcTemplates;
+	private List<Condition> _preConditions;
 	
 	/**
 	 * Constructor of the L2Item that fill class variables.
@@ -171,7 +167,7 @@ public abstract class L2Item
 	 * @return Enum
 	 */
 	public abstract Enum<?> getItemType();
-
+	
 	/**
 	 * Returns the ID of the item.
 	 * @return int
@@ -407,7 +403,7 @@ public abstract class L2Item
 	{
 		return _tradable;
 	}
-
+	
 	public boolean isMagical()
 	{
 		return _isMagical;
@@ -448,7 +444,7 @@ public abstract class L2Item
 	{
 		return _bodyPart == SLOT_WOLF;
 	}
-
+	
 	public boolean isPetItem()
 	{
 		return (this instanceof L2Armor) && getItemType() == L2ArmorType.PET || (this instanceof L2Weapon) && getItemType() == L2WeaponType.PET;
@@ -464,7 +460,7 @@ public abstract class L2Item
 	{
 		if (_funcTemplates == null)
 			return _emptyFunctionSet;
-
+		
 		List<Func> funcs = new ArrayList<>();
 		for (FuncTemplate t : _funcTemplates)
 		{
@@ -487,24 +483,11 @@ public abstract class L2Item
 	 */
 	public void attach(FuncTemplate f)
 	{
-		// If _functTemplates is empty, create it and add the FuncTemplate f in it
 		if (_funcTemplates == null)
 		{
-			_funcTemplates = new FuncTemplate[]
-			{
-				f
-			};
+			_funcTemplates = new ArrayList<>(1);
 		}
-		else
-		{
-			int len = _funcTemplates.length;
-			FuncTemplate[] tmp = new FuncTemplate[len + 1];
-			// Definition : arraycopy(array source, begins copy at this position of source, array destination, begins copy at this position in dest,
-			// number of components to be copied)
-			System.arraycopy(_funcTemplates, 0, tmp, 0, len);
-			tmp[len] = f;
-			_funcTemplates = tmp;
-		}
+		_funcTemplates.add(f);
 	}
 	
 	public final void attach(Condition c)

@@ -28,6 +28,7 @@ import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 public class ForumsBBSManager extends BaseBBSManager
 {
     private static Logger _log = Logger.getLogger(ForumsBBSManager.class.getName());
+    
     private List<Forum> _table;
     private int lastid = 1;
 

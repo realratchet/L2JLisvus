@@ -57,7 +57,7 @@ public class L2MonsterInstance extends L2Attackable
 	private boolean _absorbed;
 	
 	/** The table containing all L2PcInstance that successfully absorbed the soul of this L2Attackable */
-	private final Map<L2PcInstance, AbsorberInfo> _absorbersList = new ConcurrentHashMap<>();
+	private final Map<Integer, AbsorberInfo> _absorbersList = new ConcurrentHashMap<>();
 	
 	/**
 	 * Constructor of L2MonsterInstance (use L2Character and L2NpcInstance constructor).<BR>
@@ -399,13 +399,13 @@ public class L2MonsterInstance extends L2Attackable
 		}
 		
 		// If we have no _absorbersList initiated, do it
-		AbsorberInfo ai = _absorbersList.get(attacker);
+		AbsorberInfo ai = _absorbersList.get(attacker.getObjectId());
 		
 		// If the L2Character attacker isn't already in the _absorbersList of this L2Attackable, add it
 		if (ai == null)
 		{
 			ai = new AbsorberInfo(attacker, getCurrentHp());
-			_absorbersList.put(attacker, ai);
+			_absorbersList.put(attacker.getObjectId(), ai);
 		}
 		else
 		{
@@ -439,6 +439,7 @@ public class L2MonsterInstance extends L2Attackable
 			resetAbsorbList();
 			return;
 		}
+
 		// All boss mobs with maxAbsorbLevel 13 have minAbsorbLevel of 12 else 10
 		if (maxAbsorbLevel > 10)
 		{
@@ -461,7 +462,7 @@ public class L2MonsterInstance extends L2Attackable
 			}
 			
 			// Fail if the killer isn't in the _absorbersList of this L2Attackable and mob is not boss
-			AbsorberInfo ai = _absorbersList.get(killer);
+			AbsorberInfo ai = _absorbersList.get(killer.getObjectId());
 			if (ai == null || ai.absorber.getObjectId() != killer.getObjectId())
 			{
 				resetAbsorbList();

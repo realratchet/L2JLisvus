@@ -43,9 +43,6 @@ public final class PetitionManager
 {
 	private final static Logger _log = Logger.getLogger(PetitionManager.class.getName());
 	
-	private Map<Integer, Petition> _pendingPetitions;
-	private Map<Integer, Petition> _completedPetitions;
-	
 	private static enum PetitionState 
 	{
 		Pending,
@@ -222,6 +219,9 @@ public final class PetitionManager
 			}
 		}
 	}
+
+	private final Map<Integer, Petition> _pendingPetitions;
+	private final Map<Integer, Petition> _completedPetitions;
 	
 	private PetitionManager()
 	{

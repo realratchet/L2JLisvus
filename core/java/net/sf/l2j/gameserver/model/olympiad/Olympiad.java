@@ -875,7 +875,7 @@ public class Olympiad
 
         int classCount = 0;
 
-        if (_classBasedRegisters.size() != 0)
+        if (!_classBasedRegisters.isEmpty())
         {
             for (List<L2PcInstance> classed : _classBasedRegisters.values())
                 classCount += classed.size();

@@ -20,6 +20,7 @@ import java.io.FileFilter;
 import java.io.FileInputStream;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Logger;
 
 import net.sf.l2j.Config;
@@ -33,7 +34,7 @@ public class HtmCache
 {
     private static Logger _log = Logger.getLogger(HtmCache.class.getName());
     
-    private Map<Integer, String> _cache;
+    private final Map<Integer, String> _cache;
     
     private int _loadedFiles;
     private long _bytesBuffLen;
@@ -45,7 +46,7 @@ public class HtmCache
     
     public HtmCache()
     {
-        _cache = new HashMap<>();
+        _cache = Config.LAZY_CACHE ? new ConcurrentHashMap<>() : new HashMap<>();
         reload();
     }
     

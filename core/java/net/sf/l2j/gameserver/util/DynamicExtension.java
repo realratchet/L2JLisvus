@@ -16,6 +16,7 @@ package net.sf.l2j.gameserver.util;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Level;
@@ -35,9 +36,9 @@ public class DynamicExtension
 	private JarClassLoader _classLoader;
 	
 	private Properties _prop;
-	private ConcurrentHashMap<String, Object> _loadedExtensions;
-    private ConcurrentHashMap<String, ExtensionFunction> _getters;
-    private ConcurrentHashMap<String, ExtensionFunction> _setters;
+	private final Map<String, Object> _loadedExtensions = new ConcurrentHashMap<>();
+    private final Map<String, ExtensionFunction> _getters = new ConcurrentHashMap<>();
+    private final Map<String, ExtensionFunction> _setters = new ConcurrentHashMap<>();
     
     /**
      * Get the singleton of DynamicInstance
@@ -55,9 +56,7 @@ public class DynamicExtension
 	 */
 	private DynamicExtension()
     {
-		_getters = new ConcurrentHashMap<>();
-        _setters = new ConcurrentHashMap<>();
-        initExtensions();
+		initExtensions();
 	}
 
     /**
@@ -79,7 +78,6 @@ public class DynamicExtension
     {
 		_prop = new Properties();
         String res = "";
-        _loadedExtensions = new ConcurrentHashMap<>();
 
         try (FileInputStream fs = new FileInputStream(Config.EXTENSIONS_FILE))
         {
@@ -157,7 +155,10 @@ public class DynamicExtension
 	{
         String res = "";
 		for (String e : _loadedExtensions.keySet())
+        {
 			res += unloadExtension(e) + "\n";
+        }
+        _loadedExtensions.clear();
         return res;
 	}
 

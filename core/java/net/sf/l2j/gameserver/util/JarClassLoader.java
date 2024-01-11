@@ -17,8 +17,8 @@ package net.sf.l2j.gameserver.util;
 import java.io.DataInputStream;
 import java.io.File;
 import java.io.IOException;
-import java.util.HashSet;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.zip.ZipEntry;
@@ -34,7 +34,7 @@ public class JarClassLoader extends ClassLoader
 {
     private static final Logger _log = Logger.getLogger(JarClassLoader.class.getName());
     
-    private Set<String> _jars = new HashSet<>();
+    private final Set<String> _jars = ConcurrentHashMap.newKeySet();
 
     public void addJarFile(String filename)
     {

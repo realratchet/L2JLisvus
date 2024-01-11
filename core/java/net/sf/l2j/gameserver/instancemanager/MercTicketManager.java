@@ -52,19 +52,9 @@ public class MercTicketManager
 {
     private final static Logger _log = Logger.getLogger(MercTicketManager.class.getName());
 
-    public static final MercTicketManager getInstance()
-    {
-        return SingletonHolder._instance;
-    }
-
-    // =========================================================
-    // Data Field
-    private List<L2ItemInstance> _droppedTickets = new CopyOnWriteArrayList<>();	// To keep track of items on the ground
-
-    //TODO move all these values into siege.properties
     // max tickets per merc type = 10 + (castleid * 2)?
     // max ticker per castle = 40 + (castleid * 20)?
-    private final int[] _maxMercPerType = 
+    private static final int[] _maxMercPerType = 
     {
         10, 10, 10, 10, 10, 10, 10, 10, 10, 10, // Gludio
         15, 15, 15, 15, 15, 15, 15, 15, 15, 15, // Dion
@@ -75,7 +65,7 @@ public class MercTicketManager
         20, 20, 20, 20, 20, 20, 20, 20, 20, 20  // Goddard
     };
 
-    private final int[] _mercsMaxPerCastle = 
+    private static final int[] _mercsMaxPerCastle = 
     {
         50,  // Gludio
         75,  // Dion
@@ -86,7 +76,7 @@ public class MercTicketManager
         200  // Goddard
     };
 
-    private final int[] _itemIds = 
+    private static final int[] _itemIds = 
     {
         3960, 3961, 3962, 3963, 3964, 3965, 3966, 3967, 3968, 3969, // Gludio
         3973, 3974, 3975, 3976, 3977, 3978, 3979, 3980, 3981, 3982, // Dion
@@ -97,7 +87,7 @@ public class MercTicketManager
         6779, 6780, 6781, 6782, 6783, 6784, 6785, 6786, 6787, 6788  // Goddard
     };
 
-    private final int[] _npcIds = 
+    private static final int[] _npcIds = 
     {
         12301, 12302, 12303, 12304, 12305, 12306, 12307, 12308, 12309, 12310, // Gludio
         12301, 12302, 12303, 12304, 12305, 12306, 12307, 12308, 12309, 12310, // Dion
@@ -107,6 +97,15 @@ public class MercTicketManager
         12301, 12302, 12303, 12304, 12305, 12306, 12307, 12308, 12309, 12310, // Heine
         12301, 12302, 12303, 12304, 12305, 12306, 12307, 12308, 12309, 12310  // Goddard
     };
+
+    public static final MercTicketManager getInstance()
+    {
+        return SingletonHolder._instance;
+    }
+
+    // =========================================================
+    // Data Field
+    private final List<L2ItemInstance> _droppedTickets = new CopyOnWriteArrayList<>();	// To keep track of items on the ground
 
     // =========================================================
     // Constructor
@@ -167,8 +166,10 @@ public class MercTicketManager
             {
                 npcId = rs.getInt("npcId");
                 x = rs.getInt("x");
-                y = rs.getInt("y");
-                z = rs.getInt("z");
+                y = rs.getInt("y");
+
+                z = rs.getInt("z");
+
                 Castle castle = CastleManager.getInstance().getCastle(x, y, z);
                 if (castle != null)
                 {

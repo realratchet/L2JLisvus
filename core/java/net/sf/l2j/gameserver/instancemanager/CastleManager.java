@@ -33,16 +33,7 @@ import net.sf.l2j.gameserver.model.entity.Castle;
 public class CastleManager
 {
     private final static Logger _log = Logger.getLogger(CastleManager.class.getName());
-    
-    public static final CastleManager getInstance()
-    {
-        return SingletonHolder._instance;
-    }
-    
-    // =========================================================
-    // Data Field
-    private List<Castle> _castles;
-    
+
     private static final int _castleCirclets[] =
     {
         0,
@@ -54,7 +45,15 @@ public class CastleManager
         6834,
         6836
     };
+
     public static final int CASTLE_LORD_CROWN = 6841;
+    
+    public static final CastleManager getInstance()
+    {
+        return SingletonHolder._instance;
+    }
+    
+    private final List<Castle> _castles = new ArrayList<>();
     
     // =========================================================
     // Constructor
@@ -194,8 +193,6 @@ public class CastleManager
     
     public final List<Castle> getCastles()
     {
-        if (_castles == null)
-            _castles = new ArrayList<>();
         return _castles;
     }
     

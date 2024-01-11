@@ -40,7 +40,7 @@ public class TradeController
     private static Logger _log = Logger.getLogger(TradeController.class.getName());
 
     private int _nextListId;
-    private Map<Integer, L2TradeList> _lists = new ConcurrentHashMap<>();
+    private final Map<Integer, L2TradeList> _lists = new ConcurrentHashMap<>();
 
     public static TradeController getInstance()
     {

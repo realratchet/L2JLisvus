@@ -15,13 +15,13 @@
 package net.sf.l2j.gameserver.communitybbs.Manager;
 
 import java.text.DateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.StringTokenizer;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 import net.sf.l2j.gameserver.communitybbs.BB.Forum;
 import net.sf.l2j.gameserver.communitybbs.BB.Post;
@@ -33,8 +33,8 @@ import net.sf.l2j.util.StringUtil;
 
 public class TopicBBSManager extends BaseBBSManager
 {
-	private List<Topic> _table;
-	private Map<Forum, Integer> _maxId;
+	private final List<Topic> _table;
+	private final Map<Forum, Integer> _maxId;
 
 	public static TopicBBSManager getInstance()
 	{
@@ -43,7 +43,7 @@ public class TopicBBSManager extends BaseBBSManager
 
 	public TopicBBSManager()
 	{
-		_table = new ArrayList<>();
+		_table = new CopyOnWriteArrayList<>();
 		_maxId = new ConcurrentHashMap<>();
 	}
 

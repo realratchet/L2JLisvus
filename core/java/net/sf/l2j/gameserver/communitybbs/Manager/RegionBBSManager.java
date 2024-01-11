@@ -45,8 +45,8 @@ public class RegionBBSManager extends BaseBBSManager
 
     private int _onlineCount = 0;
     private int _onlineCountGm = 0;
-    private static Map<Integer, List<L2PcInstance>> _onlinePlayers = new ConcurrentHashMap<>();
-    private static Map<Integer, Map<String, String>> _communityPages = new ConcurrentHashMap<>();
+    private final Map<Integer, List<L2PcInstance>> _onlinePlayers = new ConcurrentHashMap<>();
+    private final Map<Integer, Map<String, String>> _communityPages = new ConcurrentHashMap<>();
 
     /**
      * @return

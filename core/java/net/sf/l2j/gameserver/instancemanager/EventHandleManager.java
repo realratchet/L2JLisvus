@@ -27,7 +27,7 @@ import net.sf.l2j.gameserver.eventhandling.events.GameTimeEvent;
  * @author DnR
  *
  */
-public class EventHandleManager extends Manager
+public class EventHandleManager
 {
 	private final static Logger _log = Logger.getLogger(EventHandleManager.class.getName());
 	
