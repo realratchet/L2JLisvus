@@ -1509,6 +1509,8 @@ public final class Config
 			}
 			catch (Exception e)
 			{
+				e.printStackTrace();
+				throw new Error("Failed to Load " + SERVER_VERSION_FILE + " File.");
 			}
 			
 			PROJECT_TAG = serverVersion.getProperty("tag", "N/A");

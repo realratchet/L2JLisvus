@@ -31,6 +31,7 @@ import net.sf.l2j.gameserver.model.olympiad.Olympiad;
 import net.sf.l2j.gameserver.network.serverpackets.ExOlympiadSpelledInfo;
 import net.sf.l2j.gameserver.network.serverpackets.MagicEffectIcons;
 import net.sf.l2j.gameserver.network.serverpackets.PartySpelled;
+import net.sf.l2j.gameserver.skills.effects.EffectTemplate;
 
 public class CharEffectList
 {
@@ -230,12 +231,20 @@ public class CharEffectList
 	 */
 	private boolean doesStack(L2Skill checkSkill)
 	{
-		if ((_buffs == null || _buffs.isEmpty()) || checkSkill._effectTemplates == null || checkSkill._effectTemplates.length < 1 || checkSkill._effectTemplates[0]._stackType == null || "none".equals(checkSkill._effectTemplates[0]._stackType))
+		List<EffectTemplate> effectTemplates = checkSkill.getEffectTemplates();
+		if ((_buffs == null || _buffs.isEmpty()) || effectTemplates == null || effectTemplates.isEmpty())
+		{
+			return false;
+		}
+
+		EffectTemplate et = effectTemplates.get(0);
+
+		if (et._stackType == null || "none".equals(et._stackType))
 		{
 			return false;
 		}
 		
-		String stackType = checkSkill._effectTemplates[0]._stackType;
+		String stackType = et._stackType;
 		
 		for (L2Effect e : _buffs)
 		{

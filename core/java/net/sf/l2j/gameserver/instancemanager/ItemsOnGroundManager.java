@@ -60,7 +60,7 @@ public class ItemsOnGroundManager
         load();
         
         if (Config.SAVE_DROPPED_ITEM_INTERVAL > 0)
-            ThreadPoolManager.getInstance().scheduleGeneralAtFixedRate(new storeInDb(), Config.SAVE_DROPPED_ITEM_INTERVAL, Config.SAVE_DROPPED_ITEM_INTERVAL);
+            ThreadPoolManager.getInstance().scheduleGeneralAtFixedRate(this::saveInDb, Config.SAVE_DROPPED_ITEM_INTERVAL, Config.SAVE_DROPPED_ITEM_INTERVAL);
     }
     
     private void load()
@@ -68,11 +68,17 @@ public class ItemsOnGroundManager
         // if DestroyPlayerDroppedItem was previously false, items currently protected will be added to ItemsAutoDestroy
         if (Config.DESTROY_DROPPED_PLAYER_ITEM)
         {
-            String str = null;
-            if (!Config.DESTROY_EQUIPABLE_PLAYER_ITEM) // Recycle misc. items only
+            String str;
+            if (!Config.DESTROY_EQUIPABLE_PLAYER_ITEM)
+            {
+                // Recycle misc. items only
                 str = "UPDATE itemsonground SET drop_time=? WHERE drop_time=-1 and equipable=0";
-            else if (Config.DESTROY_EQUIPABLE_PLAYER_ITEM) // Recycle all items including equipable
+            }
+            else
+            {
+                // Recycle all items including equipable
                 str = "UPDATE itemsonground SET drop_time=? WHERE drop_time=-1";
+            }
             
             try (Connection con = L2DatabaseFactory.getInstance().getConnection();
                 PreparedStatement statement = con.prepareStatement(str))
@@ -160,7 +166,47 @@ public class ItemsOnGroundManager
     
     public void saveInDb()
     {
-        new storeInDb().run();
+        if (!Config.SAVE_DROPPED_ITEM)
+            return;
+        
+        emptyTable();
+        
+        if (_items.isEmpty())
+        {
+            if (Config.DEBUG)
+                _log.warning("ItemsOnGroundManager: nothing to save...");
+            return;
+        }
+        
+        try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+            PreparedStatement statement = con.prepareStatement("INSERT INTO itemsonground(object_id, item_id, count, enchant_level, x, y, z, drop_time, equipable) VALUES(?,?,?,?,?,?,?,?,?)"))
+        {
+            for (L2ItemInstance item : _items)
+            {
+                if (item == null)
+                    continue;
+                
+                statement.setInt(1, item.getObjectId());
+                statement.setInt(2, item.getItemId());
+                statement.setInt(3, item.getCount());
+                statement.setInt(4, item.getEnchantLevel());
+                statement.setInt(5, item.getX());
+                statement.setInt(6, item.getY());
+                statement.setInt(7, item.getZ());
+                statement.setLong(8, item.isProtected() ? -1 : item.getDropTime()); // Item will be protected
+                statement.setLong(9, item.isEquipable() ? 1 : 0); // Set equippable
+                statement.addBatch();
+            }
+            
+            statement.executeBatch();
+        }
+        catch (Exception e)
+        {
+            _log.log(Level.SEVERE, "ItemsOnGroundManager: Failed to stored items on ground into database", e);
+        }
+        
+        if (Config.DEBUG)
+            _log.warning("ItemsOnGroundManager: " + _items.size() + " items on ground saved");
     }
     
     public void cleanUp()
@@ -178,60 +224,6 @@ public class ItemsOnGroundManager
         catch (Exception e)
         {
             _log.log(Level.SEVERE, "Error while cleaning table ItemsOnGround " + e);
-        }
-    }
-    
-    protected class storeInDb implements Runnable
-    {
-        @Override
-        public void run()
-        {
-            if (!Config.SAVE_DROPPED_ITEM)
-                return;
-            
-            emptyTable();
-            
-            if (_items.isEmpty())
-            {
-                if (Config.DEBUG)
-                    _log.warning("ItemsOnGroundManager: nothing to save...");
-                return;
-            }
-            
-            for (L2ItemInstance item : _items)
-            {
-                if (item == null)
-                    continue;
-                
-                try (Connection con = L2DatabaseFactory.getInstance().getConnection();
-                    PreparedStatement statement = con.prepareStatement("INSERT INTO itemsonground(object_id, item_id, count, enchant_level, x, y, z, drop_time, equipable) VALUES(?,?,?,?,?,?,?,?,?)"))
-                {
-                    statement.setInt(1, item.getObjectId());
-                    statement.setInt(2, item.getItemId());
-                    statement.setInt(3, item.getCount());
-                    statement.setInt(4, item.getEnchantLevel());
-                    statement.setInt(5, item.getX());
-                    statement.setInt(6, item.getY());
-                    statement.setInt(7, item.getZ());
-                    if (item.isProtected())
-                        statement.setLong(8, -1); // Item will be protected
-                    else
-                        statement.setLong(8, item.getDropTime()); // Item will be added to ItemsAutoDestroy
-                    if (item.isEquipable())
-                        statement.setLong(9, 1); // Set equippable
-                    else
-                        statement.setLong(9, 0);
-                    statement.execute();
-                }
-                catch (Exception e)
-                {
-                    _log.log(Level.SEVERE, "error while inserting into table ItemsOnGround " + e);
-                    e.printStackTrace();
-                }
-            }
-            
-            if (Config.DEBUG)
-                _log.warning("ItemsOnGroundManager: " + _items.size() + " items on ground saved");
         }
     }
     

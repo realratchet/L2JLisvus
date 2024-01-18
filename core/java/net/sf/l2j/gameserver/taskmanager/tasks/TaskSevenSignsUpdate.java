@@ -45,7 +45,7 @@ public class TaskSevenSignsUpdate extends Task
     {
         try
         {
-            SevenSigns.getInstance().saveSevenSignsData(null, true);
+            SevenSigns.getInstance().saveSevenSignsStatus();
 
             if (!SevenSigns.getInstance().isSealValidationPeriod())
                 SevenSignsFestival.getInstance().saveFestivalData(false);
@@ -62,6 +62,6 @@ public class TaskSevenSignsUpdate extends Task
 	public void initialize()
     {
         super.initialize();
-        TaskManager.addUniqueTask(NAME, TaskTypes.TYPE_FIXED_SHEDULED, "1800000", "1800000", "");
+        TaskManager.getInstance().addUniqueTask(NAME, TaskTypes.TYPE_FIXED_SHEDULED, "1800000", "1800000", "");
     }
 }

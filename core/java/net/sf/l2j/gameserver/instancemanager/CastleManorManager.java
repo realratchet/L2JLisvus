@@ -211,6 +211,8 @@ public class CastleManorManager
                 List<CropProcure> procure = new ArrayList<>();
                 List<CropProcure> procureNext = new ArrayList<>();
                 
+                int count = 0;
+                
                 // restore seed production info
                 try (PreparedStatement statement = con.prepareStatement(CASTLE_MANOR_LOAD_PRODUCTION))
                 {
@@ -228,6 +230,8 @@ public class CastleManorManager
                                 production.add(new SeedProduction(seedId, canProduce, price, startProduce));
                             else
                                 productionNext.add(new SeedProduction(seedId, canProduce, price, startProduce));
+                            
+                            count++;
                         }
                     }
                 }
@@ -253,6 +257,8 @@ public class CastleManorManager
                                 procure.add(new CropProcure(cropId, canBuy, rewardType, startBuy, price));
                             else
                                 procureNext.add(new CropProcure(cropId, canBuy, rewardType, startBuy, price));
+                            
+                            count++;
                         }
                     }
                 }
@@ -260,8 +266,8 @@ public class CastleManorManager
                 castle.setCropProcure(procure, PERIOD_CURRENT);
                 castle.setCropProcure(procureNext, PERIOD_NEXT);
                 
-                if (!procure.isEmpty() || !procureNext.isEmpty() || !production.isEmpty() || !productionNext.isEmpty())
-                    _log.info(castle.getName() + ": Data loaded");
+                if (count > 0)
+                    _log.info("Manor system: Data loaded for castle " + castle.getName());
             }
         }
         catch (Exception e)
@@ -297,23 +303,18 @@ public class CastleManorManager
                     setUnderMaintenance(true);
                     _log.info("Manor System: Under maintenance mode started");
                     
-                    _scheduledMaintenanceEnd = ThreadPoolManager.getInstance().scheduleGeneral(new Runnable()
-                    {
-                        @Override
-                        public void run()
+                    _scheduledMaintenanceEnd = ThreadPoolManager.getInstance().scheduleGeneral(() -> {
+                        _log.info("Manor System: Next period started");
+                        setNextPeriod();
+                        try
                         {
-                            _log.info("Manor System: Next period started");
-                            setNextPeriod();
-                            try
-                            {
-                                save();
-                            }
-                            catch (Exception e)
-                            {
-                                _log.info("Manor System: Failed to save manor data: " + e);
-                            }
-                            setUnderMaintenance(false);
+                            save();
                         }
+                        catch (Exception e)
+                        {
+                            _log.info("Manor System: Failed to save manor data: " + e);
+                        }
+                        setUnderMaintenance(false);
                     }, MAINTENANCE_PERIOD);
                 }
                 updateManorRefresh();

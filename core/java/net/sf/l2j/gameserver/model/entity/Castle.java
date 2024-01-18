@@ -56,20 +56,21 @@ public class Castle
 {
 	private static final Logger _log = Logger.getLogger(Castle.class.getName());
 	
-	// =========================================================
-	// Data Field
-	private List<CropProcure> _procure = new ArrayList<>();
-	private List<SeedProduction> _production = new ArrayList<>();
-	private List<CropProcure> _procureNext = new ArrayList<>();
-	private List<SeedProduction> _productionNext = new ArrayList<>();
-	private boolean _isNextPeriodApproved = false;
-	
 	private static final String CASTLE_MANOR_DELETE_PRODUCTION = "DELETE FROM castle_manor_production WHERE castle_id=?";
 	private static final String CASTLE_MANOR_DELETE_PRODUCTION_PERIOD = "DELETE FROM castle_manor_production WHERE castle_id=? AND period=?";
 	private static final String CASTLE_MANOR_DELETE_PROCURE = "DELETE FROM castle_manor_procure WHERE castle_id=?";
 	private static final String CASTLE_MANOR_DELETE_PROCURE_PERIOD = "DELETE FROM castle_manor_procure WHERE castle_id=? AND period=?";
+	private static final String CASTLE_INSERT_CROP = "INSERT INTO castle_manor_procure VALUES (?,?,?,?,?,?,?)";
 	private static final String CASTLE_UPDATE_CROP = "UPDATE castle_manor_procure SET can_buy=? WHERE crop_id=? AND castle_id=? AND period=?";
+	private static final String CASTLE_INSERT_SEED = "INSERT INTO castle_manor_production VALUES (?,?,?,?,?,?)";
 	private static final String CASTLE_UPDATE_SEED = "UPDATE castle_manor_production SET can_produce=? WHERE seed_id=? AND castle_id=? AND period=?";
+
+	/** Castle Functions */
+	public static final int FUNC_TELEPORT = 1;
+	public static final int FUNC_RESTORE_HP = 2;
+	public static final int FUNC_RESTORE_MP = 3;
+	public static final int FUNC_RESTORE_EXP = 4;
+	public static final int FUNC_SUPPORT = 5;
 	
 	// =========================================================
 	// Data Field
@@ -86,199 +87,17 @@ public class Castle
 	
 	private L2SiegeZone _zone;
 	private L2CastleTeleportZone _teleZone;
+	private boolean _isNextPeriodApproved = false;
 	
 	private final Set<L2DoorInstance> _doors = ConcurrentHashMap.newKeySet();
 	private final List<L2ArtefactInstance> _artefacts = new ArrayList<>(1);
 	private final Map<Integer, Integer> _engraves = new HashMap<>();
 	private final Map<Integer, CastleFunction> _functions = new ConcurrentHashMap<>();
-	
-	/** Castle Functions */
-	public static final int FUNC_TELEPORT = 1;
-	public static final int FUNC_RESTORE_HP = 2;
-	public static final int FUNC_RESTORE_MP = 3;
-	public static final int FUNC_RESTORE_EXP = 4;
-	public static final int FUNC_SUPPORT = 5;
-	
-	public class CastleFunction
-	{
-		private final int _type;
-		private int _lvl;
-		protected int _fee;
-		protected int _tempFee;
-		private final long _rate;
-		private long _endDate;
-		protected boolean _inDebt;
-		public boolean _cwh;
-		Future<?> _functionTask;
-		
-		public CastleFunction(int type, int lvl, int lease, int tempLease, long rate, long time, boolean cwh)
-		{
-			_type = type;
-			_lvl = lvl;
-			_fee = lease;
-			_tempFee = tempLease;
-			_rate = rate;
-			_endDate = time;
-			initializeTask(cwh);
-		}
-		
-		public int getType()
-		{
-			return _type;
-		}
-		
-		public int getLvl()
-		{
-			return _lvl;
-		}
-		
-		public int getLease()
-		{
-			return _fee;
-		}
-		
-		public long getRate()
-		{
-			return _rate;
-		}
-		
-		public long getEndTime()
-		{
-			return _endDate;
-		}
-		
-		public void setLvl(int lvl)
-		{
-			_lvl = lvl;
-		}
-		
-		public void setLease(int lease)
-		{
-			_fee = lease;
-		}
-		
-		public void setEndTime(long time)
-		{
-			_endDate = time;
-		}
-		
-		public Future<?> getFunctionTask()
-		{
-			return _functionTask;
-		}
-		
-		private void initializeTask(boolean cwh)
-		{
-			if (getOwnerId() <= 0)
-			{
-				return;
-			}
-			
-			long currentTime = System.currentTimeMillis();
-			if (_endDate > currentTime)
-			{
-				_functionTask = ThreadPoolManager.getInstance().scheduleGeneral(new FunctionTask(cwh), _endDate - currentTime);
-			}
-			else
-			{
-				_functionTask = ThreadPoolManager.getInstance().scheduleGeneral(new FunctionTask(cwh), 0);
-			}
-		}
-		
-		private class FunctionTask implements Runnable
-		{
-			public FunctionTask(boolean cwh)
-			{
-				_cwh = cwh;
-			}
-			
-			@Override
-			public void run()
-			{
-				try
-				{
-					if (getOwnerId() <= 0)
-					{
-						return;
-					}
-					
-					if ((ClanTable.getInstance().getClan(getOwnerId()).getWarehouse().getAdena() >= _fee) || !_cwh)
-					{
-						int fee = _fee;
-						boolean newfc = true;
-						if ((getEndTime() == 0) || (getEndTime() == -1))
-						{
-							if (getEndTime() == -1)
-							{
-								newfc = false;
-								fee = _tempFee;
-							}
-						}
-						else
-						{
-							newfc = false;
-						}
-						
-						setEndTime(System.currentTimeMillis() + getRate());
-						dbSave(newfc);
-						
-						if (_cwh)
-						{
-							ClanTable.getInstance().getClan(getOwnerId()).getWarehouse().destroyItemByItemId("CS_function_fee", Inventory.ADENA_ID, fee, null, null);
-							if (Config.DEBUG)
-							{
-								_log.warning("deducted " + fee + " adena from " + getName() + " owner's cwh for function id : " + getType());
-							}
-						}
-						_functionTask = ThreadPoolManager.getInstance().scheduleGeneral(new FunctionTask(true), getRate());
-					}
-					else
-					{
-						removeFunction(getType());
-					}
-				}
-				catch (Throwable t)
-				{
-				}
-			}
-		}
-		
-		public void dbSave(boolean newFunction)
-		{
-			try (Connection con = L2DatabaseFactory.getInstance().getConnection())
-			{
-				if (newFunction)
-				{
-					try (PreparedStatement statement = con.prepareStatement("INSERT INTO castle_functions (castle_id, type, lvl, lease, rate, endTime) VALUES (?,?,?,?,?,?)"))
-					{
-						statement.setInt(1, getCastleId());
-						statement.setInt(2, getType());
-						statement.setInt(3, getLvl());
-						statement.setInt(4, getLease());
-						statement.setLong(5, getRate());
-						statement.setLong(6, getEndTime());
-						statement.execute();
-					}
-				}
-				else
-				{
-					try (PreparedStatement statement = con.prepareStatement("UPDATE castle_functions SET lvl=?, lease=?, endTime=? WHERE castle_id=? AND type=?"))
-					{
-						statement.setInt(1, getLvl());
-						statement.setInt(2, getLease());
-						statement.setLong(3, getEndTime());
-						statement.setInt(4, getCastleId());
-						statement.setInt(5, getType());
-						statement.execute();
-					}
-				}
-			}
-			catch (Exception e)
-			{
-				_log.severe("Exception: Castle.updateFunctions(int type, int lvl, int lease, long rate, long time, boolean addNew): " + e.getMessage());
-			}
-		}
-	}
+
+	private List<CropProcure> _procure = new ArrayList<>();
+	private List<SeedProduction> _production = new ArrayList<>();
+	private List<CropProcure> _procureNext = new ArrayList<>();
+	private List<SeedProduction> _productionNext = new ArrayList<>();
 	
 	// =========================================================
 	// Constructor
@@ -760,7 +579,7 @@ public class Castle
 				{
 					func.setLease(lease);
 					func.setLvl(lvl);
-					func.dbSave(false);
+					func.save(false);
 				}
 			}
 		}
@@ -804,7 +623,7 @@ public class Castle
 	private void saveDoorUpgrade(int doorId, int hp, int pDef, int mDef)
 	{
 		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
-			PreparedStatement statement = con.prepareStatement("INSERT INTO castle_doorupgrade (doorId, castleId, hp, pDef, mDef) values (?,?,?,?,?)"))
+			PreparedStatement statement = con.prepareStatement("INSERT INTO castle_doorupgrade (doorId, castleId, hp, pDef, mDef) VALUES (?,?,?,?,?)"))
 		{
 			statement.setInt(1, doorId);
 			statement.setInt(2, _castleId);
@@ -833,8 +652,6 @@ public class Castle
 		
 		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
 		{
-			// NEED TO REMOVE HAS CASTLE FLAG FROM CLAN_DATA
-			// SHOULD BE CHECKED FROM CASTLE TABLE
 			try (PreparedStatement statement = con.prepareStatement("UPDATE clan_data SET hasCastle=? WHERE hasCastle=?"))
 			{
 				statement.setInt(1, 0);
@@ -1109,55 +926,41 @@ public class Castle
 				statement.execute();
 			}
 			
-			if (_production != null)
+			if (_production != null && !_production.isEmpty())
 			{
-				int count = 0;
-				String query = "INSERT INTO castle_manor_production VALUES ";
-				String values[] = new String[_production.size()];
-				for (SeedProduction s : _production)
+				try (PreparedStatement statement = con.prepareStatement(CASTLE_INSERT_SEED))
 				{
-					values[count] = "(" + getCastleId() + "," + s.getId() + "," + s.getCanProduce() + "," + s.getStartProduce() + "," + s.getPrice() + "," + CastleManorManager.PERIOD_CURRENT + ")";
-					count++;
-				}
-				
-				if (values.length > 0)
-				{
-					query += values[0];
-					for (int i = 1; i < values.length; i++)
+					for (SeedProduction s : _production)
 					{
-						query += "," + values[i];
+						statement.setInt(1, getCastleId());
+						statement.setInt(2, s.getId());
+						statement.setInt(3, s.getCanProduce());
+						statement.setInt(4, s.getStartProduce());
+						statement.setInt(5, s.getPrice());
+						statement.setInt(6, CastleManorManager.PERIOD_CURRENT);
+						statement.addBatch();
 					}
-					
-					try (PreparedStatement statement = con.prepareStatement(query))
-					{
-						statement.execute();
-					}
+
+					statement.executeBatch();
 				}
 			}
 			
-			if (_productionNext != null)
+			if (_productionNext != null && !_productionNext.isEmpty())
 			{
-				int count = 0;
-				String query = "INSERT INTO castle_manor_production VALUES ";
-				String values[] = new String[_productionNext.size()];
-				for (SeedProduction s : _productionNext)
+				try (PreparedStatement statement = con.prepareStatement(CASTLE_INSERT_SEED))
 				{
-					values[count] = "(" + getCastleId() + "," + s.getId() + "," + s.getCanProduce() + "," + s.getStartProduce() + "," + s.getPrice() + "," + CastleManorManager.PERIOD_NEXT + ")";
-					count++;
-				}
-				
-				if (values.length > 0)
-				{
-					query += values[0];
-					for (int i = 1; i < values.length; i++)
+					for (SeedProduction s : _productionNext)
 					{
-						query += "," + values[i];
+						statement.setInt(1, getCastleId());
+						statement.setInt(2, s.getId());
+						statement.setInt(3, s.getCanProduce());
+						statement.setInt(4, s.getStartProduce());
+						statement.setInt(5, s.getPrice());
+						statement.setInt(6, CastleManorManager.PERIOD_NEXT);
+						statement.addBatch();
 					}
-					
-					try (PreparedStatement statement = con.prepareStatement(query))
-					{
-						statement.execute();
-					}
+
+					statement.executeBatch();
 				}
 			}
 		}
@@ -1179,32 +982,24 @@ public class Castle
 				statement.execute();
 			}
 			
-			List<SeedProduction> prod = null;
-			prod = getSeedProduction(period);
+			List<SeedProduction> prod = getSeedProduction(period);
 			
-			if (prod != null)
+			if (prod != null && !prod.isEmpty())
 			{
-				int count = 0;
-				String query = "INSERT INTO castle_manor_production VALUES ";
-				String values[] = new String[prod.size()];
-				for (SeedProduction s : prod)
+				try (PreparedStatement statement = con.prepareStatement(CASTLE_INSERT_SEED))
 				{
-					values[count] = "(" + getCastleId() + "," + s.getId() + "," + s.getCanProduce() + "," + s.getStartProduce() + "," + s.getPrice() + "," + period + ")";
-					count++;
-				}
-				
-				if (values.length > 0)
-				{
-					query += values[0];
-					for (int i = 1; i < values.length; i++)
+					for (SeedProduction s : prod)
 					{
-						query += "," + values[i];
+						statement.setInt(1, getCastleId());
+						statement.setInt(2, s.getId());
+						statement.setInt(3, s.getCanProduce());
+						statement.setInt(4, s.getStartProduce());
+						statement.setInt(5, s.getPrice());
+						statement.setInt(6, period);
+						statement.addBatch();
 					}
-					
-					try (PreparedStatement statement = con.prepareStatement(query))
-					{
-						statement.execute();
-					}
+
+					statement.executeBatch();
 				}
 			}
 		}
@@ -1214,7 +1009,6 @@ public class Castle
 		}
 	}
 	
-	// Save crop procure data
 	public void saveCropData()
 	{
 		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
@@ -1225,55 +1019,43 @@ public class Castle
 				statement.execute();
 			}
 			
-			if ((_procure != null) && (!_procure.isEmpty()))
+			if (_procure != null && !_procure.isEmpty())
 			{
-				int count = 0;
-				String query = "INSERT INTO castle_manor_procure VALUES ";
-				String values[] = new String[_procure.size()];
-				for (CropProcure cp : _procure)
+				try (PreparedStatement statement = con.prepareStatement(CASTLE_INSERT_CROP))
 				{
-					values[count] = "(" + getCastleId() + "," + cp.getId() + "," + cp.getAmount() + "," + cp.getStartAmount() + "," + cp.getPrice() + "," + cp.getReward() + "," + CastleManorManager.PERIOD_CURRENT + ")";
-					count++;
-				}
-				
-				if (values.length > 0)
-				{
-					query += values[0];
-					for (int i = 1; i < values.length; i++)
+					for (CropProcure cp : _procure)
 					{
-						query += "," + values[i];
+						statement.setInt(1, getCastleId());
+						statement.setInt(2, cp.getId());
+						statement.setInt(3, cp.getAmount());
+						statement.setInt(4, cp.getStartAmount());
+						statement.setInt(5, cp.getPrice());
+						statement.setInt(6, cp.getReward());
+						statement.setInt(7, CastleManorManager.PERIOD_CURRENT);
+						statement.addBatch();
 					}
-					
-					try (PreparedStatement statement = con.prepareStatement(query))
-					{
-						statement.execute();
-					}
+
+					statement.executeBatch();
 				}
 			}
 			
-			if ((_procureNext != null) && (!_procureNext.isEmpty()))
+			if (_procureNext != null && !_procureNext.isEmpty())
 			{
-				int count = 0;
-				String query = "INSERT INTO castle_manor_procure VALUES ";
-				String values[] = new String[_procureNext.size()];
-				for (CropProcure cp : _procureNext)
+				try (PreparedStatement statement = con.prepareStatement(CASTLE_INSERT_CROP))
 				{
-					values[count] = "(" + getCastleId() + "," + cp.getId() + "," + cp.getAmount() + "," + cp.getStartAmount() + "," + cp.getPrice() + "," + cp.getReward() + "," + CastleManorManager.PERIOD_NEXT + ")";
-					count++;
-				}
-				
-				if (values.length > 0)
-				{
-					query += values[0];
-					for (int i = 1; i < values.length; i++)
+					for (CropProcure cp : _procureNext)
 					{
-						query += "," + values[i];
+						statement.setInt(1, getCastleId());
+						statement.setInt(2, cp.getId());
+						statement.setInt(3, cp.getAmount());
+						statement.setInt(4, cp.getStartAmount());
+						statement.setInt(5, cp.getPrice());
+						statement.setInt(6, cp.getReward());
+						statement.setInt(7, CastleManorManager.PERIOD_NEXT);
+						statement.addBatch();
 					}
-					
-					try (PreparedStatement statement = con.prepareStatement(query))
-					{
-						statement.execute();
-					}
+
+					statement.executeBatch();
 				}
 			}
 		}
@@ -1283,7 +1065,6 @@ public class Castle
 		}
 	}
 	
-	// Save crop procure data for specified period
 	public void saveCropData(int period)
 	{
 		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
@@ -1295,33 +1076,25 @@ public class Castle
 				statement.execute();
 			}
 			
-			List<CropProcure> proc = null;
-			proc = getCropProcure(period);
+			List<CropProcure> proc = getCropProcure(period);
 			
-			if ((proc != null) && (!proc.isEmpty()))
+			if (proc != null && !proc.isEmpty())
 			{
-				int count = 0;
-				String query = "INSERT INTO castle_manor_procure VALUES ";
-				String values[] = new String[proc.size()];
-				
-				for (CropProcure cp : proc)
+				try (PreparedStatement statement = con.prepareStatement(CASTLE_INSERT_CROP))
 				{
-					values[count] = "(" + getCastleId() + "," + cp.getId() + "," + cp.getAmount() + "," + cp.getStartAmount() + "," + cp.getPrice() + "," + cp.getReward() + "," + period + ")";
-					count++;
-				}
-				
-				if (values.length > 0)
-				{
-					query += values[0];
-					for (int i = 1; i < values.length; i++)
+					for (CropProcure cp : proc)
 					{
-						query += "," + values[i];
+						statement.setInt(1, getCastleId());
+						statement.setInt(2, cp.getId());
+						statement.setInt(3, cp.getAmount());
+						statement.setInt(4, cp.getStartAmount());
+						statement.setInt(5, cp.getPrice());
+						statement.setInt(6, cp.getReward());
+						statement.setInt(7, period);
+						statement.addBatch();
 					}
-					
-					try (PreparedStatement statement = con.prepareStatement(query))
-					{
-						statement.execute();
-					}
+
+					statement.executeBatch();
 				}
 			}
 		}
@@ -1385,6 +1158,187 @@ public class Castle
 		{
 			saveCropData();
 			saveSeedData();
+		}
+	}
+
+	public class CastleFunction
+	{
+		private final int _type;
+		private int _lvl;
+		protected int _fee;
+		protected int _tempFee;
+		private final long _rate;
+		private long _endDate;
+		protected boolean _inDebt;
+		public boolean _cwh;
+		Future<?> _functionTask;
+		
+		public CastleFunction(int type, int lvl, int lease, int tempLease, long rate, long time, boolean cwh)
+		{
+			_type = type;
+			_lvl = lvl;
+			_fee = lease;
+			_tempFee = tempLease;
+			_rate = rate;
+			_endDate = time;
+			initializeTask(cwh);
+		}
+		
+		public int getType()
+		{
+			return _type;
+		}
+		
+		public int getLvl()
+		{
+			return _lvl;
+		}
+		
+		public int getLease()
+		{
+			return _fee;
+		}
+		
+		public long getRate()
+		{
+			return _rate;
+		}
+		
+		public long getEndTime()
+		{
+			return _endDate;
+		}
+		
+		public void setLvl(int lvl)
+		{
+			_lvl = lvl;
+		}
+		
+		public void setLease(int lease)
+		{
+			_fee = lease;
+		}
+		
+		public void setEndTime(long time)
+		{
+			_endDate = time;
+		}
+		
+		public Future<?> getFunctionTask()
+		{
+			return _functionTask;
+		}
+		
+		private void initializeTask(boolean cwh)
+		{
+			if (getOwnerId() <= 0)
+			{
+				return;
+			}
+			
+			long currentTime = System.currentTimeMillis();
+			if (_endDate > currentTime)
+			{
+				_functionTask = ThreadPoolManager.getInstance().scheduleGeneral(new FunctionTask(cwh), _endDate - currentTime);
+			}
+			else
+			{
+				_functionTask = ThreadPoolManager.getInstance().scheduleGeneral(new FunctionTask(cwh), 0);
+			}
+		}
+		
+		private class FunctionTask implements Runnable
+		{
+			public FunctionTask(boolean cwh)
+			{
+				_cwh = cwh;
+			}
+			
+			@Override
+			public void run()
+			{
+				try
+				{
+					if (getOwnerId() <= 0)
+					{
+						return;
+					}
+					
+					if ((ClanTable.getInstance().getClan(getOwnerId()).getWarehouse().getAdena() >= _fee) || !_cwh)
+					{
+						int fee = _fee;
+						boolean newfc = true;
+						if ((getEndTime() == 0) || (getEndTime() == -1))
+						{
+							if (getEndTime() == -1)
+							{
+								newfc = false;
+								fee = _tempFee;
+							}
+						}
+						else
+						{
+							newfc = false;
+						}
+						
+						setEndTime(System.currentTimeMillis() + getRate());
+						save(newfc);
+						
+						if (_cwh)
+						{
+							ClanTable.getInstance().getClan(getOwnerId()).getWarehouse().destroyItemByItemId("CS_function_fee", Inventory.ADENA_ID, fee, null, null);
+							if (Config.DEBUG)
+							{
+								_log.warning("deducted " + fee + " adena from " + getName() + " owner's cwh for function id : " + getType());
+							}
+						}
+						_functionTask = ThreadPoolManager.getInstance().scheduleGeneral(new FunctionTask(true), getRate());
+					}
+					else
+					{
+						removeFunction(getType());
+					}
+				}
+				catch (Throwable t)
+				{
+				}
+			}
+		}
+		
+		public void save(boolean newFunction)
+		{
+			try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+			{
+				if (newFunction)
+				{
+					try (PreparedStatement statement = con.prepareStatement("INSERT INTO castle_functions (castle_id, type, lvl, lease, rate, endTime) VALUES (?,?,?,?,?,?)"))
+					{
+						statement.setInt(1, getCastleId());
+						statement.setInt(2, getType());
+						statement.setInt(3, getLvl());
+						statement.setInt(4, getLease());
+						statement.setLong(5, getRate());
+						statement.setLong(6, getEndTime());
+						statement.execute();
+					}
+				}
+				else
+				{
+					try (PreparedStatement statement = con.prepareStatement("UPDATE castle_functions SET lvl=?, lease=?, endTime=? WHERE castle_id=? AND type=?"))
+					{
+						statement.setInt(1, getLvl());
+						statement.setInt(2, getLease());
+						statement.setLong(3, getEndTime());
+						statement.setInt(4, getCastleId());
+						statement.setInt(5, getType());
+						statement.execute();
+					}
+				}
+			}
+			catch (Exception e)
+			{
+				_log.severe("Exception: Castle.updateFunctions(int type, int lvl, int lease, long rate, long time, boolean addNew): " + e.getMessage());
+			}
 		}
 	}
 }

@@ -60,6 +60,6 @@ public class TaskRecom extends Task
 	public void  initialize()
     {
         super.initialize();
-        TaskManager.addUniqueTask(NAME,TaskTypes.TYPE_GLOBAL_TASK,"1","13:00:00","");
+        TaskManager.getInstance().addUniqueTask(NAME,TaskTypes.TYPE_GLOBAL_TASK,"1","13:00:00","");
     }
 }

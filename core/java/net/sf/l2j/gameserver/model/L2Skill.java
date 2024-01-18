@@ -2374,6 +2374,11 @@ public abstract class L2Skill
 		return (_effectTemplates != null && !_effectTemplates.isEmpty());
 	}
 
+	public List<EffectTemplate> getEffectTemplates()
+	{
+		return _effectTemplates;
+	}
+
 	public final L2Effect[] getEffects(L2Character effector, L2Character effected)
 	{
 		return getEffects(effector, effected, !isToggle() && Formulas.getInstance().calcSkillMastery(effector, this));

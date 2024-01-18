@@ -21,6 +21,7 @@ import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.instancemanager.CastleManager;
 import net.sf.l2j.gameserver.instancemanager.CastleManorManager;
 import net.sf.l2j.gameserver.instancemanager.CastleManorManager.SeedProduction;
+import net.sf.l2j.gameserver.model.entity.Castle;
 
 /**
  * Format: (ch) dd [ddd]
@@ -64,7 +65,13 @@ public class RequestSetSeed extends L2GameClientPacket
 	@Override
 	public void runImpl()
 	{
-		if (_size < 1)
+		if (_size < 1 || _manorId < 1)
+		{
+			return;
+		}
+
+		Castle castle = CastleManager.getInstance().getCastleById(_manorId);
+		if (castle == null)
 		{
 			return;
 		}
@@ -81,10 +88,11 @@ public class RequestSetSeed extends L2GameClientPacket
 			}
 		}
 
-		CastleManager.getInstance().getCastleById(_manorId).setSeedProduction(seeds, CastleManorManager.PERIOD_NEXT);
+		castle.setSeedProduction(seeds, CastleManorManager.PERIOD_NEXT);
+		
 		if (Config.ALT_MANOR_SAVE_ALL_ACTIONS)
 		{
-			CastleManager.getInstance().getCastleById(_manorId).saveSeedData(CastleManorManager.PERIOD_NEXT);
+			castle.saveSeedData(CastleManorManager.PERIOD_NEXT);
 		}
 	}
 

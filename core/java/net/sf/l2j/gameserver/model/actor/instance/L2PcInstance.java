@@ -208,7 +208,6 @@ import net.sf.l2j.util.Rnd;
 
 /**
  * This class represents all player characters in the world.
- * There is always a client-thread connected to this (except if a player-store is activated upon logout).
  */
 public final class L2PcInstance extends L2PlayableInstance
 {
@@ -620,7 +619,7 @@ public final class L2PcInstance extends L2PlayableInstance
 	private int _controlItemObjectId;
 	private L2PetData _data;
 	private int _curFeed;
-	protected Future<?> _mountFeedTask;
+	private Future<?> _mountFeedTask;
 	private ScheduledFuture<?> _dismountTask;
 	
 	private L2Fishing _fishCombat;
@@ -631,6 +630,9 @@ public final class L2PcInstance extends L2PlayableInstance
 	
 	private ScheduledFuture<?> _taskRentPet;
 	private ScheduledFuture<?> _taskWater;
+	private ScheduledFuture<?> _taskForFish;
+	private ScheduledFuture<?> _taskWarnUserTakeBreak;
+	private ScheduledFuture<?> _punishmentTask;
 	
 	/** Boat */
 	private L2BoatInstance _boat = null;
@@ -3967,7 +3969,7 @@ public final class L2PcInstance extends L2PlayableInstance
 		
 		if (isInOlympiadMode() && isOlympiadStart() && (needCpUpdate(352) || super.needHpUpdate(352)))
 		{
-			Olympiad.sendUserInfo(this);
+			Olympiad.getInstance().sendUserInfo(this);
 		}
 	}
 	
@@ -6753,8 +6755,9 @@ public final class L2PcInstance extends L2PlayableInstance
 				statement.setInt(4, subClass.getClassId());
 				statement.setInt(5, getObjectId());
 				statement.setInt(6, subClass.getClassIndex());
-				statement.execute();
+				statement.addBatch();
 			}
+			statement.executeBatch();
 		}
 		catch (Exception e)
 		{
@@ -6769,84 +6772,118 @@ public final class L2PcInstance extends L2PlayableInstance
 			return;
 		}
 		
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
-			PreparedStatement delete = con.prepareStatement(DELETE_SKILL_SAVE);
-			PreparedStatement statement = con.prepareStatement(ADD_SKILL_SAVE))
+		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
 		{
-			// Delete all current stored effects for char to avoid dupe
-			delete.setInt(1, getObjectId());
-			delete.setInt(2, getClassIndex());
-			delete.execute();
+			// Delete all current stored effects for char to avoid duplications
+			try (PreparedStatement statement = con.prepareStatement(DELETE_SKILL_SAVE))
+			{
+				statement.setInt(1, getObjectId());
+				statement.setInt(2, getClassIndex());
+				statement.executeUpdate();
+			}
 			
 			int buffIndex = 0;
 			
 			List<Integer> storedSkills = new ArrayList<>();
 			
-			/**
-			 * Store all effect data along with calculated remaining
-			 * reuse delays for matching skills. 'restore_type' <= 0.
-			 */
-			if (storeEffects)
+			try (PreparedStatement statement = con.prepareStatement(ADD_SKILL_SAVE))
 			{
-				for (L2Effect effect : getAllEffects())
+				/**
+				 * Store all effect data along with calculated remaining
+				 * reuse delays for matching skills. 'restore_type' <= 0.
+				 */
+				if (storeEffects)
 				{
-					if (effect == null)
+					for (L2Effect effect : getAllEffects())
 					{
-						continue;
+						if (effect == null)
+						{
+							continue;
+						}
+						
+						L2Skill skill = effect.getSkill();
+						
+						int skillId = skill.getId();
+						
+						if (storedSkills.contains(skillId))
+						{
+							continue;
+						}
+						
+						storedSkills.add(skillId);
+						
+						if (effect.getInUse() && !skill.isToggle())
+						{
+							buffIndex++;
+							
+							statement.setInt(1, getObjectId());
+							statement.setInt(2, skillId);
+							statement.setInt(3, skill.getLevel());
+							statement.setInt(4, effect.getCount());
+							statement.setInt(5, effect.getTime());
+							
+							if (_reuseTimeStamps.containsKey(skillId))
+							{
+								TimeStamp t = _reuseTimeStamps.get(skillId);
+								statement.setInt(6, t.hasNotPassed() ? t.getReuseDelay() : 0);
+								statement.setLong(7, t.hasNotPassed() ? t.getStamp() : 0);
+							}
+							else
+							{
+								statement.setInt(6, 0);
+								statement.setLong(7, 0);
+							}
+							
+							statement.setByte(8, effect.getRestoreType());
+							statement.setInt(9, getClassIndex());
+							statement.setInt(10, buffIndex);
+							statement.addBatch();
+							
+						}
 					}
-					
-					L2Skill skill = effect.getSkill();
-					
-					int skillId = skill.getId();
-					
-					if (storedSkills.contains(skillId))
+				}
+				
+				/**
+				 * Store the reuse delays of remaining skills which
+				 * lost effect but still under reuse delay. 'restore_type' 1.
+				 */
+				for (TimeStamp t : _reuseTimeStamps.values())
+				{
+					if (t.hasNotPassed())
 					{
-						continue;
-					}
-					
-					storedSkills.add(skillId);
-					
-					if (effect.getInUse() && !skill.isToggle())
-					{
+						int skillId = t.getSkillId();
+						if (storedSkills.contains(skillId))
+						{
+							continue;
+						}
+						
+						storedSkills.add(skillId);
+						
 						buffIndex++;
 						
 						statement.setInt(1, getObjectId());
 						statement.setInt(2, skillId);
-						statement.setInt(3, skill.getLevel());
-						statement.setInt(4, effect.getCount());
-						statement.setInt(5, effect.getTime());
-						
-						if (_reuseTimeStamps.containsKey(skillId))
-						{
-							TimeStamp t = _reuseTimeStamps.get(skillId);
-							statement.setInt(6, t.hasNotPassed() ? t.getReuseDelay() : 0);
-							statement.setLong(7, t.hasNotPassed() ? t.getStamp() : 0);
-						}
-						else
-						{
-							statement.setInt(6, 0);
-							statement.setLong(7, 0);
-						}
-						
-						statement.setByte(8, effect.getRestoreType());
+						statement.setInt(3, t.getSkillLevel());
+						statement.setInt(4, -1);
+						statement.setInt(5, -1);
+						statement.setInt(6, t.getReuseDelay());
+						statement.setLong(7, t.getStamp());
+						statement.setByte(8, (byte) 1);
 						statement.setInt(9, getClassIndex());
 						statement.setInt(10, buffIndex);
-						statement.execute();
-						
+						statement.addBatch();
 					}
 				}
-			}
-			
-			/**
-			 * Store the reuse delays of remaining skills which
-			 * lost effect but still under reuse delay. 'restore_type' 1.
-			 */
-			for (TimeStamp t : _reuseTimeStamps.values())
-			{
-				if (t.hasNotPassed())
+				
+				/**
+				 * Store the remaining life time of cubics.
+				 * 'restore_type' 2 for own cubics and 3 for cubics given by other player.
+				 */
+				for (L2CubicInstance cubic : _cubics)
 				{
-					int skillId = t.getSkillId();
-					if (storedSkills.contains(skillId))
+					L2SkillSummon skill = cubic.getSummonSkill();
+					int skillId = skill.getId();
+					if (storedSkills.contains(skillId) || !skill.isSaveCubicOnExit())
 					{
 						continue;
 					}
@@ -6857,46 +6894,18 @@ public final class L2PcInstance extends L2PlayableInstance
 					
 					statement.setInt(1, getObjectId());
 					statement.setInt(2, skillId);
-					statement.setInt(3, t.getSkillLevel());
-					statement.setInt(4, -1);
-					statement.setInt(5, -1);
-					statement.setInt(6, t.getReuseDelay());
-					statement.setLong(7, t.getStamp());
-					statement.setByte(8, (byte) 1);
+					statement.setInt(3, skill.getLevel());
+					statement.setInt(4, 0);
+					statement.setInt(5, (int) (cubic.getPassedLifeTime() / 1000));
+					statement.setInt(6, 0);
+					statement.setLong(7, 0);
+					statement.setByte(8, (byte) (cubic.givenByOther() ? 3 : 2));
 					statement.setInt(9, getClassIndex());
 					statement.setInt(10, buffIndex);
-					statement.execute();
+					statement.addBatch();
 				}
-			}
-			
-			/**
-			 * Store the remaining life time of cubics.
-			 * 'restore_type' 2 for own cubics and 3 for cubics given by other player.
-			 */
-			for (L2CubicInstance cubic : _cubics)
-			{
-				L2SkillSummon skill = cubic.getSummonSkill();
-				int skillId = skill.getId();
-				if (storedSkills.contains(skillId) || !skill.isSaveCubicOnExit())
-				{
-					continue;
-				}
-				
-				storedSkills.add(skillId);
-				
-				buffIndex++;
-				
-				statement.setInt(1, getObjectId());
-				statement.setInt(2, skillId);
-				statement.setInt(3, skill.getLevel());
-				statement.setInt(4, 0);
-				statement.setInt(5, (int) (cubic.getPassedLifeTime() / 1000));
-				statement.setInt(6, 0);
-				statement.setLong(7, 0);
-				statement.setByte(8, (byte) (cubic.givenByOther() ? 3 : 2));
-				statement.setInt(9, getClassIndex());
-				statement.setInt(10, buffIndex);
-				statement.execute();
+
+				statement.executeBatch();
 			}
 		}
 		catch (Exception e)
@@ -7022,7 +7031,7 @@ public final class L2PcInstance extends L2PlayableInstance
 		
 		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
 		{
-			if ((oldSkill != null) && (newSkill != null))
+			if (oldSkill != null && newSkill != null)
 			{
 				if (Config.KEEP_SUBCLASS_SKILLS)
 				{
@@ -8765,17 +8774,14 @@ public final class L2PcInstance extends L2PlayableInstance
 		_activeSoulShots.clear();
 	}
 	
-	private ScheduledFuture<?> _taskWarnUserTakeBreak;
-	
 	class WarnUserTakeBreak implements Runnable
 	{
 		@Override
 		public void run()
 		{
-			if (L2PcInstance.this.isOnline())
+			if (isOnline())
 			{
-				SystemMessage msg = new SystemMessage(764);
-				L2PcInstance.this.sendPacket(msg);
+				sendPacket(new SystemMessage(764));
 			}
 			else
 			{
@@ -8792,8 +8798,6 @@ public final class L2PcInstance extends L2PlayableInstance
 			stopRentPet();
 		}
 	}
-	
-	public ScheduledFuture<?> _taskforfish;
 	
 	class WaterTask implements Runnable
 	{
@@ -8950,7 +8954,7 @@ public final class L2PcInstance extends L2PlayableInstance
 		_observerMode = true;
 		
 		// Show participants info to this spectator
-		Olympiad.broadcastUsersInfo(this);
+		Olympiad.getInstance().broadcastUsersInfo(this);
 	}
 	
 	public void leaveObserverMode()
@@ -8992,7 +8996,7 @@ public final class L2PcInstance extends L2PlayableInstance
 			getAI().setIntention(CtrlIntention.AI_INTENTION_IDLE);
 		}
 		
-		Olympiad.removeSpectator(_olympiadGameId, this);
+		Olympiad.getInstance().removeSpectator(_olympiadGameId, this);
 		
 		_olympiadGameId = -1;
 		_observerMode = false;
@@ -10433,7 +10437,7 @@ public final class L2PcInstance extends L2PlayableInstance
 		
 		try
 		{
-			Olympiad.removeSpectator(_olympiadGameId, this);
+			Olympiad.getInstance().removeSpectator(_olympiadGameId, this);
 		}
 		catch (Exception e)
 		{
@@ -10641,16 +10645,16 @@ public final class L2PcInstance extends L2PlayableInstance
 	
 	public void stopLookingForFishTask()
 	{
-		if (_taskforfish != null)
+		if (_taskForFish != null)
 		{
-			_taskforfish.cancel(false);
-			_taskforfish = null;
+			_taskForFish.cancel(false);
+			_taskForFish = null;
 		}
 	}
 	
 	public void startLookingForFishTask()
 	{
-		if (!isDead() && (_taskforfish == null))
+		if (!isDead() && _taskForFish == null)
 		{
 			int checkDelay = 0;
 			
@@ -10688,7 +10692,7 @@ public final class L2PcInstance extends L2PlayableInstance
 						break;
 				}
 			}
-			_taskforfish = ThreadPoolManager.getInstance().scheduleEffectAtFixedRate(new LookingForFishTask(_fish.getWaitTime(), _fish.getFishGuts(), _fish.getType(), isNoob), 10000, checkDelay);
+			_taskForFish = ThreadPoolManager.getInstance().scheduleEffectAtFixedRate(new LookingForFishTask(_fish.getWaitTime(), _fish.getFishGuts(), _fish.getType(), isNoob), 10000, checkDelay);
 		}
 	}
 	
@@ -11322,8 +11326,6 @@ public final class L2PcInstance extends L2PlayableInstance
 			_punishmentTask = null;
 		}
 	}
-	
-	private ScheduledFuture<?> _punishmentTask;
 	
 	private class PunishmentTask implements Runnable
 	{

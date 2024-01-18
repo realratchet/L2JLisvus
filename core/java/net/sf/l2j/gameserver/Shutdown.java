@@ -386,7 +386,8 @@ public class Shutdown extends Thread
 		}
 		
 		// Save Seven Signs data before closing. :)
-		SevenSigns.getInstance().saveSevenSignsData(null, true);
+		SevenSigns.getInstance().saveSevenSignsData();
+		SevenSigns.getInstance().saveSevenSignsStatus();
 		
 		// Cancel timers and save all global (non-player specific) Quest data that needs to persist after reboot
 		QuestManager.getInstance().save();

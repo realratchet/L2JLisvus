@@ -324,12 +324,12 @@ public final class TaskManager
         return false;
     }
 
-    public static boolean addUniqueTask(String task, TaskTypes type, String param1, String param2, String param3)
+    public boolean addUniqueTask(String task, TaskTypes type, String param1, String param2, String param3)
     {
         return addUniqueTask(task, type, param1, param2, param3, 0);
     }
 
-    public static boolean addUniqueTask(String task, TaskTypes type, String param1, String param2, String param3, long lastActivation)
+    public boolean addUniqueTask(String task, TaskTypes type, String param1, String param2, String param3, long lastActivation)
     {
         try (Connection con = L2DatabaseFactory.getInstance().getConnection();
             PreparedStatement statement = con.prepareStatement(SQL_STATEMENTS[2]))
@@ -361,12 +361,12 @@ public final class TaskManager
         return true;
     }
 
-    public static boolean addTask(String task, TaskTypes type, String param1, String param2, String param3)
+    public boolean addTask(String task, TaskTypes type, String param1, String param2, String param3)
     {
         return addTask(task, type, param1, param2, param3, 0);
     }
 
-    public static boolean addTask(String task, TaskTypes type, String param1, String param2, String param3, long lastActivation)
+    public boolean addTask(String task, TaskTypes type, String param1, String param2, String param3, long lastActivation)
     {
         try (Connection con = L2DatabaseFactory.getInstance().getConnection();
             PreparedStatement statement = con.prepareStatement(SQL_STATEMENTS[3]))

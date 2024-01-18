@@ -31,7 +31,6 @@ import net.sf.l2j.gameserver.datatables.SkillTable;
 import net.sf.l2j.gameserver.datatables.TeleportLocationTable;
 import net.sf.l2j.gameserver.handler.IAdminCommandHandler;
 import net.sf.l2j.gameserver.instancemanager.CoupleManager;
-import net.sf.l2j.gameserver.instancemanager.Manager;
 import net.sf.l2j.gameserver.instancemanager.QuestManager;
 import net.sf.l2j.gameserver.model.L2Multisell;
 import net.sf.l2j.gameserver.model.L2World;
@@ -382,11 +381,6 @@ public class AdminAdmin implements IAdminCommandHandler
                     Config.load();
                     activeChar.sendMessage("All config settings have been reloaded.");
                 }
-                else if (type.startsWith("instancemanager"))
-                {
-                    Manager.reloadAll();
-                    activeChar.sendMessage("All instance managers have been reloaded.");
-                }
                 else if (type.startsWith("quest"))
                 {
                 	activeChar.sendMessage("Quests are being reloaded...");
@@ -425,7 +419,7 @@ public class AdminAdmin implements IAdminCommandHandler
             catch(Exception e)
             {
                 activeChar.sendMessage("Usage: //reload <multisell|teleport|skill|npc|htm|item|buylist|config"
-                	+ "|instancemanager|npcwalker|quest|event|aionpcbuff|wedding|admincommand>");
+                	+ "|npcwalker|quest|event|aionpcbuff|wedding|admincommand>");
             }
         }
         return true;
