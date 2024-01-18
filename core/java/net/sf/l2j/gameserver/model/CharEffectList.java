@@ -239,12 +239,12 @@ public class CharEffectList
 
 		EffectTemplate et = effectTemplates.get(0);
 
-		if (et._stackType == null || "none".equals(et._stackType))
+		if (et.getStackType() == null || "none".equals(et.getStackType()))
 		{
 			return false;
 		}
 		
-		String stackType = et._stackType;
+		String stackType = et.getStackType();
 		
 		for (L2Effect e : _buffs)
 		{

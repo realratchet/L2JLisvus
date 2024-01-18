@@ -115,7 +115,7 @@ public abstract class L2Effect
 	private int _periodFirstTime;
 
 	// Function templates
-	private final FuncTemplate[] _funcTemplates;
+	private final List<FuncTemplate> _funcTemplates;
 
 	// Initial count
 	private final int _totalCount;
@@ -191,13 +191,13 @@ public abstract class L2Effect
 
 		_effected = env.target;
 		_effector = env.player;
-		_lambda = template._lambda;
-		_funcTemplates = template._funcTemplates;
-		_count = template._counter;
+		_lambda = template.getLambda();
+		_funcTemplates = template.getFuncTemplates();
+		_count = template.getCounter();
 		_totalCount = _count;
-		_period = template._period;
-		_altPeriod1 = template._altPeriod1;
-		_altPeriod2 = template._altPeriod2;
+		_period = template.getPeriod();
+		_altPeriod1 = template.getAltPeriod1();
+		_altPeriod2 = template.getAltPeriod2();
 
 		// Effector is buffer, so set custom buff duration
 		if (_effector.isBuffer())
@@ -233,12 +233,12 @@ public abstract class L2Effect
 			_period *= 2;
 		}
 
-		_abnormalEffect = template._abnormalEffect;
-		_stackType = template._stackType;
-		_stackOrder = template._stackOrder;
+		_abnormalEffect = template.getAbnormalEffect();
+		_stackType = template.getStackType();
+		_stackOrder = template.getStackOrder();
 		_periodStartTicks = GameTimeController.getInstance().getGameTicks();
 		_periodFirstTime = 0;
-		_icon = template._icon;
+		_icon = template.getIcon();
 		scheduleEffect();
 	}
 

@@ -36,19 +36,20 @@ public final class EffectTemplate
 	private final Class<?> _func;
 	private final Constructor<?> _constructor;
 	
-	public final Condition _attachCond;
-	public final Condition _applyCond;
-	public final Lambda _lambda;
-	public final int _counter;
-	public final int _period; // in seconds
-	public final int _altPeriod1; // in seconds
-	public final int _altPeriod2; // in seconds
-	public final int _abnormalEffect;
-	private List<FuncTemplate> _funcTemplates;
+	private final Condition _attachCond;
+	private final Condition _applyCond;
+	private final Lambda _lambda;
+	private final int _counter;
+	private final int _period; // in seconds
+	private final int _altPeriod1; // in seconds
+	private final int _altPeriod2; // in seconds
+	private final int _abnormalEffect;
 	
-	public final String _stackType;
-	public final float _stackOrder;
-	public final boolean _icon;
+	private final String _stackType;
+	private final float _stackOrder;
+	private final boolean _icon;
+
+	private List<FuncTemplate> _funcTemplates;
 	
 	public EffectTemplate(Condition attachCond, Condition applyCond, String func, Lambda lambda, int counter, int period, int altPeriod1, int altPeriod2, int abnormalEffect, String stackType, float stackOrder, boolean showIcon)
 	{
@@ -117,6 +118,65 @@ public final class EffectTemplate
 		}
 		
 		_funcTemplates.add(f);
-		
+	}
+
+	public Condition getAttachCondition()
+	{
+		return _attachCond;
+	}
+
+	public Condition getApplyCondition()
+	{
+		return _applyCond;
+	}
+
+	public Lambda getLambda()
+	{
+		return _lambda;
+	}
+
+	public int getCounter()
+	{
+		return _counter;
+	}
+
+	public int getPeriod()
+	{
+		return _period;
+	}
+
+	public int getAltPeriod1()
+	{
+		return _altPeriod1;
+	}
+
+	public int getAltPeriod2()
+	{
+		return _altPeriod2;
+	}
+
+	public int getAbnormalEffect()
+	{
+		return _abnormalEffect;
+	}
+
+	public String getStackType()
+	{
+		return _stackType;
+	}
+
+	public float getStackOrder()
+	{
+		return _stackOrder;
+	}
+
+	public boolean getIcon()
+	{
+		return _icon;
+	}
+
+	public List<FuncTemplate> getFuncTemplates()
+	{
+		return _funcTemplates;
 	}
 }
