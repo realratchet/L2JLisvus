@@ -33,7 +33,6 @@ import net.sf.l2j.util.Rnd;
 class OlympiadManager implements Runnable
 {
     private final Map<Integer, OlympiadGame> _olympiadInstances;
-    private volatile boolean _battleStarted = false;
     
     public static OlympiadManager getInstance()
 	{
@@ -234,17 +233,7 @@ class OlympiadManager implements Runnable
         _olympiadInstances.clear();
         Olympiad.getInstance().clearRegistered();
 
-		_battleStarted = false;
-	}
-
-    protected final boolean isBattleStarted()
-    {
-		return _battleStarted;
-	}
-	
-	protected final void startBattle()
-    {
-		_battleStarted = true;
+		OlympiadGame._battleStarted = false;
 	}
     
     protected OlympiadGame getOlympiadGame(int id)

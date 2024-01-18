@@ -55,6 +55,8 @@ class OlympiadGame
     protected static byte STANDBY = 1;
     protected static byte PLAYING = 2;
 
+    protected static boolean _battleStarted;
+
     private byte _state;
 
     private final L2OlympiadStadiumZone _stadium;
@@ -982,7 +984,12 @@ class OlympiadGameTask implements Runnable
    				}
    				catch (InterruptedException e){}
 
-   				OlympiadManager.getInstance().startBattle();
+   				synchronized(this)
+   				{
+   					if (!OlympiadGame._battleStarted)
+   						OlympiadGame._battleStarted = true;
+   				}
+
 
    				for (int i = 60; i >= 10; i -= 10)
    				{

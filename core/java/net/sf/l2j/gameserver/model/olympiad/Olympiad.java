@@ -694,7 +694,7 @@ public class Olympiad
                         Announcements.getInstance().announceToAll(new SystemMessage(SystemMessage.THE_OLYMPIAD_GAME_HAS_ENDED));
                         _log.info("Olympiad System: Olympiad Game Ended");
                         
-                        while (OlympiadManager.getInstance().isBattleStarted())
+                        while (OlympiadGame._battleStarted)
                         {
                             try
                             {
