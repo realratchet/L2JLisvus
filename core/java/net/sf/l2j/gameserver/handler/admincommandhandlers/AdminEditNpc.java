@@ -485,9 +485,7 @@ public class AdminEditNpc implements IAdminCommandHandler
     
     private void storeTradeList(int itemID, int price, int tradeListID, int order)
     {
-        String table = "merchant_buylists";
-        if (Config.CUSTOM_MERCHANT_TABLES)
-            table = "custom_merchant_buylists";
+        final String table = Config.CUSTOM_MERCHANT_TABLES ? "custom_merchant_buylists" : "merchant_buylists";
 
         try (Connection con = L2DatabaseFactory.getInstance().getConnection();
             PreparedStatement stmt = con.prepareStatement("INSERT INTO `" + table + "` (`item_id`,`price`,`shop_id`,`item_order`) values ("+itemID+","+price+","+tradeListID+","+order+")"))
@@ -564,7 +562,7 @@ public class AdminEditNpc implements IAdminCommandHandler
     	        ResultSet rs = stmt.executeQuery())
             {
     	        if (rs.first())
-    	            order = rs.getInt("order");
+    	            order = rs.getInt("item_order");
             }
 
             if (order < 0 && Config.CUSTOM_MERCHANT_TABLES)
@@ -573,7 +571,7 @@ public class AdminEditNpc implements IAdminCommandHandler
     	            ResultSet rs = stmt.executeQuery())
                 {
     	            if (rs.first())
-    	                order = rs.getInt("order");
+    	                order = rs.getInt("item_order");
                 }
             }
         }
@@ -1046,9 +1044,7 @@ public class AdminEditNpc implements IAdminCommandHandler
 
 	private void addDropData(L2PcInstance admin, int npcId, int itemId, int min, int max, int category, int chance)
 	{
-	    String table = "droplist";
-        if (Config.CUSTOM_DROPLIST_TABLE)
-            table = "custom_droplist";
+	    final String table = Config.CUSTOM_DROPLIST_TABLE ? "custom_droplist" : "droplist";
 
 	    try (Connection con = L2DatabaseFactory.getInstance().getConnection();
 	        PreparedStatement statement = con.prepareStatement("INSERT INTO `" + table + "` (mobId, itemId, min_drop, max_drop, category, chance) values(?,?,?,?,?,?)"))
