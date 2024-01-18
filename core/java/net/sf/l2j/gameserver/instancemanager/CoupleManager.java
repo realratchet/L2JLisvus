@@ -24,6 +24,7 @@ import java.util.logging.Logger;
 
 import net.sf.l2j.Config;
 import net.sf.l2j.L2DatabaseFactory;
+import net.sf.l2j.gameserver.idfactory.IdFactory;
 import net.sf.l2j.gameserver.model.L2World;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.entity.Couple;
@@ -99,13 +100,22 @@ public class CoupleManager
 			{
 				int player1Id = player1.getObjectId();
 				int player2Id = player2.getObjectId();
+
+				StatsSet set = new StatsSet();
+				set.set("id", IdFactory.getInstance().getNextId());
+				set.set("player1_id", player1Id);
+				set.set("player2_id", player2Id);
+				set.set("affiance_date", System.currentTimeMillis());
 				
-				Couple couple = new Couple(player1, player2);
-				getCouples().add(couple);
+				Couple couple = new Couple(set);
+				couple.store();
+
 				player1.setPartnerId(player2Id);
 				player2.setPartnerId(player1Id);
 				player1.setCoupleId(couple.getId());
 				player2.setCoupleId(couple.getId());
+
+				getCouples().add(couple);
 			}
 		}
 	}
