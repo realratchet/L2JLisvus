@@ -32,7 +32,8 @@ import net.sf.l2j.util.Rnd;
  */
 class OlympiadManager implements Runnable
 {
-    private Map<Integer, OlympiadGame> _olympiadInstances;
+    private final Map<Integer, OlympiadGame> _olympiadInstances;
+    private volatile boolean _battleStarted = false;
     
     public static OlympiadManager getInstance()
 	{
@@ -56,7 +57,7 @@ class OlympiadManager implements Runnable
         Map<Integer, OlympiadGameTask> _gamesQueue = new HashMap<>();
         while (Olympiad.getInstance().getCompPeriodState() != Olympiad.NONE)
         {
-            if (Olympiad.getNobleCount() == 0)
+            if (Olympiad.getInstance().getNobleCount() == 0)
             {
                 try
                 {
@@ -69,15 +70,15 @@ class OlympiadManager implements Runnable
                 continue;
             }
 
-            List<Integer> readyClasses = Olympiad.hasEnoughRegisteredClassed();
-			boolean readyNonClassed = Olympiad.hasEnoughRegisteredNonClassed();
+            List<Integer> readyClasses = Olympiad.getInstance().hasEnoughRegisteredClassed();
+			boolean readyNonClassed = Olympiad.getInstance().hasEnoughRegisteredNonClassed();
 
 			if (readyClasses != null || readyNonClassed)
             {
                 // Set up the games queue
             	for (int i = 0; i < stadiums.length; i++)
                 {
-	                if (!existNextOpponents(Olympiad.getRegisteredNonClassBased()) && !existNextOpponents(getRandomClassList(Olympiad.getRegisteredClassBased(), readyClasses)))
+	                if (!existNextOpponents(Olympiad.getInstance().getRegisteredNonClassBased()) && !existNextOpponents(getRandomClassList(Olympiad.getInstance().getRegisteredClassBased(), readyClasses)))
                         break;
 
 	                L2OlympiadStadiumZone stadium = stadiums[i];
@@ -88,11 +89,11 @@ class OlympiadManager implements Runnable
 	                
                     if (stadium.isFreeToUse())
                     {
-                    	if (readyNonClassed && existNextOpponents(Olympiad.getRegisteredNonClassBased()))
+                    	if (readyNonClassed && existNextOpponents(Olympiad.getInstance().getRegisteredNonClassBased()))
                         {
                             try
                             {
-                                _olympiadInstances.put(stadium.getStadiumId(), new OlympiadGame(stadium, COMP_TYPE.NON_CLASSED, nextOpponents(Olympiad.getRegisteredNonClassBased())));
+                                _olympiadInstances.put(stadium.getStadiumId(), new OlympiadGame(stadium, COMP_TYPE.NON_CLASSED, nextOpponents(Olympiad.getInstance().getRegisteredNonClassBased())));
                                 _gamesQueue.put(stadium.getStadiumId(), new OlympiadGameTask(_olympiadInstances.get(stadium.getStadiumId())));
                                 stadium.setStadiaBusy();
                             }
@@ -124,11 +125,11 @@ class OlympiadManager implements Runnable
                                 i--;
                             }
                         }
-                    	else if (readyClasses != null && existNextOpponents(getRandomClassList(Olympiad.getRegisteredClassBased(), readyClasses)))
+                    	else if (readyClasses != null && existNextOpponents(getRandomClassList(Olympiad.getInstance().getRegisteredClassBased(), readyClasses)))
                         {
                             try
                             {
-                                _olympiadInstances.put(stadium.getStadiumId(), new OlympiadGame(stadium, COMP_TYPE.CLASSED, nextOpponents(getRandomClassList(Olympiad.getRegisteredClassBased(), readyClasses))));
+                                _olympiadInstances.put(stadium.getStadiumId(), new OlympiadGame(stadium, COMP_TYPE.CLASSED, nextOpponents(getRandomClassList(Olympiad.getInstance().getRegisteredClassBased(), readyClasses))));
                                 _gamesQueue.put(stadium.getStadiumId(), new OlympiadGameTask(_olympiadInstances.get(stadium.getStadiumId())));
                                 stadium.setStadiaBusy();
                             }
@@ -231,9 +232,19 @@ class OlympiadManager implements Runnable
 
         // Wait 20 seconds
         _olympiadInstances.clear();
-        Olympiad.clearRegistered();
+        Olympiad.getInstance().clearRegistered();
 
-		OlympiadGame._battleStarted = false;
+		_battleStarted = false;
+	}
+
+    protected final boolean isBattleStarted()
+    {
+		return _battleStarted;
+	}
+	
+	protected final void startBattle()
+    {
+		_battleStarted = true;
 	}
     
     protected OlympiadGame getOlympiadGame(int id)

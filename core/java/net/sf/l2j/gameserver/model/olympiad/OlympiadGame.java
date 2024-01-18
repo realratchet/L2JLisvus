@@ -44,8 +44,20 @@ import net.sf.l2j.gameserver.templates.StatsSet;
 class OlympiadGame
 {
 	protected static final Logger _log = Logger.getLogger(OlympiadGame.class.getName());
+
+    private static final String POINTS = "olympiad_points";
+	private static final String COMP_DONE = "competitions_done";
+	private static final String COMP_WON = "competitions_won";
+	private static final String COMP_LOST = "competitions_lost";
 	
-	private final L2OlympiadStadiumZone _stadium;
+	// Game state
+	protected static byte INITIAL = 0;
+    protected static byte STANDBY = 1;
+    protected static byte PLAYING = 2;
+
+    private byte _state;
+
+    private final L2OlympiadStadiumZone _stadium;
 	
     protected COMP_TYPE _type;
     protected boolean _aborted;
@@ -55,18 +67,6 @@ class OlympiadGame
     protected String _playerTwoName;
     protected int _playerOneID = 0;
     protected int _playerTwoID = 0;
-
-    protected static boolean _battleStarted;
-    private static final String POINTS = "olympiad_points";
-	private static final String COMP_DONE = "competitions_done";
-	private static final String COMP_WON = "competitions_won";
-	private static final String COMP_LOST = "competitions_lost";
-	
-	// Game state
-	private byte _state;
-	protected static byte INITIAL = 0;
-    protected static byte STANDBY = 1;
-    protected static byte PLAYING = 2;
     
     private final L2PcInstance[] _players;
     private Location _playerOneLoc;
@@ -386,8 +386,8 @@ class OlympiadGame
         
         if (_pOneCrash || _pTwoCrash || _aborted)
         {
-            StatsSet playerOneStat = Olympiad.getNobleStats(_playerOneID);
-            StatsSet playerTwoStat = Olympiad.getNobleStats(_playerTwoID);
+            StatsSet playerOneStat = Olympiad.getInstance().getNobleStats(_playerOneID);
+            StatsSet playerTwoStat = Olympiad.getInstance().getNobleStats(_playerTwoID);
 
             int playerOnePlayed = playerOneStat.getInteger(COMP_DONE);
             int playerTwoPlayed = playerTwoStat.getInteger(COMP_DONE);
@@ -538,8 +538,8 @@ class OlympiadGame
         if (_aborted || playerOne == null || playerTwo == null || _playerOneDisconnected || _playerTwoDisconnected)
             return;
 
-        StatsSet playerOneStat = Olympiad.getNobleStats(_playerOneID);
-        StatsSet playerTwoStat = Olympiad.getNobleStats(_playerTwoID);
+        StatsSet playerOneStat = Olympiad.getInstance().getNobleStats(_playerOneID);
+        StatsSet playerTwoStat = Olympiad.getInstance().getNobleStats(_playerTwoID);
 
         int div;
         int gpReward;
@@ -806,7 +806,7 @@ class OlympiadGame
 			{
 				continue;
 			}
-			Olympiad.broadcastUsersInfo(spectator);
+			Olympiad.getInstance().broadcastUsersInfo(spectator);
 		}
         return true;
     }
@@ -869,10 +869,9 @@ class OlympiadGameTask implements Runnable
 {
 	protected static final Logger _log = Logger.getLogger(OlympiadGameTask.class.getName());
 
-	protected OlympiadGame _game = null;
-	
-	protected static final long BATTLE_PERIOD = Config.ALT_OLY_BATTLE; // Usually several minutes
+    protected static final long BATTLE_PERIOD = Config.ALT_OLY_BATTLE; // Usually several minutes
 
+	protected OlympiadGame _game = null;
    	private boolean _terminated = false;
    	private boolean _started = false;
 
@@ -983,11 +982,7 @@ class OlympiadGameTask implements Runnable
    				}
    				catch (InterruptedException e){}
 
-   				synchronized(this)
-   				{
-   					if (!OlympiadGame._battleStarted)
-   						OlympiadGame._battleStarted = true;
-   				}
+   				OlympiadManager.getInstance().startBattle();
 
    				for (int i = 60; i >= 10; i -= 10)
    				{
