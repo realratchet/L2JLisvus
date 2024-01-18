@@ -50,7 +50,7 @@ import net.sf.l2j.gameserver.taskmanager.tasks.TaskShutdown;
  */
 public final class TaskManager
 {
-    protected static final Logger _log = Logger.getLogger(TaskManager.class.getName());
+    private static final Logger _log = Logger.getLogger(TaskManager.class.getName());
 
     protected static final String[] SQL_STATEMENTS = 
     {
@@ -61,7 +61,7 @@ public final class TaskManager
     };
 
     private final Map<Integer, Task> _tasks = new ConcurrentHashMap<>();
-	protected final Set<ExecutedTask> _currentTasks = ConcurrentHashMap.newKeySet();
+	private final Set<ExecutedTask> _currentTasks = ConcurrentHashMap.newKeySet();
 
     public class ExecutedTask implements Runnable
     {
@@ -160,7 +160,7 @@ public final class TaskManager
         return SingletonHolder._instance;
     }
 
-    public TaskManager()
+    public void setup()
     {
         initialize();
         startAllTasks();

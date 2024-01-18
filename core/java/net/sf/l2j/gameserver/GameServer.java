@@ -320,7 +320,7 @@ public class GameServer
 		
 		AdminCommandRightsData.getInstance();
 		
-		TaskManager.getInstance();
+		TaskManager.getInstance().setup();
 		GmListTable.getInstance();
 
 		// Load pet data from db
