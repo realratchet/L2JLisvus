@@ -120,7 +120,7 @@ public class L2RaceManagerInstance extends L2NpcInstance
         if (MonsterRace.getInstance().isAcceptingBets())
             return;
         
-        int npcId = getTemplate().npcId;
+        int npcId = getNpcId();
         String filename, search;
         NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
         filename = getHtmlPath(npcId, 5);
@@ -139,7 +139,7 @@ public class L2RaceManagerInstance extends L2NpcInstance
     
     public void showMonsterInfo(L2PcInstance player)
     {
-        int npcId = getTemplate().npcId;
+        int npcId = getNpcId();
         String filename, search;
         NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
         filename = getHtmlPath(npcId, 6);
@@ -160,7 +160,7 @@ public class L2RaceManagerInstance extends L2NpcInstance
         if (!MonsterRace.getInstance().isAcceptingBets())
             return;
         
-        int npcId = getTemplate().npcId;
+        int npcId = getNpcId();
         int raceNumber = MonsterRace.getInstance().getRaceNumber();
         NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
         

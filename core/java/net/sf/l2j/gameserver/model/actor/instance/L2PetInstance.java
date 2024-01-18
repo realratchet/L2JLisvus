@@ -111,7 +111,7 @@ public class L2PetInstance extends L2Summon
 		int npcId = template.npcId;
 		_mountable = PetDataTable.isMountable(npcId);
 		
-		_petData = PetDataTable.getInstance().getPetData(getTemplate().npcId, getStat().getLevel());
+		_petData = PetDataTable.getInstance().getPetData(getNpcId(), getStat().getLevel());
 	}
 	
 	public static L2PetInstance spawnPet(L2NpcTemplate template, L2PcInstance owner, L2ItemInstance control)
@@ -1233,7 +1233,7 @@ public class L2PetInstance extends L2Summon
 					setCurrentFed(0);
 				}
 				
-				int[] foodIds = PetDataTable.getFoodItemId(getTemplate().npcId);
+				int[] foodIds = PetDataTable.getFoodItemId(getNpcId());
 				if (foodIds[0] == 0)
 				{
 					return;

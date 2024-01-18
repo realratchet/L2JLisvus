@@ -125,7 +125,7 @@ public class L2MerchantInstance extends L2FolkInstance
 		}
 		else if (actualCommand.equalsIgnoreCase("RentPet"))
 		{
-			if (Config.ALLOW_RENTPET)
+			if (Config.ALLOW_PET_RENT && Config.LIST_PET_RENT_NPC.contains(getNpcId()))
 			{
 				if (st.countTokens() < 1)
 				{
@@ -179,11 +179,6 @@ public class L2MerchantInstance extends L2FolkInstance
 	
 	public void showRentPetWindow(L2PcInstance player)
 	{
-		if (!Config.LIST_PET_RENT_NPC.contains(getTemplate().npcId))
-		{
-			return;
-		}
-		
 		String html = StringUtil.concat(
 			"<html><body>Pet Manager:<br>",
 			"You can rent a wyvern or strider for adena.<br>My prices:<br1>",
@@ -201,7 +196,7 @@ public class L2MerchantInstance extends L2FolkInstance
 	
 	public void tryRentPet(L2PcInstance player, int val)
 	{
-		if ((player == null) || (player.getPet() != null) || player.isMounted() || player.isRentedPet())
+		if (player == null || player.getPet() != null || player.isMounted() || player.isRentedPet())
 		{
 			return;
 		}
@@ -291,7 +286,7 @@ public class L2MerchantInstance extends L2FolkInstance
 			StringUtil.append(sb, "<tr><td><br></td></tr>");
 
 			StringUtil.append(sb, "<tr><td>Object ID: " + getObjectId() + "</td></tr>");
-			StringUtil.append(sb, "<tr><td>Template ID: " + getTemplate().npcId + "</td></tr>");
+			StringUtil.append(sb, "<tr><td>Template ID: " + getNpcId() + "</td></tr>");
 			StringUtil.append(sb, "<tr><td><br></td></tr>");
 
 			StringUtil.append(sb, "<tr><td>HP: " + getCurrentHp() + "</td></tr>");
@@ -303,15 +298,15 @@ public class L2MerchantInstance extends L2FolkInstance
 			StringUtil.append(sb, "<tr><td><br></td></tr>");
 			
 			// changed by terry 2005-02-22 21:45
-			StringUtil.append(sb, "</table><table><tr><td><button value=\"Edit NPC\" action=\"bypass -h admin_edit_npc " + getTemplate().npcId + "\" width=100 height=15 back=\"sek.cbui94\" fore=\"sek.cbui92\"></td>");
+			StringUtil.append(sb, "</table><table><tr><td><button value=\"Edit NPC\" action=\"bypass -h admin_edit_npc " + getNpcId() + "\" width=100 height=15 back=\"sek.cbui94\" fore=\"sek.cbui92\"></td>");
 			StringUtil.append(sb, "<td><button value=\"Kill\" action=\"bypass -h admin_kill\" width=40 height=15 back=\"sek.cbui94\" fore=\"sek.cbui92\"></td></tr>");
-			StringUtil.append(sb, "<tr><td><button value=\"Show DropList\" action=\"bypass -h admin_show_droplist " + getTemplate().npcId + "\" width=100 height=15 back=\"sek.cbui94\" fore=\"sek.cbui92\"></td></tr>");
+			StringUtil.append(sb, "<tr><td><button value=\"Show DropList\" action=\"bypass -h admin_show_droplist " + getNpcId() + "\" width=100 height=15 back=\"sek.cbui94\" fore=\"sek.cbui92\"></td></tr>");
 			StringUtil.append(sb, "<td><button value=\"Delete\" action=\"bypass -h admin_delete\" width=40 height=15 back=\"sek.cbui94\" fore=\"sek.cbui92\"></td></tr>");
 			StringUtil.append(sb, "</table>");
 			
 			if (player.isGM())
 			{
-				StringUtil.append(sb, "<button value=\"View Shop\" action=\"bypass -h admin_showShop " + getTemplate().npcId + "\" width=100 height=15 back=\"sek.cbui94\" fore=\"sek.cbui92\"></br>");
+				StringUtil.append(sb, "<button value=\"View Shop\" action=\"bypass -h admin_showShop " + getNpcId() + "\" width=100 height=15 back=\"sek.cbui94\" fore=\"sek.cbui92\"></br>");
 				StringUtil.append(sb, "<button value=\"Lease next week\" action=\"bypass -h npc_" + getObjectId() + "_Lease\" width=100 height=15 back=\"sek.cbui94\" fore=\"sek.cbui92\">");
 				StringUtil.append(sb, "<button value=\"Abort current leasing\" action=\"bypass -h npc_" + getObjectId() + "_Lease next\" width=100 height=15 back=\"sek.cbui94\" fore=\"sek.cbui92\">");
 				StringUtil.append(sb, "<button value=\"Manage items\" action=\"bypass -h npc_" + getObjectId() + "_Lease manage\" width=100 height=15 back=\"sek.cbui94\" fore=\"sek.cbui92\">");

@@ -642,8 +642,6 @@ public final class Config
 	public static boolean ALLOW_RACE;
 	/** Allow water ? */
 	public static boolean ALLOW_WATER;
-	/** Allow rent pet ? */
-	public static boolean ALLOW_RENTPET;
 	/** Allow boat ? */
 	public static boolean ALLOW_BOAT;
 	
@@ -742,6 +740,13 @@ public final class Config
 	public static boolean ENABLE_MODIFY_SKILL_DURATION;
 	/** Skill duration list */
 	public static Map<Integer, Integer> SKILL_DURATION_LIST;
+
+	/** Pet renting system */
+	public static boolean ALLOW_PET_RENT;
+	/** List of NPCs that rent pets (seperated by ",") */
+	public static String PET_RENT_NPC;
+	/** List of NPCs that rent pets */
+	public static List<Integer> LIST_PET_RENT_NPC;
 	
 	/** Wedding System */
 	public static boolean ALLOW_WEDDING;
@@ -922,11 +927,6 @@ public final class Config
 	public static String NONDROPPABLE_ITEMS;
 	/** List of items that cannot be dropped */
 	public static List<Integer> LIST_NONDROPPABLE_ITEMS;
-	
-	/** List of NPCs that rent pets (seperated by ",") */
-	public static String PET_RENT_NPC;
-	/** List of NPCs that rent pets */
-	public static List<Integer> LIST_PET_RENT_NPC;
 	
 	/** Duration (in ms) while a player stay in PVP mode after hitting an innocent */
 	public static int PVP_NORMAL_TIME;
@@ -1423,7 +1423,6 @@ public final class Config
 			ALLOW_LOTTERY = Boolean.valueOf(optionsSettings.getProperty("AllowLottery", "False"));
 			ALLOW_RACE = Boolean.valueOf(optionsSettings.getProperty("AllowRace", "False"));
 			ALLOW_WATER = Boolean.valueOf(optionsSettings.getProperty("AllowWater", "False"));
-			ALLOW_RENTPET = Boolean.valueOf(optionsSettings.getProperty("AllowRentPet", "False"));
 			ALLOW_DISCARDITEM = Boolean.valueOf(optionsSettings.getProperty("AllowDiscardItem", "True"));
 			ALLOW_FISHING = Boolean.valueOf(optionsSettings.getProperty("AllowFishing", "True"));
 			ALLOW_BOAT = Boolean.valueOf(optionsSettings.getProperty("AllowBoat", "False"));
@@ -1667,17 +1666,6 @@ public final class Config
 			
 			STORE_SKILL_COOLTIME = Boolean.parseBoolean(otherSettings.getProperty("StoreSkillCooltime", "True"));
 			SUBCLASS_STORE_SKILL_COOLTIME = Boolean.parseBoolean(otherSettings.getProperty("SubclassStoreSkillCooltime", "False"));
-			
-			PET_RENT_NPC = otherSettings.getProperty("ListPetRentNpc", "7827");
-			
-			LIST_PET_RENT_NPC = new ArrayList<>();
-			if (!PET_RENT_NPC.isEmpty())
-			{
-				for (String id : PET_RENT_NPC.split(","))
-				{
-					LIST_PET_RENT_NPC.add(Integer.parseInt(id));
-				}
-			}
 			
 			NONDROPPABLE_ITEMS = otherSettings.getProperty("ListOfNonDroppableItems", "1147,425,1146,461,10,2368,7,6,2370,2369,5598");
 			
@@ -1938,7 +1926,6 @@ public final class Config
 			
 			ANTIBUFF_SHIELD_ENABLE = Boolean.valueOf(customSettings.getProperty("AntibuffShieldEnable", "false"));
 			SKILL_REUSE_INDEPENDENT = Boolean.valueOf(customSettings.getProperty("SkillReuseIndependent", "false"));
-			
 			PASSWORD_CHANGE_ENABLE = Boolean.valueOf(customSettings.getProperty("PasswordChangeEnable", "false"));
 
 			CUSTOM_SPAWNLIST_TABLE = Boolean.valueOf(customSettings.getProperty("CustomSpawnlistTable", "false"));
@@ -2031,6 +2018,18 @@ public final class Config
 							}
 						}
 					}
+				}
+			}
+
+			ALLOW_PET_RENT = Boolean.valueOf(customSettings.getProperty("AllowPetRent", "false"));
+			PET_RENT_NPC = customSettings.getProperty("ListPetRentNpc", "");
+			
+			LIST_PET_RENT_NPC = new ArrayList<>();
+			if (!PET_RENT_NPC.isEmpty())
+			{
+				for (String id : PET_RENT_NPC.split(","))
+				{
+					LIST_PET_RENT_NPC.add(Integer.parseInt(id));
 				}
 			}
 			

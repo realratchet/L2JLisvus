@@ -139,13 +139,13 @@ public class L2DoormenInstance extends L2FolkInstance
     @Override
 	public void showChatWindow(L2PcInstance player)
     {
-        String filename = "data/html/doormen/" + getTemplate().npcId + "-no.htm";
+        String filename = "data/html/doormen/" + getNpcId() + "-no.htm";
 
         int condition = validateCondition(player);
         if (condition == COND_BUSY_BECAUSE_OF_SIEGE)
-        	filename = "data/html/doormen/" + getTemplate().npcId + "-busy.htm"; // Busy because of siege
+        	filename = "data/html/doormen/" + getNpcId() + "-busy.htm"; // Busy because of siege
         else if (condition == COND_CASTLE_OWNER) // Clan owns castle
-            filename = "data/html/doormen/" + getTemplate().npcId + ".htm"; // Owner message window
+            filename = "data/html/doormen/" + getNpcId() + ".htm"; // Owner message window
 
         // Prepare doormen for clan hall
         NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());

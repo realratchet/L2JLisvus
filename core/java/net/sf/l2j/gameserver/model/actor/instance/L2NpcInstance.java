@@ -832,7 +832,7 @@ public class L2NpcInstance extends L2Character
 			}
 			
 			StringUtil.append(sb, "<table border=\"0\" width=\"100%\">");
-			StringUtil.append(sb, "<tr><td>Object ID</td><td>" + getObjectId() + "</td><td>NPC ID</td><td>" + getTemplate().npcId + "</td></tr>");
+			StringUtil.append(sb, "<tr><td>Object ID</td><td>" + getObjectId() + "</td><td>NPC ID</td><td>" + getNpcId() + "</td></tr>");
 			
 			StringUtil.append(sb, "<tr><td>Castle</td><td>" + (getCastle() != null ? getCastle().getCastleId() : 0) + "</td><td>Coords</td><td>" + getX() + "," + getY() + "," + getZ() + "</td></tr>");
 			
@@ -856,9 +856,9 @@ public class L2NpcInstance extends L2Character
 			StringUtil.append(sb, "<tr><td>INT</td><td>" + getINT() + "</td><td>WIT</td><td>" + getWIT() + "</td><td>MEN</td><td>" + getMEN() + "</td></tr>");
 			StringUtil.append(sb, "</table>");
 			
-			StringUtil.append(sb, "<br><center><table><tr><td><button value=\"Edit NPC\" action=\"bypass -h admin_edit_npc " + getTemplate().npcId + "\" width=100 height=15 back=\"sek.cbui94\" fore=\"sek.cbui92\"><br1></td>");
+			StringUtil.append(sb, "<br><center><table><tr><td><button value=\"Edit NPC\" action=\"bypass -h admin_edit_npc " + getNpcId() + "\" width=100 height=15 back=\"sek.cbui94\" fore=\"sek.cbui92\"><br1></td>");
 			StringUtil.append(sb, "<td><button value=\"Kill\" action=\"bypass -h admin_kill\" width=40 height=15 back=\"sek.cbui94\" fore=\"sek.cbui92\"></td><br1></tr>");
-			StringUtil.append(sb, "<tr><td><button value=\"Show DropList\" action=\"bypass -h admin_show_droplist " + getTemplate().npcId + "\" width=100 height=15 back=\"sek.cbui94\" fore=\"sek.cbui92\"></td></tr>");
+			StringUtil.append(sb, "<tr><td><button value=\"Show DropList\" action=\"bypass -h admin_show_droplist " + getNpcId() + "\" width=100 height=15 back=\"sek.cbui94\" fore=\"sek.cbui92\"></td></tr>");
 			StringUtil.append(sb, "<td><button value=\"Delete\" action=\"bypass -h admin_delete\" width=40 height=15 back=\"sek.cbui94\" fore=\"sek.cbui92\"></td></tr>");
 			StringUtil.append(sb, "</table></center><br>");
 			StringUtil.append(sb, "</body></html>");
@@ -1500,7 +1500,7 @@ public class L2NpcInstance extends L2Character
 		// collect awaiting quests and start points
 		List<Quest> options = new ArrayList<>();
 		
-		QuestState[] awaits = player.getQuestsForTalk(getTemplate().npcId);
+		QuestState[] awaits = player.getQuestsForTalk(getNpcId());
 		Quest[] starts = getTemplate().getEventQuests(Quest.QuestEventType.QUEST_START);
 		
 		// Quests are limited between 1 and 999 because those are the quests that are supported by the client.
@@ -1567,7 +1567,7 @@ public class L2NpcInstance extends L2Character
 	// >24 - check lottery ticket by item object id
 	public void showLotoWindow(L2PcInstance player, int val)
 	{
-		int npcId = getTemplate().npcId;
+		int npcId = getNpcId();
 		String filename;
 		SystemMessage sm;
 		NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
@@ -1937,7 +1937,7 @@ public class L2NpcInstance extends L2Character
 			return;
 		}
 		
-		int npcId = getTemplate().npcId;
+		int npcId = getNpcId();
 		
 		/* For use with Seven Signs implementation */
 		String filename = SevenSigns.SEVEN_SIGNS_HTML_PATH;
@@ -2198,7 +2198,7 @@ public class L2NpcInstance extends L2Character
 		
 		if (this instanceof L2MerchantInstance)
 		{
-			if (Config.LIST_PET_RENT_NPC.contains(npcId))
+			if (Config.ALLOW_PET_RENT && Config.LIST_PET_RENT_NPC.contains(npcId))
 			{
 				html.replace("_Quest", "_RentPet\">Rent Pet</a><br><a action=\"bypass -h npc_%objectId%_Quest");
 			}

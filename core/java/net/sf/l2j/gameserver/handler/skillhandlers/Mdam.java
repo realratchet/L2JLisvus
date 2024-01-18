@@ -138,7 +138,7 @@ public class Mdam implements ISkillHandler
 					}
 					if (target instanceof L2NpcInstance)
 					{
-						name += target.getName() + "(" + ((L2NpcInstance) target).getTemplate().npcId + ")";
+						name += target.getName() + "(" + ((L2NpcInstance) target).getNpcId() + ")";
 					}
 					if (target instanceof L2PcInstance)
 					{

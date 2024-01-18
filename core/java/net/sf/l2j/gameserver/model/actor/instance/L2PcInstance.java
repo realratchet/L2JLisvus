@@ -8349,7 +8349,7 @@ public final class L2PcInstance extends L2PlayableInstance
 		abortAttack();
 		abortCast();
 		
-		Ride mount = new Ride(getObjectId(), true, pet.getTemplate().npcId);
+		Ride mount = new Ride(getObjectId(), true, pet.getNpcId());
 		setMount(pet.getNpcId(), pet.getLevel(), mount.getMountType());
 		setMountObjectID(pet.getControlItemObjectId());
 		_mountUseFood = true;

@@ -44,7 +44,8 @@ public final class L2ChestInstance extends L2MonsterInstance
     {
         super.onSpawn();
         _isInteracted = false;
-        _specialDrop = false;
+        _specialDrop = false;
+
         setMustRewardExpSp(true);
     }
 
@@ -77,7 +78,8 @@ public final class L2ChestInstance extends L2MonsterInstance
     @Override
 	public void doItemDrop(L2NpcTemplate npcTemplate, L2Character lastAttacker)
     {
-        int id = getTemplate().npcId;
+        int id = getNpcId();
+
         if (_specialDrop)
         {
             if (id >= 1801 && id <= 1822)

@@ -49,7 +49,7 @@ public class L2SiegeNpcInstance extends L2FolkInstance
             else
             {
                 NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
-                html.setFile("data/html/siege/" + getTemplate().npcId + "-busy.htm");
+                html.setFile("data/html/siege/" + getNpcId() + "-busy.htm");
                 html.replace("%castlename%", castle.getName());
                 html.replace("%objectId%", String.valueOf(getObjectId()));
                 player.sendPacket(html);

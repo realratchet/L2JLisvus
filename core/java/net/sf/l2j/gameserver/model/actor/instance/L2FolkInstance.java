@@ -58,7 +58,8 @@ public class L2FolkInstance extends L2NpcInstance
         if (Config.DEBUG) 
             _log.fine("SkillList activated on: "+getObjectId());
 
-        int npcId = getTemplate().npcId;
+        int npcId = getNpcId();
+
         if (_classesToTeach == null)
         {
             NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
@@ -67,9 +68,11 @@ public class L2FolkInstance extends L2NpcInstance
             	"I cannot teach you. My class list is empty.<br> Ask admin to fix it. Need add my npcid and classes to skill_learn.sql.<br>NpcId:"+npcId+", Your classId:"+player.getClassId().getId()+"<br>",
             	"</body></html>");
             html.setHtml(sb);
-            player.sendPacket(html);
+            player.sendPacket(html);
+
             return;
-        }
+        }
+
         if (!getTemplate().canTeach(classId))
         {
             NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
@@ -88,7 +91,8 @@ public class L2FolkInstance extends L2NpcInstance
 
         for (L2SkillLearn s: skills)
         {			
-            L2Skill sk = SkillTable.getInstance().getInfo(s.getId(), s.getLevel());
+            L2Skill sk = SkillTable.getInstance().getInfo(s.getId(), s.getLevel());
+
             if (sk == null || !sk.getCanLearn(player.getClassId()) || !sk.canTeachBy(npcId))
                 continue;
 
@@ -122,7 +126,8 @@ public class L2FolkInstance extends L2NpcInstance
         }
 
         player.sendPacket(new ActionFailed());
-    }
+    }
+
     /**
      * This displays EnchantSkillList to the player.
      * @param player
@@ -133,7 +138,8 @@ public class L2FolkInstance extends L2NpcInstance
         if (Config.DEBUG) 
             _log.fine("EnchantSkillList activated on: "+getObjectId());
 
-        int npcId = getTemplate().npcId;
+        int npcId = getNpcId();
+
         if (_classesToTeach == null)
         {
             NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());

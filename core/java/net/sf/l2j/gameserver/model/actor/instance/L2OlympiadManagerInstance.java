@@ -218,7 +218,7 @@ public class L2OlympiadManagerInstance extends L2FolkInstance
     @Override
 	public void showChatWindow(L2PcInstance player, int val)
     {
-    	int npcId = getTemplate().npcId;
+    	int npcId = getNpcId();
     	
     	String filename = null;
     	switch (getNpcId())
