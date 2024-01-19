@@ -303,7 +303,6 @@ $MYG < ../sql/items.sql &> /dev/null
 $MYG < ../sql/itemsonground.sql &> /dev/null
 $MYG < ../sql/locations.sql &> /dev/null
 $MYG < ../sql/mapregion.sql &> /dev/null
-$MYG < ../sql/merchant_areas_list.sql &> /dev/null
 $MYG < ../sql/merchant_buylists.sql &> /dev/null
 $MYG < ../sql/merchant_lease.sql &> /dev/null
 $MYG < ../sql/merchant_shopids.sql &> /dev/null
