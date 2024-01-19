@@ -23,6 +23,7 @@ import net.sf.l2j.gameserver.model.L2Summon;
 import net.sf.l2j.gameserver.model.actor.instance.L2CubicInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2NpcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.actor.instance.L2PlayableInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2RaidBossInstance;
 import net.sf.l2j.gameserver.network.serverpackets.StatusUpdate;
 import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
@@ -131,38 +132,38 @@ public class L2SkillDrain extends L2Skill
 			// No drain effect on invulnerable chars unless they cast it themselves.
 			if (activeChar == target || !target.isInvul())
 			{
-				int _drain = 0;
-				int _cp = (int) target.getCurrentCp();
-				int _hp = (int) target.getCurrentHp();
+				int drain = 0;
+				int cp = (int) target.getCurrentCp();
+				int hp = (int) target.getCurrentHp();
 
-				if (_cp > 0)
+				if (cp > 0)
 				{
-					if (damage < _cp)
+					if (damage < cp)
 					{
-						_drain = 0;
+						drain = 0;
 					}
 					else
 					{
-						_drain = damage - _cp;
+						drain = damage - cp;
 					}
 				}
 
-				else if (damage > _hp)
+				else if (damage > hp)
 				{
-					_drain = _hp;
+					drain = hp;
 				}
 				else
 				{
-					_drain = damage;
+					drain = damage;
 				}
 
-				double hpAdd = _absorbAbs + (_absorbPart * _drain);
-				double hp = ((activeChar.getCurrentHp() + hpAdd) > activeChar.getMaxHp() ? activeChar.getMaxHp() : (activeChar.getCurrentHp() + hpAdd));
+				double hpAdd = _absorbAbs + (_absorbPart * drain);
+				double newHp = ((activeChar.getCurrentHp() + hpAdd) > activeChar.getMaxHp() ? activeChar.getMaxHp() : (activeChar.getCurrentHp() + hpAdd));
 
-				activeChar.setCurrentHp(hp);
+				activeChar.setCurrentHp(newHp);
 
 				StatusUpdate suhp = new StatusUpdate(activeChar.getObjectId());
-				suhp.addAttribute(StatusUpdate.CUR_HP, (int) hp);
+				suhp.addAttribute(StatusUpdate.CUR_HP, (int) newHp);
 				activeChar.sendPacket(suhp);
 			}
 
@@ -176,7 +177,7 @@ public class L2SkillDrain extends L2Skill
 			if (damage > 0 && !target.isDead() && getTargetType() != SkillTargetType.TARGET_CORPSE_MOB)
 			{
 				// Logging damage
-				if (Config.LOG_GAME_DAMAGE && damage > 5000 && activeChar instanceof L2PcInstance)
+				if (Config.LOG_GAME_DAMAGE && damage > 5000 && activeChar instanceof L2PlayableInstance)
 				{
 					String name = "";
 					if (target instanceof L2RaidBossInstance)
@@ -243,12 +244,12 @@ public class L2SkillDrain extends L2Skill
 			int damage = (int)Formulas.getInstance().calcMagicDam(activeCubic, target, this, mcrit);
 			
 			double hpAdd = _absorbAbs + _absorbPart * damage;
-			double hp = ((owner.getCurrentHp() + hpAdd) > owner.getMaxHp() ? owner.getMaxHp() : (owner.getCurrentHp() + hpAdd));
+			double newHp = ((owner.getCurrentHp() + hpAdd) > owner.getMaxHp() ? owner.getMaxHp() : (owner.getCurrentHp() + hpAdd));
 
-            owner.setCurrentHp(hp);
+            owner.setCurrentHp(newHp);
             
 			StatusUpdate suhp = new StatusUpdate(owner.getObjectId());
-			suhp.addAttribute(StatusUpdate.CUR_HP, (int)hp);
+			suhp.addAttribute(StatusUpdate.CUR_HP, (int)newHp);
 			owner.sendPacket(suhp);
 			
             // Check to see if we should damage the target

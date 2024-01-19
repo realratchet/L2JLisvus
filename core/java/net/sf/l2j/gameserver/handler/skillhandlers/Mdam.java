@@ -26,6 +26,7 @@ import net.sf.l2j.gameserver.model.L2Skill.SkillType;
 import net.sf.l2j.gameserver.model.L2Summon;
 import net.sf.l2j.gameserver.model.actor.instance.L2NpcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.actor.instance.L2PlayableInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2RaidBossInstance;
 import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
 import net.sf.l2j.gameserver.skills.Formulas;
@@ -129,7 +130,7 @@ public class Mdam implements ISkillHandler
 			if (damage > 0)
 			{
 				// Logging damage
-				if (Config.LOG_GAME_DAMAGE && damage > 5000 && activeChar instanceof L2PcInstance)
+				if (Config.LOG_GAME_DAMAGE && damage > 5000 && activeChar instanceof L2PlayableInstance)
 				{
 					String name = "";
 					if (target instanceof L2RaidBossInstance)

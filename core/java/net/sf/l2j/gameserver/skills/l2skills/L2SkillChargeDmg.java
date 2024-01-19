@@ -21,6 +21,7 @@ import net.sf.l2j.gameserver.model.L2Object;
 import net.sf.l2j.gameserver.model.L2Skill;
 import net.sf.l2j.gameserver.model.actor.instance.L2NpcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.actor.instance.L2PlayableInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2RaidBossInstance;
 import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
 import net.sf.l2j.gameserver.skills.BaseStats;
@@ -30,12 +31,12 @@ import net.sf.l2j.util.Log;
 
 public class L2SkillChargeDmg extends L2Skill
 {
-	final int num_charges;
+	final int _numCharges;
 	
 	public L2SkillChargeDmg(StatsSet set)
 	{
 		super(set);
-		num_charges = set.getInteger("num_charges", getLevel());
+		_numCharges = set.getInteger("num_charges", getLevel());
 	}
 	
 	@Override
@@ -48,7 +49,7 @@ public class L2SkillChargeDmg extends L2Skill
 		
 		L2PcInstance player = (L2PcInstance) activeChar;
 		
-		if (player.getCharges() < num_charges)
+		if (player.getCharges() < _numCharges)
 		{
 			SystemMessage sm = new SystemMessage(SystemMessage.S1_CANNOT_BE_USED);
 			sm.addSkillName(this);
@@ -83,7 +84,7 @@ public class L2SkillChargeDmg extends L2Skill
 		modifier = 0.8 + (0.201 * player.getCharges());
 		
 		// Consume charges
-		player.decreaseCharges(num_charges);
+		player.decreaseCharges(_numCharges);
 		
 		L2ItemInstance weapon = activeChar.getActiveWeaponInstance();
 		boolean soul = (weapon != null && weapon.getChargedSoulShot() == L2ItemInstance.CHARGED_SOULSHOT);
@@ -119,7 +120,7 @@ public class L2SkillChargeDmg extends L2Skill
 			if (damage > 0)
 			{
 				// Logging damage
-				if (Config.LOG_GAME_DAMAGE && damage > 5000 && activeChar instanceof L2PcInstance)
+				if (Config.LOG_GAME_DAMAGE && damage > 5000 && activeChar instanceof L2PlayableInstance)
 				{
 					String name = "";
 					if (target instanceof L2RaidBossInstance)
