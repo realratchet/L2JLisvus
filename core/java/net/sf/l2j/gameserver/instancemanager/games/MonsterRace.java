@@ -93,7 +93,7 @@ public class MonsterRace
     // Time Constants
     private static final int SECOND_IN_MILLIS = 1000;
     private static final int MINUTE_IN_MILLIS = 60 * SECOND_IN_MILLIS;
-
+    
     private static final int BASE_RACE_NUMBER = 4;
     
     private final L2NpcInstance[] _monsters;
@@ -151,7 +151,7 @@ public class MonsterRace
     {
         _managers.add(npc);
     }
-
+    
     public void removeManager(L2RaceManagerInstance npc)
     {
         _managers.remove(npc);
@@ -179,7 +179,12 @@ public class MonsterRace
             try
             {
                 L2NpcTemplate template = NpcTable.getInstance().getTemplate(npcId);
-                Constructor<?> _constructor = Class.forName("net.sf.l2j.gameserver.model.actor.instance." + template.type + "Instance").getConstructors()[0];
+                Class<?>[] parameters =
+                {
+                    int.class,
+                    L2NpcTemplate.class
+                };
+                Constructor<?> _constructor = Class.forName("net.sf.l2j.gameserver.model.actor.instance." + template.type + "Instance").getConstructor(parameters);
                 int objectId = IdFactory.getInstance().getNextId();
                 _monsters[i] = (L2NpcInstance) _constructor.newInstance(objectId, template);
             }
@@ -241,7 +246,7 @@ public class MonsterRace
     {
         makeAnnouncement(SystemMessage.MONSRACE_FIRST_PLACE_S1_SECOND_S2);
         makeAnnouncement(SystemMessage.MONSRACE_RACE_END);
-
+        
         // Reset race number if it ever reaches maximum
         if (_raceNumber == Integer.MAX_VALUE)
         {

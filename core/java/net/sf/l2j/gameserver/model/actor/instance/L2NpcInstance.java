@@ -1818,9 +1818,7 @@ public class L2NpcInstance extends L2Character
 			return;
 		}
 		
-		int neededmoney = 100;
-		
-		if (!player.reduceAdena("RestoreCP", neededmoney, player.getLastFolkNPC(), true))
+		if (!player.reduceAdena("RestoreCP", 100, player.getLastFolkNPC(), true))
 		{
 			return;
 		}

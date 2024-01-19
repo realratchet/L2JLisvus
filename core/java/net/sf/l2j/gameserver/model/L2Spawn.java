@@ -135,7 +135,6 @@ public class L2Spawn
 	 * <B><U> Actions</U> :</B><BR>
 	 * <BR>
 	 * <li>Set the _template of the L2Spawn</li>
-	 * <li>Calculate the implementationName used to generate the generic constructor of L2NpcInstance managed by this L2Spawn</li>
 	 * <li>Create the generic constructor of L2NpcInstance managed by this L2Spawn</li><BR>
 	 * <BR>
 	 * @param mobTemplate The L2NpcTemplate to link to this L2Spawn
@@ -152,29 +151,14 @@ public class L2Spawn
 		{
 			return;
 		}
-		
-		// The Name of the L2NpcInstance type managed by this L2Spawn
-		String implementationName = _template.type; // implementing class name
-		
-		if (mobTemplate.npcId == 7995)
-		{
-			implementationName = "L2RaceManager";
-		}
-
-		// if (mobTemplate.npcId == 8050)
-
-		if ((mobTemplate.npcId >= 8046) && (mobTemplate.npcId <= 8053))
-		{
-			implementationName = "L2SymbolMaker";
-		}
 
 		// Create the generic constructor of L2NpcInstance managed by this L2Spawn
 		Class<?>[] parameters =
 		{
 			int.class,
-			Class.forName("net.sf.l2j.gameserver.templates.L2NpcTemplate")
+			L2NpcTemplate.class
 		};
-		_constructor = Class.forName("net.sf.l2j.gameserver.model.actor.instance." + implementationName + "Instance").getConstructor(parameters);
+		_constructor = Class.forName("net.sf.l2j.gameserver.model.actor.instance." +  _template.type + "Instance").getConstructor(parameters);
 	}
 	
 	/**

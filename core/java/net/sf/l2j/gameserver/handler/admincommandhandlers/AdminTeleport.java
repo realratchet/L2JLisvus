@@ -24,7 +24,6 @@ import java.util.logging.Logger;
 import net.sf.l2j.Config;
 import net.sf.l2j.L2DatabaseFactory;
 import net.sf.l2j.gameserver.ai.CtrlIntention;
-import net.sf.l2j.gameserver.datatables.NpcTable;
 import net.sf.l2j.gameserver.datatables.SpawnTable;
 import net.sf.l2j.gameserver.handler.IAdminCommandHandler;
 import net.sf.l2j.gameserver.instancemanager.TownManager;
@@ -607,15 +606,7 @@ public class AdminTeleport implements IAdminCommandHandler
         if (obj != null && obj instanceof L2NpcInstance)
         {
             L2NpcInstance target = (L2NpcInstance) obj;
-
-            int monsterTemplate = target.getNpcId();
-            L2NpcTemplate template1 = NpcTable.getInstance().getTemplate(monsterTemplate);
-            if (template1 == null)
-            {
-                activeChar.sendMessage("Incorrect monster template.");
-                _log.warning("ERROR: NPC " + target.getObjectId() + " has a 'null' template.");
-                return;
-            }
+            L2NpcTemplate template = target.getTemplate();
 
             L2Spawn spawn = target.getSpawn();
             if (spawn == null)
@@ -633,7 +624,7 @@ public class AdminTeleport implements IAdminCommandHandler
             
             try
             {
-                spawn = new L2Spawn(template1);
+                spawn = new L2Spawn(template);
                 spawn.setLocX(activeChar.getX());
                 spawn.setLocY(activeChar.getY());
                 spawn.setLocZ(activeChar.getZ());
@@ -643,7 +634,7 @@ public class AdminTeleport implements IAdminCommandHandler
                 SpawnTable.getInstance().addNewSpawn(spawn, true);
                 spawn.init();
                 
-                activeChar.sendMessage("Created " + template1.name + " on " + target.getObjectId() + ".");
+                activeChar.sendMessage("Created " + template.name + " on " + target.getObjectId() + ".");
                 
                 if (Config.DEBUG)
                 {
