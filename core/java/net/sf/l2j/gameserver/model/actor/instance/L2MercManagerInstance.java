@@ -38,12 +38,7 @@ public final class L2MercManagerInstance extends L2FolkInstance
         {
             StringTokenizer st = new StringTokenizer(command, " ");
             String actualCommand = st.nextToken(); // Get actual command
-
-            String val = "";
-            if (st.countTokens() >= 1)
-            {
-                val = st.nextToken();
-            }
+            String val = st.hasMoreTokens() ? st.nextToken() : "";
 
             if (actualCommand.equalsIgnoreCase("hire"))
             {

@@ -84,11 +84,7 @@ public class L2CastleChamberlainInstance extends L2FolkInstance
 			StringTokenizer st = new StringTokenizer(command, " ");
 			String actualCommand = st.nextToken(); // Get actual command
 			
-			String val = "";
-			if (st.countTokens() >= 1)
-			{
-				val = st.nextToken();
-			}
+			String val = st.hasMoreTokens() ? st.nextToken() : "";
 			
 			if (actualCommand.equalsIgnoreCase("banish_foreigner"))
 			{
@@ -616,7 +612,7 @@ public class L2CastleChamberlainInstance extends L2FolkInstance
 				{
 					if (val.equalsIgnoreCase("recovery"))
 					{
-						if (st.countTokens() >= 1)
+						if (st.hasMoreTokens())
 						{
 							if (getCastle().getOwnerId() == 0)
 							{
@@ -747,7 +743,7 @@ public class L2CastleChamberlainInstance extends L2FolkInstance
 							}
 							else if (val.equalsIgnoreCase("hp"))
 							{
-								if (st.countTokens() >= 1)
+								if (st.hasMoreTokens())
 								{
 									if (Config.DEBUG)
 									{
@@ -805,7 +801,7 @@ public class L2CastleChamberlainInstance extends L2FolkInstance
 							}
 							else if (val.equalsIgnoreCase("mp"))
 							{
-								if (st.countTokens() >= 1)
+								if (st.hasMoreTokens())
 								{
 									if (Config.DEBUG)
 									{
@@ -861,7 +857,7 @@ public class L2CastleChamberlainInstance extends L2FolkInstance
 							}
 							else if (val.equalsIgnoreCase("exp"))
 							{
-								if (st.countTokens() >= 1)
+								if (st.hasMoreTokens())
 								{
 									if (Config.DEBUG)
 									{
@@ -965,7 +961,7 @@ public class L2CastleChamberlainInstance extends L2FolkInstance
 					}
 					else if (val.equalsIgnoreCase("other"))
 					{
-						if (st.countTokens() >= 1)
+						if (st.hasMoreTokens())
 						{
 							if (getCastle().getOwnerId() == 0)
 							{
@@ -1048,7 +1044,7 @@ public class L2CastleChamberlainInstance extends L2FolkInstance
 							}
 							else if (val.equalsIgnoreCase("tele"))
 							{
-								if (st.countTokens() >= 1)
+								if (st.hasMoreTokens())
 								{
 									if (Config.DEBUG)
 									{
@@ -1098,7 +1094,7 @@ public class L2CastleChamberlainInstance extends L2FolkInstance
 							}
 							else if (val.equalsIgnoreCase("support"))
 							{
-								if (st.countTokens() >= 1)
+								if (st.hasMoreTokens())
 								{
 									if (Config.DEBUG)
 									{
@@ -1235,7 +1231,7 @@ public class L2CastleChamberlainInstance extends L2FolkInstance
 						NpcHtmlMessage html = new NpcHtmlMessage(1);
 						int skillLevel = 0;
 						
-						if (st.countTokens() >= 1)
+						if (st.hasMoreTokens())
 						{
 							skillLevel = Integer.parseInt(st.nextToken());
 						}

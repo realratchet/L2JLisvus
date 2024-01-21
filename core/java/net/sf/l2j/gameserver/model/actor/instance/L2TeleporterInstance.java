@@ -68,11 +68,8 @@ public final class L2TeleporterInstance extends L2FolkInstance
             }
             else if (condition == COND_CASTLE_OWNER)
             {
-                int minPrivilegeLevel = 0; // NOTE: Replace 0 with highest level when privilege level is implemented
-                if (st.countTokens() >= 1)
-                {
-                    minPrivilegeLevel = Integer.parseInt(st.nextToken());
-                }
+                int minPrivilegeLevel = st.hasMoreTokens() ? Integer.parseInt(st.nextToken()) : 0; // NOTE: Replace 0 with highest level when privilege level is implemented
+                
                 if (minPrivilegeLevel <= 10) // NOTE: Replace 10 with privilege level of player
                 {
                 	doTeleport(player, whereTo);

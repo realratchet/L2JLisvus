@@ -1557,7 +1557,7 @@ public abstract class L2Character extends L2Object
 		broadcastPacket(new MagicSkillUse(this, target, displayId, level, visualHitTime, reuseDelay, !skill.isMagic() && crit));
 		
 		// Send skill cast messages to the L2Character
-		if ((this instanceof L2PcInstance) && (magicId != 1312))
+		if (this instanceof L2PcInstance && magicId != 1312)
 		{
 			if (skill.getSkillType() == SkillType.SUMMON_PET)
 			{
@@ -1762,7 +1762,7 @@ public abstract class L2Character extends L2Object
 			}
 			else
 			{
-				_status.setCurrentHp(getMaxHp() * Config.RESPAWN_RESTORE_HP_MULTIPLIER);
+				setCurrentHp(getMaxHp() * Config.RESPAWN_RESTORE_HP_MULTIPLIER);
 			}
 			
 			// Start broadcast status

@@ -67,11 +67,7 @@ public class L2ClanHallManagerInstance extends L2FolkInstance
 		{
 			StringTokenizer st = new StringTokenizer(command, " ");
 			String actualCommand = st.nextToken(); // Get actual command
-			String val = "";
-			if (st.countTokens() >= 1)
-			{
-				val = st.nextToken();
-			}
+			String val = st.hasMoreTokens() ? st.nextToken() : "";
 
 			if (actualCommand.equalsIgnoreCase("banish_foreigner"))
 			{
@@ -220,12 +216,12 @@ public class L2ClanHallManagerInstance extends L2FolkInstance
 				{
 					if (val.equalsIgnoreCase("recovery"))
 					{
-						if (st.countTokens() >= 1)
+						if (st.hasMoreTokens())
 						{
 							val = st.nextToken();
 							if (val.equalsIgnoreCase("hp"))
 							{
-								if (st.countTokens() >= 1)
+								if (st.hasMoreTokens())
 								{
 									int fee = 0;
 
@@ -293,7 +289,7 @@ public class L2ClanHallManagerInstance extends L2FolkInstance
 							}
 							else if (val.equalsIgnoreCase("mp"))
 							{
-								if (st.countTokens() >= 1)
+								if (st.hasMoreTokens())
 								{
 									int fee = 0;
 
@@ -337,7 +333,7 @@ public class L2ClanHallManagerInstance extends L2FolkInstance
 							}
 							else if (val.equalsIgnoreCase("exp"))
 							{
-								if (st.countTokens() >= 1)
+								if (st.hasMoreTokens())
 								{
 									int fee = 0;
 
@@ -432,12 +428,12 @@ public class L2ClanHallManagerInstance extends L2FolkInstance
 					}
 					else if (val.equalsIgnoreCase("other"))
 					{
-						if (st.countTokens() >= 1)
+						if (st.hasMoreTokens())
 						{
 							val = st.nextToken();
 							if (val.equalsIgnoreCase("item"))
 							{
-								if (st.countTokens() >= 1)
+								if (st.hasMoreTokens())
 								{
 									int fee = 0;
 
@@ -475,7 +471,7 @@ public class L2ClanHallManagerInstance extends L2FolkInstance
 							}
 							else if (val.equalsIgnoreCase("tele"))
 							{
-								if (st.countTokens() >= 1)
+								if (st.hasMoreTokens())
 								{
 									int fee = 0;
 
@@ -510,7 +506,7 @@ public class L2ClanHallManagerInstance extends L2FolkInstance
 							}
 							else if (val.equalsIgnoreCase("support"))
 							{
-								if (st.countTokens() >= 1)
+								if (st.hasMoreTokens())
 								{
 									int fee = 0;
 
@@ -608,12 +604,12 @@ public class L2ClanHallManagerInstance extends L2FolkInstance
 					}
 					else if (val.equalsIgnoreCase("deco"))
 					{
-						if (st.countTokens() >= 1)
+						if (st.hasMoreTokens())
 						{
 							val = st.nextToken();
 							if (val.equalsIgnoreCase("curtains"))
 							{
-								if (st.countTokens() >= 1)
+								if (st.hasMoreTokens())
 								{
 									int fee = 0;
 									if (Config.DEBUG)
@@ -646,7 +642,7 @@ public class L2ClanHallManagerInstance extends L2FolkInstance
 							}
 							else if (val.equalsIgnoreCase("porch"))
 							{
-								if (st.countTokens() >= 1)
+								if (st.hasMoreTokens())
 								{
 									int fee = 0;
 									if (Config.DEBUG)
@@ -736,15 +732,15 @@ public class L2ClanHallManagerInstance extends L2FolkInstance
 
 				try
 				{
-					int skill_id = Integer.parseInt(val);
+					int skillId = Integer.parseInt(val);
 					try
 					{
-						int skill_lvl = 0;
-						if (st.countTokens() >= 1)
+						int skillLvl = 0;
+						if (st.hasMoreTokens())
 						{
-							skill_lvl = Integer.parseInt(st.nextToken());
+							skillLvl = Integer.parseInt(st.nextToken());
 						}
-						skill = SkillTable.getInstance().getInfo(skill_id, skill_lvl);
+						skill = SkillTable.getInstance().getInfo(skillId, skillLvl);
 						if (skill.getSkillType() == SkillType.SUMMON)
 						{
 							player.doCast(skill);

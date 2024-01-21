@@ -34,75 +34,79 @@ public class AdminLevel implements IAdminCommandHandler
         "admin_add_level",
         "admin_set_level"
     };
-
-    /* (non-Javadoc)
+    
+    /*
+     * (non-Javadoc)
+     * 
      * @see net.sf.l2j.gameserver.handler.IAdminCommandHandler#useAdminCommand(java.lang.String, net.sf.l2j.gameserver.model.L2PcInstance)
      */
     @Override
-	public boolean useAdminCommand(String command, L2PcInstance activeChar)
+    public boolean useAdminCommand(String command, L2PcInstance activeChar)
     {
         if (activeChar == null)
-        	return false;
+            return false;
         
-		L2Object targetChar = activeChar.getTarget();
-		String target = (targetChar != null ? targetChar.getName() : "no-target");
+        L2Object targetChar = activeChar.getTarget();
+        String target = (targetChar != null ? targetChar.getName() : "no-target");
         GMAudit.auditGMAction(activeChar.getName(), command, target, "");
-
+        
         StringTokenizer st = new StringTokenizer(command, " ");
         String actualCommand = st.nextToken(); // Get actual command
-
-        String val = "";
-        if (st.countTokens() >= 1) { val = st.nextToken(); }
- 
+        
+        String val = st.hasMoreTokens() ? st.nextToken() : "";
+        
         if (actualCommand.equalsIgnoreCase("admin_add_level"))
         {
             try
             {
                 if (targetChar instanceof L2PlayableInstance)
-                        ((L2PlayableInstance)targetChar).getStat().addLevel(Byte.parseByte(val));
+                    ((L2PlayableInstance) targetChar).getStat().addLevel(Byte.parseByte(val));
             }
-            catch (NumberFormatException e) { activeChar.sendMessage("Wrong Number Format"); }
+            catch (NumberFormatException e)
+            {
+                activeChar.sendMessage("Wrong Number Format");
+            }
         }
-        else if(actualCommand.equalsIgnoreCase("admin_set_level"))
+        else if (actualCommand.equalsIgnoreCase("admin_set_level"))
         {
             try
             {
-            	if (targetChar == null || !(targetChar instanceof L2PcInstance))
+                if (targetChar == null || !(targetChar instanceof L2PcInstance))
                 {
                     activeChar.sendPacket(new SystemMessage(SystemMessage.TARGET_IS_INCORRECT));
                     return false;
                 }
-            	L2PcInstance targetPlayer = (L2PcInstance)targetChar;
-
+                L2PcInstance targetPlayer = (L2PcInstance) targetChar;
+                
                 byte lvl = Byte.parseByte(val);
-            	if (lvl >= 1 && lvl <= Config.MAX_PLAYER_LEVEL)
-            	{
-            		long pXp = targetPlayer.getExp();
-            		long tXp = Experience.LEVEL[lvl];
-            		
-            		if (pXp > tXp)
-            		{
-            			targetPlayer.removeExpAndSp(pXp - tXp, 0);
-            			StatusUpdate su = new StatusUpdate(targetPlayer.getObjectId());
-            			su.addAttribute(StatusUpdate.EXP, Experience.getVisualExp(targetPlayer.getLevel(), targetPlayer.getExp()));
-            			targetPlayer.sendPacket(su);
-            		}
-            		else if (pXp < tXp)
-            		{
-            			// Do not share exp with pet
-            			L2Summon summon = targetPlayer.getPet();
-            			targetPlayer.setPet(null);
-            			targetPlayer.addExpAndSp(tXp - pXp, 0);
-            			targetPlayer.setPet(summon);
-            		}
-            	}
-            	else
-            	{
+                if (lvl >= 1 && lvl <= Config.MAX_PLAYER_LEVEL)
+                {
+                    long pXp = targetPlayer.getExp();
+                    long tXp = Experience.LEVEL[lvl];
+                    
+                    if (pXp > tXp)
+                    {
+                        targetPlayer.removeExpAndSp(pXp - tXp, 0);
+                        StatusUpdate su = new StatusUpdate(targetPlayer.getObjectId());
+                        su.addAttribute(StatusUpdate.EXP, Experience.getVisualExp(targetPlayer.getLevel(), targetPlayer.getExp()));
+                        targetPlayer.sendPacket(su);
+                    }
+                    else if (pXp < tXp)
+                    {
+                        // Do not share exp with pet
+                        L2Summon summon = targetPlayer.getPet();
+                        targetPlayer.setPet(null);
+                        targetPlayer.addExpAndSp(tXp - pXp, 0);
+                        targetPlayer.setPet(summon);
+                    }
+                }
+                else
+                {
                     activeChar.sendMessage("You must specify level between 1 and " + Config.MAX_PLAYER_LEVEL + ".");
                     return false;
-            	}
+                }
             }
-            catch (NumberFormatException  e)
+            catch (NumberFormatException e)
             {
                 activeChar.sendMessage("You must specify level between 1 and " + Config.MAX_PLAYER_LEVEL + ".");
                 return false;
@@ -110,12 +114,14 @@ public class AdminLevel implements IAdminCommandHandler
         }
         return true;
     }
-
-    /* (non-Javadoc)
+    
+    /*
+     * (non-Javadoc)
+     * 
      * @see net.sf.l2j.gameserver.handler.IAdminCommandHandler#getAdminCommandList()
      */
     @Override
-	public String[] getAdminCommandList()
+    public String[] getAdminCommandList()
     {
         return ADMIN_COMMANDS;
     }
