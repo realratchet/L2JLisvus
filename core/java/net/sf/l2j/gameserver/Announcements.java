@@ -104,7 +104,7 @@ public class Announcements
 
     public void listAnnouncements(L2PcInstance activeChar)
     {		
-        NpcHtmlMessage adminReply = new NpcHtmlMessage(5);
+        NpcHtmlMessage adminReply = new NpcHtmlMessage(0);
 
         StringBuilder replyMSG = new StringBuilder(500);
         StringUtil.append(replyMSG, "<html><body>",

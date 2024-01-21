@@ -1230,8 +1230,8 @@ public class Olympiad
     
     public void sendMatchList(L2PcInstance player)
     {
-        NpcHtmlMessage message = new NpcHtmlMessage(0);
-        message.setFile(Olympiad.OLYMPIAD_HTML_PATH + "olympiad_observe2.htm");
+        NpcHtmlMessage html = new NpcHtmlMessage(0);
+        html.setFile(Olympiad.OLYMPIAD_HTML_PATH + "olympiad_observe2.htm");
         
         Map<Integer, String> matches = getMatchList();
         Collection<L2OlympiadStadiumZone> stadiums = ZoneManager.getInstance().getAllZones(L2OlympiadStadiumZone.class);
@@ -1248,11 +1248,11 @@ public class Olympiad
                     state = "Standby";
                 players = matches.get(stadium.getStadiumId());
             }
-            message.replace("%state" + stadium.getStadiumId() + "%", state);
-            message.replace("%players" + stadium.getStadiumId() + "%", players);
+            html.replace("%state" + stadium.getStadiumId() + "%", state);
+            html.replace("%players" + stadium.getStadiumId() + "%", players);
         }
         
-        player.sendPacket(message);
+        player.sendPacket(html);
     }
     
     public void bypassChangeArena(String command, L2PcInstance player)

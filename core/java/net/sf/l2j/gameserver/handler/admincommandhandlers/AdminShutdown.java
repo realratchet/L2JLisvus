@@ -75,7 +75,7 @@ public class AdminShutdown implements IAdminCommandHandler
 	
 	private void sendHtmlForm(L2PcInstance activeChar)
     {
-		NpcHtmlMessage adminReply = new NpcHtmlMessage(5);
+		NpcHtmlMessage adminReply = new NpcHtmlMessage(0);
 		
 		int t = GameTimeController.getInstance().getGameTime();
 		int h = t/60;

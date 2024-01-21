@@ -244,7 +244,7 @@ public class L2WeddingManagerInstance extends L2FolkInstance
 	
 	private void sendHtmlMessage(L2PcInstance player, String filename, String replace)
 	{
-		NpcHtmlMessage html = new NpcHtmlMessage(1);
+		NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
 		html.setFile(filename);
 		html.replace("%objectId%", String.valueOf(getObjectId()));
 		if (replace != null)

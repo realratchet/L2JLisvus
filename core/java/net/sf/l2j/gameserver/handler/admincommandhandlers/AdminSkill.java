@@ -273,7 +273,7 @@ public class AdminSkill implements IAdminCommandHandler
 		if (SkillsEnd - SkillsStart > maxSkillsPerPage)
 		    SkillsEnd = SkillsStart + maxSkillsPerPage;
 		
-		NpcHtmlMessage adminReply = new NpcHtmlMessage(5);		
+		NpcHtmlMessage adminReply = new NpcHtmlMessage(0);		
 		StringBuilder replyMSG = new StringBuilder(3000);
 		StringUtil.append(replyMSG, "<html><body>");
 		StringUtil.append(replyMSG, "<table width=260><tr>");
@@ -337,7 +337,7 @@ public class AdminSkill implements IAdminCommandHandler
 			return;
 		}
 		
-		NpcHtmlMessage adminReply = new NpcHtmlMessage(5);
+		NpcHtmlMessage adminReply = new NpcHtmlMessage(0);
 		String replyMSG = StringUtil.concat(
 			"<html><body>",
 			"<table width=260><tr>",

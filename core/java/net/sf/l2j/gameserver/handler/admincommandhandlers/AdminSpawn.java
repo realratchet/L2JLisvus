@@ -277,7 +277,7 @@ public class AdminSpawn implements IAdminCommandHandler
         else
         	StringUtil.append(sb, end1);
 
-        activeChar.sendPacket(new NpcHtmlMessage(5, sb.toString()));
+        activeChar.sendPacket(new NpcHtmlMessage(0, sb.toString()));
     }
 
     private void showNpcs(L2PcInstance activeChar, String starting, int from)
@@ -312,7 +312,7 @@ public class AdminSpawn implements IAdminCommandHandler
         else
         	StringUtil.append(sb, end1);
 
-        activeChar.sendPacket(new NpcHtmlMessage(5, sb.toString()));
+        activeChar.sendPacket(new NpcHtmlMessage(0, sb.toString()));
     }
     
     @Override

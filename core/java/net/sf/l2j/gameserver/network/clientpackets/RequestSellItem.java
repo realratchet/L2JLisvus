@@ -165,12 +165,12 @@ public class RequestSellItem extends L2GameClientPacket
 
 		if (merchant != null)
 		{
-			String html = HtmCache.getInstance().getHtm("data/html/merchant/" + merchant.getNpcId() + "-sold.htm");
-			if (html != null)
+			String content = HtmCache.getInstance().getHtm("data/html/merchant/" + merchant.getNpcId() + "-sold.htm");
+			if (content != null)
 			{
-				NpcHtmlMessage soldMsg = new NpcHtmlMessage(0);
-				soldMsg.setHtml(html.replaceAll("%objectId%", String.valueOf(merchant.getObjectId())));
-				player.sendPacket(soldMsg);
+				NpcHtmlMessage html = new NpcHtmlMessage(merchant.getObjectId());
+				html.setHtml(content.replaceAll("%objectId%", String.valueOf(merchant.getObjectId())));
+				player.sendPacket(html);
 			}
 		}
 

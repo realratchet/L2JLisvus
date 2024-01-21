@@ -155,7 +155,7 @@ public class AdminPForge implements IAdminCommandHandler
     
 	public void showMainPage(L2PcInstance activeChar)
 	{
-		NpcHtmlMessage adminReply = new NpcHtmlMessage(5);
+		NpcHtmlMessage adminReply = new NpcHtmlMessage(0);
 
 		String replyMSG = StringUtil.concat(
 			"<html><body>",
@@ -171,7 +171,7 @@ public class AdminPForge implements IAdminCommandHandler
 	
 	public void showPage3(L2PcInstance activeChar,String format,String command)
 	{
-		NpcHtmlMessage adminReply = new NpcHtmlMessage(5);
+		NpcHtmlMessage adminReply = new NpcHtmlMessage(0);
 
 		String replyMSG = StringUtil.concat(
 			"<html><body>",
@@ -188,7 +188,7 @@ public class AdminPForge implements IAdminCommandHandler
 	
 	public void showPage2(L2PcInstance activeChar,String format)
 	{
-		NpcHtmlMessage adminReply = new NpcHtmlMessage(5);
+		NpcHtmlMessage adminReply = new NpcHtmlMessage(0);
 		StringBuilder replyMSG = new StringBuilder(500);
 		StringUtil.append(replyMSG, "<html><body>");
 		StringUtil.append(replyMSG, "<center>L2J Forge Panel 2</center><br>Format:"+format);

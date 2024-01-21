@@ -150,7 +150,7 @@ public class AdminManor implements IAdminCommandHandler
 
     private void showMainPage(L2PcInstance activeChar)
     {
-        NpcHtmlMessage adminReply = new NpcHtmlMessage(5);
+        NpcHtmlMessage adminReply = new NpcHtmlMessage(0);
         StringBuilder replyMSG = new StringBuilder(1000);
         StringUtil.append(replyMSG, "<html><body>");
         StringUtil.append(replyMSG, "<center><table width=260><tr><td width=40>");

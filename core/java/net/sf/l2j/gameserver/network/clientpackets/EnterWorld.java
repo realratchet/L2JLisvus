@@ -231,9 +231,9 @@ public class EnterWorld extends L2GameClientPacket
 		String serverNews = HtmCache.getInstance().getHtm("data/html/servnews.htm");
 		if (serverNews != null)
 		{
-			NpcHtmlMessage htmlMsg = new NpcHtmlMessage(0);
-			htmlMsg.setHtml(serverNews);
-			sendPacket(htmlMsg);
+			NpcHtmlMessage html = new NpcHtmlMessage(0);
+			html.setHtml(serverNews);
+			sendPacket(html);
 		}
 
 		// just in case player gets disconnected

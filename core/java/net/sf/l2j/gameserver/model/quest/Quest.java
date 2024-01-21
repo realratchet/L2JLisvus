@@ -935,10 +935,10 @@ public class Quest extends ManagedScript
 			showHtmlFile(player, res);
 		else if (res.startsWith("<html>"))
 		{
-			NpcHtmlMessage npcReply = new NpcHtmlMessage(5);
-			npcReply.setHtml(res);
-			npcReply.replace("%playername%", player.getName());
-			player.sendPacket(npcReply);
+			NpcHtmlMessage html = new NpcHtmlMessage(0);
+			html.setHtml(res);
+			html.replace("%playername%", player.getName());
+			player.sendPacket(html);
 			player.sendPacket(new ActionFailed());
 		}
 		else
@@ -1430,10 +1430,10 @@ public class Quest extends ManagedScript
 			// Send message to client if message not empty
 			if (content != null)
 			{
-				NpcHtmlMessage npcReply = new NpcHtmlMessage(5);
-				npcReply.setHtml(content);
-				npcReply.replace("%playername%", player.getName());
-				player.sendPacket(npcReply);
+				NpcHtmlMessage html = new NpcHtmlMessage(0);
+				html.setHtml(content);
+				html.replace("%playername%", player.getName());
+				player.sendPacket(html);
 				player.sendPacket(new ActionFailed());
 			}
 		}

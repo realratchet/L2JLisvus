@@ -317,19 +317,18 @@ public class RequestBuyItem extends L2GameClientPacket
 		
 		if (player.isGM() && list.getNpcId().equals("gm"))
 		{
-			NpcHtmlMessage boughtMsg = new NpcHtmlMessage(0);
-			boughtMsg.setFile("data/html/admin/gmshops.htm");
-			player.sendPacket(boughtMsg);
+			NpcHtmlMessage html = new NpcHtmlMessage(0);
+			html.setFile("data/html/admin/gmshops.htm");
+			player.sendPacket(html);
 		}
 		else if (merchant != null)
 		{
-			
-			String html = HtmCache.getInstance().getHtm("data/html/merchant/" + list.getNpcId() + "-bought.htm");
-			if (html != null)
+			String content = HtmCache.getInstance().getHtm("data/html/merchant/" + list.getNpcId() + "-bought.htm");
+			if (content != null)
 			{
-				NpcHtmlMessage boughtMsg = new NpcHtmlMessage(0);
-				boughtMsg.setHtml(html.replaceAll("%objectId%", String.valueOf(merchant.getObjectId())));
-				player.sendPacket(boughtMsg);
+				NpcHtmlMessage html = new NpcHtmlMessage(merchant.getObjectId());
+				html.setHtml(content.replaceAll("%objectId%", String.valueOf(merchant.getObjectId())));
+				player.sendPacket(html);
 			}
 		}
 		

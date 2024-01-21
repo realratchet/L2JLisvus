@@ -88,7 +88,7 @@ public class L2WyvernManagerInstance extends L2CastleChamberlainInstance
             if (condition == COND_CASTLE_OWNER)                                     // Clan owns castle
                 filename = "data/html/wyvernmanager/wyvernmanager.htm";      // Owner message window
         }
-        NpcHtmlMessage html = new NpcHtmlMessage(1);
+        NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
         html.setFile(filename);
         html.replace("%objectId%", String.valueOf(getObjectId()));
         html.replace("%npcname%", getName());

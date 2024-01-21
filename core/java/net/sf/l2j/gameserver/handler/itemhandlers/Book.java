@@ -36,19 +36,17 @@ public class Book implements IItemHandler
         String filename = "data/html/help/" + itemId + ".htm";
         String content = HtmCache.getInstance().getHtm(filename);
 
+        NpcHtmlMessage html = new NpcHtmlMessage(0);
         if (content == null)
         {
-            NpcHtmlMessage html = new NpcHtmlMessage(1);
             html.setHtml("<html><body>My Text is missing:<br>"+filename+"</body></html>");
-            activeChar.sendPacket(html);
         }
         else
         {
-            NpcHtmlMessage itemReply = new NpcHtmlMessage(5);
-            itemReply.setHtml(content);
-            activeChar.sendPacket(itemReply);
+            html.setHtml(content);
         }
 
+        activeChar.sendPacket(html);
         activeChar.sendPacket(new ActionFailed());
     }
 }

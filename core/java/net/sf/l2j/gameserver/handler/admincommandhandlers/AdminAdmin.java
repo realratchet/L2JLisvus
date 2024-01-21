@@ -477,7 +477,7 @@ public class AdminAdmin implements IAdminCommandHandler
 
     public void showMainPage(L2PcInstance activeChar)
     {
-        NpcHtmlMessage html = new NpcHtmlMessage(5);
+        NpcHtmlMessage html = new NpcHtmlMessage(0);
         html.setFile("data/html/admin/adminpanel.htm");
         activeChar.sendPacket(html);
     }

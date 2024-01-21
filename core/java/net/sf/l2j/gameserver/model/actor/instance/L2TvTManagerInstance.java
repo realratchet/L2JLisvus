@@ -60,16 +60,16 @@ public class L2TvTManagerInstance extends L2NpcInstance
             String htmContent = HtmCache.getInstance().getHtm(htmFile);
             if (htmContent != null)
             {
-                NpcHtmlMessage npcHtmlMessage = new NpcHtmlMessage(getObjectId());
+                NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
 
-                npcHtmlMessage.setHtml(htmContent);
-                npcHtmlMessage.replace("%objectId%", String.valueOf(getObjectId()));
-                npcHtmlMessage.replace("%registeredcount%", String.valueOf(TvTEvent.getInstance().getRegistered().size()));
-                npcHtmlMessage.replace("%minimumplayers%", String.valueOf(TvTEvent.getInstance().getMinParticipants()));
-                npcHtmlMessage.replace("%maximumplayers%", String.valueOf(TvTEvent.getInstance().getMaxParticipants()));
-                npcHtmlMessage.replace("%minimumlevel%", String.valueOf(TvTEvent.getInstance().getMinLevel()));
-                npcHtmlMessage.replace("%maximumlevel%", String.valueOf(TvTEvent.getInstance().getMaxLevel()));
-                player.sendPacket(npcHtmlMessage);
+                html.setHtml(htmContent);
+                html.replace("%objectId%", String.valueOf(getObjectId()));
+                html.replace("%registeredcount%", String.valueOf(TvTEvent.getInstance().getRegistered().size()));
+                html.replace("%minimumplayers%", String.valueOf(TvTEvent.getInstance().getMinParticipants()));
+                html.replace("%maximumplayers%", String.valueOf(TvTEvent.getInstance().getMaxParticipants()));
+                html.replace("%minimumlevel%", String.valueOf(TvTEvent.getInstance().getMinLevel()));
+                html.replace("%maximumlevel%", String.valueOf(TvTEvent.getInstance().getMaxLevel()));
+                player.sendPacket(html);
             }
         }
         else
@@ -80,14 +80,14 @@ public class L2TvTManagerInstance extends L2NpcInstance
             if (htmContent != null)
             {
                 
-                NpcHtmlMessage npcHtmlMessage = new NpcHtmlMessage(getObjectId());
+                NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
 
-                npcHtmlMessage.setHtml(htmContent);
-                npcHtmlMessage.replace("%team1playercount%", String.valueOf(TvTEvent.getInstance().getBlueTeam().size()));
-                npcHtmlMessage.replace("%team1points%", String.valueOf(TvTEvent.getInstance().getBlueTeamKills()));
-                npcHtmlMessage.replace("%team2playercount%", String.valueOf(TvTEvent.getInstance().getRedTeam().size()));
-                npcHtmlMessage.replace("%team2points%", String.valueOf(TvTEvent.getInstance().getRedTeamKills()));
-                player.sendPacket(npcHtmlMessage);
+                html.setHtml(htmContent);
+                html.replace("%team1playercount%", String.valueOf(TvTEvent.getInstance().getBlueTeam().size()));
+                html.replace("%team1points%", String.valueOf(TvTEvent.getInstance().getBlueTeamKills()));
+                html.replace("%team2playercount%", String.valueOf(TvTEvent.getInstance().getRedTeam().size()));
+                html.replace("%team2points%", String.valueOf(TvTEvent.getInstance().getRedTeamKills()));
+                player.sendPacket(html);
             }
         }
 

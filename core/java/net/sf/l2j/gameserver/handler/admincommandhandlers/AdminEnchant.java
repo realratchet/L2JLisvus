@@ -244,7 +244,7 @@ public class AdminEnchant implements IAdminCommandHandler
 
 	public void showMainPage(L2PcInstance activeChar)
 	{
-		NpcHtmlMessage adminReply = new NpcHtmlMessage(5);
+		NpcHtmlMessage adminReply = new NpcHtmlMessage(0);
 
 		String replyMSG = StringUtil.concat(
 			"<html><body>",

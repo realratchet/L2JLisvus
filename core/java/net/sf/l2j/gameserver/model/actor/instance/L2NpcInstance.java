@@ -1281,9 +1281,9 @@ public class L2NpcInstance extends L2Character
 	{
 		// Send a Server->Client packet NpcHtmlMessage to the L2PcInstance in order to display the message of the L2NpcInstance
 		content = content.replaceAll("%objectId%", String.valueOf(getObjectId()));
-		NpcHtmlMessage npcReply = new NpcHtmlMessage(getObjectId());
-		npcReply.setHtml(content);
-		player.sendPacket(npcReply);
+		NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
+		html.setHtml(content);
+		player.sendPacket(html);
 	}
 	
 	/**

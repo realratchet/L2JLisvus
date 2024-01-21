@@ -147,7 +147,7 @@ public class AdminCreateItem implements IAdminCommandHandler
         if (activeChar != target)
             target.sendMessage("An Admin has spawned " + count + " item(s) number " + id + " in your inventory.");
 
-        NpcHtmlMessage adminReply = new NpcHtmlMessage(5);		
+        NpcHtmlMessage adminReply = new NpcHtmlMessage(0);		
         String replyMSG = StringUtil.concat(
         	"<html><body>",
         	"<table width=260><tr>",

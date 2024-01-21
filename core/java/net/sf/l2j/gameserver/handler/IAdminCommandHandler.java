@@ -42,7 +42,7 @@ public interface IAdminCommandHandler
 	public default void showHelpPage(L2PcInstance targetChar, String filename)
 	{
         String content = HtmCache.getInstance().getHtmForce("data/html/admin/" + filename);
-        NpcHtmlMessage adminReply = new NpcHtmlMessage(5);
+        NpcHtmlMessage adminReply = new NpcHtmlMessage(0);
         adminReply.setHtml(content);
         targetChar.sendPacket(adminReply);
 	}

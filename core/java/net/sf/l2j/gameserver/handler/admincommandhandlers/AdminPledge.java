@@ -146,7 +146,7 @@ public class AdminPledge implements IAdminCommandHandler
 
     public void showMainPage(L2PcInstance activeChar)
     {
-        NpcHtmlMessage adminReply = new NpcHtmlMessage(5);
+        NpcHtmlMessage adminReply = new NpcHtmlMessage(0);
         adminReply.setFile("data/html/admin/pledge.htm");
         activeChar.sendPacket(adminReply);
     }

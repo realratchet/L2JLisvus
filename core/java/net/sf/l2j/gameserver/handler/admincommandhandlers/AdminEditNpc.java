@@ -280,7 +280,7 @@ public class AdminEditNpc implements IAdminCommandHandler
             return;
         }
         
-        NpcHtmlMessage adminReply = new NpcHtmlMessage(5);
+        NpcHtmlMessage adminReply = new NpcHtmlMessage(0);
         
         String replyMSG = StringUtil.concat(
         	"<html><title>Merchant Shop Item Edit</title>",
@@ -325,7 +325,7 @@ public class AdminEditNpc implements IAdminCommandHandler
             return;
         }
         
-        NpcHtmlMessage adminReply = new NpcHtmlMessage(5);
+        NpcHtmlMessage adminReply = new NpcHtmlMessage(0);
         
         String replyMSG = StringUtil.concat(
         	"<html><title>Merchant Shop Item Delete</title>",
@@ -375,7 +375,7 @@ public class AdminEditNpc implements IAdminCommandHandler
             return;
         }
         
-        NpcHtmlMessage adminReply = new NpcHtmlMessage(5);
+        NpcHtmlMessage adminReply = new NpcHtmlMessage(0);
         
         String replyMSG = StringUtil.concat(
         	"<html><title>Merchant Shop Item Add</title>",
@@ -403,7 +403,7 @@ public class AdminEditNpc implements IAdminCommandHandler
         if (page > tradeList.getItems().size() / PAGE_LIMIT + 1 || page < 1)
             return;
         
-        NpcHtmlMessage adminReply = new NpcHtmlMessage(5);
+        NpcHtmlMessage adminReply = new NpcHtmlMessage(0);
         StringBuilder html = itemListHtml(tradeList, page);
         
         adminReply.setHtml(html.toString());        
@@ -459,7 +459,7 @@ public class AdminEditNpc implements IAdminCommandHandler
             return;
         }
         
-        NpcHtmlMessage adminReply = new NpcHtmlMessage(5);
+        NpcHtmlMessage adminReply = new NpcHtmlMessage(0);
         
         StringBuilder replyMSG = new StringBuilder(1000);
         StringUtil.append(replyMSG, "<html><title>Merchant Shop Lists</title>");
@@ -616,7 +616,7 @@ public class AdminEditNpc implements IAdminCommandHandler
 
     private void showNpcProperty(L2PcInstance adminPlayer, L2NpcTemplate npc)
     {
-        NpcHtmlMessage adminReply = new NpcHtmlMessage(5);
+        NpcHtmlMessage adminReply = new NpcHtmlMessage(0);
         String content = HtmCache.getInstance().getHtm("data/html/admin/editnpc.htm");
 	    
         if (content != null)
@@ -810,7 +810,7 @@ public class AdminEditNpc implements IAdminCommandHandler
 	        return;
 	    }
 	    
-	    NpcHtmlMessage adminReply = new NpcHtmlMessage(5);
+	    NpcHtmlMessage adminReply = new NpcHtmlMessage(0);
 	    
 	    StringBuilder replyMSG = new StringBuilder(2000);
 	    StringUtil.append(replyMSG, "<html><title>NPC: "+ npcData.name + "("+npcData.npcId+") 's drop manage</title>",
@@ -918,7 +918,7 @@ public class AdminEditNpc implements IAdminCommandHandler
             return;
         }
 
-        NpcHtmlMessage adminReply = new NpcHtmlMessage(5);
+        NpcHtmlMessage adminReply = new NpcHtmlMessage(0);
         StringBuilder replyMSG = new StringBuilder(500);
         StringUtil.append(replyMSG, "<html><title>Details of Drop Data: (" + npcId + " " + itemId + " " + category + ")</title>", "<body>");
 
@@ -973,7 +973,7 @@ public class AdminEditNpc implements IAdminCommandHandler
 
 	private void showAddDropData(L2PcInstance admin, L2NpcTemplate npcData)
 	{	    
-        NpcHtmlMessage adminReply = new NpcHtmlMessage(5);
+        NpcHtmlMessage adminReply = new NpcHtmlMessage(0);
         
         String replyMSG = StringUtil.concat(
         	"<html><title>Add dropdata to " + npcData.name + "(" + npcData.npcId + ")</title>",

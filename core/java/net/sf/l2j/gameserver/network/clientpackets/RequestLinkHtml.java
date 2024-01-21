@@ -26,11 +26,13 @@ public class RequestLinkHtml extends L2GameClientPacket
 {
 	private static Logger _log = Logger.getLogger(RequestLinkHtml.class.getName());
 	private static final String REQUESTLINKHTML__C__20 = "[C] 20 RequestLinkHtml";
+	
 	private String _link;
 	
 	@Override
 	protected void readImpl()
 	{
+		_link = readS();
 	}
 	
 	@Override
@@ -42,18 +44,15 @@ public class RequestLinkHtml extends L2GameClientPacket
 			return;
 		}
 
-		_link = readS();
-
 		if (_link.contains("..") || !_link.contains(".htm"))
 		{
 			_log.warning("[RequestLinkHtml] hack? link contains prohibited characters: '" + _link + "', skipped");
 			return;
 		}
 
-		NpcHtmlMessage msg = new NpcHtmlMessage(0);
-		msg.setFile(_link);
-
-		sendPacket(msg);
+		NpcHtmlMessage html = new NpcHtmlMessage(0);
+		html.setFile(_link);
+		sendPacket(html);
 	}
 
 	@Override

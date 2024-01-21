@@ -1603,9 +1603,9 @@ public final class L2PcInstance extends L2PlayableInstance
 				_log.fine("Showing quest window for quest " + questId + " state " + stateId + " html path: " + path);
 			}
 			
-			NpcHtmlMessage npcReply = new NpcHtmlMessage(5);
-			npcReply.setHtml(content);
-			sendPacket(npcReply);
+			NpcHtmlMessage html = new NpcHtmlMessage(0);
+			html.setHtml(content);
+			sendPacket(html);
 		}
 		
 		sendPacket(new ActionFailed());

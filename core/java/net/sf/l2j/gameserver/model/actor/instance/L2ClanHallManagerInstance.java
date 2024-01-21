@@ -91,7 +91,7 @@ public class L2ClanHallManagerInstance extends L2FolkInstance
 					}
 					else
 					{
-						NpcHtmlMessage html = new NpcHtmlMessage(1);
+						NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
 						html.setFile("data/html/clanHallManager/vault.htm");
 						this.sendHtmlMessage(player, html);
 					}
@@ -116,7 +116,7 @@ public class L2ClanHallManagerInstance extends L2FolkInstance
 					}
 					else
 					{
-						NpcHtmlMessage html = new NpcHtmlMessage(1);
+						NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
 						html.setFile("data/html/clanHallManager/door.htm");
 						sendHtmlMessage(player, html);
 					}
@@ -131,7 +131,7 @@ public class L2ClanHallManagerInstance extends L2FolkInstance
 			{
 				if (val.equalsIgnoreCase("tele"))
 				{
-					NpcHtmlMessage html = new NpcHtmlMessage(1);
+					NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
 					if (getClanHall().getFunction(ClanHall.FUNC_TELEPORT) == null)
 					{
 						html.setFile("data/html/clanHallManager/chamberlain-nac.htm");
@@ -146,7 +146,7 @@ public class L2ClanHallManagerInstance extends L2FolkInstance
 				{
 					if (getClanHall().getFunction(ClanHall.FUNC_ITEM_CREATE) == null)
 					{
-						NpcHtmlMessage html = new NpcHtmlMessage(1);
+						NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
 						html.setFile("data/html/clanHallManager/chamberlain-nac.htm");
 						sendHtmlMessage(player, html);
 						return;
@@ -162,7 +162,7 @@ public class L2ClanHallManagerInstance extends L2FolkInstance
 				}
 				else if (val.equalsIgnoreCase("support"))
 				{
-					NpcHtmlMessage html = new NpcHtmlMessage(1);
+					NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
 					if (getClanHall().getFunction(ClanHall.FUNC_SUPPORT) == null)
 					{
 						html.setFile("data/html/clanHallManager/chamberlain-nac.htm");
@@ -180,7 +180,7 @@ public class L2ClanHallManagerInstance extends L2FolkInstance
 				}
 				else
 				{
-					NpcHtmlMessage html = new NpcHtmlMessage(1);
+					NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
 					html.setFile("data/html/clanHallManager/functions.htm");
 					if (getClanHall().getFunction(ClanHall.FUNC_RESTORE_EXP) != null)
 					{
@@ -384,7 +384,7 @@ public class L2ClanHallManagerInstance extends L2FolkInstance
 
 						}
 
-						NpcHtmlMessage html = new NpcHtmlMessage(1);
+						NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
 						html.setFile("data/html/clanHallManager/edit_recovery" + getClanHall().getGrade() + ".htm");
 						if ((getClanHall().getFunction(ClanHall.FUNC_RESTORE_HP) != null) && (getClanHall().getFunction(ClanHall.FUNC_RESTORE_HP).getLvl() != 0))
 						{
@@ -560,7 +560,7 @@ public class L2ClanHallManagerInstance extends L2FolkInstance
 
 						}
 
-						NpcHtmlMessage html = new NpcHtmlMessage(1);
+						NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
 						html.setFile("data/html/clanHallManager/edit_other" + getClanHall().getGrade() + ".htm");
 						if ((getClanHall().getFunction(ClanHall.FUNC_TELEPORT) != null) && (getClanHall().getFunction(ClanHall.FUNC_TELEPORT).getLvl() != 0))
 						{
@@ -674,7 +674,7 @@ public class L2ClanHallManagerInstance extends L2FolkInstance
 								}
 							}
 						}
-						NpcHtmlMessage html = new NpcHtmlMessage(1);
+						NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
 						html.setFile("data/html/clanHallManager/deco.htm");
 
 						if ((getClanHall().getFunction(ClanHall.FUNC_DECO_CURTAINS) != null) && (getClanHall().getFunction(ClanHall.FUNC_DECO_CURTAINS).getLvl() != 0))
@@ -710,7 +710,7 @@ public class L2ClanHallManagerInstance extends L2FolkInstance
 					}
 					else
 					{
-						NpcHtmlMessage html = new NpcHtmlMessage(1);
+						NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
 						html.setFile("data/html/clanHallManager/manage.htm");
 						sendHtmlMessage(player, html);
 					}
@@ -754,7 +754,7 @@ public class L2ClanHallManagerInstance extends L2FolkInstance
 						{
 							return;
 						}
-						NpcHtmlMessage html = new NpcHtmlMessage(1);
+						NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
 						if (getClanHall().getFunction(ClanHall.FUNC_SUPPORT).getLvl() == 0)
 						{
 							return;
@@ -798,7 +798,7 @@ public class L2ClanHallManagerInstance extends L2FolkInstance
 			}
 		}
 
-		NpcHtmlMessage html = new NpcHtmlMessage(1);
+		NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
 		html.setFile(filename);
 		html.replace("%objectId%", String.valueOf(getObjectId()));
 		html.replace("%npcId%", String.valueOf(getNpcId()));

@@ -468,7 +468,7 @@ public class AdminEditChar implements IAdminCommandHandler
 			charactersEnd = charactersStart + maxCharactersPerPage;
 		}
 
-		NpcHtmlMessage adminReply = new NpcHtmlMessage(5);
+		NpcHtmlMessage adminReply = new NpcHtmlMessage(0);
 		adminReply.setFile("data/html/admin/charlist.htm");
 		StringBuilder replyMSG = new StringBuilder(players.length * 200);
 		
@@ -529,7 +529,7 @@ public class AdminEditChar implements IAdminCommandHandler
 		{
 		}
 		
-		NpcHtmlMessage adminReply = new NpcHtmlMessage(5);
+		NpcHtmlMessage adminReply = new NpcHtmlMessage(0);
 		adminReply.setFile("data/html/admin/" + filename);
 		adminReply.replace("%name%", player.getName());
 		adminReply.replace("%level%", String.valueOf(player.getLevel()));
@@ -717,7 +717,7 @@ public class AdminEditChar implements IAdminCommandHandler
 		String name;
 		Collection<L2PcInstance> allPlayers = L2World.getInstance().getAllPlayers();
 		L2PcInstance[] players = allPlayers.toArray(new L2PcInstance[allPlayers.size()]);
-		NpcHtmlMessage adminReply = new NpcHtmlMessage(5);
+		NpcHtmlMessage adminReply = new NpcHtmlMessage(0);
 		adminReply.setFile("data/html/admin/charfind.htm");
 		StringBuilder replyMSG = new StringBuilder();
 		for (L2PcInstance player : players)
@@ -786,7 +786,7 @@ public class AdminEditChar implements IAdminCommandHandler
 		L2GameClient client;
 		String name, ip = "0.0.0.0";
 		StringBuilder replyMSG = new StringBuilder(1000);
-		NpcHtmlMessage adminReply = new NpcHtmlMessage(5);
+		NpcHtmlMessage adminReply = new NpcHtmlMessage(0);
 		adminReply.setFile("data/html/admin/ipfind.htm");
 		for (L2PcInstance player : players)
 		{
@@ -864,7 +864,7 @@ public class AdminEditChar implements IAdminCommandHandler
 			chars = player.getAccountChars();
 			account = player.getAccountName();
 			StringBuilder replyMSG = new StringBuilder(500);
-			NpcHtmlMessage adminReply = new NpcHtmlMessage(5);
+			NpcHtmlMessage adminReply = new NpcHtmlMessage(0);
 			adminReply.setFile("data/html/admin/accountinfo.htm");
 			for (String charname : chars.values())
 			{

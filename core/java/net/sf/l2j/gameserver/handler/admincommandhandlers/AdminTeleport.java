@@ -411,7 +411,7 @@ public class AdminTeleport implements IAdminCommandHandler
     
     private void showTeleportWindow(L2PcInstance activeChar)
     {
-        NpcHtmlMessage adminReply = new NpcHtmlMessage(5); 
+        NpcHtmlMessage adminReply = new NpcHtmlMessage(0); 
         
         String replyMSG = StringUtil.concat(
         	"<html><body>",
@@ -451,7 +451,7 @@ public class AdminTeleport implements IAdminCommandHandler
             activeChar.sendMessage("Incorrect target.");
             return;
         }
-        NpcHtmlMessage adminReply = new NpcHtmlMessage(5); 
+        NpcHtmlMessage adminReply = new NpcHtmlMessage(0); 
         
         String replyMSG = StringUtil.concat(
         	"<html><body>",

@@ -243,7 +243,7 @@ public class RequestBypassToServer extends L2GameClientPacket
 		}
 		
 		String filename = "data/html/help/" + path;
-		NpcHtmlMessage html = new NpcHtmlMessage(1);
+		NpcHtmlMessage html = new NpcHtmlMessage(0);
 		html.setFile(filename);
 		activeChar.sendPacket(html);
 	}
