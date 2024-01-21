@@ -15,6 +15,7 @@
 package net.sf.l2j.gameserver.network.clientpackets;
 
 import net.sf.l2j.gameserver.datatables.GmListTable;
+import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 
 /**
  * This class handles RequestGmLista packet triggered by /gmlist command
@@ -32,12 +33,13 @@ public class RequestGmList extends L2GameClientPacket
 	@Override
 	public void runImpl()
 	{
-		if (getClient().getActiveChar() == null)
+		L2PcInstance activeChar = getClient().getActiveChar();
+		if (activeChar == null)
 		{
 			return;
 		}
 		
-		GmListTable.getInstance().sendListToPlayer(getClient().getActiveChar());
+		GmListTable.getInstance().sendListToPlayer(activeChar);
 	}
 	
 	/*

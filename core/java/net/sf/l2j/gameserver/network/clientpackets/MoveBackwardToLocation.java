@@ -53,6 +53,7 @@ public class MoveBackwardToLocation extends L2GameClientPacket
 		_originX = readD();
 		_originY = readD();
 		_originZ = readD();
+		
 		try
 		{
 			readD(); // Movement is 0 if cursor keys are used and 1 if mouse is used
@@ -61,8 +62,12 @@ public class MoveBackwardToLocation extends L2GameClientPacket
 		{
 			if (!Config.ALLOW_L2WALKER)
 			{
-				getClient().getActiveChar().sendPacket(new SystemMessage(769));
-				Util.handleIllegalPlayerAction(getClient().getActiveChar(), "Player " + getClient().getActiveChar().getName() + " is trying to use L2Walker and got kicked.", Config.DEFAULT_PUNISH);
+				L2PcInstance activeChar = getClient().getActiveChar();
+				if (activeChar != null)
+				{
+					activeChar.sendPacket(new SystemMessage(SystemMessage.A_HACKING_TOOL_HAS_BEEN_DISCOVERED));
+					Util.handleIllegalPlayerAction(activeChar, "Player " + activeChar.getName() + " is trying to use L2Walker and got kicked.", Config.DEFAULT_PUNISH);
+				}
 			}
 		}
 	}

@@ -14,6 +14,8 @@
  */
 package net.sf.l2j.gameserver.network.clientpackets;
 
+import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+
 public class RequestDeleteMacro extends L2GameClientPacket
 {
 	private int _id;
@@ -29,13 +31,13 @@ public class RequestDeleteMacro extends L2GameClientPacket
 	@Override
 	public void runImpl()
 	{
-		if (getClient().getActiveChar() == null)
+		L2PcInstance activeChar = getClient().getActiveChar();
+		if (activeChar == null)
 		{
 			return;
 		}
 		
-		getClient().getActiveChar().deleteMacro(_id);
-		getClient().getActiveChar().sendMessage("Delete macro id=" + _id);
+		activeChar.deleteMacro(_id);
 	}
 
 	/*

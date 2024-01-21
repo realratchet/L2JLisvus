@@ -359,6 +359,10 @@ public class SystemMessage extends L2GameServerPacket
 	public static final int SPOIL_CANNOT_USE = 661;
 	public static final int THE_PLAYER_IS_REJECTING_FRIEND_INVITATIONS = 662;
 	public static final int S1_ADENA_DISAPPEARED = 672;
+	public static final int AUCTION_ONLY_CLAN_LEVEL_2_HIGHER = 673;
+	public static final int ALREADY_SUBMITTED_BID = 676;
+	public static final int BID_PRICE_MUST_BE_HIGHER = 677;
+	public static final int CANNOT_PARTICIPATE_IN_AUCTION = 680;
 	public static final int SWEEP_NOT_ALLOWED = 683;
 	public static final int CLAN_THAT_OWNS_CASTLE_IS_AUTOMATICALLY_REGISTERED_DEFENDING = 688;
 	public static final int S1_CLAN_ALREADY_MEMBER_OF_S2_ALLIANCE = 691;
@@ -384,10 +388,15 @@ public class SystemMessage extends L2GameServerPacket
 	public static final int CANNOT_SUBMIT_MORE_THAN_S1_PETITIONS = 733;
 	public static final int EFFECT_S1_DISAPPEARED = 749;
 	public static final int S1_MUST_WAIT_BEFORE_JOINING_ANOTHER_CLAN = 760;
+	public static final int A_HACKING_TOOL_HAS_BEEN_DISCOVERED = 769;
+	public static final int CLANHALL_AWARDED_TO_CLAN_S1 = 776;
+	public static final int CLANHALL_NOT_SOLD = 777;
 	public static final int ONLY_VIEW_SIEGE = 780;
 	public static final int OBSERVERS_CANNOT_PARTICIPATE = 781;
 	public static final int YOU_ARE_NOT_AUTHORIZED = 794;
+	public static final int YOU_MAY_CREATE_UP_TO_24_MACROS = 797;
 	public static final int STUCK_TRANSPORT_IN_FIVE_MINUTES = 809;
+	public static final int INVALID_MACRO = 810;
 	public static final int MONSRACE_TICKETS_AVAILABLE_FOR_S1_RACE = 816;
 	public static final int MONSRACE_TICKETS_NOW_AVAILABLE_FOR_S1_RACE = 817;
 	public static final int MONSRACE_TICKETS_STOP_IN_S1_MINUTES = 818;
@@ -407,6 +416,8 @@ public class SystemMessage extends L2GameServerPacket
 	public static final int NO_MORE_RECOMMENDATIONS_TO_HAVE = 833;
 	public static final int S1_ROLLED_S2 = 834;
 	public static final int YOU_MAY_NOT_THROW_THE_DICE_AT_THIS_TIME_TRY_AGAIN_LATER = 835;
+	public static final int MACRO_DESCRIPTION_MAX_32_CHARS = 837;
+	public static final int ENTER_THE_MACRO_NAME = 838;
 	public static final int RECIPE_ALREADY_REGISTERED = 840;
 	public static final int NO_FUTHER_RECIPES_CAN_BE_ADDED = 841;
 	public static final int SIEGE_OF_S1_HAS_BEEN_CANCELED_DUE_TO_LACK_OF_INTEREST = 846;
@@ -457,6 +468,8 @@ public class SystemMessage extends L2GameServerPacket
 	public static final int SOUL_CRYSTAL_BROKE = 976;
 	public static final int SOUL_CRYSTAL_ABSORBING_FAILED_RESONATION = 977;
 	public static final int SOUL_CRYSTAL_ABSORBING_REFUSED = 978;
+	public static final int NOT_ENOUGH_ADENA_IN_CWH = 1005;
+	public static final int BID_IN_CLANHALL_AUCTION = 1006;
 	public static final int HUNGRY_STRIDER_NOT_MOUNT = 1008;
 	public static final int STRIDER_CANT_BE_RIDDEN_WHILE_DEAD = 1009;
 	public static final int DEAD_STRIDER_CANT_BE_RIDDEN = 1010;

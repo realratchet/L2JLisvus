@@ -25,31 +25,39 @@ import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
 public class RequestMakeMacro extends L2GameClientPacket
 {
 	private static final Logger _log = Logger.getLogger(RequestMakeMacro.class.getName());
-	
-	private L2Macro _macro;
-	private int _commands_lenght = 0;
-	
 	private static final String _C__C1_REQUESTMAKEMACRO = "[C] C1 RequestMakeMacro";
+	
+	private int _id;
+	private String _name;
+	private String _desc;
+	private String _acronym;
+	private int _icon;
+	private int _count;
+	private int _commandsLenght = 0;
+	private L2MacroCmd[] _commands;
 
 	@Override
 	protected void readImpl()
 	{
-		int _id = readD();
-		String _name = readS();
-		String _desc = readS();
-		String _acronym = readS();
-		int _icon = readC();
-		int _count = readC();
+		_id = readD();
+		_name = readS();
+		_desc = readS();
+		_acronym = readS();
+		_icon = readC();
+		_count = readC();
+		
 		if (_count > 12)
 		{
 			_count = 12;
 		}
-		
-		L2MacroCmd[] commands = new L2MacroCmd[_count];
+
+		_commands = new L2MacroCmd[_count];
+
 		if (Config.DEBUG)
 		{
 			_log.info("Make macro id:" + _id + "\tname:" + _name + "\tdesc:" + _desc + "\tacronym:" + _acronym + "\ticon:" + _icon + "\tcount:" + _count);
 		}
+
 		for (int i = 0; i < _count; i++)
 		{
 			int entry = readC();
@@ -57,14 +65,15 @@ public class RequestMakeMacro extends L2GameClientPacket
 			int d1 = readD(); // skill or page number for shortcuts
 			int d2 = readC();
 			String command = readS();
-			_commands_lenght += command.length();
-			commands[i] = new L2MacroCmd(entry, type, d1, d2, command);
+
+			_commandsLenght += command.length();
+			_commands[i] = new L2MacroCmd(entry, type, d1, d2, command);
+
 			if (Config.DEBUG)
 			{
 				_log.info("entry:" + entry + "\ttype:" + type + "\td1:" + d1 + "\td2:" + d2 + "\tcommand:" + command);
 			}
 		}
-		_macro = new L2Macro(_id, _icon, _name, _desc, _acronym, commands);
 	}
 	
 	@Override
@@ -75,32 +84,32 @@ public class RequestMakeMacro extends L2GameClientPacket
 		{
 			return;
 		}
-		
-		if (_commands_lenght > 255)
+
+		if (_name.isEmpty())
 		{
-			// Invalid macro. Refer to the Help file for instructions.
-			player.sendPacket(new SystemMessage(810));
+			player.sendPacket(new SystemMessage(SystemMessage.ENTER_THE_MACRO_NAME));
 			return;
 		}
+
+		if (_desc.length() > 32)
+		{
+			player.sendPacket(new SystemMessage(SystemMessage.MACRO_DESCRIPTION_MAX_32_CHARS));
+			return;
+		}
+		
+		if (_commandsLenght > 255)
+		{
+			player.sendPacket(new SystemMessage(SystemMessage.INVALID_MACRO));
+			return;
+		}
+
 		if (player.getMacroses().getAllMacroses().length > 24)
 		{
-			// You may create up to 24 macros.
-			player.sendPacket(new SystemMessage(797));
+			player.sendPacket(new SystemMessage(SystemMessage.YOU_MAY_CREATE_UP_TO_24_MACROS));
 			return;
 		}
-		if (_macro.name.length() == 0)
-		{
-			// Enter the name of the macro.
-			player.sendPacket(new SystemMessage(838));
-			return;
-		}
-		if (_macro.descr.length() > 32)
-		{
-			// Macro descriptions may contain up to 32 characters.
-			player.sendPacket(new SystemMessage(837));
-			return;
-		}
-		player.registerMacro(_macro);
+
+		player.registerMacro(new L2Macro(_id, _icon, _name, _desc, _acronym, _commands));
 	}
 	
 	/*

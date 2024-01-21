@@ -40,8 +40,6 @@ public class RequestWithdrawalPledge extends L2GameClientPacket
 	public void runImpl()
 	{
 		L2PcInstance activeChar = getClient().getActiveChar();
-		
-		// is player in a clan?
 		if (activeChar == null)
 		{
 			return;
@@ -49,13 +47,9 @@ public class RequestWithdrawalPledge extends L2GameClientPacket
 		
 		L2Clan clan = activeChar.getClan();
 		if (clan == null)
-		
 		{
-			
 			activeChar.sendPacket(new SystemMessage(SystemMessage.YOU_ARE_NOT_A_CLAN_MEMBER));
-			
 			return;
-			
 		}
 		
 		if (activeChar.isClanLeader())

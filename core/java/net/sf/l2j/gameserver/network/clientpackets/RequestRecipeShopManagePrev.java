@@ -35,7 +35,7 @@ public class RequestRecipeShopManagePrev extends L2GameClientPacket
 	public void runImpl()
 	{
 		L2PcInstance player = getClient().getActiveChar();
-		if ((player == null) || (player.getTarget() == null))
+		if (player == null || player.getTarget() == null)
 		{
 			return;
 		}

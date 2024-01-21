@@ -14,6 +14,7 @@
  */
 package net.sf.l2j.gameserver.network.clientpackets;
 
+import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.network.serverpackets.ItemList;
 
 /**
@@ -32,10 +33,15 @@ public class RequestItemList extends L2GameClientPacket
 	@Override
 	public void runImpl()
 	{
-		if ((getClient() != null) && (getClient().getActiveChar() != null) && !getClient().getActiveChar().isInventoryDisabled())
+		L2PcInstance activeChar = getClient().getActiveChar();
+		if (activeChar == null)
 		{
-			ItemList il = new ItemList(getClient().getActiveChar(), true);
-			sendPacket(il);
+			return;
+		}
+
+		if (!activeChar.isInventoryDisabled())
+		{
+			sendPacket(new ItemList(activeChar, true));
 		}
 	}
 	

@@ -19,6 +19,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import net.sf.l2j.Config;
+import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.network.L2GameClient;
 import net.sf.l2j.gameserver.network.serverpackets.L2GameServerPacket;
 import net.sf.l2j.mmocore.ReceivablePacket;
@@ -30,7 +31,7 @@ import net.sf.l2j.mmocore.ReceivablePacket;
 public abstract class L2GameClientPacket extends ReceivablePacket<L2GameClient>
 {
 	private static Logger _log = Logger.getLogger(L2GameClientPacket.class.getName());
-
+	
 	@Override
 	protected boolean read()
 	{
@@ -51,24 +52,28 @@ public abstract class L2GameClientPacket extends ReceivablePacket<L2GameClient>
 		}
 		return false;
 	}
-
+	
 	protected abstract void readImpl();
-
+	
 	@Override
 	public final void run()
 	{
 		try
 		{
 			runImpl();
-
-			/*
-			 * Removes onspawn protection - player has faster computer than average
-			 */
-			if (triggersOnActionRequest() && (getClient().getActiveChar() != null))
+			
+			L2PcInstance activeChar = getClient().getActiveChar();
+			if (activeChar != null)
 			{
-				getClient().getActiveChar().onActionRequest();
+				/*
+				 * Removes onspawn protection - player has faster computer than average
+				 */
+				if (triggersOnActionRequest())
+				{
+					activeChar.onActionRequest();
+				}
 			}
-
+			
 			cleanUp();
 		}
 		catch (Throwable t)
@@ -81,9 +86,9 @@ public abstract class L2GameClientPacket extends ReceivablePacket<L2GameClient>
 			}
 		}
 	}
-
+	
 	protected abstract void runImpl();
-
+	
 	protected final void sendPacket(L2GameServerPacket gsp)
 	{
 		getClient().sendPacket(gsp);
@@ -93,7 +98,7 @@ public abstract class L2GameClientPacket extends ReceivablePacket<L2GameClient>
 	 * @return A String with this packet name for debugging purposes
 	 */
 	public abstract String getType();
-
+	
 	/**
 	 * Overridden with true value on some packets that should disable spawn protection
 	 * @return
@@ -102,7 +107,7 @@ public abstract class L2GameClientPacket extends ReceivablePacket<L2GameClient>
 	{
 		return false;
 	}
-
+	
 	protected void cleanUp()
 	{
 	}

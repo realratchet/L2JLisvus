@@ -14,6 +14,7 @@
  */
 package net.sf.l2j.gameserver.network.clientpackets;
 
+import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.network.serverpackets.BeginRotation;
 
 /**
@@ -37,13 +38,13 @@ public class StartRotating extends L2GameClientPacket
 	@Override
 	public void runImpl()
 	{
-		if (getClient().getActiveChar() == null)
+		L2PcInstance activeChar = getClient().getActiveChar();
+		if (activeChar == null)
 		{
 			return;
 		}
 		
-		BeginRotation br = new BeginRotation(getClient().getActiveChar().getObjectId(), _degree, _side, 0);
-		getClient().getActiveChar().broadcastPacket(br);
+		activeChar.broadcastPacket(new BeginRotation(activeChar.getObjectId(), _degree, _side, 0));
 	}
 	
 	/*
