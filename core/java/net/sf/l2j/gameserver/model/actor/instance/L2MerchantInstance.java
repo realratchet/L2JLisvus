@@ -111,7 +111,7 @@ public class L2MerchantInstance extends L2FolkInstance
 		
 		if (actualCommand.equalsIgnoreCase("Buy"))
 		{
-			if (st.countTokens() < 1)
+			if (!st.hasMoreTokens())
 			{
 				return;
 			}
@@ -127,7 +127,7 @@ public class L2MerchantInstance extends L2FolkInstance
 		{
 			if (Config.ALLOW_PET_RENT && Config.LIST_PET_RENT_NPC.contains(getNpcId()))
 			{
-				if (st.countTokens() < 1)
+				if (!st.hasMoreTokens())
 				{
 					showRentPetWindow(player);
 				}
@@ -140,7 +140,7 @@ public class L2MerchantInstance extends L2FolkInstance
 		}
 		else if (actualCommand.equalsIgnoreCase("Wear") && Config.ALLOW_WEAR)
 		{
-			if (st.countTokens() < 1)
+			if (!st.hasMoreTokens())
 			{
 				return;
 			}
@@ -150,7 +150,7 @@ public class L2MerchantInstance extends L2FolkInstance
 		}
 		else if (actualCommand.equalsIgnoreCase("Multisell"))
 		{
-			if (st.countTokens() < 1)
+			if (!st.hasMoreTokens())
 			{
 				return;
 			}
@@ -160,8 +160,7 @@ public class L2MerchantInstance extends L2FolkInstance
 		}
 		else if (actualCommand.equalsIgnoreCase("Exc_Multisell"))
 		{
-			
-			if (st.countTokens() < 1)
+			if (!st.hasMoreTokens())
 			{
 				return;
 			}

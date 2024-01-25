@@ -56,10 +56,11 @@ public final class L2TeleporterInstance extends L2FolkInstance
 
         if (actualCommand.equalsIgnoreCase("goto"))
         {
-            if (st.countTokens() <= 0)
+            if (!st.hasMoreTokens())
             {
                 return;
             }
+
             int whereTo = Integer.parseInt(st.nextToken());
             if (condition == COND_REGULAR)
             {

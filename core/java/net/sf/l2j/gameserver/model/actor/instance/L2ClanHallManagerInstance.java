@@ -152,7 +152,7 @@ public class L2ClanHallManagerInstance extends L2FolkInstance
 						return;
 					}
 
-					if (st.countTokens() < 1)
+					if (!st.hasMoreTokens())
 					{
 						return;
 					}

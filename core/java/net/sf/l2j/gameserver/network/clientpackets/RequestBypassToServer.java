@@ -164,7 +164,6 @@ public class RequestBypassToServer extends L2GameClientPacket
 				{
 					((L2NpcInstance) object).onBypassFeedback(activeChar, _command);
 				}
-				
 			}
 			else if (_command.equals("menu_select?ask=-16&reply=2"))
 			{
@@ -173,7 +172,6 @@ public class RequestBypassToServer extends L2GameClientPacket
 				{
 					((L2NpcInstance) object).onBypassFeedback(activeChar, _command);
 				}
-				
 			}
 			else if (_command.startsWith("manor_menu_select?"))
 			{

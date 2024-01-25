@@ -63,7 +63,7 @@ public class AdminGeoEditor implements IAdminCommandHandler
                 String val = command.substring("admin_ge_mode".length());
                 StringTokenizer st = new StringTokenizer(val);
 
-                if (st.countTokens() < 1)
+                if (!st.hasMoreTokens())
                 {
                     activeChar.sendMessage("Usage: //ge_mode X");
                     activeChar.sendMessage("Mode 0: Don't send coordinates to geoeditor.");
