@@ -68,7 +68,6 @@ import net.sf.l2j.gameserver.handler.SkillHandler;
 import net.sf.l2j.gameserver.handler.UserCommandHandler;
 import net.sf.l2j.gameserver.handler.VoicedCommandHandler;
 import net.sf.l2j.gameserver.idfactory.IdFactory;
-import net.sf.l2j.gameserver.instancemanager.AuctionManager;
 import net.sf.l2j.gameserver.instancemanager.BoatManager;
 import net.sf.l2j.gameserver.instancemanager.CastleManager;
 import net.sf.l2j.gameserver.instancemanager.CastleManorManager;
@@ -260,8 +259,6 @@ public class GameServer
 
 		/** Load Manor Data */
 		L2Manor.getInstance();
-
-		AuctionManager.getInstance();
 		
 		Lottery.getInstance();
 		MonsterRace.getInstance().scheduleTimers();

@@ -211,6 +211,7 @@ public class SystemMessage extends L2GameServerPacket
 	public static final int CANNOT_USE_SOULSHOTS = 339;
 	public static final int ENABLED_SOULSHOT = 342;
 	public static final int SWEEPER_FAILED_TARGET_NOT_SPOILED = 343;
+	public static final int INCORRECT_ITEM_PRICE = 348;
 	public static final int NOT_ENOUGH_ITEMS = 351;
 	public static final int INAPPROPRIATE_ENCHANT_CONDITION = 355;
 	public static final int ALREADY_SPOILED = 357;
@@ -360,8 +361,10 @@ public class SystemMessage extends L2GameServerPacket
 	public static final int THE_PLAYER_IS_REJECTING_FRIEND_INVITATIONS = 662;
 	public static final int S1_ADENA_DISAPPEARED = 672;
 	public static final int AUCTION_ONLY_CLAN_LEVEL_2_HIGHER = 673;
+	public static final int NO_CLAN_HALLS_UP_FOR_AUCTION = 675;
 	public static final int ALREADY_SUBMITTED_BID = 676;
 	public static final int BID_PRICE_MUST_BE_HIGHER = 677;
+	public static final int CANCELED_BID = 679;
 	public static final int CANNOT_PARTICIPATE_IN_AUCTION = 680;
 	public static final int SWEEP_NOT_ALLOWED = 683;
 	public static final int CLAN_THAT_OWNS_CASTLE_IS_AUTOMATICALLY_REGISTERED_DEFENDING = 688;
@@ -468,6 +471,7 @@ public class SystemMessage extends L2GameServerPacket
 	public static final int SOUL_CRYSTAL_BROKE = 976;
 	public static final int SOUL_CRYSTAL_ABSORBING_FAILED_RESONATION = 977;
 	public static final int SOUL_CRYSTAL_ABSORBING_REFUSED = 978;
+	public static final int REGISTERED_FOR_CLANHALL = 1004;
 	public static final int NOT_ENOUGH_ADENA_IN_CWH = 1005;
 	public static final int BID_IN_CLANHALL_AUCTION = 1006;
 	public static final int HUNGRY_STRIDER_NOT_MOUNT = 1008;

@@ -512,7 +512,6 @@ for %%i in (
 aio_buffer.sql
 auction.sql
 auction_bid.sql
-auction_watch.sql
 auto_announcements.sql
 auto_chat.sql
 auto_chat_text.sql

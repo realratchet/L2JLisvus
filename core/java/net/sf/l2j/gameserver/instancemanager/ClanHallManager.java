@@ -22,32 +22,27 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import net.sf.l2j.L2DatabaseFactory;
-import net.sf.l2j.gameserver.datatables.ClanTable;
 import net.sf.l2j.gameserver.model.L2Clan;
+import net.sf.l2j.gameserver.model.entity.Auction;
 import net.sf.l2j.gameserver.model.entity.ClanHall;
 
 public class ClanHallManager
 {
-	private final static Logger _log = Logger.getLogger(ClanHallManager.class.getName());
+    private final static Logger _log = Logger.getLogger(ClanHallManager.class.getName());
     
     public static final ClanHallManager getInstance()
     {
         return SingletonHolder._instance;
     }
     
-    // =========================================================
-    // Data Field
-    private List<ClanHall> _clanHalls;
+    private final List<ClanHall> _clanHalls = new ArrayList<>();
     
-    // =========================================================
-    // Constructor
     public ClanHallManager()
     {
-    	_log.info("Initializing ClanHallManager");
+        _log.info("Initializing ClanHallManager");
         load();
-    }
-    // =========================================================
-    // Method - Private
+    }
+    
     private final void load()
     {
         try (Connection con = L2DatabaseFactory.getInstance().getConnection();
@@ -56,64 +51,71 @@ public class ClanHallManager
         {
             while (rs.next())
             {
-                if (rs.getInt("ownerId") != 0)
-                {
-                    // just in case clan is deleted manually from db
-                    if (ClanTable.getInstance().getClan(rs.getInt("ownerId")) == null)
-                        AuctionManager.initNPC(rs.getInt("id"));
-                }
-            	getClanHalls().add(new ClanHall(rs.getInt("id"), rs.getString("name"), rs.getInt("ownerId"), rs.getInt("lease"), rs.getString("desc"), rs.getString("location"), rs.getLong("paidUntil"), rs.getInt("Grade"), rs.getBoolean("paid")));
+                _clanHalls.add(new ClanHall(rs.getInt("id"), rs.getString("name"), rs.getInt("ownerId"), rs.getInt("lease"), rs.getInt("defaultBid"), rs.getString("desc"), rs.getString("location"), rs.getLong("paidUntil"), rs.getInt("Grade"), rs.getBoolean("paid")));
             }
-
-            _log.info("Loaded: " + getClanHalls().size() + " clan halls");
+            
+            _log.info("Loaded: " + _clanHalls.size() + " clan halls");
         }
         catch (Exception e)
         {
             _log.warning("Exception: ClanHallManager.load(): " + e.getMessage());
         }
     }
-
-    // =========================================================
-    // Property - Public
+    
     public final ClanHall getClanHallById(int clanHallId)
     {
-        for (ClanHall clanHall : getClanHalls())
+        for (ClanHall clanHall : _clanHalls)
         {
             if (clanHall.getId() == clanHallId)
                 return clanHall;
         }
         return null;
     }
-
+    
     public final ClanHall getNearbyClanHall(int x, int y, int maxDist)
     {
-        for (ClanHall ch : getClanHalls())
+        for (ClanHall ch : _clanHalls)
         {
             if (ch.getZone() != null && ch.getZone().getDistanceToZone(x, y) < maxDist)
                 return ch;
         }
         return null;
     }
-
+    
     public final ClanHall getClanHallByOwner(L2Clan clan)
     {
-        for (ClanHall clanHall : getClanHalls())
+        for (ClanHall clanHall : _clanHalls)
         {
             if (clan.getClanId() == clanHall.getOwnerId())
-
+                
                 return clanHall;
         }
         return null;
     }
-
+    
+    public final List<ClanHall> getRentableClanHalls()
+    {
+        final List<ClanHall> list = new ArrayList<>();
+        for (ClanHall ch : _clanHalls)
+        {
+            Auction auction = ch.getAuction();
+            if (auction == null)
+            {
+                continue;
+            }
+            
+            list.add(ch);
+        }
+        return list;
+    }
+    
     public final List<ClanHall> getClanHalls()
     {
-        if (_clanHalls == null) _clanHalls = new ArrayList<>();
         return _clanHalls;
     }
     
     private static class SingletonHolder
-	{
-		protected static final ClanHallManager _instance = new ClanHallManager();
-	}
+    {
+        protected static final ClanHallManager _instance = new ClanHallManager();
+    }
 }

@@ -60,7 +60,6 @@ public abstract class IdFactory
 		"UPDATE character_hennas      SET char_obj_id = ?     WHERE char_obj_id = ?",
 		"UPDATE itemsonground         SET object_id = ?       WHERE object_id = ?",
 		"UPDATE auction_bid           SET bidderId = ?        WHERE bidderId = ?",
-		"UPDATE auction_watch         SET charObjId = ?       WHERE charObjId = ?",
 		"UPDATE character_offline_trade SET char_id = ?       WHERE char_id = ?",
 		"UPDATE character_offline_trade_items SET char_id = ? WHERE char_id = ?",
 		"UPDATE clanhall              SET ownerId = ?         WHERE ownerId = ?"

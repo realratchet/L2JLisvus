@@ -1,7 +1,6 @@
 DROP TABLE IF EXISTS aio_buffer;
 DROP TABLE IF EXISTS auction;
 DROP TABLE IF EXISTS auction_bid;
-DROP TABLE IF EXISTS auction_watch;
 DROP TABLE IF EXISTS auto_announcements;
 DROP TABLE IF EXISTS auto_chat;
 DROP TABLE IF EXISTS auto_chat_text;
