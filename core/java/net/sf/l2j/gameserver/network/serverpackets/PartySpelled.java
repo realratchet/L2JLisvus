@@ -75,7 +75,9 @@ public class PartySpelled extends L2GameServerPacket
 		 * Override slots if effects exceed the number of buffs per slot * 3, since
 		 * client cannot support more visible effects. :)
 		 */
-		int size = Config.BUFF_SLOTS_PER_ROW * 3;
+		int rows = Config.BUFF_SLOTS_PER_ROW > 10 ? 3 : 2;
+		int size = Config.BUFF_SLOTS_PER_ROW * rows;
+		
 		if (_effects.size() >= size)
 		{
 			_effects.set(_extraSlot++, new Effect(skillId, dat, duration));
