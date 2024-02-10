@@ -29,6 +29,7 @@ import net.sf.l2j.gameserver.model.L2Skill;
 import net.sf.l2j.gameserver.model.Location;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2StaticObjectInstance;
+import net.sf.l2j.gameserver.network.serverpackets.ActionFailed;
 
 public class L2PlayerAI extends L2CharacterAI
 {
@@ -37,6 +38,12 @@ public class L2PlayerAI extends L2CharacterAI
 	public L2PlayerAI(AIAccessor accessor)
 	{
 		super(accessor);
+	}
+
+	@Override
+	protected void clientActionFailed()
+	{
+		_actor.sendPacket(new ActionFailed());
 	}
 
 	/**

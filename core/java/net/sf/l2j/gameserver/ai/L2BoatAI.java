@@ -109,11 +109,6 @@ public class L2BoatAI extends L2CharacterAI
     }
 
     @Override
-    protected void clientActionFailed()
-    {
-    }
-
-    @Override
     protected void moveToPawn(L2Object pawn, int offset)
     {
     }
