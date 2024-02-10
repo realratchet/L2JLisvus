@@ -197,7 +197,7 @@ public class CharInfo extends L2GameServerPacket
 			writeD(_x);
 			writeD(_y);
 			writeD(_z);
-			writeD(_heading);
+			writeD(_cha.getBoat() != null ? _cha.getBoat().getObjectId() : 0);
 			writeD(_cha.getObjectId());
 			
 			writeS(_cha.getName());

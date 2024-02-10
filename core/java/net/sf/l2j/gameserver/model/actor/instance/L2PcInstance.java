@@ -694,6 +694,7 @@ public final class L2PcInstance extends L2PlayableInstance
 	private boolean _getGainXpSp = true;
 	private boolean _isPendingSitting = false;
 	private boolean _isAIOBuffer = false;
+	private boolean _isAntibuffShieldEnabled = false;
 	
 	// Wedding System
 	private boolean _isMarried = false;
@@ -6004,32 +6005,6 @@ public final class L2PcInstance extends L2PlayableInstance
 	}
 	
 	/**
-	 * Manage a cancel cast task for the L2PcInstance.<BR>
-	 * <BR>
-	 * <B><U> Actions</U> :</B><BR>
-	 * <BR>
-	 * <li>Set the Intention of the AI to AI_INTENTION_IDLE</li>
-	 * <li>Enable all skills (set _allSkillsDisabled to False)</li>
-	 * <li>Send a Server->Client Packet MagicSkillCanceld to the L2PcInstance and all L2PcInstance in the _KnownPlayers of the L2Character (broadcast)</li><BR>
-	 * <BR>
-	 */
-	public void cancelCastMagic()
-	{
-		// Set the Intention of the AI to AI_INTENTION_IDLE
-		getAI().setIntention(CtrlIntention.AI_INTENTION_IDLE);
-		
-		// Enable all skills (set _allSkillsDisabled to False)
-		enableAllSkills();
-		
-		// Send a Server->Client Packet MagicSkillCanceld to the L2PcInstance and all L2PcInstance in the _KnownPlayers of the L2Character (broadcast)
-		MagicSkillCanceld msc = new MagicSkillCanceld(getObjectId());
-		
-		// Broadcast the packet to self and known players.
-		
-		Broadcast.toSelfAndKnownPlayersInRadius(this, msc, 810000/* 900 */);
-	}
-	
-	/**
 	 * Set the _accessLevel of the L2PcInstance.<BR>
 	 * <BR>
 	 * @param level
@@ -6904,7 +6879,7 @@ public final class L2PcInstance extends L2PlayableInstance
 					statement.setInt(10, buffIndex);
 					statement.addBatch();
 				}
-
+				
 				statement.executeBatch();
 			}
 		}
@@ -9987,14 +9962,14 @@ public final class L2PcInstance extends L2PlayableInstance
 	}
 	
 	@Override
-	public void teleToLocation(int x, int y, int z, boolean allowRandomOffset)
+	public void teleToLocation(int x, int y, int z, boolean allowRandomOffset, boolean isGraceful)
 	{
 		if (isInBoat())
 		{
 			setBoat(null);
 		}
 		
-		super.teleToLocation(x, y, z, allowRandomOffset);
+		super.teleToLocation(x, y, z, allowRandomOffset, isGraceful);
 	}
 	
 	@Override
@@ -10014,7 +9989,7 @@ public final class L2PcInstance extends L2PlayableInstance
 		{
 			getPet().setFollowStatus(false);
 			
-			getPet().teleToLocation(getPosition().getX(), getPosition().getY(), getPosition().getZ(), false);
+			getPet().teleToLocation(getX(), getY(), getZ(), false);
 			
 			if (getPet() == null)
 			{
@@ -12171,6 +12146,16 @@ public final class L2PcInstance extends L2PlayableInstance
 		{
 			_log.warning("Could not restore char scheme data: " + e);
 		}
+	}
+	
+	public boolean isAntibuffShieldEnabled()
+	{
+		return _isAntibuffShieldEnabled;
+	}
+	
+	public void setIsAntibuffShieldEnabled(boolean val)
+	{
+		_isAntibuffShieldEnabled = val;
 	}
 	
 	public double getCollisionRadius()

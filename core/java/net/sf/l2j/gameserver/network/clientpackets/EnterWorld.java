@@ -49,7 +49,6 @@ import net.sf.l2j.gameserver.network.serverpackets.GameGuardQuery;
 import net.sf.l2j.gameserver.network.serverpackets.HennaInfo;
 import net.sf.l2j.gameserver.network.serverpackets.ItemList;
 import net.sf.l2j.gameserver.network.serverpackets.MagicEffectIcons;
-import net.sf.l2j.gameserver.network.serverpackets.MagicSkillUse;
 import net.sf.l2j.gameserver.network.serverpackets.NpcHtmlMessage;
 import net.sf.l2j.gameserver.network.serverpackets.PledgeShowMemberListAll;
 import net.sf.l2j.gameserver.network.serverpackets.PledgeShowMemberListUpdate;
@@ -190,12 +189,6 @@ public class EnterWorld extends L2GameClientPacket
 		sendPacket(new HennaInfo(activeChar));
 		Quest.playerEnter(activeChar);
 		activeChar.sendPacket(new QuestList(activeChar));
-		
-		/**
-		 * A dummy magic skill cast packet for fixing heading issues 
-		 * that occur when casting certain skills right after login.
-		 */
-		activeChar.sendPacket(new MagicSkillUse(activeChar, 1322, 1, 0, 0));
 		
 		loadTutorial(activeChar);
 

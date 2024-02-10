@@ -52,7 +52,7 @@ public class OnVehicleCheckLocation extends L2GameServerPacket
 		writeD(_x);
 		writeD(_y);
 		writeD(_z);
-		writeD(_boat.getPosition().getHeading());
+		writeD(_boat.getHeading());
 	}
 	
 	/*

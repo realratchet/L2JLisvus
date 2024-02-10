@@ -45,7 +45,7 @@ public class TownManager
 	
 	public static final L2TownZone getClosestTown(L2Object activeObject)
 	{
-		switch (MapRegionTable.getInstance().getMapRegion(activeObject.getPosition().getX(), activeObject.getPosition().getY()))
+		switch (MapRegionTable.getInstance().getMapRegion(activeObject.getX(), activeObject.getY()))
 		{
 			case 0:
 				return getTown(2); // TI

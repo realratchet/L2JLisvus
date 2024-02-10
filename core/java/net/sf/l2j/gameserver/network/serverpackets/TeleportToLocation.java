@@ -23,23 +23,27 @@ import net.sf.l2j.gameserver.model.L2Object;
 public class TeleportToLocation extends L2GameServerPacket
 {
 	private static final String _S__38_TELEPORTTOLOCATION = "[S] 28 TeleportToLocation";
+
 	private final int _targetId;
 	private final int _x;
 	private final int _y;
 	private final int _z;
+	private final boolean _isFastTeleport;
 
 	/**
 	 * @param cha
 	 * @param x 
 	 * @param y 
 	 * @param z 
+	 * @param isFastTeleport 
 	 */
-	public TeleportToLocation(L2Object cha, int x, int y, int z)
+	public TeleportToLocation(L2Object cha, int x, int y, int z, boolean isFastTeleport)
 	{
 		_targetId = cha.getObjectId();
 		_x = x;
 		_y = y;
 		_z = z;
+		_isFastTeleport = isFastTeleport;
 	}
 
 	@Override
@@ -50,6 +54,7 @@ public class TeleportToLocation extends L2GameServerPacket
 		writeD(_x);
 		writeD(_y);
 		writeD(_z);
+		writeD(_isFastTeleport ? 1 : 0);
 	}
 
 	/*

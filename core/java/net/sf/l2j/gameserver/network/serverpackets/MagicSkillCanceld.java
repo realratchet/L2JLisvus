@@ -25,7 +25,6 @@ public class MagicSkillCanceld extends L2GameServerPacket
 	private final int _objectId;
 	
 	public MagicSkillCanceld(int objectId)
-	
 	{
 		_objectId = objectId;
 	}

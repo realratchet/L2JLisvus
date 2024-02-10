@@ -122,7 +122,7 @@ public final class Util
     public static double calculateDistance(L2Object obj1, L2Object obj2, boolean includeZAxis)
     {
         if (obj1 == null || obj2 == null) return 1000000;
-        return calculateDistance(obj1.getPosition().getX(), obj1.getPosition().getY(), obj1.getPosition().getZ(), obj2.getPosition().getX(), obj2.getPosition().getY(), obj2.getPosition().getZ(), includeZAxis);
+        return calculateDistance(obj1.getX(), obj1.getY(), obj1.getZ(), obj2.getX(), obj2.getY(), obj2.getZ(), includeZAxis);
     }
     
     /**
@@ -286,7 +286,8 @@ public final class Util
     public static float roundTo(float val, int numPlaces)
     {
         if (numPlaces <= 1)
-            return Math.round(val);
+            return Math.round(val);
+
         float exponent = (float) Math.pow(10, numPlaces);
         return (Math.round(val * exponent) / exponent);
     }

@@ -117,6 +117,32 @@ public abstract class L2Character extends L2Object
 {
 	public static final Logger _log = Logger.getLogger(L2Character.class.getName());
 	
+	public static final int RAID_LEVEL_MAX_DIFFERENCE = 8;
+	
+	/** Zone system */
+	public static final byte ZONE_PVP = 0;
+	public static final byte ZONE_PEACE = 1;
+	public static final byte ZONE_TOWN = 2;
+	public static final byte ZONE_SIEGE = 3;
+	public static final byte ZONE_MOTHER_TREE = 4;
+	public static final byte ZONE_CLAN_HALL = 5;
+	public static final byte ZONE_UNUSED = 6;
+	public static final byte ZONE_NO_LANDING = 7;
+	public static final byte ZONE_WATER = 8;
+	public static final byte ZONE_JAIL = 9;
+	public static final byte ZONE_MONSTER_TRACK = 10;
+	public static final byte ZONE_NO_HQ = 11;
+	public static final byte ZONE_BOSS = 12;
+	public static final byte ZONE_DANGER_AREA = 13;
+	public static final byte ZONE_NO_STORE = 14;
+	
+	public static final int ZONE_TYPE_LENGTH = 15;
+	
+	/** Table of calculators containing all standard NPC calculator (ex : ACCURACY_COMBAT, EVASION_RATE */
+	private static final Calculator[] NPC_STD_CALCULATOR = Formulas.getInstance().getStdNPCCalculators();
+	
+	private static final int MIN_GAUGE_HIT_TIME = 420;
+	
 	// =========================================================
 	// Data Field
 	private L2Skill _lastSkillCast;
@@ -157,13 +183,6 @@ public abstract class L2Character extends L2Object
 	
 	/** Table of Calculators containing all used calculator */
 	private Calculator[] _calculators;
-	
-	/** Table of calculators containing all standard NPC calculator (ex : ACCURACY_COMBAT, EVASION_RATE */
-	private static final Calculator[] NPC_STD_CALCULATOR;
-	static
-	{
-		NPC_STD_CALCULATOR = Formulas.getInstance().getStdNPCCalculators();
-	}
 	
 	/** Table containing all skillId that are disabled */
 	protected List<Integer> _disabledSkills;
@@ -207,61 +226,9 @@ public abstract class L2Character extends L2Object
 	/** Map(Integer, L2Skill) containing all skills of the L2Character */
 	protected Map<Integer, L2Skill> _skills;
 	
-	public static final int RAID_LEVEL_MAX_DIFFERENCE = 8;
-	
-	/** Zone system */
-	public static final byte ZONE_PVP = 0;
-	public static final byte ZONE_PEACE = 1;
-	public static final byte ZONE_TOWN = 2;
-	public static final byte ZONE_SIEGE = 3;
-	public static final byte ZONE_MOTHER_TREE = 4;
-	public static final byte ZONE_CLAN_HALL = 5;
-	public static final byte ZONE_UNUSED = 6;
-	public static final byte ZONE_NO_LANDING = 7;
-	public static final byte ZONE_WATER = 8;
-	public static final byte ZONE_JAIL = 9;
-	public static final byte ZONE_MONSTER_TRACK = 10;
-	public static final byte ZONE_NO_HQ = 11;
-	public static final byte ZONE_BOSS = 12;
-	public static final byte ZONE_DANGER_AREA = 13;
-	public static final byte ZONE_NO_STORE = 14;
-	
-	public static final int ZONE_TYPE_LENGTH = 15;
-	
 	private final byte[] _zones = new byte[ZONE_TYPE_LENGTH];
 	
 	protected byte _zoneValidateCounter = 4;
-	
-	public final boolean isInsideZone(final byte zone)
-	{
-		return zone == ZONE_PVP ? (_zones[ZONE_PVP] > 0) && (_zones[ZONE_PEACE] == 0) : _zones[zone] > 0;
-	}
-	
-	public final void setInsideZone(final byte zone, final boolean state)
-	{
-		if (state)
-		{
-			_zones[zone]++;
-		}
-		else
-		{
-			_zones[zone]--;
-			if (_zones[zone] < 0)
-			{
-				_zones[zone] = 0;
-			}
-		}
-	}
-	
-	/**
-	 * This will return true if the player is GM,<br>
-	 * but if the player is not GM it will return false.
-	 * @return GM status
-	 */
-	public boolean isGM()
-	{
-		return false;
-	}
 	
 	// =========================================================
 	// Constructor
@@ -348,6 +315,27 @@ public abstract class L2Character extends L2Object
 		}
 	}
 	
+	public final boolean isInsideZone(final byte zone)
+	{
+		return zone == ZONE_PVP ? (_zones[ZONE_PVP] > 0) && (_zones[ZONE_PEACE] == 0) : _zones[zone] > 0;
+	}
+	
+	public final void setInsideZone(final byte zone, final boolean state)
+	{
+		if (state)
+		{
+			_zones[zone]++;
+		}
+		else
+		{
+			_zones[zone]--;
+			if (_zones[zone] < 0)
+			{
+				_zones[zone] = 0;
+			}
+		}
+	}
+	
 	protected void initCharStatusUpdateValues()
 	{
 		_hpUpdateInterval = getMaxHp() / 352.0; // MAX_HP div MAX_HP_BAR_PX
@@ -404,18 +392,18 @@ public abstract class L2Character extends L2Object
 		
 		if (this instanceof L2Summon)
 		{
-			((L2Summon) this).getOwner().sendPacket(new TeleportToLocation(this, getPosition().getX(), getPosition().getY(), getPosition().getZ()));
+			((L2Summon) this).getOwner().sendPacket(new TeleportToLocation(this, getX(), getY(), getZ(), false));
 		}
 		
 		if (isSummoned())
 		{
 			// Add the L2Object spawn in the world as a visible object
-			L2World.getInstance().addVisibleObject(this, getPosition().getWorldRegion());
+			L2World.getInstance().addVisibleObject(this, getWorldRegion());
 			setIsSummoned(false);
 		}
 		else
 		{
-			spawnMe(getPosition().getX(), getPosition().getY(), getPosition().getZ());
+			spawnMe(getX(), getY(), getZ());
 		}
 		
 		setIsTeleporting(false);
@@ -551,8 +539,14 @@ public abstract class L2Character extends L2Object
 		teleToLocation(x, y, z, false);
 	}
 	
+	public void teleToLocation(int x, int y, int z, boolean allowRandomOffset)
+	{
+		teleToLocation(x, y, z, allowRandomOffset, false);
+	}
+	
 	/**
 	 * Teleport a L2Character and its pet if necessary.<BR>
+	 * Graceful flag helps preventing cast/attack abort if teleport is performed by a skill cast.<BR>
 	 * <BR>
 	 * <B><U> Actions</U> :</B><BR>
 	 * <BR>
@@ -565,18 +559,22 @@ public abstract class L2Character extends L2Object
 	 * @param y
 	 * @param z
 	 * @param allowRandomOffset
+	 * @param isGraceful
 	 */
-	public void teleToLocation(int x, int y, int z, boolean allowRandomOffset)
+	public void teleToLocation(int x, int y, int z, boolean allowRandomOffset, boolean isGraceful)
 	{
 		if (_isPendingRevive)
 		{
 			doRevive();
 		}
 		
-		// Stop movement
-		stopMove(null);
-		abortAttack();
-		abortCast();
+		if (!isGraceful)
+		{
+			// Stop movement
+			stopMove(null);
+			abortAttack();
+			abortCast();
+		}
 		
 		setIsTeleporting(true);
 		setTarget(null);
@@ -597,7 +595,7 @@ public abstract class L2Character extends L2Object
 		L2WorldRegion reg = getWorldRegion();
 		
 		// Send a Server->Client packet TeleportToLocation to the L2Character AND to all L2PcInstance in the _KnownPlayers of the L2Character
-		broadcastPacket(new TeleportToLocation(this, x, y, z));
+		broadcastPacket(new TeleportToLocation(this, x, y, z, false));
 		
 		decayMe();
 		
@@ -614,15 +612,25 @@ public abstract class L2Character extends L2Object
 			reg.revalidateZones(this);
 		}
 	}
+
+	public void teleToLocation(Location loc, boolean allowRandomOffset, boolean isGraceful)
+	{
+		teleToLocation(loc.getX(), loc.getY(), loc.getZ(), allowRandomOffset, isGraceful);
+	}
 	
 	public void teleToLocation(Location loc, boolean allowRandomOffset)
 	{
-		teleToLocation(loc.getX(), loc.getY(), loc.getZ(), allowRandomOffset);
+		teleToLocation(loc, allowRandomOffset, false);
 	}
 	
+	public void teleToLocation(TeleportWhereType teleportWhere, boolean isGraceful)
+	{
+		teleToLocation(MapRegionTable.getInstance().getTeleToLocation(this, teleportWhere), true, isGraceful);
+	}
+
 	public void teleToLocation(TeleportWhereType teleportWhere)
 	{
-		teleToLocation(MapRegionTable.getInstance().getTeleToLocation(this, teleportWhere), true);
+		teleToLocation(teleportWhere, false);
 	}
 	
 	// =========================================================
@@ -1515,7 +1523,7 @@ public abstract class L2Character extends L2Object
 		{
 			if (!consumeItem(skill.getItemConsumeId(), skill.getItemInitialConsume()))
 			{
-				abortCast(true);
+				abortCast();
 				return;
 			}
 		}
@@ -1581,7 +1589,7 @@ public abstract class L2Character extends L2Object
 		}
 		
 		// Launch the magic in hitTime milliseconds
-		if (hitTime > 420)
+		if (hitTime > MIN_GAUGE_HIT_TIME)
 		{
 			// Send a Server->Client packet SetupGauge with the color of the gauge and the casting time
 			if (this instanceof L2PcInstance)
@@ -2645,7 +2653,6 @@ public abstract class L2Character extends L2Object
 		setIsFakeDeath(true);
 		/* Aborts any attacks/casts if fake dead */
 		abortAttack();
-		abortCast();
 		getAI().notifyEvent(CtrlEvent.EVT_FAKE_DEATH, null);
 		broadcastPacket(new ChangeWaitType(this, ChangeWaitType.WT_START_FAKEDEATH));
 	}
@@ -3957,18 +3964,12 @@ public abstract class L2Character extends L2Object
 		}
 	}
 	
-	public final void abortCast()
-	{
-		abortCast(false);
-	}
-	
 	/**
 	 * Abort the cast of the L2Character and send Server->Client MagicSkillCanceld/ActionFailed packet.<BR>
-	 * @param forceCancel
 	 */
-	public final void abortCast(boolean forceCancel)
+	public final void abortCast()
 	{
-		if (forceCancel || isCastingNow() || _skillCast != null)
+		if (isCastingNow() || _skillCast != null)
 		{
 			// cancels the skill hit scheduled task
 			if (_skillCast != null)
@@ -3985,13 +3986,14 @@ public abstract class L2Character extends L2Object
 			
 			_castEndTime = 0;
 			_castInterruptTime = 0;
-			enableAllSkills(); // Re-enables the skills
+			enableAllSkills();
 			if (this instanceof L2PcInstance)
 			{
 				getAI().notifyEvent(CtrlEvent.EVT_FINISH_CASTING); // setting back previous intention
 			}
+			
 			broadcastPacket(new MagicSkillCanceld(getObjectId())); // broadcast packet to stop animations client-side
-			sendPacket(new ActionFailed()); // send an "action failed" packet to the caster
+			sendPacket(new ActionFailed());
 		}
 	}
 	
@@ -5131,8 +5133,9 @@ public abstract class L2Character extends L2Object
 	 */
 	public void breakCast()
 	{
-		// damage can only cancel magical skills
-		if (isCastingNow() && canAbortCast() && getLastSkillCast() != null && getLastSkillCast().isMagic())
+		// Damage can only cancel magical skills
+		L2Skill lastSkill = getLastSkillCast();
+		if (isCastingNow() && canAbortCast() && lastSkill != null && lastSkill.isMagic())
 		{
 			// Abort the cast of the L2Character and send Server->Client MagicSkillCanceld/ActionFailed packet.
 			abortCast();
@@ -5557,7 +5560,7 @@ public abstract class L2Character extends L2Object
 	{
 		if (skill == null || targets == null)
 		{
-			abortCast(true);
+			abortCast();
 			return;
 		}
 		
@@ -5570,7 +5573,7 @@ public abstract class L2Character extends L2Object
 				case TARGET_AURA_UNDEAD:
 					break;
 				default:
-					abortCast(true);
+					abortCast();
 					return;
 			}
 		}
@@ -5593,7 +5596,7 @@ public abstract class L2Character extends L2Object
 				if (target instanceof L2Character)
 				{
 					L2Character activeTarget = (L2Character) target;
-
+					
 					if (!isInsideRadius(activeTarget, escapeRange, true, false))
 					{
 						continue;
@@ -5628,7 +5631,7 @@ public abstract class L2Character extends L2Object
 			
 			if (targetList.isEmpty())
 			{
-				abortCast(true);
+				abortCast();
 				return;
 			}
 			targets = targetList.toArray(new L2Character[targetList.size()]);
@@ -5638,7 +5641,7 @@ public abstract class L2Character extends L2Object
 		// Check if player is using fake death.
 		if (!isCastingNow() || isAlikeDead())
 		{
-			abortCast(true);
+			abortCast();
 			return;
 		}
 		
@@ -5678,7 +5681,7 @@ public abstract class L2Character extends L2Object
 	{
 		if (skill == null || targets == null)
 		{
-			abortCast(true);
+			abortCast();
 			return;
 		}
 		
@@ -5737,7 +5740,7 @@ public abstract class L2Character extends L2Object
 			{
 				if (!consumeItem(skill.getItemConsumeId(), skill.getItemConsume()))
 				{
-					abortCast(true);
+					abortCast();
 					return;
 				}
 			}
@@ -6474,6 +6477,16 @@ public abstract class L2Character extends L2Object
 	public String toString()
 	{
 		return "mob " + getObjectId();
+	}
+	
+	/**
+	 * This will return true if the player is GM,<br>
+	 * but if the player is not GM it will return false.
+	 * @return GM status
+	 */
+	public boolean isGM()
+	{
+		return false;
 	}
 	
 	public int getAttackEndTime()

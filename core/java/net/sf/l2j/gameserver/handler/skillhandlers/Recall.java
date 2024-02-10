@@ -92,7 +92,7 @@ public class Recall implements ISkillHandler
 					continue;
 				}
 				
-				target.teleToLocation(MapRegionTable.TeleportWhereType.Town);
+				target.teleToLocation(MapRegionTable.TeleportWhereType.Town, true);
 			}
 		}
 		catch (Throwable e)

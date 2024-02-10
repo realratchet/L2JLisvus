@@ -67,7 +67,7 @@ public class GetPlayer implements ISkillHandler
 				int y = activeChar.getY() + Rnd.get(-10, 10);
 				int z = activeChar.getZ();
 
-				trg.broadcastPacket(new TeleportToLocation(trg, x, y, z));
+				trg.broadcastPacket(new TeleportToLocation(trg, x, y, z, false));
 				trg.setXYZ(x, y, z);
 
 				if (trg.getWorldRegion() != null)

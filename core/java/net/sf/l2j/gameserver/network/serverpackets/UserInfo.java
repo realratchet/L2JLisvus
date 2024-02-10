@@ -71,7 +71,7 @@ public class UserInfo extends L2GameServerPacket
 		writeD(_cha.getX());
 		writeD(_cha.getY());
 		writeD(_cha.getZ());
-		writeD(_cha.getHeading());
+		writeD(_cha.getBoat() != null ? _cha.getBoat().getObjectId() : 0);
 		writeD(_cha.getObjectId());
 		writeS(_cha.getName());
 		writeD(_cha.getRace().ordinal());

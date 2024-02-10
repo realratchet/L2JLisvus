@@ -61,11 +61,11 @@ public class L2SkillTeleport extends L2Skill
 			
 			if (_locX != 0 && _locY != 0 && _locZ != 0)
 			{
-				target.teleToLocation(_locX, _locY, _locZ, true);
+				target.teleToLocation(_locX, _locY, _locZ, true, true);
 			}
 			else
 			{
-				target.teleToLocation(_teleportWhereType);
+				target.teleToLocation(_teleportWhereType, true);
 			}
 		}
 	}
