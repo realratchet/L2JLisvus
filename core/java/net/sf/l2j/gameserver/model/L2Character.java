@@ -546,7 +546,6 @@ public abstract class L2Character extends L2Object
 	
 	/**
 	 * Teleport a L2Character and its pet if necessary.<BR>
-	 * Graceful flag helps preventing cast/attack abort if teleport is performed by a skill cast.<BR>
 	 * <BR>
 	 * <B><U> Actions</U> :</B><BR>
 	 * <BR>
@@ -559,20 +558,21 @@ public abstract class L2Character extends L2Object
 	 * @param y
 	 * @param z
 	 * @param allowRandomOffset
-	 * @param isGraceful
+	 * @param isTriggeredBySkill
 	 */
-	public void teleToLocation(int x, int y, int z, boolean allowRandomOffset, boolean isGraceful)
+	public void teleToLocation(int x, int y, int z, boolean allowRandomOffset, boolean isTriggeredBySkill)
 	{
 		if (_isPendingRevive)
 		{
 			doRevive();
 		}
+
+		// Stop movement
+		stopMove(null);
+		abortAttack();
 		
-		if (!isGraceful)
+		if (!isTriggeredBySkill)
 		{
-			// Stop movement
-			stopMove(null);
-			abortAttack();
 			abortCast();
 		}
 		
@@ -613,9 +613,9 @@ public abstract class L2Character extends L2Object
 		}
 	}
 
-	public void teleToLocation(Location loc, boolean allowRandomOffset, boolean isGraceful)
+	public void teleToLocation(Location loc, boolean allowRandomOffset, boolean isTriggeredBySkill)
 	{
-		teleToLocation(loc.getX(), loc.getY(), loc.getZ(), allowRandomOffset, isGraceful);
+		teleToLocation(loc.getX(), loc.getY(), loc.getZ(), allowRandomOffset, isTriggeredBySkill);
 	}
 	
 	public void teleToLocation(Location loc, boolean allowRandomOffset)
@@ -623,9 +623,9 @@ public abstract class L2Character extends L2Object
 		teleToLocation(loc, allowRandomOffset, false);
 	}
 	
-	public void teleToLocation(TeleportWhereType teleportWhere, boolean isGraceful)
+	public void teleToLocation(TeleportWhereType teleportWhere, boolean isTriggeredBySkill)
 	{
-		teleToLocation(MapRegionTable.getInstance().getTeleToLocation(this, teleportWhere), true, isGraceful);
+		teleToLocation(MapRegionTable.getInstance().getTeleToLocation(this, teleportWhere), true, isTriggeredBySkill);
 	}
 
 	public void teleToLocation(TeleportWhereType teleportWhere)

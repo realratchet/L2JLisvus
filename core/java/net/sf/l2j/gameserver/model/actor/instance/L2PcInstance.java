@@ -153,7 +153,6 @@ import net.sf.l2j.gameserver.network.serverpackets.InventoryUpdate;
 import net.sf.l2j.gameserver.network.serverpackets.ItemList;
 import net.sf.l2j.gameserver.network.serverpackets.L2GameServerPacket;
 import net.sf.l2j.gameserver.network.serverpackets.LeaveWorld;
-import net.sf.l2j.gameserver.network.serverpackets.MagicSkillCanceld;
 import net.sf.l2j.gameserver.network.serverpackets.MyTargetSelected;
 import net.sf.l2j.gameserver.network.serverpackets.NicknameChanged;
 import net.sf.l2j.gameserver.network.serverpackets.NpcHtmlMessage;
@@ -9962,14 +9961,14 @@ public final class L2PcInstance extends L2PlayableInstance
 	}
 	
 	@Override
-	public void teleToLocation(int x, int y, int z, boolean allowRandomOffset, boolean isGraceful)
+	public void teleToLocation(int x, int y, int z, boolean allowRandomOffset, boolean isTriggeredBySkill)
 	{
 		if (isInBoat())
 		{
 			setBoat(null);
 		}
 		
-		super.teleToLocation(x, y, z, allowRandomOffset, isGraceful);
+		super.teleToLocation(x, y, z, allowRandomOffset, isTriggeredBySkill);
 	}
 	
 	@Override
