@@ -126,7 +126,6 @@ public enum Stats
 	DARK_VULN	("darkVuln"),
 	CANCEL_VULN     ("cancelVuln"),
 	DERANGEMENT_VULN("derangementVuln"),
-	BUFF_VULN	("buffVuln"),
 	DEBUFF_VULN	("debuffVuln"),
     VALAKAS_VULN    ("valakasVuln"),
 
@@ -139,7 +138,8 @@ public enum Stats
 	ETC_WPN_VULN 	("etcWpnVuln"),
 	FIST_WPN_VULN 	("fistWpnVuln"),
 	DUAL_WPN_VULN 	("dualWpnVuln"),
-	DUALFIST_WPN_VULN("dualFistWpnVuln"),
+	DUALFIST_WPN_VULN("dualFistWpnVuln"),
+
 
 	REFLECT_DAMAGE_PERCENT 	("reflectDam"),
     REFLECT_SKILL_MAGIC     ("reflectSkillMagic"),

@@ -2403,21 +2403,19 @@ public abstract class L2Skill
 			return _emptyEffectSet;
 		}
 		
-		if (effector instanceof L2PlayableInstance && effected instanceof L2PcInstance)
+		if (effected instanceof L2PcInstance)
 		{
-			// e.g. Antibuff Shield
-			if (!isPotion() && !isOffensive() && !((L2PcInstance) effected).isInOlympiadMode())
+			L2PcInstance affectedPlayer = (L2PcInstance) effected;
+
+			// Antibuff Shield
+			if (affectedPlayer.isAntibuffShieldEnabled() && !isPotion() && !isOffensive() && !affectedPlayer.isInOlympiadMode() && effector instanceof L2PlayableInstance)
 			{
-				double vulnerability = effected.calcStat(Stats.BUFF_VULN, 1, null, null);
-				if (vulnerability == 0)
-				{
-					return _emptyEffectSet;
-				}
+				return _emptyEffectSet;
 			}
 		}
 		
 		// No effects for doors & siege headquarters
-		if ((effected instanceof L2DoorInstance) || (effected instanceof L2SiegeFlagInstance))
+		if (effected instanceof L2DoorInstance || effected instanceof L2SiegeFlagInstance)
 		{
 			return _emptyEffectSet;
 		}

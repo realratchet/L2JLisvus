@@ -6,9 +6,7 @@
   <set name="skillType" val="CONT"/>
   <set name="operateType" val="OP_TOGGLE"/>
   <for>
-    <effect count="0x7fffffff" name="DamOverTime" val="0">
-      <mul order="0x30" stat="buffVuln" val="0.0"/>
-    </effect>
+    <effect count="0x7fffffff" name="AntibuffShield" val="0"/>
   </for>
 </skill>
 </list>

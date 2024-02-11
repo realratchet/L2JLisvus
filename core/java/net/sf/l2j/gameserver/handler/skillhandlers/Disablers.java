@@ -58,16 +58,16 @@ public class Disablers implements ISkillHandler
 		L2Skill.SkillType.CANCEL,
 		L2Skill.SkillType.PARALYZE
 	};
-
+	
 	@Override
 	public void useSkill(L2Character activeChar, L2Skill skill, L2Object[] targets, boolean critOnFirstTarget)
 	{
 		SkillType type = skill.getSkillType();
-
+		
 		boolean ss = false;
 		boolean sps = false;
 		boolean bss = false;
-
+		
 		L2ItemInstance weaponInst = activeChar.getActiveWeaponInstance();
 		if (weaponInst != null)
 		{
@@ -118,7 +118,7 @@ public class Disablers implements ISkillHandler
 			bss = ((L2NpcInstance) activeChar).isUsingShot(false);
 			ss = ((L2NpcInstance) activeChar).isUsingShot(true);
 		}
-
+		
 		for (L2Object trg : targets)
 		{
 			if (!(trg instanceof L2Character))
@@ -131,7 +131,7 @@ public class Disablers implements ISkillHandler
 			{
 				continue;
 			}
-
+			
 			switch (type)
 			{
 				case FAKE_DEATH:
@@ -140,7 +140,7 @@ public class Disablers implements ISkillHandler
 					skill.getEffects(activeChar, target);
 					break;
 				}
-
+				
 				case STUN:
 				{
 					if (Formulas.getInstance().calcSkillSuccess(activeChar, target, skill, ss, sps, bss))
@@ -149,10 +149,10 @@ public class Disablers implements ISkillHandler
 						{
 							target = activeChar;
 						}
-
+						
 						skill.getEffects(activeChar, target);
 					}
-
+					
 					else
 					{
 						if (activeChar instanceof L2PcInstance)
@@ -175,10 +175,10 @@ public class Disablers implements ISkillHandler
 						{
 							target = activeChar;
 						}
-
+						
 						skill.getEffects(activeChar, target);
 					}
-
+					
 					else
 					{
 						if (activeChar instanceof L2PcInstance)
@@ -189,7 +189,6 @@ public class Disablers implements ISkillHandler
 							activeChar.sendPacket(sm);
 						}
 					}
-
 					break;
 				}
 				case CONFUSION:
@@ -201,21 +200,21 @@ public class Disablers implements ISkillHandler
 						{
 							target = activeChar;
 						}
-
+						
 						// stop same type effect if available
 						L2Effect[] effects = target.getAllEffects();
 						for (L2Effect e : effects)
 						{
-
+							
 							if (e.getSkill().getSkillType() == type)
 							{
 								e.exit();
 							}
-
+							
 						}
-
+						
 						skill.getEffects(activeChar, target);
-
+						
 					}
 					else
 					{
@@ -238,21 +237,21 @@ public class Disablers implements ISkillHandler
 						{
 							target = activeChar;
 						}
-
+						
 						// stop same type effect if available
 						L2Effect[] effects = target.getAllEffects();
 						for (L2Effect e : effects)
 						{
-
+							
 							if (e.getSkill().getSkillType() == type)
 							{
 								e.exit();
 							}
-
+							
 						}
-
+						
 						skill.getEffects(activeChar, target);
-
+						
 					}
 					else
 					{
@@ -264,7 +263,6 @@ public class Disablers implements ISkillHandler
 							activeChar.sendPacket(sm);
 						}
 					}
-
 					break;
 				}
 				case AGGDAMAGE:
@@ -290,15 +288,15 @@ public class Disablers implements ISkillHandler
 							}
 						}
 					}
-
+					
 					skill.getEffects(activeChar, target);
-
+					
 					L2Effect effect = activeChar.getFirstEffect(skill.getId());
 					if ((effect != null) && effect.isSelfEffect())
 					{
 						effect.exit();
 					}
-
+					
 					skill.getEffectsSelf(activeChar);
 					break;
 				}
@@ -308,9 +306,9 @@ public class Disablers implements ISkillHandler
 					if (target instanceof L2MonsterInstance)
 					{
 						skill.getEffects(activeChar, target);
-
+						
 						double aggdiff = ((L2MonsterInstance) target).getHating(activeChar) - target.calcStat(Stats.AGGRESSION, ((L2MonsterInstance) target).getHating(activeChar), target, skill);
-
+						
 						if (skill.getPower() > 0)
 						{
 							target.getAI().notifyEvent(CtrlEvent.EVT_AGGRESSION, null, -(int) skill.getPower());
@@ -331,7 +329,7 @@ public class Disablers implements ISkillHandler
 						{
 							target.getAI().notifyEvent(CtrlEvent.EVT_AGGRESSION, activeChar, -((L2MonsterInstance) target).getHating(activeChar));
 						}
-
+						
 						skill.getEffects(activeChar, target);
 					}
 					else
@@ -376,7 +374,6 @@ public class Disablers implements ISkillHandler
 							}
 						}
 					}
-
 					break;
 				}
 				case MAGE_BANE:
@@ -397,7 +394,7 @@ public class Disablers implements ISkillHandler
 								{
 									rate = 40.0;
 								}
-
+								
 								if (Rnd.get(100) < rate)
 								{
 									// Remove effect
@@ -436,7 +433,7 @@ public class Disablers implements ISkillHandler
 								{
 									rate = 40.0;
 								}
-
+								
 								if (Rnd.get(100) < rate)
 								{
 									// Remove effect
@@ -447,7 +444,7 @@ public class Disablers implements ISkillHandler
 					}
 					else
 					{
-
+						
 						if (activeChar instanceof L2PcInstance)
 						{
 							SystemMessage sm = new SystemMessage(SystemMessage.S1_WAS_UNAFFECTED_BY_S2);
@@ -455,7 +452,7 @@ public class Disablers implements ISkillHandler
 							sm.addSkillName(skill);
 							activeChar.sendPacket(sm);
 						}
-
+						
 					}
 					break;
 				}
@@ -466,7 +463,7 @@ public class Disablers implements ISkillHandler
 						// Get all skills effects on the L2Character
 						L2Effect[] effects = target.getAllEffects();
 						int maxToRemove = skill.getMaxNegatedEffects();
-
+						
 						for (L2Effect e : effects)
 						{
 							switch (e.getSkill().getId())
@@ -478,7 +475,7 @@ public class Disablers implements ISkillHandler
 								case 4515:
 									continue;
 							}
-
+							
 							double rate = 150.0 / (1.0 + e.getSkill().getLevel());
 							if (rate > 75.0)
 							{
@@ -488,14 +485,14 @@ public class Disablers implements ISkillHandler
 							{
 								rate = 25.0;
 							}
-
+							
 							if (Rnd.get(100) < rate)
 							{
 								// Remove effect
 								e.exit();
 								
-								/*-
-								 * By DnR: Check if counter reaches 1 (before it gets reduced by 1) and stop cancelling effects.
+								/**
+								 * Check if counter reaches 1 (before it gets reduced by 1) and stop cancelling effects.
 								 * We don't check for 0 value because skills with zero max negated effects remove all buffs.
 								 * It's basically the same thing allowing us to use a value for removing all buffs.
 								 */
@@ -517,9 +514,7 @@ public class Disablers implements ISkillHandler
 							activeChar.sendPacket(sm);
 						}
 					}
-
 					break;
-
 				}
 			}
 		}
