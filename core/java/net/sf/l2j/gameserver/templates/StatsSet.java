@@ -90,7 +90,7 @@ public final class StatsSet
 	{
 		Object val = _set.get(name);
 		if (val == null)
-			throw new IllegalArgumentException("Boolean value required, but not specified");
+			throw new IllegalArgumentException("Boolean value required for key '" + name + "', but not specified");
 		if (val instanceof Boolean)
 			return ((Boolean) val).booleanValue();
 		try
@@ -99,7 +99,7 @@ public final class StatsSet
 		}
 		catch (Exception e)
 		{
-			throw new IllegalArgumentException("Boolean value required, but found: " + val);
+			throw new IllegalArgumentException("Boolean value required for key '" + name + "', but found: " + val);
 		}
 	}
 	
@@ -123,7 +123,7 @@ public final class StatsSet
 		}
 		catch (Exception e)
 		{
-			throw new IllegalArgumentException("Boolean value required, but found: " + val);
+			throw new IllegalArgumentException("Boolean value required for key '" + name + "', but found: " + val);
 		}
 	}
 	
@@ -147,7 +147,7 @@ public final class StatsSet
 		}
 		catch (Exception e)
 		{
-			throw new IllegalArgumentException("Byte value required, but found: " + val);
+			throw new IllegalArgumentException("Byte value required for key '" + name + "', but found: " + val);
 		}
 	}
 	
@@ -160,7 +160,7 @@ public final class StatsSet
 	{
 		Object val = _set.get(name);
 		if (val == null)
-			throw new IllegalArgumentException("Byte value required, but not specified");
+			throw new IllegalArgumentException("Byte value required for key '" + name + "', but not specified");
 		if (val instanceof Number)
 			return ((Number) val).byteValue();
 		try
@@ -169,7 +169,7 @@ public final class StatsSet
 		}
 		catch (Exception e)
 		{
-			throw new IllegalArgumentException("Byte value required, but found: " + val);
+			throw new IllegalArgumentException("Byte value required for key '" + name + "', but found: " + val);
 		}
 	}
 	
@@ -193,7 +193,7 @@ public final class StatsSet
 		}
 		catch (Exception e)
 		{
-			throw new IllegalArgumentException("Short value required, but found: " + val);
+			throw new IllegalArgumentException("Short value required for key '" + name + "', but found: " + val);
 		}
 	}
 	
@@ -206,7 +206,7 @@ public final class StatsSet
 	{
 		Object val = _set.get(name);
 		if (val == null)
-			throw new IllegalArgumentException("Short value required, but not specified");
+			throw new IllegalArgumentException("Short value required for key '" + name + "', but not specified");
 		if (val instanceof Number)
 			return ((Number) val).shortValue();
 		try
@@ -215,7 +215,7 @@ public final class StatsSet
 		}
 		catch (Exception e)
 		{
-			throw new IllegalArgumentException("Short value required, but found: " + val);
+			throw new IllegalArgumentException("Short value required for key '" + name + "', but found: " + val);
 		}
 	}
 	
@@ -228,7 +228,7 @@ public final class StatsSet
 	{
 		Object val = _set.get(name);
 		if (val == null)
-			throw new IllegalArgumentException("Integer value required, but not specified");
+			throw new IllegalArgumentException("Integer value required for key '" + name + "', but not specified");
 		if (val instanceof Number)
 			return ((Number) val).intValue();
 		try
@@ -237,7 +237,7 @@ public final class StatsSet
 		}
 		catch (Exception e)
 		{
-			throw new IllegalArgumentException("Integer value required, but found: " + val);
+			throw new IllegalArgumentException("Integer value required for key '" + name + "', but found: " + val);
 		}
 	}
 	
@@ -261,7 +261,7 @@ public final class StatsSet
 		}
 		catch (Exception e)
 		{
-			throw new IllegalArgumentException("Integer value required, but found: " + val);
+			throw new IllegalArgumentException("Integer value required for key '" + name + "', but found: " + val);
 		}
 	}
 	
@@ -274,7 +274,7 @@ public final class StatsSet
 	{
 		Object val = _set.get(name);
 		if (val == null)
-			throw new IllegalArgumentException("Integer value required, but not specified");
+			throw new IllegalArgumentException("Long value required for key '" + name + "', but not specified");
 		if (val instanceof Number)
 			return ((Number) val).longValue();
 		try
@@ -283,7 +283,7 @@ public final class StatsSet
 		}
 		catch (Exception e)
 		{
-			throw new IllegalArgumentException("Integer value required, but found: " + val);
+			throw new IllegalArgumentException("Long value required for key '" + name + "', but found: " + val);
 		}
 	}
 	
@@ -307,7 +307,7 @@ public final class StatsSet
 		}
 		catch (Exception e)
 		{
-			throw new IllegalArgumentException("Integer value required, but found: " + val);
+			throw new IllegalArgumentException("Long value required for key '" + name + "', but found: " + val);
 		}
 	}
 	
@@ -320,7 +320,7 @@ public final class StatsSet
 	{
 		Object val = _set.get(name);
 		if (val == null)
-			throw new IllegalArgumentException("Float value required, but not specified");
+			throw new IllegalArgumentException("Float value required for key '" + name + "', but not specified");
 		if (val instanceof Number)
 			return ((Number) val).floatValue();
 		try
@@ -329,7 +329,7 @@ public final class StatsSet
 		}
 		catch (Exception e)
 		{
-			throw new IllegalArgumentException("Float value required, but found: " + val);
+			throw new IllegalArgumentException("Float value required for key '" + name + "', but found: " + val);
 		}
 	}
 	
@@ -353,7 +353,7 @@ public final class StatsSet
 		}
 		catch (Exception e)
 		{
-			throw new IllegalArgumentException("Float value required, but found: " + val);
+			throw new IllegalArgumentException("Float value required for key '" + name + "', but found: " + val);
 		}
 	}
 	
@@ -366,7 +366,7 @@ public final class StatsSet
 	{
 		Object val = _set.get(name);
 		if (val == null)
-			throw new IllegalArgumentException("Float value required, but not specified");
+			throw new IllegalArgumentException("Double value required for key '" + name + "', but not specified");
 		if (val instanceof Number)
 			return ((Number) val).doubleValue();
 		try
@@ -375,7 +375,7 @@ public final class StatsSet
 		}
 		catch (Exception e)
 		{
-			throw new IllegalArgumentException("Float value required, but found: " + val);
+			throw new IllegalArgumentException("Double value required for key '" + name + "', but found: " + val);
 		}
 	}
 	
@@ -399,7 +399,7 @@ public final class StatsSet
 		}
 		catch (Exception e)
 		{
-			throw new IllegalArgumentException("Float value required, but found: " + val);
+			throw new IllegalArgumentException("Double value required for key '" + name + "', but found: " + val);
 		}
 	}
 	
@@ -412,7 +412,7 @@ public final class StatsSet
 	{
 		Object val = _set.get(name);
 		if (val == null)
-			throw new IllegalArgumentException("String value required, but not specified");
+			throw new IllegalArgumentException("String value required for key '" + name + "', but not specified");
 		return String.valueOf(val);
 	}
 	
@@ -443,7 +443,7 @@ public final class StatsSet
 	{
 		Object val = _set.get(name);
 		if (val == null)
-			throw new IllegalArgumentException("Enum value of type " + enumClass.getName() + " required, but not specified");
+			throw new IllegalArgumentException("Enum value of type " + enumClass.getName() + " required for key '" + name + "', but not specified");
 		if (enumClass.isInstance(val))
 			return (T) val;
 		try
@@ -452,7 +452,7 @@ public final class StatsSet
 		}
 		catch (Exception e)
 		{
-			throw new IllegalArgumentException("Enum value of type " + enumClass.getName() + "required, but found: " + val);
+			throw new IllegalArgumentException("Enum value of type " + enumClass.getName() + " required for key '" + name + "', but found: " + val);
 		}
 	}
 	
@@ -478,7 +478,7 @@ public final class StatsSet
 		}
 		catch (Exception e)
 		{
-			throw new IllegalArgumentException("Enum value of type " + enumClass.getName() + "required, but found: " + val);
+			throw new IllegalArgumentException("Enum value of type " + enumClass.getName() + " required for key '" + name + "', but found: " + val);
 		}
 	}
 
