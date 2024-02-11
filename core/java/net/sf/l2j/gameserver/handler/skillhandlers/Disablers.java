@@ -466,17 +466,13 @@ public class Disablers implements ISkillHandler
 						
 						for (L2Effect e : effects)
 						{
-							switch (e.getSkill().getId())
+							L2Skill effectSkill = e.getSkill();
+							if (!effectSkill.canBeDispeled())
 							{
-								case 1323:
-								case 1325:
-								case 4082:
-								case 4215:
-								case 4515:
-									continue;
+								continue;
 							}
 							
-							double rate = 150.0 / (1.0 + e.getSkill().getLevel());
+							double rate = 150.0 / (1.0 + effectSkill.getLevel());
 							if (rate > 75.0)
 							{
 								rate = 75.0;

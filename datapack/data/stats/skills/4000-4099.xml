@@ -1085,6 +1085,7 @@
   <set name="target" val="TARGET_SELF"/>
   <set name="skillType" val="DEBUFF"/>
   <set name="isMagic" val="true"/>
+  <set name="canBeDispeled" val="false"/>
   <set name="operateType" val="OP_ACTIVE"/>
   <set name="castRange" val="600"/>
   <set name="effectRange" val="1100"/>

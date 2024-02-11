@@ -427,6 +427,7 @@ public abstract class L2Skill
 	private final int _maxStackableLevel;
 	
 	private final int _baseCritRate;
+	private final boolean _canBeDispeled;
 	
 	private List<Condition> _preConditions;
 	private List<FuncTemplate> _funcTemplates;
@@ -546,6 +547,8 @@ public abstract class L2Skill
 		_maxStackableLevel = set.getInteger("maxStackableLevel", 1);
 		
 		_baseCritRate = set.getInteger("baseCritRate", ((_skillType == SkillType.PDAM) || (_skillType == SkillType.BLOW)) ? 0 : -1);
+
+		_canBeDispeled = set.getBool("canBeDispeled", true);
 		
 		String canLearn = set.getString("canLearn", null);
 		if (canLearn == null)
@@ -990,6 +993,11 @@ public abstract class L2Skill
 	public final int getBaseCritRate()
 	{
 		return _baseCritRate;
+	}
+
+	public final boolean canBeDispeled()
+	{
+		return _canBeDispeled;
 	}
 	
 	public final boolean useSoulShot()

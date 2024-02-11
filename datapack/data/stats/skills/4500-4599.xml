@@ -103,6 +103,7 @@ one's level by 9 or more. This curse cannot be undone. -->
   <set name="skillType" val="PARALYZE"/>
   <set name="operateType" val="OP_ACTIVE"/>
   <set name="isMagic" val="true"/>
+  <set name="canBeDispeled" val="false"/>
   <set name="castRange" val="1500"/>
   <set name="effectRange" val="2000"/>
   <for>

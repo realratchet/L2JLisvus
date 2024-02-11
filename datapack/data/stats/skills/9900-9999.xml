@@ -5,6 +5,7 @@
   <set name="target" val="TARGET_SELF"/>
   <set name="skillType" val="CONT"/>
   <set name="operateType" val="OP_TOGGLE"/>
+  <set name="canBeDispeled" val="false"/>
   <for>
     <effect count="0x7fffffff" name="AntibuffShield" val="0"/>
   </for>
