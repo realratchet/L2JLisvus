@@ -51,7 +51,6 @@ public class Disablers implements ISkillHandler
 		L2Skill.SkillType.AGGREDUCE_CHAR,
 		L2Skill.SkillType.AGGREMOVE,
 		L2Skill.SkillType.MUTE,
-		L2Skill.SkillType.FAKE_DEATH,
 		L2Skill.SkillType.CONFUSE_MOB_ONLY,
 		L2Skill.SkillType.MAGE_BANE,
 		L2Skill.SkillType.WARRIOR_BANE,
@@ -134,13 +133,6 @@ public class Disablers implements ISkillHandler
 			
 			switch (type)
 			{
-				case FAKE_DEATH:
-				{
-					// stun/fakedeath is not mdef dependent, it depends on lvl difference, target CON and power of stun
-					skill.getEffects(activeChar, target);
-					break;
-				}
-				
 				case STUN:
 				{
 					if (Formulas.getInstance().calcSkillSuccess(activeChar, target, skill, ss, sps, bss))
@@ -152,7 +144,6 @@ public class Disablers implements ISkillHandler
 						
 						skill.getEffects(activeChar, target);
 					}
-					
 					else
 					{
 						if (activeChar instanceof L2PcInstance)
@@ -178,7 +169,6 @@ public class Disablers implements ISkillHandler
 						
 						skill.getEffects(activeChar, target);
 					}
-					
 					else
 					{
 						if (activeChar instanceof L2PcInstance)
@@ -212,9 +202,7 @@ public class Disablers implements ISkillHandler
 							}
 							
 						}
-						
 						skill.getEffects(activeChar, target);
-						
 					}
 					else
 					{
@@ -251,7 +239,6 @@ public class Disablers implements ISkillHandler
 						}
 						
 						skill.getEffects(activeChar, target);
-						
 					}
 					else
 					{

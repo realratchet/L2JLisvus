@@ -56,7 +56,8 @@ public class Continuous implements ISkillHandler
 		L2Skill.SkillType.REFLECT,
 		L2Skill.SkillType.UNDEAD_DEFENSE,
 		L2Skill.SkillType.AGGDEBUFF,
-		L2Skill.SkillType.NEGATE
+		L2Skill.SkillType.NEGATE,
+		L2Skill.SkillType.FAKE_DEATH
 	};
 	
 	/**
@@ -68,7 +69,7 @@ public class Continuous implements ISkillHandler
 		boolean ss = false;
 		boolean sps = false;
 		boolean bss = false;
-
+		
 		L2ItemInstance weaponInst = activeChar.getActiveWeaponInstance();
 		if (weaponInst != null)
 		{
@@ -188,43 +189,48 @@ public class Continuous implements ISkillHandler
 					}
 				}
 			}
-
-			// Negate effects
-			skill.doNegate(target);
 			
+			switch (skill.getSkillType())
+			{
+				case DEBUFF:
+				case NEGATE:
+				case BUFF:
+					// Negate effects
+					skill.doNegate(target);
+					break;
+				case AGGDEBUFF:
+					if (target instanceof L2MonsterInstance)
+					{
+						target.getAI().notifyEvent(CtrlEvent.EVT_AGGRESSION, activeChar, (int) skill.getPower());
+					}
+					// Aggression for playable characters
+					else if ((target instanceof L2PlayableInstance) && !(target instanceof L2SiegeSummonInstance))
+					{
+						if (activeChar != target)
+						{
+							// If target hasn't targeted caster yet, target him now
+							if (target.getTarget() != activeChar)
+							{
+								target.setTarget(activeChar);
+							}
+							// Else attack caster
+							else
+							{
+								target.getAI().setIntention(CtrlIntention.AI_INTENTION_ATTACK, activeChar);
+							}
+						}
+					}
+					break;
+			}
+
 			// Do the most important check before sending the message
 			if (skill.getEffects(activeChar, target).length > 0)
 			{
-				if (!skill.isOffensive())
+				if (!skill.isOffensive() && !skill.isToggle())
 				{
 					SystemMessage smsg = new SystemMessage(SystemMessage.YOU_FEEL_S1_EFFECT);
 					smsg.addString(skill.getName());
 					target.sendPacket(smsg);
-				}
-			}
-			
-			if (skill.getSkillType() == L2Skill.SkillType.AGGDEBUFF)
-			{
-				if (target instanceof L2MonsterInstance)
-				{
-					target.getAI().notifyEvent(CtrlEvent.EVT_AGGRESSION, activeChar, (int) skill.getPower());
-				}
-				// Aggression for playable characters
-				else if ((target instanceof L2PlayableInstance) && !(target instanceof L2SiegeSummonInstance))
-				{
-					if (activeChar != target)
-					{
-						// If target hasn't targeted caster yet, target him now
-						if (target.getTarget() != activeChar)
-						{
-							target.setTarget(activeChar);
-						}
-						// Else attack caster
-						else
-						{
-							target.getAI().setIntention(CtrlIntention.AI_INTENTION_ATTACK, activeChar);
-						}
-					}
 				}
 			}
 		}
