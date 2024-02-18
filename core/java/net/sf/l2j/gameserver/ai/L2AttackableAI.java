@@ -603,7 +603,7 @@ public class L2AttackableAI extends L2CharacterAI implements Runnable
 						{
 							continue;
 						}
-
+						
 						if (_actor.getCurrentMp() < sk.getMpConsume())
 						{
 							continue;
@@ -625,9 +625,7 @@ public class L2AttackableAI extends L2CharacterAI implements Runnable
 			}
 		}
 		// Order to the L2MonsterInstance to random walk (1/100)
-		else if ((npc.getSpawn() != null) && (Rnd.nextInt(RANDOM_WALK_RATE) == 0) && !((_actor instanceof L2RaidBossInstance) 
-			|| (_actor instanceof L2MinionInstance) || (_actor instanceof L2GrandBossInstance) || (_actor instanceof L2ChestInstance) 
-			|| (_actor instanceof L2GuardInstance) || (_actor instanceof L2SepulcherMonsterInstance) || npc.isQuestMonster()))
+		else if ((npc.getSpawn() != null) && (Rnd.nextInt(RANDOM_WALK_RATE) == 0) && !((_actor instanceof L2RaidBossInstance) || (_actor instanceof L2MinionInstance) || (_actor instanceof L2GrandBossInstance) || (_actor instanceof L2ChestInstance) || (_actor instanceof L2GuardInstance) || (_actor instanceof L2SepulcherMonsterInstance) || npc.isQuestMonster()))
 		{
 			int x1, y1, z1;
 			
@@ -756,7 +754,7 @@ public class L2AttackableAI extends L2CharacterAI implements Runnable
 		if (!(originalAttackTarget instanceof L2Attackable))
 		{
 			// Minions should assist their clan when in need
-			if (_actor instanceof L2MinionInstance  && !_actor.isAttackingDisabled() && (_selfAnalysis.hasResurrect || _selfAnalysis.canHealOthers))
+			if (_actor instanceof L2MinionInstance && !_actor.isAttackingDisabled() && (_selfAnalysis.hasResurrect || _selfAnalysis.canHealOthers))
 			{
 				// Get leader and use it to get all minions
 				L2MonsterInstance leader = ((L2MinionInstance) _actor).getLeader();
@@ -892,7 +890,7 @@ public class L2AttackableAI extends L2CharacterAI implements Runnable
 						
 						String factionNpc = npc.getFactionId();
 						boolean sevenSignFaction = false;
-	
+						
 						// Catacomb mobs should assist lilim and nephilim other than dungeon
 						if ("c_dungeon_clan".equals(factionId) && ("c_dungeon_lilim".equals(factionNpc) || "c_dungeon_nephi".equals(factionNpc)))
 						{
@@ -919,9 +917,7 @@ public class L2AttackableAI extends L2CharacterAI implements Runnable
 						// Check if the L2Object is inside the Faction Range of the actor
 						if (ai != null && _actor.isInsideRadius(npc, (npc.getFactionRange() + npc.getAggroRange()), false, true))
 						{
-							if ((Math.abs(originalAttackTarget.getZ() - npc.getZ()) < 600) && _actor.hasAttackerInAttackByList(originalAttackTarget) 
-								&& ((ai._intention == CtrlIntention.AI_INTENTION_IDLE) || (ai._intention == CtrlIntention.AI_INTENTION_ACTIVE)) 
-								&& GeoData.getInstance().canSeeTarget(_actor, npc))
+							if ((Math.abs(originalAttackTarget.getZ() - npc.getZ()) < 600) && _actor.hasAttackerInAttackByList(originalAttackTarget) && ((ai._intention == CtrlIntention.AI_INTENTION_IDLE) || (ai._intention == CtrlIntention.AI_INTENTION_ACTIVE)) && GeoData.getInstance().canSeeTarget(_actor, npc))
 							{
 								L2PcInstance player = originalAttackTarget.getActingPlayer();
 								if (player != null)
@@ -1062,8 +1058,7 @@ public class L2AttackableAI extends L2CharacterAI implements Runnable
 		// reach secondMostHated
 		if (_actor.isRooted() && (_secondMostHatedAnalysis.character != null))
 		{
-			if (_selfAnalysis.isMage && (dist2 > (_selfAnalysis.maxCastRange * _selfAnalysis.maxCastRange)) 
-				&& (_actor.getPlanDistanceSq(_secondMostHatedAnalysis.character.getX(), _secondMostHatedAnalysis.character.getY()) < (_selfAnalysis.maxCastRange * _selfAnalysis.maxCastRange)))
+			if (_selfAnalysis.isMage && (dist2 > (_selfAnalysis.maxCastRange * _selfAnalysis.maxCastRange)) && (_actor.getPlanDistanceSq(_secondMostHatedAnalysis.character.getX(), _secondMostHatedAnalysis.character.getY()) < (_selfAnalysis.maxCastRange * _selfAnalysis.maxCastRange)))
 			{
 				int aggro = 1 + (((L2Attackable) _actor).getHating(hated.get(0)) - ((L2Attackable) _actor).getHating(hated.get(1)));
 				onEvtAggression(hated.get(0), -aggro);
@@ -1076,9 +1071,7 @@ public class L2AttackableAI extends L2CharacterAI implements Runnable
 		}
 		
 		// Considering, if bigger range will be attempted
-		if (dist2 < (10000 + (combinedCollision * combinedCollision)) && !_selfAnalysis.isFighter && !_selfAnalysis.isBalanced 
-			&& (_selfAnalysis.hasLongRangeSkills && (_mostHatedAnalysis.character.isRooted() || _mostHatedAnalysis.isSlower) || _selfAnalysis.isArcher) 
-			&& (_mostHatedAnalysis.isBalanced || _mostHatedAnalysis.isFighter) && Rnd.get(100) <= 25) // Chance
+		if (dist2 < (10000 + (combinedCollision * combinedCollision)) && !_selfAnalysis.isFighter && !_selfAnalysis.isBalanced && (_selfAnalysis.hasLongRangeSkills && (_mostHatedAnalysis.character.isRooted() || _mostHatedAnalysis.isSlower) || _selfAnalysis.isArcher) && (_mostHatedAnalysis.isBalanced || _mostHatedAnalysis.isFighter) && Rnd.get(100) <= 25) // Chance
 		{
 			final int posX = _actor.getX() + ((_mostHatedAnalysis.character.getX() < _actor.getX()) ? 300 : -300);
 			final int posY = _actor.getY() + ((_mostHatedAnalysis.character.getY() < _actor.getY()) ? 300 : -300);
@@ -1090,12 +1083,12 @@ public class L2AttackableAI extends L2CharacterAI implements Runnable
 			}
 			return;
 		}
-
+		
 		if (_mostHatedAnalysis.character.isMoving())
 		{
 			range += 50;
 		}
-
+		
 		// Check if the actor is far from target
 		if (dist2 > (range * range))
 		{
@@ -1137,7 +1130,7 @@ public class L2AttackableAI extends L2CharacterAI implements Runnable
 							{
 								continue;
 							}
-	
+							
 							int chance = 8;
 							if (_selfAnalysis.isFighter && _mostHatedAnalysis.isMage)
 							{
@@ -1257,7 +1250,7 @@ public class L2AttackableAI extends L2CharacterAI implements Runnable
 							{
 								continue;
 							}
-
+							
 							if (Rnd.nextInt(100) <= 3)
 							{
 								_actor.setTarget(_secondMostHatedAnalysis.character);
@@ -1449,7 +1442,7 @@ public class L2AttackableAI extends L2CharacterAI implements Runnable
 					{
 						newX = _mostHatedAnalysis.character.getX() - newX;
 					}
-
+					
 					int newY = combinedCollision + Rnd.get(40);
 					if (Rnd.nextBoolean())
 					{
@@ -1493,7 +1486,7 @@ public class L2AttackableAI extends L2CharacterAI implements Runnable
 					{
 						continue;
 					}
-
+					
 					if (Rnd.nextInt(100) <= 8)
 					{
 						clientStopMoving(null);
@@ -1521,7 +1514,7 @@ public class L2AttackableAI extends L2CharacterAI implements Runnable
 					{
 						continue;
 					}
-	
+					
 					int chance = 5;
 					if (_selfAnalysis.isFighter && _mostHatedAnalysis.isMage)
 					{
@@ -1571,7 +1564,7 @@ public class L2AttackableAI extends L2CharacterAI implements Runnable
 					{
 						continue;
 					}
-	
+					
 					if (Rnd.nextInt(100) <= 7)
 					{
 						clientStopMoving(null);
@@ -1658,7 +1651,7 @@ public class L2AttackableAI extends L2CharacterAI implements Runnable
 					{
 						continue;
 					}
-	
+					
 					if (Rnd.nextInt(100) <= 4)
 					{
 						clientStopMoving(null);
@@ -1751,7 +1744,7 @@ public class L2AttackableAI extends L2CharacterAI implements Runnable
 				{
 					continue;
 				}
-	
+				
 				// chance decision for launching general skills in melee fight
 				// close range skills should be higher, long range lower
 				int castingChance = 5;
@@ -1962,7 +1955,7 @@ public class L2AttackableAI extends L2CharacterAI implements Runnable
 				_globalAggro = -25;
 				return;
 			}
-
+			
 			for (L2Character aggroed : me.getAggroList().keySet())
 			{
 				me.addDamageHate(aggroed, 0, aggro);
