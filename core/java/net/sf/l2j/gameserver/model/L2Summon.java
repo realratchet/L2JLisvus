@@ -754,7 +754,6 @@ public abstract class L2Summon extends L2PlayableInstance
 		// Check the validity of the target
 		if (target == null)
 		{
-			sendPacket(new SystemMessage(SystemMessage.TARGET_CANT_FOUND));
 			return;
 		}
 		
