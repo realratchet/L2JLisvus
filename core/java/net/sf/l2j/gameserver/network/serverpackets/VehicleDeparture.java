@@ -40,7 +40,7 @@ public class VehicleDeparture extends L2GameServerPacket
 	{
 		writeC(0x5a);
 		writeD(_boat.getObjectId());
-		writeD((int) _boat.getStat().getMoveSpeed());
+		writeD((int) _boat.getMoveSpeed());
 		writeD(_boat.getStat().getRotationSpeed());
 		writeD(_boat.getXdestination());
 		writeD(_boat.getYdestination());

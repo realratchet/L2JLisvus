@@ -427,14 +427,14 @@ public class CharStat
         if (_activeChar == null)
             return 1;
         
-        return getMoveSpeed() / getBaseMoveSpeed();
+        return (float) (getMoveSpeed() / getBaseMoveSpeed());
     }
 
     /** 
      * Return the RunSpeed (base+modifier) or WalkSpeed (base+modifier) of the L2Character in function of the movement type.
      * @return
      */
-    public float getMoveSpeed()
+    public double getMoveSpeed()
     {
         if (_activeChar == null)
             return 0;
@@ -446,7 +446,7 @@ public class CharStat
         	return 0;
         }
 
-        return (float) calcStat(Stats.RUN_SPEED, baseMoveSpeed, null, null);
+        return calcStat(Stats.RUN_SPEED, baseMoveSpeed, null, null);
     }
 
     /** 

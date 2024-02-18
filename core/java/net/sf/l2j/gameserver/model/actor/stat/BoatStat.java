@@ -39,7 +39,7 @@ public class BoatStat extends CharStat
     }
 
     @Override
-    public final float getMoveSpeed()
+    public final double getMoveSpeed()
     {
         return _moveSpeed;
     }

@@ -284,9 +284,9 @@ public class PlayableStat extends CharStat
 	}
 	
 	@Override
-	public float getMoveSpeed()
+	public double getMoveSpeed()
 	{
-		float val = super.getMoveSpeed();
+		double val = super.getMoveSpeed();
 		// GMs should not be limited by this setting
 		if ((getActiveChar() instanceof L2PcInstance) && ((L2PcInstance) getActiveChar()).isGM())
 		{

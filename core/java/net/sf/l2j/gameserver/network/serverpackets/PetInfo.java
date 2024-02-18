@@ -151,7 +151,7 @@ public class PetInfo extends L2GameServerPacket
 		writeD(_summon.getAccuracy());// accuracy
 		writeD(_summon.getEvasionRate(null));// evasion
 		writeD(_summon.getCriticalHit(null, null));// critical
-		writeD((int) _summon.getStat().getMoveSpeed());// speed
+		writeD((int) _summon.getMoveSpeed());// speed
 		writeD(_summon.getPAtkSpd());// atkspeed
 		writeD(_summon.getMAtkSpd());// casting speed
 		
