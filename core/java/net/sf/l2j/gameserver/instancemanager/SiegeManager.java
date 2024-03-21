@@ -14,9 +14,6 @@
  */
 package net.sf.l2j.gameserver.instancemanager;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -24,11 +21,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Properties;
 import java.util.StringTokenizer;
 import java.util.logging.Logger;
 
 import net.sf.l2j.Config;
+import net.sf.l2j.EnvProperties;
 import net.sf.l2j.L2DatabaseFactory;
 import net.sf.l2j.gameserver.datatables.SkillTable;
 import net.sf.l2j.gameserver.model.L2Clan;
@@ -123,16 +120,7 @@ public class SiegeManager
 	// Method - Private
 	private final void load()
 	{
-		Properties siegeSettings = new Properties();
-		try (InputStream is = new FileInputStream(new File(Config.SIEGE_FILE)))
-		{
-			siegeSettings.load(is);
-		}
-		catch (Exception e)
-		{
-			_log.warning("Error while loading siege data.");
-			e.printStackTrace();
-		}
+		EnvProperties siegeSettings = new EnvProperties(Config.SIEGE_FILE);
 		
 		// Siege settings
 		_attackerMaxClans = Integer.parseInt(siegeSettings.getProperty("AttackerMaxClans", "500"));

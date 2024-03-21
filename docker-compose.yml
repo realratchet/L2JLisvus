@@ -1,0 +1,42 @@
+version: '3.1'
+
+services:
+
+  db:
+    build:
+      context: .
+      dockerfile: Dockerfile-db
+    restart: no
+    volumes:
+      - ${PWD}/docker/mysql:/var/lib/mysql
+
+  adminer:
+    image: adminer
+    restart: no
+    ports:
+      - 27015:8080
+
+  login:
+    build:
+      context: .
+      dockerfile: Dockerfile-l2j
+    restart: no
+    working_dir: /var/l2j/login
+    entrypoint: sh -c ./dockerStartLogin.sh
+    volumes:
+      - ${PWD}/docker/login/log:/var/l2j/login/log
+    ports:
+      - 2106:2106
+
+  gameserver:
+    build:
+      context: .
+      dockerfile: Dockerfile-l2j
+    restart: no
+    working_dir: /var/l2j/gameserver
+    entrypoint: sh -c ./dockerStartGameServer.sh
+    volumes:
+      - ${PWD}/docker/gameserver/hexid:/var/gameserver/hexid
+      - ${PWD}/docker/gameserver/log:/var/l2j/gameserver/log
+    ports:
+      - 7777:7777

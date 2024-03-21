@@ -1,0 +1,12 @@
+FROM mariadb:latest
+
+ADD ./datapack/build/datapack.tar.gz /tmp/datapack/
+RUN mv /tmp/datapack/sql/* /docker-entrypoint-initdb.d/
+RUN rm -rf /tmp/datapack
+
+RUN ls -la /docker-entrypoint-initdb.d
+
+ENV MYSQL_DATABASE=l2jdb
+ENV MARIADB_RANDOM_ROOT_PASSWORD=true
+ENV MYSQL_USER=docker
+ENV MYSQL_PASSWORD=docker

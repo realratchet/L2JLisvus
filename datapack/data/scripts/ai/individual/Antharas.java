@@ -222,7 +222,7 @@ public class Antharas extends Quest
 	public String onAttack(L2NpcInstance npc, L2PcInstance attacker, int damage, boolean isPet)
 	{
 		_lastAction = System.currentTimeMillis();
-		if (GrandBossManager.getInstance().getBossStatus(ANTHARAS) != FIGHTING)
+		if (GrandBossManager.getInstance().getBossStatus(ANTHARAS) != FIGHTING && !Config.ANTHARAS_ALLOW_UNPROVOKED)
 		{
 			attacker.teleToLocation(82480, 149087, -3350, true);
 		}
