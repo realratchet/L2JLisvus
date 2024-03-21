@@ -74,6 +74,26 @@ To do this, run `startLoginServer` and `startGameServer` scripts.
 L2JLisvus server will then consist of 2 CLI consoles.  
 Server startup will be completed once gameserver console has printed `Registered on login as Server...`.
 
+# Docker setup
+
+## Compose the container
+* ant -f core/build.xml && ant -f datapack/build.xml
+* docker-compose -f docker-compose.yml up --build --remove-orphans
+
+You only need to build `ant` build the first time.
+
+## Changing configs
+There are two ways to change the login & gameserver properties. The regular way by changing the .properties files and by changing individual properties via environment variables.
+
+### File-based properties
+1. Add the `${PWD}/docker/login/config:/var/login/config` to the `login` container `volumes` config.
+1. Copy `${PWD}/core/core.tar.gz/login/config` contents into `${PWD}/docker/login/config`.
+1. Add the `${PWD}/docker/gameserver/config:/var/gameserver/config` to the `gameserver` container `volumes` config.
+1. Copy `${PWD}/core/core.tar.gz/gameserver/config` contents into `${PWD}/docker/gameserver/config`.
+1. Modify the properties as you would for regular server.
+
+### Environment-based properties
+Every property that can be changed in the files can be changed directly by setting the environment variables in the composer in `props.{Group}.{Prop}` format, where `{Group}` is the name of the config group (same as filename) and `{Prop}` is the name of the property. For example to change the Xp rates for the server you would add `props.Rates.RateXp=10` to the gameserver container environment.
 
 ## Contributing
 I'll gladly accept merge requests provided that I agree to changes and those changes don't break any existing features.

@@ -1,0 +1,24 @@
+FROM openjdk:17-alpine
+
+ADD ./core/build/core.tar.gz /var/l2j/
+ADD ./datapack/build/datapack.tar.gz /var/l2j/
+
+RUN chmod +x /var/l2j/login/dockerStartLogin.sh
+RUN chmod +x /var/l2j/gameserver/dockerStartGameServer.sh
+
+ENV LOGIN_MEMORY_INITIAL=128M
+ENV LOGIN_MEMORY_MAXIMUM=256M
+ENV GAMESERVER_MEMORY_INITIAL=1024M
+ENV GAMESERVER_MEMORY_MAXIMUM=2048M
+
+RUN mkdir /var/l2j/gameserver/hexid
+ENV HEXID_FILE="/var/gameserver/hexid/hexid.txt"
+
+ENV props.LoginServer.URL=jdbc:mariadb://db/l2jdb?useSSL=false
+ENV props.LoginServer.Login=docker
+ENV props.LoginServer.Password=docker
+
+ENV props.GameServer.LoginHost=login
+ENV props.GameServer.URL=jdbc:mariadb://db/l2jdb?useSSL=false
+ENV props.GameServer.Login=docker
+ENV props.GameServer.Password=docker

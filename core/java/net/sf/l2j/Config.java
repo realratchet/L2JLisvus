@@ -87,7 +87,7 @@ public final class Config
 	public static final String SIEGE_FILE = "./config/Siege.properties";
 	
 	/** Text file containing hexadecimal value of server ID */
-	public static final String HEXID_FILE = "./config/hexid.txt";
+	private static final String _HEXID_FILE = "./config/hexid.txt";
 	
 	/** Debug/release mode */
 	public static boolean DEBUG;
@@ -1280,6 +1280,18 @@ public final class Config
 	public static int QUEEN_ANT_SPAWN_RANDOM_INTERVAL;
 	public static int ZAKEN_SPAWN_INTERVAL;
 	public static int ZAKEN_SPAWN_RANDOM_INTERVAL;
+
+	public static boolean VALAKAS_ALLOW_UNPROVOKED;
+	public static boolean ANTHARAS_ALLOW_UNPROVOKED;
+
+    public static String getGetHexIdFilePath() {
+        String hexPath = System.getenv("HEXID_FILE");
+
+        if (hexPath != null)
+            return hexPath;
+
+        return _HEXID_FILE;
+    }
 	
 	/**
 	 * This class initializes all global variables for configuration.<br>
@@ -1306,16 +1318,7 @@ public final class Config
 			
 			_log.info("Loading Gameserver Configuration Files.");
 			
-			Properties serverSettings = new Properties();
-			try (InputStream is = new FileInputStream(new File(GAME_SERVER_FILE)))
-			{
-				serverSettings.load(is);
-			}
-			catch (Exception e)
-			{
-				e.printStackTrace();
-				throw new Error("Failed to Load " + GAME_SERVER_FILE + " File.");
-			}
+			EnvProperties serverSettings = new EnvProperties(GAME_SERVER_FILE);
 			
 			ENABLE_UPNP = Boolean.parseBoolean(serverSettings.getProperty("EnableUPnP", "False"));
 			
@@ -1367,16 +1370,7 @@ public final class Config
 			
 			LOG_GAME_DAMAGE = Boolean.parseBoolean(serverSettings.getProperty("LogGameDamage", "False"));
 			
-			Properties optionsSettings = new Properties();
-			try (InputStream is = new FileInputStream(new File(OPTIONS_FILE)))
-			{
-				optionsSettings.load(is);
-			}
-			catch (Exception e)
-			{
-				e.printStackTrace();
-				throw new Error("Failed to Load " + OPTIONS_FILE + " File.");
-			}
+			EnvProperties optionsSettings = new EnvProperties(OPTIONS_FILE);
 			
 			EVERYBODY_HAS_ADMIN_RIGHTS = Boolean.parseBoolean(optionsSettings.getProperty("EverybodyHasAdminRights", "false"));
 			
@@ -1509,29 +1503,13 @@ public final class Config
 			/*
 			 * Load L2J Server Version Properties file (if exists)
 			 */
-			Properties serverVersion = new Properties();
-			try (InputStream is = new FileInputStream(new File(SERVER_VERSION_FILE)))
-			{
-				serverVersion.load(is);
-			}
-			catch (Exception e)
-			{
-			}
+			EnvProperties serverVersion = new EnvProperties(SERVER_VERSION_FILE);
 			
 			PROJECT_TAG = serverVersion.getProperty("tag", "N/A");
 			SERVER_BUILD_DATE = serverVersion.getProperty("buildDate", "N/A");
 			
 			// MMO
-			Properties mmoSettings = new Properties();
-			try (InputStream is = new FileInputStream(new File(MMO_FILE)))
-			{
-				mmoSettings.load(is);
-			}
-			catch (Exception e)
-			{
-				e.printStackTrace();
-				throw new Error("Failed to Load " + MMO_FILE + " File.");
-			}
+			EnvProperties mmoSettings = new EnvProperties(MMO_FILE);
 			
 			MMO_SELECTOR_SLEEP_TIME = Integer.parseInt(mmoSettings.getProperty("SleepTime", "20"));
 			MMO_MAX_SEND_PER_PASS = Integer.parseInt(mmoSettings.getProperty("MaxSendPerPass", "12"));
@@ -1539,45 +1517,18 @@ public final class Config
 			MMO_HELPER_BUFFER_COUNT = Integer.parseInt(mmoSettings.getProperty("HelperBufferCount", "20"));
 			
 			// id factory
-			Properties idSettings = new Properties();
-			try (InputStream is = new FileInputStream(new File(ID_FACTORY_FILE)))
-			{
-				idSettings.load(is);
-			}
-			catch (Exception e)
-			{
-				e.printStackTrace();
-				throw new Error("Failed to Load " + ID_FACTORY_FILE + " File.");
-			}
+			EnvProperties idSettings = new EnvProperties(ID_FACTORY_FILE);
 			
 			IDFACTORY_TYPE = IdFactoryType.valueOf(idSettings.getProperty("IDFactory", IdFactoryType.BitSet.name()));
 			BAD_ID_CHECKING = Boolean.valueOf(idSettings.getProperty("BadIdChecking", "True"));
 			
 			// Load FloodProtector Properties file
-			Properties security = new Properties();
-			try (InputStream is = new FileInputStream(new File(FLOOD_PROTECTOR_FILE)))
-			{
-				security.load(is);
-			}
-			catch (Exception e)
-			{
-				e.printStackTrace();
-				throw new Error("Failed to Load " + FLOOD_PROTECTOR_FILE + " File.");
-			}
+			EnvProperties security = new EnvProperties(FLOOD_PROTECTOR_FILE);
 			
 			loadFloodProtectorConfigs(security);
 			
 			// other
-			Properties otherSettings = new Properties();
-			try (InputStream is = new FileInputStream(new File(OTHER_FILE)))
-			{
-				otherSettings.load(is);
-			}
-			catch (Exception e)
-			{
-				e.printStackTrace();
-				throw new Error("Failed to Load " + OTHER_FILE + " File.");
-			}
+			EnvProperties otherSettings = new EnvProperties(OTHER_FILE);
 			
 			DEEPBLUE_DROP_RULES = Boolean.parseBoolean(otherSettings.getProperty("UseDeepBlueDropRules", "True"));
 			GUARD_ATTACK_AGGRO_MOB = Boolean.valueOf(otherSettings.getProperty("GuardAttackAggroMob", "False"));
@@ -1715,16 +1666,7 @@ public final class Config
 			JAIL_DISABLE_CHAT = Boolean.valueOf(otherSettings.getProperty("JailDisableChat", "True"));
 			
 			// Rates
-			Properties ratesSettings = new Properties();
-			try (InputStream is = new FileInputStream(new File(RATES_FILE)))
-			{
-				ratesSettings.load(is);
-			}
-			catch (Exception e)
-			{
-				e.printStackTrace();
-				throw new Error("Failed to Load " + RATES_FILE + " File.");
-			}
+			EnvProperties ratesSettings = new EnvProperties(RATES_FILE);
 			
 			RATE_XP = Float.parseFloat(ratesSettings.getProperty("RateXp", "1"));
 			RATE_SP = Float.parseFloat(ratesSettings.getProperty("RateSp", "1"));
@@ -1762,16 +1704,7 @@ public final class Config
 			KARMA_RATE_DROP_EQUIP_WEAPON = Integer.parseInt(ratesSettings.getProperty("KarmaRateDropEquipWeapon", "10"));
 			
 			// Alternate settings
-			Properties altSettings = new Properties();
-			try (InputStream is = new FileInputStream(new File(ALT_SETTINGS_FILE)))
-			{
-				altSettings.load(is);
-			}
-			catch (Exception e)
-			{
-				e.printStackTrace();
-				throw new Error("Failed to Load " + ALT_SETTINGS_FILE + " File.");
-			}
+			EnvProperties altSettings = new EnvProperties(ALT_SETTINGS_FILE);
 			
 			ALT_GAME_TIREDNESS = Boolean.parseBoolean(altSettings.getProperty("AltGameTiredness", "false"));
 			ALT_GAME_CREATION = Boolean.parseBoolean(altSettings.getProperty("AltGameCreation", "false"));
@@ -1892,16 +1825,7 @@ public final class Config
 			RIFT_BOSS_ROOM_TIME_MULTIPLIER = Float.parseFloat(altSettings.getProperty("BossRoomTimeMultiplier", "1.5"));
 			
 			// Olympiad settings
-			Properties olympiadSettings = new Properties();
-			try (InputStream is = new FileInputStream(new File(OLYMPIAD_FILE)))
-			{
-				olympiadSettings.load(is);
-			}
-			catch (Exception e)
-			{
-				e.printStackTrace();
-				throw new Error("Failed to Load " + OLYMPIAD_FILE + " File.");
-			}
+			EnvProperties olympiadSettings = new EnvProperties(OLYMPIAD_FILE);
 			
 			ALT_OLY_START_TIME = Integer.parseInt(olympiadSettings.getProperty("AltOlyStartTime", "20"));
 			ALT_OLY_MIN = Integer.parseInt(olympiadSettings.getProperty("AltOlyMin", "00"));
@@ -1931,16 +1855,7 @@ public final class Config
 			ALT_OLY_ENCHANT_LIMIT = Integer.parseInt(olympiadSettings.getProperty("AltOlyEnchantLimit", "-1"));
 			
 			// Custom settings
-			Properties customSettings = new Properties();
-			try (InputStream is = new FileInputStream(new File(CUSTOM_FILE)))
-			{
-				customSettings.load(is);
-			}
-			catch (Exception e)
-			{
-				e.printStackTrace();
-				throw new Error("Failed to Load " + CUSTOM_FILE + " File.");
-			}
+			EnvProperties customSettings = new EnvProperties(CUSTOM_FILE);
 			
 			ANTIBUFF_SHIELD_ENABLE = Boolean.valueOf(customSettings.getProperty("AntibuffShieldEnable", "false"));
 			SKILL_REUSE_INDEPENDENT = Boolean.valueOf(customSettings.getProperty("SkillReuseIndependent", "false"));
@@ -2068,16 +1983,7 @@ public final class Config
 			}
 			
 			// Feature settings
-			Properties Feature = new Properties();
-			try (InputStream is = new FileInputStream(new File(FEATURE_FILE)))
-			{
-				Feature.load(is);
-			}
-			catch (Exception e)
-			{
-				e.printStackTrace();
-				throw new Error("Failed to Load " + FEATURE_FILE + " File.");
-			}
+			EnvProperties Feature = new EnvProperties(FEATURE_FILE);
 			
 			CS_TELE_FEE_RATIO = Long.parseLong(Feature.getProperty("CastleTeleportFunctionFeeRatio", "604800000"));
 			CS_TELE1_FEE = Integer.parseInt(Feature.getProperty("CastleTeleportFunctionFeeLvl1", "7000"));
@@ -2169,16 +2075,7 @@ public final class Config
 			ALT_FESTIVAL_CHEST_SPAWN = Long.parseLong(Feature.getProperty("AltFestivalChestSpawn", "900000"));
 			
 			// Pvp config
-			Properties pvpSettings = new Properties();
-			try (InputStream is = new FileInputStream(new File(PVP_FILE)))
-			{
-				pvpSettings.load(is);
-			}
-			catch (Exception e)
-			{
-				e.printStackTrace();
-				throw new Error("Failed to Load " + PVP_FILE + " File.");
-			}
+			EnvProperties pvpSettings = new EnvProperties(PVP_FILE);
 			
 			/* Karma System */
 			KARMA_MIN_KARMA = Integer.parseInt(pvpSettings.getProperty("MinKarma", "240"));
@@ -2216,16 +2113,7 @@ public final class Config
 			PVP_PVP_TIME = Integer.parseInt(pvpSettings.getProperty("PvPVsPvPTime", "30000"));
 			
 			// Access levels
-			Properties accessLevelSettings = new Properties();
-			try (InputStream is = new FileInputStream(new File(ACCESS_LEVELS_FILE)))
-			{
-				accessLevelSettings.load(is);
-			}
-			catch (Exception e)
-			{
-				e.printStackTrace();
-				throw new Error("Failed to Load " + ACCESS_LEVELS_FILE + " File.");
-			}
+			EnvProperties accessLevelSettings = new EnvProperties(ACCESS_LEVELS_FILE);
 			
 			MASTER_ACCESS_LEVEL = Integer.parseInt(accessLevelSettings.getProperty("MasterAccessLevel", "100"));
 			GM_ESCAPE = Integer.parseInt(accessLevelSettings.getProperty("GMFastUnstuck", "100"));
@@ -2236,16 +2124,7 @@ public final class Config
 			GM_SKILL_RESTRICTION = Integer.parseInt(accessLevelSettings.getProperty("GMSkillRestriction", "1000"));
 			
 			// Geodata
-			Properties geoDataSettings = new Properties();
-			try (InputStream is = new FileInputStream(new File(GEODATA_FILE)))
-			{
-				geoDataSettings.load(is);
-			}
-			catch (Exception e)
-			{
-				e.printStackTrace();
-				throw new Error("Failed to Load " + GEODATA_FILE + " File.");
-			}
+			EnvProperties geoDataSettings = new EnvProperties(GEODATA_FILE);
 
 			PATHFINDING = Integer.parseInt(geoDataSettings.getProperty("PathFinding", "0"));
 			
@@ -2286,17 +2165,11 @@ public final class Config
 			}
 			
 			// Grand bosses
-			Properties grandBossSettings = new Properties();
-			try (InputStream is = new FileInputStream(new File(GRAND_BOSS_FILE)))
-			{
-				grandBossSettings.load(is);
-			}
-			catch (Exception e)
-			{
-				e.printStackTrace();
-				throw new Error("Failed to Load " + GRAND_BOSS_FILE + " File.");
-			}
-			
+			EnvProperties grandBossSettings = new EnvProperties(GRAND_BOSS_FILE);
+
+			ANTHARAS_ALLOW_UNPROVOKED = Boolean.valueOf(grandBossSettings.getProperty("AntharasAllowUnprovoked", "False"));
+			VALAKAS_ALLOW_UNPROVOKED = Boolean.valueOf(grandBossSettings.getProperty("ValakasAllowUnprovoked", "False"));
+
 			ANTHARAS_WAIT_TIME = Integer.parseInt(grandBossSettings.getProperty("AntharasWaitTime", "30"));
 			VALAKAS_WAIT_TIME = Integer.parseInt(grandBossSettings.getProperty("ValakasWaitTime", "30"));
 			ANTHARAS_SPAWN_INTERVAL = Integer.parseInt(grandBossSettings.getProperty("AntharasSpawnInterval", "264"));
@@ -2314,7 +2187,9 @@ public final class Config
 			ZAKEN_SPAWN_INTERVAL = Integer.parseInt(grandBossSettings.getProperty("ZakenSpawnInterval", "60"));
 			ZAKEN_SPAWN_RANDOM_INTERVAL = Integer.parseInt(grandBossSettings.getProperty("ZakenSpawnRandomInterval", "20"));
 			
-			try (InputStream is = new FileInputStream(HEXID_FILE))
+            String hexFile = getGetHexIdFilePath();
+
+			try (InputStream is = new FileInputStream(hexFile))
 			{
 				Properties hexidSettings = new Properties();
 				hexidSettings.load(is);
@@ -2324,23 +2199,14 @@ public final class Config
 			}
 			catch (Exception e)
 			{
-				_log.warning("Could not load HexID file (" + HEXID_FILE + "). Hopefully login will give us one.");
+				_log.warning("Could not load HexID file (" + hexFile + "). Hopefully login will give us one.");
 			}
 		}
 		else if (Server.SERVER_MODE == Server.MODE_LOGINSERVER)
 		{
 			_log.info("Loading LoginServer Configuration Files.");
 			
-			Properties serverSettings = new Properties();
-			try (InputStream is = new FileInputStream(new File(LOGIN_SERVER_FILE)))
-			{
-				serverSettings.load(is);
-			}
-			catch (Exception e)
-			{
-				e.printStackTrace();
-				throw new Error("Failed to Load " + LOGIN_SERVER_FILE + " File.");
-			}
+			EnvProperties serverSettings = new EnvProperties(LOGIN_SERVER_FILE);
 			
 			ENABLE_UPNP = Boolean.parseBoolean(serverSettings.getProperty("EnableUPnP", "False"));
 			
@@ -2390,16 +2256,7 @@ public final class Config
 			LOG_LOGIN_ATTEMPTS = Boolean.parseBoolean(serverSettings.getProperty("LogLoginAttempts", "False"));
 			
 			// MMO
-			Properties mmoSettings = new Properties();
-			try (InputStream is = new FileInputStream(new File(MMO_FILE)))
-			{
-				mmoSettings.load(is);
-			}
-			catch (Exception e)
-			{
-				e.printStackTrace();
-				throw new Error("Failed to Load " + MMO_FILE + " File.");
-			}
+			EnvProperties mmoSettings = new EnvProperties(MMO_FILE);
 			
 			MMO_SELECTOR_SLEEP_TIME = Integer.parseInt(mmoSettings.getProperty("SleepTime", "20"));
 			MMO_MAX_SEND_PER_PASS = Integer.parseInt(mmoSettings.getProperty("MaxSendPerPass", "12"));
@@ -2417,12 +2274,14 @@ public final class Config
 	 * 
 	 * @param serverId 
 	 * @param string (String) : hexadecimal ID of the server to store
-	 * @see net.sf.l2j.Config#HEXID_FILE
+	 * @see net.sf.l2j.Config#_HEXID_FILE
 	 * @see net.sf.l2j.Config#saveHexid(int serverId, String string, String fileName)
 	 */
 	public static void saveHexid(int serverId, String string)
 	{
-		saveHexid(serverId, string, HEXID_FILE);
+        String hexFile = getGetHexIdFilePath();
+
+		saveHexid(serverId, string, hexFile);
 	}
 	
 	/**

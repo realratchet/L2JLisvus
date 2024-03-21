@@ -18,6 +18,10 @@
 ############################################
 trap finish 2
 
+GSPATH="/var/gameserver"
+EXEC_SQL="mariadb"              # mariadb       | mysql
+EXEC_SQL_DUMP="mariadb-dump"    # mariadub-dump | mysqldump
+
 configure() {
 echo "#############################################"
 echo "# You entered script configuration area     #"
@@ -25,8 +29,10 @@ echo "# No change will be performed in your DB    #"
 echo "# I will just ask you some questions about  #"
 echo "# your hosts and DB.                        #"
 echo "#############################################"
-MYSQLDUMPPATH=`which mysqldump 2>/dev/null`
-MYSQLPATH=`which mysql 2>/dev/null`
+
+MYSQLDUMPPATH=`which $EXEC_SQL_DUMP 2>/dev/null`
+MYSQLPATH=`which $EXEC_SQL 2>/dev/null`
+
 if [ $? -ne 0 ]; then
 echo "We were unable to find MySQL binaries on your path"
 while :
@@ -102,7 +108,7 @@ save_config() {
 if [ -n "$1" ]; then
 CONF="$1"
 else 
-CONF="database_installer.rc"
+CONF="$GSPATH/tools/database_installer.rc"
 fi
 echo ""
 echo "With these data i can generate a configuration file which can be read"
@@ -135,7 +141,7 @@ load_config() {
 if [ -n "$1" ]; then
 CONF="$1"
 else 
-CONF="database_installer.rc"
+CONF="$GSPATH/tools/database_installer.rc"
 fi
 if [ -e "$CONF" ] && [ -f "$CONF" ]; then
 . $CONF
@@ -145,7 +151,7 @@ echo "You can specify an alternate settings filename:"
 echo $0 config_filename
 echo ""
 echo "If file doesn't exist it can be created"
-echo "If nothing is specified script will try to work with ./database_installer.rc"
+echo "If nothing is specified script will try to work with $GSPATH/tools/database_installer.rc"
 echo ""
 configure $CONF
 fi
@@ -176,13 +182,13 @@ esac
 
 logininstall(){
 echo "Deleting loginserver tables for new content."
-$MYL < login_install.sql &> /dev/null
+$MYL < $GSPATH/tools/login_install.sql &> /dev/null
 }
 
 loginupgrade(){
 echo "Installling new loginserver content."
-$MYL < ../sql/accounts.sql &> /dev/null
-$MYL < ../sql/gameservers.sql &> /dev/null
+$MYL < $GSPATH/sql/accounts.sql &> /dev/null
+$MYL < $GSPATH/sql/gameservers.sql &> /dev/null
 }
 
 gsbackup(){
@@ -193,7 +199,8 @@ while :
    read LSB
    if [ "$LSB" == "Y" -o "$LSB" == "y" ]; then
      echo "Making a backup of the original gameserver database."
-     $MYSQLDUMPPATH --add-drop-table -h $GSDBHOST -u $GSUSER --password=$GSPASS $GSDB > gameserver_backup.sql
+     mkdir $GSPATH/sql/bak 2> /dev/null
+     $MYSQLDUMPPATH --add-drop-table -h $GSDBHOST -u $GSUSER --password=$GSPASS $GSDB > $GSPATH/sql/bak/gameserver_backup.sql
      if [ $? -ne 0 ];then
      echo ""
      echo "There was a problem accesing your GS database, either it wasnt created or authentication data is incorrect."
@@ -214,7 +221,8 @@ while :
    read LSB
    if [ "$LSB" == "Y" -o "$LSB" == "y" ]; then
      echo "Making a backup of the original loginserver database."
-     $MYSQLDUMPPATH --add-drop-table -h $LSDBHOST -u $LSUSER --password=$LSPASS $LSDB > loginserver_backup.sql
+     mkdir $GSPATH/sql/bak 2> /dev/null
+     $MYSQLDUMPPATH --add-drop-table -h $LSDBHOST -u $LSUSER --password=$LSPASS $LSDB > $GSPATH/sql/bak/loginserver_backup.sql
      if [ $? -ne 0 ];then
         echo ""
         echo "There was a problem accesing your LS database, either it wasnt created or authentication data is incorrect."
@@ -244,7 +252,7 @@ esac
 
 fullinstall(){
 echo "Deleting all gameserver tables for new content."
-$MYG < full_install.sql &> /dev/null
+$MYG < $GSPATH/tools/full_install.sql &> /dev/null
 }
 
 upgradeinstall(){
@@ -253,91 +261,91 @@ echo "Installling new gameserver content."
 else
 echo "Upgrading gameserver content"
 fi
-$MYG < ../sql/aio_buffer.sql &> /dev/null
-$MYG < ../sql/armor.sql &> /dev/null
-$MYG < ../sql/armorsets.sql &> /dev/null
-$MYG < ../sql/auction.sql &> /dev/null
-$MYG < ../sql/auction_bid.sql &> /dev/null
-$MYG < ../sql/auction_watch.sql &> /dev/null
-$MYG < ../sql/auto_announcements.sql &> /dev/null
-$MYG < ../sql/auto_chat.sql &> /dev/null
-$MYG < ../sql/auto_chat_text.sql &> /dev/null
-$MYG < ../sql/castle.sql &> /dev/null
-$MYG < ../sql/castle_doorupgrade.sql &> /dev/null
-$MYG < ../sql/castle_functions.sql &> /dev/null
-$MYG < ../sql/castle_manor_procure.sql &> /dev/null
-$MYG < ../sql/castle_manor_production.sql &> /dev/null
-$MYG < ../sql/castle_siege_guards.sql &> /dev/null
-$MYG < ../sql/character_buff_schemes.sql &> /dev/null
-$MYG < ../sql/character_friends.sql &> /dev/null
-$MYG < ../sql/character_hennas.sql &> /dev/null
-$MYG < ../sql/character_macroses.sql &> /dev/null
-$MYG < ../sql/character_offline_trade.sql &> /dev/null
-$MYG < ../sql/character_offline_trade_items.sql &> /dev/null
-$MYG < ../sql/character_quests.sql &> /dev/null
-$MYG < ../sql/character_recipebook.sql &> /dev/null
-$MYG < ../sql/character_recommends.sql &> /dev/null
-$MYG < ../sql/character_shortcuts.sql &> /dev/null
-$MYG < ../sql/character_skills.sql &> /dev/null
-$MYG < ../sql/character_skills_save.sql &> /dev/null
-$MYG < ../sql/character_subclasses.sql &> /dev/null
-$MYG < ../sql/characters.sql &> /dev/null
-$MYG < ../sql/clan_data.sql &> /dev/null
-$MYG < ../sql/clan_wars.sql &> /dev/null
-$MYG < ../sql/clanhall.sql &> /dev/null
-$MYG < ../sql/clanhall_functions.sql &> /dev/null
-$MYG < ../sql/dimensional_rift.sql &> /dev/null
-$MYG < ../sql/droplist.sql &> /dev/null
-$MYG < ../sql/enchant_skill_trees.sql &> /dev/null
-$MYG < ../sql/etcitem.sql &> /dev/null
-$MYG < ../sql/fish.sql &> /dev/null
-$MYG < ../sql/fishing_skill_trees.sql &> /dev/null
-$MYG < ../sql/forums.sql &> /dev/null
-$MYG < ../sql/four_sepulchers_spawnlist.sql &> /dev/null
-$MYG < ../sql/games.sql &> /dev/null
-$MYG < ../sql/global_tasks.sql &> /dev/null
-$MYG < ../sql/grandboss_data.sql &> /dev/null
-$MYG < ../sql/grandboss_list.sql &> /dev/null
-$MYG < ../sql/helper_buff_list.sql &> /dev/null
-$MYG < ../sql/henna.sql &> /dev/null
-$MYG < ../sql/henna_trees.sql &> /dev/null
-$MYG < ../sql/heroes.sql &> /dev/null
-$MYG < ../sql/items.sql &> /dev/null
-$MYG < ../sql/itemsonground.sql &> /dev/null
-$MYG < ../sql/locations.sql &> /dev/null
-$MYG < ../sql/mapregion.sql &> /dev/null
-$MYG < ../sql/merchant_areas_list.sql &> /dev/null
-$MYG < ../sql/merchant_buylists.sql &> /dev/null
-$MYG < ../sql/merchant_lease.sql &> /dev/null
-$MYG < ../sql/merchant_shopids.sql &> /dev/null
-$MYG < ../sql/merchants.sql &> /dev/null
-$MYG < ../sql/minions.sql &> /dev/null
-$MYG < ../sql/npc.sql &> /dev/null
-$MYG < ../sql/npc_buffer.sql &> /dev/null
-$MYG < ../sql/npcskills.sql &> /dev/null
-$MYG < ../sql/olympiad_data.sql &> /dev/null
-$MYG < ../sql/olympiad_nobles.sql&> /dev/null
-$MYG < ../sql/olympiad_nobles_eom.sql&> /dev/null
-$MYG < ../sql/pets.sql &> /dev/null
-$MYG < ../sql/pets_stats.sql &> /dev/null
-$MYG < ../sql/posts.sql &> /dev/null
-$MYG < ../sql/quest_global_data.sql &> /dev/null
-$MYG < ../sql/raidboss_spawnlist.sql &> /dev/null
-$MYG < ../sql/random_spawn.sql &> /dev/null
-$MYG < ../sql/random_spawn_loc.sql &> /dev/null
-$MYG < ../sql/seven_signs.sql &> /dev/null
-$MYG < ../sql/seven_signs_festival.sql &> /dev/null
-$MYG < ../sql/seven_signs_status.sql &> /dev/null
-$MYG < ../sql/siege_clans.sql &> /dev/null
-$MYG < ../sql/skill_learn.sql &> /dev/null
-$MYG < ../sql/skill_spellbooks.sql &> /dev/null
-$MYG < ../sql/skill_trees.sql &> /dev/null
-$MYG < ../sql/spawnlist.sql &> /dev/null
-$MYG < ../sql/teleport.sql &> /dev/null
-$MYG < ../sql/topic.sql &> /dev/null
-$MYG < ../sql/walker_routes.sql &> /dev/null
-$MYG < ../sql/weapon.sql &> /dev/null
-$MYG < ../sql/weddings.sql &> /dev/null
+$MYG < $GSPATH/sql/aio_buffer.sql &> /dev/null
+$MYG < $GSPATH/sql/armor.sql &> /dev/null
+$MYG < $GSPATH/sql/armorsets.sql &> /dev/null
+$MYG < $GSPATH/sql/auction.sql &> /dev/null
+$MYG < $GSPATH/sql/auction_bid.sql &> /dev/null
+$MYG < $GSPATH/sql/auction_watch.sql &> /dev/null
+$MYG < $GSPATH/sql/auto_announcements.sql &> /dev/null
+$MYG < $GSPATH/sql/auto_chat.sql &> /dev/null
+$MYG < $GSPATH/sql/auto_chat_text.sql &> /dev/null
+$MYG < $GSPATH/sql/castle.sql &> /dev/null
+$MYG < $GSPATH/sql/castle_doorupgrade.sql &> /dev/null
+$MYG < $GSPATH/sql/castle_functions.sql &> /dev/null
+$MYG < $GSPATH/sql/castle_manor_procure.sql &> /dev/null
+$MYG < $GSPATH/sql/castle_manor_production.sql &> /dev/null
+$MYG < $GSPATH/sql/castle_siege_guards.sql &> /dev/null
+$MYG < $GSPATH/sql/character_buff_schemes.sql &> /dev/null
+$MYG < $GSPATH/sql/character_friends.sql &> /dev/null
+$MYG < $GSPATH/sql/character_hennas.sql &> /dev/null
+$MYG < $GSPATH/sql/character_macroses.sql &> /dev/null
+$MYG < $GSPATH/sql/character_offline_trade.sql &> /dev/null
+$MYG < $GSPATH/sql/character_offline_trade_items.sql &> /dev/null
+$MYG < $GSPATH/sql/character_quests.sql &> /dev/null
+$MYG < $GSPATH/sql/character_recipebook.sql &> /dev/null
+$MYG < $GSPATH/sql/character_recommends.sql &> /dev/null
+$MYG < $GSPATH/sql/character_shortcuts.sql &> /dev/null
+$MYG < $GSPATH/sql/character_skills.sql &> /dev/null
+$MYG < $GSPATH/sql/character_skills_save.sql &> /dev/null
+$MYG < $GSPATH/sql/character_subclasses.sql &> /dev/null
+$MYG < $GSPATH/sql/characters.sql &> /dev/null
+$MYG < $GSPATH/sql/clan_data.sql &> /dev/null
+$MYG < $GSPATH/sql/clan_wars.sql &> /dev/null
+$MYG < $GSPATH/sql/clanhall.sql &> /dev/null
+$MYG < $GSPATH/sql/clanhall_functions.sql &> /dev/null
+$MYG < $GSPATH/sql/dimensional_rift.sql &> /dev/null
+$MYG < $GSPATH/sql/droplist.sql &> /dev/null
+$MYG < $GSPATH/sql/enchant_skill_trees.sql &> /dev/null
+$MYG < $GSPATH/sql/etcitem.sql &> /dev/null
+$MYG < $GSPATH/sql/fish.sql &> /dev/null
+$MYG < $GSPATH/sql/fishing_skill_trees.sql &> /dev/null
+$MYG < $GSPATH/sql/forums.sql &> /dev/null
+$MYG < $GSPATH/sql/four_sepulchers_spawnlist.sql &> /dev/null
+$MYG < $GSPATH/sql/games.sql &> /dev/null
+$MYG < $GSPATH/sql/global_tasks.sql &> /dev/null
+$MYG < $GSPATH/sql/grandboss_data.sql &> /dev/null
+$MYG < $GSPATH/sql/grandboss_list.sql &> /dev/null
+$MYG < $GSPATH/sql/helper_buff_list.sql &> /dev/null
+$MYG < $GSPATH/sql/henna.sql &> /dev/null
+$MYG < $GSPATH/sql/henna_trees.sql &> /dev/null
+$MYG < $GSPATH/sql/heroes.sql &> /dev/null
+$MYG < $GSPATH/sql/items.sql &> /dev/null
+$MYG < $GSPATH/sql/itemsonground.sql &> /dev/null
+$MYG < $GSPATH/sql/locations.sql &> /dev/null
+$MYG < $GSPATH/sql/mapregion.sql &> /dev/null
+$MYG < $GSPATH/sql/merchant_areas_list.sql &> /dev/null
+$MYG < $GSPATH/sql/merchant_buylists.sql &> /dev/null
+$MYG < $GSPATH/sql/merchant_lease.sql &> /dev/null
+$MYG < $GSPATH/sql/merchant_shopids.sql &> /dev/null
+$MYG < $GSPATH/sql/merchants.sql &> /dev/null
+$MYG < $GSPATH/sql/minions.sql &> /dev/null
+$MYG < $GSPATH/sql/npc.sql &> /dev/null
+$MYG < $GSPATH/sql/npc_buffer.sql &> /dev/null
+$MYG < $GSPATH/sql/npcskills.sql &> /dev/null
+$MYG < $GSPATH/sql/olympiad_data.sql &> /dev/null
+$MYG < $GSPATH/sql/olympiad_nobles.sql&> /dev/null
+$MYG < $GSPATH/sql/olympiad_nobles_eom.sql&> /dev/null
+$MYG < $GSPATH/sql/pets.sql &> /dev/null
+$MYG < $GSPATH/sql/pets_stats.sql &> /dev/null
+$MYG < $GSPATH/sql/posts.sql &> /dev/null
+$MYG < $GSPATH/sql/quest_global_data.sql &> /dev/null
+$MYG < $GSPATH/sql/raidboss_spawnlist.sql &> /dev/null
+$MYG < $GSPATH/sql/random_spawn.sql &> /dev/null
+$MYG < $GSPATH/sql/random_spawn_loc.sql &> /dev/null
+$MYG < $GSPATH/sql/seven_signs.sql &> /dev/null
+$MYG < $GSPATH/sql/seven_signs_festival.sql &> /dev/null
+$MYG < $GSPATH/sql/seven_signs_status.sql &> /dev/null
+$MYG < $GSPATH/sql/siege_clans.sql &> /dev/null
+$MYG < $GSPATH/sql/skill_learn.sql &> /dev/null
+$MYG < $GSPATH/sql/skill_spellbooks.sql &> /dev/null
+$MYG < $GSPATH/sql/skill_trees.sql &> /dev/null
+$MYG < $GSPATH/sql/spawnlist.sql &> /dev/null
+$MYG < $GSPATH/sql/teleport.sql &> /dev/null
+$MYG < $GSPATH/sql/topic.sql &> /dev/null
+$MYG < $GSPATH/sql/walker_routes.sql &> /dev/null
+$MYG < $GSPATH/sql/weapon.sql &> /dev/null
+$MYG < $GSPATH/sql/weddings.sql &> /dev/null
 }
 
 custom(){
@@ -362,7 +370,8 @@ while :
    read LSB
    if [ "$LSB" == "Y" -o "$LSB" == "y" ]; then
      echo "Making a backup of the default gameserver tables."
-     $MYSQLDUMPPATH --add-drop-table -h $GSDBHOST -u $GSUSER --password=$GSPASS $GSDB > custom_backup.sql 2> /dev/null
+     mkdir $GSPATH/sql/bak 2> /dev/null
+     $MYSQLDUMPPATH --add-drop-table -h $GSDBHOST -u $GSUSER --password=$GSPASS $GSDB > $GSPATH/sql/bak/custom_backup.sql 2> /dev/null
      if [ $? -ne 0 ];then
      echo ""
      echo "There was a problem accesing your GS database, server down?."
@@ -374,7 +383,7 @@ while :
    fi
   done 
 echo "Installing custom content."
-for custom in $(ls ../sql/custom/*.sql);do 
+for custom in $(ls $GSPATH/sql/custom/*.sql);do 
 $MYG < $custom &> /dev/null
 done
 finish

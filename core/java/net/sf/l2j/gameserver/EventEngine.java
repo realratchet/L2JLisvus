@@ -14,15 +14,12 @@
  */
 package net.sf.l2j.gameserver;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStream;
 import java.util.List;
-import java.util.Properties;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.logging.Logger;
 
 import net.sf.l2j.Config;
+import net.sf.l2j.EnvProperties;
 import net.sf.l2j.gameserver.model.eventgame.L2Event;
 import net.sf.l2j.gameserver.model.eventgame.TvTEvent;
 import net.sf.l2j.gameserver.model.eventgame.L2Event.EventState;
@@ -52,16 +49,7 @@ public class EventEngine
     public void load()
     {
         // Load all Events and their settings
-        Properties eventSettings = new Properties();
-        try (InputStream is = new FileInputStream(new File(Config.EVENTS_FILE)))
-        {
-            eventSettings.load(is);
-        }
-        catch (Exception e)
-        {
-            _log.warning("EventEngine: Error while loading events settings");
-            e.printStackTrace();
-        }
+        EnvProperties eventSettings = new EnvProperties(Config.EVENTS_FILE);
 
         // Initialize settings for all events
         for (L2Event event : _events)

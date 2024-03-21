@@ -75,12 +75,7 @@
 
   	<target name="dist" depends="export"
     		description="Creates a ZIP file. Suitable for distribution but building takes longer. See dist-deflate for faster builds.">
-    	<zip destfile="${build}/datapack.zip" basedir="${build.dist}" update="true"/>
-  	</target>
-
-  	<target name="dist-deflate" depends="export"
-    		description="Creates a datapack ZIP file with NO compression (bigger ZIP file but faster than regular dist target)">
-    	<zip destfile="${build}/datapack-nocompress.zip" basedir="${build.dist}" update="true" compress="false"/>
+    	<tar compression="gzip" destfile="${build}/datapack.tar.gz" basedir="${build.dist}"/>
   	</target>
 
   	<target name="version" depends="init"
@@ -107,8 +102,8 @@
 
   	<target name="distclean"
     		description="Deletes the datapack distribution ZIP file only, preserving synchronized build files.">
-    	<delete file="${build}/datapack.zip"/>
-    	<delete file="${build}/datapack-nocompress.zip"/>
+    	<delete file="${build}/datapack.tar.gz"/>
+    	<delete file="${build}/datapack-nocompress.tar.gz"/>
   	</target>
 
 	<target name="finish" depends="dist" description="Datapack build path">

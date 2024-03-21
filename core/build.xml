@@ -116,12 +116,14 @@
                 <include name="startSQLAccountManager.*"/>
                 <include name="LoginServer_loop.sh"/>
                 <include name="startLoginServer.*"/>
+                <include name="dockerStartLogin.sh"/>
             	<include name="RegisterGameServer.*"/>
             </fileset>
         </copy>
     	<copy todir="${build.dist.game}">
             <fileset dir="dist">
                 <include name="GameServer_loop.sh"/>
+                <include name="dockerStartGameServer.sh"/>
                 <include name="startGameServer.*"/>
             </fileset>
         </copy>
@@ -166,7 +168,7 @@
 			</fileset>
 		</copy>
 
-        <zip destfile="${build}/core.zip" basedir="${build.dist}" />
+        <tar compression="gzip" destfile="${build}/core.tar.gz" basedir="${build.dist}" />
     </target>
     <target name="version" depends="init" description="Create l2j-version.properties file">
     	<tstamp>

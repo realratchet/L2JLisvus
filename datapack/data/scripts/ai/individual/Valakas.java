@@ -385,7 +385,7 @@ public class Valakas extends Quest
 		
 		i_quest1 = System.currentTimeMillis();
 		
-		if (GrandBossManager.getInstance().getBossStatus(VALAKAS) != FIGHTING)
+		if (GrandBossManager.getInstance().getBossStatus(VALAKAS) != FIGHTING && !Config.VALAKAS_ALLOW_UNPROVOKED)
 		{
 			attacker.teleToLocation(150037, -57255, -2976, true);
 			return null;
