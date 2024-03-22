@@ -113,8 +113,8 @@ public class GeoPathFinding extends PathFinding
 		FastNodeList visited = new FastNodeList(550);
 		
 		// List of Nodes to Visit
-		LinkedList<GeoNode> to_visit = new LinkedList<>();
-		to_visit.add(start);
+		LinkedList<GeoNode> toVisit = new LinkedList<>();
+		toVisit.add(start);
 		int targetX = end.getLoc().getNodeX();
 		int targetY = end.getLoc().getNodeY();
 
@@ -126,7 +126,7 @@ public class GeoPathFinding extends PathFinding
 			GeoNode node;
 			try
 			{
-				node = to_visit.removeFirst();
+				node = toVisit.removeFirst();
 			}
 			catch (Exception e)
 			{
@@ -145,25 +145,27 @@ public class GeoPathFinding extends PathFinding
 				continue;
 			for (GeoNode n : neighbors)
 			{
-				if (!visited.containsRev(n) && !to_visit.contains(n))
+				if (!visited.containsRev(n) && !toVisit.contains(n))
 				{
 					added = false;
 					n.setParent(node);
 					dx = targetX - n.getLoc().getNodeX();
 					dy = targetY - n.getLoc().getNodeY();
 					n.setCost(dx * dx + dy * dy);
-					for (int index = 0; index < to_visit.size(); index++)
+
+					int size = toVisit.size();
+					for (int index = 0; index < size; index++)
 					{
 						// supposed to find it quite early..
-						if (to_visit.get(index).getCost() > n.getCost())
+						if (toVisit.get(index).getCost() > n.getCost())
 						{
-							to_visit.add(index, n);
+							toVisit.add(index, n);
 							added = true;
 							break;
 						}
 					}
 					if (!added)
-						to_visit.addLast(n);
+						toVisit.addLast(n);
 				}
 			}
 		}

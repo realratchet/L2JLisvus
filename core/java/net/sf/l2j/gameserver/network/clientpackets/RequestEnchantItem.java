@@ -36,7 +36,8 @@ public class RequestEnchantItem extends L2GameClientPacket
 {
 	protected static final Logger _log = Logger.getLogger(Inventory.class.getName());
 	private static final String _C__58_REQUESTENCHANTITEM = "[C] 58 RequestEnchantItem";
-	private static final int[] crystalScrolls =
+	
+	private static final int[] CRYSTAL_SCROLLS =
 	{
 		731,
 		732,
@@ -102,16 +103,8 @@ public class RequestEnchantItem extends L2GameClientPacket
 		
 		// Can't enchant traveler's weapons
 		if (item.getItemId() >= 7816 && item.getItemId() <= 7831)
-        {
-			activeChar.sendPacket(new SystemMessage(SystemMessage.INAPPROPRIATE_ENCHANT_CONDITION));
-			activeChar.setActiveEnchantItem(null);
-			activeChar.sendPacket(new EnchantResult(2));
-            return;
-        }
-		
-		if (item.isWear())
 		{
-			Util.handleIllegalPlayerAction(activeChar, "Player " + activeChar.getName() + " tried to enchant a weared Item", IllegalPlayerAction.PUNISH_KICK);
+			activeChar.sendPacket(new SystemMessage(SystemMessage.INAPPROPRIATE_ENCHANT_CONDITION));
 			activeChar.setActiveEnchantItem(null);
 			activeChar.sendPacket(new EnchantResult(2));
 			return;
@@ -146,14 +139,15 @@ public class RequestEnchantItem extends L2GameClientPacket
 		
 		int itemType2 = item.getItem().getType2();
 		
-		boolean blessedScroll = false;
+		boolean isBlessedScroll = false;
+		boolean isCrystalScroll = false;
 		boolean enchantItem = false;
 		int crystalId = 0;
 		
 		/** pretty code ;D */
 		switch (item.getItem().getCrystalType())
 		{
-			case L2Item.CRYSTAL_S:
+			case S:
 				crystalId = 1462;
 				switch (scroll.getItemId())
 				{
@@ -175,7 +169,7 @@ public class RequestEnchantItem extends L2GameClientPacket
 						break;
 				}
 				break;
-			case L2Item.CRYSTAL_A:
+			case A:
 				crystalId = 1461;
 				switch (scroll.getItemId())
 				{
@@ -194,11 +188,10 @@ public class RequestEnchantItem extends L2GameClientPacket
 						{
 							enchantItem = true;
 						}
-						
 						break;
 				}
 				break;
-			case L2Item.CRYSTAL_B:
+			case B:
 				crystalId = 1460;
 				switch (scroll.getItemId())
 				{
@@ -220,7 +213,7 @@ public class RequestEnchantItem extends L2GameClientPacket
 						break;
 				}
 				break;
-			case L2Item.CRYSTAL_C:
+			case C:
 				crystalId = 1459;
 				switch (scroll.getItemId())
 				{
@@ -242,7 +235,7 @@ public class RequestEnchantItem extends L2GameClientPacket
 						break;
 				}
 				break;
-			case L2Item.CRYSTAL_D:
+			case D:
 				crystalId = 1458;
 				switch (scroll.getItemId())
 				{
@@ -264,7 +257,6 @@ public class RequestEnchantItem extends L2GameClientPacket
 						break;
 				}
 				break;
-			
 		}
 		
 		if (!enchantItem)
@@ -278,18 +270,17 @@ public class RequestEnchantItem extends L2GameClientPacket
 		// Get the scroll type - Yesod
 		if ((scroll.getItemId() >= 6569) && (scroll.getItemId() <= 6578))
 		{
-			blessedScroll = true;
+			isBlessedScroll = true;
 		}
 		else
 		{
-			for (int crystalscroll : crystalScrolls)
+			for (int crystalScrollId : CRYSTAL_SCROLLS)
 			{
-				if (scroll.getItemId() == crystalscroll)
+				if (scroll.getItemId() == crystalScrollId)
 				{
-					blessedScroll = true;
+					isCrystalScroll = true;
+					break;
 				}
-				
-				break;
 			}
 		}
 		
@@ -298,9 +289,13 @@ public class RequestEnchantItem extends L2GameClientPacket
 		
 		if (item.getItem().getType2() == L2Item.TYPE2_WEAPON)
 		{
-			if (blessedScroll)
+			if (isBlessedScroll)
 			{
 				chance = Config.BLESSED_ENCHANT_CHANCE_WEAPON;
+			}
+			else if (isCrystalScroll)
+			{
+				chance = Config.CRYSTAL_ENCHANT_CHANCE_WEAPON;
 			}
 			else
 			{
@@ -310,9 +305,13 @@ public class RequestEnchantItem extends L2GameClientPacket
 		}
 		else if (item.getItem().getType2() == L2Item.TYPE2_SHIELD_ARMOR)
 		{
-			if (blessedScroll)
+			if (isBlessedScroll)
 			{
 				chance = Config.BLESSED_ENCHANT_CHANCE_ARMOR;
+			}
+			else if (isCrystalScroll)
+			{
+				chance = Config.CRYSTAL_ENCHANT_CHANCE_ARMOR;
 			}
 			else
 			{
@@ -322,9 +321,13 @@ public class RequestEnchantItem extends L2GameClientPacket
 		}
 		else if (item.getItem().getType2() == L2Item.TYPE2_ACCESSORY)
 		{
-			if (blessedScroll)
+			if (isBlessedScroll)
 			{
 				chance = Config.BLESSED_ENCHANT_CHANCE_JEWELRY;
+			}
+			else if (isCrystalScroll)
+			{
+				chance = Config.CRYSTAL_ENCHANT_CHANCE_JEWELRY;
 			}
 			else
 			{
@@ -417,7 +420,7 @@ public class RequestEnchantItem extends L2GameClientPacket
 		}
 		else
 		{
-			if (!blessedScroll)
+			if (!isBlessedScroll)
 			{
 				if (item.getEnchantLevel() > 0)
 				{
@@ -531,6 +534,7 @@ public class RequestEnchantItem extends L2GameClientPacket
 	
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see net.sf.l2j.gameserver.clientpackets.L2GameClientPacket#getType()
 	 */
 	@Override

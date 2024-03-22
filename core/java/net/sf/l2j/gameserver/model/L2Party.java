@@ -21,6 +21,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.SevenSignsFestival;
 import net.sf.l2j.gameserver.datatables.ItemTable;
+import net.sf.l2j.gameserver.instancemanager.PartyMatchRoomManager;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PetInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PlayableInstance;
@@ -242,9 +243,7 @@ public class L2Party
 			if (member != null)
 			{
 				member.sendPacket(new PartySmallWindowDeleteAll());
-				PartySmallWindowAll window = new PartySmallWindowAll(_itemDistribution);
-				window.setPartyList(getPartyMembers());
-				member.sendPacket(window);
+				member.sendPacket(new PartySmallWindowAll(member, this));
 				member.updateEffectIcons(true);
 			}
 		}
@@ -258,9 +257,7 @@ public class L2Party
 	{
 		// sends new member party window for all members
 		// we do all actions before adding member to a list, this speeds things up a little
-		PartySmallWindowAll window = new PartySmallWindowAll(_itemDistribution);
-		window.setPartyList(getPartyMembers());
-		player.sendPacket(window);
+		player.sendPacket(new PartySmallWindowAll(player, this));
 		
 		SystemMessage msg = new SystemMessage(SystemMessage.YOU_JOINED_S1_PARTY);
 		msg.addString(getPartyMembers().get(0).getName());
@@ -269,7 +266,7 @@ public class L2Party
 		msg = new SystemMessage(SystemMessage.S1_JOINED_PARTY);
 		msg.addString(player.getName());
 		broadcastToPartyMembers(msg);
-		broadcastToPartyMembers(new PartySmallWindowAdd(player));
+		broadcastToPartyMembers(new PartySmallWindowAdd(player, this));
 		
 		if (!player.isInBoat())
 		{
@@ -370,7 +367,7 @@ public class L2Party
 		
 		if (player.isInPartyMatchRoom())
 		{
-			PartyMatchRoom _room = PartyMatchRoomList.getInstance().getPlayerRoom(player);
+			PartyMatchRoom _room = PartyMatchRoomManager.getInstance().getPlayerRoom(player);
 			if (_room != null)
 			{
 				player.sendPacket(new PartyMatchDetail(_room));
@@ -425,7 +422,7 @@ public class L2Party
 					
 					if (player.isInPartyMatchRoom())
 					{
-						PartyMatchRoom room = PartyMatchRoomList.getInstance().getPlayerRoom(player);
+						PartyMatchRoom room = PartyMatchRoomManager.getInstance().getPlayerRoom(player);
 						room.changeLeader(player);
 					}
 				}

@@ -106,7 +106,7 @@ public class L2Request
         if (isProcessingRequest())
         {
             // Waiting another reply.
-            _player.sendPacket(new SystemMessage(164));
+            _player.sendPacket(new SystemMessage(SystemMessage.WAITING_FOR_REPLY));
             return false;
         }
 

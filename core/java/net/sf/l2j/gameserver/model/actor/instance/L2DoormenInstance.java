@@ -32,7 +32,7 @@ import net.sf.l2j.gameserver.templates.L2NpcTemplate;
  */
 public class L2DoormenInstance extends L2FolkInstance
 {
-    private ClanHall _ClanHall;
+    private ClanHall _clanHall;
 
     /**
      * @param objectID 
@@ -45,9 +45,10 @@ public class L2DoormenInstance extends L2FolkInstance
 
     public final ClanHall getClanHall()
     {
-        if (_ClanHall == null)
-            _ClanHall = ClanHallManager.getInstance().getNearbyClanHall(getX(), getY(), 500);
-        return _ClanHall;
+        if (_clanHall == null)
+            _clanHall = ClanHallManager.getInstance().getNearbyClanHall(getX(), getY(), 500);
+
+        return _clanHall;
     }
 
     @Override
@@ -82,7 +83,8 @@ public class L2DoormenInstance extends L2FolkInstance
 					}
                 	
                     getClanHall().openCloseDoors(true);
-                    player.sendPacket(new NpcHtmlMessage(getObjectId(), "<html><body>You have <font color=\"LEVEL\">opened</font> the clan hall door.<br>Outsiders may enter the clan hall while the door is open. Please close it when you've finished your business.<br><center><button value=\"Close\" action=\"bypass -h npc_" + getObjectId()                    	+ "_close_doors\" width=70 height=15 back=\"sek.cbui94\" fore=\"sek.cbui92\"></center></body></html>"));
+                    player.sendPacket(new NpcHtmlMessage(getObjectId(), "<html><body>You have <font color=\"LEVEL\">opened</font> the clan hall door.<br>Outsiders may enter the clan hall while the door is open. Please close it when you've finished your business.<br><center><button value=\"Close\" action=\"bypass -h npc_" + getObjectId()
+                    	+ "_close_doors\" width=70 height=15 back=\"sek.cbui94\" fore=\"sek.cbui92\"></center></body></html>"));
                 }
                 else
                 {
@@ -110,10 +112,12 @@ public class L2DoormenInstance extends L2FolkInstance
 					}
                 	
                     getClanHall().openCloseDoors(false);
-                    player.sendPacket(new NpcHtmlMessage(getObjectId(), "<html><body>You have <font color=\"LEVEL\">closed</font> the clan hall door.<br>Good day!<br><center><button value=\"To Begining\" action=\"bypass -h npc_" + getObjectId()                    	+ "_Chat\" width=90 height=15 back=\"sek.cbui94\" fore=\"sek.cbui92\"></center></body></html>"));
+                    player.sendPacket(new NpcHtmlMessage(getObjectId(), "<html><body>You have <font color=\"LEVEL\">closed</font> the clan hall door.<br>Good day!<br><center><button value=\"To Begining\" action=\"bypass -h npc_" + getObjectId()
+                    	+ "_Chat\" width=90 height=15 back=\"sek.cbui94\" fore=\"sek.cbui92\"></center></body></html>"));
                 }
                 else
-                {
+                {
+
                     StringTokenizer st = new StringTokenizer(command.substring(11), ", ");
                     st.nextToken(); // Bypass first value since its castle id/hall id
 
@@ -135,13 +139,13 @@ public class L2DoormenInstance extends L2FolkInstance
     @Override
 	public void showChatWindow(L2PcInstance player)
     {
-        String filename = "data/html/doormen/" + getTemplate().npcId + "-no.htm";
+        String filename = "data/html/doormen/" + getNpcId() + "-no.htm";
 
         int condition = validateCondition(player);
         if (condition == COND_BUSY_BECAUSE_OF_SIEGE)
-        	filename = "data/html/doormen/" + getTemplate().npcId + "-busy.htm"; // Busy because of siege
+        	filename = "data/html/doormen/" + getNpcId() + "-busy.htm"; // Busy because of siege
         else if (condition == COND_CASTLE_OWNER) // Clan owns castle
-            filename = "data/html/doormen/" + getTemplate().npcId + ".htm"; // Owner message window
+            filename = "data/html/doormen/" + getNpcId() + ".htm"; // Owner message window
 
         // Prepare doormen for clan hall
         NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
@@ -196,7 +200,8 @@ public class L2DoormenInstance extends L2FolkInstance
             if (getCastle() != null && getCastle().getCastleId() > 0)
             {
                 if (getCastle().getSiege().getIsInProgress())
-                    return COND_BUSY_BECAUSE_OF_SIEGE; // Busy because of siege
+                    return COND_BUSY_BECAUSE_OF_SIEGE; // Busy because of siege
+
                 else if (getCastle().getOwnerId() == player.getClanId()) // Clan owns castle
                     return COND_CASTLE_OWNER; // Owner
             }

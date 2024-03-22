@@ -35,7 +35,7 @@ import net.sf.l2j.util.Log;
  */
 public class Blow implements ISkillHandler
 {
-	private static final SkillType[] SKILL_IDS =
+	private static final SkillType[] SKILL_TYPES =
 	{
 		SkillType.BLOW
 	};
@@ -45,7 +45,7 @@ public class Blow implements ISkillHandler
 	public final static byte BEHIND = 70;
 	
 	@Override
-	public void useSkill(L2Character activeChar, L2Skill skill, L2Object[] targets, boolean isFirstCritical)
+	public void useSkill(L2Character activeChar, L2Skill skill, L2Object[] targets, boolean critOnFirstTarget)
 	{
 		if (activeChar.isAlikeDead())
 		{
@@ -68,7 +68,7 @@ public class Blow implements ISkillHandler
 			}
 
 			// For the first target, it's already calculated
-			boolean success = i == 0 ? isFirstCritical : isCriticalHit(activeChar, skill, target);
+			boolean success = i == 0 ? critOnFirstTarget : isCriticalHit(activeChar, skill, target);
 			if (success)
 			{
 				L2ItemInstance weapon = activeChar.getActiveWeaponInstance();
@@ -88,7 +88,7 @@ public class Blow implements ISkillHandler
 						}
 						if (target instanceof L2NpcInstance)
 						{
-							name += target.getName() + "(" + ((L2NpcInstance) target).getTemplate().npcId + ")";
+							name += target.getName() + "(" + ((L2NpcInstance) target).getNpcId() + ")";
 						}
 						if (target instanceof L2PcInstance)
 						{
@@ -177,8 +177,8 @@ public class Blow implements ISkillHandler
 	}
 	
 	@Override
-	public SkillType[] getSkillIds()
+	public SkillType[] getSkillTypes()
 	{
-		return SKILL_IDS;
+		return SKILL_TYPES;
 	}
 }

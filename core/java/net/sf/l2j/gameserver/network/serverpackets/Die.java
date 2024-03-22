@@ -91,7 +91,6 @@ public class Die extends L2GameServerPacket
 
 			Siege siege = SiegeManager.getInstance().getSiege(_cha);
 			if (siege != null)
-
 			{
 				isAttackerWithFlag = (siege.getAttackerClan(_clan) != null) && (!siege.getAttackerClan(_clan).getFlags().isEmpty()) && !siege.checkIsDefender(_clan);
 				isDefender = (siege.getAttackerClan(_clan) == null) && siege.checkIsDefender(_clan);

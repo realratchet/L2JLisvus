@@ -17,8 +17,8 @@ package net.sf.l2j.gameserver.taskmanager;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -34,7 +34,7 @@ public class AutoAnnounceTaskManager
 {
     protected static final Logger _log = Logger.getLogger(AutoAnnounceTaskManager.class.getName());
 
-    private List<AutoAnnouncement> _announcements = new ArrayList<>();
+    private Map<Integer, AutoAnnouncement> _announcements = new HashMap<>();
 
     public static AutoAnnounceTaskManager getInstance()
     {
@@ -50,7 +50,7 @@ public class AutoAnnounceTaskManager
     {
         if (!_announcements.isEmpty())
         {
-            for (AutoAnnouncement a : _announcements)
+            for (AutoAnnouncement a : _announcements.values())
             {
                 a.stopAnnounce();
             }
@@ -71,8 +71,8 @@ public class AutoAnnounceTaskManager
                 String memo = rset.getString("memo");
                 String[] text = memo.split("/n");
                 
-                AutoAnnouncement a = new AutoAnnouncement(id, delay, repeat, text);
-                _announcements.add(a);
+                AutoAnnouncement a = new AutoAnnouncement(delay, repeat, text);
+                _announcements.put(id, a);
                 ThreadPoolManager.getInstance().scheduleGeneral(a, initial);
             }
         }
@@ -85,23 +85,16 @@ public class AutoAnnounceTaskManager
 
     private class AutoAnnouncement implements Runnable
     {
-        private int _id;
         private long _delay;
         private int _repeat = -1;
         private String[] _memo;
         private boolean _stopped = false;
 
-        public AutoAnnouncement(int id, long delay, int repeat, String[] memo)
+        public AutoAnnouncement(long delay, int repeat, String[] memo)
         {
-            _id = id;
             _delay = delay;
             _repeat = repeat;
             _memo = memo;
-        }
-        
-        public int getId()
-        {
-        	return _id;
         }
 
         public void stopAnnounce()

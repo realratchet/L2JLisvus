@@ -83,9 +83,8 @@ public class ForumsBBSManager extends BaseBBSManager
      * @see net.sf.l2j.gameserver.communitybbs.Manager.BaseBBSManager#parsecmd(java.lang.String, net.sf.l2j.gameserver.model.actor.instance.L2PcInstance)
      */
     @Override
-    public void parsecmd(String command, L2PcInstance activeChar)
+    public void parseCmd(String command, L2PcInstance activeChar)
     {
-        // TODO Auto-generated method stub
     }
 
     /**
@@ -110,17 +109,17 @@ public class ForumsBBSManager extends BaseBBSManager
      * @param oid 
      * @return
      */
-    public Forum CreateNewForum(String name, Forum parent, int type, int perm, int oid)
+    public Forum createNewForum(String name, Forum parent, int type, int perm, int oid)
     {
         Forum forum = new Forum(name, parent, type, perm, oid);		
-        forum.insertindb();
+        forum.insertIntoDB();
         return forum;
     }
 
     /**
      * @return
      */
-    public int GetANewID()
+    public int getANewID()
     {
         return ++lastid;
     }
@@ -143,9 +142,8 @@ public class ForumsBBSManager extends BaseBBSManager
      * @see net.sf.l2j.gameserver.communitybbs.Manager.BaseBBSManager#parsewrite(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, net.sf.l2j.gameserver.model.actor.instance.L2PcInstance)
      */
     @Override
-    public void parsewrite(String ar1, String ar2, String ar3, String ar4, String ar5, L2PcInstance activeChar)
+    public void parseWrite(String ar1, String ar2, String ar3, String ar4, String ar5, L2PcInstance activeChar)
     {
-        // TODO Auto-generated method stub
     }
     
     private static class SingletonHolder

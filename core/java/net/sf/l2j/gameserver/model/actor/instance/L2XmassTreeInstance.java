@@ -44,7 +44,7 @@ public class L2XmassTreeInstance extends L2NpcInstance
 
         @Override
 		public void run()
-        {
+        {
             for (L2PcInstance player : getKnownList().getKnownPlayers().values())
             {
                 int i = Rnd.nextInt(3);
@@ -99,7 +99,7 @@ public class L2XmassTreeInstance extends L2NpcInstance
      * @see net.sf.l2j.gameserver.model.L2Object#isAttackable()
      */
     @Override
-	public boolean isAutoAttackable(@SuppressWarnings("unused") L2Character attacker)
+	public boolean isAutoAttackable(L2Character attacker)
     {
         return false;
     }

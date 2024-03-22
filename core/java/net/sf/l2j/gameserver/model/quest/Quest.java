@@ -1565,7 +1565,6 @@ public class Quest extends ManagedScript
 	@Override
 	public void setActive(boolean status)
 	{
-		// TODO implement me
 	}
 	
 	/**

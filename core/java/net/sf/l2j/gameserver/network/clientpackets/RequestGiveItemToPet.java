@@ -95,7 +95,7 @@ public class RequestGiveItemToPet extends L2GameClientPacket
 			return;
 		}
 		
-		if (!item.isDropable() || !item.isDestroyable() || !item.isTradeable())
+		if (!item.isDropable() || !item.isDestroyable() || !item.isTradable())
 		{
 			return;
 		}

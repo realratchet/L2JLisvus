@@ -17,6 +17,7 @@ package net.sf.l2j.gameserver.model;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Level;
 
@@ -29,11 +30,9 @@ import net.sf.l2j.gameserver.ai.CtrlIntention;
 import net.sf.l2j.gameserver.ai.L2AttackableAI;
 import net.sf.l2j.gameserver.ai.L2CharacterAI;
 import net.sf.l2j.gameserver.datatables.ItemTable;
-import net.sf.l2j.gameserver.datatables.SoulCrystalData;
 import net.sf.l2j.gameserver.model.actor.instance.L2DoorInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2FolkInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2GrandBossInstance;
-import net.sf.l2j.gameserver.model.actor.instance.L2MonsterInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2NpcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PetInstance;
@@ -43,11 +42,9 @@ import net.sf.l2j.gameserver.model.actor.instance.L2SummonInstance;
 import net.sf.l2j.gameserver.model.actor.knownlist.AttackableKnownList;
 import net.sf.l2j.gameserver.model.itemcontainer.Inventory;
 import net.sf.l2j.gameserver.model.quest.Quest;
-import net.sf.l2j.gameserver.network.serverpackets.InventoryUpdate;
 import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
 import net.sf.l2j.gameserver.skills.Stats;
 import net.sf.l2j.gameserver.templates.L2NpcTemplate;
-import net.sf.l2j.gameserver.templates.L2SoulCrystal;
 import net.sf.l2j.gameserver.util.Util;
 import net.sf.l2j.util.Rnd;
 
@@ -124,7 +121,6 @@ public class L2Attackable extends L2NpcInstance
 		{
 			return attacker.getObjectId();
 		}
-		
 	}
 	
 	/**
@@ -175,65 +171,6 @@ public class L2Attackable extends L2NpcInstance
 	}
 	
 	/**
-	 * This class contains all AbsorberInfo of the L2Attackable against the absorber L2Character.<BR>
-	 * <BR>
-	 * <B><U> Data</U> :</B><BR>
-	 * <BR>
-	 * <li>absorber : The attacker L2Character concerned by this AbsorberInfo of this L2Attackable</li>
-	 */
-	public final class AbsorberInfo
-	{
-		/** The attacker L2Character concerned by this AbsorberInfo of this L2Attackable */
-		L2PcInstance absorber;
-		int crystalId;
-		double absorbedHP;
-		
-		/**
-		 * Constructor of AbsorberInfo.<BR>
-		 * <BR>
-		 * @param attacker
-		 * @param pCrystalId
-		 * @param pAbsorbedHP
-		 */
-		AbsorberInfo(L2PcInstance attacker, int pCrystalId, double pAbsorbedHP)
-		{
-			absorber = attacker;
-			crystalId = pCrystalId;
-			absorbedHP = pAbsorbedHP;
-		}
-		
-		/**
-		 * Verify is object is equal to this AbsorberInfo.<BR>
-		 * <BR>
-		 */
-		@Override
-		public boolean equals(Object obj)
-		{
-			if (this == obj)
-			{
-				return true;
-			}
-			
-			if (obj instanceof AbsorberInfo)
-			{
-				return (((AbsorberInfo) obj).absorber == absorber);
-			}
-			
-			return false;
-		}
-		
-		/**
-		 * Return the Identifier of the absorber L2Character.<BR>
-		 * <BR>
-		 */
-		@Override
-		public int hashCode()
-		{
-			return absorber.getObjectId();
-		}
-	}
-	
-	/**
 	 * This class is used to create item reward lists instead of creating item instances.<BR>
 	 * <BR>
 	 */
@@ -260,27 +197,7 @@ public class L2Attackable extends L2NpcInstance
 	}
 	
 	private final Map<L2Character, AggroInfo> _aggroList = new ConcurrentHashMap<>();
-	
-	/**
-	 * Use this to Remove Object from this Map This Should be Synchronized While Iterating over This Map - if u cannot iterating and removing object at once
-	 * @return
-	 */
-	public final Map<L2Character, AggroInfo> getAggroList()
-	{
-		return _aggroList;
-	}
-	
-	private boolean _isReturningToSpawnPoint = false;
-	
-	public final boolean isReturningToSpawnPoint()
-	{
-		return _isReturningToSpawnPoint;
-	}
-	
-	public final void setIsReturningToSpawnPoint(boolean value)
-	{
-		_isReturningToSpawnPoint = value;
-	}
+	private final Set<L2Character> _attackByList = ConcurrentHashMap.newKeySet();
 	
 	/** Table containing all Items that a Dwarf can Sweep on this L2Attackable */
 	private RewardItem[] _sweepItems;
@@ -300,17 +217,12 @@ public class L2Attackable extends L2NpcInstance
 	/** Stores the attacker who used the over-hit enabled skill on the L2Attackable */
 	private L2Character _overhitAttacker;
 	
-	/** True if a Soul Crystal was successfully used on the L2Attackable */
-	private boolean _absorbed;
-	
-	/** The table containing all L2PcInstance that successfully absorbed the soul of this L2Attackable */
-	private final Map<L2PcInstance, AbsorberInfo> _absorbersList = new ConcurrentHashMap<>();
-	
 	/** Have this L2Attackable to reward Exp and SP on Die? **/
 	private boolean _mustGiveExpSp;
 	
 	private boolean _isChampion = false;
 	private boolean _isRaid = false;
+	private boolean _isReturningToSpawnPoint = false;
 	
 	/**
 	 * Constructor of L2Attackable (use L2Character and L2NpcInstance constructor).<BR>
@@ -413,7 +325,7 @@ public class L2Attackable extends L2NpcInstance
 		{
 			addDamage(attacker, (int) damage);
 		}
-
+		
 		// Reduce the current HP of the L2Attackable and launch the doDie Task if necessary
 		super.reduceCurrentHp(damage, attacker, awake, isDot);
 	}
@@ -450,16 +362,6 @@ public class L2Attackable extends L2NpcInstance
 			return false;
 		}
 		
-		// Enhance soul crystals of the attacker if this L2Attackable had its soul absorbed
-		try
-		{
-			levelSoulCrystals(killer);
-		}
-		catch (Exception e)
-		{
-			_log.log(Level.SEVERE, "", e);
-		}
-		
 		// Notify the Quest Engine of the L2Attackable death if necessary
 		try
 		{
@@ -480,6 +382,8 @@ public class L2Attackable extends L2NpcInstance
 			_log.log(Level.SEVERE, "", e);
 		}
 		
+		_attackByList.clear();
+
 		return true;
 	}
 	
@@ -852,7 +756,7 @@ public class L2Attackable extends L2NpcInstance
 				}
 			}
 			getAI().notifyEvent(CtrlEvent.EVT_ATTACKED, attacker);
-	    	addDamageHate(attacker, damage, (damage * 100) / (getLevel() + 7));
+			addDamageHate(attacker, damage, (damage * 100) / (getLevel() + 7));
 		}
 		catch (Exception e)
 		{
@@ -889,14 +793,20 @@ public class L2Attackable extends L2NpcInstance
 		ai.damage += damage;
 		ai.hate += aggro;
 		
-		L2PcInstance targetPlayer = attacker.getActingPlayer();
-		if (targetPlayer != null && aggro == 0)
+		if (aggro == 0)
 		{
-			if (getTemplate().getEventQuests(Quest.QuestEventType.ON_AGGRO_RANGE_ENTER) != null)
+			aggro = 1;
+			ai.hate += aggro;
+			
+			L2PcInstance targetPlayer = attacker.getActingPlayer();
+			if (targetPlayer != null)
 			{
-				for (Quest quest : getTemplate().getEventQuests(Quest.QuestEventType.ON_AGGRO_RANGE_ENTER))
+				if (getTemplate().getEventQuests(Quest.QuestEventType.ON_AGGRO_RANGE_ENTER) != null)
 				{
-					quest.notifyAggroRangeEnter(this, targetPlayer, (attacker instanceof L2Summon));
+					for (Quest quest : getTemplate().getEventQuests(Quest.QuestEventType.ON_AGGRO_RANGE_ENTER))
+					{
+						quest.notifyAggroRangeEnter(this, targetPlayer, (attacker instanceof L2Summon));
+					}
 				}
 			}
 		}
@@ -1014,7 +924,7 @@ public class L2Attackable extends L2NpcInstance
 		}
 		
 		result.add(mostHated);
-		if (getAttackByList().contains(secondMostHated))
+		if (secondMostHated != null && _attackByList.contains(secondMostHated))
 		{
 			result.add(secondMostHated);
 		}
@@ -1382,27 +1292,18 @@ public class L2Attackable extends L2NpcInstance
 			int highestLevel = lastAttacker.getLevel();
 			
 			// Check to prevent very high level player to nearly kill mob and let low level player do the last hit
-			List<L2Character> attackers = getAttackByList();
-			if (attackers != null)
+			for (L2Character attacker : _attackByList)
 			{
-				for (L2Character attacker : attackers)
+				int attackerLevel = attacker.getLevel();
+				// In the case of a raid boss, do not consider high level players since aggressive bosses may attack and add them to attack list
+				if (isRaid() && attackerLevel > (level + L2Character.RAID_LEVEL_MAX_DIFFERENCE))
 				{
-					if (attacker == null)
-					{
-						continue;
-					}
-
-					int attackerLevel = attacker.getLevel();
-					// In the case of a raid boss, do not consider high level players since aggressive bosses may attack and add them to attack list
-					if (isRaid() && attackerLevel > (level + L2Character.RAID_LEVEL_MAX_DIFFERENCE))
-					{
-						continue;
-					}
-
-					if (attackerLevel > highestLevel)
-					{
-						highestLevel = attackerLevel;
-					}
+					continue;
+				}
+				
+				if (attackerLevel > highestLevel)
+				{
+					highestLevel = attackerLevel;
 				}
 			}
 			
@@ -1594,7 +1495,7 @@ public class L2Attackable extends L2NpcInstance
 		{
 			return;
 		}
-
+		
 		L2PcInstance player = lastAttacker.getActingPlayer();
 		if (player == null)
 		{
@@ -1723,7 +1624,7 @@ public class L2Attackable extends L2NpcInstance
 	public void removeFromAggroList(L2Character player)
 	{
 		getAggroList().remove(player);
-
+		
 		if (getAggroList().isEmpty())
 		{
 			_overhit = false;
@@ -1731,7 +1632,7 @@ public class L2Attackable extends L2NpcInstance
 			_overhitAttacker = null;
 		}
 	}
-
+	
 	/**
 	 * Return True if a Dwarf use Sweep on the L2Attackable and if item can be spoiled.<BR>
 	 * <BR>
@@ -1832,286 +1733,6 @@ public class L2Attackable extends L2NpcInstance
 	}
 	
 	/**
-	 * Activate the absorbed soul condition on the L2Attackable.<BR>
-	 * <BR>
-	 */
-	public void absorbSoul()
-	{
-		_absorbed = true;
-	}
-	
-	/**
-	 * Return True if the L2Attackable had his soul absorbed.<BR>
-	 * <BR>
-	 * @return
-	 */
-	public boolean isAbsorbed()
-	{
-		return _absorbed;
-	}
-	
-	/**
-	 * Adds an attacker that successfully absorbed the soul of this L2Attackable into the _absorbersList.<BR>
-	 * <BR>
-	 * @param attacker - a valid L2PcInstance condition
-	 * @param crystalId
-	 */
-	public void addAbsorber(L2PcInstance attacker, int crystalId)
-	{
-		// This just works for targets like L2MonsterInstance
-		if (!(this instanceof L2MonsterInstance))
-		{
-			return;
-		}
-		
-		// The attacker must not be null
-		if (attacker == null)
-		{
-			return;
-		}
-		
-		// This L2Attackable must be of one type in the _absorbingMOBS_levelXX tables.
-		// OBS: This is done so to avoid triggering the absorbed conditions for mobs that can't be absorbed.
-		if (getAbsorbLevel() == 0)
-		{
-			return;
-		}
-		
-		// If we have no _absorbersList initiated, do it
-		AbsorberInfo ai = _absorbersList.get(attacker);
-		
-		// If the L2Character attacker isn't already in the _absorbersList of this L2Attackable, add it
-		if (ai == null)
-		{
-			ai = new AbsorberInfo(attacker, crystalId, getCurrentHp());
-			_absorbersList.put(attacker, ai);
-		}
-		else
-		{
-			ai.absorber = attacker;
-			ai.crystalId = crystalId;
-			ai.absorbedHP = getCurrentHp();
-		}
-		
-		// Set this L2Attackable as absorbed
-		absorbSoul();
-	}
-	
-	/**
-	 * Calculate the leveling chance of Soul Crystals based on the attacker that killed this L2Attackable
-	 * @param attacker The player that last killed this L2Attackable $ Rewrite 06.12.06 - Yesod
-	 */
-	private void levelSoulCrystals(L2Character attacker)
-	{
-		// Only L2PcInstance can absorb a soul
-		if (!(attacker instanceof L2PcInstance) && !(attacker instanceof L2Summon))
-		{
-			resetAbsorbList();
-			return;
-		}
-		
-		int maxAbsorbLevel = getAbsorbLevel();
-		int minAbsorbLevel = 0;
-		
-		// If this is not a valid L2Attackable, clears the _absorbersList and just return
-		if (maxAbsorbLevel == 0)
-		{
-			resetAbsorbList();
-			return;
-		}
-		// All boss mobs with maxAbsorbLevel 13 have minAbsorbLevel of 12 else 10
-		if (maxAbsorbLevel > 10)
-		{
-			minAbsorbLevel = maxAbsorbLevel > 12 ? 12 : 10;
-		}
-		
-		final boolean isBossMob = maxAbsorbLevel > 10 ? true : false;
-		
-		L2NpcTemplate.AbsorbCrystalType absorbType = getTemplate().absorbType;
-		L2PcInstance killer = (attacker instanceof L2Summon) ? ((L2Summon) attacker).getOwner() : (L2PcInstance) attacker;
-		
-		// If this mob is a boss, then skip some checks
-		if (!isBossMob)
-		{
-			// Fail if this L2Attackable isn't absorbed or there's no one in its _absorbersList
-			if (!isAbsorbed())
-			{
-				resetAbsorbList();
-				return;
-			}
-			
-			// Fail if the killer isn't in the _absorbersList of this L2Attackable and mob is not boss
-			AbsorberInfo ai = _absorbersList.get(killer);
-			if (ai == null || ai.absorber.getObjectId() != killer.getObjectId())
-			{
-				resetAbsorbList();
-				return;
-			}
-			
-			// Check if the soul crystal was used when HP of this L2Attackable wasn't higher than half of it
-			if (ai.absorbedHP > (getMaxHp() / 2.0))
-			{
-				resetAbsorbList();
-				return;
-			}
-		}
-		
-		final int chance = Rnd.get(100);
-		int quantity = 0;
-		L2SoulCrystal crystal = null;
-		
-		// ********
-		// Now we have four choices:
-		// 1- The Monster level is too low for the crystal. Nothing happens.
-		// 2- Everything is correct, but it failed. Nothing happens. (57.5%)
-		// 3- Everything is correct, but it failed. The crystal scatters. A sound event is played. (10%)
-		// 4- Everything is correct, the crystal level up. A sound event is played. (32.5%)
-		List<L2PcInstance> players = new ArrayList<>();
-		if (absorbType == L2NpcTemplate.AbsorbCrystalType.FULL_PARTY && killer.isInParty())
-		{
-			players = killer.getParty().getPartyMembers();
-		}
-		else if (absorbType == L2NpcTemplate.AbsorbCrystalType.PARTY_ONE_RANDOM && killer.isInParty())
-		{
-			// This is a naive method for selecting a random member. It gets any random party member and
-			// then checks if the member has a valid crystal. It does not select the random party member
-			// among those who have crystals, only.	However, this might actually be correct (same as retail).
-			players.add(killer.getParty().getPartyMembers().get(Rnd.get(killer.getParty().getMemberCount())));
-		}
-		else
-		{
-			players.add(killer);
-		}
-		
-		for (L2PcInstance player : players)
-		{
-			quantity = 0;
-			
-			L2ItemInstance[] items = player.getInventory().getItems();
-			for (L2ItemInstance item : items)
-			{
-				int itemId = item.getItemId();
-				for (L2SoulCrystal c : SoulCrystalData.getInstance().getSoulCrystals())
-				{
-					if (c.itemId == itemId)
-					{
-						if (Config.LEVEL_UP_SOUL_CRYSTAL_WHEN_HAS_MANY)
-						{
-							if (quantity < 1)
-							{
-								quantity = 1;
-							}
-						}
-						else
-						{
-							// Keep count but make sure the player has no more than 1 crystal
-							if (++quantity > 1)
-							{
-								break;
-							}
-						}
-						
-						// Check if the crystal level is sufficient
-						if (c.level >= minAbsorbLevel && c.level < maxAbsorbLevel)
-						{
-							crystal = c;
-							if (Config.LEVEL_UP_SOUL_CRYSTAL_WHEN_HAS_MANY)
-							{
-								break;
-							}
-						}
-					}
-				}
-			}
-			
-			// Too many crystals in inventory
-			if (quantity > 1)
-			{
-				player.sendPacket(new SystemMessage(SystemMessage.SOUL_CRYSTAL_ABSORBING_FAILED_RESONATION));
-				continue;
-			}
-			
-			// Player has no crystals or crystal was rejected
-			if (crystal == null)
-			{
-				if (quantity == 1)
-				{
-					player.sendPacket(new SystemMessage(SystemMessage.SOUL_CRYSTAL_ABSORBING_REFUSED));
-				}
-				continue;
-			}
-			
-			/**
-			 * TODO: Confirm boss chance for crystal level up and for crystal breaking.
-             * It is known that bosses with FULL_PARTY crystal level ups have 100% success rate, but this is not
-             * the case for the other bosses (one-random or last-hit).
-             * While not confirmed, it is most reasonable that crystals leveled up at bosses will never break.
-             * Also, the chance to level up is guessed as around 70% if not higher.
-             */
-			final int chanceLevelUp = isBossMob ? 70 : SoulCrystalData.LEVEL_CHANCE;
-			
-			// If succeeds or it is a boss mob, level up the crystal.
-			// Ember and Anakazel(78) are not 100% success rate and each individual
-			// member of the party has a failure rate on leveling.
-			if (absorbType == L2NpcTemplate.AbsorbCrystalType.FULL_PARTY && getNpcId() != 10319 && getNpcId() != 10338 
-				|| (chance <= chanceLevelUp))
-			{
-				// Give staged crystal
-				exchangeCrystal(player, crystal.itemId, crystal.leveledItemId, false);
-			}
-			else if (!isBossMob && (chance >= (100.0 - SoulCrystalData.BREAK_CHANCE)))
-			{
-				// Remove current crystal and give a broken one
-				exchangeCrystal(player, crystal.itemId, crystal.color.getBrokenCrystalId(), true);
-				resetAbsorbList();
-			}
-			else
-			{
-				player.sendPacket(new SystemMessage(SystemMessage.SOUL_CRYSTAL_ABSORBING_FAILED));
-			}
-		}
-	}
-	
-	private void exchangeCrystal(L2PcInstance player, int takeId, int giveId, boolean isBroken)
-	{
-		L2ItemInstance item = player.getInventory().destroyItemByItemId("SoulCrystal", takeId, 1, player, this);
-		if (item != null)
-		{
-			// Prepare inventory update packet
-			InventoryUpdate playerIU = new InventoryUpdate();
-			playerIU.addRemovedItem(item);
-			
-			// Add new crystal to the killer's inventory
-			item = player.getInventory().addItem("SoulCrystal", giveId, 1, player, this);
-			playerIU.addItem(item);
-			
-			// Send a sound event and text message to the player
-			if (isBroken)
-			{
-				player.sendPacket(new SystemMessage(SystemMessage.SOUL_CRYSTAL_BROKE));
-			}
-			else
-			{
-				player.sendPacket(new SystemMessage(SystemMessage.SOUL_CRYSTAL_ABSORBING_SUCCEEDED));
-			}
-			
-			// Send system message
-			SystemMessage sms = new SystemMessage(SystemMessage.EARNED_ITEM);
-			sms.addItemName(giveId);
-			player.sendPacket(sms);
-			
-			// Send inventory update packet
-			player.sendPacket(playerIU);
-		}
-	}
-	
-	private void resetAbsorbList()
-	{
-		_absorbed = false;
-		_absorbersList.clear();
-	}
-	
-	/**
 	 * Calculate the Experience and SP to distribute to attacker (L2PcInstance, L2SummonInstance or L2Party) of the L2Attackable.<BR>
 	 * <BR>
 	 * @param diff The difference of level between attacker (L2PcInstance, L2SummonInstance or L2Party) and the L2Attackable
@@ -2208,6 +1829,56 @@ public class L2Attackable extends L2NpcInstance
 		return true;
 	}
 	
+	/**
+	 * Add L2Character instance that is attacking to the attacker list.<BR>
+	 * <BR>
+	 * @param activeChar The L2Character that attacks this one
+	 */
+	@Override
+	public void addAttackerToAttackByList(L2Character activeChar)
+	{
+		if (activeChar == null || activeChar == this || _attackByList.contains(activeChar))
+		{
+			return;
+		}
+		
+		_attackByList.add(activeChar);
+	}
+
+	@Override
+	public boolean hasAttackerInAttackByList(L2Character activeChar)
+	{
+		return _attackByList.contains(activeChar);
+	}
+	
+	/**
+	 * Return a list of L2Character that attacked.
+	 * @return
+	 */
+	public final Set<L2Character> getAttackByList()
+	{
+		return _attackByList;
+	}
+	
+	/**
+	 * Use this to Remove Object from this Map This Should be Synchronized While Iterating over This Map - if u cannot iterating and removing object at once
+	 * @return
+	 */
+	public final Map<L2Character, AggroInfo> getAggroList()
+	{
+		return _aggroList;
+	}
+	
+	public final boolean isReturningToSpawnPoint()
+	{
+		return _isReturningToSpawnPoint;
+	}
+	
+	public final void setIsReturningToSpawnPoint(boolean value)
+	{
+		_isReturningToSpawnPoint = value;
+	}
+	
 	@Override
 	public void onSpawn()
 	{
@@ -2225,7 +1896,6 @@ public class L2Attackable extends L2NpcInstance
 		overhitEnabled(false);
 		
 		_sweepItems = null;
-		resetAbsorbList();
 		
 		setWalking();
 		
@@ -2327,11 +1997,6 @@ public class L2Attackable extends L2NpcInstance
 	public boolean isSeeded()
 	{
 		return _seeded;
-	}
-	
-	private int getAbsorbLevel()
-	{
-		return getTemplate().absorbLevel;
 	}
 	
 	public void setChampion(boolean champ)

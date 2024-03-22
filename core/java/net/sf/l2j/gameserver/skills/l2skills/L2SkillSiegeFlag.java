@@ -37,7 +37,7 @@ public class L2SkillSiegeFlag extends L2Skill
 	}
 
 	@Override
-	public boolean checkCondition(L2Character activeChar, L2Object target, boolean itemOrWeapon)
+	public boolean checkCondition(L2Character activeChar, L2Object target)
 	{
 		if (!(activeChar instanceof L2PcInstance))
 		{
@@ -77,13 +77,13 @@ public class L2SkillSiegeFlag extends L2Skill
 			return false;
 		}
 
-		return super.checkCondition(activeChar, target, itemOrWeapon);
+		return super.checkCondition(activeChar, target);
 	}
 
 	@Override
-	public void useSkill(L2Character activeChar, L2Object[] targets, boolean isFirstCritical)
+	public void useSkill(L2Character activeChar, L2Object[] targets, boolean critOnFirstTarget)
 	{
-		if (!(activeChar instanceof L2PcInstance))
+		if (activeChar.isAlikeDead() || !(activeChar instanceof L2PcInstance))
 		{
 			return;
 		}

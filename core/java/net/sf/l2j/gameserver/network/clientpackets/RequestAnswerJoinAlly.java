@@ -69,8 +69,6 @@ public class RequestAnswerJoinAlly extends L2GameClientPacket
 				return;
 			}
 
-			// TODO: Need correct message id
-			requestor.sendPacket(new SystemMessage(SystemMessage.YOU_HAVE_SUCCEEDED_INVITING_FRIEND));
 			activeChar.sendPacket(new SystemMessage(SystemMessage.YOU_ACCEPTED_ALLIANCE));
 
 			activeChar.getClan().setAllyId(clan.getAllyId());

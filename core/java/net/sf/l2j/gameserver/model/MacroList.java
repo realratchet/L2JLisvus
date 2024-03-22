@@ -72,7 +72,7 @@ public class MacroList
 		if (macro.id == 0)
 		{
 			macro.id = _macroId++;
-			while (_macroses.get(macro.id) != null)
+			while (_macroses.containsKey(macro.id))
 				macro.id = _macroId++;
 			_macroses.put(macro.id, macro);
 			registerMacroInDb(macro);

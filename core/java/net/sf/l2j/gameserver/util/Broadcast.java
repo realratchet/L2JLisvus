@@ -81,8 +81,9 @@ public final class Broadcast
 		    if (mov instanceof CharInfo && character instanceof L2PcInstance)
 		    {
 		        int relation = ((L2PcInstance) character).getRelation(player);
-		        if (character.getKnownList().getKnownRelations().get(player.getObjectId()) != null && character.getKnownList().getKnownRelations().get(player.getObjectId()) != relation)
-		        {		            player.sendPacket(new RelationChanged((L2PcInstance) character, relation, player.isAutoAttackable(character)));
+		        if (character.getKnownList().getKnownRelations().containsKey(player.getObjectId()) && character.getKnownList().getKnownRelations().get(player.getObjectId()) != relation)
+		        {
+		            player.sendPacket(new RelationChanged((L2PcInstance) character, relation, player.isAutoAttackable(character)));
 		            L2Summon summon = ((L2PcInstance) character).getPet();
 		            if (summon != null)
 		            {

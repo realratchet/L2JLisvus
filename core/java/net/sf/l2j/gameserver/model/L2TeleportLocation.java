@@ -16,7 +16,6 @@ package net.sf.l2j.gameserver.model;
 
 /**
  * This class ...
- *
  * @version $Revision: 1.2.4.1 $ $Date: 2005/03/27 15:29:32 $
  */
 public class L2TeleportLocation
@@ -26,8 +25,8 @@ public class L2TeleportLocation
 	private int _locY;
 	private int _locZ;
 	private int _price;
-        private boolean _fornoble;
-
+	private boolean _forNoble;
+	
 	/**
 	 * @param id
 	 */
@@ -35,7 +34,7 @@ public class L2TeleportLocation
 	{
 		_teleId = id;
 	}
-
+	
 	/**
 	 * @param locX
 	 */
@@ -43,7 +42,7 @@ public class L2TeleportLocation
 	{
 		_locX = locX;
 	}
-
+	
 	/**
 	 * @param locY
 	 */
@@ -51,7 +50,7 @@ public class L2TeleportLocation
 	{
 		_locY = locY;
 	}
-
+	
 	/**
 	 * @param locZ
 	 */
@@ -59,7 +58,7 @@ public class L2TeleportLocation
 	{
 		_locZ = locZ;
 	}
-
+	
 	/**
 	 * @param price
 	 */
@@ -67,15 +66,15 @@ public class L2TeleportLocation
 	{
 		_price = price;
 	}
-
-        /**
-         * @param val
-         */
-        public void setIsForNoble(boolean val)
-        {
-                _fornoble = val;
-        }
-
+	
+	/**
+	 * @param val
+	 */
+	public void setIsForNoble(boolean val)
+	{
+		_forNoble = val;
+	}
+	
 	/**
 	 * @return
 	 */
@@ -83,7 +82,7 @@ public class L2TeleportLocation
 	{
 		return _teleId;
 	}
-
+	
 	/**
 	 * @return
 	 */
@@ -91,7 +90,7 @@ public class L2TeleportLocation
 	{
 		return _locX;
 	}
-
+	
 	/**
 	 * @return
 	 */
@@ -99,7 +98,7 @@ public class L2TeleportLocation
 	{
 		return _locY;
 	}
-
+	
 	/**
 	 * @return
 	 */
@@ -107,7 +106,7 @@ public class L2TeleportLocation
 	{
 		return _locZ;
 	}
-
+	
 	/**
 	 * @return
 	 */
@@ -115,12 +114,12 @@ public class L2TeleportLocation
 	{
 		return _price;
 	}
-
-        /**
-         * @return
-         */
-        public boolean getIsForNoble()
-        {
-                return _fornoble;
-        }
+	
+	/**
+	 * @return
+	 */
+	public boolean getIsForNoble()
+	{
+		return _forNoble;
+	}
 }

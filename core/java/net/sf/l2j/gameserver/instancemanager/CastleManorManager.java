@@ -474,8 +474,8 @@ public class CastleManorManager
             // Castle has no owner
             if (c.getOwnerId() <= 0)
             {
-                c.setCropProcure(new ArrayList<CropProcure>(), PERIOD_NEXT);
-                c.setSeedProduction(new ArrayList<SeedProduction>(), PERIOD_NEXT);
+                c.setCropProcure(new ArrayList<>(), PERIOD_NEXT);
+                c.setSeedProduction(new ArrayList<>(), PERIOD_NEXT);
             }
             else if (c.getTreasury() < c.getManorCost(PERIOD_NEXT))
             {

@@ -23,13 +23,14 @@ import java.util.logging.Logger;
 
 import net.sf.l2j.Config;
 import net.sf.l2j.L2DatabaseFactory;
+import net.sf.l2j.gameserver.model.holder.BuffSkillHolder;
 
 public class BufferTable
 {
 	private static Logger _log = Logger.getLogger(BufferTable.class.getName());
 
-	private Map<Integer, BuffInfo> _aioBuffs = new ConcurrentHashMap<>();
-    private Map<Integer, BuffInfo> _npcBuffs = new ConcurrentHashMap<>();
+	private Map<Integer, BuffSkillHolder> _aioBuffs = new ConcurrentHashMap<>();
+    private Map<Integer, BuffSkillHolder> _npcBuffs = new ConcurrentHashMap<>();
     
     public static BufferTable getInstance()
     {
@@ -60,7 +61,7 @@ public class BufferTable
 	                int skillLevel = rset.getInt("skill_level");
 	                int duration = rset.getInt("duration");
 
-	                _aioBuffs.put(skillId, new BuffInfo(skillId, skillLevel, duration, 0, 0));
+	                _aioBuffs.put(skillId, new BuffSkillHolder(skillId, skillLevel, duration, 0, 0));
 	            }
 	            
 	            _log.info("BufferTable: Loaded " + _aioBuffs.size() + " AIO buffs.");
@@ -90,7 +91,7 @@ public class BufferTable
 	                int skillFeeId = rset.getInt("skill_fee_id");
 	                int skillFeeAmount = rset.getInt("skill_fee_amount");
 
-	                _npcBuffs.put(skillId, new BuffInfo(skillId, skillLevel, duration, skillFeeId, skillFeeAmount));
+	                _npcBuffs.put(skillId, new BuffSkillHolder(skillId, skillLevel, duration, skillFeeId, skillFeeAmount));
 	            }
 	            
 	            _log.info("BufferTable: Loaded " + _npcBuffs.size() + " NPC buffs.");
@@ -102,53 +103,14 @@ public class BufferTable
         }
     }
     
-    public Map<Integer, BuffInfo> getAIOBuffs()
+    public Map<Integer, BuffSkillHolder> getAIOBuffs()
     {
     	return _aioBuffs;
     }
     
-    public Map<Integer, BuffInfo> getNPCBuffs()
+    public Map<Integer, BuffSkillHolder> getNPCBuffs()
     {
     	return _npcBuffs;
-    }
-    
-    public class BuffInfo
-    {
-    	private final int _skillId, _skillLevel, _duration, _skillFeeId, _skillFeeAmount;
-
-    	BuffInfo(int skillId, int skillLevel, int duration, int skillFeeId, int skillFeeAmount)
-    	{
-    		_skillId = skillId;
-    		_skillLevel = skillLevel;
-    		_duration = duration;
-    		_skillFeeId = skillFeeId;
-    		_skillFeeAmount = skillFeeAmount;
-    	}
-    	
-    	public int getSkillId()
-    	{
-    		return _skillId;
-    	}
-    	
-    	public int getSkillLevel()
-    	{
-    		return _skillLevel;
-    	}
-    	
-    	public int getDuration()
-    	{
-    		return _duration;
-    	}
-    	
-    	public int getSkillFeeId()
-    	{
-    		return _skillFeeId;
-    	}
-    	
-    	public int getSkillFeeAmount()
-    	{
-    		return _skillFeeAmount;
-    	}
     }
     
     private static class SingletonHolder

@@ -45,6 +45,7 @@ import net.sf.l2j.gameserver.network.serverpackets.MyTargetSelected;
 import net.sf.l2j.gameserver.network.serverpackets.NpcHtmlMessage;
 import net.sf.l2j.gameserver.network.serverpackets.ValidateLocation;
 import net.sf.l2j.gameserver.templates.L2DoorTemplate;
+import net.sf.l2j.gameserver.templates.L2Item;
 import net.sf.l2j.gameserver.templates.L2Weapon;
 import net.sf.l2j.util.StringUtil;
 
@@ -91,19 +92,20 @@ public class L2DoorInstance extends L2Character
         @Override
 		public L2DoorInstance getActor() { return L2DoorInstance.this; }
         @Override
-		@SuppressWarnings("unused")
-        public void moveTo(int x, int y, int z, int offset) {}
+        public boolean moveTo(int x, int y, int z, int offset)
+        {
+            return false;
+        }
         @Override
-		@SuppressWarnings("unused")
-        public void moveTo(int x, int y, int z) {}
+        public boolean moveTo(int x, int y, int z)
+        {
+            return false;
+        }
         @Override
-		@SuppressWarnings("unused")
         public void stopMove(Location loc) {}
         @Override
-		@SuppressWarnings("unused")
         public void doAttack(L2Character target) {}
         @Override
-		@SuppressWarnings("unused")
         public void doCast(L2Skill skill) {}
     }
     
@@ -268,11 +270,6 @@ public class L2DoorInstance extends L2Character
     {
     	return _clanhall;
     }
-
-    public boolean isEnemyOf(@SuppressWarnings("unused") L2Character cha) 
-    {
-        return true;
-    }
     
     @Override
 	public boolean isAutoAttackable(L2Character attacker)
@@ -345,7 +342,7 @@ public class L2DoorInstance extends L2Character
     }
 
     @Override
-	public L2Weapon getSecondaryWeaponItem() 
+	public L2Item getSecondaryWeaponItem() 
     {
         return null;
     }
@@ -377,7 +374,8 @@ public class L2DoorInstance extends L2Character
         	final ClanHall ch = getClanHall();
             if (isAutoAttackable(player))
             {
-                if (Math.abs(player.getZ() - getZ()) < 400) // this max height difference might need some tweaking                    player.getAI().setIntention(CtrlIntention.AI_INTENTION_ATTACK, this);
+                if (Math.abs(player.getZ() - getZ()) < 400) // this max height difference might need some tweaking
+                    player.getAI().setIntention(CtrlIntention.AI_INTENTION_ATTACK, this);
             }
             else if (player.getClan() != null && ch != null && player.getClanId() == ch.getOwnerId()
             	&& (player.getClanPrivileges() & L2Clan.CP_CH_OPEN_DOOR) == L2Clan.CP_CH_OPEN_DOOR)
@@ -386,7 +384,8 @@ public class L2DoorInstance extends L2Character
                     player.getAI().setIntention(CtrlIntention.AI_INTENTION_INTERACT, this);
                 else
                 {
-                    player.gatesRequest(this);
+                    player.gatesRequest(this);
+
                     if (isOpen())
                         player.sendPacket(new ConfirmDlg(1141));
                     else

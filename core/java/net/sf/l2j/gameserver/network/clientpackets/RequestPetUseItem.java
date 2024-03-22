@@ -23,10 +23,12 @@ import net.sf.l2j.gameserver.handler.ItemHandler;
 import net.sf.l2j.gameserver.model.L2ItemInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PetInstance;
-import net.sf.l2j.gameserver.network.serverpackets.PetItemList;
+import net.sf.l2j.gameserver.network.serverpackets.PetInventoryUpdate;
 import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
 import net.sf.l2j.gameserver.templates.L2ArmorType;
+import net.sf.l2j.gameserver.templates.L2EtcItem;
 import net.sf.l2j.gameserver.templates.L2Item;
+import net.sf.l2j.gameserver.templates.L2Weapon;
 
 public class RequestPetUseItem extends L2GameClientPacket
 {
@@ -62,18 +64,12 @@ public class RequestPetUseItem extends L2GameClientPacket
 			return;
 		}
 		
-		if (item.isWear())
-		{
-			return;
-		}
-		
 		int itemId = item.getItemId();
 		if (activeChar.isAlikeDead() || pet.isDead())
 		{
 			SystemMessage sm = new SystemMessage(SystemMessage.S1_CANNOT_BE_USED);
 			sm.addItemName(item.getItemId());
 			activeChar.sendPacket(sm);
-			sm = null;
 			return;
 		}
 		
@@ -108,133 +104,110 @@ public class RequestPetUseItem extends L2GameClientPacket
 				useItem(pet, item, activeChar);
 				return;
 			}
-			else if (PetDataTable.isHatchling(pet.getNpcId()) && // hatchlings
+			
+			if (PetDataTable.isHatchling(pet.getNpcId()) && // hatchlings
 				item.getItem().isForHatchling())
 			{
 				useItem(pet, item, activeChar);
 				return;
 			}
-			else if (PetDataTable.isStrider(pet.getNpcId()) && // striders
+			
+			if (PetDataTable.isStrider(pet.getNpcId()) && // striders
 				item.getItem().isForStrider())
 			{
 				useItem(pet, item, activeChar);
 				return;
 			}
-			else
-			{
-				activeChar.sendPacket(new SystemMessage(SystemMessage.ITEM_NOT_FOR_PETS));
-				return;
-			}
+			
+			activeChar.sendPacket(new SystemMessage(SystemMessage.ITEM_NOT_FOR_PETS));
+			return;
 		}
-		else if (PetDataTable.isPetFood(itemId))
+		
+		if (PetDataTable.isPetFood(itemId))
 		{
 			if (PetDataTable.isWolf(pet.getNpcId()) && PetDataTable.isWolfFood(itemId))
 			{
 				useItem(pet, item, activeChar);
 				return;
 			}
-			else if (PetDataTable.isSinEater(pet.getNpcId()) && PetDataTable.isSinEaterFood(itemId))
+			
+			if (PetDataTable.isSinEater(pet.getNpcId()) && PetDataTable.isSinEaterFood(itemId))
 			{
 				useItem(pet, item, activeChar);
 				return;
 			}
-			else if (PetDataTable.isHatchling(pet.getNpcId()) && PetDataTable.isHatchlingFood(itemId))
+			
+			if (PetDataTable.isHatchling(pet.getNpcId()) && PetDataTable.isHatchlingFood(itemId))
 			{
 				useItem(pet, item, activeChar);
 				return;
 			}
-			else if (PetDataTable.isStrider(pet.getNpcId()) && PetDataTable.isStriderFood(itemId))
+			
+			if (PetDataTable.isStrider(pet.getNpcId()) && PetDataTable.isStriderFood(itemId))
 			{
 				useItem(pet, item, activeChar);
 				return;
 			}
-			else if (PetDataTable.isWyvern(pet.getNpcId()) && PetDataTable.isWyvernFood(itemId))
+			
+			if (PetDataTable.isWyvern(pet.getNpcId()) && PetDataTable.isWyvernFood(itemId))
 			{
 				useItem(pet, item, activeChar);
 				return;
 			}
-			else if (PetDataTable.isBaby(pet.getNpcId()) && PetDataTable.isBabyFood(itemId))
+			
+			if (PetDataTable.isBaby(pet.getNpcId()) && PetDataTable.isBabyFood(itemId))
 			{
 				useItem(pet, item, activeChar);
 				return;
+			}
+			
+			activeChar.sendPacket(new SystemMessage(SystemMessage.PET_CANNOT_USE_ITEM));
+			return;
+		}
+		
+		if (item.getItem() instanceof L2EtcItem)
+		{
+			IItemHandler handler = ItemHandler.getInstance().getHandler((L2EtcItem) item.getItem());
+			if (handler != null)
+			{
+				useItem(pet, item, activeChar);
 			}
 			else
 			{
-				activeChar.sendPacket(new SystemMessage(SystemMessage.PET_CANNOT_USE_ITEM));
-				return;
+				_log.warning("No item handler registered for pet item: " + item.getItemId());
 			}
 		}
-		
-		IItemHandler handler = ItemHandler.getInstance().getItemHandler(item.getItemId());
-		if (handler != null)
-		{
-			useItem(pet, item, activeChar);
-		}
-		else
-		{
-			activeChar.sendPacket(new SystemMessage(SystemMessage.PET_CANNOT_USE_ITEM));
-		}
-		
-		return;
 	}
 	
 	private synchronized void useItem(L2PetInstance pet, L2ItemInstance item, L2PcInstance activeChar)
 	{
-		if (item.isEquipable())
+		if (item.isEquipped())
 		{
-			if (item.isEquipped())
+			pet.getInventory().unEquipItemInSlot(item.getEquipSlot());
+			if (item.getItem() instanceof L2Weapon)
 			{
-				pet.getInventory().unEquipItemInSlot(item.getEquipSlot());
-				switch (item.getItem().getBodyPart())
-				{
-					case L2Item.SLOT_R_HAND:
-						pet.setWeapon(0);
-						break;
-					case L2Item.SLOT_CHEST:
-						pet.setArmor(0);
-						break;
-					case L2Item.SLOT_NECK:
-						pet.setJewel(0);
-						break;
-				}
+				pet.setWeapon(0);
 			}
 			else
 			{
-				pet.getInventory().equipItem(item);
-				switch (item.getItem().getBodyPart())
-				{
-					case L2Item.SLOT_R_HAND:
-						pet.setWeapon(item.getItemId());
-						break;
-					case L2Item.SLOT_CHEST:
-						pet.setArmor(item.getItemId());
-						break;
-					case L2Item.SLOT_NECK:
-						pet.setJewel(item.getItemId());
-						break;
-				}
+				pet.setArmor(0);
 			}
-			
-			activeChar.sendPacket(new PetItemList(pet));
-			pet.updateAndBroadcastStatus(1);
 		}
 		else
 		{
-			IItemHandler handler = ItemHandler.getInstance().getItemHandler(item.getItemId());
-			if (handler == null)
-			{
-				_log.warning("no itemhandler registered for itemId:" + item.getItemId());
-			}
-			else
-			{
-				handler.useItem(pet, item);
-				pet.updateAndBroadcastStatus(1);
-			}
+			pet.getInventory().equipPetItem(item);
 		}
+		
+		PetInventoryUpdate petIU = new PetInventoryUpdate();
+		petIU.addModifiedItem(item);
+		
+		activeChar.sendPacket(petIU);
+		pet.updateAndBroadcastStatus(1);
 	}
 	
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see net.sf.l2j.gameserver.clientpackets.L2GameClientPacket#getType()
 	 */
 	@Override

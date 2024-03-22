@@ -880,7 +880,7 @@ public class Siege
 	 */
 	public void listRegisterClan(L2PcInstance player)
 	{
-		player.sendPacket(new SiegeInfo(getCastle()));
+		player.sendPacket(new SiegeInfo(player, getCastle()));
 	}
 	
 	/**

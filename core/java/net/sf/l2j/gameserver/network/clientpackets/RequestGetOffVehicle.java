@@ -74,7 +74,6 @@ public class RequestGetOffVehicle extends L2GameClientPacket
 	@Override
 	public String getType()
 	{
-		// TODO Auto-generated method stub
 		return "[S] 5d GetOffVehicle";
 	}
 }

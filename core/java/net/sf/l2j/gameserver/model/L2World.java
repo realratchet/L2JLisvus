@@ -439,7 +439,7 @@ public final class L2World
 
 					// Remove surrounding L2WorldRegion L2Characters from the L2ObjectHashSet(L2Object) _KnownObjects of object
 					// If surrounding L2WorldRegion L2Characters is a L2PcInstance, remove it from the L2ObjectHashSet(L2PcInstance) _knownPlayer of object
-					// TODO Delete this line if all the stuff is done by the next line object.removeAllKnownObjects()
+					// TODO: Delete this line if all the stuff is done by the next line object.removeAllKnownObjects()
 					if (object.getKnownList() != null)
 					{
 						object.getKnownList().removeKnownObject(obj);

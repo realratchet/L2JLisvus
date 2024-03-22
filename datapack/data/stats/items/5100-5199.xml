@@ -1,0 +1,983 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<list>
+  <item id="5100" name="Mature Desert Coda" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5101" name="Mature Lute Coda" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5102" name="Mature Twin Coda" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5103" name="Mature Dark Coda" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5104" name="Mature Shining Coda" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5105" name="Mature Chilly Cobol" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5106" name="Mature Burning Cobol" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5107" name="Mature Blue Cobol" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5108" name="Mature Red Cobol" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5109" name="Mature Golden Cobol" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5110" name="Mature Desert Cobol" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5111" name="Mature Sea Cobol" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5112" name="Mature Thorn Cobol" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5113" name="Mature Dapple Cobol" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5114" name="Mature Great Cobol" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5115" name="Mature Chilly Codran" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5116" name="Mature Burning Codran" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5117" name="Mature Blue Codran" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5118" name="Mature Red Codran" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5119" name="Mature Dapple Codran" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5120" name="Mature Desert Codran" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5121" name="Mature Sea Codran" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5122" name="Mature Twin Codran" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5123" name="Mature Thorn Codran" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5124" name="Mature Great Codran" type="EtcItem">
+    <set name="etcitem_type" val="SEED" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="1" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5125" name="Harvester" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="20" />
+    <set name="price" val="500" />
+    <set name="handler" val="Harvester" />
+    <set name="item_skill" val="2098-1" />
+  </item>
+  <item id="5126" name="Dualsword Craft Stamp" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="20" />
+    <set name="price" val="10000" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5127" name="Dailaon Knife" type="Weapon">
+    <set name="weapon_type" val="DAGGER" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="D" />
+    <set name="crystal_count" val="743" />
+    <set name="random_damage" val="5" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="300" />
+    <set name="price" val="409000" />
+    <set name="soulshots" val="2" />
+    <set name="spiritshots" val="2" />
+    <for>
+      <set order="0x08" stat="pAtk" val="5" />
+      <set order="0x08" stat="mAtk" val="5" />
+      <set order="0x08" stat="rCrit" val="12" />
+      <add order="0x10" stat="accCombat" val="-3" />
+      <set order="0x08" stat="pAtkSpd" val="433" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="5128" name="Crokian Blade" type="Weapon">
+    <set name="weapon_type" val="DAGGER" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="D" />
+    <set name="crystal_count" val="743" />
+    <set name="random_damage" val="5" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="300" />
+    <set name="price" val="409000" />
+    <set name="soulshots" val="2" />
+    <set name="spiritshots" val="2" />
+    <for>
+      <set order="0x08" stat="pAtk" val="5" />
+      <set order="0x08" stat="mAtk" val="5" />
+      <set order="0x08" stat="rCrit" val="12" />
+      <add order="0x10" stat="accCombat" val="-3" />
+      <set order="0x08" stat="pAtkSpd" val="433" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="5129" name="Doll Knife" type="Weapon">
+    <set name="weapon_type" val="DUAL" />
+    <set name="bodypart" val="lrhand" />
+    <set name="crystal_type" val="D" />
+    <set name="crystal_count" val="743" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="300" />
+    <set name="price" val="409000" />
+    <set name="soulshots" val="2" />
+    <set name="spiritshots" val="2" />
+    <for>
+      <set order="0x08" stat="pAtk" val="200" />
+      <set order="0x08" stat="mAtk" val="6" />
+      <set order="0x08" stat="rCrit" val="8" />
+      <add order="0x10" stat="accCombat" val="0" />
+      <set order="0x08" stat="pAtkSpd" val="325" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="5130" name="Nos Sword" type="Weapon">
+    <set name="weapon_type" val="DAGGER" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="D" />
+    <set name="crystal_count" val="743" />
+    <set name="random_damage" val="5" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="300" />
+    <set name="price" val="409000" />
+    <set name="soulshots" val="2" />
+    <set name="spiritshots" val="2" />
+    <for>
+      <set order="0x08" stat="pAtk" val="5" />
+      <set order="0x08" stat="mAtk" val="5" />
+      <set order="0x08" stat="rCrit" val="12" />
+      <add order="0x10" stat="accCombat" val="-3" />
+      <set order="0x08" stat="pAtkSpd" val="433" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="5131" name="Parhit Staff" type="Weapon">
+    <set name="weapon_type" val="DAGGER" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="D" />
+    <set name="crystal_count" val="743" />
+    <set name="random_damage" val="5" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="300" />
+    <set name="price" val="409000" />
+    <set name="soulshots" val="2" />
+    <set name="spiritshots" val="2" />
+    <for>
+      <set order="0x08" stat="pAtk" val="5" />
+      <set order="0x08" stat="mAtk" val="5" />
+      <set order="0x08" stat="rCrit" val="12" />
+      <add order="0x10" stat="accCombat" val="-3" />
+      <set order="0x08" stat="pAtkSpd" val="433" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="5132" name="Giant Trident" type="Weapon">
+    <set name="weapon_type" val="DAGGER" />
+    <set name="bodypart" val="rhand" />
+    <set name="crystal_type" val="D" />
+    <set name="crystal_count" val="743" />
+    <set name="random_damage" val="5" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="300" />
+    <set name="price" val="409000" />
+    <set name="soulshots" val="2" />
+    <set name="spiritshots" val="2" />
+    <for>
+      <set order="0x08" stat="pAtk" val="5" />
+      <set order="0x08" stat="mAtk" val="5" />
+      <set order="0x08" stat="rCrit" val="12" />
+      <add order="0x10" stat="accCombat" val="-3" />
+      <set order="0x08" stat="pAtkSpd" val="433" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="5133" name="Chrono Unitus" type="Weapon">
+    <set name="weapon_type" val="DUALFIST" />
+    <set name="bodypart" val="lrhand" />
+    <set name="random_damage" val="5" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <for>
+      <set order="0x08" stat="pAtk" val="1" />
+      <set order="0x08" stat="mAtk" val="1" />
+      <set order="0x08" stat="rCrit" val="4" />
+      <add order="0x10" stat="accCombat" val="4" />
+      <set order="0x08" stat="pAtkSpd" val="325" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="5134" name="Compressed Package of Soulshots: No Grade" type="EtcItem">
+    <set name="etcitem_type" val="SHOT" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="600" />
+    <set name="price" val="2300" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="5135" name="Compressed Package of Soulshots: D-grade" type="EtcItem">
+    <set name="etcitem_type" val="SHOT" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="450" />
+    <set name="price" val="3300" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="5136" name="Compressed Package of Soulshots: C-grade" type="EtcItem">
+    <set name="etcitem_type" val="SHOT" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="450" />
+    <set name="price" val="4950" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="5137" name="Compressed Package of Soulshots: B-grade" type="EtcItem">
+    <set name="etcitem_type" val="SHOT" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="300" />
+    <set name="price" val="16500" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="5138" name="Compressed Package of Soulshots: A-grade" type="EtcItem">
+    <set name="etcitem_type" val="SHOT" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="300" />
+    <set name="price" val="26400" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="5139" name="Compressed Package of Soulshots: S-grade" type="EtcItem">
+    <set name="etcitem_type" val="SHOT" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="300" />
+    <set name="price" val="33000" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="5140" name="Compressed Package of Spiritshots: No Grade" type="EtcItem">
+    <set name="etcitem_type" val="SHOT" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="750" />
+    <set name="price" val="4950" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="5141" name="Compressed Package of Spiritshots: D-grade" type="EtcItem">
+    <set name="etcitem_type" val="SHOT" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="750" />
+    <set name="price" val="5940" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="5142" name="Compressed Package of Spiritshots: C-grade" type="EtcItem">
+    <set name="etcitem_type" val="SHOT" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="450" />
+    <set name="price" val="11550" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="5143" name="Compressed Package of Spiritshots: B-grade" type="EtcItem">
+    <set name="etcitem_type" val="SHOT" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="450" />
+    <set name="price" val="33000" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="5144" name="Compressed Package of Spiritshots: A-grade" type="EtcItem">
+    <set name="etcitem_type" val="SHOT" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="300" />
+    <set name="price" val="39600" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="5145" name="Compressed Package of Spiritshots: S-grade" type="EtcItem">
+    <set name="etcitem_type" val="SHOT" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="300" />
+    <set name="price" val="49500" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="5146" name="Compressed Package of Blessed Spiritshots: No Grade" type="EtcItem">
+    <set name="etcitem_type" val="SHOT" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="750" />
+    <set name="price" val="11550" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="5147" name="Compressed Package of Blessed Spiritshots: D-grade" type="EtcItem">
+    <set name="etcitem_type" val="SHOT" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="750" />
+    <set name="price" val="14850" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="5148" name="Compressed Package of Blessed Spiritshots: C-grade" type="EtcItem">
+    <set name="etcitem_type" val="SHOT" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="450" />
+    <set name="price" val="29700" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="5149" name="Compressed Package of Blessed Spiritshots: B-grade" type="EtcItem">
+    <set name="etcitem_type" val="SHOT" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="450" />
+    <set name="price" val="80850" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="5150" name="Compressed Package of Blessed Spiritshots: A-grade" type="EtcItem">
+    <set name="etcitem_type" val="SHOT" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="300" />
+    <set name="price" val="95700" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="5151" name="Compressed Package of Blessed Spiritshots: S-grade" type="EtcItem">
+    <set name="etcitem_type" val="SHOT" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="300" />
+    <set name="price" val="115500" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="5152" name="Magic Compressor" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="10" />
+    <set name="price" val="0" />
+  </item>
+  <item id="5153" name="Recipe: Soulshot (D) Compressed Package (100%)" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="5000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="5154" name="Recipe: Soulshot (C) Compressed Package (100%)" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="25000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="5155" name="Recipe: Soulshot (B) Compressed Package (100%)" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="100000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="5156" name="Recipe: Soulshot (A) Compressed Package (100%)" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="150000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="5157" name="Recipe: Soulshot (S) Compressed Package (100%)" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="250000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="5158" name="Recipe: Spiritshot (D) Compressed Package (100%)" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="5000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="5159" name="Recipe: Spiritshot (C) Compressed Package (100%)" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="25000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="5160" name="Recipe: Spiritshot (B) Compressed Package (100%)" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="100000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="5161" name="Recipe: Spiritshot (A) Compressed Package (100%)" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="150000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="5162" name="Recipe: Spiritshot (S) Compressed Package (100%)" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="250000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="5163" name="Recipe: Blessed Spiritshot (D) Compressed Package (100%)" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="30000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="5164" name="Recipe: Blessed Spiritshot (C) Compressed Package (100%)" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="60000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="5165" name="Recipe: Blessed Spiritshot (B) Compressed Package (100%)" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="100000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="5166" name="Recipe: Blessed Spiritshot (A) Compressed Package (100%)" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="180000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="5167" name="Recipe: Blessed Spiritshot (S) Compressed Package (100%)" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="290000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="5168" name="Food for Strider" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="10" />
+    <set name="price" val="200" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="PetFood" />
+    <set name="item_skill" val="2101-1" />
+  </item>
+  <item id="5169" name="Deluxe Food for Strider" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="10" />
+    <set name="price" val="300" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="PetFood" />
+    <set name="item_skill" val="2102-1" />
+  </item>
+  <item id="5170" name="Mithril Panzer Coat" type="Armor">
+    <set name="armor_type" val="PET" />
+    <set name="bodypart" val="strider" />
+    <set name="material" val="LEATHER" />
+    <set name="weight" val="160" />
+    <set name="price" val="1600000" />
+    <for>
+      <add order="0x10" stat="pDef" val="41" />
+      <add order="0x10" stat="mDef" val="41" />
+    </for>
+  </item>
+  <item id="5171" name="Brigadine Panzer Coat" type="Armor">
+    <set name="armor_type" val="PET" />
+    <set name="bodypart" val="strider" />
+    <set name="material" val="LEATHER" />
+    <set name="weight" val="160" />
+    <set name="price" val="2300000" />
+    <for>
+      <add order="0x10" stat="pDef" val="44" />
+      <add order="0x10" stat="mDef" val="44" />
+    </for>
+  </item>
+  <item id="5172" name="Draconic Panzer Coat" type="Armor">
+    <set name="armor_type" val="PET" />
+    <set name="bodypart" val="strider" />
+    <set name="material" val="LEATHER" />
+    <set name="weight" val="160" />
+    <set name="price" val="3400000" />
+    <for>
+      <add order="0x10" stat="pDef" val="46" />
+      <add order="0x10" stat="mDef" val="46" />
+    </for>
+  </item>
+  <item id="5173" name="Blood Panzer Coat" type="Armor">
+    <set name="armor_type" val="PET" />
+    <set name="bodypart" val="strider" />
+    <set name="material" val="LEATHER" />
+    <set name="weight" val="160" />
+    <set name="price" val="4900000" />
+    <for>
+      <add order="0x10" stat="pDef" val="49" />
+      <add order="0x10" stat="mDef" val="49" />
+    </for>
+  </item>
+  <item id="5174" name="Ophidian Panzer Coat" type="Armor">
+    <set name="armor_type" val="PET" />
+    <set name="bodypart" val="strider" />
+    <set name="material" val="LEATHER" />
+    <set name="weight" val="160" />
+    <set name="price" val="7300000" />
+    <for>
+      <add order="0x10" stat="pDef" val="52" />
+      <add order="0x10" stat="mDef" val="52" />
+    </for>
+  </item>
+  <item id="5175" name="Inferno Panzer Coat" type="Armor">
+    <set name="armor_type" val="PET" />
+    <set name="bodypart" val="strider" />
+    <set name="material" val="LEATHER" />
+    <set name="weight" val="160" />
+    <set name="price" val="10000000" />
+    <for>
+      <add order="0x10" stat="pDef" val="54" />
+      <add order="0x10" stat="mDef" val="54" />
+    </for>
+  </item>
+  <item id="5176" name="Serpentine Spike" type="Weapon">
+    <set name="weapon_type" val="PET" />
+    <set name="bodypart" val="strider" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="100" />
+    <set name="price" val="1600000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <for>
+      <add order="0x10" stat="pAtk" val="17" />
+      <add order="0x10" stat="mAtk" val="21" />
+      <set order="0x08" stat="rCrit" val="80" />
+      <set order="0x08" stat="pAtkSpd" val="304" />
+    </for>
+  </item>
+  <item id="5177" name="Drake Horn" type="Weapon">
+    <set name="weapon_type" val="PET" />
+    <set name="bodypart" val="strider" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="100" />
+    <set name="price" val="2300000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <for>
+      <add order="0x10" stat="pAtk" val="19" />
+      <add order="0x10" stat="mAtk" val="24" />
+      <set order="0x08" stat="rCrit" val="80" />
+      <set order="0x08" stat="pAtkSpd" val="304" />
+    </for>
+  </item>
+  <item id="5178" name="Assult Alicorn" type="Weapon">
+    <set name="weapon_type" val="PET" />
+    <set name="bodypart" val="strider" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="100" />
+    <set name="price" val="3400000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <for>
+      <add order="0x10" stat="pAtk" val="21" />
+      <add order="0x10" stat="mAtk" val="27" />
+      <set order="0x08" stat="rCrit" val="80" />
+      <set order="0x08" stat="pAtkSpd" val="304" />
+    </for>
+  </item>
+  <item id="5179" name="Draconic Slicer" type="Weapon">
+    <set name="weapon_type" val="PET" />
+    <set name="bodypart" val="strider" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="100" />
+    <set name="price" val="4900000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <for>
+      <add order="0x10" stat="pAtk" val="23" />
+      <add order="0x10" stat="mAtk" val="30" />
+      <set order="0x08" stat="rCrit" val="80" />
+      <set order="0x08" stat="pAtkSpd" val="304" />
+    </for>
+  </item>
+  <item id="5180" name="Ohpdian Lance" type="Weapon">
+    <set name="weapon_type" val="PET" />
+    <set name="bodypart" val="strider" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="100" />
+    <set name="price" val="7300000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <for>
+      <add order="0x10" stat="pAtk" val="25" />
+      <add order="0x10" stat="mAtk" val="34" />
+      <set order="0x08" stat="rCrit" val="80" />
+      <set order="0x08" stat="pAtkSpd" val="304" />
+    </for>
+  </item>
+  <item id="5181" name="Diamond Drill" type="Weapon">
+    <set name="weapon_type" val="PET" />
+    <set name="bodypart" val="strider" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="100" />
+    <set name="price" val="10000000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <for>
+      <add order="0x10" stat="pAtk" val="27" />
+      <add order="0x10" stat="mAtk" val="37" />
+      <set order="0x08" stat="rCrit" val="80" />
+      <set order="0x08" stat="pAtkSpd" val="304" />
+    </for>
+  </item>
+  <item id="5182" name="Hatchling's Gorgon Coat" type="Armor">
+    <set name="armor_type" val="PET" />
+    <set name="bodypart" val="hatchling" />
+    <set name="material" val="LEATHER" />
+    <set name="weight" val="160" />
+    <set name="price" val="2300000" />
+    <for>
+      <add order="0x10" stat="pDef" val="44" />
+      <add order="0x10" stat="mDef" val="44" />
+    </for>
+  </item>
+  <item id="5183" name="Hatchling's Ophidian Plate" type="Armor">
+    <set name="armor_type" val="PET" />
+    <set name="bodypart" val="hatchling" />
+    <set name="material" val="LEATHER" />
+    <set name="weight" val="160" />
+    <set name="price" val="3400000" />
+    <for>
+      <add order="0x10" stat="pDef" val="46" />
+      <add order="0x10" stat="mDef" val="46" />
+    </for>
+  </item>
+  <item id="5184" name="Hatchling's Crimson Plate" type="Armor">
+    <set name="armor_type" val="PET" />
+    <set name="bodypart" val="hatchling" />
+    <set name="material" val="LEATHER" />
+    <set name="weight" val="160" />
+    <set name="price" val="4900000" />
+    <for>
+      <add order="0x10" stat="pDef" val="49" />
+      <add order="0x10" stat="mDef" val="49" />
+    </for>
+  </item>
+  <item id="5185" name="Hatchling's Draconic Plate" type="Armor">
+    <set name="armor_type" val="PET" />
+    <set name="bodypart" val="hatchling" />
+    <set name="material" val="LEATHER" />
+    <set name="weight" val="160" />
+    <set name="price" val="7300000" />
+    <for>
+      <add order="0x10" stat="pDef" val="52" />
+      <add order="0x10" stat="mDef" val="52" />
+    </for>
+  </item>
+  <item id="5186" name="Hatchling's Inferno Plate" type="Armor">
+    <set name="armor_type" val="PET" />
+    <set name="bodypart" val="hatchling" />
+    <set name="material" val="LEATHER" />
+    <set name="weight" val="160" />
+    <set name="price" val="10000000" />
+    <for>
+      <add order="0x10" stat="pDef" val="54" />
+      <add order="0x10" stat="mDef" val="54" />
+    </for>
+  </item>
+  <item id="5187" name="Serpentine Grinder" type="Weapon">
+    <set name="weapon_type" val="PET" />
+    <set name="bodypart" val="hatchling" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="100" />
+    <set name="price" val="2300000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <for>
+      <add order="0x10" stat="pAtk" val="19" />
+      <add order="0x10" stat="mAtk" val="24" />
+      <set order="0x08" stat="rCrit" val="80" />
+      <set order="0x08" stat="pAtkSpd" val="304" />
+    </for>
+  </item>
+  <item id="5188" name="Fang of Dahak" type="Weapon">
+    <set name="weapon_type" val="PET" />
+    <set name="bodypart" val="hatchling" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="100" />
+    <set name="price" val="3400000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <for>
+      <add order="0x10" stat="pAtk" val="21" />
+      <add order="0x10" stat="mAtk" val="27" />
+      <set order="0x08" stat="rCrit" val="80" />
+      <set order="0x08" stat="pAtkSpd" val="304" />
+    </for>
+  </item>
+  <item id="5189" name="Crimson Blood Fang" type="Weapon">
+    <set name="weapon_type" val="PET" />
+    <set name="bodypart" val="hatchling" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="100" />
+    <set name="price" val="4900000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <for>
+      <add order="0x10" stat="pAtk" val="23" />
+      <add order="0x10" stat="mAtk" val="30" />
+      <set order="0x08" stat="rCrit" val="80" />
+      <set order="0x08" stat="pAtkSpd" val="304" />
+    </for>
+  </item>
+  <item id="5190" name="Draconic Chopper" type="Weapon">
+    <set name="weapon_type" val="PET" />
+    <set name="bodypart" val="hatchling" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="100" />
+    <set name="price" val="7300000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <for>
+      <add order="0x10" stat="pAtk" val="25" />
+      <add order="0x10" stat="mAtk" val="34" />
+      <set order="0x08" stat="rCrit" val="80" />
+      <set order="0x08" stat="pAtkSpd" val="304" />
+    </for>
+  </item>
+  <item id="5191" name="Diabolic Grinder" type="Weapon">
+    <set name="weapon_type" val="PET" />
+    <set name="bodypart" val="hatchling" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="100" />
+    <set name="price" val="10000000" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <for>
+      <add order="0x10" stat="pAtk" val="27" />
+      <add order="0x10" stat="mAtk" val="37" />
+      <set order="0x08" stat="rCrit" val="80" />
+      <set order="0x08" stat="pAtkSpd" val="304" />
+    </for>
+  </item>
+  <item id="5192" name="Rope of Magic: D-Grade" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="2" />
+    <set name="price" val="100" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5193" name="Rope of Magic: C-Grade" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="2" />
+    <set name="price" val="150" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5194" name="Rope of Magic: B-Grade" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="2" />
+    <set name="price" val="250" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5195" name="Rope of Magic: A-Grade" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="2" />
+    <set name="price" val="400" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5196" name="Rope of Magic: S Grade" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="2" />
+    <set name="price" val="1500" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="5197" name="Chest Key - Grade 8" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="10" />
+    <set name="price" val="1200" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ChestKey" />
+    <set name="item_skill" val="2065-1" />
+  </item>
+  <item id="5198" name="Chest Key - Grade 7" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="10" />
+    <set name="price" val="1200" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ChestKey" />
+    <set name="item_skill" val="2065-2" />
+  </item>
+  <item id="5199" name="Chest Key - Grade 6" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="10" />
+    <set name="price" val="1200" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ChestKey" />
+    <set name="item_skill" val="2065-3" />
+  </item>
+</list>

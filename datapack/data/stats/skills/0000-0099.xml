@@ -180,7 +180,8 @@
   <set name="reuseDelay" val="1000"/>
   <set name="skillType" val="CHARGE"/>
   <set name="operateType" val="OP_ACTIVE"/>
-  <set name="maxCharges" val="#charges"/>  <set name="aggroPoints" val="200"/>
+  <set name="maxCharges" val="#charges"/>
+  <set name="aggroPoints" val="200"/>
 </skill>
 <skill id="9" levels="34" name="Sonic Buster" enchantLevels1="30" enchantLevels2="30">
   <table name="#enchantMagicLvl"> 76 76 76 77 77 77 78 78 78 79 79 79 80 80 80 81 81 81 82 82 82 82 83 83 83 84 84 85 85 85 </table>
@@ -1322,11 +1323,14 @@
   <table name="#enchantMagicLvl"> 76 76 76 77 77 77 78 78 78 79 79 79 80 80 80 81 81 81 82 82 82 82 83 83 83 84 84 85 85 85 </table>
   <enchant1 name="magicLvl" val="#enchantMagicLvl"/>
   <enchant2 name="magicLvl" val="#enchantMagicLvl"/>
-  <table name="#ench2MpConsume"> 82 81 80 79 78 77 76 75 74 72 71 70 69 68 67 66 65 64 63 62 61 60 58 57 56 55 54 53 52 51 </table>
+  <table name="#ench2MpConsume">
+ 82 81 80 79 78 77 76 75 74 72 71 70 69 68 67 66 65 64 63 62
+ 61 60 58 57 56 55 54 53 52 51
+ </table>
   <table name="#ench1Reuse"> 11000 11000 11000 10000 10000 10000 10000 9000 9000 9000 9000 8000 8000 8000 8000 7000 7000 7000 6000 6000 6000 6000 5000 5000 5000 5000 4000 4000 4000 4000 </table>
   <table name="#magicLvl"> 18 19 20 22 23 24 26 27 28 30 31 32 34 35 36 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 </table>
   <table name="#mpConsume"> 22 22 22 23 24 25 27 29 30 31 31 33 35 36 37 40 41 43 43 44 45 47 48 49 51 52 54 55 55 56 58 59 61 62 63 65 66 68 68 69 70 72 73 74 75 77 78 79 80 81 82 83</table>
-  <set name="weaponsAllowed" val="2"/>
+  <set name="weaponsAllowed" val="1048576"/>
   <set name="magicLvl" val="#magicLvl"/>
   <set name="mpConsume" val="#mpConsume"/>
   <set name="power" val="80"/>
@@ -1376,8 +1380,16 @@
   <table name="#enchantMagicLvl"> 76 76 76 77 77 77 78 78 78 79 79 79 80 80 80 81 81 81 82 82 82 82 83 83 83 84 84 85 85 85 </table>
   <enchant1 name="magicLvl" val="#enchantMagicLvl"/>
   <enchant2 name="magicLvl" val="#enchantMagicLvl"/>
-  <table name="#ench1Power"> 80 81 82 82 83 84 84 85 86 86 87 88 88 89 90 90 91 92 92 93 94 94 95 96 96 97 98 98 99 100 </table>
-  <table name="#ench2MpConsume"> 68 67 66 66 65 65 64 63 63 62 62 61 60 60 59 59 58 57 57 56 55 55 54 54 53 52 52 51 51 50 </table>
+  <table name="#ench1Power">
+ 80 81 82 82 83 84 84 85 86 86
+ 87 88 88 89 90 90 91 92 92 93
+ 94 94 95 96 96 97 98 98 99 100
+ </table>
+  <table name="#ench2MpConsume">
+ 68 67 66 66 65 65 64 63 63 62
+ 62 61 60 60 59 59 58 57 57 56
+ 55 55 54 54 53 52 52 51 51 50
+ </table>
   <table name="#magicLvl"> 20 24 28 32 36 40 43 46 49 52 55 58 60 62 64 66 68 70 72 74 </table>
   <table name="#mpConsume"> 19 22 25 28 31 35 38 41 44 47 50 53 55 58 59 61 63 65 67 68 </table>
   <table name="#Tab-runSpd"> 0.7 0.7 0.7 0.7 0.7 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 </table>
@@ -1434,8 +1446,12 @@
   <table name="#enchantMagicLvl"> 76 76 76 77 77 77 78 78 78 79 79 79 80 80 80 81 81 81 82 82 82 82 83 83 83 84 84 85 85 85 </table>
   <enchant1 name="magicLvl" val="#enchantMagicLvl"/>
   <enchant2 name="magicLvl" val="#enchantMagicLvl"/>
-  <table name="#ench1Power"> 40 40 41 41 41 42 42 42 43 43 43 44 44 44 45 45 45 46 46 46 47 47 47 48 48 48 49 49 49 50 </table>
-  <table name="#ench2MpConsume"> 101 100 99 97 96 95 94 93 91 90 89 88 87 86 84 83 82 81 80 78 77 76 75 74 73 71 70 69 68 67 </table>
+  <table name="#ench1Power"> 40 40 41 41 41 42 42 42 43 43
+ 43 44 44 44 45 45 45 46 46 46
+ 47 47 47 48 48 48 49 49 49 50 </table>
+  <table name="#ench2MpConsume"> 101 100 99 97 96 95 94 93 91 90
+ 89 88 87 86 84 83 82 81 80 78
+ 77 76 75 74 73 71 70 69 68 67 </table>
   <table name="#mpConsume"> 70 75 80 83 87 89 93 95 98 100 102 </table>
   <table name="#magicLvl"> 52 55 58 60 62 64 66 68 70 72 74 </table>
   <set name="mpConsume" val="#mpConsume"/>

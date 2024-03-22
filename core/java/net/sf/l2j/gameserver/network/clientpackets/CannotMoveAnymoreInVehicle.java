@@ -71,7 +71,6 @@ public class CannotMoveAnymoreInVehicle extends L2GameClientPacket
 	@Override
 	public String getType()
 	{
-		// TODO Auto-generated method stub
 		return "[C] 5D CannotMoveAnymoreInVehicle";
 	}
 }

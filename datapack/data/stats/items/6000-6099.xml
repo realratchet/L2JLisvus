@@ -1,0 +1,784 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<list>
+  <item id="6000" name="Blueprint: Tower of Insolence,12th Floor" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="0" />
+    <set name="price" val="400" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="6001" name="Blueprint: Tower of Insolence,13th Floor" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="0" />
+    <set name="price" val="400" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="6002" name="Ancient Porcelain" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="10" />
+    <set name="price" val="8000" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="6003" name="Ancient Porcelain: Excellent" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="10" />
+    <set name="price" val="12000" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="6004" name="Ancient Porcelain: High Quality" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="10" />
+    <set name="price" val="8000" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="6005" name="Ancient Porcelain: Low Quality" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="10" />
+    <set name="price" val="5000" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="6006" name="Ancient Porcelain: Lowest Quality" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="10" />
+    <set name="price" val="2000" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="6007" name="Reagent Pouch" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6008" name="Reagent Pouch" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6009" name="Reagent Pouch" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6010" name="Reagent Box" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ExtractableItems" />
+  </item>
+  <item id="6011" name="Wyrm's Blood" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="0" />
+    <set name="price" val="200" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="6012" name="Lava Stone" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="0" />
+    <set name="price" val="200" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="6013" name="Moonstone Shard" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="0" />
+    <set name="price" val="200" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="6014" name="Rotten Bone Piece" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="0" />
+    <set name="price" val="200" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="6015" name="Demon's Blood" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="0" />
+    <set name="price" val="200" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="6016" name="Infernium Ore" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="0" />
+    <set name="price" val="200" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="6017" name="Blood Root" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="0" />
+    <set name="price" val="200" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="6018" name="Volcanic Ash" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="0" />
+    <set name="price" val="100" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="6019" name="Quicksilver" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="0" />
+    <set name="price" val="200" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="6020" name="Sulfur" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="0" />
+    <set name="price" val="200" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="6021" name="Dracoplasm" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="6022" name="Magma Dust" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="6023" name="Moon Dust" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="6024" name="Necroplasm" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="6025" name="Demonplasm" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="0" />
+    <set name="price" val="2500" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="6026" name="Inferno Dust" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="6027" name="Draconic Essence" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="6028" name="Fire Essence" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="0" />
+    <set name="price" val="2500" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="6029" name="Lunargent" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="0" />
+    <set name="price" val="2500" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="6030" name="Midnight Oil" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="6031" name="Demonic Essence" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="0" />
+    <set name="price" val="2500" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="6032" name="Abyss Oil" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="6033" name="Hellfire Oil" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="6034" name="Nightmare Oil" type="EtcItem">
+    <set name="etcitem_type" val="OTHER" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="0" />
+    <set name="price" val="5000" />
+    <set name="is_stackable" val="true" />
+  </item>
+  <item id="6035" name="Magic Haste Potion" type="EtcItem">
+    <set name="etcitem_type" val="POTION" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="20" />
+    <set name="price" val="2400" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ItemSkills" />
+    <set name="item_skill" val="2169-1" />
+    <cond msgId="1508">
+      <player olympiad="false" />
+    </cond>
+  </item>
+  <item id="6036" name="Greater Magic Haste Potion" type="EtcItem">
+    <set name="etcitem_type" val="POTION" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="20" />
+    <set name="price" val="7200" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ItemSkills" />
+    <set name="item_skill" val="2169-2" />
+    <cond msgId="1508">
+      <player olympiad="false" />
+    </cond>
+  </item>
+  <item id="6037" name="Waking Scroll" type="EtcItem">
+    <set name="etcitem_type" val="SCROLL" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="5" />
+    <set name="price" val="120" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="ItemSkills" />
+    <set name="item_skill" val="2170-1" />
+    <cond msgId="1508">
+      <player olympiad="false" />
+    </cond>
+  </item>
+  <item id="6038" name="Greater Mercenary Posting Ticket (Sword/Stationary)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="6039" name="Greater Mercenary Posting Ticket (Spear/Stationary)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="6040" name="Greater Mercenary Posting Ticket (Bow/Stationary)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="6041" name="Greater Mercenary Posting Ticket (Cleric/Stationary)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="6042" name="Greater Mercenary Posting Ticket (Wizard/Stationary)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="6043" name="Greater Mercenary Posting Ticket (Sword/Mobile)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="6044" name="Greater Mercenary Posting Ticket (Spear/Mobile)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="6045" name="Greater Mercenary Posting Ticket (Bow/Mobile)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="6046" name="Greater Mercenary Posting Ticket (Cleric/Mobile)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="6047" name="Greater Mercenary Posting Ticket (Wizard/Mobile)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="6048" name="Trash" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="6049" name="Trash" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="6050" name="Trash" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="6051" name="Greater Mercenary Posting Ticket (Sword/Stationary)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="6052" name="Greater Mercenary Posting Ticket (Spear/Stationary)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="6053" name="Greater Mercenary Posting Ticket (Bow/Stationary)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="6054" name="Greater Mercenary Posting Ticket (Cleric/Stationary)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="6055" name="Greater Mercenary Posting Ticket (Wizard/Stationary)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="6056" name="Greater Mercenary Posting Ticket (Sword/Mobile)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="6057" name="Greater Mercenary Posting Ticket (Spear/Mobile)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="6058" name="Greater Mercenary Posting Ticket (Bow/Mobile)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="6059" name="Greater Mercenary Posting Ticket (Cleric/Mobile)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="6060" name="Greater Mercenary Posting Ticket (Wizard/Mobile)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="6061" name="Trash" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="6062" name="Trash" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="6063" name="Trash" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="6064" name="Greater Mercenary Posting Ticket (Sword/Stationary)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="6065" name="Greater Mercenary Posting Ticket (Spear/Stationary)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="6066" name="Greater Mercenary Posting Ticket (Bow/Stationary)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="6067" name="Greater Mercenary Posting Ticket (Cleric/Stationary)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="6068" name="Greater Mercenary Posting Ticket (Wizard/Stationary)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="6069" name="Greater Mercenary Posting Ticket (Sword/Mobile)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="6070" name="Greater Mercenary Posting Ticket (Spear/Mobile)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="6071" name="Greater Mercenary Posting Ticket (Bow/Mobile)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="6072" name="Greater Mercenary Posting Ticket (Cleric/Mobile)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="6073" name="Greater Mercenary Posting Ticket (Wizard/Mobile)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="6074" name="Trash" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="6075" name="Trash" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="6076" name="Trash" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="6077" name="Greater Mercenary Posting Ticket (Sword/Stationary)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="6078" name="Greater Mercenary Posting Ticket (Spear/Stationary)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="6079" name="Greater Mercenary Posting Ticket (Bow/Stationary)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="6080" name="Greater Mercenary Posting Ticket (Cleric/Stationary)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="6081" name="Greater Mercenary Posting Ticket (Wizard/Stationary)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="6082" name="Greater Mercenary Posting Ticket (Sword/Mobile)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="6083" name="Greater Mercenary Posting Ticket (Spear/Mobile)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="6084" name="Greater Mercenary Posting Ticket (Bow/Mobile)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="6085" name="Greater Mercenary Posting Ticket (Cleric/Mobile)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="6086" name="Greater Mercenary Posting Ticket (Wizard/Mobile)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="6087" name="Trash" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="6088" name="Trash" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="6089" name="Trash" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="6090" name="Greater Mercenary Posting Ticket (Sword/Stationary)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="6091" name="Greater Mercenary Posting Ticket (Spear/Stationary)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="6092" name="Greater Mercenary Posting Ticket (Bow/Stationary)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="6093" name="Greater Mercenary Posting Ticket (Cleric/Stationary)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="6094" name="Greater Mercenary Posting Ticket (Wizard/Stationary)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="6095" name="Greater Mercenary Posting Ticket (Sword/Mobile)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="6096" name="Greater Mercenary Posting Ticket (Spear/Mobile)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="6097" name="Greater Mercenary Posting Ticket (Bow/Mobile)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="6098" name="Greater Mercenary Posting Ticket (Cleric/Mobile)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_dropable" val="false" />
+  </item>
+  <item id="6099" name="Greater Mercenary Posting Ticket (Wizard/Mobile)" type="EtcItem">
+    <set name="etcitem_type" val="CASTLE_GUARD" />
+    <set name="material" val="PAPER" />
+    <set name="weight" val="0" />
+    <set name="price" val="0" />
+    <set name="is_stackable" val="true" />
+    <set name="is_dropable" val="false" />
+  </item>
+</list>

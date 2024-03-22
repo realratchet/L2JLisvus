@@ -62,7 +62,6 @@ public class OnVehicleCheckLocation extends L2GameServerPacket
 	@Override
 	public String getType()
 	{
-		// TODO Auto-generated method stub
 		return "[S] 5B OnVehicleCheckLocation";
 	}
 }

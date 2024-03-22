@@ -1,0 +1,1012 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<list>
+  <item id="2300" name="Recipe: Scythe" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="45800" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="2301" name="Recipe: Battle Axe" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="45800" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="2302" name="Recipe: Silver Axe" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="45800" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="2303" name="Recipe: Skull Graver" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="45800" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="2304" name="Recipe: Heavy Doom Hammer" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="45800" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="2305" name="Recipe: Crystal Staff" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="45800" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="2306" name="Recipe: Stick of Faith" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="45800" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="2307" name="Recipe: Heavy Doom Axe" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="45800" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="2308" name="Recipe: Cursed Dagger" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="45800" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="2309" name="Recipe: Wolverine Needle" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="45800" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="2310" name="Recipe: Dark Elven Dagger" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="45800" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="2311" name="Recipe: Chakram" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="45800" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="2312" name="Recipe: Crystallized Ice Bow" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="45800" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="2313" name="Recipe: Orcish Glaive" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="45800" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="2314" name="Recipe: Body Slasher" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="45800" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="2315" name="Recipe: Shamshir" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="57400" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="2316" name="Recipe: Katana" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="57400" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="2317" name="Recipe: Bec de Corbin" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="57400" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="2318" name="Recipe: Spirit Sword" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="57400" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="2319" name="Recipe: Raid Sword" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="57400" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="2320" name="Recipe: Cursed Staff" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="57400" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="2321" name="Recipe: Stiletto" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="57400" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="2322" name="Recipe: Soulfire Dirk" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="57400" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="2323" name="Recipe: Elemental Bow" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="57400" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="2324" name="Recipe: Elven Bow of Nobility" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="57400" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="2325" name="Recipe: Tears of Fairy" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="57400" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="2326" name="Recipe: Horn of Glory" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="57400" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="2327" name="Recipe: Caliburs" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="86000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="2328" name="Recipe: Sword of Delusion" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="86000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="2329" name="Recipe: Tsurugi" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="86000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="2330" name="Recipe: Homunkulus's Sword" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="86000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="2331" name="Recipe: Poleaxe" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="86000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="2332" name="Recipe: Sword of Limit" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="86000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="2333" name="Recipe: Sword of Nightmare" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="86000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="2334" name="Recipe: Sword of Whispering Death" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="86000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="2335" name="Recipe: War Axe" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="86000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="2336" name="Recipe: Nirvana Axe" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="86000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="2337" name="Recipe: Stick of Eternity" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="86000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="2338" name="Recipe: Paradia Staff" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="86000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="2339" name="Recipe: Inferno Staff" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="86000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="2340" name="Recipe: Pa'agrian Hammer" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="86000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="2341" name="Recipe: Sage's Staff" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="86000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="2342" name="Recipe: Club of Nature" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="86000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="2343" name="Recipe: Mace of the Underworld" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="86000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="2344" name="Recipe: Grace Dagger" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="86000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="2345" name="Recipe: Dark Screamer" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="86000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="2346" name="Recipe: Fisted Blade" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="86000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="2347" name="Recipe: Akat Long Bow" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="86000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="2348" name="Recipe: Heathen's Book" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="86000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="2349" name="Recipe: Hex Doll" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="86000" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="2350" name="Recipe: Pa'agrian Axe" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="95600" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="2351" name="Recipe: Scorpion" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="95600" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="2352" name="Recipe: Widow Maker" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="95600" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="2353" name="Recipe: Samurai Longsword" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="122600" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="2354" name="Recipe: Deadman's Staff" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="122600" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="2355" name="Recipe: Ghoul's Staff" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="122600" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="2356" name="Recipe: Demon's Staff" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="122600" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="2357" name="Recipe: Crystal Dagger" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="122600" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="2358" name="Recipe: Great Pata" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="122600" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="2359" name="Recipe: Eminence Bow" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="122600" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="2360" name="Recipe: Orcish Poleaxe" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="122600" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="2361" name="Recipe: Candle of Wisdom" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="122600" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="2362" name="Recipe: Blessed Branch" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="122600" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="2363" name="Recipe: Phoenix Feather" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="122600" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="2364" name="Recipe: Cerberus Eye" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="122600" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="2365" name="Recipe: Scroll of Destruction" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="122600" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="2366" name="Recipe: Claws of Black Dragon" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="122600" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="2367" name="Recipe: Three Eyed Crow's Feather" type="EtcItem">
+    <set name="etcitem_type" val="RECIPE" />
+    <set name="material" val="LIQUID" />
+    <set name="weight" val="30" />
+    <set name="price" val="122600" />
+    <set name="is_stackable" val="true" />
+    <set name="handler" val="Recipes" />
+  </item>
+  <item id="2368" name="Training Gloves" type="Weapon">
+    <set name="weapon_type" val="DUALFIST" />
+    <set name="bodypart" val="lrhand" />
+    <set name="random_damage" val="5" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="CLOTH" />
+    <set name="weight" val="1580" />
+    <set name="price" val="138" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <set name="is_sellable" val="false" />
+    <for>
+      <set order="0x08" stat="pAtk" val="7" />
+      <set order="0x08" stat="mAtk" val="5" />
+      <set order="0x08" stat="rCrit" val="4" />
+      <add order="0x10" stat="accCombat" val="4" />
+      <set order="0x08" stat="pAtkSpd" val="325" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="2369" name="Squire's Sword" type="Weapon">
+    <set name="weapon_type" val="SWORD" />
+    <set name="bodypart" val="rhand" />
+    <set name="random_damage" val="10" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="1600" />
+    <set name="price" val="138" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <set name="is_sellable" val="false" />
+    <for>
+      <set order="0x08" stat="pAtk" val="6" />
+      <set order="0x08" stat="mAtk" val="5" />
+      <set order="0x08" stat="rCrit" val="8" />
+      <add order="0x10" stat="accCombat" val="0" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="2370" name="Guild Member's Club" type="Weapon">
+    <set name="weapon_type" val="BLUNT" />
+    <set name="bodypart" val="rhand" />
+    <set name="random_damage" val="20" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="WOOD" />
+    <set name="weight" val="1910" />
+    <set name="price" val="138" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <set name="is_sellable" val="false" />
+    <for>
+      <set order="0x08" stat="pAtk" val="6" />
+      <set order="0x08" stat="mAtk" val="5" />
+      <set order="0x08" stat="rCrit" val="4" />
+      <add order="0x10" stat="accCombat" val="4" />
+      <set order="0x08" stat="pAtkSpd" val="379" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="2371" name="Fist of Butcher" type="Weapon">
+    <set name="weapon_type" val="DUALFIST" />
+    <set name="bodypart" val="lrhand" />
+    <set name="random_damage" val="5" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="1400" />
+    <set name="price" val="25500" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <for>
+      <set order="0x08" stat="pAtk" val="16" />
+      <set order="0x08" stat="mAtk" val="10" />
+      <set order="0x08" stat="rCrit" val="4" />
+      <add order="0x10" stat="accCombat" val="4" />
+      <set order="0x08" stat="pAtkSpd" val="325" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="2372" name="Dagger of Adept" type="Weapon">
+    <set name="weapon_type" val="DAGGER" />
+    <set name="bodypart" val="rhand" />
+    <set name="random_damage" val="5" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="1050" />
+    <set name="price" val="25500" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <for>
+      <set order="0x08" stat="pAtk" val="11" />
+      <set order="0x08" stat="mAtk" val="10" />
+      <set order="0x08" stat="rCrit" val="12" />
+      <add order="0x10" stat="accCombat" val="-3" />
+      <set order="0x08" stat="pAtkSpd" val="433" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="2373" name="Eldritch Staff" type="Weapon">
+    <set name="weapon_type" val="BIGBLUNT" />
+    <set name="bodypart" val="lrhand" />
+    <set name="random_damage" val="20" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="WOOD" />
+    <set name="weight" val="1050" />
+    <set name="price" val="25500" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <set name="is_magical" val="true" />
+    <for>
+      <set order="0x08" stat="pAtk" val="13" />
+      <set order="0x08" stat="mAtk" val="13" />
+      <set order="0x08" stat="rCrit" val="4" />
+      <add order="0x10" stat="accCombat" val="4" />
+      <set order="0x08" stat="pAtkSpd" val="325" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="2374" name="Red Sunset Dagger" type="Weapon">
+    <set name="weapon_type" val="DAGGER" />
+    <set name="bodypart" val="rhand" />
+    <set name="random_damage" val="5" />
+    <set name="attack_range" val="40" />
+    <set name="material" val="STEEL" />
+    <set name="weight" val="1100" />
+    <set name="price" val="25500" />
+    <set name="soulshots" val="1" />
+    <set name="spiritshots" val="1" />
+    <for>
+      <set order="0x08" stat="pAtk" val="11" />
+      <set order="0x08" stat="mAtk" val="10" />
+      <set order="0x08" stat="rCrit" val="12" />
+      <add order="0x10" stat="accCombat" val="-3" />
+      <set order="0x08" stat="pAtkSpd" val="433" />
+      <enchant order="0x0C" stat="pAtk" val="0" />
+      <enchant order="0x0C" stat="mAtk" val="0" />
+    </for>
+  </item>
+  <item id="2375" name="Wolf Collar" type="EtcItem">
+    <set name="etcitem_type" val="PET_COLLAR" />
+    <set name="material" val="LEATHER" />
+    <set name="weight" val="10" />
+    <set name="price" val="0" />
+    <set name="handler" val="SummonItems" />
+    <set name="item_skill" val="2046-1" />
+  </item>
+  <item id="2376" name="Avadon Breastplate" type="Armor">
+    <set name="armor_type" val="HEAVY" />
+    <set name="bodypart" val="chest" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="277" />
+    <set name="material" val="LEATHER" />
+    <set name="weight" val="7920" />
+    <set name="price" val="2080000" />
+    <for>
+      <add order="0x10" stat="pDef" val="157" />
+      <enchant order="0x0C" stat="pDef" val="0" />
+    </for>
+  </item>
+  <item id="2377" name="Mithril Scale Gaiters" type="Armor">
+    <set name="armor_type" val="HEAVY" />
+    <set name="bodypart" val="legs" />
+    <set name="crystal_type" val="D" />
+    <set name="crystal_count" val="340" />
+    <set name="material" val="LEATHER" />
+    <set name="weight" val="3870" />
+    <set name="price" val="187000" />
+    <for>
+      <add order="0x10" stat="pDef" val="64" />
+      <enchant order="0x0C" stat="pDef" val="0" />
+    </for>
+  </item>
+  <item id="2378" name="Brigandine Gaiters" type="Armor">
+    <set name="armor_type" val="HEAVY" />
+    <set name="bodypart" val="legs" />
+    <set name="crystal_type" val="D" />
+    <set name="crystal_count" val="340" />
+    <set name="material" val="LEATHER" />
+    <set name="weight" val="3820" />
+    <set name="price" val="187000" />
+    <for>
+      <add order="0x10" stat="pDef" val="64" />
+      <enchant order="0x0C" stat="pDef" val="0" />
+    </for>
+  </item>
+  <item id="2379" name="Avadon Gaiters" type="Armor">
+    <set name="armor_type" val="HEAVY" />
+    <set name="bodypart" val="legs" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="173" />
+    <set name="material" val="LEATHER" />
+    <set name="weight" val="3520" />
+    <set name="price" val="1300000" />
+    <for>
+      <add order="0x10" stat="pDef" val="98" />
+      <enchant order="0x0C" stat="pDef" val="0" />
+    </for>
+  </item>
+  <item id="2380" name="Blue Wolf Gaiters" type="Armor">
+    <set name="armor_type" val="HEAVY" />
+    <set name="bodypart" val="legs" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="268" />
+    <set name="material" val="LEATHER" />
+    <set name="weight" val="3370" />
+    <set name="price" val="2010000" />
+    <for>
+      <add order="0x10" stat="pDef" val="104" />
+      <enchant order="0x0C" stat="pDef" val="0" />
+    </for>
+  </item>
+  <item id="2381" name="Doom Plate Armor" type="Armor">
+    <set name="armor_type" val="HEAVY" />
+    <set name="bodypart" val="fullarmor" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="628" />
+    <set name="material" val="LEATHER" />
+    <set name="weight" val="9980" />
+    <set name="price" val="4710000" />
+    <for>
+      <add order="0x10" stat="pDef" val="270" />
+      <enchant order="0x0C" stat="pDef" val="0" />
+    </for>
+  </item>
+  <item id="2382" name="Tallum Plate Armor" type="Armor">
+    <set name="armor_type" val="HEAVY" />
+    <set name="bodypart" val="fullarmor" />
+    <set name="crystal_type" val="A" />
+    <set name="crystal_count" val="541" />
+    <set name="material" val="LEATHER" />
+    <set name="weight" val="9780" />
+    <set name="price" val="6770000" />
+    <for>
+      <add order="0x10" stat="pDef" val="278" />
+      <enchant order="0x0C" stat="pDef" val="0" />
+    </for>
+  </item>
+  <item id="2383" name="Majestic Plate Armor" type="Armor">
+    <set name="armor_type" val="HEAVY" />
+    <set name="bodypart" val="fullarmor" />
+    <set name="crystal_type" val="A" />
+    <set name="crystal_count" val="824" />
+    <set name="material" val="LEATHER" />
+    <set name="weight" val="9200" />
+    <set name="price" val="10300000" />
+    <for>
+      <add order="0x10" stat="pDef" val="293" />
+      <enchant order="0x0C" stat="pDef" val="0" />
+    </for>
+  </item>
+  <item id="2384" name="Zubei's Leather Shirt" type="Armor">
+    <set name="armor_type" val="LIGHT" />
+    <set name="bodypart" val="chest" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="208" />
+    <set name="material" val="LEATHER" />
+    <set name="weight" val="4330" />
+    <set name="price" val="1560000" />
+    <for>
+      <add order="0x10" stat="pDef" val="117" />
+      <enchant order="0x0C" stat="pDef" val="0" />
+    </for>
+  </item>
+  <item id="2385" name="Dark Crystal Leather Armor" type="Armor">
+    <set name="armor_type" val="LIGHT" />
+    <set name="bodypart" val="chest" />
+    <set name="crystal_type" val="A" />
+    <set name="crystal_count" val="277" />
+    <set name="material" val="LEATHER" />
+    <set name="weight" val="4300" />
+    <set name="price" val="3470000" />
+    <for>
+      <add order="0x10" stat="pDef" val="128" />
+      <enchant order="0x0C" stat="pDef" val="0" />
+    </for>
+  </item>
+  <item id="2386" name="Wooden Gaiters" type="Armor">
+    <set name="armor_type" val="LIGHT" />
+    <set name="bodypart" val="legs" />
+    <set name="material" val="LEATHER" />
+    <set name="weight" val="1670" />
+    <set name="price" val="4970" />
+    <for>
+      <add order="0x10" stat="pDef" val="29" />
+    </for>
+  </item>
+  <item id="2387" name="Tempered Mithril Gaiters" type="Armor">
+    <set name="armor_type" val="LIGHT" />
+    <set name="bodypart" val="legs" />
+    <set name="crystal_type" val="C" />
+    <set name="crystal_count" val="94" />
+    <set name="material" val="LEATHER" />
+    <set name="weight" val="1530" />
+    <set name="price" val="237000" />
+    <for>
+      <add order="0x10" stat="pDef" val="56" />
+      <enchant order="0x0C" stat="pDef" val="0" />
+    </for>
+  </item>
+  <item id="2388" name="Zubei's Leather Gaiters" type="Armor">
+    <set name="armor_type" val="LIGHT" />
+    <set name="bodypart" val="legs" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="129" />
+    <set name="material" val="LEATHER" />
+    <set name="weight" val="1480" />
+    <set name="price" val="973000" />
+    <for>
+      <add order="0x10" stat="pDef" val="73" />
+      <enchant order="0x0C" stat="pDef" val="0" />
+    </for>
+  </item>
+  <item id="2389" name="Dark Crystal Leggings" type="Armor">
+    <set name="armor_type" val="LIGHT" />
+    <set name="bodypart" val="legs" />
+    <set name="crystal_type" val="A" />
+    <set name="crystal_count" val="173" />
+    <set name="material" val="LEATHER" />
+    <set name="weight" val="1480" />
+    <set name="price" val="2170000" />
+    <for>
+      <add order="0x10" stat="pDef" val="80" />
+      <enchant order="0x0C" stat="pDef" val="0" />
+    </for>
+  </item>
+  <item id="2390" name="Avadon Leather Armor" type="Armor">
+    <set name="armor_type" val="LIGHT" />
+    <set name="bodypart" val="fullarmor" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="304" />
+    <set name="material" val="LEATHER" />
+    <set name="weight" val="5600" />
+    <set name="price" val="2280000" />
+    <for>
+      <add order="0x10" stat="pDef" val="191" />
+      <enchant order="0x0C" stat="pDef" val="0" />
+    </for>
+  </item>
+  <item id="2391" name="Blue Wolf Leather Armor" type="Armor">
+    <set name="armor_type" val="LIGHT" />
+    <set name="bodypart" val="fullarmor" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="470" />
+    <set name="material" val="LEATHER" />
+    <set name="weight" val="5500" />
+    <set name="price" val="3530000" />
+    <for>
+      <add order="0x10" stat="pDef" val="202" />
+      <enchant order="0x0C" stat="pDef" val="0" />
+    </for>
+  </item>
+  <item id="2392" name="Leather Armor of Doom" type="Armor">
+    <set name="armor_type" val="LIGHT" />
+    <set name="bodypart" val="fullarmor" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="470" />
+    <set name="material" val="LEATHER" />
+    <set name="weight" val="5500" />
+    <set name="price" val="3530000" />
+    <for>
+      <add order="0x10" stat="pDef" val="202" />
+      <enchant order="0x0C" stat="pDef" val="0" />
+    </for>
+  </item>
+  <item id="2393" name="Tallum Leather Armor" type="Armor">
+    <set name="armor_type" val="LIGHT" />
+    <set name="bodypart" val="fullarmor" />
+    <set name="crystal_type" val="A" />
+    <set name="crystal_count" val="406" />
+    <set name="material" val="LEATHER" />
+    <set name="weight" val="5400" />
+    <set name="price" val="5080000" />
+    <for>
+      <add order="0x10" stat="pDef" val="209" />
+      <enchant order="0x0C" stat="pDef" val="0" />
+    </for>
+  </item>
+  <item id="2394" name="Nightmarish Leather Armor" type="Armor">
+    <set name="armor_type" val="LIGHT" />
+    <set name="bodypart" val="fullarmor" />
+    <set name="crystal_type" val="A" />
+    <set name="crystal_count" val="618" />
+    <set name="material" val="LEATHER" />
+    <set name="weight" val="5300" />
+    <set name="price" val="7730000" />
+    <for>
+      <add order="0x10" stat="pDef" val="220" />
+      <enchant order="0x0C" stat="pDef" val="0" />
+    </for>
+  </item>
+  <item id="2395" name="Majestic Leather Armor" type="Armor">
+    <set name="armor_type" val="LIGHT" />
+    <set name="bodypart" val="fullarmor" />
+    <set name="crystal_type" val="A" />
+    <set name="crystal_count" val="618" />
+    <set name="material" val="LEATHER" />
+    <set name="weight" val="5350" />
+    <set name="price" val="7730000" />
+    <for>
+      <add order="0x10" stat="pDef" val="220" />
+      <enchant order="0x0C" stat="pDef" val="0" />
+    </for>
+  </item>
+  <item id="2396" name="Elven Mithril Tunic" type="Armor">
+    <set name="armor_type" val="MAGIC" />
+    <set name="bodypart" val="chest" />
+    <set name="crystal_type" val="D" />
+    <set name="crystal_count" val="407" />
+    <set name="material" val="LEATHER" />
+    <set name="weight" val="720" />
+    <set name="price" val="224000" />
+    <for>
+      <add order="0x10" stat="pDef" val="54" />
+      <add order="0x60" stat="maxMp" val="169" />
+      <enchant order="0x0C" stat="pDef" val="0" />
+    </for>
+  </item>
+  <item id="2397" name="Tunic of Zubei" type="Armor">
+    <set name="armor_type" val="MAGIC" />
+    <set name="bodypart" val="chest" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="208" />
+    <set name="material" val="LEATHER" />
+    <set name="weight" val="1960" />
+    <set name="price" val="1560000" />
+    <for>
+      <add order="0x10" stat="pDef" val="78" />
+      <add order="0x60" stat="maxMp" val="345" />
+      <enchant order="0x0C" stat="pDef" val="0" />
+    </for>
+  </item>
+  <item id="2398" name="Blue Wolf Tunic" type="Armor">
+    <set name="armor_type" val="MAGIC" />
+    <set name="bodypart" val="chest" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="321" />
+    <set name="material" val="LEATHER" />
+    <set name="weight" val="1920" />
+    <set name="price" val="2410000" />
+    <for>
+      <add order="0x10" stat="pDef" val="83" />
+      <add order="0x60" stat="maxMp" val="377" />
+      <enchant order="0x0C" stat="pDef" val="0" />
+    </for>
+  </item>
+  <item id="2399" name="Tunic of Doom" type="Armor">
+    <set name="armor_type" val="MAGIC" />
+    <set name="bodypart" val="chest" />
+    <set name="crystal_type" val="B" />
+    <set name="crystal_count" val="321" />
+    <set name="material" val="LEATHER" />
+    <set name="weight" val="1900" />
+    <set name="price" val="2410000" />
+    <for>
+      <add order="0x10" stat="pDef" val="83" />
+      <add order="0x60" stat="maxMp" val="377" />
+      <enchant order="0x0C" stat="pDef" val="0" />
+    </for>
+  </item>
+</list>

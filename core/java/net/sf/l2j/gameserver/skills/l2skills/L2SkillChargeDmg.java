@@ -39,7 +39,7 @@ public class L2SkillChargeDmg extends L2Skill
 	}
 	
 	@Override
-	public boolean checkCondition(L2Character activeChar, L2Object target, boolean itemOrWeapon)
+	public boolean checkCondition(L2Character activeChar, L2Object target)
 	{
 		if (!(activeChar instanceof L2PcInstance))
 		{
@@ -55,7 +55,7 @@ public class L2SkillChargeDmg extends L2Skill
 			activeChar.sendPacket(sm);
 			return false;
 		}
-		return super.checkCondition(activeChar, target, itemOrWeapon);
+		return super.checkCondition(activeChar, target);
 	}
 	
 	/**
@@ -69,18 +69,14 @@ public class L2SkillChargeDmg extends L2Skill
 	}
 	
 	@Override
-	public void useSkill(L2Character activeChar, L2Object[] targets, boolean isFirstCritical)
+	public void useSkill(L2Character activeChar, L2Object[] targets, boolean critOnFirstTarget)
 	{
-		if (!(activeChar instanceof L2PcInstance))
+		if (activeChar.isAlikeDead() || !(activeChar instanceof L2PcInstance))
 		{
 			return;
 		}
 		
 		L2PcInstance player = (L2PcInstance) activeChar;
-		if (activeChar.isAlikeDead())
-		{
-			return;
-		}
 		
 		// Formula tested by L2Guru
 		double modifier = 0;
@@ -105,7 +101,7 @@ public class L2SkillChargeDmg extends L2Skill
 			boolean crit = false;
 			if (getBaseCritRate() > 0)
 			{
-				crit = i == 0 ? isFirstCritical : isCritical(activeChar, target);
+				crit = i == 0 ? critOnFirstTarget : isCritical(activeChar, target);
 			}
 			
 			double damage = Formulas.getInstance().calcPhysDam(activeChar, target, this, shld, false, false, soul);
@@ -132,7 +128,7 @@ public class L2SkillChargeDmg extends L2Skill
 					}
 					if (target instanceof L2NpcInstance)
 					{
-						name += target.getName() + "(" + ((L2NpcInstance) target).getTemplate().npcId + ")";
+						name += target.getName() + "(" + ((L2NpcInstance) target).getNpcId() + ")";
 					}
 					if (target instanceof L2PcInstance)
 					{

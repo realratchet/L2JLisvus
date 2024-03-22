@@ -18,7 +18,6 @@ import java.io.IOException;
 import java.net.Socket;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.logging.Logger;
 
 import net.sf.l2j.Config;
 
@@ -29,8 +28,6 @@ import net.sf.l2j.Config;
 
 public class GameServerListener extends FloodProtectedListener
 {
-	private static Logger _log = Logger.getLogger(GameServerListener.class.getName());
-
 	private final List<GameServerThread> _gameServers = new CopyOnWriteArrayList<>();
 	
 	public GameServerListener() throws IOException

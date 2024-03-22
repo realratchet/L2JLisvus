@@ -24,9 +24,6 @@ import net.sf.l2j.gameserver.model.actor.instance.L2SiegeGuardInstance;
 
 /**
  * @author mkizub
- *
- * TODO To change the template for this generated type comment go to
- * Window - Preferences - Java - Code Style - Code Templates
  */
 public class L2DoorAI extends L2CharacterAI
 {
@@ -57,7 +54,7 @@ public class L2DoorAI extends L2CharacterAI
     }
 
     @Override
-    protected void onIntentionCast(L2Skill skill, L2Object target)
+    protected void onIntentionCast(L2Skill skill, L2Object target, int controlItemObjectId)
     {
     }
 

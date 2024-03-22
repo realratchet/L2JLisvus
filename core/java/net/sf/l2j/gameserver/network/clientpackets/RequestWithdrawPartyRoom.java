@@ -14,8 +14,8 @@
  */
 package net.sf.l2j.gameserver.network.clientpackets;
 
+import net.sf.l2j.gameserver.instancemanager.PartyMatchRoomManager;
 import net.sf.l2j.gameserver.model.PartyMatchRoom;
-import net.sf.l2j.gameserver.model.PartyMatchRoomList;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.network.serverpackets.ExClosePartyRoom;
 import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
@@ -51,7 +51,7 @@ public class RequestWithdrawPartyRoom extends L2GameClientPacket
 			return;
 		}
 		
-		PartyMatchRoom _room = PartyMatchRoomList.getInstance().getRoom(_roomid);
+		PartyMatchRoom _room = PartyMatchRoomManager.getInstance().getRoom(_roomid);
 		if (_room == null)
 		{
 			return;

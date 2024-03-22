@@ -103,7 +103,6 @@ public class HennaTreeTable
 
     public L2HennaInstance[] getAvailableHenna(ClassId classId)
     {
-        List<L2HennaInstance> result = new ArrayList<>();
         List<L2HennaInstance> henna = _hennaTrees.get(classId);
 
         if (henna == null)
@@ -113,13 +112,7 @@ public class HennaTreeTable
             return new L2HennaInstance[0];
         }
 
-        for (int i = 0; i < henna.size(); i++)
-        {
-            L2HennaInstance temp = henna.get(i);
-            result.add(temp);
-        }
-
-        return result.toArray(new L2HennaInstance[result.size()]);
+        return henna.toArray(new L2HennaInstance[henna.size()]);
     }
     
     private static class SingletonHolder

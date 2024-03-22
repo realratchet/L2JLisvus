@@ -72,12 +72,10 @@ public class ServerStatus extends GameServerBasePacket
     {
         writeC(0x06);
         writeD(_attributes.size());
-        for (int i = 0; i < _attributes.size(); i++)
+        for (Attribute attr : _attributes)
         {
-            Attribute temp = _attributes.get(i);
-
-            writeD(temp.id);
-            writeD(temp.value);
+            writeD(attr.id);
+            writeD(attr.value);
         }
 
         return getBytes();

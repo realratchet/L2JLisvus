@@ -14,6 +14,8 @@
  */
 package net.sf.l2j.gameserver.templates;
 
+import net.sf.l2j.gameserver.model.itemcontainer.Inventory;
+
 /**
  * This class is dedicated to the management of EtcItem.
  * 
@@ -21,15 +23,36 @@ package net.sf.l2j.gameserver.templates;
  */
 public final class L2EtcItem  extends L2Item
 {
+	private L2EtcItemType _type;
+	private final String _handler;
+
 	/**
 	 * Constructor for EtcItem.
+	 * 
 	 * @see L2Item constructor
-	 * @param type : L2EtcItemType designating the type of object Etc
 	 * @param set : StatsSet designating the set of couples (key,value) for description of the Etc
 	 */
-	public L2EtcItem(L2EtcItemType type, StatsSet set)
+	public L2EtcItem(StatsSet set)
 	{
-		super(type, set);
+		super(set);
+
+		_type = set.getEnum("etcitem_type", L2EtcItemType.class, L2EtcItemType.OTHER);
+
+		_type1 = L2Item.TYPE1_ITEM_QUESTITEM_ADENA;
+		if (getItemType() == L2EtcItemType.QUEST)
+		{
+			_type2 = L2Item.TYPE2_QUEST;
+		}
+		else if (getItemId() == Inventory.ADENA_ID || getItemId() == Inventory.ANCIENT_ADENA_ID)
+		{
+			_type2 = L2Item.TYPE2_MONEY;
+		}
+		else
+		{
+			_type2 = L2Item.TYPE2_OTHER; // default is other
+		}
+
+		_handler = set.getString("handler", null);
 	}
 	
 	/**
@@ -39,7 +62,7 @@ public final class L2EtcItem  extends L2Item
 	@Override
 	public L2EtcItemType getItemType()
 	{
-		return (L2EtcItemType)super._type;
+		return _type;
 	}
 
     /**
@@ -49,7 +72,7 @@ public final class L2EtcItem  extends L2Item
     @Override
 	public final boolean isConsumable()
     {
-        return ((getItemType() == L2EtcItemType.SHOT) || (getItemType() == L2EtcItemType.POTION));
+        return ((getItemType() == L2EtcItemType.ARROW) || (getItemType() == L2EtcItemType.SHOT) || (getItemType() == L2EtcItemType.POTION));
     }
     
     /**
@@ -59,7 +82,7 @@ public final class L2EtcItem  extends L2Item
     @Override
 	public boolean isMercenaryTicket()
     {
-        return getItemType() == L2EtcItemType.MERCENARY_TICKET;
+        return getItemType() == L2EtcItemType.CASTLE_GUARD;
     }
 
 	/**
@@ -70,5 +93,10 @@ public final class L2EtcItem  extends L2Item
 	public int getItemMask()
 	{
 		return getItemType().mask();
+	}
+
+	public String getHandlerName()
+	{
+		return _handler;
 	}
 }

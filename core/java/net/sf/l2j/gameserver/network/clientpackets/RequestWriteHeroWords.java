@@ -37,7 +37,6 @@ public class RequestWriteHeroWords extends L2GameClientPacket
 	@Override
 	public void runImpl()
 	{
-		// TODO Auto-generated method stub
 	}
 	
 	/*

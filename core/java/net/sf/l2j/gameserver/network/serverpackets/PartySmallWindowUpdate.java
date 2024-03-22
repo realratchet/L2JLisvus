@@ -23,6 +23,7 @@ import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 public class PartySmallWindowUpdate extends L2GameServerPacket
 {
 	private static final String _S__67_PARTYSMALLWINDOWUPDATE = "[S] 52 PartySmallWindowUpdate";
+	
 	private final L2PcInstance _member;
 	
 	public PartySmallWindowUpdate(L2PcInstance member)

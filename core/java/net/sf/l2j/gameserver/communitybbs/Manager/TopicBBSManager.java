@@ -91,7 +91,7 @@ public class TopicBBSManager extends BaseBBSManager
 	 * @see net.sf.l2j.gameserver.communitybbs.Manager.BaseBBSManager#parsewrite(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, net.sf.l2j.gameserver.model.actor.instance.L2PcInstance)
 	 */
 	@Override
-	public void parsewrite(String ar1, String ar2, String ar3, String ar4, String ar5,L2PcInstance activeChar)
+	public void parseWrite(String ar1, String ar2, String ar3, String ar4, String ar5,L2PcInstance activeChar)
 	{
 		if (ar1.equals("crea"))
 		{
@@ -111,11 +111,11 @@ public class TopicBBSManager extends BaseBBSManager
 									Integer.parseInt(ar2), ar5,
 									Calendar.getInstance().getTimeInMillis(), activeChar.getName(),
 									activeChar.getObjectId(), Topic.MEMO, 0);
-				f.addtopic(t);
+				f.addTopic(t);
 				TopicBBSManager.getInstance().setMaxID(t.getID(), f);
 				Post p = new Post(activeChar.getName(), activeChar.getObjectId(), Calendar.getInstance().getTimeInMillis(), t.getID(), f.getID(), ar4);
 				PostBBSManager.getInstance().addPostByTopic(p, t);
-				parsecmd("_bbsmemo", activeChar);
+				parseCmd("_bbsmemo", activeChar);
 			}
 
 		}
@@ -131,7 +131,7 @@ public class TopicBBSManager extends BaseBBSManager
 			}
 			else
 			{
-				Topic t = f.gettopic(Integer.parseInt(ar3));
+				Topic t = f.getTopic(Integer.parseInt(ar3));
 				if (t == null)
 				{
 					ShowBoard sb = new ShowBoard("<html><body><br><br><center>the topic: " + ar3 + " does not exist !</center><br><br></body></html>", "101");
@@ -142,13 +142,13 @@ public class TopicBBSManager extends BaseBBSManager
 				else
 				{
 					//CPost cp = null;
-					Post p = PostBBSManager.getInstance().getGPosttByTopic(t);
+					Post p = PostBBSManager.getInstance().getGPostByTopic(t);
 					if (p != null)
 					{
-						p.deleteme(t);
+						p.deleteMe(t);
 					}
-					t.deleteme(f);
-					parsecmd("_bbsmemo", activeChar);
+					t.deleteMe(f);
+					parseCmd("_bbsmemo", activeChar);
 				}
 			}
 		}
@@ -165,7 +165,7 @@ public class TopicBBSManager extends BaseBBSManager
 	 * @see net.sf.l2j.gameserver.communitybbs.Manager.BaseBBSManager#parsecmd(java.lang.String, net.sf.l2j.gameserver.model.actor.instance.L2PcInstance)
 	 */
 	@Override
-	public void parsecmd(String command, L2PcInstance activeChar)
+	public void parseCmd(String command, L2PcInstance activeChar)
 	{
 		if (command.equals("_bbsmemo"))
 		{
@@ -218,7 +218,7 @@ public class TopicBBSManager extends BaseBBSManager
 			}
 			else
 			{
-				Topic t = f.gettopic(idt);
+				Topic t = f.getTopic(idt);
 				if (t == null)
 				{
 					ShowBoard sb = new ShowBoard("<html><body><br><br><center>the topic: " + idt + " does not exist !</center><br><br></body></html>", "101");
@@ -229,13 +229,13 @@ public class TopicBBSManager extends BaseBBSManager
 				else
 				{
 					//CPost cp = null;
-					Post p = PostBBSManager.getInstance().getGPosttByTopic(t);
+					Post p = PostBBSManager.getInstance().getGPostByTopic(t);
 					if (p != null)
 					{
-						p.deleteme(t);
+						p.deleteMe(t);
 					}
-					t.deleteme(f);
-					parsecmd("_bbsmemo", activeChar);
+					t.deleteMe(f);
+					parseCmd("_bbsmemo", activeChar);
 				}
 			}
 		}
@@ -264,7 +264,7 @@ public class TopicBBSManager extends BaseBBSManager
 		}
 		else if (forum.getType() == Forum.MEMO)
 		{
-			ShowMemoNewTopics(forum, activeChar);
+			showMemoNewTopics(forum, activeChar);
 		}
 		else
 		{
@@ -279,7 +279,7 @@ public class TopicBBSManager extends BaseBBSManager
 	 * @param forum
 	 * @param activeChar
 	 */
-	private void ShowMemoNewTopics(Forum forum, L2PcInstance activeChar)
+	private void showMemoNewTopics(Forum forum, L2PcInstance activeChar)
 	{
         String html = StringUtil.concat(
         	"<html>",
@@ -347,7 +347,7 @@ public class TopicBBSManager extends BaseBBSManager
 		}
 		else if (forum.getType() == Forum.MEMO)
 		{
-			ShowMemoTopics(forum, activeChar, index);
+			showMemoTopics(forum, activeChar, index);
 		}
 		else
 		{
@@ -363,7 +363,7 @@ public class TopicBBSManager extends BaseBBSManager
 	 * @param activeChar
 	 * @param index 
 	 */
-	private void ShowMemoTopics(Forum forum, L2PcInstance activeChar, int index)
+	private void showMemoTopics(Forum forum, L2PcInstance activeChar, int index)
 	{
 		forum.vload();
         StringBuilder html = new StringBuilder(2000);
@@ -391,7 +391,7 @@ public class TopicBBSManager extends BaseBBSManager
 			{
 				break;
 			}
-			Topic t = forum.gettopic(j);
+			Topic t = forum.getTopic(j);
 			if (t != null)
 			{
 				if (i++ >= 12 * (index - 1))

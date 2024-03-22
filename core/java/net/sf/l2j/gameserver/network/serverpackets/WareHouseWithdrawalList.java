@@ -32,6 +32,7 @@ public class WareHouseWithdrawalList extends L2GameServerPacket
 	public static final int Freight = 4; // not sure
 	private static Logger _log = Logger.getLogger(WareHouseWithdrawalList.class.getName());
 	private static final String _S__54_WAREHOUSEWITHDRAWALLIST = "[S] 42 WareHouseWithdrawalList";
+
 	private L2PcInstance _player;
 	private int _playerAdena;
 	private L2ItemInstance[] _items;
@@ -42,13 +43,17 @@ public class WareHouseWithdrawalList extends L2GameServerPacket
 		_player = player;
 		_whtype = type;
 		_playerAdena = _player.getAdena();
+
 		if (_player.getActiveWarehouse() == null)
 		{
 			// Something went wrong!
-			_log.warning("error while sending withdraw request to: " + _player.getName());
-			return;
+			_log.warning("Error while sending withdraw request to: " + _player.getName());
+			_items = new L2ItemInstance[0];
 		}
-		_items = _player.getActiveWarehouse().getItems();
+		else
+		{
+			_items = _player.getActiveWarehouse().getItems();
+		}
 
 		if (Config.DEBUG)
 		{

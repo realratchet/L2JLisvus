@@ -91,6 +91,7 @@ public final class Config
 	
 	/** Debug/release mode */
 	public static boolean DEBUG;
+	public static boolean PACKET_HANDLER_DEBUG;
 	/** Enable/disable assertions */
 	public static boolean ASSERT;
 	/** Enable/disable code 'in progress' */
@@ -177,8 +178,8 @@ public final class Config
 	public static String DEFAULT_GLOBAL_CHAT;
 	/** Trade chat state */
 	public static String DEFAULT_TRADE_CHAT;
-	/** For test servers - everybody has admin rights */
-	public static boolean EVERYBODY_HAS_ADMIN_RIGHTS;
+	/** For test servers - everybody has the access level set */
+	public static int ACCESS_LEVEL_FOR_EVERYBODY;
 	/** Display server version */
 	public static boolean DISPLAY_SERVER_VERSION;
 	/** Alternative game crafting */
@@ -468,8 +469,6 @@ public final class Config
 	
 	/** The highest access level */
 	public static int MASTER_ACCESS_LEVEL;
-	/** General GM AccessLevel to unstuck without 5min delay */
-	public static int GM_ESCAPE;
 	/** General GM AccessLevel to resurrect fixed after death */
 	public static int GM_FIXED;
 	/** General GM AccessLevel to attack in the peace zone */
@@ -643,8 +642,6 @@ public final class Config
 	public static boolean ALLOW_RACE;
 	/** Allow water ? */
 	public static boolean ALLOW_WATER;
-	/** Allow rent pet ? */
-	public static boolean ALLOW_RENTPET;
 	/** Allow boat ? */
 	public static boolean ALLOW_BOAT;
 	
@@ -743,13 +740,17 @@ public final class Config
 	public static boolean ENABLE_MODIFY_SKILL_DURATION;
 	/** Skill duration list */
 	public static Map<Integer, Integer> SKILL_DURATION_LIST;
+
+	/** Pet renting system */
+	public static boolean ALLOW_PET_RENT;
+	/** List of NPCs that rent pets (seperated by ",") */
+	public static String PET_RENT_NPC;
+	/** List of NPCs that rent pets */
+	public static List<Integer> LIST_PET_RENT_NPC;
 	
 	/** Wedding System */
 	public static boolean ALLOW_WEDDING;
 	public static int WEDDING_PRICE;
-	public static boolean WEDDING_TELEPORT;
-	public static int WEDDING_TELEPORT_PRICE;
-	public static int WEDDING_TELEPORT_DURATION;
 	public static boolean WEDDING_SAME_SEX;
 	public static boolean WEDDING_FORMAL_WEAR;
 	
@@ -818,8 +819,6 @@ public final class Config
 	public static boolean CUSTOM_NPC_TABLE;
 	public static boolean CUSTOM_NPC_SKILLS_TABLE;
 	public static boolean CUSTOM_MINIONS_TABLE;
-	public static boolean CUSTOM_ITEM_TABLES;
-	public static boolean CUSTOM_ARMORSETS_TABLE;
 	public static boolean CUSTOM_TELEPORT_TABLE;
 	public static boolean CUSTOM_DROPLIST_TABLE;
 	public static boolean CUSTOM_MERCHANT_TABLES;
@@ -848,7 +847,6 @@ public final class Config
 	// --------------------------------------------------
 	public static FloodProtectorConfig FLOOD_PROTECTOR_USE_ITEM;
 	public static FloodProtectorConfig FLOOD_PROTECTOR_ROLL_DICE;
-	public static FloodProtectorConfig FLOOD_PROTECTOR_FIREWORK;
 	public static FloodProtectorConfig FLOOD_PROTECTOR_ITEM_PET_SUMMON;
 	public static FloodProtectorConfig FLOOD_PROTECTOR_HERO_VOICE;
 	public static FloodProtectorConfig FLOOD_PROTECTOR_GLOBAL_CHAT;
@@ -930,11 +928,6 @@ public final class Config
 	/** List of items that cannot be dropped */
 	public static List<Integer> LIST_NONDROPPABLE_ITEMS;
 	
-	/** List of NPCs that rent pets (seperated by ",") */
-	public static String PET_RENT_NPC;
-	/** List of NPCs that rent pets */
-	public static List<Integer> LIST_PET_RENT_NPC;
-	
 	/** Duration (in ms) while a player stay in PVP mode after hitting an innocent */
 	public static int PVP_NORMAL_TIME;
 	/** Duration (in ms) while a player stay in PVP mode after hitting a purple player */
@@ -985,6 +978,9 @@ public final class Config
 	public static int BLESSED_ENCHANT_CHANCE_WEAPON;
 	public static int BLESSED_ENCHANT_CHANCE_ARMOR;
 	public static int BLESSED_ENCHANT_CHANCE_JEWELRY;
+	public static int CRYSTAL_ENCHANT_CHANCE_WEAPON;
+	public static int CRYSTAL_ENCHANT_CHANCE_ARMOR;
+	public static int CRYSTAL_ENCHANT_CHANCE_JEWELRY;
 	/** Maximum level of enchantment */
 	public static int ENCHANT_MAX_WEAPON;
 	public static int ENCHANT_MAX_ARMOR;
@@ -1044,7 +1040,6 @@ public final class Config
 	
 	/** Deep Blue Mobs' Drop Rules Enabled */
 	public static boolean DEEPBLUE_DROP_RULES;
-	public static int UNSTUCK_INTERVAL;
 	
 	/** Player Protection control */
 	public static int PLAYER_SPAWN_PROTECTION;
@@ -1303,7 +1298,6 @@ public final class Config
 		{
 			FLOOD_PROTECTOR_USE_ITEM = new FloodProtectorConfig("UseItemFloodProtector");
 			FLOOD_PROTECTOR_ROLL_DICE = new FloodProtectorConfig("RollDiceFloodProtector");
-			FLOOD_PROTECTOR_FIREWORK = new FloodProtectorConfig("FireworkFloodProtector");
 			FLOOD_PROTECTOR_ITEM_PET_SUMMON = new FloodProtectorConfig("ItemPetSummonFloodProtector");
 			FLOOD_PROTECTOR_HERO_VOICE = new FloodProtectorConfig("HeroVoiceFloodProtector");
 			FLOOD_PROTECTOR_GLOBAL_CHAT = new FloodProtectorConfig("GlobalChatFloodProtector");
@@ -1372,11 +1366,12 @@ public final class Config
 			
 			EnvProperties optionsSettings = new EnvProperties(OPTIONS_FILE);
 			
-			EVERYBODY_HAS_ADMIN_RIGHTS = Boolean.parseBoolean(optionsSettings.getProperty("EverybodyHasAdminRights", "false"));
+			ACCESS_LEVEL_FOR_EVERYBODY = Integer.parseInt(optionsSettings.getProperty("AccessLevelForEverybody", "0"));
 			
 			DISPLAY_SERVER_VERSION = Boolean.parseBoolean(optionsSettings.getProperty("DisplayServerVersion", "false"));
 			
 			DEBUG = Boolean.parseBoolean(optionsSettings.getProperty("Debug", "false"));
+			PACKET_HANDLER_DEBUG = Boolean.parseBoolean(optionsSettings.getProperty("PacketHandlerDebug", "false"));
 			ASSERT = Boolean.parseBoolean(optionsSettings.getProperty("Assert", "false"));
 			DEVELOPER = Boolean.parseBoolean(optionsSettings.getProperty("Developer", "false"));
 			ACCEPT_GEOEDITOR_CONN = Boolean.parseBoolean(optionsSettings.getProperty("AcceptGeoeditorConn", "False"));
@@ -1423,7 +1418,6 @@ public final class Config
 			ALLOW_LOTTERY = Boolean.valueOf(optionsSettings.getProperty("AllowLottery", "False"));
 			ALLOW_RACE = Boolean.valueOf(optionsSettings.getProperty("AllowRace", "False"));
 			ALLOW_WATER = Boolean.valueOf(optionsSettings.getProperty("AllowWater", "False"));
-			ALLOW_RENTPET = Boolean.valueOf(optionsSettings.getProperty("AllowRentPet", "False"));
 			ALLOW_DISCARDITEM = Boolean.valueOf(optionsSettings.getProperty("AllowDiscardItem", "True"));
 			ALLOW_FISHING = Boolean.valueOf(optionsSettings.getProperty("AllowFishing", "True"));
 			ALLOW_BOAT = Boolean.valueOf(optionsSettings.getProperty("AllowBoat", "False"));
@@ -1556,6 +1550,9 @@ public final class Config
 			BLESSED_ENCHANT_CHANCE_WEAPON = Integer.parseInt(otherSettings.getProperty("BlessedEnchantChanceWeapon", "68"));
 			BLESSED_ENCHANT_CHANCE_ARMOR = Integer.parseInt(otherSettings.getProperty("BlessedEnchantChanceArmor", "52"));
 			BLESSED_ENCHANT_CHANCE_JEWELRY = Integer.parseInt(otherSettings.getProperty("BlessedEnchantChanceJewelry", "54"));
+			CRYSTAL_ENCHANT_CHANCE_WEAPON = Integer.parseInt(otherSettings.getProperty("CrystalEnchantChanceWeapon", "68"));
+			CRYSTAL_ENCHANT_CHANCE_ARMOR = Integer.parseInt(otherSettings.getProperty("CrystalEnchantChanceArmor", "52"));
+			CRYSTAL_ENCHANT_CHANCE_JEWELRY = Integer.parseInt(otherSettings.getProperty("CrystalEnchantChanceJewelry", "54"));
 			/* limit on enchant */
 			ENCHANT_MAX_WEAPON = Integer.parseInt(otherSettings.getProperty("EnchantMaxWeapon", "25"));
 			ENCHANT_MAX_ARMOR = Integer.parseInt(otherSettings.getProperty("EnchantMaxArmor", "25"));
@@ -1595,8 +1592,6 @@ public final class Config
 				_log.warning("Invalid max player level! Level was set to " + MAX_PLAYER_LEVEL);
 			}
 			
-			UNSTUCK_INTERVAL = Integer.parseInt(otherSettings.getProperty("UnstuckInterval", "300"));
-			
 			/* Player protection after teleport or login */
 			PLAYER_SPAWN_PROTECTION = Integer.parseInt(otherSettings.getProperty("PlayerSpawnProtection", "0"));
 			
@@ -1624,17 +1619,6 @@ public final class Config
 			
 			STORE_SKILL_COOLTIME = Boolean.parseBoolean(otherSettings.getProperty("StoreSkillCooltime", "True"));
 			SUBCLASS_STORE_SKILL_COOLTIME = Boolean.parseBoolean(otherSettings.getProperty("SubclassStoreSkillCooltime", "False"));
-			
-			PET_RENT_NPC = otherSettings.getProperty("ListPetRentNpc", "7827");
-			
-			LIST_PET_RENT_NPC = new ArrayList<>();
-			if (!PET_RENT_NPC.isEmpty())
-			{
-				for (String id : PET_RENT_NPC.split(","))
-				{
-					LIST_PET_RENT_NPC.add(Integer.parseInt(id));
-				}
-			}
 			
 			NONDROPPABLE_ITEMS = otherSettings.getProperty("ListOfNonDroppableItems", "1147,425,1146,461,10,2368,7,6,2370,2369,5598");
 			
@@ -1859,7 +1843,6 @@ public final class Config
 			
 			ANTIBUFF_SHIELD_ENABLE = Boolean.valueOf(customSettings.getProperty("AntibuffShieldEnable", "false"));
 			SKILL_REUSE_INDEPENDENT = Boolean.valueOf(customSettings.getProperty("SkillReuseIndependent", "false"));
-			
 			PASSWORD_CHANGE_ENABLE = Boolean.valueOf(customSettings.getProperty("PasswordChangeEnable", "false"));
 
 			CUSTOM_SPAWNLIST_TABLE = Boolean.valueOf(customSettings.getProperty("CustomSpawnlistTable", "false"));
@@ -1867,8 +1850,6 @@ public final class Config
 			CUSTOM_NPC_TABLE = Boolean.valueOf(customSettings.getProperty("CustomNpcTable", "false"));
 			CUSTOM_NPC_SKILLS_TABLE = Boolean.valueOf(customSettings.getProperty("CustomNpcSkillsTable", "false"));
 			CUSTOM_MINIONS_TABLE = Boolean.valueOf(customSettings.getProperty("CustomMinionsTable", "false"));
-			CUSTOM_ITEM_TABLES = Boolean.valueOf(customSettings.getProperty("CustomItemTables", "false"));
-			CUSTOM_ARMORSETS_TABLE = Boolean.valueOf(customSettings.getProperty("CustomArmorSetsTable", "false"));
 			CUSTOM_TELEPORT_TABLE = Boolean.valueOf(customSettings.getProperty("CustomTeleportTable", "false"));
 			CUSTOM_DROPLIST_TABLE = Boolean.valueOf(customSettings.getProperty("CustomDroplistTable", "false"));
 			CUSTOM_MERCHANT_TABLES = Boolean.valueOf(customSettings.getProperty("CustomMerchantTables", "false"));
@@ -1956,12 +1937,21 @@ public final class Config
 					}
 				}
 			}
+
+			ALLOW_PET_RENT = Boolean.valueOf(customSettings.getProperty("AllowPetRent", "false"));
+			PET_RENT_NPC = customSettings.getProperty("ListPetRentNpc", "");
+			
+			LIST_PET_RENT_NPC = new ArrayList<>();
+			if (!PET_RENT_NPC.isEmpty())
+			{
+				for (String id : PET_RENT_NPC.split(","))
+				{
+					LIST_PET_RENT_NPC.add(Integer.parseInt(id));
+				}
+			}
 			
 			ALLOW_WEDDING = Boolean.parseBoolean(customSettings.getProperty("AllowWedding", "False"));
 			WEDDING_PRICE = Integer.parseInt(customSettings.getProperty("WeddingPrice", "25000000"));
-			WEDDING_TELEPORT = Boolean.parseBoolean(customSettings.getProperty("WeddingTeleport", "True"));
-			WEDDING_TELEPORT_PRICE = Integer.parseInt(customSettings.getProperty("WeddingTeleportPrice", "50000"));
-			WEDDING_TELEPORT_DURATION = Integer.parseInt(customSettings.getProperty("WeddingTeleportDuration", "60"));
 			WEDDING_SAME_SEX = Boolean.parseBoolean(customSettings.getProperty("WeddingAllowSameSex", "False"));
 			WEDDING_FORMAL_WEAR = Boolean.parseBoolean(customSettings.getProperty("WeddingFormalWear", "True"));
 			
@@ -2116,7 +2106,6 @@ public final class Config
 			EnvProperties accessLevelSettings = new EnvProperties(ACCESS_LEVELS_FILE);
 			
 			MASTER_ACCESS_LEVEL = Integer.parseInt(accessLevelSettings.getProperty("MasterAccessLevel", "100"));
-			GM_ESCAPE = Integer.parseInt(accessLevelSettings.getProperty("GMFastUnstuck", "100"));
 			GM_FIXED = Integer.parseInt(accessLevelSettings.getProperty("GMResurrectFixed", "100"));
 			GM_PEACE_ATTACK = Integer.parseInt(accessLevelSettings.getProperty("GMPeaceAttack", "100"));
 			GM_TRANSACTION = Integer.parseInt(accessLevelSettings.getProperty("GMTransaction", "100"));
@@ -2244,6 +2233,7 @@ public final class Config
 			ACCEPT_CHAOTIC_THRONE_CLIENTS = Boolean.parseBoolean(serverSettings.getProperty("AcceptChaoticThroneClients", "False"));
 			
 			DEBUG = Boolean.parseBoolean(serverSettings.getProperty("Debug", "false"));
+			PACKET_HANDLER_DEBUG = Boolean.parseBoolean(serverSettings.getProperty("PacketHandlerDebug", "false"));
 			DEVELOPER = Boolean.parseBoolean(serverSettings.getProperty("Developer", "false"));
 			ASSERT = Boolean.parseBoolean(serverSettings.getProperty("Assert", "false"));
 			
@@ -2316,13 +2306,13 @@ public final class Config
 	
 	/**
 	 * Loads flood protector configurations.
+	 * 
 	 * @param properties
 	 */
 	private static void loadFloodProtectorConfigs(final Properties properties)
 	{
 		loadFloodProtectorConfig(properties, FLOOD_PROTECTOR_USE_ITEM, "UseItem", "4");
 		loadFloodProtectorConfig(properties, FLOOD_PROTECTOR_ROLL_DICE, "RollDice", "42");
-		loadFloodProtectorConfig(properties, FLOOD_PROTECTOR_FIREWORK, "Firework", "42");
 		loadFloodProtectorConfig(properties, FLOOD_PROTECTOR_ITEM_PET_SUMMON, "ItemPetSummon", "16");
 		loadFloodProtectorConfig(properties, FLOOD_PROTECTOR_HERO_VOICE, "HeroVoice", "100");
 		loadFloodProtectorConfig(properties, FLOOD_PROTECTOR_GLOBAL_CHAT, "GlobalChat", "5");

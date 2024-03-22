@@ -133,7 +133,7 @@ public class NewCrypt
 		{
 			_decrypt.processBlock(raw,offset + i*8,result,i*8);
 		}
-		// TODO can the crypt and decrypt go direct to the array
+		// TODO: can the crypt and decrypt go direct to the array
 		System.arraycopy(result, 0, raw, offset, size);
 	}
 
@@ -159,7 +159,7 @@ public class NewCrypt
 		{
 			_crypt.processBlock(raw,offset + i*8,result,i*8);
 		}
-		// TODO can the crypt and decrypt go direct to the array
+		// TODO: can the crypt and decrypt go direct to the array
 		System.arraycopy(result, 0, raw, offset, size);
 	}
 }

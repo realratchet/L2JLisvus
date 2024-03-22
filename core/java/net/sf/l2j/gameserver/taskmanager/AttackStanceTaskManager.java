@@ -14,7 +14,9 @@
  */
 package net.sf.l2j.gameserver.taskmanager;
 
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Logger;
 
@@ -27,17 +29,14 @@ import net.sf.l2j.gameserver.network.serverpackets.AutoAttackStop;
 
 /**
  * This class ...
- * 
  * @version $Revision: $ $Date: $
- * @author  Luca Baldi
+ * @author Luca Baldi
  */
 public class AttackStanceTaskManager
 {
     protected static Logger _log = Logger.getLogger(AttackStanceTaskManager.class.getName());
-
-    protected Map<L2Character,Long> _attackStanceTasks = new ConcurrentHashMap<>();
     
-    public static AttackStanceTaskManager _instance;
+    protected final Map<L2Character, Long> _attackStanceTasks = new ConcurrentHashMap<>();
     
     public AttackStanceTaskManager()
     {
@@ -53,22 +52,21 @@ public class AttackStanceTaskManager
     {
         if (actor instanceof L2Summon)
         {
-            L2Summon summon = (L2Summon) actor;
-            actor = summon.getOwner();
+            actor = ((L2Summon) actor).getOwner();
         }
         
         // Cubic interaction
         if (actor instanceof L2PcInstance)
-		{
-			L2PcInstance player = (L2PcInstance) actor;
-			for (L2CubicInstance cubic : player.getCubics())
-			{
-				if (cubic.getId() != L2CubicInstance.LIFE_CUBIC)
-				{
-					cubic.doAction();
-				}
-			}
-		}
+        {
+            L2PcInstance player = (L2PcInstance) actor;
+            for (L2CubicInstance cubic : player.getCubics())
+            {
+                if (cubic.getId() != L2CubicInstance.LIFE_CUBIC)
+                {
+                    cubic.doAction();
+                }
+            }
+        }
         
         _attackStanceTasks.put(actor, System.currentTimeMillis());
     }
@@ -92,48 +90,50 @@ public class AttackStanceTaskManager
         }
         return _attackStanceTasks.containsKey(actor);
     }
-
+    
     private class FightModeScheduler implements Runnable
     {
-        protected FightModeScheduler()
-        {
-            // Do nothing
-        }
-
         @Override
-		public void run()
+        public void run()
         {
-            Long current = System.currentTimeMillis();
-            try 
+            long current = System.currentTimeMillis();
+            try
             {
-            	if (_attackStanceTasks != null)
+                final Iterator<Entry<L2Character, Long>> iter = _attackStanceTasks.entrySet().iterator();
+                Entry<L2Character, Long> e;
+                L2Character actor;
+                
+                while (iter.hasNext())
                 {
-            		synchronized (this)
+                    e = iter.next();
+                    if ((current - e.getValue()) > 15000)
                     {
-            			for(L2Character actor : _attackStanceTasks.keySet())
-            			{
-            				if ((current - _attackStanceTasks.get(actor)) > 15000)
-            				{
-            					actor.broadcastPacket(new AutoAttackStop(actor.getObjectId()));
-                                if (actor instanceof L2PcInstance && ((L2PcInstance)actor).getPet() != null)
-                                    ((L2PcInstance)actor).getPet().broadcastPacket(new AutoAttackStop(((L2PcInstance)actor).getPet().getObjectId()));
-            					actor.getAI().setAutoAttacking(false);
-            					_attackStanceTasks.remove(actor);
-            				}
-            			}
-            		}
+                        actor = e.getKey();
+                        if (actor != null)
+                        {
+                            actor.broadcastPacket(new AutoAttackStop(actor.getObjectId()));
+                            if (actor instanceof L2PcInstance && ((L2PcInstance) actor).getPet() != null)
+                            {
+                                actor.getPet().broadcastPacket(new AutoAttackStop(actor.getPet().getObjectId()));
+                            }
+                            
+                            actor.getAI().setAutoAttacking(false);
+                        }
+                        
+                        iter.remove();
+                    }
                 }
             }
-            catch (Throwable e)
+            catch (Exception e)
             {
-            	// TODO: Find out the reason for exception. Unless caught here, players remain in attack positions. 
-            	_log.warning(e.toString());
+                // Unless caught here, players remain in attack positions
+                _log.warning(e.toString());
             }
         }
     }
     
     private static class SingletonHolder
-	{
-		protected static final AttackStanceTaskManager _instance = new AttackStanceTaskManager();
-	}
+    {
+        protected static final AttackStanceTaskManager _instance = new AttackStanceTaskManager();
+    }
 }

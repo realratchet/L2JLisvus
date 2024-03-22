@@ -133,7 +133,7 @@ public class PcInventory extends Inventory
 		List<L2ItemInstance> list = new ArrayList<>();
 		for (L2ItemInstance item : _items)
 		{
-			if (item.isWear() || !(item.getItem() instanceof L2Armor) && !(item.getItem() instanceof L2Weapon))
+			if (!(item.getItem() instanceof L2Armor) && !(item.getItem() instanceof L2Weapon))
 			{
 				continue;
 			}
@@ -207,7 +207,7 @@ public class PcInventory extends Inventory
 		List<L2ItemInstance> list = new ArrayList<>();
 		for (L2ItemInstance item : _items)
 		{
-			if (item.isWear() || !(item.getItem() instanceof L2Armor) && !(item.getItem() instanceof L2Weapon))
+			if (!(item.getItem() instanceof L2Armor) && !(item.getItem() instanceof L2Weapon))
 			{
 				continue;
 			}

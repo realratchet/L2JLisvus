@@ -25,8 +25,6 @@ public class CharacterRestore extends L2GameClientPacket
 	private static final String _C__62_CHARACTERRESTORE = "[C] 62 CharacterRestore";
 	// private static Logger _log = Logger.getLogger(CharacterRestore.class.getName());
 
-	// cd
-	@SuppressWarnings("unused")
 	private int _charSlot;
 
 	@Override

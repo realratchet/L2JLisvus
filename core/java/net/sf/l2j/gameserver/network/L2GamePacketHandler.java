@@ -332,12 +332,11 @@ public final class L2GamePacketHandler implements IPacketHandler<L2GameClient>, 
 					// case 0x49:
 					// // RequestSEKCustom
 					// break;
-					// THESE ARE NOW TEMPORARY DISABLED
 					case 0x4a:
-						new StartRotating();
+						msg = new StartRotating();
 						break;
 					case 0x4b:
-						new FinishRotating();
+						msg = new FinishRotating();
 						break;
 					case 0x4d:
 						msg = new RequestStartPledgeWar();
@@ -671,7 +670,7 @@ public final class L2GamePacketHandler implements IPacketHandler<L2GameClient>, 
 						msg = new DlgAnswer();
 						break;
 					case 0xc6:
-						msg = new RequestWearItem();
+						msg = new RequestPreviewItem();
 						break;
 					case 0xc7:
 						msg = new RequestSSQStatus();
@@ -780,6 +779,11 @@ public final class L2GamePacketHandler implements IPacketHandler<L2GameClient>, 
 	{
 		// Check for unknown packet flood
 		client.getStat().countUnknownPackets();
+
+		if (!Config.PACKET_HANDLER_DEBUG)
+		{
+			return;
+		}
 		
 		int size = buf.remaining();
 		_log.warning("Unknown Packet: " + Integer.toHexString(opcode) + " on State: " + state.name() + " Client: " + client.toString());
@@ -792,6 +796,11 @@ public final class L2GamePacketHandler implements IPacketHandler<L2GameClient>, 
 	{
 		// Check for unknown packet flood
 		client.getStat().countUnknownPackets();
+
+		if (!Config.PACKET_HANDLER_DEBUG)
+		{
+			return;
+		}
 		
 		int size = buf.remaining();
 		_log.warning("Unknown Packet: " + Integer.toHexString(opcode) + ":" + Integer.toHexString(id2) + " on State: " + state.name() + " Client: " + client.toString());

@@ -37,10 +37,7 @@ import net.sf.l2j.gameserver.skills.Stats;
  */
 public class Heal implements ISkillHandler
 {
-	// all the items ids that this handler knows
-	// private static Logger _log = Logger.getLogger(Heal.class.getName());
-
-	private static SkillType[] _skillIds =
+	private static SkillType[] SKILL_TYPES =
 	{
 		SkillType.HEAL,
 		SkillType.HEAL_PERCENT,
@@ -51,7 +48,7 @@ public class Heal implements ISkillHandler
 	 * @see net.sf.l2j.gameserver.handler.ISkillHandler#useSkill(net.sf.l2j.gameserver.model.L2Character, net.sf.l2j.gameserver.model.L2Skill, net.sf.l2j.gameserver.model.L2Object[], boolean)
 	 */
 	@Override
-	public void useSkill(L2Character activeChar, L2Skill skill, L2Object[] targets, boolean isFirstCritical)
+	public void useSkill(L2Character activeChar, L2Skill skill, L2Object[] targets, boolean critOnFirstTarget)
 	{
 		// Check for other effects
 		try
@@ -59,7 +56,7 @@ public class Heal implements ISkillHandler
 			ISkillHandler handler = SkillHandler.getInstance().getSkillHandler(SkillType.BUFF);
 			if (handler != null)
 			{
-				handler.useSkill(activeChar, skill, targets, isFirstCritical);
+				handler.useSkill(activeChar, skill, targets, critOnFirstTarget);
 			}
 		}
 		catch (Exception e)
@@ -174,8 +171,8 @@ public class Heal implements ISkillHandler
 	}
 
 	@Override
-	public SkillType[] getSkillIds()
+	public SkillType[] getSkillTypes()
 	{
-		return _skillIds;
+		return SKILL_TYPES;
 	}
 }

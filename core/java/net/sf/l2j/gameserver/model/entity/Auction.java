@@ -313,7 +313,7 @@ public class Auction
 	{
 		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
 		{
-			if (getBidders().get(bidder.getClanId()) != null)
+			if (getBidders().containsKey(bidder.getClanId()))
 			{
 				try (PreparedStatement statement = con.prepareStatement("UPDATE auction_bid SET bidderId=?, bidderName=?, maxBid=?, time_bid=? WHERE auctionId=? AND bidderId=?"))
 				{
@@ -348,7 +348,7 @@ public class Auction
 			_highestBidderId = bidder.getClanId();
 			_highestBidderMaxBid = bid;
 			_highestBidderName = bidder.getClan().getLeaderName();
-			if (_bidders.get(_highestBidderId) == null)
+			if (!_bidders.containsKey(_highestBidderId))
 			{
 				_bidders.put(_highestBidderId, new Bidder(_highestBidderName, bidder.getClan().getName(), bid, Calendar.getInstance().getTimeInMillis()));
 			}

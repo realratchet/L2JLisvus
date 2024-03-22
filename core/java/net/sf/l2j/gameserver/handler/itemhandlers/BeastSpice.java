@@ -14,20 +14,16 @@
  */
 package net.sf.l2j.gameserver.handler.itemhandlers;
 
-import net.sf.l2j.gameserver.datatables.SkillTable;
 import net.sf.l2j.gameserver.handler.IItemHandler;
 import net.sf.l2j.gameserver.model.L2ItemInstance;
-import net.sf.l2j.gameserver.model.L2Object;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PlayableInstance;
+import net.sf.l2j.gameserver.model.holder.SkillHolder;
 import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
 import net.sf.l2j.gameserver.model.actor.instance.L2FeedableBeastInstance;
 
 public class BeastSpice implements IItemHandler
 {
-    // Golden Spice, Crystal Spice
-    private static int[] _itemIds = { 6643, 6644 };
-
     @Override
 	public void useItem(L2PlayableInstance playable, L2ItemInstance item)
     {
@@ -42,22 +38,10 @@ public class BeastSpice implements IItemHandler
             return;				
         }
 
-        L2Object[] targets = new L2Object[1];
-        targets[0] = activeChar.getTarget();
-
-        int itemId = item.getItemId();
-
-        // Golden Spice
-        if (itemId == 6643)
-            activeChar.useMagic(SkillTable.getInstance().getInfo(2188,1), false, false);
-        // Crystal Spice
-        else if (itemId == 6644)
-            activeChar.useMagic(SkillTable.getInstance().getInfo(2189,1), false, false);
+        if (item.getItem().getSkills() != null)
+		{
+			SkillHolder holder = item.getItem().getSkills()[0];
+            activeChar.useMagic(holder.getSkill(), false, false, item.getObjectId());
+        }
     }
-
-    @Override
-	public int[] getItemIds() 
-    { 
-        return _itemIds; 
-    } 
 }

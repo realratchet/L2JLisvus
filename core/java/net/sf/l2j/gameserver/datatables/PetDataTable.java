@@ -45,7 +45,7 @@ public class PetDataTable
     public void loadPetData()
     { 
     	try (Connection con = L2DatabaseFactory.getInstance().getConnection();
-            PreparedStatement statement = con.prepareStatement("SELECT typeID, level, expMax, hpMax, mpMax, patk, pdef, matk, mdef, acc, evasion, crit, speed, atk_speed, cast_speed, feedMax, feedbattle, feednormal, loadMax, hpregen, mpregen, owner_exp_taken FROM pets_stats");
+            PreparedStatement statement = con.prepareStatement("SELECT typeID, level, expMax, hpMax, mpMax, patk, pdef, matk, mdef, acc, evasion, crit, speed, atk_speed, cast_speed, feedMax, feedbattle, feednormal, hpregen, mpregen, owner_exp_taken FROM pets_stats");
             ResultSet rset = statement.executeQuery())
         {
             int petId, petLevel;
@@ -63,27 +63,26 @@ public class PetDataTable
                 petData.setPetMaxExp(rset.getLong("expMax"));
                 petData.setPetMaxHP(rset.getInt("hpMax"));                        
                 petData.setPetMaxMP(rset.getInt("mpMax"));
-                petData.setPetPAtk(rset.getInt("patk")); 
-                petData.setPetPDef(rset.getInt("pdef")); 
-                petData.setPetMAtk(rset.getInt("matk")); 
-                petData.setPetMDef(rset.getInt("mdef")); 
-                petData.setPetAccuracy(rset.getInt("acc")); 
-                petData.setPetEvasion(rset.getInt("evasion")); 
-                petData.setPetCritical(rset.getInt("crit")); 
-                petData.setPetSpeed(rset.getInt("speed")); 
-                petData.setPetAtkSpeed(rset.getInt("atk_speed")); 
-                petData.setPetCastSpeed(rset.getInt("cast_speed")); 
-                petData.setPetMaxFeed(rset.getInt("feedMax")); 
-                petData.setPetFeedNormal(rset.getInt("feednormal")); 
-                petData.setPetFeedBattle(rset.getInt("feedbattle")); 
-                petData.setPetMaxLoad(rset.getInt("loadMax")); 
-                petData.setPetRegenHP(rset.getInt("hpregen")); 
+                petData.setPetPAtk(rset.getInt("patk"));
+                petData.setPetPDef(rset.getInt("pdef"));
+                petData.setPetMAtk(rset.getInt("matk"));
+                petData.setPetMDef(rset.getInt("mdef"));
+                petData.setPetAccuracy(rset.getInt("acc"));
+                petData.setPetEvasion(rset.getInt("evasion"));
+                petData.setPetCritical(rset.getInt("crit"));
+                petData.setPetSpeed(rset.getInt("speed"));
+                petData.setPetAtkSpeed(rset.getInt("atk_speed"));
+                petData.setPetCastSpeed(rset.getInt("cast_speed"));
+                petData.setPetMaxFeed(rset.getInt("feedMax"));
+                petData.setPetFeedNormal(rset.getInt("feednormal"));
+                petData.setPetFeedBattle(rset.getInt("feedbattle"));
+                petData.setPetRegenHP(rset.getInt("hpregen"));
                 petData.setPetRegenMP(rset.getInt("mpregen"));
                 petData.setOwnerExpTaken(rset.getFloat("owner_exp_taken"));
 
                 // if its the first data for this pet id, we initialize its level in Map
                 if (!_petTable.containsKey(petId))
-                    _petTable.put(petId, new HashMap<Integer, L2PetData>());
+                    _petTable.put(petId, new HashMap<>());
                 
                 _petTable.get(petId).put(petLevel,petData);
             }
@@ -119,24 +118,15 @@ public class PetDataTable
         return _petTable.get(petID).get(petLevel);
     }
     
-    public boolean doesPetNameExist(String name, int petNpcId)
+    public boolean doesPetNameExist(String name)
 	{
 		boolean result = true;
 
 		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
-			PreparedStatement statement = con.prepareStatement("SELECT name FROM pets p, items i WHERE p.item_obj_id = i.object_id AND name=? AND i.item_id IN (?)"))
+			PreparedStatement statement = con.prepareStatement("SELECT name FROM pets WHERE name=?"))
 		{
 			statement.setString(1, name);
 
-			String cond = "";
-			for (int it : getPetItemsAsNpc(petNpcId))
-			{
-				if (!cond.isEmpty())
-                    cond += ", ";
-				cond += it;
-			}
-
-			statement.setString(2, cond);
 			try (ResultSet rset = statement.executeQuery())
             {
 			    result = rset.next();
@@ -144,7 +134,7 @@ public class PetDataTable
 		}
 		catch (SQLException e)
 		{
-			_log.warning("Could not check existing pet name: " + e.getMessage());
+			_log.warning("Could not confirm pet name existence: " + e.getMessage());
 		}
 		return result;
 	}
@@ -177,6 +167,10 @@ public class PetDataTable
     public static boolean isBaby(int npcId)
     {
     	return npcId > 12779 && npcId < 12783;
+    }
+
+    public static boolean isPetShot(int itemId) {
+        return itemId == 6645 || itemId == 6646 || itemId == 6647;
     }
     
     public static boolean isPetFood(int itemId)
@@ -290,7 +284,8 @@ public class PetDataTable
     public static int getStriderTwilightId()
     {
     	return 12528;
-    }
+    }
+
     public static int getSinEaterItemId()
     {
     	return 4425;
@@ -308,15 +303,6 @@ public class PetDataTable
     public static int getStriderTwilightItemId()
     {
     	return 4424;
-    }
-
-    public static boolean isPetItem(int itemId)
-    {
-    	return (itemId == 2375 // wolf
-        || itemId == 3500 || itemId == 3501 || itemId == 3502 // hatchlings
-        || itemId == 4422 || itemId == 4423 || itemId == 4424 // striders
-        || itemId == 4425 // Sin Eater
-        || itemId == 6648 || itemId == 6649 || itemId == 6650); // Babies
     }
     
     public static int[] getPetItemsAsNpc(int npcId)
@@ -342,7 +328,8 @@ public class PetDataTable
             default: // unknown item id.. should never happen
                 return new int[]{0};
         }
-    }
+    }
+
     public static boolean isMountable(int npcId)
     {
     	return npcId == 12526	// wind strider

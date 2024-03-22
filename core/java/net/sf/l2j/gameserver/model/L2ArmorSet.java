@@ -16,119 +16,118 @@ package net.sf.l2j.gameserver.model;
 
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.itemcontainer.Inventory;
+import net.sf.l2j.gameserver.templates.StatsSet;
 
 /**
- * 
- *
- * @author  Luno
+ * @author Luno
  */
 public final class L2ArmorSet
 {
-	private final int _chest;
-	private final int _legs;
-	private final int _head;
-	private final int _gloves;
-	private final int _feet;
-	private final int _skill_id;
-	
-	private final int _shield;
-	private final int _shield_skill_id;
-	
-	public L2ArmorSet(int chest, int legs, int head, int gloves, int feet, int skill_id, int shield, int shield_skill_id)
+	private static final int[] PAPERDOLL_SET_INDICES =
 	{
-		_chest = chest;
-		_legs  = legs;
-		_head  = head;
-		_gloves = gloves;
-		_feet  = feet;
-		_skill_id = skill_id;
+		Inventory.PAPERDOLL_CHEST,
+		Inventory.PAPERDOLL_LEGS,
+		Inventory.PAPERDOLL_HEAD,
+		Inventory.PAPERDOLL_GLOVES,
+		Inventory.PAPERDOLL_FEET
+	};
 
-		_shield = shield;
-		_shield_skill_id = shield_skill_id;
+	private final String _name;
+	
+	private final int[] _set = new int[5];
+	
+	private final int _skillId;
+	private final int _shield;
+	private final int _shieldSkillId;
+	
+	public L2ArmorSet(StatsSet set)
+	{
+		_name = set.getString("name", "");
+		_set[0] = set.getInteger("chest", 0);
+		_set[1] = set.getInteger("legs", 0);
+		_set[2] = set.getInteger("head", 0);
+		_set[3] = set.getInteger("gloves", 0);
+		_set[4] = set.getInteger("feet", 0);
+		_skillId = set.getInteger("skillId", 0);
+		_shield = set.getInteger("shield", 0);
+		_shieldSkillId = set.getInteger("shieldSkillId", 0);
 	}
+	
 	/**
-	 * Checks if player have equiped all items from set (not checking shield)
+	 * Checks if player have equipped all items from set (not checking shield).
+	 * 
 	 * @param player whose inventory is being checked
 	 * @return True if player equips whole set
 	 */
-	public boolean containAll(L2PcInstance player)
+	public boolean containsAll(L2PcInstance player)
 	{
-		Inventory inv = player.getInventory();
+		final Inventory inv = player.getInventory();
 		
-		L2ItemInstance legsItem   = inv.getPaperdollItem(Inventory.PAPERDOLL_LEGS);
-		L2ItemInstance headItem   = inv.getPaperdollItem(Inventory.PAPERDOLL_HEAD);
-		L2ItemInstance glovesItem = inv.getPaperdollItem(Inventory.PAPERDOLL_GLOVES);
-		L2ItemInstance feetItem   = inv.getPaperdollItem(Inventory.PAPERDOLL_FEET);
-		
-		int legs = 0;
-		int head = 0;
-		int gloves = 0;
-		int feet = 0;
-		
-		if(legsItem != null)   legs = legsItem.getItemId();
-		if(headItem != null)   head = headItem.getItemId();
-		if(glovesItem != null) gloves = glovesItem.getItemId();
-		if(feetItem != null)   feet = feetItem.getItemId();
-		
-		return containAll(_chest,legs,head,gloves,feet);
-		
-	}
-	public boolean containAll(int chest, int legs, int head, int gloves, int feet)
-	{
-		if(_chest != 0 && _chest != chest)
-			return false;
-		if(_legs != 0 && _legs != legs)
-			return false;
-		if(_head != 0 && _head != head)
-			return false;
-		if(_gloves != 0 && _gloves != gloves)
-			return false;
-		if(_feet != 0 && _feet != feet)
-			return false;
-	
+		// Exclude chest
+		for (int i = 1; i < _set.length; i++)
+		{
+			int setItemId = _set[i];
+			L2ItemInstance item = inv.getPaperdollItem(PAPERDOLL_SET_INDICES[i]);
+			int itemId = item != null ? item.getItemId() : 0;
+			if (setItemId != 0 && setItemId != itemId)
+			{
+				return false;
+			}
+		}
 		return true;
 	}
-	public boolean containItem(int slot, int itemId)
+	
+	public boolean containsItem(int slot, int itemId)
 	{
-		switch(slot)
+		switch (slot)
 		{
-		case Inventory.PAPERDOLL_CHEST:
-			return _chest == itemId;
-		case Inventory.PAPERDOLL_LEGS:
-			return _legs == itemId;
-		case Inventory.PAPERDOLL_HEAD:
-			return _head == itemId;
-		case Inventory.PAPERDOLL_GLOVES:
-			return _gloves == itemId;
-		case Inventory.PAPERDOLL_FEET:
-			return _feet == itemId;
-		default:
-			return false;
+			case Inventory.PAPERDOLL_CHEST:
+				return _set[0] == itemId;
+			case Inventory.PAPERDOLL_LEGS:
+				return _set[1] == itemId;
+			case Inventory.PAPERDOLL_HEAD:
+				return _set[2] == itemId;
+			case Inventory.PAPERDOLL_GLOVES:
+				return _set[3] == itemId;
+			case Inventory.PAPERDOLL_FEET:
+				return _set[4] == itemId;
+			default:
+				return false;
 		}
 	}
-	public int getSkillId()
-	{
-		return _skill_id;
-	}
-	public boolean containShield(L2PcInstance player)
+	
+	public boolean containsShield(L2PcInstance player)
 	{
 		Inventory inv = player.getInventory();
 		
 		L2ItemInstance shieldItem = inv.getPaperdollItem(Inventory.PAPERDOLL_LHAND);
-		if(shieldItem!= null && shieldItem.getItemId() == _shield)
+		if (shieldItem != null && shieldItem.getItemId() == _shield)
 			return true;
-	
+		
 		return false;
 	}
-	public boolean containShield(int shield_id)
+	
+	public boolean containsShield(int shield_id)
 	{
 		if (_shield == 0)
 			return false;
 		
 		return _shield == shield_id;
 	}
+	
+	public int getSkillId()
+	{
+		return _skillId;
+	}
+
 	public int getShieldSkillId()
 	{
-		return _shield_skill_id;
+		return _shieldSkillId;
+	}
+	
+	@Override
+	public String toString()
+	{
+		return _name;
 	}
 }

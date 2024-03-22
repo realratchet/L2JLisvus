@@ -189,7 +189,7 @@ public final class QuestState
 			}
 			
 			Quest.updateQuestInDb(this);
-			getPlayer().sendPacket(new QuestList());
+			getPlayer().sendPacket(new QuestList(getPlayer()));
 		}
 		return state;
 	}
@@ -244,9 +244,7 @@ public final class QuestState
 		
 		if (var.equals("cond"))
 		{
-			QuestList ql = new QuestList();
-			
-			getPlayer().sendPacket(ql);
+			getPlayer().sendPacket(new QuestList(getPlayer()));
 			
 			int questId = getQuest().getQuestIntId();
 			if (questId > 0 && questId < 999 && !val.equals("0"))
@@ -284,7 +282,7 @@ public final class QuestState
 	 */
 	public String get(String var)
 	{
-		if (_vars != null && _vars.get(var) != null)
+		if (_vars != null && _vars.containsKey(var))
 			return _vars.get(var);
 		return null;
 	}
@@ -731,8 +729,9 @@ public final class QuestState
 		else
 		{
 			if (item.isEquipped())
-				player.getInventory().unEquipItemInBodySlotAndRecord(item.getItem().getBodyPart());
-			
+			{
+				player.getInventory().unEquipItemInSlotAndRecord(item.getEquipSlot());
+			}
 			player.destroyItemByItemId("Quest", itemId, count, player, true);
 		}
 		return item;

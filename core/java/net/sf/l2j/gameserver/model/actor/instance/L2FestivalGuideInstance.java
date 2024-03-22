@@ -31,31 +31,31 @@ import net.sf.l2j.util.StringUtil;
 
 /**
  * Festival of Darkness Guide (Seven Signs)
- * 
  * @author Tempy
  */
 public final class L2FestivalGuideInstance extends L2FolkInstance
 {
-    protected int _festivalType; 
+    protected int _festivalType;
     protected int _festivalOracle;
     protected int _blueStonesNeeded;
     protected int _greenStonesNeeded;
     protected int _redStonesNeeded;
-
+    
     /**
-     * @param objectId 
+     * @param objectId
      * @param template
      */
     public L2FestivalGuideInstance(int objectId, L2NpcTemplate template)
     {
-        super(objectId, template);
+        super(objectId, template);
+        
         switch (getNpcId())
         {
             case 8127:
             case 8132:
                 _festivalType = SevenSignsFestival.FESTIVAL_LEVEL_MAX_31;
                 _festivalOracle = SevenSigns.CABAL_DAWN;
-		_blueStonesNeeded = 900;
+                _blueStonesNeeded = 900;
                 _greenStonesNeeded = 540;
                 _redStonesNeeded = 270;
                 break;
@@ -63,7 +63,7 @@ public final class L2FestivalGuideInstance extends L2FolkInstance
             case 8133:
                 _festivalType = SevenSignsFestival.FESTIVAL_LEVEL_MAX_42;
                 _festivalOracle = SevenSigns.CABAL_DAWN;
-		_blueStonesNeeded = 1500;
+                _blueStonesNeeded = 1500;
                 _greenStonesNeeded = 900;
                 _redStonesNeeded = 450;
                 break;
@@ -71,7 +71,7 @@ public final class L2FestivalGuideInstance extends L2FolkInstance
             case 8134:
                 _festivalType = SevenSignsFestival.FESTIVAL_LEVEL_MAX_53;
                 _festivalOracle = SevenSigns.CABAL_DAWN;
-		_blueStonesNeeded = 3000;
+                _blueStonesNeeded = 3000;
                 _greenStonesNeeded = 1800;
                 _redStonesNeeded = 900;
                 break;
@@ -79,7 +79,7 @@ public final class L2FestivalGuideInstance extends L2FolkInstance
             case 8135:
                 _festivalType = SevenSignsFestival.FESTIVAL_LEVEL_MAX_64;
                 _festivalOracle = SevenSigns.CABAL_DAWN;
-		_blueStonesNeeded = 4500;
+                _blueStonesNeeded = 4500;
                 _greenStonesNeeded = 2700;
                 _redStonesNeeded = 1350;
                 break;
@@ -87,16 +87,15 @@ public final class L2FestivalGuideInstance extends L2FolkInstance
             case 8136:
                 _festivalType = SevenSignsFestival.FESTIVAL_LEVEL_MAX_NONE;
                 _festivalOracle = SevenSigns.CABAL_DAWN;
-		_blueStonesNeeded = 6000;
+                _blueStonesNeeded = 6000;
                 _greenStonesNeeded = 3600;
                 _redStonesNeeded = 1800;
                 break;
-                
             case 8137:
             case 8142:
                 _festivalType = SevenSignsFestival.FESTIVAL_LEVEL_MAX_31;
                 _festivalOracle = SevenSigns.CABAL_DUSK;
-		_blueStonesNeeded = 900;
+                _blueStonesNeeded = 900;
                 _greenStonesNeeded = 540;
                 _redStonesNeeded = 270;
                 break;
@@ -104,7 +103,7 @@ public final class L2FestivalGuideInstance extends L2FolkInstance
             case 8143:
                 _festivalType = SevenSignsFestival.FESTIVAL_LEVEL_MAX_42;
                 _festivalOracle = SevenSigns.CABAL_DUSK;
-		_blueStonesNeeded = 1500;
+                _blueStonesNeeded = 1500;
                 _greenStonesNeeded = 900;
                 _redStonesNeeded = 450;
                 break;
@@ -112,7 +111,7 @@ public final class L2FestivalGuideInstance extends L2FolkInstance
             case 8144:
                 _festivalType = SevenSignsFestival.FESTIVAL_LEVEL_MAX_53;
                 _festivalOracle = SevenSigns.CABAL_DUSK;
-		_blueStonesNeeded = 3000;
+                _blueStonesNeeded = 3000;
                 _greenStonesNeeded = 1800;
                 _redStonesNeeded = 900;
                 break;
@@ -120,7 +119,7 @@ public final class L2FestivalGuideInstance extends L2FolkInstance
             case 8145:
                 _festivalType = SevenSignsFestival.FESTIVAL_LEVEL_MAX_64;
                 _festivalOracle = SevenSigns.CABAL_DUSK;
-		_blueStonesNeeded = 4500;
+                _blueStonesNeeded = 4500;
                 _greenStonesNeeded = 2700;
                 _redStonesNeeded = 1350;
                 break;
@@ -128,7 +127,7 @@ public final class L2FestivalGuideInstance extends L2FolkInstance
             case 8146:
                 _festivalType = SevenSignsFestival.FESTIVAL_LEVEL_MAX_NONE;
                 _festivalOracle = SevenSigns.CABAL_DUSK;
-		_blueStonesNeeded = 6000;
+                _blueStonesNeeded = 6000;
                 _greenStonesNeeded = 3600;
                 _redStonesNeeded = 1800;
                 break;
@@ -136,20 +135,21 @@ public final class L2FestivalGuideInstance extends L2FolkInstance
     }
     
     @Override
-	public void onBypassFeedback(L2PcInstance player, String command)
+    public void onBypassFeedback(L2PcInstance player, String command)
     {
-        if (command.startsWith("FestivalDesc")) 	
+        if (command.startsWith("FestivalDesc"))
         {
             int val = Integer.parseInt(command.substring(13));
             
             showChatWindow(player, val, null, true);
         }
-        else if (command.startsWith("Festival")) 	
+        else if (command.startsWith("Festival"))
         {
-            L2Party playerParty = player.getParty();            
+            L2Party playerParty = player.getParty();
             int val = Integer.parseInt(command.substring(9, 10));
             
-            switch (val) {
+            switch (val)
+            {
                 case 1: // Become a Participant
                     // Check if the festival period is active, if not then don't allow registration.
                     if (SevenSigns.getInstance().isSealValidationPeriod())
@@ -166,19 +166,21 @@ public final class L2FestivalGuideInstance extends L2FolkInstance
                     }
                     
                     // Check if the player is in a formed party already.
-                    if (playerParty == null) {
+                    if (playerParty == null)
+                    {
                         showChatWindow(player, 2, "b", false);
                         return;
                     }
                     
                     // Check if the player is the party leader.
-                    if (!playerParty.isLeader(player)) {
+                    if (!playerParty.isLeader(player))
+                    {
                         showChatWindow(player, 2, "c", false);
                         return;
                     }
                     
                     // Check to see if the party has at least 5 members.
-                    if (playerParty.getMemberCount() < Config.ALT_FESTIVAL_MIN_PLAYER) 
+                    if (playerParty.getMemberCount() < Config.ALT_FESTIVAL_MIN_PLAYER)
                     {
                         showChatWindow(player, 2, "b", false);
                         return;
@@ -187,11 +189,11 @@ public final class L2FestivalGuideInstance extends L2FolkInstance
                     // Check if all the party members are in the required level range.
                     if (playerParty.getLevel() > SevenSignsFestival.getMaxLevelForFestival(_festivalType))
                     {
-                        showChatWindow(player, 2, "d", false);    
+                        showChatWindow(player, 2, "d", false);
                         return;
                     }
-                      
-                    // TODO: Check if the player has delevelled by comparing their skill levels. 
+                    
+                    // TODO: Check if the player has delevelled by comparing their skill levels.
                     
                     /*
                      * Check to see if the player has already signed up,
@@ -211,7 +213,8 @@ public final class L2FestivalGuideInstance extends L2FolkInstance
                     int stoneType = Integer.parseInt(command.substring(11));
                     int stonesNeeded = 0;
                     
-                    switch (stoneType) {
+                    switch (stoneType)
+                    {
                         case SevenSigns.SEAL_STONE_BLUE_ID:
                             stonesNeeded = _blueStonesNeeded;
                             break;
@@ -223,12 +226,13 @@ public final class L2FestivalGuideInstance extends L2FolkInstance
                             break;
                     }
                     
-                    if (!player.destroyItemByItemId("SevenSigns", stoneType, stonesNeeded, this, true)) return;
+                    if (!player.destroyItemByItemId("SevenSigns", stoneType, stonesNeeded, this, true))
+                        return;
                     
                     SevenSignsFestival.getInstance().setParticipants(_festivalOracle, _festivalType, playerParty);
                     SevenSignsFestival.getInstance().addAccumulatedBonus(_festivalType, stoneType, stonesNeeded);
                     
-                    showChatWindow(player, 2, "e", false);   
+                    showChatWindow(player, 2, "e", false);
                     break;
                 case 3: // Score Registration
                     // Check if the festival period is active, if not then don't register the score.
@@ -278,7 +282,7 @@ public final class L2FestivalGuideInstance extends L2FolkInstance
                     // Check if the player collected any blood offerings during the festival.
                     if (bloodOfferings == null)
                     {
-                        player.sendMessage("You do not have any blood offerings to contribute.");                       
+                        player.sendMessage("You do not have any blood offerings to contribute.");
                         return;
                     }
                     
@@ -292,7 +296,7 @@ public final class L2FestivalGuideInstance extends L2FolkInstance
                     // Send message that the contribution score has increased.
                     SystemMessage sm = new SystemMessage(SystemMessage.CONTRIB_SCORE_INCREASED);
                     sm.addNumber(offeringScore);
-                    player.sendPacket(sm);  
+                    player.sendPacket(sm);
                     
                     if (isHighestScore)
                         showChatWindow(player, 3, "c", false);
@@ -314,18 +318,18 @@ public final class L2FestivalGuideInstance extends L2FolkInstance
                     // If no data is returned, assume there is no record, or all scores are 0.
                     if (overallData != null)
                         overallScore = overallData.getInteger("score");
-                     
+                    
                     strBuffer.append(SevenSignsFestival.getFestivalName(_festivalType) + " festival.<br>");
                     
                     if (dawnScore > 0)
-                    	StringUtil.append(strBuffer, "Dawn: " + calculateDate(dawnData.getString("date")) + ". Score " + dawnScore + "<br>" + dawnData.getString("members") + "<br>");
+                        StringUtil.append(strBuffer, "Dawn: " + calculateDate(dawnData.getString("date")) + ". Score " + dawnScore + "<br>" + dawnData.getString("members") + "<br>");
                     else
-                    	StringUtil.append(strBuffer, "Dawn: No record exists. Score 0<br>");
+                        StringUtil.append(strBuffer, "Dawn: No record exists. Score 0<br>");
                     
                     if (duskScore > 0)
-                    	StringUtil.append(strBuffer, "Dusk: " + calculateDate(duskData.getString("date")) + ". Score " + duskScore + "<br>" + duskData.getString("members") + "<br>");
+                        StringUtil.append(strBuffer, "Dusk: " + calculateDate(duskData.getString("date")) + ". Score " + duskScore + "<br>" + duskData.getString("members") + "<br>");
                     else
-                    	StringUtil.append(strBuffer, "Dusk: No record exists. Score 0<br>");
+                        StringUtil.append(strBuffer, "Dusk: No record exists. Score 0<br>");
                     
                     if (overallData != null && overallScore > 0)
                     {
@@ -333,15 +337,15 @@ public final class L2FestivalGuideInstance extends L2FolkInstance
                         
                         if (overallData.getString("cabal").equals("dawn"))
                             cabalStr = "Children of Dawn";
-                           
+                        
                         StringUtil.append(strBuffer, "Consecutive top scores: " + calculateDate(overallData.getString("date")) + ". Score " + overallScore + "<br>Affilated side: " + cabalStr + "<br>" + overallData.getString("members") + "<br>");
                     }
                     else
-                    	StringUtil.append(strBuffer, "Consecutive top scores: No record exists. Score 0<br>");
+                        StringUtil.append(strBuffer, "Consecutive top scores: No record exists. Score 0<br>");
                     
                     StringUtil.append(strBuffer, "<a action=\"bypass -h npc_" + getObjectId() + "_Chat 0\">Go back.</a></body></html>");
-                   
-                    NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());                    
+                    
+                    NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
                     html.setHtml(strBuffer.toString());
                     player.sendPacket(html);
                     break;
@@ -352,23 +356,24 @@ public final class L2FestivalGuideInstance extends L2FolkInstance
                     if (!SevenSignsFestival.getInstance().isFestivalInProgress())
                         return;
                     
-                    if (!playerParty.isLeader(player)) {
+                    if (!playerParty.isLeader(player))
+                    {
                         showChatWindow(player, 8, "a", false);
                         break;
                     }
                     
                     if (SevenSignsFestival.getInstance().increaseChallenge(_festivalOracle, _festivalType))
                         showChatWindow(player, 8, "b", false);
-                    else 
-                        showChatWindow(player, 8, "c", false);                        
+                    else
+                        showChatWindow(player, 8, "c", false);
                     break;
                 case 9: // Leave the Festival
                     if (playerParty == null)
                         return;
-
+                    
                     /**
                      * If the player is the party leader, remove all participants from the festival
-                     * (i.e. set the party to null, when updating the participant list) 
+                     * (i.e. set the party to null, when updating the participant list)
                      * otherwise just remove this player from the "arena", and also remove them from the party.
                      */
                     boolean isLeader = playerParty.isLeader(player);
@@ -379,20 +384,20 @@ public final class L2FestivalGuideInstance extends L2FolkInstance
                     }
                     else
                     {
-                        SevenSignsFestival.getInstance().updateParticipants(player, playerParty);                        
+                        SevenSignsFestival.getInstance().updateParticipants(player, playerParty);
                         playerParty.removePartyMember(player, true);
                     }
                     break;
                 case 0: // Distribute Accumulated Bonus
-                    if (!SevenSigns.getInstance().isSealValidationPeriod()) 
+                    if (!SevenSigns.getInstance().isSealValidationPeriod())
                     {
                         player.sendMessage("Bonuses cannot be paid during the competition period.");
                         return;
                     }
                     
-                    if (SevenSignsFestival.getInstance().distribAccumulatedBonus(player) > 0) 
+                    if (SevenSignsFestival.getInstance().distribAccumulatedBonus(player) > 0)
                         showChatWindow(player, 0, "a", false);
-                    else 
+                    else
                         showChatWindow(player, 0, "b", false);
                     break;
                 default:
@@ -413,25 +418,27 @@ public final class L2FestivalGuideInstance extends L2FolkInstance
         filename += (isDescription) ? "desc_" : "festival_";
         filename += (suffix != null) ? val + suffix + ".htm" : val + ".htm";
         
-        // Send a Server->Client NpcHtmlMessage containing the text of the L2NpcInstance to the L2PcInstance 
+        // Send a Server->Client NpcHtmlMessage containing the text of the L2NpcInstance to the L2PcInstance
         NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
         html.setFile(filename);
-        html.replace("%objectId%",String.valueOf(getObjectId()));
+        html.replace("%objectId%", String.valueOf(getObjectId()));
         html.replace("%festivalType%", SevenSignsFestival.getFestivalName(_festivalType));
         html.replace("%cycleMins%", String.valueOf(SevenSignsFestival.getInstance().getMinsToNextCycle()));
         if (!isDescription && "2b".equals(val + suffix))
             html.replace("%minFestivalPartyMembers%", String.valueOf(Config.ALT_FESTIVAL_MIN_PLAYER));
         
         // If the stats or bonus table is required, construct them.
-        if (val == 5) html.replace("%statsTable%", getStatsTable());
-        if (val == 6) html.replace("%bonusTable%", getBonusTable());
-	
-		// festival's fee
-		if (val == 1)
+        if (val == 5)
+            html.replace("%statsTable%", getStatsTable());
+        if (val == 6)
+            html.replace("%bonusTable%", getBonusTable());
+        
+        // festival's fee
+        if (val == 1)
         {
-    		html.replace("%blueStoneNeeded%",String.valueOf(_blueStonesNeeded));
-    		html.replace("%greenStoneNeeded%",String.valueOf(_greenStonesNeeded));
-    		html.replace("%redStoneNeeded%",String.valueOf(_redStonesNeeded));
+            html.replace("%blueStoneNeeded%", String.valueOf(_blueStonesNeeded));
+            html.replace("%greenStoneNeeded%", String.valueOf(_greenStonesNeeded));
+            html.replace("%redStoneNeeded%", String.valueOf(_redStonesNeeded));
         }
         
         player.sendPacket(html);
@@ -457,8 +464,7 @@ public final class L2FestivalGuideInstance extends L2FolkInstance
             else if (dawnScore == duskScore)
                 winningCabal = "None";
             
-            StringUtil.append(tableHtml, "<tr><td width=\"100\" align=\"center\">" + festivalName + "</td><td align=\"center\" width=\"35\">" + 
-                             duskScore + "</td><td align=\"center\" width=\"35\">" + dawnScore + "</td><td align=\"center\" width=\"130\">" + winningCabal + "</td></tr>");
+            StringUtil.append(tableHtml, "<tr><td width=\"100\" align=\"center\">" + festivalName + "</td><td align=\"center\" width=\"35\">" + duskScore + "</td><td align=\"center\" width=\"35\">" + dawnScore + "</td><td align=\"center\" width=\"130\">" + winningCabal + "</td></tr>");
         }
         
         return tableHtml.toString();
@@ -486,7 +492,7 @@ public final class L2FestivalGuideInstance extends L2FolkInstance
         Calendar calCalc = Calendar.getInstance();
         
         calCalc.setTimeInMillis(numMillis);
-
+        
         return calCalc.get(Calendar.YEAR) + "/" + calCalc.get(Calendar.MONTH) + "/" + calCalc.get(Calendar.DAY_OF_MONTH);
     }
-}    
+}

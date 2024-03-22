@@ -28,6 +28,7 @@ import net.sf.l2j.gameserver.model.itemcontainer.Inventory;
 import net.sf.l2j.gameserver.network.serverpackets.InventoryUpdate;
 import net.sf.l2j.gameserver.network.serverpackets.ItemList;
 import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
+import net.sf.l2j.gameserver.templates.L2EtcItem;
 import net.sf.l2j.gameserver.templates.L2EtcItemType;
 import net.sf.l2j.gameserver.templates.L2Item;
 import net.sf.l2j.gameserver.util.IllegalPlayerAction;
@@ -91,14 +92,14 @@ public class RequestDropItem extends L2GameClientPacket
 		}
 		
 		// Mercenary Posting Tickets
-		if (item.getItem().isMercenaryTicket())
+		if (item.getItem() instanceof L2EtcItem && item.getItem().isMercenaryTicket())
 		{
-			IItemHandler handler = ItemHandler.getInstance().getItemHandler(item.getItemId());
+			IItemHandler handler = ItemHandler.getInstance().getHandler((L2EtcItem)item.getItem());
 			if (handler == null)
 			{
 				if (Config.DEBUG)
 				{
-					_log.warning("No item handler registered for item ID " + item.getItemId() + ".");
+					_log.warning("No item handler registered for item ID: " + item.getItemId() + ".");
 				}
 			}
 			else
@@ -188,7 +189,7 @@ public class RequestDropItem extends L2GameClientPacket
 		
 		if (item.isEquipped())
 		{
-			L2ItemInstance[] unequipped = activeChar.getInventory().unEquipItemInBodySlotAndRecord(item.getItem().getBodyPart());
+			L2ItemInstance[] unequipped = activeChar.getInventory().unEquipItemInSlotAndRecord(item.getEquipSlot());
 			if (unequipped.length > 0)
 			{
 				if (iu != null)
@@ -235,7 +236,7 @@ public class RequestDropItem extends L2GameClientPacket
 		{
 			String msg = "Character (" + activeChar.getName() + ") has dropped (" + droppedItem.getCount() + ") adena at (" + _x + "," + _y + "," + _z + ")";
 			_log.warning(msg);
-			GmListTable.broadcastMessageToGMs(msg);
+			GmListTable.getInstance().broadcastMessageToGMs(msg);
 		}
 	}
 

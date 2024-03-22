@@ -15,7 +15,6 @@
 package net.sf.l2j.gameserver.network.clientpackets;
 
 import net.sf.l2j.Config;
-import net.sf.l2j.gameserver.model.L2ItemInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.itemcontainer.PcFreight;
 import net.sf.l2j.gameserver.network.serverpackets.PackageSendableList;
@@ -54,11 +53,10 @@ public class RequestPackageSendableItemList extends L2GameClientPacket
 			return;
 		}
 		
-		L2ItemInstance[] items = activeChar.getInventory().getAvailableItems(true);
 		activeChar.setActiveWarehouse(new PcFreight(null));
 		
 		// Build list
-		activeChar.sendPacket(new PackageSendableList(items, _objectID));
+		activeChar.sendPacket(new PackageSendableList(activeChar, _objectID));
 		
 		if (!Config.ALT_GAME_FREIGHTS)
 		{

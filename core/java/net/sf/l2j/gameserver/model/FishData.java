@@ -19,38 +19,38 @@ public class FishData
 	private final int _id;
 	private final int _level;
 	private final String _name;
-	private final int _hP;
+	private final int _hp;
 	private final int _hpRegen;
 	private final int _type;
-    private final int _group;
-    private final int _fish_guts;
-    private final int _guts_check_time;
-    private final int _wait_time;
-    private final int _combat_time;
-
-	public FishData(int id, int lvl, String name, int hP, int hpRegen, int type, int group, int fish_guts, int guts_check_time, int wait_time, int combat_time)
+	private final int _group;
+	private final int _fishGuts;
+	private final int _gutsCheckTime;
+	private final int _waitTime;
+	private final int _combatTime;
+	
+	public FishData(int id, int lvl, String name, int hp, int hpRegen, int type, int group, int fishGuts, int gutsCheckTime, int waitTime, int combatTime)
 	{
 		_id = id;
 		_level = lvl;
 		_name = name.intern();
-		_hP = hP;
+		_hp = hp;
 		_hpRegen = hpRegen;
 		_type = type;
-        _group = group;
-        _fish_guts = fish_guts;
-        _guts_check_time = guts_check_time;
-        _wait_time = wait_time;
-        _combat_time = combat_time;
+		_group = group;
+		_fishGuts = fishGuts;
+		_gutsCheckTime = gutsCheckTime;
+		_waitTime = waitTime;
+		_combatTime = combatTime;
 	}
-
+	
 	/**
 	 * @return Returns the id.
 	 */
 	public int getId()
 	{
-	        return _id;
+		return _id;
 	}
-
+	
 	/**
 	 * @return Returns the level.
 	 */
@@ -58,7 +58,7 @@ public class FishData
 	{
 		return _level;
 	}
-
+	
 	/**
 	 * @return Returns the name.
 	 */
@@ -66,44 +66,44 @@ public class FishData
 	{
 		return _name;
 	}
-
+	
 	public int getHP()
 	{
-		return _hP;
+		return _hp;
 	}
-
+	
 	public int getHpRegen()
 	{
 		return _hpRegen;
 	}
-
+	
 	public int getType()
 	{
 		return _type;
 	}
-
+	
 	public int getGroup()
 	{
 		return _group;
 	}
-
+	
 	public int getFishGuts()
 	{
-		return _fish_guts;
+		return _fishGuts;
 	}
-
+	
 	public int getGutsCheckTime()
 	{
-		return _guts_check_time;
+		return _gutsCheckTime;
 	}
-
+	
 	public int getWaitTime()
 	{
-		return _wait_time;
+		return _waitTime;
 	}
-
+	
 	public int getCombatTime()
 	{
-		return _combat_time;
+		return _combatTime;
 	}
 }

@@ -30,7 +30,7 @@ public class ExStorageMaxCount extends L2GameServerPacket
 	private final int _freight;
 	private final int _privateSell;
 	private final int _privateBuy;
-	private final int _receipeD;
+	private final int _recipeD;
 	private final int _recipe;
 	
 	public ExStorageMaxCount(L2PcInstance character)
@@ -41,7 +41,7 @@ public class ExStorageMaxCount extends L2GameServerPacket
 		_privateSell = _character.getPrivateSellStoreLimit();
 		_privateBuy = _character.getPrivateBuyStoreLimit();
 		_freight = _character.getFreightLimit();
-		_receipeD = _character.getDwarfRecipeLimit();
+		_recipeD = _character.getDwarfRecipeLimit();
 		_recipe = _character.getCommonRecipeLimit();
 	}
 	
@@ -60,7 +60,7 @@ public class ExStorageMaxCount extends L2GameServerPacket
 		writeD(_freight);
 		writeD(_privateSell);
 		writeD(_privateBuy);
-		writeD(_receipeD);
+		writeD(_recipeD);
 		writeD(_recipe);
 	}
 	

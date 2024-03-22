@@ -14,9 +14,7 @@
  */
 package net.sf.l2j.gameserver.network.serverpackets;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import net.sf.l2j.gameserver.model.L2Party;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 
 /**
@@ -27,53 +25,51 @@ public class PartySmallWindowAll extends L2GameServerPacket
 {
 	private static final String _S__63_PARTYSMALLWINDOWALL = "[S] 4e PartySmallWindowAll";
 	
-	private List<L2PcInstance> _partyMembers = new ArrayList<>();
-	private final int _lootDistribution;
+	private final L2PcInstance _excluded;
+	private final L2Party _party;
 	
-	public PartySmallWindowAll(int lootDist)
+	public PartySmallWindowAll(L2PcInstance excluded, L2Party party)
 	{
-		_lootDistribution = lootDist;
-	}
-	
-	public void setPartyList(List<L2PcInstance> party)
-	{
-		_partyMembers = party;
+		_excluded = excluded;
+		_party = party;
 	}
 	
 	@Override
 	protected final void writeImpl()
 	{
 		writeC(0x4e);
-		L2PcInstance player = getClient().getActiveChar();
-		writeD(_partyMembers.get(0).getObjectId()); // c3 party leader id
-		writeD(_lootDistribution);// c3 party loot type (0,1,2,....)
-		writeD(_partyMembers.size() - 1);
 		
-		for (int i = 0; i < _partyMembers.size(); i++)
+		writeD(_party.getPartyLeaderOID()); // c3 party leader id
+		writeD(_party.getLootDistribution());// c3 party loot type (0,1,2,....)
+		writeD(_party.getMemberCount() - 1);
+		
+		for (L2PcInstance member : _party.getPartyMembers())
 		{
-			L2PcInstance member = _partyMembers.get(i);
-			if (!member.equals(player))
+			if (member == _excluded)
 			{
-				writeD(member.getObjectId());
-				writeS(member.getName());
-				
-				writeD((int) member.getCurrentCp()); // c4
-				writeD(member.getMaxCp()); // c4
-				
-				writeD((int) member.getCurrentHp());
-				writeD(member.getMaxHp());
-				writeD((int) member.getCurrentMp());
-				writeD(member.getMaxMp());
-				writeD(member.getLevel());
-				writeD(member.getClassId().getId());
-				writeD(0); // ??
-				writeD(0);
+				continue;
 			}
+			
+			writeD(member.getObjectId());
+			writeS(member.getName());
+			
+			writeD((int) member.getCurrentCp()); // c4
+			writeD(member.getMaxCp()); // c4
+			
+			writeD((int) member.getCurrentHp());
+			writeD(member.getMaxHp());
+			writeD((int) member.getCurrentMp());
+			writeD(member.getMaxMp());
+			writeD(member.getLevel());
+			writeD(member.getClassId().getId());
+			writeD(0); // ??
+			writeD(0);
 		}
 	}
 	
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see net.sf.l2j.gameserver.serverpackets.L2GameServerPacket#getType()
 	 */
 	@Override

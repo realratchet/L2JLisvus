@@ -54,7 +54,7 @@ public class L2SkillDrain extends L2Skill
 	}
 	
 	@Override
-	public void useSkill(L2Character activeChar, L2Object[] targets, boolean isFirstCritical)
+	public void useSkill(L2Character activeChar, L2Object[] targets, boolean critOnFirstTarget)
 	{
 		if (activeChar.isAlikeDead())
 		{
@@ -125,7 +125,7 @@ public class L2SkillDrain extends L2Skill
 			}
 			L2Character target = (L2Character) trg;
 
-			boolean mCrit = i == 0 ? isFirstCritical : isCritical(activeChar, target);
+			boolean mCrit = i == 0 ? critOnFirstTarget : isCritical(activeChar, target);
 			int damage = (int) Formulas.getInstance().calcMagicDam(activeChar, target, this, sps, bss, mCrit);
 
 			// No drain effect on invulnerable chars unless they cast it themselves.
@@ -185,7 +185,7 @@ public class L2SkillDrain extends L2Skill
 					}
 					if (target instanceof L2NpcInstance)
 					{
-						name += target.getName() + "(" + ((L2NpcInstance) target).getTemplate().npcId + ")";
+						name += target.getName() + "(" + ((L2NpcInstance) target).getNpcId() + ")";
 					}
 					if (target instanceof L2PcInstance)
 					{

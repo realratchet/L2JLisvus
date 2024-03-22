@@ -122,10 +122,10 @@ public class AuctionManager
 
     public final int getAuctionIndex(int auctionId)
     {
-        Auction auction;
-        for (int i = 0; i < getAuctions().size(); i++)
+        int size = getAuctions().size();
+        for (int i = 0; i < size; i++)
         {
-            auction = getAuctions().get(i);
+            Auction auction = getAuctions().get(i);
             if (auction != null && auction.getId() == auctionId)
                 return i;
         }

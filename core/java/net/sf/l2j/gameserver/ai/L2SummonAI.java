@@ -21,6 +21,7 @@ import static net.sf.l2j.gameserver.ai.CtrlIntention.AI_INTENTION_INTERACT;
 import static net.sf.l2j.gameserver.ai.CtrlIntention.AI_INTENTION_PICK_UP;
 
 import net.sf.l2j.gameserver.model.L2Character;
+import net.sf.l2j.gameserver.model.L2Skill;
 import net.sf.l2j.gameserver.model.L2Character.AIAccessor;
 import net.sf.l2j.gameserver.model.L2Summon;
 
@@ -82,7 +83,14 @@ public class L2SummonAI extends L2CharacterAI
 	
 	private void thinkCast()
 	{
+		L2Skill skill = getCurrentSkill();
+		if (skill == null)
+		{
+			return;
+		}
+
 		L2Summon summon = (L2Summon) _actor;
+
 		if (checkTargetLost(getCastTarget()))
 		{
 			setCastTarget(null);
@@ -91,7 +99,7 @@ public class L2SummonAI extends L2CharacterAI
 		
 		boolean val = _previousFollowStatus;
 		
-		if (maybeMoveToPawn(getCastTarget(), _actor.getMagicalAttackRange(_skill)))
+		if (maybeMoveToPawn(getCastTarget(), _actor.getMagicalAttackRange(skill)))
 		{
 			return;
 		}
@@ -100,7 +108,7 @@ public class L2SummonAI extends L2CharacterAI
 		summon.setFollowStatus(false);
 		setIntention(AI_INTENTION_IDLE);
 		_previousFollowStatus = val;
-		_accessor.doCast(_skill);
+		_accessor.doCast(skill);
 	}
 	
 	private void thinkPickUp()

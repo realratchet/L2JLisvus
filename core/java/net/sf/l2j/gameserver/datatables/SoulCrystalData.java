@@ -22,7 +22,6 @@ import java.util.logging.Logger;
 import javax.xml.parsers.DocumentBuilderFactory;
 
 import org.w3c.dom.Document;
-import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 
 import net.sf.l2j.Config;
@@ -68,18 +67,7 @@ public class SoulCrystalData
 					{
 						if (d.getNodeName().equalsIgnoreCase("item"))
 						{
-							StatsSet set = new StatsSet();
-							NamedNodeMap attrs = d.getAttributes();
-							int length = attrs.getLength();
-							
-							for (int i = 0; i < length; i++)
-							{
-								Node item = attrs.item(i);
-								if (item != null)
-								{
-									set.set(item.getNodeName(), item.getNodeValue());
-								}
-							}
+							StatsSet set = new StatsSet(d.getAttributes());
 							_soulCrystals.add(new L2SoulCrystal(set));
 						}
 					}

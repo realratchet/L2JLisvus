@@ -147,7 +147,7 @@ public class AdminSpawn implements IAdminCommandHandler
             RaidBossSpawnManager.getInstance().cleanUp();
             DayNightSpawnManager.getInstance().cleanUp();
             L2World.getInstance().deleteVisibleNpcSpawns();
-            GmListTable.broadcastMessageToGMs("NPC Unspawn completed!");
+            GmListTable.getInstance().broadcastMessageToGMs("NPC Unspawn completed!");
         }
         else if (command.startsWith("admin_spawnday"))
         {
@@ -171,12 +171,12 @@ public class AdminSpawn implements IAdminCommandHandler
             RaidBossSpawnManager.getInstance().reloadBosses();
             DayNightSpawnManager.getInstance().notifyChangeMode();
             QuestManager.getInstance().reloadAllQuests();
-            GmListTable.broadcastMessageToGMs("NPC Respawn completed!");
+            GmListTable.getInstance().broadcastMessageToGMs("NPC Respawn completed!");
         }
         else if (command.startsWith("admin_teleport_reload"))
         {
             TeleportLocationTable.getInstance().reloadAll();
-            GmListTable.broadcastMessageToGMs("Teleport List Table reloaded.");
+            GmListTable.getInstance().broadcastMessageToGMs("Teleport List Table reloaded.");
         }
         return true;
     }

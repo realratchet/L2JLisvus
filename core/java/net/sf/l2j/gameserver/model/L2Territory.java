@@ -23,141 +23,188 @@ import net.sf.l2j.util.Rnd;
 public class L2Territory
 {
 	private static final Logger _log = Logger.getLogger(L2Territory.class.getName());
-
+	
 	protected class Point
 	{
-		protected int x, y, zmin, zmax, proc;
-		Point(int _x, int _y, int _zmin, int _zmax, int _proc)
+		private int _x, _y, _zMin, _zMax, _proc;
+		
+		Point(int x, int y, int zMin, int zMax, int proc)
 		{
-			x=_x;
-			y=_y;
-			zmin=_zmin;
-			zmax=_zmax;
-			proc=_proc;
+			_x = x;
+			_y = y;
+			_zMin = zMin;
+			_zMax = zMax;
+			_proc = proc;
+		}
+		
+		public int getX()
+		{
+			return _x;
+		}
+		
+		public int getY()
+		{
+			return _y;
+		}
+		
+		public int getZMin()
+		{
+			return _zMin;
+		}
+		
+		public int getZMax()
+		{
+			return _zMax;
+		}
+		
+		public int getProc()
+		{
+			return _proc;
 		}
 	}
-
+	
 	private List<Point> _points;
 	private int _terr;
-	private int _x_min;
-	private int _x_max;
-	private int _y_min;
-	private int _y_max;
-	private int _z_min;
-	private int _z_max;
-	private int _proc_max;
-
+	private int _xMin;
+	private int _xMax;
+	private int _yMin;
+	private int _yMax;
+	private int _zMin;
+	private int _zMax;
+	private int _procMax;
+	
 	public L2Territory(int terr)
 	{
 		_points = new ArrayList<>();
 		_terr = terr;
-		_x_min = 999999;
-		_x_max =-999999;
-		_y_min = 999999;
-		_y_max =-999999;
-		_z_min = 999999;
-		_z_max =-999999;
-		_proc_max = 0;
+		_xMin = 999999;
+		_xMax = -999999;
+		_yMin = 999999;
+		_yMax = -999999;
+		_zMin = 999999;
+		_zMax = -999999;
+		_procMax = 0;
 	}
-
-	public void add(int x, int y, int zmin, int zmax, int proc)
+	
+	public void add(int x, int y, int zMin, int zMax, int proc)
 	{
-		_points.add(new Point(x,y,zmin,zmax,proc));
-		if(x<_x_min) _x_min = x;
-		if(y<_y_min) _y_min = y;
-		if(x>_x_max) _x_max = x;
-		if(y>_y_max) _y_max = y;
-		if(zmin<_z_min) _z_min = zmin;
-		if(zmax>_z_max) _z_max = zmax;
-		_proc_max += proc;
+		_points.add(new Point(x, y, zMin, zMax, proc));
+		
+		if (x < _xMin)
+			_xMin = x;
+		if (y < _yMin)
+			_yMin = y;
+		if (x > _xMax)
+			_xMax = x;
+		if (y > _yMax)
+			_yMax = y;
+		if (zMin < _zMin)
+			_zMin = zMin;
+		if (zMax > _zMax)
+			_zMax = zMax;
+		_procMax += proc;
 	}
-
+	
 	public void print()
 	{
 		for (Point p : _points)
-			System.out.println("("+p.x+","+p.y+")");
+			System.out.println("(" + p.getX() + "," + p.getY() + ")");
 	}
-
+	
 	public boolean isIntersect(int x, int y, Point p1, Point p2)
 	{
-		double dy1 = p1.y - y;
-		double dy2 = p2.y - y;
-
-		if(Math.signum(dy1) == Math.signum(dy2))
+		double dy1 = p1.getY() - y;
+		double dy2 = p2.getY() - y;
+		
+		if (Math.signum(dy1) == Math.signum(dy2))
 			return false;
 		
-		double dx1 = p1.x - x;
-		double dx2 = p2.x - x;
-
-		if(dx1 >= 0 && dx2 >= 0)
+		double dx1 = p1.getX() - x;
+		double dx2 = p2.getX() - x;
+		
+		if (dx1 >= 0 && dx2 >= 0)
 			return true;
 		
-		if(dx1 < 0 && dx2 < 0)
+		if (dx1 < 0 && dx2 < 0)
 			return false;
-
-		double dx0 = (dy1 * (p1.x-p2.x))/(p1.y-p2.y);
-
+		
+		double dx0 = (dy1 * (p1.getX() - p2.getX())) / (p1.getY() - p2.getY());
+		
 		return dx0 <= dx1;
 	}
-
+	
 	public boolean isInside(int x, int y)
 	{
-		int intersect_count = 0;
-		for(int i=0; i<_points.size(); i++)
+		int intersectCount = 0;
+		
+		int size = _points.size();
+		for (int i = 0; i < size; i++)
 		{
-			Point p1 = _points.get(i>0 ? i-1 : _points.size()-1);
+			Point p1 = _points.get(i > 0 ? i - 1 : size - 1);
 			Point p2 = _points.get(i);
-
-			if(isIntersect(x,y,p1,p2))
-				intersect_count++;
-	   	}
-
-		return intersect_count%2 == 1;
+			
+			if (isIntersect(x, y, p1, p2))
+				intersectCount++;
+		}
+		
+		return intersectCount % 2 == 1;
 	}
-
+	
 	public int[] getRandomPoint()
 	{
 		int i;
 		int[] p = new int[4];
-		if ( _proc_max>0) {
-		    int pos = 0;
-		    int rnd = Rnd.nextInt(_proc_max);
-		    for( i=0; i<_points.size(); i++){
-			Point p1 = _points.get(i);
-			pos += p1.proc;
-			if ( rnd <= pos ){
-			    p[0] = p1.x; p[1] = p1.y;
-			    p[2] = p1.zmin; p[3] = p1.zmax;
-			    return p;
-			}
-		    }		    
-		    
-		}
-		for( i=0; i<100; i++)
+		
+		if (_procMax > 0)
 		{
-			p[0] = Rnd.get(_x_min, _x_max);
-			p[1] = Rnd.get(_y_min, _y_max);
-			if(isInside(p[0],p[1])){
-			    double curdistance = 0;
-			    p[2] = _z_min+100;p[3] = _z_max;
-			    for( i=0; i<_points.size(); i++){
-				Point p1 = _points.get(i);
-				double dx = p1.x-p[0];
-				double dy = p1.y-p[1];
-				double distance = Math.sqrt(dx*dx+dy*dy);
-				if (curdistance == 0 || distance<curdistance){
-				    curdistance = distance;
-				    p[2] = p1.zmin+100;
+			int pos = 0;
+			int rnd = Rnd.nextInt(_procMax);
+			for (Point point : _points)
+			{
+				pos += point.getProc();
+				if (rnd <= pos)
+				{
+					p[0] = point.getX();
+					p[1] = point.getY();
+					p[2] = point.getZMin();
+					p[3] = point.getZMax();
+					return p;
 				}
-			    }
-			    return p;
+			}
+			
+		}
+		
+		for (i = 0; i < 100; i++)
+		{
+			p[0] = Rnd.get(_xMin, _xMax);
+			p[1] = Rnd.get(_yMin, _yMax);
+			
+			if (isInside(p[0], p[1]))
+			{
+				double curdistance = 0;
+				p[2] = _zMin + 100;
+				p[3] = _zMax;
+				
+				for (Point point : _points)
+				{
+					double dx = point.getX() - p[0];
+					double dy = point.getY() - p[1];
+					double distance = Math.sqrt(dx * dx + dy * dy);
+					if (curdistance == 0 || distance < curdistance)
+					{
+						curdistance = distance;
+						p[2] = point.getZMin() + 100;
+					}
+				}
+				return p;
 			}
 		}
-		_log.warning("Can't make point for territory"+_terr);
+		_log.warning("Can't make point for territory" + _terr);
 		return p;
 	}
-    	public int getProcMax()
+	
+	public int getProcMax()
 	{
-	    return _proc_max;
+		return _procMax;
 	}
 }

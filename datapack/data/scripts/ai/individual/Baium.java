@@ -585,7 +585,7 @@ public class Baium extends Quest
 		}
 		else
 		{
-			npc.getAI().setIntention(CtrlIntention.AI_INTENTION_FOLLOW, target, null);
+			npc.getAI().setIntention(CtrlIntention.AI_INTENTION_FOLLOW, target);
 		}
 	}
 

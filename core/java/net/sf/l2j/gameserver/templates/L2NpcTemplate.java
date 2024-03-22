@@ -329,7 +329,7 @@ public final class L2NpcTemplate extends L2CharTemplate
 			questEvents = new HashMap<>();
 		}
 
-		if (questEvents.get(EventType) == null)
+		if (!questEvents.containsKey(EventType))
 		{
 			questEvents.put(EventType, new Quest[]{q});
 		}

@@ -27,33 +27,32 @@ import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PlayableInstance;
 import net.sf.l2j.gameserver.model.itemcontainer.Inventory;
 import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
+import net.sf.l2j.gameserver.templates.L2Item;
 import net.sf.l2j.util.Rnd;
 
 /**
- * 
  * @author FBIagent 11/12/2006
- * 
  */
 public class ExtractableItems implements IItemHandler
 {
-    private static Logger _log = Logger.getLogger(ExtractableItems.class.getName());
-    
-    @Override
+	private static Logger _log = Logger.getLogger(ExtractableItems.class.getName());
+	
+	@Override
 	public void useItem(L2PlayableInstance playable, L2ItemInstance item)
-    {
-        if (!(playable instanceof L2PcInstance))
-        	return;
-
-        L2PcInstance activeChar = (L2PcInstance)playable;
-        int itemID = item.getItemId();
-        boolean isFish = (itemID >= 6411 && itemID <= 6518) || (itemID >= 7726 && itemID <= 7806);
-        
-        L2ExtractableItem exitem = ExtractableItemsData.getInstance().getExtractableItem(itemID);
-        if (exitem == null)
-            return;
-        
-        int rndNum = Rnd.get(100), chanceFrom = 0;
-        int[][] productData = new int[0][0];
+	{
+		if (!(playable instanceof L2PcInstance))
+			return;
+		
+		L2PcInstance activeChar = (L2PcInstance) playable;
+		int itemID = item.getItemId();
+		boolean isFish = (itemID >= 6411 && itemID <= 6518) || (itemID >= 7726 && itemID <= 7806);
+		
+		L2ExtractableItem exitem = ExtractableItemsData.getInstance().getExtractableItem(itemID);
+		if (exitem == null)
+			return;
+		
+		int rndNum = Rnd.get(100), chanceFrom = 0;
+		int[][] productData = new int[0][0];
 		
 		// Calculate extraction
 		for (L2ExtractableProductItem expi : exitem.getProductItemsArray())
@@ -63,9 +62,9 @@ public class ExtractableItems implements IItemHandler
 			{
 				productData = new int[expi.getId().length][2];
 				for (int i = 0; i < productData.length; i++)
-				{					
+				{
 					productData[i][0] = expi.getId()[i];
-					productData[i][1] = isFish ? (int)(expi.getAmount()[i] * Config.RATE_EXTRACT_FISH) : expi.getAmount()[i];
+					productData[i][1] = isFish ? (int) (expi.getAmount()[i] * Config.RATE_EXTRACT_FISH) : expi.getAmount()[i];
 				}
 				break;
 			}
@@ -74,64 +73,58 @@ public class ExtractableItems implements IItemHandler
 		}
 		
 		// Destroy extractable item
-        if (!activeChar.destroyItemByItemId("Extract", itemID, 1, activeChar.getTarget(), true))
-        {
-            return;
-        }
+		if (!activeChar.destroyItemByItemId("Extract", itemID, 1, activeChar.getTarget(), true))
+		{
+			return;
+		}
 		
 		if (productData.length == 0 || productData[0][0] <= 0)
 		{
 			activeChar.sendPacket(new SystemMessage(SystemMessage.NOTHING_INSIDE_THAT));
+			return;
 		}
-		else
-		{
-			for (int[] product : productData)
-			{
-				int id = product[0];
-				int amount = product[1];
-				if (id <= 0)
-				{
-					continue;
-				}
-				
-				if (ItemTable.getInstance().createDummyItem(id) == null)
-				{
-					_log.warning(getClass().getSimpleName() + ": Item " + id + " doesn't have a template!");
-					activeChar.sendPacket(new SystemMessage(SystemMessage.NOTHING_INSIDE_THAT));
-					continue;
-				}
 
-				if (ItemTable.getInstance().createDummyItem(id).isStackable())
-				{
-					activeChar.addItem("Extract", id, amount, activeChar, false);
-				}
-				else
-				{
-					for (int i = 0; i < amount; i++)
-					{
-						activeChar.addItem("Extract", id, 1, activeChar, false);
-					}
-				}
-				
-				SystemMessage sm;
-				if (id == Inventory.ADENA_ID)
-				{
-					sm = new SystemMessage(SystemMessage.EARNED_ADENA);
-				}
-				else
-				{
-					sm = new SystemMessage(SystemMessage.EARNED_S2_S1_s);
-					sm.addItemName(id);
-				}
-				sm.addNumber(amount);
-				activeChar.sendPacket(sm);
+		for (int[] product : productData)
+		{
+			int id = product[0];
+			int amount = product[1];
+			if (id <= 0)
+			{
+				continue;
 			}
+			
+			L2Item templateItem = ItemTable.getInstance().getTemplate(id);
+			if (templateItem == null)
+			{
+				_log.warning(getClass().getSimpleName() + ": Item " + id + " doesn't have a template!");
+				activeChar.sendPacket(new SystemMessage(SystemMessage.NOTHING_INSIDE_THAT));
+				continue;
+			}
+			
+			if (templateItem.isStackable())
+			{
+				activeChar.addItem("Extract", id, amount, activeChar, false);
+			}
+			else
+			{
+				for (int i = 0; i < amount; i++)
+				{
+					activeChar.addItem("Extract", id, 1, activeChar, false);
+				}
+			}
+			
+			SystemMessage sm;
+			if (id == Inventory.ADENA_ID)
+			{
+				sm = new SystemMessage(SystemMessage.EARNED_ADENA);
+			}
+			else
+			{
+				sm = new SystemMessage(SystemMessage.EARNED_S2_S1_s);
+				sm.addItemName(id);
+			}
+			sm.addNumber(amount);
+			activeChar.sendPacket(sm);
 		}
-    }
-    
-    @Override
-	public int[] getItemIds()
-    {
-    	return ExtractableItemsData.getInstance().itemIDs();
-    }
+	}
 }

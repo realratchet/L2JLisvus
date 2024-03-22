@@ -28,9 +28,6 @@ import net.sf.l2j.gameserver.network.serverpackets.ShowMiniMap;
 
 public class WorldMap implements IItemHandler
 {
-	// all the items ids that this handler knows
-	private static int[] _itemIds = { 1665, 1863 };
-
 	/* (non-Javadoc)
 	 * @see net.sf.l2j.gameserver.handler.IItemHandler#useItem(net.sf.l2j.gameserver.model.L2PcInstance, net.sf.l2j.gameserver.model.L2ItemInstance)
 	 */
@@ -39,14 +36,9 @@ public class WorldMap implements IItemHandler
 	{
 		if (!(playable instanceof L2PcInstance))
 			return;
+			
 		L2PcInstance activeChar = (L2PcInstance)playable;
 		activeChar.sendPacket(new ShowMiniMap(item.getItemId()));
 		return;
-	}
-	
-	@Override
-	public int[] getItemIds()
-	{
-		return _itemIds;
 	}
 }

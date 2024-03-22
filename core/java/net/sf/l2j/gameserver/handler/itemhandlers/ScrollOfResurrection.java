@@ -14,14 +14,12 @@
  */
 package net.sf.l2j.gameserver.handler.itemhandlers;
 
-import net.sf.l2j.gameserver.datatables.SkillTable;
 import net.sf.l2j.gameserver.handler.IItemHandler;
 import net.sf.l2j.gameserver.model.L2Character;
 import net.sf.l2j.gameserver.model.L2ItemInstance;
-import net.sf.l2j.gameserver.model.L2Skill;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.model.actor.instance.L2PetInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PlayableInstance;
+import net.sf.l2j.gameserver.model.holder.SkillHolder;
 import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
 
 /**
@@ -30,17 +28,9 @@ import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
  */
 public class ScrollOfResurrection implements IItemHandler
 {
-	// all the items ids that this handler knows
-	private final static int[] _itemIds =
-	{
-		737,
-		3936,
-		3959,
-		6387
-	};
-	
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see net.sf.l2j.gameserver.handler.IItemHandler#useItem(net.sf.l2j.gameserver.model.L2PcInstance, net.sf.l2j.gameserver.model.L2ItemInstance)
 	 */
 	@Override
@@ -87,50 +77,16 @@ public class ScrollOfResurrection implements IItemHandler
 			return;
 		}
 		
-		if (!(target instanceof L2PcInstance) && !(target instanceof L2PetInstance))
-		{
-			activeChar.sendPacket(new SystemMessage(SystemMessage.TARGET_IS_INCORRECT));
-			return;
-		}
-		
 		if (target.isInsideZone(L2Character.ZONE_SIEGE))
 		{
 			activeChar.sendPacket(new SystemMessage(SystemMessage.CANNOT_BE_RESURRECTED_DURING_SIEGE));
 			return;
 		}
 		
-		int skillId = 0;
-		switch (item.getItemId())
+		if (item.getItem().getSkills() != null)
 		{
-			case 737:
-				skillId = 2014; // Scroll of Resurrection
-				break;
-			case 3936:
-				skillId = 2049; // Blessed Scroll of Resurrection
-				break;
-			case 3959:
-				skillId = 2062; // L2Day - Blessed Scroll of Resurrection
-				break;
-			case 6387:
-				if (!(target instanceof L2PetInstance))
-				{
-					activeChar.sendPacket(new SystemMessage(SystemMessage.TARGET_IS_INCORRECT));
-					return;
-				}
-				skillId = 2179; // Blessed Scroll of Resurrection: For Pets
-				break;
+			SkillHolder holder = item.getItem().getSkills()[0];
+			activeChar.useMagic(holder.getSkill(), false, false, item.getObjectId());
 		}
-		
-		L2Skill skill = SkillTable.getInstance().getInfo(skillId, 1);
-		if (skill != null)
-		{
-			activeChar.useMagic(skill, true, true);
-		}
-	}
-	
-	@Override
-	public int[] getItemIds()
-	{
-		return _itemIds;
 	}
 }

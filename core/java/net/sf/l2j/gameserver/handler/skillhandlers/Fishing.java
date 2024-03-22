@@ -24,7 +24,6 @@ import net.sf.l2j.gameserver.model.L2Object;
 import net.sf.l2j.gameserver.model.L2Skill;
 import net.sf.l2j.gameserver.model.L2Skill.SkillType;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.model.itemcontainer.Inventory;
 import net.sf.l2j.gameserver.model.zone.L2ZoneType;
 import net.sf.l2j.gameserver.model.zone.type.L2FishingZone;
 import net.sf.l2j.gameserver.model.zone.type.L2WaterZone;
@@ -37,13 +36,13 @@ import net.sf.l2j.util.Rnd;
 public class Fishing implements ISkillHandler
 {
 	// private static Logger _log = Logger.getLogger(SiegeFlag.class.getName());
-	protected SkillType[] _skillIds =
+	private static SkillType[] SKILL_TYPES =
 	{
 		SkillType.FISHING
 	};
 	
 	@Override
-	public void useSkill(L2Character activeChar, L2Skill skill, L2Object[] targets, boolean isFirstCritical)
+	public void useSkill(L2Character activeChar, L2Skill skill, L2Object[] targets, boolean critOnFirstTarget)
 	{
 		if ((activeChar == null) || !(activeChar instanceof L2PcInstance))
 		{
@@ -82,7 +81,7 @@ public class Fishing implements ISkillHandler
 			return;
 		}
 		
-		L2ItemInstance lure = player.getInventory().getPaperdollItem(Inventory.PAPERDOLL_LHAND);
+		L2ItemInstance lure = player.getSecondaryWeaponInstance();
 		if (lure == null)
 		{
 			// Bait not equipped.
@@ -194,8 +193,8 @@ public class Fishing implements ISkillHandler
 	}
 	
 	@Override
-	public SkillType[] getSkillIds()
+	public SkillType[] getSkillTypes()
 	{
-		return _skillIds;
+		return SKILL_TYPES;
 	}
 }

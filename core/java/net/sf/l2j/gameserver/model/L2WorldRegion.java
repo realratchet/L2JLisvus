@@ -48,14 +48,16 @@ public final class L2WorldRegion
     private Queue<L2WorldRegion> _surroundingRegions;
     private int tileX, tileY;
     private Boolean _active = false;
-    private ScheduledFuture<?> _neighborsTask = null;
+    private ScheduledFuture<?> _neighborsTask = null;
+
     private final List<L2ZoneType> _zones;
 
     public L2WorldRegion(int pTileX, int pTileY)
     {
         _allPlayable = new ConcurrentHashMap<>();
         _visibleObjects = new ConcurrentHashMap<>();
-        _surroundingRegions = new ConcurrentLinkedQueue<>();
+        _surroundingRegions = new ConcurrentLinkedQueue<>();
+
         tileX = pTileX;
         tileY = pTileY;
         
@@ -191,9 +193,11 @@ public final class L2WorldRegion
                     // L2Monsterinstance/L2Attackable socials are handled by AI (TODO: check the instances)
                     ((L2NpcInstance)o).startRandomAnimationTimer();
                 }
-            }
+            }
+
             _log.fine(c+ " mobs were turned on");
-        }
+        }
+
     }
 
     public boolean isActive()
@@ -206,12 +210,12 @@ public final class L2WorldRegion
     public boolean areNeighborsEmpty()
     {
         // if this region is occupied, return false.
-        if (isActive() && (_allPlayable.size() > 0 ))
+        if (isActive() && (!_allPlayable.isEmpty() ))
             return false;
         
         // if any one of the neighbors is occupied, return false
         for (L2WorldRegion neighbor: _surroundingRegions)
-            if (neighbor.isActive() && (neighbor._allPlayable.size() > 0))
+            if (neighbor.isActive() && (!neighbor._allPlayable.isEmpty()))
                 return false;
         
         // in all other cases, return true.
@@ -232,8 +236,7 @@ public final class L2WorldRegion
         // turn the AI on or off to match the region's activation.
         switchAI(value);
         
-        // TODO
-        // turn the geodata on or off to match the region's activation.
+        // TODO: turn the geodata on or off to match the region's activation.
         if(value)
             _log.fine("Starting Grid " + tileX + ","+ tileY);
         else
@@ -332,7 +335,7 @@ public final class L2WorldRegion
         {
             _allPlayable.remove(object.getObjectId());
             
-            if ((_allPlayable.size() == 0) && (!Config.GRIDS_ALWAYS_ON))
+            if (_allPlayable.isEmpty() && !Config.GRIDS_ALWAYS_ON)
                 startDeactivation();
         }
     }

@@ -276,13 +276,15 @@ public class L2ControllableMobAI extends L2AttackableAI
 
     protected void thinkAttack() 
     {
-        if (getAttackTarget() == null || getAttackTarget().isAlikeDead()) 
+        L2Character attackTarget = getAttackTarget();
+
+        if (attackTarget == null || attackTarget.isAlikeDead()) 
         {
-            if (getAttackTarget() != null) 
+            if (attackTarget != null) 
             {
                 // stop hating
                 L2Attackable npc = (L2Attackable) _actor;
-                npc.stopHating(getAttackTarget());
+                npc.stopHating(attackTarget);
             }
 
             setIntention(AI_INTENTION_ACTIVE);
@@ -290,7 +292,7 @@ public class L2ControllableMobAI extends L2AttackableAI
         else
         {
             // notify aggression
-            if (((L2NpcInstance) _actor).getFactionId() != null && !(getAttackTarget() instanceof L2Attackable)) 
+            if (((L2NpcInstance) _actor).getFactionId() != null && !(attackTarget instanceof L2Attackable)) 
             {
                 String factionId = ((L2NpcInstance) _actor).getFactionId();
 
@@ -305,11 +307,11 @@ public class L2ControllableMobAI extends L2AttackableAI
                         continue;
 
                     if (_actor.isInsideRadius(npc, (npc.getFactionRange() + npc.getAggroRange()), false, true) 
-                            && Math.abs(getAttackTarget().getZ() - npc.getZ()) < 600
-                            && _actor.getAttackByList().contains(getAttackTarget())
+                            && Math.abs(attackTarget.getZ() - npc.getZ()) < 600
+                            && _actor.hasAttackerInAttackByList(attackTarget)
                             && npc.getAI() != null
                             && npc.getAI()._intention != CtrlIntention.AI_INTENTION_ATTACK)
-                        npc.getAI().notifyEvent(CtrlEvent.EVT_AGGRESSION, getAttackTarget(), 1);
+                        npc.getAI().notifyEvent(CtrlEvent.EVT_AGGRESSION, attackTarget, 1);
                 }
             }
 
@@ -319,9 +321,9 @@ public class L2ControllableMobAI extends L2AttackableAI
 
             try
             {
-	            _actor.setTarget(getAttackTarget());
-	            dist2 = _actor.getPlanDistanceSq(getAttackTarget().getX(), getAttackTarget().getY());
-	            range = _actor.getPhysicalAttackRange() + (int)(_actor.getTemplate().collisionRadius + getAttackTarget().getTemplate().collisionRadius);
+	            _actor.setTarget(attackTarget);
+	            dist2 = _actor.getPlanDistanceSq(attackTarget.getX(), attackTarget.getY());
+	            range = _actor.getPhysicalAttackRange() + (int)(_actor.getTemplate().collisionRadius + attackTarget.getTemplate().collisionRadius);
 	            max_range = range;
             }
             catch (NullPointerException e)
@@ -349,7 +351,7 @@ public class L2ControllableMobAI extends L2AttackableAI
                     max_range = Math.max(max_range, castRange);
                 }
 
-                moveToPawn(getAttackTarget(), range);
+                moveToPawn(attackTarget, range);
                 return;
             }
 
@@ -359,7 +361,7 @@ public class L2ControllableMobAI extends L2AttackableAI
             if (_actor.isConfused())
                 hated = findNextRndTarget();
             else
-                hated = getAttackTarget();
+                hated = attackTarget;
 
             if (hated == null) 
             {
@@ -367,8 +369,11 @@ public class L2ControllableMobAI extends L2AttackableAI
                 return;
             }
 
-            if (hated != getAttackTarget())
+            if (hated != attackTarget)
+            {
                 setAttackTarget(hated);
+                attackTarget = hated;
+            }
 
             if (!_actor.isMuted() && skills.length > 0 && Rnd.nextInt(5) == 3) 
             {
@@ -386,7 +391,7 @@ public class L2ControllableMobAI extends L2AttackableAI
                 }
             }
 
-            _accessor.doAttack(getAttackTarget());
+            _accessor.doAttack(attackTarget);
         }
     }
 
@@ -475,7 +480,7 @@ public class L2ControllableMobAI extends L2AttackableAI
                 potentialTarget.add(target);
         }
 
-        if (potentialTarget.size() == 0) // nothing to do
+        if (potentialTarget.isEmpty()) // nothing to do
             return null;
 
         // we choose a random target

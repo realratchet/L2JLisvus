@@ -139,7 +139,8 @@ public class CoupleManager
 	
 	public final int getCoupleIndex(int coupleId)
 	{
-		for (int i = 0; i < getCouples().size(); i++)
+		int size = getCouples().size();
+		for (int i = 0; i < size; i++)
 		{
 			Couple temp = getCouples().get(i);
 			if (temp != null && temp.getId() == coupleId)

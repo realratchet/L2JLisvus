@@ -31,13 +31,13 @@ import net.sf.l2j.util.Rnd;
 public class Unlock implements ISkillHandler
 {
 	// private static Logger _log = Logger.getLogger(Unlock.class.getName());
-	protected SkillType[] _skillIds =
+	private static SkillType[] SKILL_TYPES =
 	{
 		SkillType.UNLOCK
 	};
 
 	@Override
-	public void useSkill(L2Character activeChar, L2Skill skill, L2Object[] targets, boolean isFirstCritical)
+	public void useSkill(L2Character activeChar, L2Skill skill, L2Object[] targets, boolean critOnFirstTarget)
 	{
 		for (L2Object target : targets)
 		{
@@ -219,7 +219,7 @@ public class Unlock implements ISkillHandler
 					chest.setSpecialDrop();
 					chest.setMustRewardExpSp(false);
 					chest.setInteracted();
-					chest.reduceCurrentHp(99999999, activeChar);
+					chest.doDie(activeChar);
 				}
 				else
 				{
@@ -237,8 +237,8 @@ public class Unlock implements ISkillHandler
 	}
 
 	@Override
-	public SkillType[] getSkillIds()
+	public SkillType[] getSkillTypes()
 	{
-		return _skillIds;
+		return SKILL_TYPES;
 	}
 }

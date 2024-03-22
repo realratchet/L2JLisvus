@@ -38,14 +38,9 @@ public class MoveBackwardToLocation extends L2GameClientPacket
 	private int _targetX;
 	private int _targetY;
 	private int _targetZ;
-	@SuppressWarnings("unused")
 	private int _originX;
-	@SuppressWarnings("unused")
 	private int _originY;
-	@SuppressWarnings("unused")
 	private int _originZ;
-	@SuppressWarnings("unused")
-	private int _moveMovement;
 
 	private static final String _C__01_MOVEBACKWARDTOLOC = "[C] 01 MoveBackwardToLoc";
 
@@ -60,7 +55,7 @@ public class MoveBackwardToLocation extends L2GameClientPacket
 		_originZ = readD();
 		try
 		{
-			_moveMovement = readD(); // is 0 if cursor keys are used 1 if mouse is used
+			readD(); // Movement is 0 if cursor keys are used and 1 if mouse is used
 		}
 		catch (BufferUnderflowException e)
 		{

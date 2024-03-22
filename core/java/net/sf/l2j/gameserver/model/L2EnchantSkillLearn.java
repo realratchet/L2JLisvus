@@ -25,10 +25,10 @@ public final class L2EnchantSkillLearn
 {
     // these two build the primary key
     private final int _id;
-    private final int _level;
+    private final int _level;
 
     // not needed, just for easier debug
-    private final String _name;
+    private final String _name;
 
     private final int _spCost;
     private final int _baseLvl;
@@ -36,7 +36,7 @@ public final class L2EnchantSkillLearn
     private final int _exp;
     private final byte _rate76;
     private final byte _rate77;
-    private final byte _rate78;
+    private final byte _rate78;
 
     public L2EnchantSkillLearn(int id, int lvl, int minSkillLvl, int baseLvl, String name, int cost, int exp, byte rate76, byte rate77, byte rate78)
     {
@@ -50,7 +50,7 @@ public final class L2EnchantSkillLearn
         _rate76 = rate76;
         _rate77 = rate77;
         _rate78 = rate78;
-    }
+    }
 
     /**
      * @return Returns the id.
@@ -59,7 +59,6 @@ public final class L2EnchantSkillLearn
     {
         return _id;
     }
-
 
     /**
      * @return Returns the level.
@@ -129,5 +128,5 @@ public final class L2EnchantSkillLearn
         }
 
         return result;
-    }
+    }
 }

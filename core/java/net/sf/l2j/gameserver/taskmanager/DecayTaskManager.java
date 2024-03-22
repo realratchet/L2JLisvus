@@ -14,7 +14,9 @@
  */
 package net.sf.l2j.gameserver.taskmanager;
 
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.NoSuchElementException;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Logger;
@@ -29,28 +31,28 @@ public class DecayTaskManager
 {
 	protected static final Logger _log = Logger.getLogger(DecayTaskManager.class.getName());
 	
-	protected Map<L2Character, Long> _decayTasks = new ConcurrentHashMap<>();
-
+	protected final Map<L2Character, Long> _decayTasks = new ConcurrentHashMap<>();
+	
 	public DecayTaskManager()
 	{
 		ThreadPoolManager.getInstance().scheduleAiAtFixedRate(new DecayScheduler(), 10000, 5000);
 	}
-
+	
 	public static DecayTaskManager getInstance()
 	{
 		return SingletonHolder._instance;
 	}
-
+	
 	public void addDecayTask(L2Character actor)
 	{
 		_decayTasks.put(actor, System.currentTimeMillis());
 	}
-
+	
 	public void addDecayTask(L2Character actor, int interval)
 	{
 		_decayTasks.put(actor, System.currentTimeMillis() + interval);
 	}
-
+	
 	public void cancelDecayTask(L2Character actor)
 	{
 		try
@@ -61,40 +63,51 @@ public class DecayTaskManager
 		{
 		}
 	}
-
+	
 	private class DecayScheduler implements Runnable
 	{
 		protected DecayScheduler()
 		{
 			// Do nothing
 		}
-
+		
 		@Override
 		public void run()
 		{
-			Long current = System.currentTimeMillis();
+			long current = System.currentTimeMillis();
 			try
 			{
-				if (_decayTasks != null)
+				final Iterator<Entry<L2Character, Long>> iter = _decayTasks.entrySet().iterator();
+				Entry<L2Character, Long> e;
+				L2Character actor;
+				
+				while (iter.hasNext())
 				{
-					for (L2Character actor : _decayTasks.keySet())
+					e = iter.next();
+					actor = e.getKey();
+					
+					if (actor != null)
 					{
-						if ((current - _decayTasks.get(actor)) > actor.getDecayTime())
+						if ((current - e.getValue()) > actor.getDecayTime())
 						{
 							actor.onDecay();
-							_decayTasks.remove(actor);
+							iter.remove();
 						}
+					}
+					else
+					{
+						iter.remove();
 					}
 				}
 			}
 			catch (Throwable e)
 			{
-				// TODO: Find out the reason for exception. Unless caught here, mob decay would stop.
+				// Unless caught here, mob decay would stop.
 				_log.warning(e.toString());
 			}
 		}
 	}
-
+	
 	/**
 	 * <u><b><font color="FF0000">Read only</font></b></u>
 	 * @return
@@ -103,20 +116,20 @@ public class DecayTaskManager
 	{
 		return _decayTasks;
 	}
-
+	
 	@Override
 	public String toString()
 	{
 		String ret = "============= DecayTask Manager Report ============\r\n";
 		ret += "Tasks count: " + _decayTasks.size() + "\r\n";
 		ret += "Tasks dump:\r\n";
-
+		
 		Long current = System.currentTimeMillis();
 		for (L2Character actor : _decayTasks.keySet())
 		{
 			ret += "Class/Name: " + actor.getClass().getSimpleName() + "/" + actor.getName() + " decay timer: " + (current - _decayTasks.get(actor)) + "\r\n";
 		}
-
+		
 		return ret;
 	}
 	

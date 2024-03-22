@@ -24,20 +24,20 @@ import net.sf.l2j.gameserver.communitybbs.Manager.TopicBBSManager;
 public class Topic
 {
 	private static Logger _log = Logger.getLogger(Topic.class.getName());
+	
 	public static final int MORMAL = 0;
 	public static final int MEMO = 1;
 	
-	private int _ID;
-	private int _ForumID;
-	private String _TopicName;
+	private int _id;
+	private int _forumID;
+	private String _topicName;
 	private long _date;
-	private String _OwnerName;
-	private int _OwnerID;
+	private String _ownerName;
+	private int _ownerID;
 	private int _type;
-	private int _Creply;
-
+	private int _cReply;
+	
 	/**
-	 * 
 	 * @param ct
 	 * @param id
 	 * @param fid
@@ -46,42 +46,42 @@ public class Topic
 	 * @param oname
 	 * @param oid
 	 * @param type
-	 * @param Creply
+	 * @param cReply
 	 */
-	public Topic(ConstructorType ct, int id, int fid, String name, long date, String oname, int oid, int type, int Creply)
+	public Topic(ConstructorType ct, int id, int fid, String name, long date, String oname, int oid, int type, int cReply)
 	{
-		_ID = id;
-		_ForumID = fid;
-		_TopicName = name;
+		_id = id;
+		_forumID = fid;
+		_topicName = name;
 		_date = date;
-		_OwnerName = oname;
-		_OwnerID = oid;
-		_type =  type;
-		_Creply = Creply;
+		_ownerName = oname;
+		_ownerID = oid;
+		_type = type;
+		_cReply = cReply;
 		TopicBBSManager.getInstance().addTopic(this);
-
-		if(ct == ConstructorType.CREATE)
+		
+		if (ct == ConstructorType.CREATE)
 		{
-			 insertindb();
+			insertIntoDB();
 		}
 	}
-
+	
 	/**
 	 * 
 	 */
-	public void insertindb()
+	public void insertIntoDB()
 	{
 		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
-			PreparedStatement statement = con.prepareStatement("INSERT INTO topic (topic_id,topic_forum_id,topic_name,topic_date,topic_ownername,topic_ownerid,topic_type,topic_reply) values (?,?,?,?,?,?,?,?)"))
+			PreparedStatement statement = con.prepareStatement("INSERT INTO topic (topic_id,topic_forum_id,topic_name,topic_date,topic_ownerName,topic_ownerID,topic_type,topic_reply) values (?,?,?,?,?,?,?,?)"))
 		{
-			statement.setInt(1, _ID);
-			statement.setInt(2, _ForumID);
-			statement.setString(3, _TopicName);
+			statement.setInt(1, _id);
+			statement.setInt(2, _forumID);
+			statement.setString(3, _topicName);
 			statement.setLong(4, _date);
-			statement.setString(5, _OwnerName);
-			statement.setInt(6, _OwnerID);
+			statement.setString(5, _ownerName);
+			statement.setInt(6, _ownerID);
 			statement.setInt(7, _type);
-			statement.setInt(8, _Creply);
+			statement.setInt(8, _cReply);
 			statement.execute();
 		}
 		catch (Exception e)
@@ -89,46 +89,47 @@ public class Topic
 			_log.warning("error while saving new Topic to db " + e);
 		}
 	}
-
-	public enum ConstructorType { RESTORE , CREATE }
-
+	
+	public enum ConstructorType
+	{
+		RESTORE,
+		CREATE
+	}
+	
 	/**
 	 * @return
 	 */
 	public int getID()
-	{		
-		return _ID;
+	{
+		return _id;
 	}
-
+	
 	public int getForumID()
-	{		
-		return _ForumID;
+	{
+		return _forumID;
 	}
-
+	
 	/**
 	 * @return
 	 */
 	public String getName()
 	{
-		// TODO Auto-generated method stub
-		return _TopicName;
+		return _topicName;
 	}
-
+	
 	public String getOwnerName()
 	{
-		// TODO Auto-generated method stub
-		return _OwnerName;
+		return _ownerName;
 	}
-
+	
 	/**
-	 * @param f 
-	 * 
+	 * @param f
 	 */
-	public void deleteme(Forum f)
+	public void deleteMe(Forum f)
 	{
 		TopicBBSManager.getInstance().delTopic(this);
-		f.RmTopicByID(getID());
-
+		f.removeTopicByID(getID());
+		
 		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
 			PreparedStatement statement = con.prepareStatement("DELETE FROM topic WHERE topic_id=? AND topic_forum_id=?"))
 		{
@@ -137,16 +138,16 @@ public class Topic
 			statement.execute();
 		}
 		catch (Exception e)
-		{			
+		{
 			e.printStackTrace();
 		}
 	}
-
+	
 	/**
 	 * @return
 	 */
 	public long getDate()
-	{		
+	{
 		return _date;
 	}
 }

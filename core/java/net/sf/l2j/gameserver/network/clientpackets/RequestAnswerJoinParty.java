@@ -14,9 +14,9 @@
  */
 package net.sf.l2j.gameserver.network.clientpackets;
 
+import net.sf.l2j.gameserver.instancemanager.PartyMatchRoomManager;
 import net.sf.l2j.gameserver.model.L2Party;
 import net.sf.l2j.gameserver.model.PartyMatchRoom;
-import net.sf.l2j.gameserver.model.PartyMatchRoomList;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.eventgame.L2Event;
 import net.sf.l2j.gameserver.network.serverpackets.ExClosePartyRoom;
@@ -142,7 +142,7 @@ public class RequestAnswerJoinParty extends L2GameClientPacket
 	{
 		if (requestor.isInPartyMatchRoom())
 		{
-			PartyMatchRoomList list = PartyMatchRoomList.getInstance();
+			PartyMatchRoomManager list = PartyMatchRoomManager.getInstance();
 			if (list != null)
 			{
 				PartyMatchRoom room = list.getPlayerRoom(requestor);
@@ -209,7 +209,7 @@ public class RequestAnswerJoinParty extends L2GameClientPacket
 		}
 		else
 		{
-			PartyMatchRoom _room = PartyMatchRoomList.getInstance().getPlayerRoom(player);
+			PartyMatchRoom _room = PartyMatchRoomManager.getInstance().getPlayerRoom(player);
 			if (_room != null)
 			{
 				player.sendPacket(new ExClosePartyRoom());

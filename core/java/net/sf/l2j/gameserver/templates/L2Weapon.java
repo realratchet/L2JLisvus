@@ -15,10 +15,7 @@
 package net.sf.l2j.gameserver.templates;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
-import net.sf.l2j.gameserver.datatables.SkillTable;
 import net.sf.l2j.gameserver.handler.ISkillHandler;
 import net.sf.l2j.gameserver.handler.SkillHandler;
 import net.sf.l2j.gameserver.model.L2Character;
@@ -26,10 +23,10 @@ import net.sf.l2j.gameserver.model.L2Effect;
 import net.sf.l2j.gameserver.model.L2ItemInstance;
 import net.sf.l2j.gameserver.model.L2Skill;
 import net.sf.l2j.gameserver.model.L2Skill.SkillType;
+import net.sf.l2j.gameserver.model.holder.SkillHolder;
 import net.sf.l2j.gameserver.skills.Env;
+import net.sf.l2j.gameserver.skills.conditions.Condition;
 import net.sf.l2j.gameserver.skills.conditions.ConditionGameChance;
-import net.sf.l2j.gameserver.skills.funcs.Func;
-import net.sf.l2j.gameserver.skills.funcs.FuncTemplate;
 
 /**
  * This class is dedicated to the management of weapons.
@@ -37,86 +34,62 @@ import net.sf.l2j.gameserver.skills.funcs.FuncTemplate;
  */
 public final class L2Weapon extends L2Item
 {
+	private final L2WeaponType _type;
 	private final int _soulShotCount;
 	private final int _spiritShotCount;
-	private final int _pDam;
 	private final int _rndDam;
-	private final int _critical;
-	private final double _hitModifier;
-	private final int _avoidModifier;
-	private final int _shieldDef;
-	private final double _shieldDefRate;
-	private final int _atkSpeed;
-	private final int _atkReuse;
 	private final int _mpConsume;
-	private final int _mDam;
-	private final boolean _isMagical;
-
-	private L2Skill _itemSkill = null; // for passive skill
+	private final int _baseAttackRange;
 
 	// Attached skills for Special Abilities
-	protected L2Skill[] _skillsOnCast;
-	protected L2Skill[] _skillsOnCrit;
+	private SkillHolder[] _skillOnCastHolders;
+	private Condition _skillOnCastCondition;
+	private SkillHolder[] _skillOnCritHolders;
+	private Condition _skillOnCritCondition;
+
+	public L2Skill _castSkill;
+	public int _castChance;
+	public L2Skill _critSkill;
+	public int _critChance;
 
 	/**
-	 * Constructor for Weapon.<BR>
-	 * <BR>
-	 * <U><I>Variables filled :</I></U><BR>
-	 * <LI>_soulShotCount & _spiritShotCount</LI>
-	 * <LI>_pDam & _mDam & _rndDam</LI>
-	 * <LI>_critical</LI>
-	 * <LI>_hitModifier</LI>
-	 * <LI>_avoidModifier</LI>
-	 * <LI>_shieldDes & _shieldDefRate</LI>
-	 * <LI>_atkSpeed & _AtkReuse</LI>
-	 * <LI>_mpConsume</LI>
-	 * @param type : L2ArmorType designating the type of armor
+	 * Constructor for Weapon.
+	 * 
 	 * @param set : StatsSet designating the set of couples (key,value) characterizing the armor
 	 * @see L2Item constructor
 	 */
-	public L2Weapon(L2WeaponType type, StatsSet set)
+	public L2Weapon(StatsSet set)
 	{
-		super(type, set);
-		_soulShotCount = set.getInteger("soulshots");
-		_spiritShotCount = set.getInteger("spiritshots");
-		_pDam = set.getInteger("p_dam");
-		_rndDam = set.getInteger("rnd_dam");
-		_critical = set.getInteger("critical");
-		_hitModifier = set.getDouble("hit_modify");
-		_avoidModifier = set.getInteger("avoid_modify");
-		_shieldDef = set.getInteger("shield_def");
-		_shieldDefRate = set.getDouble("shield_def_rate");
-		_atkSpeed = set.getInteger("atk_speed");
-		_atkReuse = set.getInteger("atk_reuse", type == L2WeaponType.BOW ? 1500 : 0);
-		_mpConsume = set.getInteger("mp_consume");
-		_mDam = set.getInteger("m_dam");
-		_isMagical = set.getBool("is_magical");
+		super(set);
 
-		int sId = set.getInteger("item_skill_id");
-		int sLv = set.getInteger("item_skill_lvl");
-		if ((sId > 0) && (sLv > 0))
+		_type = set.getEnum("weapon_type", L2WeaponType.class, L2WeaponType.NONE);
+
+		_type1 = L2Item.TYPE1_WEAPON_RING_EARRING_NECKLACE;
+		_type2 = L2Item.TYPE2_WEAPON;
+
+		_soulShotCount = set.getInteger("soulshots", 0);
+		_spiritShotCount = set.getInteger("spiritshots", 0);
+		_rndDam = set.getInteger("rnd_dam", 0);
+		
+		_mpConsume = set.getInteger("mp_consume", 0);
+		_baseAttackRange = set.getInteger("attack_range", 40);
+
+		if (set.containsKey("oncast_skill"))
 		{
-			_itemSkill = SkillTable.getInstance().getInfo(sId, sLv);
+			_skillOnCastHolders = set.getSkillHolderArray("oncast_skill", new SkillHolder[0]);
+			if (set.containsKey("oncast_chance"))
+			{
+				_skillOnCastCondition = new ConditionGameChance(set.getInteger("oncast_chance", 100));
+			}
 		}
 
-		sId = set.getInteger("onCast_skill_id");
-		sLv = set.getInteger("onCast_skill_lvl");
-		int sCh = set.getInteger("onCast_skill_chance");
-		if ((sId > 0) && (sLv > 0) && (sCh > 0))
+		if (set.containsKey("oncrit_skill"))
 		{
-			L2Skill skill = SkillTable.getInstance().getInfo(sId, sLv);
-			skill.attach(new ConditionGameChance(sCh), true);
-			attachOnCast(skill);
-		}
-
-		sId = set.getInteger("onCrit_skill_id");
-		sLv = set.getInteger("onCrit_skill_lvl");
-		sCh = set.getInteger("onCrit_skill_chance");
-		if ((sId > 0) && (sLv > 0) && (sCh > 0))
-		{
-			L2Skill skill = SkillTable.getInstance().getInfo(sId, sLv);
-			skill.attach(new ConditionGameChance(sCh), true);
-			attachOnCrit(skill);
+			_skillOnCritHolders = set.getSkillHolderArray("oncrit_skill", new SkillHolder[0]);
+			if (set.containsKey("oncrit_chance"))
+			{
+				_skillOnCritCondition = new ConditionGameChance(set.getInteger("oncrit_chance", 100));
+			}
 		}
 	}
 
@@ -127,7 +100,7 @@ public final class L2Weapon extends L2Item
 	@Override
 	public L2WeaponType getItemType()
 	{
-		return (L2WeaponType) super._type;
+		return _type;
 	}
 
 	/**
@@ -159,76 +132,12 @@ public final class L2Weapon extends L2Item
 	}
 	
 	/**
-	 * Returns the physical damage.
-	 * @return int
-	 */
-	public int getPDamage()
-	{
-		return _pDam;
-	}
-	
-	/**
 	 * Returns the random damage inflicted by the weapon
 	 * @return int
 	 */
 	public int getRandomDamage()
 	{
 		return _rndDam;
-	}
-	
-	/**
-	 * Returns the attack speed of the weapon
-	 * @return int
-	 */
-	public int getAttackSpeed()
-	{
-		return _atkSpeed;
-	}
-	
-	/**
-	 * Return the Attack Reuse Delay of the L2Weapon.<BR>
-	 * <BR>
-	 * @return int
-	 */
-	public int getAttackReuseDelay()
-	{
-		return _atkReuse;
-	}
-	
-	/**
-	 * Returns the avoid modifier of the weapon
-	 * @return int
-	 */
-	public int getAvoidModifier()
-	{
-		return _avoidModifier;
-	}
-	
-	/**
-	 * Returns the rate of critical hit
-	 * @return int
-	 */
-	public int getCritical()
-	{
-		return _critical;
-	}
-	
-	/**
-	 * Returns the hit modifier of the weapon
-	 * @return double
-	 */
-	public double getHitModifier()
-	{
-		return _hitModifier;
-	}
-	
-	/**
-	 * Returns the magical damage inflicted by the weapon
-	 * @return int
-	 */
-	public int getMDamage()
-	{
-		return _mDam;
 	}
 
 	/**
@@ -239,63 +148,14 @@ public final class L2Weapon extends L2Item
 	{
 		return _mpConsume;
 	}
-	
+
 	/**
-	 * Returns the shield defense of the weapon
+	 * Returns the weapon attack range
 	 * @return int
 	 */
-	public int getShieldDef()
+	public int getBaseAttackRange()
 	{
-		return _shieldDef;
-	}
-	
-	/**
-	 * Returns the rate of shield defense of the weapon
-	 * @return double
-	 */
-	public double getShieldDefRate()
-	{
-		return _shieldDefRate;
-	}
-	
-	public boolean isMagical()
-	{
-		return _isMagical;
-	}
-
-	/**
-	 * Returns passive skill linked to that weapon
-	 * @return
-	 */
-	public L2Skill getSkill()
-	{
-		return _itemSkill;
-	}
-
-	/**
-	 * Returns array of Func objects containing the list of functions used by the weapon
-	 * @param instance : L2ItemInstance pointing out the weapon
-	 * @param player : L2Character pointing out the player
-	 * @return Func[] : array of functions
-	 */
-	@Override
-	public Func[] getStatFuncs(L2ItemInstance instance, L2Character player)
-	{
-		List<Func> funcs = new ArrayList<>();
-		if (_funcTemplates != null)
-		{
-			for (FuncTemplate t : _funcTemplates)
-			{
-				Env env = new Env();
-				env.player = player;
-				Func f = t.getFunc(env, instance);
-				if (f != null)
-				{
-					funcs.add(f);
-				}
-			}
-		}
-		return funcs.toArray(new Func[funcs.size()]);
+		return _baseAttackRange;
 	}
 
 	/**
@@ -304,10 +164,9 @@ public final class L2Weapon extends L2Item
 	 * @param target : L2Character pointing out the target
 	 * @return L2Effect[] : array of effects generated by the skill
 	 */
-	@Override
-	public L2Effect[] getSkillEffects(L2Character caster, L2Character target)
+	public L2Effect[] getSkillOnCritEffects(L2Character caster, L2Character target)
 	{
-		if (_skillsOnCrit == null)
+		if (_skillOnCritHolders == null)
 		{
 			return _emptyEffectSet;
 		}
@@ -326,9 +185,21 @@ public final class L2Weapon extends L2Item
 		weaponInst.setChargedSoulShot(L2ItemInstance.CHARGED_NONE);
 		weaponInst.setChargedSpiritShot(L2ItemInstance.CHARGED_NONE);
 
-		for (L2Skill skill : _skillsOnCrit)
+		Env env = new Env();
+		env.player = caster;
+		env.target = target;
+
+		for (SkillHolder holder : _skillOnCritHolders)
 		{
-			if (!skill.checkCondition(caster, target, true))
+			L2Skill skill = holder.getSkill();
+			if (skill == null)
+			{
+				continue;
+			}
+
+			env.skill = skill;
+
+			if (!_skillOnCritCondition.test(env, skill))
 			{
 				continue;
 			}
@@ -367,9 +238,9 @@ public final class L2Weapon extends L2Item
 	 * @param trigger : L2Skill pointing out the skill triggering this action
 	 * @return L2Effect[] : array of effects generated by the skill
 	 */
-	public L2Effect[] getSkillEffects(L2Character caster, L2Character target, L2Skill trigger)
+	public L2Effect[] getSkillOnCastEffects(L2Character caster, L2Character target, L2Skill trigger)
 	{
-		if (_skillsOnCast == null)
+		if (_skillOnCastHolders == null)
 		{
 			return _emptyEffectSet;
 		}
@@ -387,10 +258,22 @@ public final class L2Weapon extends L2Item
 		// Discharge weapon, so that chance skills do not use ss/sps success bonus
 		weaponInst.setChargedSoulShot(L2ItemInstance.CHARGED_NONE);
 		weaponInst.setChargedSpiritShot(L2ItemInstance.CHARGED_NONE);
+
+		Env env = new Env();
+		env.player = caster;
+		env.target = target;
 		
-		for (L2Skill skill : _skillsOnCast)
+		for (SkillHolder holder : _skillOnCastHolders)
 		{
-			if (!skill.checkCondition(caster, target, true))
+			L2Skill skill = holder.getSkill();
+			if (skill == null)
+			{
+				continue;
+			}
+
+			env.skill = skill;
+
+			if (!_skillOnCastCondition.test(env, skill))
 			{
 				continue;
 			}
@@ -430,55 +313,5 @@ public final class L2Weapon extends L2Item
 		weaponInst.setChargedSpiritShot(chargedSpiritshot);
 
 		return _emptyEffectSet;
-	}
-
-	/**
-	 * Add the L2Skill skill to the list of skills generated by the item triggered by critical hit
-	 * @param skill : L2Skill
-	 */
-	public void attachOnCrit(L2Skill skill)
-	{
-		if (_skillsOnCrit == null)
-		{
-			_skillsOnCrit = new L2Skill[]
-			{
-				skill
-			};
-		}
-		else
-		{
-			int len = _skillsOnCrit.length;
-			L2Skill[] tmp = new L2Skill[len + 1];
-			// Definition : arraycopy(array source, begins copy at this position of source, array destination, begins copy at this position in dest,
-			// number of components to be copied)
-			System.arraycopy(_skillsOnCrit, 0, tmp, 0, len);
-			tmp[len] = skill;
-			_skillsOnCrit = tmp;
-		}
-	}
-
-	/**
-	 * Add the L2Skill skill to the list of skills generated by the item triggered by casting spell
-	 * @param skill : L2Skill
-	 */
-	public void attachOnCast(L2Skill skill)
-	{
-		if (_skillsOnCast == null)
-		{
-			_skillsOnCast = new L2Skill[]
-			{
-				skill
-			};
-		}
-		else
-		{
-			int len = _skillsOnCast.length;
-			L2Skill[] tmp = new L2Skill[len + 1];
-			// Definition : arraycopy(array source, begins copy at this position of source, array destination, begins copy at this position in dest,
-			// number of components to be copied)
-			System.arraycopy(_skillsOnCast, 0, tmp, 0, len);
-			tmp[len] = skill;
-			_skillsOnCast = tmp;
-		}
 	}
 }

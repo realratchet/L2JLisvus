@@ -39,7 +39,7 @@ public class Mdam implements ISkillHandler
 {
 	// private static Logger _log = Logger.getLogger(Mdam.class.getName());
 
-	private static SkillType[] _skillIds =
+	private static SkillType[] SKILL_TYPES =
 	{
 		SkillType.MDAM,
 		SkillType.DEATHLINK
@@ -49,7 +49,7 @@ public class Mdam implements ISkillHandler
 	 * @see net.sf.l2j.gameserver.handler.ISkillHandler#useSkill(net.sf.l2j.gameserver.model.L2Character, net.sf.l2j.gameserver.model.L2Skill, net.sf.l2j.gameserver.model.L2Object[], boolean)
 	 */
 	@Override
-	public void useSkill(L2Character activeChar, L2Skill skill, L2Object[] targets, boolean isFirstCritical)
+	public void useSkill(L2Character activeChar, L2Skill skill, L2Object[] targets, boolean critOnFirstTarget)
 	{
 		if (activeChar.isAlikeDead())
 		{
@@ -117,7 +117,7 @@ public class Mdam implements ISkillHandler
 				continue;
 			}
 
-			boolean mCrit = i == 0 ? isFirstCritical : isCriticalHit(activeChar, skill, target);
+			boolean mCrit = i == 0 ? critOnFirstTarget : isCriticalHit(activeChar, skill, target);
 			int damage = (int) Formulas.getInstance().calcMagicDam(activeChar, target, skill, sps, bss, mCrit);
 			
 			// Why are we trying to reduce the current target HP here?
@@ -138,7 +138,7 @@ public class Mdam implements ISkillHandler
 					}
 					if (target instanceof L2NpcInstance)
 					{
-						name += target.getName() + "(" + ((L2NpcInstance) target).getTemplate().npcId + ")";
+						name += target.getName() + "(" + ((L2NpcInstance) target).getNpcId() + ")";
 					}
 					if (target instanceof L2PcInstance)
 					{
@@ -213,8 +213,8 @@ public class Mdam implements ISkillHandler
 	}
 	
 	@Override
-	public SkillType[] getSkillIds()
+	public SkillType[] getSkillTypes()
 	{
-		return _skillIds;
+		return SKILL_TYPES;
 	}
 }

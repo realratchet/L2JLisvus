@@ -55,7 +55,7 @@ public final class L2SiegeGuardInstance extends L2Attackable
 				_ai = new L2SiegeGuardAI(new AIAccessor());
 		}
 		return _ai;
-	}    
+	}
     
 	/**
 	 * Return True if a siege is in progress and the L2Character attacker isn't a Defender.<BR><BR>

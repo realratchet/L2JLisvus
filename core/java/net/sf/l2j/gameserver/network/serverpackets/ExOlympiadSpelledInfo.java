@@ -72,11 +72,6 @@ public class ExOlympiadSpelledInfo extends L2GameServerPacket
 	@Override
 	protected final void writeImpl()
 	{
-		if (_player == null)
-		{
-			return;
-		}
-
 		writeC(0xfe);
 		writeH(0x2a);
 		writeD(_player.getObjectId());

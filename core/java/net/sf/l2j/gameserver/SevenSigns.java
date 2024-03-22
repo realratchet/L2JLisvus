@@ -1296,7 +1296,8 @@ public class SevenSigns
 	        
 	        // Make sure all Seven Signs data is saved for future use.
 	        saveSevenSignsData(null, true);
-	        
+	        
+
             SignsSky ss = new SignsSky();
 	        
 	        for (L2PcInstance player : L2World.getInstance().getAllPlayers())

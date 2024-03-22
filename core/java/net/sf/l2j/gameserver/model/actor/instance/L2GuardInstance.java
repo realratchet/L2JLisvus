@@ -14,7 +14,6 @@
  */
 package net.sf.l2j.gameserver.model.actor.instance;
 
-import net.sf.l2j.gameserver.ThreadPoolManager;
 import net.sf.l2j.gameserver.ai.CtrlIntention;
 import net.sf.l2j.gameserver.model.L2Attackable;
 import net.sf.l2j.gameserver.model.L2Character;
@@ -23,7 +22,6 @@ import net.sf.l2j.gameserver.model.L2WorldRegion;
 import net.sf.l2j.gameserver.model.Location;
 import net.sf.l2j.gameserver.model.actor.knownlist.GuardKnownList;
 import net.sf.l2j.gameserver.templates.L2NpcTemplate;
-import net.sf.l2j.util.Rnd;
 
 /**
  * This class manages all Guards in the world.
@@ -33,19 +31,7 @@ import net.sf.l2j.util.Rnd;
  */
 public final class L2GuardInstance extends L2Attackable
 {
-    private static final int RETURN_INTERVAL = 60000;
-
-    public class ReturnTask implements Runnable
-    {
-        @Override
-		public void run()
-        {
-            if (getAI().getIntention() == CtrlIntention.AI_INTENTION_IDLE)
-                returnHome();
-        }
-    }
-    
-	/**
+    /**
 	 * Constructor of L2GuardInstance (use L2Character and L2NpcInstance constructor).<BR><BR>
 	 *  
 	 * <B><U> Actions</U> :</B><BR><BR>
@@ -59,8 +45,7 @@ public final class L2GuardInstance extends L2Attackable
 	public L2GuardInstance(int objectId, L2NpcTemplate template)
 	{
 		super(objectId, template);
-        getKnownList();
-        ThreadPoolManager.getInstance().scheduleAiAtFixedRate(new ReturnTask(),RETURN_INTERVAL,RETURN_INTERVAL+Rnd.nextInt(60000));
+        getKnownList();
 	}
 
     @Override

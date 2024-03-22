@@ -60,7 +60,7 @@ public class RegionBBSManager extends BaseBBSManager
      * @see net.sf.l2j.gameserver.communitybbs.Manager.BaseBBSManager#parsecmd(java.lang.String, net.sf.l2j.gameserver.model.actor.instance.L2PcInstance)
      */
     @Override
-    public void parsecmd(String command, L2PcInstance activeChar)
+    public void parseCmd(String command, L2PcInstance activeChar)
     {
         if (command.equals("_bbsloc"))
             showOldCommunity(activeChar, 1);
@@ -194,7 +194,7 @@ public class RegionBBSManager extends BaseBBSManager
      * @see net.sf.l2j.gameserver.communitybbs.Manager.BaseBBSManager#parsewrite(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, net.sf.l2j.gameserver.model.actor.instance.L2PcInstance)
      */
     @Override
-    public void parsewrite(String ar1, String ar2, String ar3, String ar4, String ar5, L2PcInstance activeChar)
+    public void parseWrite(String ar1, String ar2, String ar3, String ar4, String ar5, L2PcInstance activeChar)
     {
         if (activeChar == null)
             return;
@@ -215,7 +215,8 @@ public class RegionBBSManager extends BaseBBSManager
             			"</td></tr></table></body></html>");
                     separateAndSend(htmlCode.toString(), activeChar);
                     return;
-            	}
+            	}
+
 
                 if (Config.JAIL_DISABLE_CHAT && receiver.isInJail())
                 {
@@ -262,7 +263,7 @@ public class RegionBBSManager extends BaseBBSManager
                     {
                         SystemMessage sm = new SystemMessage(SystemMessage.THE_PERSON_IS_IN_MESSAGE_REFUSAL_MODE);        
                         activeChar.sendPacket(sm);
-                        parsecmd("_bbsloc;playerinfo;"+receiver.getName(), activeChar);
+                        parseCmd("_bbsloc;playerinfo;"+receiver.getName(), activeChar);
                     }
                 }
                 else
@@ -612,7 +613,7 @@ public class RegionBBSManager extends BaseBBSManager
 
     public String getCommunityPage(int page, String type)
     {
-        if (_communityPages.get(page) != null)
+        if (_communityPages.containsKey(page))
             return _communityPages.get(page).get(type);
         return null;
     }

@@ -18,7 +18,7 @@ import net.sf.l2j.gameserver.RecipeController;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 
 /**
- * @author Administrator TODO To change the template for this generated type comment go to Window - Preferences - Java - Code Style - Code Templates
+ * @author Administrator
  */
 public class RequestRecipeItemMakeSelf extends L2GameClientPacket
 {

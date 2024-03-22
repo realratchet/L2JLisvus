@@ -22,9 +22,9 @@ import net.sf.l2j.gameserver.network.serverpackets.ShowBoard;
 
 public abstract class BaseBBSManager
 {
-	public abstract void parsecmd(String command, L2PcInstance activeChar);
+	public abstract void parseCmd(String command, L2PcInstance activeChar);
 
-	public abstract void parsewrite(String ar1,String ar2,String ar3,String ar4,String ar5, L2PcInstance activeChar);
+	public abstract void parseWrite(String ar1,String ar2,String ar3,String ar4,String ar5, L2PcInstance activeChar);
 
 	protected void separateAndSend(String html, L2PcInstance acha)
 	{

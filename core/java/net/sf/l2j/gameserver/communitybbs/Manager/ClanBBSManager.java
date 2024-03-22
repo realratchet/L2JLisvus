@@ -34,7 +34,7 @@ public class ClanBBSManager extends BaseBBSManager
 	 * @param activeChar
 	 */
 	@Override
-	public void parsecmd(String command, L2PcInstance activeChar)
+	public void parseCmd(String command, L2PcInstance activeChar)
 	{
 		if (command.equals("_bbsclan"))
 		{
@@ -42,44 +42,44 @@ public class ClanBBSManager extends BaseBBSManager
 			{
 				if (activeChar.getClan().getLevel() >= 2)
 				{
-					clanhome(activeChar);
+					clanHome(activeChar);
 				}
 				else
 				{
-					clanlist(activeChar, 1);
+					clanList(activeChar, 1);
 				}
 			}
 			else
 			{
-				clanlist(activeChar, 1);
+				clanList(activeChar, 1);
 			}
 		}
 		else if (command.startsWith("_bbsclan_clanlist"))
 		{
 			if (command.equals("_bbsclan_clanlist"))
 			{
-				clanlist(activeChar, 1);
+				clanList(activeChar, 1);
 			}
 			else if (command.startsWith("_bbsclan_clanlist;"))
 			{
 				StringTokenizer st = new StringTokenizer(command, ";");
 				st.nextToken();
 				int index = Integer.parseInt(st.nextToken());
-				clanlist(activeChar, index);
+				clanList(activeChar, index);
 			}
 		}
 		else if (command.startsWith("_bbsclan_clanhome"))
 		{
 			if (command.equals("_bbsclan_clanhome"))
 			{
-				clanhome(activeChar);
+				clanHome(activeChar);
 			}
 			else if (command.startsWith("_bbsclan_clanhome;"))
 			{
 				StringTokenizer st = new StringTokenizer(command, ";");
 				st.nextToken();
 				int index = Integer.parseInt(st.nextToken());
-				clanhome(activeChar, index);
+				clanHome(activeChar, index);
 			}
 		}
 		else
@@ -92,7 +92,7 @@ public class ClanBBSManager extends BaseBBSManager
 	 * @param activeChar
 	 * @param index 
 	 */
-	private void clanlist(L2PcInstance activeChar, int index)
+	private void clanList(L2PcInstance activeChar, int index)
 	{
 		if (index < 1)
 		{
@@ -218,16 +218,16 @@ public class ClanBBSManager extends BaseBBSManager
 	/**
 	 * @param activeChar
 	 */
-	private void clanhome(L2PcInstance activeChar)
+	private void clanHome(L2PcInstance activeChar)
 	{
-		clanhome(activeChar, activeChar.getClan().getClanId());
+		clanHome(activeChar, activeChar.getClan().getClanId());
 	}
 
 	/**
 	 * @param activeChar
 	 * @param clanId
 	 */
-	private void clanhome(L2PcInstance activeChar, int clanId)
+	private void clanHome(L2PcInstance activeChar, int clanId)
 	{
 		L2Clan cl = ClanTable.getInstance().getClan(clanId);
 		if (cl != null)
@@ -235,7 +235,7 @@ public class ClanBBSManager extends BaseBBSManager
 			if (cl.getLevel() < 2)
 			{
 				activeChar.sendPacket(new SystemMessage(SystemMessage.NO_CB_IN_MY_CLAN));
-				parsecmd("_bbsclan_clanlist",activeChar);
+				parseCmd("_bbsclan_clanlist",activeChar);
 			}
 			else
 			{
@@ -329,9 +329,8 @@ public class ClanBBSManager extends BaseBBSManager
 	 * @see net.sf.l2j.gameserver.communitybbs.Manager.BaseBBSManager#parsewrite(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, net.sf.l2j.gameserver.model.actor.instance.L2PcInstance)
 	 */
 	@Override
-	public void parsewrite(String ar1, String ar2, String ar3, String ar4, String ar5, L2PcInstance activeChar)
+	public void parseWrite(String ar1, String ar2, String ar3, String ar4, String ar5, L2PcInstance activeChar)
 	{
-		// TODO Auto-generated method stub
 	}
 	
 	private static class SingletonHolder

@@ -71,7 +71,7 @@ public class DimensionalRiftManager
 
     public DimensionalRiftRoom getRoom(byte type, byte room)
     {
-        return _rooms.get(type) == null ? null : _rooms.get(type).get(room);
+        return _rooms.containsKey(type) ? _rooms.get(type).get(room) : null;
     }
 
     private void loadRooms()
@@ -99,7 +99,7 @@ public class DimensionalRiftManager
                 boolean isBossRoom = rs.getByte("boss") > 0;
 
                 if (!_rooms.containsKey(type))
-                    _rooms.put(type, new HashMap<Byte, DimensionalRiftRoom>(9));
+                    _rooms.put(type, new HashMap<>(9));
 
                 _rooms.get(type).put(room_id, new DimensionalRiftRoom(room_id, xMin, xMax, yMin, yMax, z1, z2, xT, yT, zT, isBossRoom));
             }

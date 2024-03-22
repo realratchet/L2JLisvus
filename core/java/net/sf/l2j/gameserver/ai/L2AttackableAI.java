@@ -496,10 +496,10 @@ public class L2AttackableAI extends L2CharacterAI implements Runnable
 					// Get the hate level of the L2Attackable against this L2Character target contained in _aggroList
 					int hating = npc.getHating(target);
 					
-					// Add the attacker to the L2Attackable _aggroList with 0 damage and 1 hate
+					// Add the attacker to the L2Attackable _aggroList with 0 damage and 0 hate
 					if (hating == 0)
 					{
-						npc.addDamageHate(target, 0, 1);
+						npc.addDamageHate(target, 0, 0);
 					}
 				}
 			}
@@ -919,7 +919,7 @@ public class L2AttackableAI extends L2CharacterAI implements Runnable
 						// Check if the L2Object is inside the Faction Range of the actor
 						if (ai != null && _actor.isInsideRadius(npc, (npc.getFactionRange() + npc.getAggroRange()), false, true))
 						{
-							if ((Math.abs(originalAttackTarget.getZ() - npc.getZ()) < 600) && _actor.getAttackByList().contains(originalAttackTarget) 
+							if ((Math.abs(originalAttackTarget.getZ() - npc.getZ()) < 600) && _actor.hasAttackerInAttackByList(originalAttackTarget) 
 								&& ((ai._intention == CtrlIntention.AI_INTENTION_IDLE) || (ai._intention == CtrlIntention.AI_INTENTION_ACTIVE)) 
 								&& GeoData.getInstance().canSeeTarget(_actor, npc))
 							{

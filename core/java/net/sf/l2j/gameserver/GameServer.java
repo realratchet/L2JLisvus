@@ -80,18 +80,19 @@ import net.sf.l2j.gameserver.instancemanager.FourSepulchersManager;
 import net.sf.l2j.gameserver.instancemanager.GrandBossManager;
 import net.sf.l2j.gameserver.instancemanager.ItemsOnGroundManager;
 import net.sf.l2j.gameserver.instancemanager.MercTicketManager;
+import net.sf.l2j.gameserver.instancemanager.PartyMatchRoomManager;
 import net.sf.l2j.gameserver.instancemanager.PetitionManager;
 import net.sf.l2j.gameserver.instancemanager.QuestManager;
 import net.sf.l2j.gameserver.instancemanager.RaidBossSpawnManager;
 import net.sf.l2j.gameserver.instancemanager.SiegeManager;
 import net.sf.l2j.gameserver.instancemanager.ZoneManager;
 import net.sf.l2j.gameserver.instancemanager.games.Lottery;
+import net.sf.l2j.gameserver.instancemanager.games.MonsterRace;
 import net.sf.l2j.gameserver.model.AutoChatHandler;
 import net.sf.l2j.gameserver.model.AutoSpawnHandler;
 import net.sf.l2j.gameserver.model.L2Manor;
 import net.sf.l2j.gameserver.model.L2Multisell;
 import net.sf.l2j.gameserver.model.L2World;
-import net.sf.l2j.gameserver.model.PartyMatchRoomList;
 import net.sf.l2j.gameserver.model.entity.AutoRewarder;
 import net.sf.l2j.gameserver.model.entity.Hero;
 import net.sf.l2j.gameserver.model.olympiad.Olympiad;
@@ -218,6 +219,8 @@ public class GameServer
 			PathFinding.getInstance();
 		}
 
+		MonsterRace.getInstance();
+
 		NpcTable.getInstance();
 
 		HennaTable.getInstance();
@@ -261,12 +264,13 @@ public class GameServer
 		AuctionManager.getInstance();
 		
 		Lottery.getInstance();
+		MonsterRace.getInstance().scheduleTimers();
 
 		BoatManager.getInstance();
 		CastleManorManager.getInstance();
 
 		MercTicketManager.getInstance();
-		PartyMatchRoomList.getInstance();
+		PartyMatchRoomManager.getInstance();
 		PetitionManager.getInstance();
 		QuestManager.getInstance();
 
@@ -285,8 +289,6 @@ public class GameServer
 		{
 			ItemsAutoDestroy.getInstance();
 		}
-
-		MonsterRace.getInstance();
 
 		DoorTable.getInstance();
 		CastleManager.getInstance().loadDoorUpgrades();
@@ -415,10 +417,11 @@ public class GameServer
 		}
 		_selectorThread.start();
 
+		AutoAnnounceTaskManager.getInstance();
+
 		_log.config("Maximum Number of Connected Players: " + Config.MAXIMUM_ONLINE_USERS);
 		_log.log(Level.INFO, getClass().getSimpleName() + ": Server loaded in " + ((System.currentTimeMillis() - serverLoadStart) / 1000) + " seconds.");
 
-		AutoAnnounceTaskManager.getInstance();
 		UPnPService.getInstance();
 	}
 

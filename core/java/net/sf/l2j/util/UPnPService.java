@@ -59,7 +59,6 @@ public class UPnPService
 	{
 		if (!Config.ENABLE_UPNP)
 		{
-			_log.info("UPnP Service is disabled.");
 			return;
 		}
 		

@@ -18,6 +18,7 @@ import net.sf.l2j.gameserver.datatables.GmListTable;
 import net.sf.l2j.gameserver.handler.IAdminCommandHandler;
 import net.sf.l2j.gameserver.model.L2Object;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.network.clientpackets.Say2;
 import net.sf.l2j.gameserver.network.serverpackets.CreatureSay;
 
 /**
@@ -68,8 +69,8 @@ public class AdminGmChat implements IAdminCommandHandler
 		try
 		{
 			String text = command.substring(13);
-			CreatureSay cs = new CreatureSay(0, 9, activeChar.getName(), text);
-			GmListTable.broadcastToGMs(cs);
+			CreatureSay cs = new CreatureSay(0, Say2.ALLIANCE, activeChar.getName(), text);
+			GmListTable.getInstance().broadcastToGMs(cs);
 		}
 		catch (StringIndexOutOfBoundsException e)
 		{

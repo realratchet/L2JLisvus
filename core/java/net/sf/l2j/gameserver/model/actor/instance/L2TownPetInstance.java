@@ -14,6 +14,8 @@
  */
 package net.sf.l2j.gameserver.model.actor.instance;
 
+import java.util.concurrent.ScheduledFuture;
+
 import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.ThreadPoolManager;
 import net.sf.l2j.gameserver.ai.CtrlIntention;
@@ -26,21 +28,22 @@ import net.sf.l2j.util.Rnd;
  * @author Kerberos
  */
 public class L2TownPetInstance extends L2NpcInstance
-{    
+{
     private int _randomX, _randomY, _spawnX, _spawnY;
-
+    private ScheduledFuture<?> _aiTask;
+    
     public L2TownPetInstance(int objectId, L2NpcTemplate template)
     {
         super(objectId, template);
-
+        
         if (Config.ALLOW_PET_WALKERS)
-            ThreadPoolManager.getInstance().scheduleAiAtFixedRate(new RandomWalkTask(), 2000, 4000);
+            _aiTask = ThreadPoolManager.getInstance().scheduleAiAtFixedRate(new RandomWalkTask(), 2000, 4000);
     }
-
+    
     @Override
     public void onInteract(L2PcInstance player)
     {
-    	// Send a Server->Client ActionFailed to the L2PcInstance in order to avoid that the client wait another packet
+        // Send a Server->Client ActionFailed to the L2PcInstance in order to avoid that the client wait another packet
         player.sendPacket(new ActionFailed());
     }
     
@@ -51,21 +54,34 @@ public class L2TownPetInstance extends L2NpcInstance
         _spawnX = getX();
         _spawnY = getY();
     }
+
+    @Override
+	public void deleteMe()
+    {
+        if (_aiTask != null)
+        {
+            _aiTask.cancel(true);
+            _aiTask = null;
+        }
+        
+        super.deleteMe();
+    }
+    
     public class RandomWalkTask implements Runnable
     {
         @Override
-		public void run()
+        public void run()
         {
             if (!isInActiveRegion())
                 return; // but rather the AI should be turned off completely..
-
-            _randomX = _spawnX + Rnd.get(2*50)-50;
-            _randomY = _spawnY + Rnd.get(2*50)-50;
+                
+            _randomX = _spawnX + Rnd.get(2 * 50) - 50;
+            _randomY = _spawnY + Rnd.get(2 * 50) - 50;
             setRunning();
-
+            
             if ((_randomX != getX()) && (_randomY != getY()))
             {
-            	getAI().setIntention(CtrlIntention.AI_INTENTION_MOVE_TO, new Location(_randomX, _randomY, getZ()));
+                getAI().setIntention(CtrlIntention.AI_INTENTION_MOVE_TO, new Location(_randomX, _randomY, getZ()));
             }
         }
     }

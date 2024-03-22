@@ -352,6 +352,10 @@ public class SystemMessage extends L2GameServerPacket
 	public static final int ALREADY_REQUESTED_SIEGE_BATTLE = 638;
 	public static final int ALREADY_SUBMITTED_A_REQUEST_FOR_ANOTHER_SIEGE_BATTLE = 639;
 	public static final int NOT_AUTHORIZED_TO_REGISTER_RECIPE = 642;
+	public static final int YOU_DO_NOT_HAVE_AUTHORITY_TO_POSITION_MERCENARIES = 653;
+	public static final int MERCENARIES_CANNOT_BE_POSITIONED_HERE = 655;
+	public static final int THIS_MERCENARY_CANNOT_BE_POSITIONED_ANYMORE = 656;
+	public static final int POSITIONING_CANNOT_BE_DONE_BECAUSE_DISTANCE_BETWEEN_MERCENARIES_TOO_SHORT  = 657;
 	public static final int SPOIL_CANNOT_USE = 661;
 	public static final int THE_PLAYER_IS_REJECTING_FRIEND_INVITATIONS = 662;
 	public static final int S1_ADENA_DISAPPEARED = 672;
@@ -383,6 +387,7 @@ public class SystemMessage extends L2GameServerPacket
 	public static final int ONLY_VIEW_SIEGE = 780;
 	public static final int OBSERVERS_CANNOT_PARTICIPATE = 781;
 	public static final int YOU_ARE_NOT_AUTHORIZED = 794;
+	public static final int STUCK_TRANSPORT_IN_FIVE_MINUTES = 809;
 	public static final int MONSRACE_TICKETS_AVAILABLE_FOR_S1_RACE = 816;
 	public static final int MONSRACE_TICKETS_NOW_AVAILABLE_FOR_S1_RACE = 817;
 	public static final int MONSRACE_TICKETS_STOP_IN_S1_MINUTES = 818;
@@ -401,6 +406,7 @@ public class SystemMessage extends L2GameServerPacket
 	public static final int THAT_CHARACTER_IS_RECOMMENDED = 832;
 	public static final int NO_MORE_RECOMMENDATIONS_TO_HAVE = 833;
 	public static final int S1_ROLLED_S2 = 834;
+	public static final int YOU_MAY_NOT_THROW_THE_DICE_AT_THIS_TIME_TRY_AGAIN_LATER = 835;
 	public static final int RECIPE_ALREADY_REGISTERED = 840;
 	public static final int NO_FUTHER_RECIPES_CAN_BE_ADDED = 841;
 	public static final int SIEGE_OF_S1_HAS_BEEN_CANCELED_DUE_TO_LACK_OF_INTEREST = 846;
@@ -467,6 +473,7 @@ public class SystemMessage extends L2GameServerPacket
 	public static final int YOU_HAVE_EXCEEDED_QUANTITY_THAT_CAN_BE_INPUTTED = 1036;
 	public static final int ONLY_CLAN_LEADER_CAN_RETRIEVE_ITEMS_FROM_CLAN_WAREHOUSE = 1039;
 	public static final int PACKAGES_CAN_ONLY_BE_RETRIEVED_HERE = 1040;
+	public static final int NO_UNSTUCK_PLEASE_SEND_PETITION = 1043;
 	public static final int MONSRACE_NO_PAYOUT_INFO = 1044;
 	public static final int MONSRACE_TICKETS_NOT_AVAILABLE = 1046;
 	public static final int NO_CB_IN_MY_CLAN = 1050;
@@ -541,6 +548,8 @@ public class SystemMessage extends L2GameServerPacket
 	public static final int CAN_BE_USED_BY_DAWN = 1301;
 	public static final int CAN_BE_USED_BY_DUSK = 1302;
 	public static final int CAN_BE_USED_DURING_QUEST_EVENT_PERIOD = 1303;
+	public static final int NO_LONGER_TRYING_ON = 1306;
+	public static final int YOU_CAN_NOT_TRY_THOSE_ITEMS_ON_AT_THE_SAME_TIME = 1368;
 	public static final int S1_HAS_BECOME_A_PARTY_LEADER = 1384;
 	public static final int NO_DISMOUNT_HERE = 1385;
 	public static final int PARTY_ROOM_CREATED = 1388;
@@ -772,11 +781,13 @@ public class SystemMessage extends L2GameServerPacket
 	protected final void writeImpl()
 	{
 		writeC(0x64);
+
+		int typeSize = _types.size();
 		
 		writeD(_messageId);
-		writeD(_types.size());
+		writeD(typeSize);
 		
-		for (int i = 0; i < _types.size(); i++)
+		for (int i = 0; i < typeSize; i++)
 		{
 			int t = _types.get(i).intValue();
 			

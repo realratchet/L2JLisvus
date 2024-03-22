@@ -1225,7 +1225,7 @@ public class Castle
 				statement.execute();
 			}
 			
-			if ((_procure != null) && (_procure.size() > 0))
+			if ((_procure != null) && (!_procure.isEmpty()))
 			{
 				int count = 0;
 				String query = "INSERT INTO castle_manor_procure VALUES ";
@@ -1251,7 +1251,7 @@ public class Castle
 				}
 			}
 			
-			if ((_procureNext != null) && (_procureNext.size() > 0))
+			if ((_procureNext != null) && (!_procureNext.isEmpty()))
 			{
 				int count = 0;
 				String query = "INSERT INTO castle_manor_procure VALUES ";
@@ -1298,7 +1298,7 @@ public class Castle
 			List<CropProcure> proc = null;
 			proc = getCropProcure(period);
 			
-			if ((proc != null) && (proc.size() > 0))
+			if ((proc != null) && (!proc.isEmpty()))
 			{
 				int count = 0;
 				String query = "INSERT INTO castle_manor_procure VALUES ";
@@ -1377,10 +1377,10 @@ public class Castle
 	
 	public void resetManor()
 	{
-		setCropProcure(new ArrayList<CropProcure>(), CastleManorManager.PERIOD_CURRENT);
-		setCropProcure(new ArrayList<CropProcure>(), CastleManorManager.PERIOD_NEXT);
-		setSeedProduction(new ArrayList<SeedProduction>(), CastleManorManager.PERIOD_CURRENT);
-		setSeedProduction(new ArrayList<SeedProduction>(), CastleManorManager.PERIOD_NEXT);
+		setCropProcure(new ArrayList<>(), CastleManorManager.PERIOD_CURRENT);
+		setCropProcure(new ArrayList<>(), CastleManorManager.PERIOD_NEXT);
+		setSeedProduction(new ArrayList<>(), CastleManorManager.PERIOD_CURRENT);
+		setSeedProduction(new ArrayList<>(), CastleManorManager.PERIOD_NEXT);
 		if (Config.ALT_MANOR_SAVE_ALL_ACTIONS)
 		{
 			saveCropData();

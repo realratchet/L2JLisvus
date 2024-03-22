@@ -28,7 +28,7 @@ public class AdminBBS implements IAdminCommandHandler
     @Override
 	public boolean useAdminCommand(String command, L2PcInstance activeChar)
     {
-        AdminBBSManager.getInstance().parsecmd(command,activeChar);
+        AdminBBSManager.getInstance().parseCmd(command,activeChar);
         return true;
     }
 

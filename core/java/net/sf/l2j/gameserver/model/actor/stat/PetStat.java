@@ -81,7 +81,8 @@ public class PetStat extends SummonStat
             getActiveChar().broadcastPacket(new SocialAction(getActiveChar().getObjectId(), 15));
         }
 
-        getActiveChar().updateAndBroadcastStatus(1);
+        getActiveChar().updateAndBroadcastStatus(1);
+
         if (getActiveChar().getControlItem() != null)
         {
             getActiveChar().getControlItem().setEnchantLevel(getLevel());
@@ -114,7 +115,7 @@ public class PetStat extends SummonStat
         getActiveChar().stopFeed();
         super.setLevel(value);
 
-        getActiveChar().setPetData(PetDataTable.getInstance().getPetData(getActiveChar().getTemplate().npcId, getLevel()));
+        getActiveChar().setPetData(PetDataTable.getInstance().getPetData(getActiveChar().getNpcId(), getLevel()));
         getActiveChar().startFeed();
 
         if (getActiveChar().getControlItem() != null)

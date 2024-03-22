@@ -30,9 +30,6 @@ import net.sf.l2j.gameserver.templates.L2NpcTemplate;
 
 /**
  * @author Luis Arias
- *
- * TODO To change the template for this generated type comment go to
- * Window - Preferences - Java - Code Style - Code Templates
  */
 public class FaenorInterface implements EngineInterface
 {
@@ -52,7 +49,6 @@ public class FaenorInterface implements EngineInterface
      */
     public List<L2PcInstance> getAllPlayers()
     {
-        // TODO Auto-generated method stub
         return null;
     }
 

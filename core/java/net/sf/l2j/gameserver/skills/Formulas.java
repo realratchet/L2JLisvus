@@ -40,7 +40,6 @@ import net.sf.l2j.gameserver.model.itemcontainer.Inventory;
 import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
 import net.sf.l2j.gameserver.skills.conditions.ConditionPlayerState;
 import net.sf.l2j.gameserver.skills.conditions.ConditionPlayerState.CheckPlayerState;
-import net.sf.l2j.gameserver.skills.conditions.ConditionUsingItemType;
 import net.sf.l2j.gameserver.skills.funcs.Func;
 import net.sf.l2j.gameserver.templates.L2Item;
 import net.sf.l2j.gameserver.templates.L2PcTemplate;
@@ -294,32 +293,6 @@ public final class Formulas
 				}
 			}
 			env.value *= env.player.getLevelMod();
-		}
-	}
-	
-	static class FuncBowAtkRange extends Func
-	{
-		private static final FuncBowAtkRange _instance = new FuncBowAtkRange();
-		
-		static Func getInstance()
-		{
-			return _instance;
-		}
-		
-		private FuncBowAtkRange()
-		{
-			super(Stats.POWER_ATTACK_RANGE, 0x10, null);
-			setCondition(new ConditionUsingItemType(L2WeaponType.BOW.mask()));
-		}
-		
-		@Override
-		public void calc(Env env)
-		{
-			if (!_cond.test(env, _funcOwner))
-			{
-				return;
-			}
-			env.value += 450;
 		}
 	}
 	
@@ -876,7 +849,6 @@ public final class Formulas
 			// cha.addStatFunc(FuncMultRegenResting.getInstance(Stats.REGENERATE_HP_RATE));
 			// cha.addStatFunc(FuncMultRegenResting.getInstance(Stats.REGENERATE_CP_RATE));
 			// cha.addStatFunc(FuncMultRegenResting.getInstance(Stats.REGENERATE_MP_RATE));
-			cha.addStatFunc(FuncBowAtkRange.getInstance());
 			
 			// cha.addStatFunc(FuncMultLevelMod.getInstance(Stats.POWER_ATTACK));
 			// cha.addStatFunc(FuncMultLevelMod.getInstance(Stats.POWER_DEFENCE));

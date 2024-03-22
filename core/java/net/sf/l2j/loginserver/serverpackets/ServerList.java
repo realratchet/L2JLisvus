@@ -33,7 +33,7 @@ public final class ServerList extends L2LoginServerPacket
 {
 	private List<ServerData> _servers;
 	private int _lastServer;
-
+	
 	class ServerData
 	{
 		protected String _ip;
@@ -46,9 +46,8 @@ public final class ServerList extends L2LoginServerPacket
 		protected boolean _clock;
 		protected int _status;
 		protected int _serverId;
-
-		ServerData(String pIp, int pPort, boolean pPvp, boolean pTestServer, int pCurrentPlayers,
-				int pMaxPlayers, boolean pBrackets, boolean pClock, int pStatus, int pServerId)
+		
+		ServerData(String pIp, int pPort, boolean pPvp, boolean pTestServer, int pCurrentPlayers, int pMaxPlayers, boolean pBrackets, boolean pClock, int pStatus, int pServerId)
 		{
 			_ip = pIp;
 			_port = pPort;
@@ -62,7 +61,7 @@ public final class ServerList extends L2LoginServerPacket
 			_serverId = pServerId;
 		}
 	}
-
+	
 	public ServerList(L2LoginClient client)
 	{
 		_servers = new ArrayList<>();
@@ -72,29 +71,29 @@ public final class ServerList extends L2LoginServerPacket
 			if (gsi.getStatus() == ServerStatus.STATUS_GM_ONLY && client.getAccessLevel() > 0)
 			{
 				// Server is GM-Only but you've got GM Status
-				addServer(client.usesInternalIP() ? gsi.getInternalIp() : gsi.getExternalHost(), gsi.getPort(), gsi.isPvp(), gsi.isTestServer(), gsi.getCurrentPlayerCount(), gsi.getMaxPlayers(), gsi.isShowingBrackets(), gsi.isShowingClock(), gsi.getStatus(), gsi.getId());
+				addServer(client.usesInternalIP() ? gsi.getInternalHost() : gsi.getExternalHost(), gsi.getPort(), gsi.isPvp(), gsi.isTestServer(), gsi.getCurrentPlayerCount(), gsi.getMaxPlayers(), gsi.isShowingBrackets(), gsi.isShowingClock(), gsi.getStatus(), gsi.getId());
 			}
 			else if (gsi.getStatus() != ServerStatus.STATUS_GM_ONLY)
 			{
 				// Server is not GM-Only
-				addServer(client.usesInternalIP() ? gsi.getInternalIp() : gsi.getExternalHost(), gsi.getPort(), gsi.isPvp(), gsi.isTestServer(), gsi.getCurrentPlayerCount(), gsi.getMaxPlayers(), gsi.isShowingBrackets(), gsi.isShowingClock(), gsi.getStatus(), gsi.getId());
+				addServer(client.usesInternalIP() ? gsi.getInternalHost() : gsi.getExternalHost(), gsi.getPort(), gsi.isPvp(), gsi.isTestServer(), gsi.getCurrentPlayerCount(), gsi.getMaxPlayers(), gsi.isShowingBrackets(), gsi.isShowingClock(), gsi.getStatus(), gsi.getId());
 			}
 			else
 			{
 				// Server's GM-Only and you've got no GM-Status
-				addServer(client.usesInternalIP() ? gsi.getInternalIp() : gsi.getExternalHost(), gsi.getPort(), gsi.isPvp(), gsi.isTestServer(), gsi.getCurrentPlayerCount(), gsi.getMaxPlayers(), gsi.isShowingBrackets(), gsi.isShowingClock(), ServerStatus.STATUS_DOWN, gsi.getId());
+				addServer(client.usesInternalIP() ? gsi.getInternalHost() : gsi.getExternalHost(), gsi.getPort(), gsi.isPvp(), gsi.isTestServer(), gsi.getCurrentPlayerCount(), gsi.getMaxPlayers(), gsi.isShowingBrackets(), gsi.isShowingClock(), ServerStatus.STATUS_DOWN, gsi.getId());
 			}
 		}
 	}
-
-	public void addServer(String ip, int port, boolean pvp, boolean testServer, int currentPlayer,
-			int maxPlayer, boolean brackets, boolean clock, int status, int serverId)
+	
+	public void addServer(String ip, int port, boolean pvp, boolean testServer, int currentPlayer, int maxPlayer, boolean brackets, boolean clock, int status, int serverId)
 	{
-		_servers.add(new ServerData(ip, port, pvp, testServer, currentPlayer, maxPlayer, brackets,
-				clock, status, serverId));
+		_servers.add(new ServerData(ip, port, pvp, testServer, currentPlayer, maxPlayer, brackets, clock, status, serverId));
 	}
-
-	/* (non-Javadoc)
+	
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see net.sf.l2j.mmocore.SendablePacket#write()
 	 */
 	@Override

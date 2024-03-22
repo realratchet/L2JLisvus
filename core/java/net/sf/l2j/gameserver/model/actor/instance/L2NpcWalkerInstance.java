@@ -20,6 +20,7 @@ import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.ai.L2CharacterAI;
 import net.sf.l2j.gameserver.ai.L2NpcWalkerAI;
 import net.sf.l2j.gameserver.model.L2Character;
+import net.sf.l2j.gameserver.network.clientpackets.Say2;
 import net.sf.l2j.gameserver.network.serverpackets.CreatureSay;
 import net.sf.l2j.gameserver.templates.L2NpcTemplate;
 
@@ -80,7 +81,7 @@ public class L2NpcWalkerInstance extends L2NpcInstance
         //we send message to known players only!
         if (!_knownPlayers.isEmpty())
         {
-            CreatureSay cs = new CreatureSay(getObjectId(), 0, getName(), chat, false);
+            CreatureSay cs = new CreatureSay(getObjectId(), Say2.ALL, getName(), chat, false);
 
             // we interact and list players here
             for (L2PcInstance players : _knownPlayers.values())
@@ -118,14 +119,6 @@ public class L2NpcWalkerInstance extends L2NpcInstance
 
     private class L2NpcWalkerAIAccessor extends L2Character.AIAccessor
     {
-        /**
-		 * 
-		 */
-		public L2NpcWalkerAIAccessor()
-		{
-			// TODO Auto-generated constructor stub
-		}
-
 		/**
          * AI can't be deattached.
          */

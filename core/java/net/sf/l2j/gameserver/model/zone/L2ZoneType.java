@@ -22,6 +22,7 @@ import java.util.logging.Logger;
 import net.sf.l2j.gameserver.model.L2Character;
 import net.sf.l2j.gameserver.model.L2Object;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.network.serverpackets.L2GameServerPacket;
 
 /**
  * Abstract base class for any zone type Handles basic operations
@@ -356,6 +357,27 @@ public abstract class L2ZoneType
 	public Collection<L2Character> getCharacterList()
 	{
 		return _characterList.values();
+	}
+
+	/**
+	 * Broadcasts packet to all players inside the zone
+	 * 
+	 * @param packet
+	 */
+	public void broadcastPacket(L2GameServerPacket packet)
+	{
+		if (_characterList.isEmpty())
+		{
+			return;
+		}
+		
+		for (L2Character activeChar : _characterList.values())
+		{
+			if (activeChar != null && activeChar instanceof L2PcInstance)
+			{
+				activeChar.sendPacket(packet);
+			}
+		}
 	}
 
 	public void visualizeZone(int z)

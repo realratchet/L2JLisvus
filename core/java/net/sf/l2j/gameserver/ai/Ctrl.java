@@ -85,6 +85,7 @@ public interface Ctrl
 	void setIntention(CtrlIntention intention);
 	void setIntention(CtrlIntention intention, Object arg0);
 	void setIntention(CtrlIntention intention, Object arg0, Object arg1);
+	void setIntention(CtrlIntention intention, Object arg0, Object arg1, Object arg2);
 	
 	/** 
 	 * Event, that notifies about previous step result, or user command,

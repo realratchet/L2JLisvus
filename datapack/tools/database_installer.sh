@@ -18,9 +18,9 @@
 ############################################
 trap finish 2
 
-GSPATH="/var/gameserver"
-EXEC_SQL="mariadb"              # mariadb       | mysql
-EXEC_SQL_DUMP="mariadb-dump"    # mariadub-dump | mysqldump
+GSPATH=".."
+EXEC_SQL="mysql"              # mariadb       | mysql
+EXEC_SQL_DUMP="mysqldump"     # mariadub-dump | mysqldump
 
 configure() {
 echo "#############################################"
@@ -186,7 +186,7 @@ $MYL < $GSPATH/tools/login_install.sql &> /dev/null
 }
 
 loginupgrade(){
-echo "Installling new loginserver content."
+echo "Installing new loginserver content."
 $MYL < $GSPATH/sql/accounts.sql &> /dev/null
 $MYL < $GSPATH/sql/gameservers.sql &> /dev/null
 }
@@ -257,13 +257,11 @@ $MYG < $GSPATH/tools/full_install.sql &> /dev/null
 
 upgradeinstall(){
 if [ "$1" == "I" ]; then 
-echo "Installling new gameserver content."
+echo "Installing new gameserver content."
 else
 echo "Upgrading gameserver content"
 fi
 $MYG < $GSPATH/sql/aio_buffer.sql &> /dev/null
-$MYG < $GSPATH/sql/armor.sql &> /dev/null
-$MYG < $GSPATH/sql/armorsets.sql &> /dev/null
 $MYG < $GSPATH/sql/auction.sql &> /dev/null
 $MYG < $GSPATH/sql/auction_bid.sql &> /dev/null
 $MYG < $GSPATH/sql/auction_watch.sql &> /dev/null
@@ -297,7 +295,6 @@ $MYG < $GSPATH/sql/clanhall_functions.sql &> /dev/null
 $MYG < $GSPATH/sql/dimensional_rift.sql &> /dev/null
 $MYG < $GSPATH/sql/droplist.sql &> /dev/null
 $MYG < $GSPATH/sql/enchant_skill_trees.sql &> /dev/null
-$MYG < $GSPATH/sql/etcitem.sql &> /dev/null
 $MYG < $GSPATH/sql/fish.sql &> /dev/null
 $MYG < $GSPATH/sql/fishing_skill_trees.sql &> /dev/null
 $MYG < $GSPATH/sql/forums.sql &> /dev/null
@@ -344,7 +341,6 @@ $MYG < $GSPATH/sql/spawnlist.sql &> /dev/null
 $MYG < $GSPATH/sql/teleport.sql &> /dev/null
 $MYG < $GSPATH/sql/topic.sql &> /dev/null
 $MYG < $GSPATH/sql/walker_routes.sql &> /dev/null
-$MYG < $GSPATH/sql/weapon.sql &> /dev/null
 $MYG < $GSPATH/sql/weddings.sql &> /dev/null
 }
 

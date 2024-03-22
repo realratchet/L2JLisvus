@@ -17,8 +17,8 @@ package net.sf.l2j.gameserver.network.serverpackets;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.sf.l2j.gameserver.instancemanager.PartyMatchRoomManager;
 import net.sf.l2j.gameserver.model.PartyMatchRoom;
-import net.sf.l2j.gameserver.model.PartyMatchRoomList;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 
 /**
@@ -50,11 +50,11 @@ public class PartyMatchList extends L2GameServerPacket
 	@Override
 	protected final void writeImpl()
 	{
-		for (PartyMatchRoom room : PartyMatchRoomList.getInstance().getRooms())
+		for (PartyMatchRoom room : PartyMatchRoomManager.getInstance().getRooms())
 		{
 			if (room.getMembers() < 1 || room.getOwner() == null || !room.getOwner().isOnline() || room.getOwner().getPartyRoom() != room.getId())
 			{
-				PartyMatchRoomList.getInstance().deleteRoom(room.getId());
+				PartyMatchRoomManager.getInstance().deleteRoom(room.getId());
 				continue;
 			}
 			

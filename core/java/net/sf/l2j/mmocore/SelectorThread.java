@@ -104,16 +104,9 @@ public final class SelectorThread<T extends MMOClient<?>> extends Thread
 		selectable.configureBlocking(false);
 		
 		ServerSocket ss = selectable.socket();
-		
-		if (address == null)
-		{
-			ss.bind(new InetSocketAddress(tcpPort));
-		}
-		else
-		{
-			ss.bind(new InetSocketAddress(address, tcpPort));
-		}
-		
+		InetSocketAddress isa = address == null ? new InetSocketAddress(tcpPort) : new InetSocketAddress(address, tcpPort);
+
+		ss.bind(isa);
 		selectable.register(_selector, SelectionKey.OP_ACCEPT);
 	}
 	
@@ -565,14 +558,7 @@ public final class SelectorThread<T extends MMOClient<?>> extends Thread
 			{
 				synchronized (con.getSendQueue())
 				{
-					if (sendQueue.isEmpty())
-					{
-						sp = null;
-					}
-					else
-					{
-						sp = sendQueue.removeFirst();
-					}
+					sp = sendQueue.isEmpty() ? null : sendQueue.removeFirst();
 				}
 				
 				if (sp == null)

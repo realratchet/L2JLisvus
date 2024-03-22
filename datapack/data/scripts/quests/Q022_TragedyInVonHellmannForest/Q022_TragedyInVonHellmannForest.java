@@ -157,7 +157,7 @@ public class Q022_TragedyInVonHellmannForest extends Quest
 				_soulOfWellInstance = addSpawn(SOUL_OF_WELL, 34860, -54542, -2048, 0, false, 0);
 				
 				((L2Attackable) _soulOfWellInstance).addDamageHate(player, 0, 99999);
-				_soulOfWellInstance.getAI().setIntention(CtrlIntention.AI_INTENTION_ATTACK, player, true);
+				_soulOfWellInstance.getAI().setIntention(CtrlIntention.AI_INTENTION_ATTACK, player);
 			}
 		}
 		else if (event.equalsIgnoreCase("attack_timer"))

@@ -14,16 +14,19 @@
  */
 package net.sf.l2j.gameserver.datatables;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Logger;
 
+import javax.xml.parsers.DocumentBuilderFactory;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+
 import net.sf.l2j.Config;
-import net.sf.l2j.L2DatabaseFactory;
 import net.sf.l2j.gameserver.model.L2ArmorSet;
+import net.sf.l2j.gameserver.templates.StatsSet;
 
 /**
  * 
@@ -34,7 +37,7 @@ public class ArmorSetsTable
 {
     private static Logger _log = Logger.getLogger(ArmorSetsTable.class.getName());
 
-    private final Map<Integer, L2ArmorSet> _armorSets;
+    private final Map<Integer, L2ArmorSet> _armorSets = new HashMap<>();
 
     public static ArmorSetsTable getInstance()
     {
@@ -43,67 +46,42 @@ public class ArmorSetsTable
 
     private ArmorSetsTable()
     {
-    	_armorSets = new HashMap<>();
-        loadData();
+    	load();
     }
 
-    private void loadData()
+    private void load()
     {
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection();
-            PreparedStatement statement = con.prepareStatement("SELECT chest, legs, head, gloves, feet, skill_id, shield, shield_skill_id FROM armorsets");
-            ResultSet rset = statement.executeQuery())
+        try
         {
-            while (rset.next())
+            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+			factory.setValidating(false);
+			factory.setIgnoringComments(true);
+			Document doc = factory.newDocumentBuilder().parse(new File(Config.DATAPACK_ROOT + "/data/armorSets.xml"));
+			
+			for (Node n = doc.getFirstChild(); n != null; n = n.getNextSibling())
             {
-                int chest = rset.getInt("chest");
-                int legs  = rset.getInt("legs");
-                int head  = rset.getInt("head");
-                int gloves = rset.getInt("gloves");
-                int feet  = rset.getInt("feet");
-                int skill_id = rset.getInt("skill_id");
-                int shield = rset.getInt("shield");
-                int shield_skill_id = rset.getInt("shield_skill_id");
-                _armorSets.put(chest, new L2ArmorSet(chest, legs, head, gloves, feet,skill_id, shield, shield_skill_id));
-            }
-
-            _log.config("ArmorSetsTable: Loaded "+_armorSets.size()+" armor sets.");
-        }
-        catch (Exception e) 
-        {
-            _log.severe("ArmorSetsTable: Error reading ArmorSets table: " + e);
-        }
-
-        if (Config.CUSTOM_ARMORSETS_TABLE)
-        {
-            try (Connection con = L2DatabaseFactory.getInstance().getConnection();
-                PreparedStatement statement = con.prepareStatement("SELECT chest, legs, head, gloves, feet, skill_id, shield, shield_skill_id FROM custom_armorsets");
-                ResultSet rset = statement.executeQuery())
-            {
-                int cSets = _armorSets.size();
-
-                while (rset.next())
+                if ("list".equalsIgnoreCase(n.getNodeName()))
                 {
-                    int chest = rset.getInt("chest");
-                    int legs  = rset.getInt("legs");
-                    int head  = rset.getInt("head");
-                    int gloves = rset.getInt("gloves");
-                    int feet  = rset.getInt("feet");
-                    int skill_id = rset.getInt("skill_id");
-                    int shield = rset.getInt("shield");
-                    int shield_skill_id = rset.getInt("shield_skill_id");
-                    _armorSets.put(chest, new L2ArmorSet(chest, legs, head, gloves, feet,skill_id, shield, shield_skill_id));
+					for (Node d = n.getFirstChild(); d != null; d = d.getNextSibling())
+					{
+						if (d.getNodeName().equalsIgnoreCase("armorSet"))
+						{
+							StatsSet set = new StatsSet(d.getAttributes());
+							_armorSets.put(set.getInteger("chest", 0), new L2ArmorSet(set));
+						}
+					}
                 }
+            }
 
-                _log.config("ArmorSetsTable: Loaded " + (_armorSets.size() - cSets) + " custom armor sets.");
-            }
-            catch (Exception e) 
-            {
-                _log.severe("ArmorSetsTable: Error reading Custom ArmorSets table: " + e);
-            }
+            _log.info(getClass().getSimpleName() + ": Loaded "+_armorSets.size()+" armor sets.");
+        }
+        catch (Exception e)
+        {
+            _log.severe(getClass().getSimpleName() + ": Error reading ArmorSets table: " + e);
         }
     }
 
-    public boolean setExists(int chestId)
+    public boolean checkIfSetExists(int chestId)
     {
         return _armorSets.containsKey(chestId);
     }

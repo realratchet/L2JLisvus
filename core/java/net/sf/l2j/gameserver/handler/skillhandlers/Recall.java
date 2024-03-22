@@ -29,13 +29,13 @@ import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
 public class Recall implements ISkillHandler
 {
 	// private static Logger _log = Logger.getLogger(Recall.class.getName());
-	protected SkillType[] _skillIds =
+	private static SkillType[] SKILL_TYPES =
 	{
 		SkillType.RECALL
 	};
 	
 	@Override
-	public void useSkill(L2Character activeChar, L2Skill skill, L2Object[] targets, boolean isFirstCritical)
+	public void useSkill(L2Character activeChar, L2Skill skill, L2Object[] targets, boolean critOnFirstTarget)
 	{
 		try
 		{
@@ -105,8 +105,8 @@ public class Recall implements ISkillHandler
 	}
 	
 	@Override
-	public SkillType[] getSkillIds()
+	public SkillType[] getSkillTypes()
 	{
-		return _skillIds;
+		return SKILL_TYPES;
 	}
 }

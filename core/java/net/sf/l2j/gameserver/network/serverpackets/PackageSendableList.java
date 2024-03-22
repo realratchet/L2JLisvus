@@ -15,6 +15,7 @@
 package net.sf.l2j.gameserver.network.serverpackets;
 
 import net.sf.l2j.gameserver.model.L2ItemInstance;
+import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 
 /**
  * @author -Wooden-
@@ -22,13 +23,16 @@ import net.sf.l2j.gameserver.model.L2ItemInstance;
 public class PackageSendableList extends L2GameServerPacket
 {
 	private static final String _S__C3_PACKAGESENDABLELIST = "[S] C3 PackageSendableList";
+
 	private final L2ItemInstance[] _items;
-	private final int _playerOID;
+	private final int _targetObjectId;
+	private final int _adena;
 	
-	public PackageSendableList(L2ItemInstance[] items, int playerOID)
+	public PackageSendableList(L2PcInstance activeChar, int targetObjectId)
 	{
-		_items = items;
-		_playerOID = playerOID;
+		_items = activeChar.getInventory().getAvailableItems(true);
+		_adena = activeChar.getAdena();
+		_targetObjectId = targetObjectId;
 	}
 	
 	/**
@@ -39,8 +43,8 @@ public class PackageSendableList extends L2GameServerPacket
 	{
 		writeC(0xC3);
 		
-		writeD(_playerOID);
-		writeD(getClient().getActiveChar().getAdena());
+		writeD(_targetObjectId);
+		writeD(_adena);
 		writeD(_items.length);
 		for (L2ItemInstance item : _items) // format inside the for taken from SellList part use should be about the same
 		{
