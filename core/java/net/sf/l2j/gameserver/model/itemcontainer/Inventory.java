@@ -213,9 +213,8 @@ public abstract class Inventory extends ItemContainer
 			boolean updated = false;
 			
 			final SkillHolder[] skills = it.getSkills();
-			if (skills != null)
+			if (skills != null && !isIdenticalItemPair(slot, it.getItemId()))
 			{
-				
 				for (SkillHolder skillInfo : skills)
 				{
 					itemSkill = skillInfo.getSkill();
@@ -250,7 +249,7 @@ public abstract class Inventory extends ItemContainer
 			boolean updated = false;
 			
 			final SkillHolder[] skills = it.getSkills();
-			if (skills != null)
+			if (skills != null && !isIdenticalItemPair(slot, it.getItemId()))
 			{
 				for (SkillHolder skillInfo : skills)
 				{
@@ -926,6 +925,31 @@ public abstract class Inventory extends ItemContainer
 		}
 		
 		return recorder.getChangedItems();
+	}
+	
+	private boolean isIdenticalItemPair(int slot, int itemId)
+	{
+		L2ItemInstance pairedItem;
+		switch (slot)
+		{
+			case PAPERDOLL_LFINGER:
+				pairedItem = _paperdoll[PAPERDOLL_RFINGER];
+				break;
+			case PAPERDOLL_RFINGER:
+				pairedItem = _paperdoll[PAPERDOLL_LFINGER];
+				break;
+			case PAPERDOLL_LEAR:
+				pairedItem = _paperdoll[PAPERDOLL_REAR];
+				break;
+			case PAPERDOLL_REAR:
+				pairedItem = _paperdoll[PAPERDOLL_LEAR];
+				break;
+			default:
+				pairedItem = null;
+				break;
+		}
+
+		return pairedItem != null && pairedItem.getItemId() == itemId;
 	}
 	
 	/**
