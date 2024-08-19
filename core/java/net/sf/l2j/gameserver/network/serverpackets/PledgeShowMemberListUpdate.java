@@ -22,7 +22,7 @@ import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
  */
 public class PledgeShowMemberListUpdate extends L2GameServerPacket
 {
-	private static final String _S__69_PLEDGESHOWMEMBERLISTUPDATE = "[S] 54 PledgeShowMemberListAdd";
+	private static final String _S__69_PLEDGESHOWMEMBERLISTUPDATE = "[S] 54 PledgeShowMemberListUpdate";
 	private final L2PcInstance _player;
 	
 	public PledgeShowMemberListUpdate(L2PcInstance player)

@@ -62,7 +62,6 @@ public class PledgeShowMemberListAll extends L2GameServerPacket
 		writeD(_members.length - 1);
 		for (L2ClanMember m : _members)
 		{
-			
 			if (m.getObjectId() == _activeChar.getObjectId())
 			{
 				continue;
