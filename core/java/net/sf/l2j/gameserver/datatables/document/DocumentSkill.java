@@ -179,13 +179,18 @@ final class DocumentSkill extends DocumentBase
 			_currentSkill.enchsets1[i].set("level", i + 101);
 			_currentSkill.enchsets1[i].set("name", _currentSkill.name);
 
+			// This is a fallback to last level in case there are no enchant1 nodes
 			for (n = first; n != null; n = n.getNextSibling())
 			{
 				if ("set".equalsIgnoreCase(n.getNodeName()))
 				{
 					parseBeanSet(n, _currentSkill.enchsets1[i], _currentSkill.sets.length);
 				}
-				else if ("enchant1".equalsIgnoreCase(n.getNodeName()))
+			}
+
+			for (n = first; n != null; n = n.getNextSibling())
+			{
+				if ("enchant1".equalsIgnoreCase(n.getNodeName()))
 				{
 					parseBeanSet(n, _currentSkill.enchsets1[i], i + 1);
 				}
@@ -204,13 +209,18 @@ final class DocumentSkill extends DocumentBase
 			_currentSkill.enchsets2[i].set("level", i + 141);
 			_currentSkill.enchsets2[i].set("name", _currentSkill.name);
 
+			// This is a fallback to last level in case there are no enchant2 nodes
 			for (n = first; n != null; n = n.getNextSibling())
 			{
 				if ("set".equalsIgnoreCase(n.getNodeName()))
 				{
 					parseBeanSet(n, _currentSkill.enchsets2[i], _currentSkill.sets.length);
 				}
-				else if ("enchant2".equalsIgnoreCase(n.getNodeName()))
+			}
+
+			for (n = first; n != null; n = n.getNextSibling())
+			{
+				if ("enchant2".equalsIgnoreCase(n.getNodeName()))
 				{
 					parseBeanSet(n, _currentSkill.enchsets2[i], i + 1);
 				}
