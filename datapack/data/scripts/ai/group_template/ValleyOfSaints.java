@@ -107,7 +107,7 @@ public class ValleyOfSaints extends Quest
 					boolean isTargetingNpc = caster.getTarget() == npc;
 					
 					npc.onDecay();
-					L2Attackable newNpc = (L2Attackable) addSpawn (1522, npc.getX()+10, npc.getY()+10, npc.getZ()+10, npc.getHeading(), false, 0);
+					L2Attackable newNpc = (L2Attackable) addSpawn (spawnData[0], npc.getX()+10, npc.getY()+10, npc.getZ()+10, npc.getHeading(), false, 0);
 					
 					if (isTargetingNpc)
 					{
@@ -152,7 +152,7 @@ public class ValleyOfSaints extends Quest
 				boolean isTargetingNpc = attacker.getTarget() == npc;
 				
 				npc.onDecay();
-				L2Attackable newNpc = (L2Attackable) addSpawn (1522, npc.getX()+10, npc.getY()+10, npc.getZ()+10, npc.getHeading(), false, 0);
+				L2Attackable newNpc = (L2Attackable) addSpawn (spawnData[0], npc.getX()+10, npc.getY()+10, npc.getZ()+10, npc.getHeading(), false, 0);
 				
 				if (isTargetingNpc)
 				{
