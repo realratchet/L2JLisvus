@@ -100,37 +100,32 @@ public class CharEffectList
 	{
 		L2Effect effectNotInUse = null;
 		
-		if (_buffs != null)
+		if (_buffs != null && !_buffs.isEmpty())
 		{
-			if (!_buffs.isEmpty())
+			for (L2Effect e : _buffs)
 			{
-				for (L2Effect e : _buffs)
+				if (e == null)
+					continue;
+				if (e.getEffectType() == tp)
 				{
-					if (e == null)
-						continue;
-					if (e.getEffectType() == tp)
-					{
-						if (e.getInUse())
-							return e;
-						effectNotInUse = e;
-					}
+					if (e.getInUse())
+						return e;
+					effectNotInUse = e;
 				}
 			}
 		}
-		if (effectNotInUse == null && _debuffs != null)
+
+		if (effectNotInUse == null && _debuffs != null && !_debuffs.isEmpty())
 		{
-			if (!_debuffs.isEmpty())
+			for (L2Effect e : _debuffs)
 			{
-				for (L2Effect e : _debuffs)
+				if (e == null)
+					continue;
+				if (e.getEffectType() == tp)
 				{
-					if (e == null)
-						continue;
-					if (e.getEffectType() == tp)
-					{
-						if (e.getInUse())
-							return e;
-						effectNotInUse = e;
-					}
+					if (e.getInUse())
+						return e;
+					effectNotInUse = e;
 				}
 			}
 		}
@@ -148,17 +143,16 @@ public class CharEffectList
 		
 		if (skill.isOffensive())
 		{
-			if (_debuffs == null)
-				return null;
-			
-			if (_debuffs.isEmpty())
+			if (_debuffs == null || _debuffs.isEmpty())
 				return null;
 			
 			for (L2Effect e : _debuffs)
 			{
 				if (e == null)
 					continue;
-				if (e.getSkill() == skill)
+
+				// Compare skill id in order to capture effects with different skill level
+				if (e.getSkill().getId() == skill.getId())
 				{
 					if (e.getInUse())
 						return e;
@@ -168,17 +162,16 @@ public class CharEffectList
 			return effectNotInUse;
 		}
 		
-		if (_buffs == null)
-			return null;
-		
-		if (_buffs.isEmpty())
+		if (_buffs == null || _buffs.isEmpty())
 			return null;
 		
 		for (L2Effect e : _buffs)
 		{
 			if (e == null)
 				continue;
-			if (e.getSkill() == skill)
+
+			// Compare skill id in order to capture effects with different skill level
+			if (e.getSkill().getId() == skill.getId())
 			{
 				if (e.getInUse())
 					return e;
@@ -197,38 +190,32 @@ public class CharEffectList
 	{
 		L2Effect effectNotInUse = null;
 		
-		if (_buffs != null)
+		if (_buffs != null && !_buffs.isEmpty())
 		{
-			if (!_buffs.isEmpty())
+			for (L2Effect e : _buffs)
 			{
-				for (L2Effect e : _buffs)
+				if (e == null)
+					continue;
+				if (e.getSkill().getId() == skillId)
 				{
-					if (e == null)
-						continue;
-					if (e.getSkill().getId() == skillId)
-					{
-						if (e.getInUse())
-							return e;
-						effectNotInUse = e;
-					}
+					if (e.getInUse())
+						return e;
+					effectNotInUse = e;
 				}
 			}
 		}
 		
-		if (effectNotInUse == null && _debuffs != null)
+		if (effectNotInUse == null && _debuffs != null && !_debuffs.isEmpty())
 		{
-			if (!_debuffs.isEmpty())
+			for (L2Effect e : _debuffs)
 			{
-				for (L2Effect e : _debuffs)
+				if (e == null)
+					continue;
+				if (e.getSkill().getId() == skillId)
 				{
-					if (e == null)
-						continue;
-					if (e.getSkill().getId() == skillId)
-					{
-						if (e.getInUse())
-							return e;
-						effectNotInUse = e;
-					}
+					if (e.getInUse())
+						return e;
+					effectNotInUse = e;
 				}
 			}
 		}

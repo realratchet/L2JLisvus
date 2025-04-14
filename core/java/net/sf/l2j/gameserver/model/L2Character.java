@@ -3221,12 +3221,12 @@ public abstract class L2Character extends L2Object
 	 * <B><U> Concept</U> :</B><BR>
 	 * <BR>
 	 * All active skills effects in progress on the L2Character are identified in <B>_effects</B>.
-	 * @param index The L2Skill Identifier of the L2Effect to return from the _effects
+	 * @param skillId The L2Skill Identifier of the L2Effect to return from the _effects
 	 * @return The L2Effect corresponding to the L2Skill Identifier
 	 */
-	public final L2Effect getFirstEffect(int index)
+	public final L2Effect getFirstEffect(int skillId)
 	{
-		return _effects.getFirstEffect(index);
+		return _effects.getFirstEffect(skillId);
 	}
 	
 	/**
