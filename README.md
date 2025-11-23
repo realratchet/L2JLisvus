@@ -15,7 +15,7 @@ Real life responsibilities and the importance of time altogether have made me sl
 On top of that, years have passed and game is old. Even so, I still apply improvements whenever I get some free time.
 
 ## Prerequisites
-- Java 17
+- Java 25
 - Apache Ant
 - MySQL or MariaDB
 - Git
