@@ -27,7 +27,6 @@ import net.sf.l2j.gameserver.templates.L2NpcTemplate;
  */
 public class L2ControllableMobInstance extends L2MonsterInstance
 {
-	private boolean _isInvul;
 	private L2ControllableMobAI _aiBackup;	// to save ai, avoiding being detached
 	
 	protected class ControllableAIAcessor extends AIAccessor 
@@ -76,17 +75,6 @@ public class L2ControllableMobInstance extends L2MonsterInstance
 			}
 		}
 		return _ai;
-	}
-
-	@Override
-	public boolean isInvul() 
-    {
-		return _isInvul;
-	}
-
-	public void setInvul(boolean isInvul) 
-    {
-		_isInvul = isInvul;
 	}
 
 	public void reduceCurrentHp(double i, L2Character attacker, boolean awake) 

@@ -138,6 +138,14 @@ public abstract class L2Character extends L2Object
 	
 	public static final int ZONE_TYPE_LENGTH = 15;
 	
+	public static enum TeleportType
+	{
+		NONE,
+		ANY,
+		GM,
+		SKILL
+	}
+	
 	/** Table of calculators containing all standard NPC calculator (ex : ACCURACY_COMBAT, EVASION_RATE */
 	private static final Calculator[] NPC_STD_CALCULATOR = Formulas.getInstance().getStdNPCCalculators();
 	
@@ -152,7 +160,7 @@ public abstract class L2Character extends L2Object
 	private boolean _isDead = false;
 	private boolean _isFakeDeath = false; // Fake death
 	private boolean _isFlying = false; // Is flying wyvern?
-	protected boolean _isInvul = false;
+	private boolean _isInvul = false;
 	private boolean _isMuted = false; // Cannot use magic skills
 	private boolean _isOverloaded = false; // the char is carrying too much
 	private boolean _isParalyzed = false;
@@ -165,8 +173,8 @@ public abstract class L2Character extends L2Object
 	private boolean _isSleeping = false; // Cannot move/attack until sleep timed out or monster is attacked
 	private boolean _isStunned = false; // Cannot move/attack until stun timed out
 	private boolean _isSummoned = false;
-	protected boolean _isTeleporting = false;
-	protected boolean _showSummonAnimation = false;
+	private boolean _showSummonAnimation = false;
+	private TeleportType _teleportType = TeleportType.NONE;
 	
 	private CharStat _stat;
 	private CharStatus _status;
@@ -541,7 +549,7 @@ public abstract class L2Character extends L2Object
 	
 	public void teleToLocation(int x, int y, int z, boolean allowRandomOffset)
 	{
-		teleToLocation(x, y, z, allowRandomOffset, false);
+		teleToLocation(x, y, z, allowRandomOffset, TeleportType.ANY);
 	}
 	
 	/**
@@ -558,20 +566,20 @@ public abstract class L2Character extends L2Object
 	 * @param y
 	 * @param z
 	 * @param allowRandomOffset
-	 * @param isTriggeredBySkill
+	 * @param tpType
 	 */
-	public void teleToLocation(int x, int y, int z, boolean allowRandomOffset, boolean isTriggeredBySkill)
+	public void teleToLocation(int x, int y, int z, boolean allowRandomOffset, TeleportType tpType)
 	{
 		if (_isPendingRevive)
 		{
 			doRevive();
 		}
-
+		
 		// Stop movement
 		stopMove(null);
 		abortAttack();
 		
-		if (!isTriggeredBySkill)
+		if (tpType != TeleportType.SKILL)
 		{
 			abortCast();
 		}
@@ -612,25 +620,25 @@ public abstract class L2Character extends L2Object
 			reg.revalidateZones(this);
 		}
 	}
-
-	public void teleToLocation(Location loc, boolean allowRandomOffset, boolean isTriggeredBySkill)
+	
+	public void teleToLocation(Location loc, boolean allowRandomOffset, TeleportType tpType)
 	{
-		teleToLocation(loc.getX(), loc.getY(), loc.getZ(), allowRandomOffset, isTriggeredBySkill);
+		teleToLocation(loc.getX(), loc.getY(), loc.getZ(), allowRandomOffset, tpType);
 	}
 	
 	public void teleToLocation(Location loc, boolean allowRandomOffset)
 	{
-		teleToLocation(loc, allowRandomOffset, false);
+		teleToLocation(loc, allowRandomOffset, TeleportType.ANY);
 	}
 	
-	public void teleToLocation(TeleportWhereType teleportWhere, boolean isTriggeredBySkill)
+	public void teleToLocation(TeleportWhereType teleportWhere, TeleportType tpType)
 	{
-		teleToLocation(MapRegionTable.getInstance().getTeleToLocation(this, teleportWhere), true, isTriggeredBySkill);
+		teleToLocation(MapRegionTable.getInstance().getTeleToLocation(this, teleportWhere), true, tpType);
 	}
-
+	
 	public void teleToLocation(TeleportWhereType teleportWhere)
 	{
-		teleToLocation(teleportWhere, false);
+		teleToLocation(teleportWhere, TeleportType.ANY);
 	}
 	
 	// =========================================================
@@ -1850,7 +1858,7 @@ public abstract class L2Character extends L2Object
 	public void setIsRaid(boolean isRaid, boolean isRaidCurseCaster)
 	{
 	}
-
+	
 	/**
 	 * Return True if the L2Character can cast raid curse.
 	 * @return
@@ -2200,22 +2208,27 @@ public abstract class L2Character extends L2Object
 	
 	public final boolean isTeleporting()
 	{
-		return _isTeleporting;
+		return _teleportType != TeleportType.NONE;
+	}
+
+	public final TeleportType getTeleportType()
+	{
+		return _teleportType;
 	}
 	
 	public final void setIsTeleporting(boolean value)
 	{
-		_isTeleporting = value;
-	}
-	
-	public void setIsInvul(boolean value)
-	{
-		_isInvul = value;
+		_teleportType = value ? TeleportType.ANY : TeleportType.NONE;
 	}
 	
 	public boolean isInvul()
 	{
-		return _isInvul || _isTeleporting;
+		return _isInvul || isTeleporting();
+	}
+
+	public void setIsInvul(boolean value)
+	{
+		_isInvul = value;
 	}
 	
 	public boolean isSingleSpear()

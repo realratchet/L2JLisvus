@@ -5918,7 +5918,7 @@ public final class L2PcInstance extends L2PlayableInstance
 	@Override
 	public boolean isInvul()
 	{
-		return _isInvul || _isTeleporting || (_protectEndTime > GameTimeController.getInstance().getGameTicks());
+		return super.isInvul() || isTeleporting() || (_protectEndTime > GameTimeController.getInstance().getGameTicks());
 	}
 	
 	/**
@@ -9706,14 +9706,16 @@ public final class L2PcInstance extends L2PlayableInstance
 		// Punishment task (chat ban, jail, etc)
 		updatePunishmentState();
 		
-		if (_isInvul)
+		if (isInvul())
 		{
 			sendMessage("Entering world in Invulnerable mode.");
 		}
+
 		if (getAppearance().getInvisible())
 		{
 			sendMessage("Entering world in Invisible mode.");
 		}
+		
 		if (getMessageRefusal())
 		{
 			sendMessage("Entering world in Message Refusal mode.");
@@ -9961,14 +9963,14 @@ public final class L2PcInstance extends L2PlayableInstance
 	}
 	
 	@Override
-	public void teleToLocation(int x, int y, int z, boolean allowRandomOffset, boolean isTriggeredBySkill)
+	public void teleToLocation(int x, int y, int z, boolean allowRandomOffset, TeleportType tpType)
 	{
 		if (isInBoat())
 		{
 			setBoat(null);
 		}
 		
-		super.teleToLocation(x, y, z, allowRandomOffset, isTriggeredBySkill);
+		super.teleToLocation(x, y, z, allowRandomOffset, tpType);
 	}
 	
 	@Override

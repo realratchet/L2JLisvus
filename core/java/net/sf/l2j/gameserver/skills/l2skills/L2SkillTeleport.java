@@ -18,6 +18,7 @@ import net.sf.l2j.gameserver.datatables.MapRegionTable.TeleportWhereType;
 import net.sf.l2j.gameserver.model.L2Character;
 import net.sf.l2j.gameserver.model.L2Object;
 import net.sf.l2j.gameserver.model.L2Skill;
+import net.sf.l2j.gameserver.model.L2Character.TeleportType;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.templates.StatsSet;
 
@@ -61,11 +62,11 @@ public class L2SkillTeleport extends L2Skill
 			
 			if (_locX != 0 && _locY != 0 && _locZ != 0)
 			{
-				target.teleToLocation(_locX, _locY, _locZ, true, true);
+				target.teleToLocation(_locX, _locY, _locZ, true, TeleportType.SKILL);
 			}
 			else
 			{
-				target.teleToLocation(_teleportWhereType, true);
+				target.teleToLocation(_teleportWhereType, TeleportType.SKILL);
 			}
 		}
 	}

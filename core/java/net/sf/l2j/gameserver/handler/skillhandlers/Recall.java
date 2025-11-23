@@ -21,6 +21,7 @@ import net.sf.l2j.gameserver.instancemanager.DimensionalRiftManager;
 import net.sf.l2j.gameserver.model.L2Character;
 import net.sf.l2j.gameserver.model.L2Object;
 import net.sf.l2j.gameserver.model.L2Skill;
+import net.sf.l2j.gameserver.model.L2Character.TeleportType;
 import net.sf.l2j.gameserver.model.L2Skill.SkillType;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.eventgame.L2Event;
@@ -92,7 +93,7 @@ public class Recall implements ISkillHandler
 					continue;
 				}
 				
-				target.teleToLocation(MapRegionTable.TeleportWhereType.Town, true);
+				target.teleToLocation(MapRegionTable.TeleportWhereType.Town, TeleportType.SKILL);
 			}
 		}
 		catch (Throwable e)

@@ -97,7 +97,8 @@ public abstract class L2Summon extends L2PlayableInstance
 		getStat();
 		getStatus();
 		
-		_showSummonAnimation = true;
+		setShowSummonAnimation(true);
+
 		_owner = owner;
 		_ai = new L2SummonAI(new L2Summon.AIAccessor());
 		
@@ -501,7 +502,7 @@ public abstract class L2Summon extends L2PlayableInstance
 				// Get the mobs which have aggro on this instance
 				if (mob instanceof L2Attackable)
 				{
-					if (((L2Attackable) mob).isDead())
+					if (mob.isDead())
 					{
 						continue;
 					}
@@ -671,7 +672,7 @@ public abstract class L2Summon extends L2PlayableInstance
 	@Override
 	public boolean isInvul()
 	{
-		return _isInvul || _isTeleporting || _owner.isSpawnProtected();
+		return super.isInvul() || isTeleporting() || _owner.isSpawnProtected();
 	}
 	
 	/**
