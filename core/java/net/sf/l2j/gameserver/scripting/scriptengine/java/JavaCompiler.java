@@ -34,7 +34,7 @@ import org.eclipse.jdt.internal.compiler.tool.EclipseCompiler;
  */
 public class JavaCompiler
 {
-	public static final String JAVA_LANGUAGE_VERSION = "17";
+	public static final String JAVA_LANGUAGE_VERSION = "24";
 	
 	private final javax.tools.JavaCompiler _tool;
 	
@@ -51,11 +51,6 @@ public class JavaCompiler
 		{
 			result = compile(source, fileName, err, null, null);
 		}
-		catch (Exception e)
-		{
-			result = null;
-		}
-
 		return result;
 	}
 	
@@ -127,13 +122,8 @@ public class JavaCompiler
 
 					pw.flush();
 				}
-				
 				result = null;
 			}
-		}
-		catch (Exception e)
-		{
-			result = null;
 		}
 
 		return result;

@@ -15,7 +15,7 @@
 package net.sf.l2j.gameserver.scripting.scriptengine.java;
 
 import java.io.File;
-import java.net.MalformedURLException;
+import java.net.URI;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.ArrayList;
@@ -89,20 +89,21 @@ public final class MemoryClassLoader extends URLClassLoader
 				{
 					list.add(file.toURI().toURL());
 				}
-				catch (MalformedURLException mue)
+				catch (Exception e)
 				{
-					//
+					e.printStackTrace();
 				}
 			}
 			else
 			{
 				try
 				{
-					list.add(new URL(token));
+					URI uri = new URI(token);
+					list.add(uri.toURL());
 				}
-				catch (MalformedURLException mue)
+				catch (Exception e)
 				{
-					//
+					e.printStackTrace();
 				}
 			}
 		}

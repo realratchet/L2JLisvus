@@ -65,8 +65,8 @@
             debug="on"
             deprecation="on"
             includeantruntime="false"
-            source="17"
-            target="17" />
+            source="25"
+            target="25" />
     </target>
 
     <target name="jar"

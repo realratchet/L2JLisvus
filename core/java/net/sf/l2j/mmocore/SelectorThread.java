@@ -68,7 +68,7 @@ public final class SelectorThread<T extends MMOClient<?>> extends Thread
 	
 	public SelectorThread(final SelectorConfig sc, final IMMOExecutor<T> executor, final IPacketHandler<T> packetHandler, final IClientFactory<T> clientFactory, final IAcceptFilter acceptFilter) throws IOException
 	{
-		super.setName("SelectorThread-" + super.getId());
+		super.setName("SelectorThread-" + super.threadId());
 		
 		HELPER_BUFFER_SIZE = sc.HELPER_BUFFER_SIZE;
 		HELPER_BUFFER_COUNT = sc.HELPER_BUFFER_COUNT;
