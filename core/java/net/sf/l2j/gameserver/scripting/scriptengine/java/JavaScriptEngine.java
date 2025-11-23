@@ -117,8 +117,7 @@ public class JavaScriptEngine extends AbstractScriptEngine implements Compilable
 	@Override
 	public Object eval(String str, ScriptContext ctx) throws ScriptException
 	{
-		Class<?> clazz = parse(str, ctx);
-		return evalClass(clazz, ctx);
+		return evalClass(parse(str, ctx), ctx);
 	}
 	
 	@Override
@@ -181,13 +180,13 @@ public class JavaScriptEngine extends AbstractScriptEngine implements Compilable
 		{
 			try
 			{
-				Class<?> clazz = loader.load(mainClassName);
-				Method mainMethod = findMainMethod(clazz);
+				Class<?> cl = loader.load(mainClassName);
+				Method mainMethod = findMainMethod(cl);
 				if (mainMethod == null)
 				{
 					throw new ScriptException("No main method in " + mainClassName);
 				}
-				return clazz;
+				return cl;
 			}
 			catch (ClassNotFoundException cnfe)
 			{
@@ -239,6 +238,7 @@ public class JavaScriptEngine extends AbstractScriptEngine implements Compilable
 		}
 		
 		Map<String, byte[]> classBytes = _compiler.compile(filePath, str, err, sourcePath, classPath);
+		
 		if (classBytes == null)
 		{
 			if (err instanceof StringWriter)
@@ -254,15 +254,15 @@ public class JavaScriptEngine extends AbstractScriptEngine implements Compilable
 	private static Class<?> findMainClass(Iterable<Class<?>> classes)
 	{
 		// Find a public class with public static main method
-		for (Class<?> clazz : classes)
+		for (Class<?> cl : classes)
 		{
-			int modifiers = clazz.getModifiers();
+			int modifiers = cl.getModifiers();
 			if (Modifier.isPublic(modifiers))
 			{
-				Method mainMethod = findMainMethod(clazz);
+				Method mainMethod = findMainMethod(cl);
 				if (mainMethod != null)
 				{
-					return clazz;
+					return cl;
 				}
 			}
 		}
@@ -271,12 +271,12 @@ public class JavaScriptEngine extends AbstractScriptEngine implements Compilable
 		 * Okay, try to find package private class that
 		 * has public static main method.
 		 */
-		for (Class<?> clazz : classes)
+		for (Class<?> cl : classes)
 		{
-			Method mainMethod = findMainMethod(clazz);
+			Method mainMethod = findMainMethod(cl);
 			if (mainMethod != null)
 			{
-				return clazz;
+				return cl;
 			}
 		}
 		
@@ -287,14 +287,14 @@ public class JavaScriptEngine extends AbstractScriptEngine implements Compilable
 	/**
 	 * Finds public static void main(String[]) method, if any.
 	 * 
-	 * @param clazz
+	 * @param cl
 	 * @return
 	 */
-	private static Method findMainMethod(Class<?> clazz)
+	private static Method findMainMethod(Class<?> cl)
 	{
 		try
 		{
-			Method mainMethod = clazz.getMethod("main", new Class[]
+			Method mainMethod = cl.getMethod("main", new Class[]
 			{
 				String[].class
 			});
@@ -313,14 +313,14 @@ public class JavaScriptEngine extends AbstractScriptEngine implements Compilable
 	/**
 	 * Finds public static void setScriptContext(ScriptContext) method, if any.
 	 * 
-	 * @param clazz
+	 * @param cl
 	 * @return
 	 */
-	private static Method findSetScriptContextMethod(Class<?> clazz)
+	private static Method findSetScriptContextMethod(Class<?> cl)
 	{
 		try
 		{
-			Method setCtxMethod = clazz.getMethod("setScriptContext", new Class[]
+			Method setCtxMethod = cl.getMethod("setScriptContext", new Class[]
 			{
 				ScriptContext.class
 			});
@@ -429,24 +429,24 @@ public class JavaScriptEngine extends AbstractScriptEngine implements Compilable
 		return ClassLoader.getSystemClassLoader();
 	}
 	
-	protected static Object evalClass(Class<?> clazz, ScriptContext ctx) throws ScriptException
+	protected static Object evalClass(Class<?> cl, ScriptContext ctx) throws ScriptException
 	{
 		// JSR-223 requirement
 		ctx.setAttribute("context", ctx, 100);
-		if (clazz == null)
+		if (cl == null)
 		{
 			return null;
 		}
 		try
 		{
-			boolean isPublicClazz = Modifier.isPublic(clazz.getModifiers());
+			boolean isPublicClass = Modifier.isPublic(cl.getModifiers());
 			
 			// find the setScriptContext method
-			Method setCtxMethod = findSetScriptContextMethod(clazz);
+			Method setCtxMethod = findSetScriptContextMethod(cl);
 			// call setScriptContext and pass current ctx variable
 			if (setCtxMethod != null)
 			{
-				if (!isPublicClazz)
+				if (!isPublicClass)
 				{
 					// try to relax access
 					setCtxMethod.setAccessible(true);
@@ -458,10 +458,10 @@ public class JavaScriptEngine extends AbstractScriptEngine implements Compilable
 			}
 			
 			// find the main method
-			Method mainMethod = findMainMethod(clazz);
+			Method mainMethod = findMainMethod(cl);
 			if (mainMethod != null)
 			{
-				if (!isPublicClazz)
+				if (!isPublicClass)
 				{
 					// try to relax access
 					mainMethod.setAccessible(true);
@@ -478,7 +478,7 @@ public class JavaScriptEngine extends AbstractScriptEngine implements Compilable
 			}
 			
 			// return main class as eval's result
-			return clazz;
+			return cl;
 		}
 		catch (Exception exp)
 		{

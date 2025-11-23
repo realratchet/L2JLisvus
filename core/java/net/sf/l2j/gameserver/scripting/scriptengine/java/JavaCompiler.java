@@ -45,8 +45,18 @@ public class JavaCompiler
 	
 	public Map<String, byte[]> compile(String source, String fileName)
 	{
-		PrintWriter err = new PrintWriter(System.err);
-		return compile(source, fileName, err, null, null);
+		Map<String, byte[]> result;
+		
+		try (PrintWriter err = new PrintWriter(System.err))
+		{
+			result = compile(source, fileName, err, null, null);
+		}
+		catch (Exception e)
+		{
+			result = null;
+		}
+
+		return result;
 	}
 	
 	public Map<String, byte[]> compile(String fileName, String source, Writer err)
@@ -60,7 +70,7 @@ public class JavaCompiler
 	}
 	
 	/**
-	 * compile given String source and return bytecodes as a Map.
+	 * Compile given String source and return bytecodes as a Map.
 	 * @param filePath source filePath to be used for error messages etc.
 	 * @param source Java source as String
 	 * @param err error writer where diagnostic messages are written
@@ -70,13 +80,12 @@ public class JavaCompiler
 	 */
 	public Map<String, byte[]> compile(String filePath, String source, Writer err, String sourcePath, String classPath)
 	{
-		// to collect errors, warnings etc.
+		Map<String, byte[]> result;
+		
+		// This instance is used by compiler to collect errors, warnings etc.
 		DiagnosticCollector<JavaFileObject> diagnostics = new DiagnosticCollector<>();
 		
-		// create a new memory JavaFileManager
-		MemoryJavaFileManager manager = new MemoryJavaFileManager();
-		
-		// prepare the compilation unit
+		// Prepare the compilation unit
 		List<JavaFileObject> compUnits = new ArrayList<>(1);
 		compUnits.add(MemoryJavaFileManager.makeStringSource(filePath, source));
 		
@@ -96,23 +105,37 @@ public class JavaCompiler
 			options.add("-classpath");
 			options.add(classPath);
 		}
-		
-		// create a compilation task
-		CompilationTask task = _tool.getTask(err, manager, diagnostics, options, null, compUnits);
-		
-		if (!task.call())
+
+		// Create a new memory JavaFileManager
+		try (MemoryJavaFileManager manager = new MemoryJavaFileManager())
 		{
-			PrintWriter perr = new PrintWriter(err);
-			for (Diagnostic<?> diagnostic : diagnostics.getDiagnostics())
+			// Create a compilation task
+			CompilationTask task = _tool.getTask(err, manager, diagnostics, options, null, compUnits);
+			
+			if (task.call())
 			{
-				perr.println(diagnostic.getMessage(Locale.getDefault()));
+				result = manager.getClassBytes();
 			}
-			perr.flush();
-			return null;
+			else
+			{
+				try (PrintWriter pw = new PrintWriter(err))
+				{
+					for (Diagnostic<?> diagnostic : diagnostics.getDiagnostics())
+					{
+						pw.println(diagnostic.getMessage(Locale.ROOT));
+					}
+
+					pw.flush();
+				}
+				
+				result = null;
+			}
 		}
-		
-		Map<String, byte[]> classBytes = manager.getClassBytes();
-		manager.close();
-		return classBytes;
+		catch (Exception e)
+		{
+			result = null;
+		}
+
+		return result;
 	}
 }
