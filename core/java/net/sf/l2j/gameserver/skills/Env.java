@@ -24,7 +24,7 @@ import net.sf.l2j.gameserver.model.L2Skill;
  */
 public final class Env
 {
-    public L2Character player;
+    public L2Character character;
     public L2Character target;
     public L2ItemInstance item;
     public L2Skill skill;

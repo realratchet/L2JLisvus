@@ -37,11 +37,11 @@ public class ConditionPlayerExpertiseIndex extends Condition
 	@Override
 	boolean testImpl(Env env, Object owner)
 	{
-		if (!(env.player instanceof L2PcInstance))
+		if (!(env.character instanceof L2PcInstance))
 		{
 			return false;
 		}
 
-		return ((L2PcInstance) env.player).getExpertiseIndex() == _expertiseIndex;
+		return ((L2PcInstance) env.character).getExpertiseIndex() == _expertiseIndex;
 	}
 }

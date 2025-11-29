@@ -48,7 +48,7 @@ public class ConditionElementSeed extends Condition
         int[] seeds = new int[3];
         for (int i = 0; i < seeds.length; i++)
         {
-            L2Effect effect = env.player.getFirstEffect(seedSkills[i]);
+            L2Effect effect = env.character.getFirstEffect(seedSkills[i]);
             seeds[i] = (effect instanceof EffectSeed ? ((EffectSeed)effect).getPower() : 0);
             if (seeds[i] >= _requiredSeeds[i]) 
                 seeds[i] -= _requiredSeeds[i];

@@ -34,11 +34,11 @@ public class ConditionPlayerRace extends Condition
 	@Override
 	public boolean testImpl(Env env, Object owner)
 	{
-		if (!(env.player instanceof L2PcInstance))
+		if (!(env.character instanceof L2PcInstance))
 		{
 			return false;
 		}
 		
-		return Util.contains(_races, env.player.getActingPlayer().getRace());
+		return Util.contains(_races, env.character.getActingPlayer().getRace());
 	}
 }

@@ -188,7 +188,7 @@ public final class L2Weapon extends L2Item
 		weaponInst.setChargedSpiritShot(L2ItemInstance.CHARGED_NONE);
 
 		Env env = new Env();
-		env.player = caster;
+		env.character = caster;
 		env.target = target;
 
 		for (SkillHolder holder : _skillOnCritHolders)
@@ -262,7 +262,7 @@ public final class L2Weapon extends L2Item
 		weaponInst.setChargedSpiritShot(L2ItemInstance.CHARGED_NONE);
 
 		Env env = new Env();
-		env.player = caster;
+		env.character = caster;
 		env.target = target;
 		
 		for (SkillHolder holder : _skillOnCastHolders)

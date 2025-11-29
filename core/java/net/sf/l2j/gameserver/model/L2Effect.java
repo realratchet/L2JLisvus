@@ -190,7 +190,7 @@ public abstract class L2Effect
 		_skill = env.skill;
 
 		_effected = env.target;
-		_effector = env.player;
+		_effector = env.character;
 		_lambda = template.getLambda();
 		_funcTemplates = template.getFuncTemplates();
 		_count = template.getCounter();
@@ -385,7 +385,7 @@ public abstract class L2Effect
 	public final double calc()
 	{
 		Env env = new Env();
-		env.player = _effector;
+		env.character = _effector;
 		env.target = _effected;
 		env.skill = _skill;
 		return _lambda.calc(env);
@@ -613,7 +613,7 @@ public abstract class L2Effect
 		for (FuncTemplate t : _funcTemplates)
 		{
 			Env env = new Env();
-			env.player = getEffector();
+			env.character = getEffector();
 			env.target = getEffected();
 			env.effect = this;
 			env.skill = getSkill();

@@ -55,45 +55,45 @@ public class ConditionPlayerState extends Condition
 		switch (_check)
 		{
 			case RESTING:
-				player = env.player.getActingPlayer();
+				player = env.character.getActingPlayer();
 				if (player != null)
 				{
 					return player.isSitting() == _required;
 				}
 				return !_required;
 			case MOVING:
-				return env.player.isMoving() == _required;
+				return env.character.isMoving() == _required;
 			case RUNNING:
-				return env.player.isMoving() == _required && env.player.isRunning() == _required;
+				return env.character.isMoving() == _required && env.character.isRunning() == _required;
 			case FLYING:
-				return env.player.isFlying() == _required;
+				return env.character.isFlying() == _required;
 			case BEHIND:
-				return env.player.isBehindTarget() == _required;
+				return env.character.isBehindTarget() == _required;
 			case FRONT:
-				return env.player.isInFrontOfTarget() == _required;
+				return env.character.isInFrontOfTarget() == _required;
 			case CHAOTIC:
-				player = env.player.getActingPlayer();
+				player = env.character.getActingPlayer();
 				if (player != null)
 				{
 					return (player.getKarma() > 0) == _required;
 				}
 				return !_required;
 			case OLYMPIAD:
-				player = env.player.getActingPlayer();
+				player = env.character.getActingPlayer();
 				if (player != null)
 				{
 					return player.isInOlympiadMode() == _required;
 				}
 				return !_required;
 			case CLAN_LEADER:
-				player = env.player.getActingPlayer();
+				player = env.character.getActingPlayer();
 				if (player != null)
 				{
 					return player.isClanLeader() == _required;
 				}
 				return !_required;
 			case SIEGE_ATTACKER:
-				player = env.player.getActingPlayer();
+				player = env.character.getActingPlayer();
 				if (player != null)
 				{
 					Siege siege = SiegeManager.getInstance().getSiege(player);
@@ -101,7 +101,7 @@ public class ConditionPlayerState extends Condition
 				}
 				return !_required;
 			case SIEGE_DEFENDER:
-				player = env.player.getActingPlayer();
+				player = env.character.getActingPlayer();
 				if (player != null)
 				{
 					Siege siege = SiegeManager.getInstance().getSiege(player);

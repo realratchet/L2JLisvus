@@ -63,7 +63,7 @@ public final class Calculator
 	 * @param c2 
 	 * @return 
 	 */
-	public static boolean equalsCals(Calculator c1, Calculator c2) 
+	public static boolean equals(Calculator c1, Calculator c2) 
 	{
 		if (c1 == c2)
 			return true;

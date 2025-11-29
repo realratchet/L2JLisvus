@@ -35,11 +35,11 @@ public class ConditionPlayerPKCount extends Condition
 	@Override
 	public boolean testImpl(Env env, Object owner)
 	{
-		if (!(env.player instanceof L2PcInstance))
+		if (!(env.character instanceof L2PcInstance))
 		{
 			return false;
 		}
 
-		return ((L2PcInstance)env.player).getPkKills() <= _pkKills;
+		return ((L2PcInstance)env.character).getPkKills() <= _pkKills;
 	}
 }

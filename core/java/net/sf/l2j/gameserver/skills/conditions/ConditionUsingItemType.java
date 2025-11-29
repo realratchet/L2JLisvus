@@ -33,11 +33,11 @@ public final class ConditionUsingItemType extends Condition
 	@Override
 	public boolean testImpl(Env env, Object owner)
 	{
-		if (!(env.player instanceof L2PcInstance))
+		if (!(env.character instanceof L2PcInstance))
 		{
 			return false;
 		}
-		Inventory inv = ((L2PcInstance)env.player).getInventory();
+		Inventory inv = ((L2PcInstance)env.character).getInventory();
 		return (_mask & inv.getWornMask()) != 0;
 	}
 }

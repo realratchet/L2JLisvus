@@ -39,10 +39,10 @@ public class ConditionPlayerClassIdRestriction extends Condition
 	@Override
 	boolean testImpl(Env env, Object owner)
 	{
-		if (!(env.player instanceof L2PcInstance))
+		if (!(env.character instanceof L2PcInstance))
 		{
 			return false;
 		}
-		return (_classIds.contains(((L2PcInstance) env.player).getClassId().getId()));
+		return (_classIds.contains(((L2PcInstance) env.character).getClassId().getId()));
 	}
 }

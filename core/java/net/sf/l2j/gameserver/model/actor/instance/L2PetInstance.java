@@ -1044,18 +1044,6 @@ public class L2PetInstance extends L2Summon
 		return getStat().getPDef(target);
 	}
 	
-	@Override
-	public final int getSkillLevel(int skillId)
-	{
-		if (_skills == null || !_skills.containsKey(skillId))
-		{
-			return -1;
-		}
-		
-		int lvl = getLevel();
-		return lvl > 70 ? 7 + ((lvl - 70) / 5) : lvl / 10;
-	}
-	
 	public void updateRefOwner(L2PcInstance owner)
 	{
 		int oldOwnerId = getOwner().getObjectId();

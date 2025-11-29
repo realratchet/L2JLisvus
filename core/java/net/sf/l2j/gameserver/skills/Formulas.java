@@ -80,7 +80,7 @@ public final class Formulas
 		@Override
 		public void calc(Env env)
 		{
-			env.value += env.player.getLevel() / 3;
+			env.value += env.character.getLevel() / 3;
 		}
 	}
 	
@@ -106,7 +106,7 @@ public final class Formulas
 		@Override
 		public void calc(Env env)
 		{
-			env.value *= env.player.getLevelMod();
+			env.value *= env.character.getLevelMod();
 		}
 	}
 	
@@ -176,7 +176,7 @@ public final class Formulas
 		@Override
 		public void calc(Env env)
 		{
-			env.value *= BaseStats.STR.calcBonus(env.player) * env.player.getLevelMod();
+			env.value *= BaseStats.STR.calcBonus(env.character) * env.character.getLevelMod();
 		}
 	}
 	
@@ -197,8 +197,8 @@ public final class Formulas
 		@Override
 		public void calc(Env env)
 		{
-			double intb = BaseStats.INT.calcBonus(env.player);
-			double lvlb = env.player.getLevelMod();
+			double intb = BaseStats.INT.calcBonus(env.character);
+			double lvlb = env.character.getLevelMod();
 			env.value *= (lvlb * lvlb) * (intb * intb);
 		}
 	}
@@ -220,9 +220,9 @@ public final class Formulas
 		@Override
 		public void calc(Env env)
 		{
-			if (env.player instanceof L2PcInstance)
+			if (env.character instanceof L2PcInstance)
 			{
-				L2PcInstance p = (L2PcInstance) env.player;
+				L2PcInstance p = (L2PcInstance) env.character;
 				if (p.getInventory().getPaperdollItem(Inventory.PAPERDOLL_LFINGER) != null)
 				{
 					env.value -= 5;
@@ -244,7 +244,7 @@ public final class Formulas
 					env.value -= 13;
 				}
 			}
-			env.value *= BaseStats.MEN.calcBonus(env.player) * env.player.getLevelMod();
+			env.value *= BaseStats.MEN.calcBonus(env.character) * env.character.getLevelMod();
 		}
 	}
 	
@@ -265,9 +265,9 @@ public final class Formulas
 		@Override
 		public void calc(Env env)
 		{
-			if (env.player instanceof L2PcInstance)
+			if (env.character instanceof L2PcInstance)
 			{
-				L2PcInstance p = (L2PcInstance) env.player;
+				L2PcInstance p = (L2PcInstance) env.character;
 				
 				boolean hasMagePDef = (p.getClassId().isMage() || (p.getClassId().getId() == 0x31));
 				
@@ -292,7 +292,7 @@ public final class Formulas
 					env.value -= 7;
 				}
 			}
-			env.value *= env.player.getLevelMod();
+			env.value *= env.character.getLevelMod();
 		}
 	}
 	
@@ -313,7 +313,7 @@ public final class Formulas
 		@Override
 		public void calc(Env env)
 		{
-			L2Character p = env.player;
+			L2Character p = env.character;
 			// [Square(DEX)]*6 + lvl + weapon hit bonus;
 			env.value += Math.sqrt(p.getDEX()) * 6;
 			env.value += p.getLevel();
@@ -341,7 +341,7 @@ public final class Formulas
 		@Override
 		public void calc(Env env)
 		{
-			L2Character p = env.player;
+			L2Character p = env.character;
 			// [Square(DEX)]*6 + lvl;
 			env.value += Math.sqrt(p.getDEX()) * 6;
 			env.value += p.getLevel();
@@ -365,7 +365,7 @@ public final class Formulas
 		@Override
 		public void calc(Env env)
 		{
-			L2Character p = env.player;
+			L2Character p = env.character;
 			if (p instanceof L2SummonInstance)
 			{
 				env.value = 40;
@@ -404,7 +404,7 @@ public final class Formulas
 		@Override
 		public void calc(Env env)
 		{
-			L2Character p = env.player;
+			L2Character p = env.character;
 			if (p instanceof L2Summon)
 			{
 				env.value = 5;
@@ -433,7 +433,7 @@ public final class Formulas
 		@Override
 		public void calc(Env env)
 		{
-			env.value *= BaseStats.DEX.calcBonus(env.player);
+			env.value *= BaseStats.DEX.calcBonus(env.character);
 		}
 	}
 	
@@ -454,7 +454,7 @@ public final class Formulas
 		@Override
 		public void calc(Env env)
 		{
-			env.value *= BaseStats.DEX.calcBonus(env.player);
+			env.value *= BaseStats.DEX.calcBonus(env.character);
 		}
 	}
 	
@@ -475,7 +475,7 @@ public final class Formulas
 		@Override
 		public void calc(Env env)
 		{
-			env.value *= BaseStats.WIT.calcBonus(env.player);
+			env.value *= BaseStats.WIT.calcBonus(env.character);
 		}
 	}
 	
@@ -496,8 +496,7 @@ public final class Formulas
 		@Override
 		public void calc(Env env)
 		{
-			// L2PcTemplate t = (L2PcTemplate)env.player.getTemplate();
-			L2PcInstance pc = (L2PcInstance) env.player;
+			L2PcInstance pc = (L2PcInstance) env.character;
 			if (pc != null)
 			{
 				env.value += pc.getHennaStatSTR();
@@ -522,8 +521,7 @@ public final class Formulas
 		@Override
 		public void calc(Env env)
 		{
-			// L2PcTemplate t = (L2PcTemplate)env.player.getTemplate();
-			L2PcInstance pc = (L2PcInstance) env.player;
+			L2PcInstance pc = (L2PcInstance) env.character;
 			if (pc != null)
 			{
 				env.value += pc.getHennaStatDEX();
@@ -548,8 +546,8 @@ public final class Formulas
 		@Override
 		public void calc(Env env)
 		{
-			// L2PcTemplate t = (L2PcTemplate)env.player.getTemplate();
-			L2PcInstance pc = (L2PcInstance) env.player;
+			// L2PcTemplate t = (L2PcTemplate)env.character.getTemplate();
+			L2PcInstance pc = (L2PcInstance) env.character;
 			if (pc != null)
 			{
 				env.value += pc.getHennaStatINT();
@@ -574,8 +572,8 @@ public final class Formulas
 		@Override
 		public void calc(Env env)
 		{
-			// L2PcTemplate t = (L2PcTemplate)env.player.getTemplate();
-			L2PcInstance pc = (L2PcInstance) env.player;
+			// L2PcTemplate t = (L2PcTemplate)env.character.getTemplate();
+			L2PcInstance pc = (L2PcInstance) env.character;
 			if (pc != null)
 			{
 				env.value += pc.getHennaStatMEN();
@@ -600,8 +598,8 @@ public final class Formulas
 		@Override
 		public void calc(Env env)
 		{
-			// L2PcTemplate t = (L2PcTemplate)env.player.getTemplate();
-			L2PcInstance pc = (L2PcInstance) env.player;
+			// L2PcTemplate t = (L2PcTemplate)env.character.getTemplate();
+			L2PcInstance pc = (L2PcInstance) env.character;
 			if (pc != null)
 			{
 				env.value += pc.getHennaStatCON();
@@ -626,8 +624,8 @@ public final class Formulas
 		@Override
 		public void calc(Env env)
 		{
-			// L2PcTemplate t = (L2PcTemplate)env.player.getTemplate();
-			L2PcInstance pc = (L2PcInstance) env.player;
+			// L2PcTemplate t = (L2PcTemplate)env.character.getTemplate();
+			L2PcInstance pc = (L2PcInstance) env.character;
 			if (pc != null)
 			{
 				env.value += pc.getHennaStatWIT();
@@ -652,8 +650,8 @@ public final class Formulas
 		@Override
 		public void calc(Env env)
 		{
-			L2PcTemplate t = (L2PcTemplate) env.player.getTemplate();
-			int lvl = env.player.getLevel() - t.classBaseLevel;
+			L2PcTemplate t = (L2PcTemplate) env.character.getTemplate();
+			int lvl = env.character.getLevel() - t.classBaseLevel;
 			double hpmod = t.lvlHpMod * lvl;
 			double hpmax = (t.lvlHpAdd + hpmod) * lvl;
 			double hpmin = (t.lvlHpAdd * lvl) + hpmod;
@@ -678,7 +676,7 @@ public final class Formulas
 		@Override
 		public void calc(Env env)
 		{
-			env.value *= BaseStats.CON.calcBonus(env.player);
+			env.value *= BaseStats.CON.calcBonus(env.character);
 		}
 	}
 
@@ -699,8 +697,8 @@ public final class Formulas
 		@Override
 		public void calc(Env env)
 		{
-			L2PcTemplate t = (L2PcTemplate) env.player.getTemplate();
-			int lvl = env.player.getLevel() - t.classBaseLevel;
+			L2PcTemplate t = (L2PcTemplate) env.character.getTemplate();
+			int lvl = env.character.getLevel() - t.classBaseLevel;
 			double cpmod = t.lvlCpMod * lvl;
 			double cpmax = (t.lvlCpAdd + cpmod) * lvl;
 			double cpmin = (t.lvlCpAdd * lvl) + cpmod;
@@ -725,7 +723,7 @@ public final class Formulas
 		@Override
 		public void calc(Env env)
 		{
-			env.value *= BaseStats.CON.calcBonus(env.player);
+			env.value *= BaseStats.CON.calcBonus(env.character);
 		}
 	}
 
@@ -746,8 +744,8 @@ public final class Formulas
 		@Override
 		public void calc(Env env)
 		{
-			L2PcTemplate t = (L2PcTemplate) env.player.getTemplate();
-			int lvl = env.player.getLevel() - t.classBaseLevel;
+			L2PcTemplate t = (L2PcTemplate) env.character.getTemplate();
+			int lvl = env.character.getLevel() - t.classBaseLevel;
 			double mpmod = t.lvlMpMod * lvl;
 			double mpmax = (t.lvlMpAdd + mpmod) * lvl;
 			double mpmin = (t.lvlMpAdd * lvl) + mpmod;
@@ -772,7 +770,7 @@ public final class Formulas
 		@Override
 		public void calc(Env env)
 		{
-			env.value *= BaseStats.MEN.calcBonus(env.player);
+			env.value *= BaseStats.MEN.calcBonus(env.character);
 		}
 	}
 
@@ -2303,8 +2301,8 @@ public final class Formulas
 			if (target instanceof L2PcInstance)
 			
 			{
-				((L2PcInstance) target).setCurrentCp(1);
-				((L2PcInstance) target).setCurrentHp(1);
+				target.setCurrentCp(1);
+				target.setCurrentHp(1);
 				
 			}
 			else

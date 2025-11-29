@@ -465,7 +465,7 @@ public abstract class L2Item
 		for (FuncTemplate t : _funcTemplates)
 		{
 			Env env = new Env();
-			env.player = player;
+			env.character = player;
 			env.target = player;
 			env.item = instance;
 			Func f = t.getFunc(env, instance);
@@ -518,7 +518,7 @@ public abstract class L2Item
 		}
 		
 		Env env = new Env();
-		env.player = activeChar;
+		env.character = activeChar;
 		env.target = target != null && target instanceof L2Character ? (L2Character) target : null;
 		
 		for (Condition preCondition : _preConditions)

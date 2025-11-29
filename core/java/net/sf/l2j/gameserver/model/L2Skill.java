@@ -1219,7 +1219,7 @@ public abstract class L2Skill
 		}
 		
 		final Env env = new Env();
-		env.player = activeChar;
+		env.character = activeChar;
 		env.target = target != null && target instanceof L2Character ? (L2Character) target : null;
 		env.skill = this;
 		
@@ -2359,7 +2359,7 @@ public abstract class L2Skill
 		for (FuncTemplate t : _funcTemplates)
 		{
 			Env env = new Env();
-			env.player = _affected;
+			env.character = _affected;
 			env.skill = this;
 			Func f = t.getFunc(env, this); // skill is owner
 			if (f != null)
@@ -2432,7 +2432,7 @@ public abstract class L2Skill
 		for (EffectTemplate et : _effectTemplates)
 		{
 			Env env = new Env();
-			env.player = effector;
+			env.character = effector;
 			env.target = effected;
 			env.skill = this;
 			env.skillMastery = skillMastery;
@@ -2473,7 +2473,7 @@ public abstract class L2Skill
 		for (EffectTemplate et : _effectTemplatesSelf)
 		{
 			Env env = new Env();
-			env.player = effector;
+			env.character = effector;
 			env.target = effector;
 			env.skill = this;
 			L2Effect e = et.getEffect(env, this);

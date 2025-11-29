@@ -836,7 +836,7 @@ public class L2NpcInstance extends L2Character
 			
 			StringUtil.append(sb, "<tr><td>Castle</td><td>" + (getCastle() != null ? getCastle().getCastleId() : 0) + "</td><td>Coords</td><td>" + getX() + "," + getY() + "," + getZ() + "</td></tr>");
 			
-			StringUtil.append(sb, "<tr><td>Level</td><td>" + getLevel() + "</td><td>Aggro</td><td>" + ((this instanceof L2Attackable) ? ((L2Attackable) this).getAggroRange() : 0) + "</td></tr>");
+			StringUtil.append(sb, "<tr><td>Level</td><td>" + getLevel() + "</td><td>Aggro</td><td>" + (this instanceof L2Attackable ? getAggroRange() : 0) + "</td></tr>");
 			StringUtil.append(sb, "</table><br>");
 			
 			StringUtil.append(sb, "<font color=\"LEVEL\">Combat</font>");

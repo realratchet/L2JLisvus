@@ -528,7 +528,7 @@ public class AdminSkill implements IAdminCommandHandler
 			return;
 		}
 				
-		L2Skill skill = SkillTable.getInstance().getInfo(idval,player.getSkillLevel(idval));
+		L2Skill skill = SkillTable.getInstance().getInfo(idval, player.getSkillLevel(idval));
 				
 		if (skill != null)
 		{
