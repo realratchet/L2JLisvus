@@ -21,10 +21,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -45,7 +44,6 @@ import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.network.serverpackets.ActionFailed;
 import net.sf.l2j.gameserver.network.serverpackets.NpcHtmlMessage;
 import net.sf.l2j.gameserver.scripting.ManagedScript;
-import net.sf.l2j.gameserver.scripting.ScriptManager;
 import net.sf.l2j.gameserver.templates.L2NpcTemplate;
 import net.sf.l2j.util.Rnd;
 
@@ -57,10 +55,9 @@ public class Quest extends ManagedScript
 	private static Logger _log = Logger.getLogger(Quest.class.getName());
 	
 	/** HashMap containing events from String value of the event */
-	private static Map<String, Quest> _allEvents = new HashMap<>();
-	/** HashMap containing lists of timers from the name of the timer */
-	private static Map<String, List<QuestTimer>> _allEventTimers = new HashMap<>();
+	private static Map<String, Quest> _allEvents = new ConcurrentHashMap<>();
 	
+	private Map<String, List<QuestTimer>> _eventTimers;
 	private final ReentrantReadWriteLock _rwLock = new ReentrantReadWriteLock();
 	
 	private final int _questId;
@@ -301,7 +298,10 @@ public class Quest extends ManagedScript
 		final L2Party party = player.getParty();
 		if (party == null)
 		{
-			return checkPlayerCondition(player, npc, var, value) != null ? new L2PcInstance[] {player} : new L2PcInstance[0];
+			return checkPlayerCondition(player, npc, var, value) != null ? new L2PcInstance[]
+			{
+				player
+			} : new L2PcInstance[0];
 		}
 		
 		final List<L2PcInstance> list = new ArrayList<>();
@@ -332,7 +332,10 @@ public class Quest extends ManagedScript
 		final L2Party party = player.getParty();
 		if (party == null)
 		{
-			return checkPlayerState(player, npc, state) != null ? new L2PcInstance[] {player} : new L2PcInstance[0];
+			return checkPlayerState(player, npc, state) != null ? new L2PcInstance[]
+			{
+				player
+			} : new L2PcInstance[0];
 		}
 		
 		final List<L2PcInstance> list = new ArrayList<>();
@@ -433,13 +436,13 @@ public class Quest extends ManagedScript
 	public void startQuestTimer(String name, long time, L2NpcInstance npc, L2PcInstance player, boolean repeating)
 	{
 		// Add quest timer if timer doesn't already exist
-		List<QuestTimer> timers = getQuestTimers(name);
+		List<QuestTimer> timers = getQuestTimers().get(name);
 		// no timer exists with the same name, at all
 		if (timers == null)
 		{
-			timers = new CopyOnWriteArrayList<>();
+			timers = new ArrayList<>(1);
 			timers.add(new QuestTimer(this, name, time, npc, player, repeating));
-			_allEventTimers.put(name, timers);
+			getQuestTimers().put(name, timers);
 		}
 		else
 		{
@@ -462,7 +465,13 @@ public class Quest extends ManagedScript
 	
 	public QuestTimer getQuestTimer(String name, L2NpcInstance npc, L2PcInstance player)
 	{
-		List<QuestTimer> qt = getQuestTimers(name);
+		Map<String, List<QuestTimer>> timersMap = _eventTimers;
+		if (timersMap == null)
+		{
+			return null;
+		}
+		
+		List<QuestTimer> qt = timersMap.get(name);
 		if (qt == null || qt.isEmpty())
 			return null;
 		
@@ -482,16 +491,28 @@ public class Quest extends ManagedScript
 		return null;
 	}
 	
-	public List<QuestTimer> getQuestTimers(String name)
+	public Map<String, List<QuestTimer>> getQuestTimers()
 	{
-		return _allEventTimers.get(name);
+		if (_eventTimers == null)
+		{
+			_eventTimers = new ConcurrentHashMap<>(1);
+		}
+		return _eventTimers;
 	}
 	
 	public void cancelQuestTimers(String name)
 	{
-		List<QuestTimer> timers = getQuestTimers(name);
-		if (timers == null)
+		Map<String, List<QuestTimer>> timersMap = _eventTimers;
+		if (timersMap == null)
+		{
 			return;
+		}
+		
+		List<QuestTimer> timers = timersMap.get(name);
+		if (timers == null)
+		{
+			return;
+		}
 		
 		try
 		{
@@ -520,19 +541,30 @@ public class Quest extends ManagedScript
 	 */
 	public void cancelAllQuestTimers()
 	{
-		for (List<QuestTimer> timers : _allEventTimers.values())
+		Map<String, List<QuestTimer>> timersMap = _eventTimers;
+		if (timersMap != null)
 		{
-			for (QuestTimer timer : timers)
-				timer.cancel();
+			for (List<QuestTimer> timers : timersMap.values())
+			{
+				for (QuestTimer timer : timers)
+					timer.cancel();
+			}
+			timersMap.clear();
 		}
-		_allEventTimers.clear();
 	}
 	
 	public void removeQuestTimer(QuestTimer timer)
 	{
 		if (timer == null)
 			return;
-		List<QuestTimer> timers = getQuestTimers(timer.getName());
+		
+		Map<String, List<QuestTimer>> timersMap = _eventTimers;
+		if (timersMap == null)
+		{
+			return;
+		}
+		
+		List<QuestTimer> timers = timersMap.get(timer.getName());
 		if (timers == null)
 			return;
 		
@@ -734,7 +766,7 @@ public class Quest extends ManagedScript
 		}
 		return false;
 	}
-
+	
 	public final boolean notifyDecay(L2NpcInstance npc)
 	{
 		try
@@ -846,7 +878,7 @@ public class Quest extends ManagedScript
 	{
 		return null;
 	}
-
+	
 	public String onDecay(L2NpcInstance npc)
 	{
 		return null;
@@ -1384,7 +1416,7 @@ public class Quest extends ManagedScript
 		for (int npcId : npcIds)
 			addEventId(npcId, QuestEventType.ON_SPAWN);
 	}
-
+	
 	/**
 	 * Add this quest to the list of quests that the passed npc will respond to for Decay Events.
 	 * @param npcIds : A series of ids.
@@ -1585,29 +1617,17 @@ public class Quest extends ManagedScript
 	{
 		saveGlobalData();
 		
+		_allEvents.remove(_name);
+		
 		// Cancel all pending timers before reloading.
 		// If timers ought to be restarted, the quest can take care of it
 		// with its code (example: save global data indicating what timer must
 		// be restarted).
-		for (List<QuestTimer> timers : _allEventTimers.values())
-		{
-			for (QuestTimer timer : timers)
-				timer.cancel();
-		}
-		_allEventTimers.clear();
+		cancelAllQuestTimers();
 		
 		if (removeFromList)
 		{
 			QuestManager.getInstance().removeQuest(this);
 		}
-	}
-	
-	/**
-	 * @see net.sf.l2j.gameserver.scripting.ManagedScript#getScriptManager()
-	 */
-	@Override
-	public ScriptManager<?> getScriptManager()
-	{
-		return QuestManager.getInstance();
 	}
 }

@@ -91,6 +91,4 @@ public abstract class ManagedScript
     }
     
     public abstract String getScriptName();
-
-    public abstract ScriptManager<?> getScriptManager();
 }
