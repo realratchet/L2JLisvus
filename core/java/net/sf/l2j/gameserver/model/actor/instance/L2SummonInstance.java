@@ -298,28 +298,31 @@ public class L2SummonInstance extends L2Summon
     }
 
     @Override
-	public final void sendDamageMessage(L2Character target, int damage, boolean mcrit, boolean pcrit, boolean miss)
+	public final void onDamageGiven(L2Character target, int damage, boolean mcrit, boolean pcrit, boolean miss)
     {
+        L2PcInstance owner = getOwner();
+
         if (miss)
         {
-            getOwner().sendPacket(new SystemMessage(SystemMessage.MISSED_TARGET));
+            owner.sendPacket(new SystemMessage(SystemMessage.MISSED_TARGET));
             return;
         }
 
         // Prevents the double spam of system messages, if the target is the owning player.
-        if (target.getObjectId() != getOwner().getObjectId())
+        if (target.getObjectId() != owner.getObjectId())
         {
             if (pcrit || mcrit)
-                getOwner().sendPacket(new SystemMessage(SystemMessage.SUMMON_CRITICAL_HIT));
+                owner.sendPacket(new SystemMessage(SystemMessage.SUMMON_CRITICAL_HIT));
 
-            if (getOwner().isInOlympiadMode() && target instanceof L2PcInstance
-                    && ((L2PcInstance)target).isInOlympiadMode()
-                    && ((L2PcInstance)target).getOlympiadGameId() == getOwner().getOlympiadGameId())
-                getOwner().dmgDealt += damage;
+            if (owner.isInOlympiadMode() && target instanceof L2PcInstance && ((L2PcInstance)target).isInOlympiadMode()
+                && ((L2PcInstance)target).getOlympiadGameId() == owner.getOlympiadGameId())
+            {
+                owner.setOlympiadDmgDealt(owner.getOlympiadDmgDealt() + damage);
+            }
 
             SystemMessage sm = new SystemMessage(SystemMessage.SUMMON_GAVE_DAMAGE_OF_S1);
             sm.addNumber(damage);
-            getOwner().sendPacket(sm);
+            owner.sendPacket(sm);
         }
     }
 }

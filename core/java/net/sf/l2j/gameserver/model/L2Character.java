@@ -193,13 +193,13 @@ public abstract class L2Character extends L2Object
 	private Calculator[] _calculators;
 	
 	/** Table containing all skillId that are disabled */
-	protected List<Integer> _disabledSkills;
+	private List<Integer> _disabledSkills;
 	
 	private boolean _allActionsDisabled;
 	private boolean _allSkillsDisabled;
 	
 	/** Movement data of this L2Character */
-	protected MoveData _move;
+	private MoveData _move;
 	
 	/** Orientation of the L2Character */
 	private int _heading;
@@ -215,10 +215,10 @@ public abstract class L2Character extends L2Object
 	private int _attackEndTime;
 	private int _disableBowAttackEndTime;
 	
-	protected L2CharacterAI _ai;
+	private L2CharacterAI _ai;
 	
 	/** Future Skill Cast */
-	protected Future<?> _skillCast;
+	private Future<?> _skillCast;
 	
 	private Future<?> _hitTask;
 	
@@ -236,7 +236,7 @@ public abstract class L2Character extends L2Object
 	
 	private final byte[] _zones = new byte[ZONE_TYPE_LENGTH];
 	
-	protected byte _zoneValidateCounter = 4;
+	private byte _zoneValidateCounter = 4;
 	
 	// =========================================================
 	// Constructor
@@ -1800,14 +1800,17 @@ public abstract class L2Character extends L2Object
 	{
 		doRevive();
 	}
-	
-	// =========================================================
-	// Property - Public
+
+	public L2CharacterAI initAI()
+	{
+		return new L2CharacterAI(new AIAccessor());
+	}
+
 	/**
 	 * Return the L2CharacterAI of the L2Character and if its null create a new one.
 	 * @return
 	 */
-	public L2CharacterAI getAI()
+	public final L2CharacterAI getAI()
 	{
 		if (_ai == null)
 		{
@@ -1815,7 +1818,7 @@ public abstract class L2Character extends L2Object
 			{
 				if (_ai == null)
 				{
-					_ai = new L2CharacterAI(new AIAccessor());
+					_ai = initAI();
 				}
 			}
 		}
@@ -1823,7 +1826,7 @@ public abstract class L2Character extends L2Object
 		return _ai;
 	}
 	
-	public void setAI(L2CharacterAI newAI)
+	public final void setAI(L2CharacterAI newAI)
 	{
 		L2CharacterAI oldAI = _ai;
 		if (oldAI != null && oldAI != newAI && oldAI instanceof L2AttackableAI)
@@ -1837,7 +1840,7 @@ public abstract class L2Character extends L2Object
 	 * Return True if the L2Character has a L2CharacterAI.
 	 * @return
 	 */
-	public boolean hasAI()
+	public final boolean hasAI()
 	{
 		return _ai != null;
 	}
@@ -2212,7 +2215,7 @@ public abstract class L2Character extends L2Object
 	{
 		return _teleportType != TeleportType.NONE;
 	}
-
+	
 	public final TeleportType getTeleportType()
 	{
 		return _teleportType;
@@ -2227,7 +2230,7 @@ public abstract class L2Character extends L2Object
 	{
 		return _isInvul || isTeleporting();
 	}
-
+	
 	public void setIsInvul(boolean value)
 	{
 		_isInvul = value;
@@ -3186,7 +3189,6 @@ public abstract class L2Character extends L2Object
 		// overridden
 	}
 	
-	// Property - Public
 	/**
 	 * Return a map of 16 bits (0x0000) containing all abnormal effect in progress for this L2Character.<BR>
 	 * <BR>
@@ -3752,11 +3754,11 @@ public abstract class L2Character extends L2Object
 			broadcastPacket(su);
 		}
 	}
-
+	
 	private void resetCalculatorsIfNeeded()
 	{
 		Calculator[] stdCalculators;
-
+		
 		if (this instanceof L2NpcInstance)
 		{
 			stdCalculators = NPC_STD_CALCULATORS;
@@ -3765,7 +3767,7 @@ public abstract class L2Character extends L2Object
 		{
 			stdCalculators = null;
 		}
-
+		
 		if (stdCalculators != null)
 		{
 			int i;
@@ -4169,28 +4171,24 @@ public abstract class L2Character extends L2Object
 	
 	public void revalidateZone(boolean force)
 	{
+		// Cannot validate if not in a world region (happens during teleport)
 		if (getWorldRegion() == null)
 		{
 			return;
 		}
 		
 		// This function is called too often from movement code
-		if (force)
-		{
-			_zoneValidateCounter = 4;
-		}
-		else
+		if (!force)
 		{
 			_zoneValidateCounter--;
-			if (_zoneValidateCounter < 0)
-			{
-				_zoneValidateCounter = 4;
-			}
-			else
+
+			if (_zoneValidateCounter >= 0)
 			{
 				return;
 			}
 		}
+
+		_zoneValidateCounter = 4;
 		
 		getWorldRegion().revalidateZones(this);
 	}
@@ -4714,6 +4712,11 @@ public abstract class L2Character extends L2Object
 		
 		return true;
 	}
+
+	public void setMoveData(MoveData m)
+	{
+		_move = m;
+	}
 	
 	public boolean validateMovementHeading(int heading)
 	{
@@ -5038,7 +5041,7 @@ public abstract class L2Character extends L2Object
 			damage = 0; // prevents messing up drop calculation
 		}
 		
-		sendDamageMessage(target, damage, false, crit, miss);
+		onDamageGiven(target, damage, false, crit, miss);
 		
 		if (!miss && (damage > 0))
 		{
@@ -5423,7 +5426,7 @@ public abstract class L2Character extends L2Object
 	public L2Skill addSkill(L2Skill newSkill)
 	{
 		L2Skill oldSkill = null;
-
+		
 		if (_skills == null)
 		{
 			return oldSkill;
@@ -5949,6 +5952,14 @@ public abstract class L2Character extends L2Object
 	public boolean isSkillDisabled(int skillId)
 	{
 		return isSkillDisabled(skillId, isAllSkillsDisabled());
+	}
+	
+	public void clearDisabledSkills()
+	{
+		if (_disabledSkills != null && !_disabledSkills.isEmpty())
+		{
+			_disabledSkills.clear();
+		}
 	}
 	
 	/**
@@ -6519,13 +6530,11 @@ public abstract class L2Character extends L2Object
 	
 	// =========================================================
 	// Stat - NEED TO REMOVE ONCE L2CHARSTAT IS COMPLETE
-	// Property - Public
 	public final double calcStat(Stats stat, double init, L2Character target, L2Skill skill)
 	{
 		return getStat().calcStat(stat, init, target, skill);
 	}
 	
-	// Property - Public
 	public int getAccuracy()
 	{
 		return getStat().getAccuracy();
@@ -6747,7 +6756,6 @@ public abstract class L2Character extends L2Object
 		getStatus().stopHpMpRegeneration();
 	}
 	
-	// Property - Public
 	public final double getCurrentCp()
 	{
 		return getStatus().getCurrentCp();
@@ -6837,7 +6845,7 @@ public abstract class L2Character extends L2Object
 	}
 	
 	/**
-	 * Send system message about damage.<BR>
+	 * Performs actions related to damage (e.g. sending messages).<BR>
 	 * <BR>
 	 * <B><U> Overridden in </U> :</B><BR>
 	 * <BR>
@@ -6851,7 +6859,7 @@ public abstract class L2Character extends L2Object
 	 * @param pcrit
 	 * @param miss
 	 */
-	public void sendDamageMessage(L2Character target, int damage, boolean mcrit, boolean pcrit, boolean miss)
+	public void onDamageGiven(L2Character target, int damage, boolean mcrit, boolean pcrit, boolean miss)
 	{
 	}
 	

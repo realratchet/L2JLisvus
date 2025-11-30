@@ -65,8 +65,6 @@ public class L2SiegeGuardAI extends L2CharacterAI implements Runnable
     /** The flag used to indicate that a thinking action is in progress */
     private boolean _thinking; // to prevent recursive thinking
 
-    private int _attackRange;
-
     /**
      * Constructor of L2AttackableAI.<BR><BR>
      * 
@@ -80,7 +78,6 @@ public class L2SiegeGuardAI extends L2CharacterAI implements Runnable
         _selfAnalysis.init();
         _attackTimeout = Integer.MAX_VALUE;
         _globalAggro = -10; // 10 seconds timeout of ATTACK after respawn
-        _attackRange = ((L2Attackable) _actor).getPhysicalAttackRange();
     }
 
     @Override
@@ -264,7 +261,7 @@ public class L2SiegeGuardAI extends L2CharacterAI implements Runnable
         {
         	for (L2Object obj : npc.getKnownList().getKnownObjects().values())
 			{
-				if (!(obj instanceof L2Character) || !Util.checkIfInRange(_attackRange, _actor, obj, true))
+				if (!(obj instanceof L2Character) || !Util.checkIfInRange(_actor.getPhysicalAttackRange(), _actor, obj, true))
 				{
 					continue;
 				}
@@ -718,8 +715,27 @@ public class L2SiegeGuardAI extends L2CharacterAI implements Runnable
     @Override
 	protected void onEvtThink()
     {
-        // Check if the actor can't use skills and if a thinking action isn't already in progress
-        if (_thinking || _actor.isAllSkillsDisabled()) return;
+        // Check if a thinking action isn't already in progress
+        if (_thinking)
+        {
+            return;
+        }
+
+        L2Object target = _actor.getTarget();
+		// Stop skill cast if actor cannot see target
+		if (_actor.isCastingNow() && target != null && target != _actor)
+		{
+			if (!GeoData.getInstance().canSeeTarget(_actor, target))
+			{
+				_actor.abortCast();
+			}
+		}
+
+        // Check if the actor can't use skills
+		if (_actor.isAllSkillsDisabled())
+		{
+			return;
+		}
 
         // Start thinking action
         _thinking = true;
@@ -727,8 +743,14 @@ public class L2SiegeGuardAI extends L2CharacterAI implements Runnable
         try
         {
             // Manage AI thinks of a L2Attackable
-            if (getIntention() == AI_INTENTION_ACTIVE) thinkActive();
-            else if (getIntention() == AI_INTENTION_ATTACK) thinkAttack();
+            if (getIntention() == AI_INTENTION_ACTIVE)
+            {
+                thinkActive();
+            }
+            else if (getIntention() == AI_INTENTION_ATTACK)
+            {
+                thinkAttack();
+            }
         }
         finally
         {

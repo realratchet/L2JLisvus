@@ -501,7 +501,7 @@ public class L2CubicInstance
 					target.breakCast();
 				}
 				
-				activeCubic.getOwner().sendDamageMessage(target, damage, mcrit, false, false);
+				activeCubic.getOwner().onDamageGiven(target, damage, mcrit, false, false);
 				
 				if (skill.hasEffects())
 				{

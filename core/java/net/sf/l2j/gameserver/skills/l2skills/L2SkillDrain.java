@@ -197,7 +197,7 @@ public class L2SkillDrain extends L2Skill
 						+ damage + " with skill " + getName() + "(" + getId() + ") to " + name, "damage_mdam");
 				}
 				
-				activeChar.sendDamageMessage(target, damage, mCrit, false, false);
+				activeChar.onDamageGiven(target, damage, mCrit, false, false);
 				target.reduceCurrentHp(damage, activeChar);
 
 				if (Formulas.getInstance().calcAtkBreak(target, damage))
@@ -255,7 +255,7 @@ public class L2SkillDrain extends L2Skill
             // Check to see if we should damage the target
             if (damage > 0 && !target.isDead() && getTargetType() != SkillTargetType.TARGET_CORPSE_MOB)
             {
-            	owner.sendDamageMessage(target, damage, mcrit, false, false);
+            	owner.onDamageGiven(target, damage, mcrit, false, false);
     			target.reduceCurrentHp(damage, activeCubic.getOwner());
                 
                 if (Formulas.getInstance().calcAtkBreak(target, damage))

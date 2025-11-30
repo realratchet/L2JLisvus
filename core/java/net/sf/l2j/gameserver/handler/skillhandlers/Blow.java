@@ -27,7 +27,6 @@ import net.sf.l2j.gameserver.model.actor.instance.L2NpcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PlayableInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2RaidBossInstance;
-import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
 import net.sf.l2j.gameserver.skills.Formulas;
 import net.sf.l2j.util.Log;
 
@@ -110,15 +109,7 @@ public class Blow implements ISkillHandler
 				L2PcInstance player = activeChar.getActingPlayer();
 				if (player != null)
 				{
-					if (player.isInOlympiadMode() && target instanceof L2PcInstance)
-					{
-						player.dmgDealt += damage;
-					}
-					
-					player.sendPacket(new SystemMessage(SystemMessage.CRITICAL_HIT));
-					SystemMessage sm = new SystemMessage(SystemMessage.YOU_DID_S1_DMG);
-					sm.addNumber((int) damage);
-					player.sendPacket(sm);
+					player.onDamageGiven(target, (int)damage, false, true, false);
 				}
 				target.reduceCurrentHp(damage, activeChar);
 			}

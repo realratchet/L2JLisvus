@@ -254,24 +254,10 @@ public class L2Attackable extends L2NpcInstance
 		return (AttackableKnownList) super.getKnownList();
 	}
 	
-	/**
-	 * Return the L2Character AI of the L2Attackable and if its null create a new one.<BR>
-	 * <BR>
-	 */
 	@Override
-	public L2CharacterAI getAI()
+	public L2CharacterAI initAI()
 	{
-		if (_ai == null)
-		{
-			synchronized (this)
-			{
-				if (_ai == null)
-				{
-					_ai = new L2AttackableAI(new AIAccessor());
-				}
-			}
-		}
-		return _ai;
+		return new L2AttackableAI(new AIAccessor());
 	}
 	
 	// get condition to hate, actually isAggressive() is checked

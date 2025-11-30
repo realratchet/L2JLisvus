@@ -19,12 +19,12 @@ import net.sf.l2j.gameserver.templates.L2NpcTemplate;
  
 public class L2SiegeSummonInstance extends L2SummonInstance
 {
+    private final boolean _isSiegeGolem;
+
     public L2SiegeSummonInstance(int objectId, L2NpcTemplate template, L2PcInstance owner, L2SkillSummon skill)
     {
         super(objectId, template, owner, skill);
-
-        if (skill.getId() == 13)
-            _isSiegeGolem = true;
+        _isSiegeGolem = skill.getId() == 13;
     }
 
     @Override
@@ -34,5 +34,11 @@ public class L2SiegeSummonInstance extends L2SummonInstance
 
         if (!isInsideZone(ZONE_SIEGE))
             unSummon(getOwner());
+    }
+
+    @Override
+    public boolean isSiegeGolem()
+    {
+        return _isSiegeGolem;
     }
 }

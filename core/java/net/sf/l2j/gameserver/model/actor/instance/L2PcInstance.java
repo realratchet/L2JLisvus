@@ -46,7 +46,6 @@ import net.sf.l2j.gameserver.RecipeController;
 import net.sf.l2j.gameserver.SevenSignsFestival;
 import net.sf.l2j.gameserver.ThreadPoolManager;
 import net.sf.l2j.gameserver.ai.CtrlIntention;
-import net.sf.l2j.gameserver.ai.L2CharacterAI;
 import net.sf.l2j.gameserver.ai.L2PlayerAI;
 import net.sf.l2j.gameserver.ai.L2SummonAI;
 import net.sf.l2j.gameserver.cache.HtmCache;
@@ -390,7 +389,7 @@ public final class L2PcInstance extends L2PlayableInstance
 	private ScheduledFuture<?> _chargeTask = null;
 	
 	private ScheduledFuture<?> _shortBuffTask = null;
-	protected L2Effect _shortBuff;
+	private L2Effect _shortBuff;
 	
 	private int _curWeightPenalty = 0;
 	
@@ -402,7 +401,7 @@ public final class L2PcInstance extends L2PlayableInstance
 	
 	private int _clanPrivileges = 0;
 	
-	public int _teleMode = 0;
+	private int _teleMode = 0;
 	
 	/** The PvP Flag state of the L2PcInstance (0=White, 1=Purple) */
 	private int _pvpFlag;
@@ -504,8 +503,6 @@ public final class L2PcInstance extends L2PlayableInstance
 	private boolean _tradeRefusal = false; // Trade refusal
 	private boolean _exchangeRefusal = false; // Exchange refusal
 	
-	public boolean _exploring = false;
-	
 	// this is needed to find the inviting player for Party response
 	// there can only be one active party request at once
 	private L2PcInstance _activeRequester;
@@ -527,8 +524,6 @@ public final class L2PcInstance extends L2PlayableInstance
 	private String _accountName;
 	
 	private final Map<Integer, String> _chars = new LinkedHashMap<>();
-	
-	public byte _updateKnownCounter = 0;
 	
 	/** The table containing all L2RecipeList of the L2PcInstance */
 	private final Map<Integer, L2RecipeList> _dwarvenRecipeBook = new ConcurrentHashMap<>();
@@ -555,14 +550,14 @@ public final class L2PcInstance extends L2PlayableInstance
 	private long _newbieAt = 0;
 	private long _lastAccountNewbieAt = 0;
 	
-	protected boolean _inventoryDisable = false;
+	private boolean _inventoryDisable = false;
 	
-	protected final List<L2CubicInstance> _cubics = new CopyOnWriteArrayList<>();
+	private final List<L2CubicInstance> _cubics = new CopyOnWriteArrayList<>();
 	
 	/** The L2FolkInstance corresponding to the last Folk which one the player talked. */
 	private L2FolkInstance _lastFolkNpc = null;
 	
-	protected final Set<Integer> _activeSoulShots = ConcurrentHashMap.newKeySet(1);
+	private final Set<Integer> _activeSoulShots = ConcurrentHashMap.newKeySet(1);
 	
 	private final Map<Integer, TimeStamp> _reuseTimeStamps = new ConcurrentHashMap<>();
 	
@@ -572,10 +567,10 @@ public final class L2PcInstance extends L2PlayableInstance
 	private int _obsZ;
 	private boolean _observerMode = false;
 	
-	/** new loto ticket **/
-	public int _loto[] = new int[5];
-	/** new race ticket **/
-	public int _race[] = new int[2];
+	/** Lottery ticket **/
+	private int _loto[] = new int[5];
+	/** Race ticket **/
+	private int _race[] = new int[2];
 	
 	private final BlockList _blockList = new BlockList(this);
 	
@@ -594,7 +589,7 @@ public final class L2PcInstance extends L2PlayableInstance
 	private boolean _olympiadStart = false;
 	private int _olympiadGameId = -1;
 	private int _olympiadSide = -1;
-	public int dmgDealt = 0;
+	private int _olympiadDmgDealt = 0;
 	
 	/**
 	 * Lvl of alliance with ketra orcs or varka silenos, used in quests and aggro checks [-5,-1] varka, 0 neutral, [1,5] ketra
@@ -606,9 +601,9 @@ public final class L2PcInstance extends L2PlayableInstance
 	private final Map<Integer, SubClass> _subClasses = new ConcurrentSkipListMap<>();
 	
 	private final ReentrantLock _classLock = new ReentrantLock();
-	protected int _baseClass;
-	protected int _activeClass;
-	protected int _classIndex = 0;
+	private int _baseClass;
+	private int _activeClass;
+	private int _classIndex = 0;
 	
 	private long _lastAccess;
 	private int _boatId;
@@ -952,7 +947,7 @@ public final class L2PcInstance extends L2PlayableInstance
 		_appearance = app;
 		
 		// Create an AI
-		_ai = new L2PlayerAI(new L2PcInstance.AIAccessor());
+		setAI(initAI());
 		
 		// Create a L2Radar object
 		_radar = new L2Radar(this);
@@ -1041,25 +1036,10 @@ public final class L2PcInstance extends L2PlayableInstance
 		super.setTemplate(CharTemplateTable.getInstance().getTemplate(newclass));
 	}
 	
-	/**
-	 * Return the AI of the L2PcInstance (create it if necessary).<BR>
-	 * <BR>
-	 */
 	@Override
-	public L2CharacterAI getAI()
+	public L2PlayerAI initAI()
 	{
-		if (_ai == null)
-		{
-			synchronized (this)
-			{
-				if (_ai == null)
-				{
-					_ai = new L2PlayerAI(new L2PcInstance.AIAccessor());
-				}
-			}
-		}
-		
-		return _ai;
+		return new L2PlayerAI(new L2PcInstance.AIAccessor());
 	}
 	
 	@Override
@@ -1738,30 +1718,7 @@ public final class L2PcInstance extends L2PlayableInstance
 	@Override
 	public void revalidateZone(boolean force)
 	{
-		// Cannot validate if not in a world region (happens during teleport)
-		if (getWorldRegion() == null)
-		{
-			return;
-		}
-		
-		if (force)
-		{
-			_zoneValidateCounter = 4;
-		}
-		else
-		{
-			_zoneValidateCounter--;
-			if (_zoneValidateCounter < 0)
-			{
-				_zoneValidateCounter = 4;
-			}
-			else
-			{
-				return;
-			}
-		}
-		
-		getWorldRegion().revalidateZones(this);
+		super.revalidateZone(force);
 		
 		if (Config.ALLOW_WATER)
 		{
@@ -8978,24 +8935,34 @@ public final class L2PcInstance extends L2PlayableInstance
 		broadcastPacket(new CharInfo(this));
 	}
 	
-	public void setOlympiadSide(int i)
-	{
-		_olympiadSide = i;
-	}
-	
 	public int getOlympiadSide()
 	{
 		return _olympiadSide;
 	}
-	
-	public void setOlympiadGameId(int id)
+
+	public void setOlympiadSide(int i)
 	{
-		_olympiadGameId = id;
+		_olympiadSide = i;
+	}
+
+	public int getOlympiadDmgDealt()
+	{
+		return _olympiadDmgDealt;
+	}
+
+	public void setOlympiadDmgDealt(int dmg)
+	{
+		_olympiadDmgDealt = dmg;
 	}
 	
 	public int getOlympiadGameId()
 	{
 		return _olympiadGameId;
+	}
+
+	public void setOlympiadGameId(int id)
+	{
+		_olympiadGameId = id;
 	}
 	
 	public int getObsX()
@@ -9536,10 +9503,7 @@ public final class L2PcInstance extends L2PlayableInstance
 			
 			rewardSkills();
 			// Prevents some issues when changing between subclasses that share skills
-			if ((_disabledSkills != null) && !_disabledSkills.isEmpty())
-			{
-				_disabledSkills.clear();
-			}
+			clearDisabledSkills();
 			restoreEffects();
 			
 			updateEffectIcons();
@@ -11671,7 +11635,7 @@ public final class L2PcInstance extends L2PlayableInstance
 	}
 	
 	@Override
-	public final void sendDamageMessage(L2Character target, int damage, boolean mcrit, boolean pcrit, boolean miss)
+	public final void onDamageGiven(L2Character target, int damage, boolean mcrit, boolean pcrit, boolean miss)
 	{
 		// Check if hit is missed
 		if (miss)
@@ -11692,7 +11656,7 @@ public final class L2PcInstance extends L2PlayableInstance
 		
 		if (isInOlympiadMode() && (target instanceof L2PcInstance) && ((L2PcInstance) target).isInOlympiadMode() && (((L2PcInstance) target).getOlympiadGameId() == getOlympiadGameId()))
 		{
-			dmgDealt += damage;
+			_olympiadDmgDealt += damage;
 		}
 		
 		SystemMessage sm = new SystemMessage(SystemMessage.YOU_DID_S1_DMG);

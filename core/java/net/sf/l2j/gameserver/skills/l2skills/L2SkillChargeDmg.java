@@ -141,7 +141,7 @@ public class L2SkillChargeDmg extends L2Skill
 				}
 				
 				damage = damage * modifier;
-				activeChar.sendDamageMessage(target, (int) damage, false, false, false);
+				activeChar.onDamageGiven(target, (int) damage, false, false, false);
 				target.reduceCurrentHp(damage, activeChar);
 			}
 		}

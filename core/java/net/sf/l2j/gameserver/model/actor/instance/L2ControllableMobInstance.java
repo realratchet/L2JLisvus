@@ -15,8 +15,6 @@
 package net.sf.l2j.gameserver.model.actor.instance;
 
 import net.sf.l2j.Config;
-import net.sf.l2j.gameserver.ai.CtrlIntention;
-import net.sf.l2j.gameserver.ai.L2CharacterAI;
 import net.sf.l2j.gameserver.ai.L2ControllableMobAI;
 import net.sf.l2j.gameserver.model.L2Character;
 import net.sf.l2j.gameserver.templates.L2NpcTemplate;
@@ -27,8 +25,6 @@ import net.sf.l2j.gameserver.templates.L2NpcTemplate;
  */
 public class L2ControllableMobInstance extends L2MonsterInstance
 {
-	private L2ControllableMobAI _aiBackup;	// to save ai, avoiding being detached
-	
 	protected class ControllableAIAcessor extends AIAccessor 
     {
 		@Override
@@ -57,24 +53,9 @@ public class L2ControllableMobInstance extends L2MonsterInstance
 	}
 
 	@Override
-	public L2CharacterAI getAI() 
-    {
-		if (_ai == null)
-		{
-			synchronized(this)
-			{
-				if (_ai == null && _aiBackup == null)
-                {
-					_ai = new L2ControllableMobAI(new ControllableAIAcessor());
-					_aiBackup = (L2ControllableMobAI)_ai;
-				}
-				else
-                {
-					_ai = _aiBackup;
-                }
-			}
-		}
-		return _ai;
+	public L2ControllableMobAI initAI()
+	{
+		return new L2ControllableMobAI(new ControllableAIAcessor());
 	}
 
 	public void reduceCurrentHp(double i, L2Character attacker, boolean awake) 
@@ -116,30 +97,14 @@ public class L2ControllableMobInstance extends L2MonsterInstance
         if (!super.doDie(killer))
             return false;
 
-		removeAI();
+		setAI(null);
         return true;
 	}
 
 	@Override
 	public void deleteMe() 
     {
-		removeAI();
+		setAI(null);
 		super.deleteMe();
-	}
-	
-	/**
-	 * Definitively remove AI
-	 */
-	protected void removeAI() 
-    {
-		synchronized (this) 
-        {
-			if (_aiBackup != null) 
-            {
-				_aiBackup.setIntention(CtrlIntention.AI_INTENTION_IDLE);
-				_aiBackup = null;
-				_ai = null;
-			}
-		}
 	}
 }

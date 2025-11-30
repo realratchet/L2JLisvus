@@ -73,7 +73,7 @@ public class StrSiegeAssault implements ISkillHandler
 			damage = (int) Formulas.getInstance().calcPhysDam(activeChar, target, skill, shld, crit, dual, soul);
 			if (damage > 0)
 			{
-				activeChar.sendDamageMessage(target, damage, false, false, false);
+				activeChar.onDamageGiven(target, damage, false, false, false);
 				target.reduceCurrentHp(damage, activeChar);
 			}
 		}

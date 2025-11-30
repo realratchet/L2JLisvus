@@ -156,7 +156,7 @@ public class Mdam implements ISkillHandler
 					target.breakCast();
 				}
 
-				activeChar.sendDamageMessage(target, damage, mCrit, false, false);
+				activeChar.onDamageGiven(target, damage, mCrit, false, false);
 
 				if (skill.hasEffects())
 				{

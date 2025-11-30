@@ -1151,7 +1151,7 @@ public class L2PetInstance extends L2Summon
 	}
 	
 	@Override
-	public final void sendDamageMessage(L2Character target, int damage, boolean mcrit, boolean pcrit, boolean miss)
+	public final void onDamageGiven(L2Character target, int damage, boolean mcrit, boolean pcrit, boolean miss)
 	{
 		if (miss)
 		{

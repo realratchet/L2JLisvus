@@ -49,7 +49,7 @@ public class CpDamPercent implements ISkillHandler
 			}
 			
 			L2Character target = (L2Character) trg;
-			if ((activeChar instanceof L2PcInstance) && (target instanceof L2PcInstance) && ((L2PcInstance) target).isFakeDeath())
+			if ((activeChar instanceof L2PcInstance) && (target instanceof L2PcInstance) && target.isFakeDeath())
 			{
 				target.stopFakeDeath(true);
 			}
@@ -61,7 +61,7 @@ public class CpDamPercent implements ISkillHandler
 			int damage = (int) (target.getCurrentCp() * (skill.getPower() / 100));
 			if (damage > 0)
 			{
-				activeChar.sendDamageMessage(target, damage, false, false, false);
+				activeChar.onDamageGiven(target, damage, false, false, false);
 				
 				if (skill.hasEffects())
 				{

@@ -41,26 +41,20 @@ public class L2NpcWalkerInstance extends L2NpcInstance
     public L2NpcWalkerInstance(int objectId, L2NpcTemplate template)
     {
         super(objectId, template);
-        setAI(new L2NpcWalkerAI(new L2NpcWalkerAIAccessor()));
-    }
-
-    /**
-     * AI can't be detached, npc must move always with the same AI instance.
-     * @param newAI AI to set for this L2NpcWalkerInstance
-     */
-    @Override
-	public void setAI(L2CharacterAI newAI)
-    {
-        if (_ai == null || !(_ai instanceof L2NpcWalkerAI))
-            _ai = newAI;
+        setAI(initAI());
     }
 
     @Override
 	public void onSpawn()
     {
-        getAI().setHomeX(getX());
-        getAI().setHomeY(getY());
-        getAI().setHomeZ(getZ());
+        L2CharacterAI ai = getAI();
+        if (ai instanceof L2NpcWalkerAI)
+        {
+            L2NpcWalkerAI walkerAI = ((L2NpcWalkerAI) ai);
+            walkerAI.setHomeX(getX());
+            walkerAI.setHomeY(getY());
+            walkerAI.setHomeZ(getZ());
+        }
     }
 
     /**
@@ -112,15 +106,15 @@ public class L2NpcWalkerInstance extends L2NpcInstance
     }
 
     @Override
-	public L2NpcWalkerAI getAI()
+    public L2NpcWalkerAI initAI()
     {
-        return (L2NpcWalkerAI)_ai;
+        return new L2NpcWalkerAI(new L2NpcWalkerAIAccessor());
     }
 
     private class L2NpcWalkerAIAccessor extends L2Character.AIAccessor
     {
 		/**
-         * AI can't be deattached.
+         * AI can't be detached.
          */
         @Override
 		public void detachAI() {}

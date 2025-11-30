@@ -125,7 +125,7 @@ public class Pdam implements ISkillHandler
 					Log.addGame(activeChar.getName() + "(" + activeChar.getObjectId() + ") " + activeChar.getLevel() + " lvl did damage " + damage + " with skill " + skill.getName() + "(" + skill.getId() + ") to " + name, "damage_pdam");
 				}
 				
-				activeChar.sendDamageMessage(target, (int) damage, false, crit, false);
+				activeChar.onDamageGiven(target, (int) damage, false, crit, false);
 
 				if (skill.hasEffects())
 				{

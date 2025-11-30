@@ -146,7 +146,7 @@ public class L2BoatInstance extends L2Character
     @Override
     public boolean moveToNextRoutePoint()
     {
-        _move = null;
+        setMoveData(null);
         _runState++;
         
         if (_runState < _currentPath.size())
@@ -172,7 +172,7 @@ public class L2BoatInstance extends L2Character
                     setHeading(Util.calculateHeadingFrom(getX(), getY(), point.getX(), point.getY()));
                 
                 m._moveStartTime = GameTimeController.getInstance().getGameTicks();
-                _move = m;
+                setMoveData(m);
                 
                 GameTimeController.getInstance().registerMovingObject(this);
                 
@@ -212,7 +212,7 @@ public class L2BoatInstance extends L2Character
     @Override
     public void stopMove(Location loc)
     {
-        _move = null;
+        setMoveData(null);
         if (loc != null)
         {
             setXYZ(loc.getX(), loc.getY(), loc.getZ());

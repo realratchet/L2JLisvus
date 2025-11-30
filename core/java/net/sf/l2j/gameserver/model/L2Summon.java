@@ -16,7 +16,6 @@ package net.sf.l2j.gameserver.model;
 
 import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.ai.CtrlIntention;
-import net.sf.l2j.gameserver.ai.L2CharacterAI;
 import net.sf.l2j.gameserver.ai.L2SummonAI;
 import net.sf.l2j.gameserver.datatables.PetDataTable;
 import net.sf.l2j.gameserver.datatables.SkillTable;
@@ -63,7 +62,6 @@ public abstract class L2Summon extends L2PlayableInstance
 	
 	private int _attackRange = 36; // Melee range
 	private boolean _follow = true;
-	public boolean _isSiegeGolem = false;
 	
 	private int _chargedSoulShot;
 	private int _chargedSpiritShot;
@@ -100,7 +98,7 @@ public abstract class L2Summon extends L2PlayableInstance
 		setShowSummonAnimation(true);
 
 		_owner = owner;
-		_ai = new L2SummonAI(new L2Summon.AIAccessor());
+		setAI(initAI());
 		
 		// This position will also be used for summon spawn
 		setXYZInvisible(owner.getX() + Rnd.get(-100, 100), owner.getY() + Rnd.get(-100, 100), owner.getZ());
@@ -154,20 +152,9 @@ public abstract class L2Summon extends L2PlayableInstance
 	}
 	
 	@Override
-	public L2CharacterAI getAI()
+	public L2SummonAI initAI()
 	{
-		if (_ai == null)
-		{
-			synchronized (this)
-			{
-				if (_ai == null)
-				{
-					_ai = new L2SummonAI(new L2Summon.AIAccessor());
-				}
-			}
-		}
-		
-		return _ai;
+		return new L2SummonAI(new L2Summon.AIAccessor());
 	}
 	
 	@Override
@@ -551,7 +538,7 @@ public abstract class L2Summon extends L2PlayableInstance
 	
 	public boolean isSiegeGolem()
 	{
-		return _isSiegeGolem;
+		return false;
 	}
 	
 	public boolean isHungry()

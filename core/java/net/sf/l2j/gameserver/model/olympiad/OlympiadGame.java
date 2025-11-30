@@ -598,7 +598,7 @@ class OlympiadGame
             broadcastMessage(sm, true);
         }
         else if (!playerTwo.isOnline() || (playerTwoHp == 0 && playerOneHp != 0) 
-        	|| (playerOne.dmgDealt > playerTwo.dmgDealt && playerTwoHp != 0 && playerOneHp != 0))
+        	|| (playerOne.getOlympiadDmgDealt() > playerTwo.getOlympiadDmgDealt() && playerTwoHp != 0 && playerOneHp != 0))
         {
             playerOneStat.set(POINTS, playerOnePoints + pointDiff);
             playerOneStat.set(COMP_WON, playerOneWon + 1);
@@ -621,7 +621,7 @@ class OlympiadGame
 
             try
             {
-                result = " ("+playerOneHp+"hp vs "+playerTwoHp+"hp - "+playerOne.dmgDealt+"dmg vs "+playerTwo.dmgDealt+"dmg) "+_playerOneName+" win "+pointDiff+" points";
+                result = " ("+playerOneHp+"hp vs "+playerTwoHp+"hp - "+playerOne.getOlympiadDmgDealt()+"dmg vs "+playerTwo.getOlympiadDmgDealt()+"dmg) "+_playerOneName+" win "+pointDiff+" points";
                 L2ItemInstance item = playerOne.getInventory().addItem("Olympiad", Config.ALT_OLY_BATTLE_REWARD_ITEM, gpReward, playerOne, null);
                 InventoryUpdate iu = new InventoryUpdate();
                 iu.addModifiedItem(item);
@@ -635,7 +635,7 @@ class OlympiadGame
             catch (Exception e) {}
         }
         else if (!playerOne.isOnline() || (playerOneHp == 0 && playerTwoHp != 0) 
-        	|| (playerTwo.dmgDealt > playerOne.dmgDealt && playerOneHp != 0 && playerTwoHp != 0))
+        	|| (playerTwo.getOlympiadDmgDealt() > playerOne.getOlympiadDmgDealt() && playerOneHp != 0 && playerTwoHp != 0))
         {
             playerTwoStat.set(POINTS, playerTwoPoints + pointDiff);
             playerTwoStat.set(COMP_WON, playerTwoWon + 1);
@@ -658,7 +658,7 @@ class OlympiadGame
 
             try
             {
-                result = " ("+playerOneHp+"hp vs "+playerTwoHp+"hp - "+playerOne.dmgDealt+"dmg vs "+playerTwo.dmgDealt+"dmg) "+_playerTwoName+" win "+pointDiff+" points";
+                result = " ("+playerOneHp+"hp vs "+playerTwoHp+"hp - "+playerOne.getOlympiadDmgDealt()+"dmg vs "+playerTwo.getOlympiadDmgDealt()+"dmg) "+_playerTwoName+" win "+pointDiff+" points";
                 L2ItemInstance item = playerTwo.getInventory().addItem("Olympiad", Config.ALT_OLY_BATTLE_REWARD_ITEM, gpReward, playerTwo, null);
                 InventoryUpdate iu = new InventoryUpdate();
                 iu.addModifiedItem(item);
@@ -777,7 +777,7 @@ class OlympiadGame
 		        player.sendPacket(sm);
 	        }
 	        
-	        player.dmgDealt = 0;
+	        player.setOlympiadDmgDealt(0);
         }
     }
 

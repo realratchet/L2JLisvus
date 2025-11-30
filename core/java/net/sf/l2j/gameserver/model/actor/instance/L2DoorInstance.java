@@ -21,7 +21,6 @@ import java.util.concurrent.Future;
 
 import net.sf.l2j.gameserver.ThreadPoolManager;
 import net.sf.l2j.gameserver.ai.CtrlIntention;
-import net.sf.l2j.gameserver.ai.L2CharacterAI;
 import net.sf.l2j.gameserver.ai.L2DoorAI;
 import net.sf.l2j.gameserver.datatables.DoorTable;
 import net.sf.l2j.gameserver.instancemanager.CastleManager;
@@ -110,19 +109,9 @@ public class L2DoorInstance extends L2Character
     }
     
     @Override
-	public L2CharacterAI getAI()
+	public L2DoorAI initAI()
     {
-        if (_ai == null)
-        {
-            synchronized(this)
-            {
-                if (_ai == null)
-                {
-                    _ai = new L2DoorAI(new AIAccessor());
-                }
-            }
-        }
-        return _ai;
+        return new L2DoorAI(new AIAccessor());
     }
     
     /**

@@ -133,7 +133,7 @@ public class L2NpcInstance extends L2Character
 	/** Time of last social packet broadcast */
 	private long _lastSocialBroadcast = 0;
 
-	protected RandomAnimationTask _rAniTask = null;
+	private RandomAnimationTask _rAniTask = null;
 	
 	private double _currentCollisionHeight;
 	private double _currentCollisionRadius;
