@@ -21,7 +21,9 @@ import java.io.FileReader;
 import java.io.LineNumberReader;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Set;
 import java.util.StringTokenizer;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Logger;
 
 import net.sf.l2j.Config;
@@ -53,18 +55,18 @@ public class L2BoatInstance extends L2Character
 {
     private static final Logger _logBoat = Logger.getLogger(L2BoatInstance.class.getName());
     
-    protected final ArrayList<L2PcInstance> _passengers = new ArrayList<>();
-    protected ArrayList<L2BoatPoint> _currentPath;
+    private final Set<L2PcInstance> _passengers = ConcurrentHashMap.newKeySet();
+    private ArrayList<L2BoatPoint> _currentPath;
     
-    protected byte _runState = 0;
+    private byte _runState = 0;
     
-    protected L2BoatTrajet _t1;
-    protected L2BoatTrajet _t2;
+    private L2BoatTrajet _t1;
+    private L2BoatTrajet _t2;
     
     // default
-    protected int _cycle = 1;
+    private int _cycle = 1;
     
-    public class AIAccessor extends L2Character.AIAccessor
+    public class BoatAIAccessor extends L2Character.AIAccessor
     {
         @Override
         public void detachAI()
@@ -77,7 +79,13 @@ public class L2BoatInstance extends L2Character
         super(objectId, template);
         getKnownList();
         getStat();
-        setAI(new L2BoatAI(new AIAccessor()));
+        setAI(initAI());
+    }
+
+    @Override
+    public L2BoatAI initAI()
+    {
+        return new L2BoatAI(new BoatAIAccessor());
     }
     
     @Override
@@ -129,10 +137,11 @@ public class L2BoatInstance extends L2Character
     private void checkPassengers()
     {
         _passengers.clear();
+        
         final Collection<L2PcInstance> knownPlayers = getKnownList().getKnownPlayersInRadius(1000);
         if (knownPlayers != null && !knownPlayers.isEmpty())
         {
-            for (L2PcInstance player : getKnownList().getKnownPlayersInRadius(1000))
+            for (L2PcInstance player : knownPlayers)
             {
                 if (player == null)
                     continue;
@@ -228,9 +237,9 @@ public class L2BoatInstance extends L2Character
     {
         final int itemId;
         if (_cycle == 1)
-            itemId = _t1._IdWTicket1;
+            itemId = _t1._idWTicket1;
         else
-            itemId = _t2._IdWTicket1;
+            itemId = _t2._idWTicket1;
         
         if (itemId != 0)
         {
@@ -470,8 +479,8 @@ public class L2BoatInstance extends L2Character
     {
         protected ArrayList<L2BoatPoint> _path;
         
-        public int _IdWaypoint1;
-        public int _IdWTicket1;
+        public int _idWaypoint1;
+        public int _idWTicket1;
         public int _ntx1;
         public int _nty1;
         public int _ntz1;
@@ -497,8 +506,8 @@ public class L2BoatInstance extends L2Character
          */
         public L2BoatTrajet(int idWaypoint1, int idWTicket1, int ntx1, int nty1, int ntz1, String npc1, String sysmess10_1, String sysmess5_1, String sysmess1_1, String sysmess0_1, String sysmessb_1)
         {
-            _IdWaypoint1 = idWaypoint1;
-            _IdWTicket1 = idWTicket1;
+            _idWaypoint1 = idWaypoint1;
+            _idWTicket1 = idWTicket1;
             _ntx1 = ntx1;
             _nty1 = nty1;
             _ntz1 = ntz1;
@@ -546,7 +555,7 @@ public class L2BoatInstance extends L2Character
                 String line = null;
                 while ((line = lnr.readLine()) != null)
                 {
-                    if (line.trim().length() == 0 || !line.startsWith(_IdWaypoint1 + ";"))
+                    if (line.trim().length() == 0 || !line.startsWith(_idWaypoint1 + ";"))
                         continue;
                     parseLine(line);
                     return;
