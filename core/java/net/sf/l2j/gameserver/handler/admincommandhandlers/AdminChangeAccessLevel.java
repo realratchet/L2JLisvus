@@ -24,38 +24,41 @@ import net.sf.l2j.gameserver.handler.IAdminCommandHandler;
 import net.sf.l2j.gameserver.model.GMAudit;
 import net.sf.l2j.gameserver.model.L2World;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
 
 /**
  * This class handles following admin commands:
  * - changelvl = change a character's access level
- *  Can be used for character ban (as opposed to regular //ban that affects accounts)
- *  or to grant mod/GM privileges ingame
+ * Can be used for character ban (as opposed to regular //ban that affects accounts)
+ * or to grant mod/GM privileges ingame
  * @version $Revision: 1.1.2.2.2.3 $ $Date: 2005/04/11 10:06:00 $
  */
 public class AdminChangeAccessLevel implements IAdminCommandHandler
 {
-    private static String[] _adminCommands = { "admin_changelvl" };
-
+    private static String[] _adminCommands =
+    {
+        "admin_changelvl"
+    };
+    
     @Override
-	public boolean useAdminCommand(String command, L2PcInstance activeChar)
+    public boolean useAdminCommand(String command, L2PcInstance activeChar)
     {
         handleChangeLevel(command, activeChar);
         String target = (activeChar.getTarget() != null ? activeChar.getTarget().getName() : "no-target");
         GMAudit.auditGMAction(activeChar.getName(), command, target, "");
         return true;
     }
-
+    
     @Override
-	public String[] getAdminCommandList()
+    public String[] getAdminCommandList()
     {
         return _adminCommands;
     }
-
-    /** 
+    
+    /**
      * If no character name is specified, tries to change GM's target access level. Else
      * if a character name is provided, will try to reach it either from L2World or from
      * a database connection.
-     * 
      * @param command
      * @param activeChar
      */
@@ -69,12 +72,26 @@ public class AdminChangeAccessLevel implements IAdminCommandHandler
                 int lvl = Integer.parseInt(parts[1]);
                 if (activeChar.getTarget() instanceof L2PcInstance)
                 {
-                    ((L2PcInstance)activeChar.getTarget()).setAccessLevel(lvl);
+                    L2PcInstance target = ((L2PcInstance) activeChar.getTarget());
+
+                    target.setAccessLevel(lvl);
+
                     if (lvl < 0)
-                        ((L2PcInstance)activeChar.getTarget()).logout();
+                    {
+                        target.logout();
+                    }
+                    else
+                    {
+                        target.sendMessage("Your access level has been changed to " + lvl + ".");
+                        target.broadcastUserInfo();
+                    }
+
+                    activeChar.sendMessage(target.getName() + "'s access level has been changed to " + lvl + ".");
                 }
                 else
-                    activeChar.sendMessage("Incorrect Target.");
+                {
+                    activeChar.sendPacket(new SystemMessage(SystemMessage.INCORRECT_TARGET));
+                }
             }
             catch (Exception e)
             {
