@@ -70,9 +70,9 @@ public final class MemoryJavaFileManager extends EclipseFileManager
 	{
 		final String code;
 		
-		StringInputBuffer(String name, String code)
+		StringInputBuffer(URI uri, String code)
 		{
-			super(toURI(name), Kind.SOURCE);
+			super(uri, Kind.SOURCE);
 			this.code = code;
 		}
 		
@@ -122,9 +122,9 @@ public final class MemoryJavaFileManager extends EclipseFileManager
 		return super.getJavaFileForOutput(location, className, kind, sibling);
 	}
 	
-	static JavaFileObject makeStringSource(String name, String code)
+	static JavaFileObject makeStringSource(URI uri, String code)
 	{
-		return new StringInputBuffer(name, code);
+		return new StringInputBuffer(uri, code);
 	}
 	
 	static URI toURI(String name)

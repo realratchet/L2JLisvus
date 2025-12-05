@@ -16,6 +16,7 @@ package net.sf.l2j.gameserver.scripting.scriptengine.java;
 
 import java.io.PrintWriter;
 import java.io.Writer;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -43,37 +44,16 @@ public class JavaCompiler
 		_tool = new EclipseCompiler();
 	}
 	
-	public Map<String, byte[]> compile(String source, String fileName)
-	{
-		Map<String, byte[]> result;
-		
-		try (PrintWriter err = new PrintWriter(System.err))
-		{
-			result = compile(source, fileName, err, null, null);
-		}
-		return result;
-	}
-	
-	public Map<String, byte[]> compile(String fileName, String source, Writer err)
-	{
-		return compile(fileName, source, err, null, null);
-	}
-	
-	public Map<String, byte[]> compile(String fileName, String source, Writer err, String sourcePath)
-	{
-		return compile(fileName, source, err, sourcePath, null);
-	}
-	
 	/**
 	 * Compile given String source and return bytecodes as a Map.
-	 * @param filePath source filePath to be used for error messages etc.
+	 * @param fileURI source file URI.
 	 * @param source Java source as String
 	 * @param err error writer where diagnostic messages are written
 	 * @param sourcePath location of additional .java source files
 	 * @param classPath location of additional .class files
 	 * @return
 	 */
-	public Map<String, byte[]> compile(String filePath, String source, Writer err, String sourcePath, String classPath)
+	public Map<String, byte[]> compile(URI fileURI, String source, Writer err, String sourcePath, String classPath)
 	{
 		Map<String, byte[]> result;
 		
@@ -82,7 +62,7 @@ public class JavaCompiler
 		
 		// Prepare the compilation unit
 		List<JavaFileObject> compUnits = new ArrayList<>(1);
-		compUnits.add(MemoryJavaFileManager.makeStringSource(filePath, source));
+		compUnits.add(MemoryJavaFileManager.makeStringSource(fileURI, source));
 		
 		// javac options
 		List<String> options = new ArrayList<>();

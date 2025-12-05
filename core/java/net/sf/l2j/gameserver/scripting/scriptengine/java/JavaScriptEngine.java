@@ -21,6 +21,7 @@ import java.io.StringWriter;
 import java.io.Writer;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
+import java.net.URI;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -50,7 +51,7 @@ public class JavaScriptEngine extends AbstractScriptEngine implements Compilable
 	
 	private static final String MAINCLASS = "mainClass";
 	
-	private static final String FILEPATH = "filepath";
+	private static final String FILEURI = "fileuri";
 	private static final String SOURCEPATH = "sourcepath";
 	private static final String CLASSPATH = "classpath";
 	private static final String PARENTLOADER = "parentLoader";
@@ -147,7 +148,13 @@ public class JavaScriptEngine extends AbstractScriptEngine implements Compilable
 	
 	private Class<?> parse(String str, ScriptContext ctx) throws ScriptException
 	{
-		String filePath = getFilePath(ctx);
+		URI fileURI = getFileURI(ctx);
+
+		if (fileURI == null)
+		{
+			throw new ScriptException("Missing parse file URI: " + str);
+		}
+
 		String sourcePath = getSourcePath(ctx);
 		String classPath = getClassPath(ctx);
 		
@@ -157,7 +164,7 @@ public class JavaScriptEngine extends AbstractScriptEngine implements Compilable
 			err = new StringWriter();
 		}
 		
-		Map<String, byte[]> classBytes = _compiler.compile(filePath, str, err, sourcePath, classPath);
+		Map<String, byte[]> classBytes = _compiler.compile(fileURI, str, err, sourcePath, classPath);
 		
 		if (classBytes == null)
 		{
@@ -227,7 +234,13 @@ public class JavaScriptEngine extends AbstractScriptEngine implements Compilable
 	
 	private JavaCompiledScript compile(String str, ScriptContext ctx) throws ScriptException
 	{
-		String filePath = getFilePath(ctx);
+		URI fileURI = getFileURI(ctx);
+
+		if (fileURI == null)
+		{
+			throw new ScriptException("Missing compile file URI: " + str);
+		}
+
 		String sourcePath = getSourcePath(ctx);
 		String classPath = getClassPath(ctx);
 		
@@ -237,7 +250,7 @@ public class JavaScriptEngine extends AbstractScriptEngine implements Compilable
 			err = new StringWriter();
 		}
 		
-		Map<String, byte[]> classBytes = _compiler.compile(filePath, str, err, sourcePath, classPath);
+		Map<String, byte[]> classBytes = _compiler.compile(fileURI, str, err, sourcePath, classPath);
 		
 		if (classBytes == null)
 		{
@@ -351,27 +364,19 @@ public class JavaScriptEngine extends AbstractScriptEngine implements Compilable
 		return EMPTY_STRING_ARRAY;
 	}
 	
-	@SuppressWarnings("unused")
-	private static String getFileName(ScriptContext ctx)
+	private static URI getFileURI(ScriptContext ctx)
 	{
-		int scope = ctx.getAttributesScope("javax.script.filename");
+		int scope = ctx.getAttributesScope(FILEURI);
 		if (scope != -1)
 		{
-			return ctx.getAttribute("javax.script.filename", scope).toString();
-		}
-		return "$unnamed.java";
-	}
-	
-	private static String getFilePath(ScriptContext ctx)
-	{
-		int scope = ctx.getAttributesScope(FILEPATH);
-		if (scope != -1)
-		{
-			return ctx.getAttribute(FILEPATH).toString();
+			Object ctxValue = ctx.getAttribute(FILEURI);
+			if (ctxValue instanceof URI)
+			{
+				return (URI) ctxValue;
+			}
 		}
 		
-		// look for "com.sun.script.java.sourcepath"
-		return System.getProperty(SYSPROP_PREFIX + FILEPATH);
+		return null;
 	}
 	
 	private static String getSourcePath(ScriptContext ctx)

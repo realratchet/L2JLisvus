@@ -51,8 +51,7 @@ public class RequestBuyProcure extends L2GameClientPacket
 		_items = new int[_count * 2];
 		for (int i = 0; i < _count; i++)
 		{
-			@SuppressWarnings("unused")
-			long service = readD();
+			readD(); // service
 			int itemId = readD();
 			_items[(i * 2) + 0] = itemId;
 			int count = readD();

@@ -341,7 +341,7 @@ public final class L2ScriptEngineManager
                 ScriptContext context = new SimpleScriptContext();
                 context.setAttribute("mainClass", getClassForFile(file).replace('/', '.').replace('\\', '.'), ScriptContext.ENGINE_SCOPE);
                 context.setAttribute(ScriptEngine.FILENAME, file.getName(), ScriptContext.ENGINE_SCOPE);
-                context.setAttribute("filepath", file.getAbsolutePath(), ScriptContext.ENGINE_SCOPE);
+                context.setAttribute("fileuri", file.toURI(), ScriptContext.ENGINE_SCOPE);
                 context.setAttribute("classpath", SCRIPT_FOLDER.getAbsolutePath(), ScriptContext.ENGINE_SCOPE);
                 context.setAttribute("sourcepath", SCRIPT_FOLDER.getAbsolutePath(), ScriptContext.ENGINE_SCOPE);
 
@@ -359,7 +359,7 @@ public final class L2ScriptEngineManager
                     engine.setContext(ctx);
                     setCurrentLoadingScript(null);
                     context.removeAttribute(ScriptEngine.FILENAME, ScriptContext.ENGINE_SCOPE);
-                    context.removeAttribute("filepath", ScriptContext.ENGINE_SCOPE);
+                    context.removeAttribute("fileuri", ScriptContext.ENGINE_SCOPE);
                     context.removeAttribute("mainClass", ScriptContext.ENGINE_SCOPE);
                 }
             }
@@ -368,7 +368,7 @@ public final class L2ScriptEngineManager
                 ScriptContext context = new SimpleScriptContext();
                 context.setAttribute("mainClass", getClassForFile(file).replace('/', '.').replace('\\', '.'), ScriptContext.ENGINE_SCOPE);
                 context.setAttribute(ScriptEngine.FILENAME, file.getName(), ScriptContext.ENGINE_SCOPE);
-                context.setAttribute("filepath", file.getAbsolutePath(), ScriptContext.ENGINE_SCOPE);
+                context.setAttribute("fileuri", file.toURI(), ScriptContext.ENGINE_SCOPE);
                 context.setAttribute("classpath", SCRIPT_FOLDER.getAbsolutePath(), ScriptContext.ENGINE_SCOPE);
                 context.setAttribute("sourcepath", SCRIPT_FOLDER.getAbsolutePath(), ScriptContext.ENGINE_SCOPE);
                 setCurrentLoadingScript(file);
@@ -380,7 +380,7 @@ public final class L2ScriptEngineManager
                 {
                     setCurrentLoadingScript(null);
                     engine.getContext().removeAttribute(ScriptEngine.FILENAME, ScriptContext.ENGINE_SCOPE);
-                    engine.getContext().removeAttribute("filepath", ScriptContext.ENGINE_SCOPE);
+                    engine.getContext().removeAttribute("fileuri", ScriptContext.ENGINE_SCOPE);
                     engine.getContext().removeAttribute("mainClass", ScriptContext.ENGINE_SCOPE);
                 }
             }

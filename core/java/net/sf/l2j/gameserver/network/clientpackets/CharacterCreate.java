@@ -14,12 +14,7 @@
  */
 package net.sf.l2j.gameserver.network.clientpackets;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Logger;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import java.util.regex.PatternSyntaxException;
 
 import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.datatables.CharNameTable;
@@ -35,7 +30,6 @@ import net.sf.l2j.gameserver.model.L2SkillLearn;
 import net.sf.l2j.gameserver.model.L2World;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.quest.Quest;
-import net.sf.l2j.gameserver.model.quest.QuestState;
 import net.sf.l2j.gameserver.network.L2GameClient;
 import net.sf.l2j.gameserver.network.L2GameClient.GameClientState;
 import net.sf.l2j.gameserver.network.serverpackets.CharCreateFail;
@@ -50,27 +44,23 @@ import net.sf.l2j.gameserver.util.Util;
  * This class ...
  * @version $Revision: 1.9.2.3.2.8 $ $Date: 2005/03/27 15:29:30 $
  */
-@SuppressWarnings("unused")
 public class CharacterCreate extends L2GameClientPacket
 {
 	private static final String _C__0B_CHARACTERCREATE = "[C] 0B CharacterCreate";
 	private static Logger _log = Logger.getLogger(CharacterCreate.class.getName());
-
+	
 	// cSdddddddddddd
 	private String _name;
-	private int _race;
 	private byte _sex;
 	private int _classId;
-	private int _int;
-	private int _str;
-	private int _con;
-	private int _men;
-	private int _dex;
-	private int _wit;
+	
+	@SuppressWarnings("unused")
+	private int _race, _int, _str, _con, _men, _dex, _wit;
+	
 	private byte _hairStyle;
 	private byte _hairColor;
 	private byte _face;
-
+	
 	@Override
 	protected void readImpl()
 	{
@@ -88,7 +78,7 @@ public class CharacterCreate extends L2GameClientPacket
 		_hairColor = (byte) readD();
 		_face = (byte) readD();
 	}
-
+	
 	@Override
 	public void runImpl()
 	{
@@ -127,7 +117,7 @@ public class CharacterCreate extends L2GameClientPacket
 		}
 		
 		L2PcInstance newChar = null;
-
+		
 		/*
 		 * DrHouse: Since checks for duplicate names are done using SQL, lock must be held until data is written to DB as well.
 		 */
@@ -152,20 +142,20 @@ public class CharacterCreate extends L2GameClientPacket
 				sendPacket(new CharCreateFail(CharCreateFail.REASON_NAME_ALREADY_EXISTS));
 				return;
 			}
-
+			
 			L2PcTemplate template = CharTemplateTable.getInstance().getTemplate(_classId);
-
+			
 			if (Config.DEBUG)
 			{
 				_log.fine("CharName " + _name + " classId: " + _classId + " template: " + template);
 			}
-
+			
 			if (template == null || template.classBaseLevel > 1)
 			{
 				sendPacket(new CharCreateFail(CharCreateFail.REASON_CREATION_FAILED));
 				return;
 			}
-
+			
 			int objectId = IdFactory.getInstance().getNextId();
 			newChar = L2PcInstance.create(objectId, template, getClient().getAccountName(), _name, _hairStyle, _hairColor, _face, _sex != 0);
 		}
@@ -179,7 +169,7 @@ public class CharacterCreate extends L2GameClientPacket
 		
 		initNewChar(getClient(), newChar);
 	}
-
+	
 	private void initNewChar(L2GameClient client, L2PcInstance newChar)
 	{
 		if (Config.DEBUG)
@@ -187,14 +177,14 @@ public class CharacterCreate extends L2GameClientPacket
 			_log.fine("Character init start");
 		}
 		L2World.getInstance().storeObject(newChar);
-
+		
 		L2PcTemplate template = newChar.getTemplate();
-
+		
 		if (Config.STARTING_ADENA > 0)
 		{
 			newChar.addAdena("Init", Config.STARTING_ADENA, null, false);
 		}
-
+		
 		if (Config.CUSTOM_STARTING_SPAWN)
 		{
 			newChar.setXYZInvisible(Config.CUSTOM_SPAWN_X, Config.CUSTOM_SPAWN_Y, Config.CUSTOM_SPAWN_Z);
@@ -203,9 +193,9 @@ public class CharacterCreate extends L2GameClientPacket
 		{
 			newChar.setXYZInvisible(template.spawnX, template.spawnY, template.spawnZ);
 		}
-
+		
 		newChar.setTitle("");
-
+		
 		L2ShortCut shortcut;
 		// add attack shortcut
 		shortcut = new L2ShortCut(0, 0, 3, 2, -1, 1);
@@ -216,7 +206,7 @@ public class CharacterCreate extends L2GameClientPacket
 		// add sit shortcut
 		shortcut = new L2ShortCut(10, 0, 3, 0, -1, 1);
 		newChar.registerShortCut(shortcut);
-
+		
 		InitialItem[] items = template.getItems();
 		for (InitialItem it : items)
 		{
@@ -272,7 +262,7 @@ public class CharacterCreate extends L2GameClientPacket
 				}
 			}
 		}
-
+		
 		L2SkillLearn[] startSkills = SkillTreeTable.getInstance().getAvailableSkills(newChar, newChar.getClassId());
 		for (L2SkillLearn startSkill : startSkills)
 		{
@@ -282,26 +272,26 @@ public class CharacterCreate extends L2GameClientPacket
 				shortcut = new L2ShortCut(1, 0, 2, startSkill.getId(), startSkill.getLevel(), 1);
 				newChar.registerShortCut(shortcut);
 			}
-
+			
 			if (startSkill.getId() == 1216)
 			{
 				shortcut = new L2ShortCut(9, 0, 2, startSkill.getId(), startSkill.getLevel(), 1);
 				newChar.registerShortCut(shortcut);
 			}
-
+			
 			if (Config.DEBUG)
 			{
 				_log.fine("adding starter skill:" + startSkill.getId() + " / " + startSkill.getLevel());
 			}
 		}
-
+		
 		if (Config.ALT_ENABLE_TUTORIAL)
 		{
 			startTutorialQuest(newChar);
 		}
-
+		
 		newChar.logout();
-
+		
 		// Send character list
 		CharSelectInfo cl = new CharSelectInfo(client.getAccountName(), client.getSessionId().playOkID1);
 		client.getConnection().sendPacket(cl);
@@ -311,7 +301,7 @@ public class CharacterCreate extends L2GameClientPacket
 			_log.fine("Character init end");
 		}
 	}
-
+	
 	private void startTutorialQuest(L2PcInstance player)
 	{
 		final Quest q = QuestManager.getInstance().getQuest("255_Tutorial");
@@ -320,9 +310,10 @@ public class CharacterCreate extends L2GameClientPacket
 			q.newQuestState(player);
 		}
 	}
-
+	
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see net.sf.l2j.gameserver.clientpackets.L2GameClientPacket#getType()
 	 */
 	@Override
