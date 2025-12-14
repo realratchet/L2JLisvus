@@ -35,11 +35,12 @@ public class QuestTimerTask implements Runnable
         
         try
         {
+            _timer.getQuest().notifyEvent(_timer.getName(), _timer.getNpc(), _timer.getPlayer());
+            
             if (!_timer.isRepeating())
             {
                 _timer.destroy();
             }
-            _timer.getQuest().notifyEvent(_timer.getName(), _timer.getNpc(), _timer.getPlayer());
         }
         catch (Exception e)
         {
