@@ -49,22 +49,31 @@ import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
 /**
  * This class handles following admin commands:
  * - admin = shows menu
- * 
  * @version $Revision: 1.3.2.1.2.4 $ $Date: 2005/04/11 10:06:06 $
  */
 public class AdminAdmin implements IAdminCommandHandler
 {
     private static String[] _adminCommands =
     {
-        "admin_admin","admin_play_sounds","admin_play_sound",
-        "admin_gmliston","admin_gmlistoff","admin_silence",
-        "admin_atmosphere","admin_diet","admin_tradeoff",
-        "admin_reload", "admin_saveolymp", "admin_endolympiad",
-        "admin_sethero", "admin_setnoble", "admin_setaio"
+        "admin_admin",
+        "admin_play_sounds",
+        "admin_play_sound",
+        "admin_gmliston",
+        "admin_gmlistoff",
+        "admin_silence",
+        "admin_atmosphere",
+        "admin_diet",
+        "admin_tradeoff",
+        "admin_reload",
+        "admin_saveolymp",
+        "admin_endolympiad",
+        "admin_sethero",
+        "admin_setnoble",
+        "admin_setaio"
     };
-
+    
     @Override
-	public boolean useAdminCommand(String command, L2PcInstance activeChar)
+    public boolean useAdminCommand(String command, L2PcInstance activeChar)
     {
         if (command.equals("admin_admin"))
         {
@@ -78,17 +87,21 @@ public class AdminAdmin implements IAdminCommandHandler
         {
             try
             {
-                showHelpPage(activeChar, "songs/songs"+command.substring(17)+".htm");
+                showHelpPage(activeChar, "songs/songs" + command.substring(17) + ".htm");
             }
-            catch (StringIndexOutOfBoundsException e) {}
+            catch (StringIndexOutOfBoundsException e)
+            {
+            }
         }
         else if (command.startsWith("admin_play_sound"))
         {
             try
             {
-                playAdminSound(activeChar,command.substring(17));
+                playAdminSound(activeChar, command.substring(17));
             }
-            catch (StringIndexOutOfBoundsException e) {}
+            catch (StringIndexOutOfBoundsException e)
+            {
+            }
         }
         else if (command.startsWith("admin_gmliston"))
         {
@@ -98,12 +111,12 @@ public class AdminAdmin implements IAdminCommandHandler
         else if (command.startsWith("admin_gmlistoff"))
         {
             GmListTable.getInstance().hideGm(activeChar);
-
+            
             activeChar.sendMessage("Removed from gm list.");
         }
         else if (command.startsWith("admin_silence"))
         {
-        	if (activeChar.getMessageRefusal()) // already in message refusal mode
+            if (activeChar.getMessageRefusal()) // already in message refusal mode
             {
                 activeChar.setMessageRefusal(false);
                 activeChar.sendPacket(new SystemMessage(SystemMessage.MESSAGE_ACCEPTANCE_MODE));
@@ -112,29 +125,29 @@ public class AdminAdmin implements IAdminCommandHandler
             {
                 activeChar.setMessageRefusal(true);
                 activeChar.sendPacket(new SystemMessage(SystemMessage.MESSAGE_REFUSAL_MODE));
-            }	    
+            }
         }
         else if (command.startsWith("admin_saveolymp"))
         {
-            try 
+            try
             {
                 Olympiad.getInstance().save();
                 activeChar.sendMessage("Olympiad data saved!!");
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 e.printStackTrace();
             }
-
+            
         }
         else if (command.startsWith("admin_endolympiad"))
         {
-            try 
+            try
             {
                 Olympiad.getInstance().manualSelectHeroes();
                 activeChar.sendMessage("Heroes were formed.");
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 e.printStackTrace();
             }
@@ -143,8 +156,8 @@ public class AdminAdmin implements IAdminCommandHandler
         {
             L2PcInstance target = activeChar;
             if (activeChar.getTarget() != null && activeChar.getTarget() instanceof L2PcInstance)
-                target = (L2PcInstance)activeChar.getTarget();
-
+                target = (L2PcInstance) activeChar.getTarget();
+            
             target.setHero(target.isHero() ? false : true);
             target.broadcastUserInfo();
         }
@@ -152,10 +165,10 @@ public class AdminAdmin implements IAdminCommandHandler
         {
             L2PcInstance target = activeChar;
             if (activeChar.getTarget() != null && activeChar.getTarget() instanceof L2PcInstance)
-                target = (L2PcInstance)activeChar.getTarget();
-
+                target = (L2PcInstance) activeChar.getTarget();
+            
             target.setNoble(target.isNoble() ? false : true);
-
+            
             if (target.isNoble())
                 activeChar.sendMessage(target.getName() + " has gained Noblesse status.");
             else
@@ -163,13 +176,13 @@ public class AdminAdmin implements IAdminCommandHandler
         }
         else if (command.startsWith("admin_setaio"))
         {
-        	if (!Config.AIO_BUFFER_ENABLED)
-        	{
-        		activeChar.sendMessage("AIO Buffers system is currently disabled. Please enable it in your custom configurations file and try again.");
-        		return true;
-        	}
-        	
-        	try
+            if (!Config.AIO_BUFFER_ENABLED)
+            {
+                activeChar.sendMessage("AIO Buffers system is currently disabled. Please enable it in your custom configurations file and try again.");
+                return true;
+            }
+            
+            try
             {
                 StringTokenizer st = new StringTokenizer(command);
                 st.nextToken();
@@ -177,101 +190,101 @@ public class AdminAdmin implements IAdminCommandHandler
                 
                 L2PcInstance target = activeChar;
                 if (activeChar.getTarget() != null && activeChar.getTarget() instanceof L2PcInstance)
-                    target = (L2PcInstance)activeChar.getTarget();
+                    target = (L2PcInstance) activeChar.getTarget();
                 
                 byte state = Byte.parseByte(token);
                 if (state == 1)
                 {
-                	if (!target.isAIOBuffer())
-                	{
-                		// Set AIO buffer status and change color name if needed
-                		target.setIsAIOBuffer(true);
-                		
-	                	// Set level to maximum if needed
-	                	long pXp = target.getExp();
-	            		long tXp = Experience.LEVEL[Config.MAX_PLAYER_LEVEL];
-	            		if (pXp < tXp)
-	            		{
-	            			target.addExpAndSp(tXp - pXp, 0);
-	            		}
-	            		
-	            		// Set name prefix
-	            		if (Config.AIO_BUFFER_NAME_PREFIX != null)
-	            		{
-		            		target.setName(Config.AIO_BUFFER_NAME_PREFIX + target.getName());
-		    				
-		    				// Store player name
-		    				CharNameTable.getInstance().addName(target);
-	            		}
-	            		
-	            		// Restore
-	                	target.setCurrentCp(target.getMaxCp());
-	                	target.setCurrentHp(target.getMaxHp());
-	                	target.setCurrentMp(target.getMaxMp());
-                	
-	                	if (activeChar != target)
-	                    {
-	                    	activeChar.sendMessage(target.getName() + " has become an AIO Buffer.");
-	                    }
-	                    target.sendMessage("You have now become an AIO Buffer.");
-                	}
-                	else
-                	{
-                		activeChar.sendMessage(target.getName() + " has already become an AIO Buffer.");
-                	}
+                    if (!target.isAIOBuffer())
+                    {
+                        // Set AIO buffer status and change color name if needed
+                        target.setIsAIOBuffer(true);
+                        
+                        // Set level to maximum if needed
+                        long pXp = target.getExp();
+                        long tXp = Experience.LEVEL[Config.MAX_PLAYER_LEVEL];
+                        if (pXp < tXp)
+                        {
+                            target.addExpAndSp(tXp - pXp, 0);
+                        }
+                        
+                        // Set name prefix
+                        if (Config.AIO_BUFFER_NAME_PREFIX != null)
+                        {
+                            target.setName(Config.AIO_BUFFER_NAME_PREFIX + target.getName());
+                            
+                            // Store player name
+                            CharNameTable.getInstance().addName(target);
+                        }
+                        
+                        // Restore
+                        target.setCurrentCp(target.getMaxCp());
+                        target.setCurrentHp(target.getMaxHp());
+                        target.setCurrentMp(target.getMaxMp());
+                        
+                        if (activeChar != target)
+                        {
+                            activeChar.sendMessage(target.getName() + " has become an AIO Buffer.");
+                        }
+                        target.sendMessage("You have now become an AIO Buffer.");
+                    }
+                    else
+                    {
+                        activeChar.sendMessage(target.getName() + " has already become an AIO Buffer.");
+                    }
                 }
                 else if (state == 0)
                 {
-                	if (target.isAIOBuffer())
-                	{
-                		// Remove AIO buffer status
-	                	target.setIsAIOBuffer(false);
-	                	
-                		// Set name prefix
-	            		if (Config.AIO_BUFFER_NAME_PREFIX != null)
-	            		{
-		            		target.setName(target.getName().replace(Config.AIO_BUFFER_NAME_PREFIX, ""));
-		    				
-		    				// Store player name
-		    				CharNameTable.getInstance().addName(target);
-	            		}
-	            		
-	            		// Reset name color
-	                	if (!target.isGM())
-	                	{
-	                		target.getAppearance().setNameColor(0xFFFFFF);
-	                	}
-	            		
-	                	// Remove all character skills for security purposes
-	        			target.removeAllSkills(true);
-	        			target.restoreShortCuts();
-	                	
-	                	// Update character skill shortcuts
-	                	target.sendPacket(new ShortCutInit(target));
-	                	
-	                	// Give available skills
-	                	target.rewardSkills();
-	                	
-	                	if (activeChar != target)
-	                    {
-	                    	activeChar.sendMessage(target.getName() + " has lost AIO Buffer status.");
-	                    }
-	                    target.sendMessage("You have lost AIO Buffer status.");
-                	}
-                	else
-                	{
-                		activeChar.sendMessage(target.getName() + " has already lost AIO Buffer status.");
-                	}
+                    if (target.isAIOBuffer())
+                    {
+                        // Remove AIO buffer status
+                        target.setIsAIOBuffer(false);
+                        
+                        // Set name prefix
+                        if (Config.AIO_BUFFER_NAME_PREFIX != null)
+                        {
+                            target.setName(target.getName().replace(Config.AIO_BUFFER_NAME_PREFIX, ""));
+                            
+                            // Store player name
+                            CharNameTable.getInstance().addName(target);
+                        }
+                        
+                        // Reset name color
+                        if (!target.isGM())
+                        {
+                            target.getAppearance().setNameColor(0xFFFFFF);
+                        }
+                        
+                        // Remove all character skills for security purposes
+                        target.removeAllSkills(true);
+                        target.restoreShortCuts();
+                        
+                        // Update character skill shortcuts
+                        target.sendPacket(new ShortCutInit(target));
+                        
+                        // Give available skills
+                        target.rewardSkills();
+                        
+                        if (activeChar != target)
+                        {
+                            activeChar.sendMessage(target.getName() + " has lost AIO Buffer status.");
+                        }
+                        target.sendMessage("You have lost AIO Buffer status.");
+                    }
+                    else
+                    {
+                        activeChar.sendMessage(target.getName() + " has already lost AIO Buffer status.");
+                    }
                 }
                 
                 // Update skill list and user info
-        		target.sendSkillList();
-        		target.broadcastUserInfo();
+                target.sendSkillList();
+                target.broadcastUserInfo();
             }
             catch (Exception e)
-        	{
-            	activeChar.sendMessage("Usage: //setaio 0 - removes AIO Buffer status, 1 - sets AIO Buffer status."); 
-        	}
+            {
+                activeChar.sendMessage("Usage: //setaio 0 - removes AIO Buffer status, 1 - sets AIO Buffer status.");
+            }
         }
         else if (command.startsWith("admin_atmosphere"))
         {
@@ -281,9 +294,11 @@ public class AdminAdmin implements IAdminCommandHandler
                 st.nextToken();
                 String type = st.nextToken();
                 String state = st.nextToken();
-                adminAtmosphere(type,state,activeChar);
+                adminAtmosphere(type, state, activeChar);
             }
-            catch(Exception ex) {}
+            catch (Exception ex)
+            {
+            }
         }
         else if (command.startsWith("admin_diet"))
         {
@@ -301,7 +316,9 @@ public class AdminAdmin implements IAdminCommandHandler
                 }
                 activeChar.refreshOverloaded();
             }
-            catch(Exception ex) {}            
+            catch (Exception ex)
+            {
+            }
         }
         else if (command.startsWith("admin_tradeoff"))
         {
@@ -319,128 +336,138 @@ public class AdminAdmin implements IAdminCommandHandler
                     activeChar.sendMessage("Tradeoff disabled.");
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 if (activeChar.getTradeRefusal())
                     activeChar.sendMessage("Tradeoff currently enabled.");
                 else
                     activeChar.sendMessage("Tradeoff currently disabled.");
-            }            
+            }
         }
         else if (command.startsWith("admin_reload"))
         {
+            String usageMessage = "Usage: //reload <multisell|teleport|skill|npc|htm|item|buylist|config" + "|npcwalker|quest|event|aionpcbuff|wedding|admincommand>";
             StringTokenizer st = new StringTokenizer(command);
             st.nextToken();
-
+            
             try
             {
-                String type = st.nextToken();
-
-                if (type.startsWith("multisell"))
+                if (st.hasMoreTokens())
                 {
-                    L2Multisell.getInstance().reload();
-                    activeChar.sendMessage("All Multisells have been reloaded.");
-                }
-                else if (type.startsWith("teleport"))
-                {
-                    TeleportLocationTable.getInstance().reloadAll();
-                    activeChar.sendMessage("Teleport location table has been reloaded.");
-                }
-                else if (type.startsWith("skill"))
-                {
-                    SkillTable.getInstance().reload();
-                    activeChar.sendMessage("All Skills have been reloaded.");
-                }
-                else if (type.startsWith("npcwalker"))
-                {
-                    NpcWalkerRoutesTable.getInstance().load();
-                    activeChar.sendMessage("All NPC walker routes have been reloaded.");
-                }
-                else if (type.startsWith("npc"))
-                {
-                    NpcTable.getInstance().reloadAllNpc();
-                    activeChar.sendMessage("All NPCs have been reloaded.");
-                }
-                else if (type.startsWith("htm"))
-                {
-                    HtmCache.getInstance().reload();
-                    activeChar.sendMessage("Cache[HTML]: " + HtmCache.getInstance().getMemoryUsage()  + " megabytes on " + HtmCache.getInstance().getLoadedFiles() + " files loaded.");
-                }
-                else if (type.startsWith("item"))
-                {
-                    ItemTable.getInstance().load();
-                    activeChar.sendMessage("All Item templates have been reloaded.");
-                }
-                else if (type.startsWith("buylist"))
-                {
-                    TradeController.getInstance().load();
-                    activeChar.sendMessage("All buylists have been reloaded.");
-                }
-                else if (type.startsWith("config"))
-                {
-                    Config.load();
-                    activeChar.sendMessage("All config settings have been reloaded.");
-                }
-                else if (type.startsWith("quest"))
-                {
-                	activeChar.sendMessage("Quests are being reloaded...");
-                    QuestManager.getInstance().reloadAllQuests();
-                    activeChar.sendMessage("All Quests have been reloaded.");
-                }
-                else if (type.startsWith("event"))
-                {
-                    EventEngine.getInstance().load();
-                    activeChar.sendMessage("All Events have been reloaded.");
-                }
-                else if (type.startsWith("aionpcbuff"))
-                {
-                	if (Config.AIO_BUFFER_ENABLED || Config.NPC_BUFFER_ENABLED)
-                	{
-                		BufferTable.getInstance().load();
-                		activeChar.sendMessage("AIO/NPC Buffs have been reloaded.");
-                		SkillTable.getInstance().reload();
+                    String type = st.nextToken();
+                    
+                    if (type.startsWith("multisell"))
+                    {
+                        L2Multisell.getInstance().reload();
+                        activeChar.sendMessage("All Multisells have been reloaded.");
+                    }
+                    else if (type.startsWith("teleport"))
+                    {
+                        TeleportLocationTable.getInstance().reloadAll();
+                        activeChar.sendMessage("Teleport location table has been reloaded.");
+                    }
+                    else if (type.startsWith("skill"))
+                    {
+                        SkillTable.getInstance().reload();
                         activeChar.sendMessage("All Skills have been reloaded.");
-                	}
+                    }
+                    else if (type.startsWith("npcwalker"))
+                    {
+                        NpcWalkerRoutesTable.getInstance().load();
+                        activeChar.sendMessage("All NPC walker routes have been reloaded.");
+                    }
+                    else if (type.startsWith("npc"))
+                    {
+                        NpcTable.getInstance().reloadAllNpc();
+                        activeChar.sendMessage("All NPCs have been reloaded.");
+                    }
+                    else if (type.startsWith("htm"))
+                    {
+                        HtmCache.getInstance().reload();
+                        activeChar.sendMessage("Cache[HTML]: " + HtmCache.getInstance().getMemoryUsage() + " megabytes on " + HtmCache.getInstance().getLoadedFiles() + " files loaded.");
+                    }
+                    else if (type.startsWith("item"))
+                    {
+                        ItemTable.getInstance().load();
+                        activeChar.sendMessage("All Item templates have been reloaded.");
+                    }
+                    else if (type.startsWith("buylist"))
+                    {
+                        TradeController.getInstance().load();
+                        activeChar.sendMessage("All buylists have been reloaded.");
+                    }
+                    else if (type.startsWith("config"))
+                    {
+                        Config.load();
+                        activeChar.sendMessage("All config settings have been reloaded.");
+                    }
+                    else if (type.startsWith("quest"))
+                    {
+                        activeChar.sendMessage("Quests are being reloaded...");
+                        QuestManager.getInstance().reloadAllQuests();
+                        activeChar.sendMessage("All Quests have been reloaded.");
+                    }
+                    else if (type.startsWith("event"))
+                    {
+                        EventEngine.getInstance().load();
+                        activeChar.sendMessage("All Events have been reloaded.");
+                    }
+                    else if (type.startsWith("aionpcbuff"))
+                    {
+                        if (Config.AIO_BUFFER_ENABLED || Config.NPC_BUFFER_ENABLED)
+                        {
+                            BufferTable.getInstance().load();
+                            activeChar.sendMessage("AIO/NPC Buffs have been reloaded.");
+                            SkillTable.getInstance().reload();
+                            activeChar.sendMessage("All Skills have been reloaded.");
+                        }
+                    }
+                    else if (type.startsWith("wedding"))
+                    {
+                        if (Config.ALLOW_WEDDING)
+                        {
+                            CoupleManager.getInstance().load();
+                            activeChar.sendMessage("All Weddings have been reloaded.");
+                        }
+                    }
+                    else if (type.startsWith("admincommand"))
+                    {
+                        AdminCommandRightsData.getInstance().load();
+                        activeChar.sendMessage("All Admin Command Rights have been reloaded.");
+                    }
+                    else
+                    {
+                        activeChar.sendMessage(usageMessage);
+                    }
                 }
-                else if (type.startsWith("wedding"))
+                else
                 {
-                	if (Config.ALLOW_WEDDING)
-                	{
-                		CoupleManager.getInstance().load();
-                		activeChar.sendMessage("All Weddings have been reloaded.");
-                	}
-                }
-                else if (type.startsWith("admincommand"))
-                {
-                	AdminCommandRightsData.getInstance().load();
-                	activeChar.sendMessage("All Admin Command Rights have been reloaded.");
+                    activeChar.sendMessage(usageMessage);
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
-                activeChar.sendMessage("Usage: //reload <multisell|teleport|skill|npc|htm|item|buylist|config"
-                	+ "|npcwalker|quest|event|aionpcbuff|wedding|admincommand>");
+                e.printStackTrace();
             }
         }
         return true;
     }
-
+    
     @Override
-	public String[] getAdminCommandList()
+    public String[] getAdminCommandList()
     {
         return _adminCommands;
     }
-
+    
     /**
-     * 
      * @param type - atmosphere type (signsky,sky)
      * @param state - atmosphere state(night,day)
-     * @param activeChar 
+     * @param activeChar
      */
     public void adminAtmosphere(String type, String state, L2PcInstance activeChar)
     {
         L2GameServerPacket packet = null;
-
+        
         if (type.equals("signsky"))
         {
             if (state.equals("dawn"))
@@ -448,7 +475,7 @@ public class AdminAdmin implements IAdminCommandHandler
             else if (state.equals("dusk"))
                 packet = new SignsSky(1);
         }
-        else if(type.equals("sky"))
+        else if (type.equals("sky"))
         {
             if (state.equals("night"))
                 packet = new SunSet();
@@ -457,24 +484,24 @@ public class AdminAdmin implements IAdminCommandHandler
         }
         else
             activeChar.sendMessage("Only sky and signsky atmosphere type allowed, damn you!");
-
+        
         if (packet != null)
         {
             for (L2PcInstance player : L2World.getInstance().getAllPlayers())
                 player.sendPacket(packet);
         }
     }
-
+    
     public void playAdminSound(L2PcInstance activeChar, String sound)
     {
-        PlaySound snd = new PlaySound(1,sound,0,0,0,0,0);
+        PlaySound snd = new PlaySound(1, sound, 0, 0, 0, 0, 0);
         activeChar.sendPacket(snd);
         activeChar.broadcastPacket(snd);
         showMainPage(activeChar);
-
-        activeChar.sendMessage("Playing "+sound+".");
+        
+        activeChar.sendMessage("Playing " + sound + ".");
     }
-
+    
     public void showMainPage(L2PcInstance activeChar)
     {
         NpcHtmlMessage html = new NpcHtmlMessage(0);

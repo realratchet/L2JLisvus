@@ -310,7 +310,7 @@ class Quest (JQuest) :
      elif npcId == SANCHES :
        try :
          if st.getQuestTimer("sanches_timer1") != None :
-            st.getQuestTimer("sanches_timer1").cancel()
+            st.getQuestTimer("sanches_timer1").destroy()
          if st.getRandom(100) <= 50 :
             autochat(npc,"It's time to come out my Remless... Bonaparterius!")
             spawnedNpc=st.addSpawn(BONAPARTERIUS,npc,True,0)
@@ -322,7 +322,7 @@ class Quest (JQuest) :
      elif npcId == BONAPARTERIUS:
        try :
          if st.getQuestTimer("bonaparterius_timer1") != None :
-            st.getQuestTimer("bonaparterius_timer1").cancel()
+            st.getQuestTimer("bonaparterius_timer1").destroy()
          autochat(npc,"Only Ramsebalius would be able to avenge me!")
          if st.getRandom(100) <= 50 :
            spawnedNpc=st.addSpawn(RAMSEBALIUS,npc,True,0)
@@ -334,7 +334,7 @@ class Quest (JQuest) :
      elif npcId == RAMSEBALIUS:
        try :
          if st.getQuestTimer("ramsebalius_timer1") != None :
-            st.getQuestTimer("ramsebalius_timer1").cancel()
+            st.getQuestTimer("ramsebalius_timer1").destroy()
          autochat(npc,"You evil piece of...")
          if st.getRandom(100) <= 50 :
            spawnedNpc=st.addSpawn(GREAT_DEMON_KING,npc,True,0)
@@ -346,7 +346,7 @@ class Quest (JQuest) :
      elif npcId == GREAT_DEMON_KING:
        try :
          if st.getQuestTimer("greatdemon_timer1") != None :
-            st.getQuestTimer("greatdemon_timer1").cancel()
+            st.getQuestTimer("greatdemon_timer1").destroy()
          st.giveItems(ADENA,1412965)
          st.playSound("ItemSound.quest_itemget")
        except: pass

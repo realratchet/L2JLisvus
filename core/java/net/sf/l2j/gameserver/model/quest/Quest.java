@@ -24,7 +24,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.locks.ReentrantReadWriteLock;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -58,7 +58,6 @@ public class Quest extends ManagedScript
 	private static Map<String, Quest> _allEvents = new ConcurrentHashMap<>();
 	
 	private Map<String, List<QuestTimer>> _eventTimers;
-	private final ReentrantReadWriteLock _rwLock = new ReentrantReadWriteLock();
 	
 	private final int _questId;
 	private final String _name;
@@ -440,9 +439,13 @@ public class Quest extends ManagedScript
 		// no timer exists with the same name, at all
 		if (timers == null)
 		{
-			timers = new ArrayList<>(1);
-			timers.add(new QuestTimer(this, name, time, npc, player, repeating));
+			QuestTimer timer = new QuestTimer(this, name, time, npc, player, repeating);
+
+			timers = new CopyOnWriteArrayList<>();
+			timers.add(timer);
 			getQuestTimers().put(name, timers);
+
+			timer.start();
 		}
 		else
 		{
@@ -450,15 +453,10 @@ public class Quest extends ManagedScript
 			// nulls act as wild cards
 			if (getQuestTimer(name, npc, player) == null)
 			{
-				try
-				{
-					_rwLock.writeLock().lock();
-					timers.add(new QuestTimer(this, name, time, npc, player, repeating));
-				}
-				finally
-				{
-					_rwLock.writeLock().unlock();
-				}
+				QuestTimer timer = new QuestTimer(this, name, time, npc, player, repeating);
+				timers.add(timer);
+
+				timer.start();
 			}
 		}
 	}
@@ -475,18 +473,10 @@ public class Quest extends ManagedScript
 		if (qt == null || qt.isEmpty())
 			return null;
 		
-		try
+		for (QuestTimer timer : qt)
 		{
-			_rwLock.readLock().lock();
-			for (QuestTimer timer : qt)
-			{
-				if (timer.isMatch(this, name, npc, player))
-					return timer;
-			}
-		}
-		finally
-		{
-			_rwLock.readLock().unlock();
+			if (timer.isMatch(this, name, npc, player))
+				return timer;
 		}
 		return null;
 	}
@@ -514,26 +504,21 @@ public class Quest extends ManagedScript
 			return;
 		}
 		
-		try
+		for (QuestTimer timer : timers)
 		{
-			_rwLock.writeLock().lock();
-			for (QuestTimer timer : timers)
-			{
-				if (timer != null)
-					timer.cancel();
-			}
+			if (timer != null)
+				timer.stop();
 		}
-		finally
-		{
-			_rwLock.writeLock().unlock();
-		}
+		timers.clear();
 	}
 	
 	public void cancelQuestTimer(String name, L2NpcInstance npc, L2PcInstance player)
 	{
 		QuestTimer timer = getQuestTimer(name, npc, player);
 		if (timer != null)
-			timer.cancel();
+		{
+			timer.destroy();
+		}
 	}
 	
 	/**
@@ -547,7 +532,13 @@ public class Quest extends ManagedScript
 			for (List<QuestTimer> timers : timersMap.values())
 			{
 				for (QuestTimer timer : timers)
-					timer.cancel();
+				{
+					if (timer != null)
+					{
+						timer.stop();
+					}
+				}
+				timers.clear();
 			}
 			timersMap.clear();
 		}
@@ -568,15 +559,7 @@ public class Quest extends ManagedScript
 		if (timers == null)
 			return;
 		
-		try
-		{
-			_rwLock.writeLock().lock();
-			timers.remove(timer);
-		}
-		finally
-		{
-			_rwLock.writeLock().unlock();
-		}
+		timers.remove(timer);
 	}
 	
 	// these are methods to call from java

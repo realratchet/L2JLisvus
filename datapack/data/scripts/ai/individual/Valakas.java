@@ -1327,7 +1327,7 @@ public class Valakas extends Quest
 		{
 			if (timer != null)
 			{
-				timer.cancel();
+				timer.destroy();
 			}
 			return;
 		}
@@ -1355,7 +1355,7 @@ public class Valakas extends Quest
 		
 		if (Util.checkIfInRange(skill.getCastRange(), npc, target, true))
 		{
-			timer.cancel();
+			timer.destroy();
 			npc.getAI().setIntention(AI_INTENTION_IDLE);
 			npc.setTarget(target);
 			npc.doCast(skill);

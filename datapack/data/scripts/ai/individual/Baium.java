@@ -475,9 +475,9 @@ public class Baium extends Quest
 
 		if (getQuestTimer("skill_range", npc, null) != null)
 		{
-			getQuestTimer("skill_range", npc, null).cancel();
+			getQuestTimer("skill_range", npc, null).destroy();
 		}
-
+		
 		return super.onKill(npc, killer, isPet);
 	}
 
@@ -490,8 +490,8 @@ public class Baium extends Quest
 			{
 				if (obj instanceof L2Character)
 				{
-					if (((((L2Character) obj).getZ() < (npc.getZ() - 100)) && (((L2Character) obj).getZ() > (npc.getZ() + 100))) 
-						|| !(GeoData.getInstance().canSeeTarget(((L2Character) obj).getX(), ((L2Character) obj).getY(), ((L2Character) obj).getZ(), npc.getX(), npc.getY(), npc.getZ())) 
+					if (((obj.getZ() < (npc.getZ() - 100)) && (obj.getZ() > (npc.getZ() + 100))) 
+						|| !(GeoData.getInstance().canSeeTarget(obj.getX(), obj.getY(), obj.getZ(), npc.getX(), npc.getY(), npc.getZ())) 
 						|| ((L2Character) obj).isGM())
 					{
 						continue;
@@ -528,7 +528,7 @@ public class Baium extends Quest
 		QuestTimer timer = getQuestTimer("clean_player", npc, null);
 		if (timer != null)
 		{
-			timer.cancel();
+			timer.destroy();
 		}
 		startQuestTimer("clean_player", 20000, npc, null);
 		L2Character target = (L2Character) characters[Rnd.get(characters.length)];

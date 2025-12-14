@@ -268,7 +268,7 @@ class Quest (JQuest) :
                    htmltext="7758-09.htm"
                 elif game_state == 2 :
                    timer=leaderst.getQuestTimer("chest_timer")
-                   if timer != None : timer.cancel()
+                   if timer != None : timer.destroy()
                    self.chest_game(leaderst,"stop")
                    leaderst.set("chest_game","3")
                    leaderst.giveItems(st.getPlayer(),BLOOD_OF_EVA,1,0)
@@ -316,9 +316,10 @@ class Quest (JQuest) :
                   count+=1
                   leaderst.set("chest_count",str(count))
                   if count == 4 :
-                     leaderst.getQuestTimer("chest_timer").cancel()
+                     leaderst.getQuestTimer("chest_timer").destroy()
                      self.chest_game(leaderst,"stop")
-                     leaderst.set("chest_game","2")
+                     leaderst.set("chest_game","2")
+
                      leaderst.playSound(player,"ItemSound.quest_middle")
                   else :
                      leaderst.playSound(player,"ItemSound.quest_itemget")
@@ -327,7 +328,7 @@ class Quest (JQuest) :
  def onDeath(self, npc, pc, st) :
      if st.getPlayer() == pc :
        timer=st.getQuestTimer("chest_timer")
-       if timer != None : timer.cancel()
+       if timer != None : timer.destroy()
        st.exitQuest(1)
 
 QUEST = Quest(501,qn,qd)
