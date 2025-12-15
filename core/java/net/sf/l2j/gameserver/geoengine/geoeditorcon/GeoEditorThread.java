@@ -25,7 +25,7 @@ import java.util.logging.Logger;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 
 /**
- * @author Luno, Dezmond
+ * @author Luno, Dezmond, Kallone
  */
 public class GeoEditorThread extends Thread
 {
@@ -84,19 +84,13 @@ public class GeoEditorThread extends Thread
 				{
 					for (L2PcInstance gm : _gms)
 					{
-						if (gm == null)
+						if (gm == null || gm.getClient().getConnection().isClosed())
 						{
+							_gms.remove(gm);
 							continue;
 						}
 						
-						if (!gm.getClient().getConnection().isClosed())
-						{
-							sendGmPosition(gm);
-						}
-						else
-						{
-							_gms.remove(gm);
-						}
+						sendGmPosition(gm);
 					}
 					
 					timer = 0;
@@ -105,12 +99,13 @@ public class GeoEditorThread extends Thread
 				try
 				{
 					sleep(100);
+					
 					if (_mode == 2)
 					{
 						timer += 100;
 					}
 				}
-				catch (Exception e)
+				catch (InterruptedException e)
 				{
 				}
 			}
@@ -272,12 +267,7 @@ public class GeoEditorThread extends Thread
 	
 	public boolean isSend(L2PcInstance gm)
 	{
-		if ((_mode == 1) && _gms.contains(gm))
-		{
-			return true;
-		}
-		
-		return false;
+		return (_mode == 1) && _gms.contains(gm);
 	}
 	
 	private boolean isConnected()

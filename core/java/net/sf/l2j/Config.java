@@ -1246,6 +1246,11 @@ public final class Config
 	public static int PATHFINDING;
 	public static File PATHNODE_DIR;
 	public static String PATHFIND_BUFFERS;
+	/**
+	 * Pathfinding z tolerance.
+	 * This setting alleviates the problems in multi-layer areas.
+	 */
+	public static int PATHFIND_TOLERANCE_Z;
 	public static float LOW_WEIGHT;
 	public static float MEDIUM_WEIGHT;
 	public static float HIGH_WEIGHT;
@@ -2249,6 +2254,7 @@ public final class Config
 			}
 			
 			PATHFIND_BUFFERS = geoDataSettings.getProperty("PathFindBuffers", "100x6;128x6;192x6;256x4;320x4;384x4;500x2");
+			PATHFIND_TOLERANCE_Z = Integer.parseInt(geoDataSettings.getProperty("PathFindToleranceZ", "80"));
 			LOW_WEIGHT = Float.parseFloat(geoDataSettings.getProperty("LowWeight", "0.5"));
 			MEDIUM_WEIGHT = Float.parseFloat(geoDataSettings.getProperty("MediumWeight", "2"));
 			HIGH_WEIGHT = Float.parseFloat(geoDataSettings.getProperty("HighWeight", "3"));

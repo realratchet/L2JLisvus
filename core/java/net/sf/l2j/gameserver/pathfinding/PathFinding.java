@@ -42,57 +42,57 @@ public abstract class PathFinding
 	
 	/**
 	 * Convert geodata position to pathnode position
-	 * @param geo_pos
+	 * @param geoPos
 	 * @return pathnode position
 	 */
-	public short getNodePos(int geo_pos)
+	public short getNodePos(int geoPos)
 	{
-		return (short) (geo_pos >> 3); // OK?
+		return (short) (geoPos >> 3); // OK?
 	}
-
+	
 	/**
 	 * Convert node position to pathnode block position
-	 * @param node_pos
+	 * @param nodePos
 	 * @return pathnode block position (0...255)
 	 */
-	public short getNodeBlock(int node_pos)
+	public short getNodeBlock(int nodePos)
 	{
-		return (short) (node_pos % 256);
+		return (short) (nodePos % 256);
 	}
-
-	public byte getRegionX(int node_pos)
+	
+	public byte getRegionX(int nodePos)
 	{
-		return (byte) ((node_pos >> 8) + 16);
+		return (byte) ((nodePos >> 8) + 16);
 	}
-
-	public byte getRegionY(int node_pos)
+	
+	public byte getRegionY(int nodePos)
 	{
-		return (byte) ((node_pos >> 8) + 10);
+		return (byte) ((nodePos >> 8) + 10);
 	}
-
+	
 	public short getRegionOffset(byte rx, byte ry)
 	{
 		return (short) ((rx << 5) + ry);
 	}
-
+	
 	/**
 	 * Convert pathnode x to World x position
-	 * @param node_x
+	 * @param nodeX
 	 * @return
 	 */
-	public int calculateWorldX(short node_x)
+	public int calculateWorldX(short nodeX)
 	{
-		return L2World.MAP_MIN_X + (node_x * 128) + 48;
+		return L2World.MAP_MIN_X + (nodeX * 128) + 48;
 	}
-
+	
 	/**
 	 * Convert pathnode y to World y position
-	 * @param node_y
+	 * @param nodeY
 	 * @return
 	 */
-	public int CalculateWorldY(short node_y)
+	public int calculateWorldY(short nodeY)
 	{
-		return L2World.MAP_MIN_Y + (node_y * 128) + 48;
+		return L2World.MAP_MIN_Y + (nodeY * 128) + 48;
 	}
 	
 	public String[] getStat()

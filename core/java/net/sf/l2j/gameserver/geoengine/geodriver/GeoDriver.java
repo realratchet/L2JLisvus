@@ -1,20 +1,16 @@
 /*
- * Copyright © 2019 L2J Server
+ * This program is free software: you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation, either version 3 of the License, or (at your option) any later
+ * version.
  * 
- * This file is part of L2J Server.
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
+ * details.
  * 
- * L2J Server is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- * 
- * L2J Server is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * General Public License for more details.
- * 
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU General Public License along with
+ * this program. If not, see <http://www.gnu.org/licenses/>.
  */
 package net.sf.l2j.gameserver.geoengine.geodriver;
 
@@ -24,15 +20,19 @@ import java.nio.ByteOrder;
 import java.nio.channels.FileChannel.MapMode;
 import java.nio.file.Path;
 import java.util.concurrent.atomic.AtomicReferenceArray;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import net.sf.l2j.gameserver.geoengine.geodriver.regions.NullRegion;
 import net.sf.l2j.gameserver.geoengine.geodriver.regions.Region;
 
 /**
- * @author HorridoJoho
+ * @author HorridoJoho, Kallone
  */
 public final class GeoDriver
 {
+    private static final Logger _log = Logger.getLogger(GeoDriver.class.getName());
+    
 	// world dimensions: 1048576 * 1048576 = 1099511627776
 	private static final int WORLD_MIN_X = -655360;
 	private static final int WORLD_MAX_X = 393215;
@@ -73,7 +73,7 @@ public final class GeoDriver
 	{
 		if ((geoX < 0) || (geoX >= GEO_CELLS_X))
 		{
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("Invalid geoX: " + geoX);
 		}
 	}
 	
@@ -81,7 +81,7 @@ public final class GeoDriver
 	{
 		if ((geoY < 0) || (geoY >= GEO_CELLS_Y))
 		{
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("Invalid geoY: " + geoY);
 		}
 	}
 	
@@ -98,7 +98,13 @@ public final class GeoDriver
 		
 		try (RandomAccessFile raf = new RandomAccessFile(filePath.toFile(), "r"))
 		{
-			_regions.set(regionOffset, new Region(raf.getChannel().map(MapMode.READ_ONLY, 0, raf.length()).order(ByteOrder.LITTLE_ENDIAN)));
+		    _regions.set(regionOffset, new Region(raf.getChannel().map(MapMode.READ_ONLY, 0, raf.length()).order(ByteOrder.LITTLE_ENDIAN)));
+		}
+		catch (IOException e)
+		{
+		    _log.log(Level.WARNING, "Failed to load region " + regionX + "_" + regionY + " from " + filePath.getFileName(), e);
+		    _regions.set(regionOffset, NullRegion.INSTANCE);
+		    throw e;
 		}
 	}
 	
@@ -136,7 +142,7 @@ public final class GeoDriver
 	{
 		if ((worldX < WORLD_MIN_X) || (worldX > WORLD_MAX_X))
 		{
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("Invalid worldX: " + worldX);
 		}
 		return (worldX - WORLD_MIN_X) / 16;
 	}
@@ -145,7 +151,7 @@ public final class GeoDriver
 	{
 		if ((worldY < WORLD_MIN_Y) || (worldY > WORLD_MAX_Y))
 		{
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("Invalid worldY: " + worldY);
 		}
 		return (worldY - WORLD_MIN_Y) / 16;
 	}

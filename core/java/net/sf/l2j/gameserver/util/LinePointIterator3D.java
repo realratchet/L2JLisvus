@@ -15,9 +15,12 @@
 package net.sf.l2j.gameserver.util;
 
 /**
- * @author FBIagent
+ * A 3D Line Point Iterator implementing Bresenham's algorithm for geodata grid traversal.
+ * Iterates from source (srcX, srcY, srcZ) to destination (dstX, dstY, dstZ) in a straight line.
+ * Used for line-of-sight (LOS) checks in the game world.
+ * @author FBIagent, Kallone
  */
-public final class LinePointIterator3D
+public final class LinePointIterator3D extends LinePointIterator
 {
     private int _srcX;
     private int _srcY;
@@ -34,7 +37,17 @@ public final class LinePointIterator3D
     private long _error;
     private long _error2;
     private boolean _first;
-
+    private int _iterations;
+    
+    /**
+     * Constructs a LinePointIterator3D from source to destination coordinates.
+     * @param srcX the source X coordinate
+     * @param srcY the source Y coordinate
+     * @param srcZ the source Z coordinate
+     * @param dstX the destination X coordinate
+     * @param dstY the destination Y coordinate
+     * @param dstZ the destination Z coordinate
+     */
     public LinePointIterator3D(int srcX, int srcY, int srcZ, int dstX, int dstY, int dstZ)
     {
         _srcX = srcX;
@@ -49,19 +62,45 @@ public final class LinePointIterator3D
         _sx = srcX < dstX ? 1 : -1;
         _sy = srcY < dstY ? 1 : -1;
         _sz = srcZ < dstZ ? 1 : -1;
-
+        
         if ((_dx >= _dy) && (_dx >= _dz))
             _error = _error2 = _dx / 2;
         else if ((_dy >= _dx) && (_dy >= _dz))
             _error = _error2 = _dy / 2;
         else
             _error = _error2 = _dz / 2;
-
+        
         _first = true;
+        _iterations = 0;
     }
-
+    
+    /**
+     * Checks if there are more points to iterate.
+     * @return true if the iterator has not reached the destination, false otherwise
+     */
+    @Override
+    public boolean hasNext()
+    {
+        if (_iterations >= MAX_ITERATIONS)
+            return false;
+        return _first || _srcX != _dstX || _srcY != _dstY || _srcZ != _dstZ;
+    }
+    
+    /**
+     * Advances to the next point in the line. Returns true if a valid point is available.
+     * Includes an iteration limit to prevent freezes in large maps.
+     * @return true if there is a next point, false if at destination or iteration limit reached
+     */
+    @Override
     public boolean next()
     {
+        if (_iterations >= MAX_ITERATIONS)
+        {
+            return false;
+        }
+        
+        _iterations++;
+        
         if (_first)
         {
             _first = false;
@@ -72,21 +111,21 @@ public final class LinePointIterator3D
             if (_srcX != _dstX)
             {
                 _srcX += _sx;
-
+                
                 _error += _dy;
                 if (_error >= _dx)
                 {
                     _srcY += _sy;
                     _error -= _dx;
                 }
-
+                
                 _error2 += _dz;
                 if (_error2 >= _dx)
                 {
                     _srcZ += _sz;
                     _error2 -= _dx;
                 }
-
+                
                 return true;
             }
         }
@@ -95,21 +134,21 @@ public final class LinePointIterator3D
             if (_srcY != _dstY)
             {
                 _srcY += _sy;
-
+                
                 _error += _dx;
                 if (_error >= _dy)
                 {
                     _srcX += _sx;
                     _error -= _dy;
                 }
-
+                
                 _error2 += _dz;
                 if (_error2 >= _dy)
                 {
                     _srcZ += _sz;
                     _error2 -= _dy;
                 }
-
+                
                 return true;
             }
         }
@@ -118,37 +157,51 @@ public final class LinePointIterator3D
             if (_srcZ != _dstZ)
             {
                 _srcZ += _sz;
-
+                
                 _error += _dx;
                 if (_error >= _dz)
                 {
                     _srcX += _sx;
                     _error -= _dz;
                 }
-
+                
                 _error2 += _dy;
                 if (_error2 >= _dz)
                 {
                     _srcY += _sy;
                     _error2 -= _dz;
                 }
-
+                
                 return true;
             }
         }
         return false;
     }
-
+    
+    /**
+     * Returns the current X coordinate.
+     * @return the current X coordinate
+     */
+    @Override
     public int x()
     {
         return _srcX;
     }
-
+    
+    /**
+     * Returns the current Y coordinate.
+     * @return the current Y coordinate
+     */
+    @Override
     public int y()
     {
         return _srcY;
     }
-
+    
+    /**
+     * Returns the current Z coordinate.
+     * @return the current Z coordinate
+     */
     public int z()
     {
         return _srcZ;

@@ -4479,8 +4479,7 @@ public abstract class L2Character extends L2Object
 				
 				if (!isInBoat)
 				{
-					// For now, we do this to prevent raid boss glitch
-					Location destiny = isRaid() ? new Location(x, y, z) : GeoData.getInstance().moveCheck(curX, curY, curZ, x, y, z);
+					Location destiny = GeoData.getInstance().moveCheck(curX, curY, curZ, x, y, z);
 					// Location difference if destination wasn't reached (or just z coord is different)
 					x = destiny.getX();
 					y = destiny.getY();

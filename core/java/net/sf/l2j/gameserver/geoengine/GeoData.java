@@ -29,25 +29,26 @@ import net.sf.l2j.gameserver.model.Location;
 import net.sf.l2j.gameserver.model.actor.instance.L2DoorInstance;
 import net.sf.l2j.gameserver.util.GeoUtils;
 import net.sf.l2j.gameserver.util.LinePointIterator;
+import net.sf.l2j.gameserver.util.LinePointIterator2D;
 import net.sf.l2j.gameserver.util.LinePointIterator3D;
 
 /**
- * @author -Nemesiss-, HorridoJoho
+ * @author -Nemesiss-, HorridoJoho, Kallone
  */
 public class GeoData
 {
-	private static final Logger LOGGER = Logger.getLogger(GeoData.class.getName());
+	private static final Logger _log = Logger.getLogger(GeoData.class.getName());
 	private static final String FILE_NAME_FORMAT = "%d_%d.l2j";
 	private static final int ELEVATED_SEE_OVER_DISTANCE = 2;
-	private static final int MAX_SEE_OVER_HEIGHT = 48;
+	private static final int MAX_SEE_OVER_HEIGHT = 64;
 	private static final int SPAWN_Z_DELTA_LIMIT = 100;
 	
 	private final GeoDriver _driver = new GeoDriver();
-
-    public static GeoData getInstance()
-    {
-        return SingletonHolder._instance;
-    }
+	
+	public static GeoData getInstance()
+	{
+		return SingletonHolder._instance;
+	}
 	
 	protected GeoData()
 	{
@@ -64,7 +65,7 @@ public class GeoData
 					{
 						if (loadFile)
 						{
-							LOGGER.info(getClass().getSimpleName() + ": Loading " + geoFilePath.getFileName() + "...");
+							_log.info(getClass().getSimpleName() + ": Loading " + geoFilePath.getFileName() + "...");
 							_driver.loadRegion(geoFilePath, regionX, regionY);
 							loadedRegions++;
 						}
@@ -73,13 +74,13 @@ public class GeoData
 					{
 						try
 						{
-							LOGGER.info(getClass().getSimpleName() + ": Loading " + geoFilePath.getFileName() + "...");
+							_log.info(getClass().getSimpleName() + ": Loading " + geoFilePath.getFileName() + "...");
 							_driver.loadRegion(geoFilePath, regionX, regionY);
 							loadedRegions++;
 						}
 						catch (Exception e)
 						{
-							LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Failed to load " + geoFilePath.getFileName() + "!", e);
+							_log.log(Level.WARNING, getClass().getSimpleName() + ": Failed to load " + geoFilePath.getFileName() + "!", e);
 						}
 					}
 				}
@@ -87,11 +88,11 @@ public class GeoData
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.SEVERE, getClass().getSimpleName() + ": Failed to load geodata!", e);
+			_log.log(Level.SEVERE, getClass().getSimpleName() + ": Failed to load geodata!", e);
 			System.exit(1);
 		}
 		
-		LOGGER.info(getClass().getSimpleName() + ": Loaded " + loadedRegions + " regions.");
+		_log.info(getClass().getSimpleName() + ": Loaded " + loadedRegions + " regions.");
 	}
 	
 	public boolean hasGeoPos(int geoX, int geoY)
@@ -109,25 +110,21 @@ public class GeoData
 		boolean can = true;
 		if ((nswe & Cell.NSWE_NORTH_EAST) == Cell.NSWE_NORTH_EAST)
 		{
-			// can = canEnterNeighbors(prevX, prevY - 1, prevGeoZ, Direction.EAST) && canEnterNeighbors(prevX + 1, prevY, prevGeoZ, Direction.NORTH);
 			can = checkNearestNswe(geoX, geoY - 1, worldZ, Cell.NSWE_EAST) && checkNearestNswe(geoX + 1, geoY, worldZ, Cell.NSWE_NORTH);
 		}
 		
 		if (can && ((nswe & Cell.NSWE_NORTH_WEST) == Cell.NSWE_NORTH_WEST))
 		{
-			// can = canEnterNeighbors(prevX, prevY - 1, prevGeoZ, Direction.WEST) && canEnterNeighbors(prevX - 1, prevY, prevGeoZ, Direction.NORTH);
 			can = checkNearestNswe(geoX, geoY - 1, worldZ, Cell.NSWE_WEST) && checkNearestNswe(geoX - 1, geoY, worldZ, Cell.NSWE_NORTH);
 		}
 		
 		if (can && ((nswe & Cell.NSWE_SOUTH_EAST) == Cell.NSWE_SOUTH_EAST))
 		{
-			// can = canEnterNeighbors(prevX, prevY + 1, prevGeoZ, Direction.EAST) && canEnterNeighbors(prevX + 1, prevY, prevGeoZ, Direction.SOUTH);
 			can = checkNearestNswe(geoX, geoY + 1, worldZ, Cell.NSWE_EAST) && checkNearestNswe(geoX + 1, geoY, worldZ, Cell.NSWE_SOUTH);
 		}
 		
 		if (can && ((nswe & Cell.NSWE_SOUTH_WEST) == Cell.NSWE_SOUTH_WEST))
 		{
-			// can = canEnterNeighbors(prevX, prevY + 1, prevGeoZ, Direction.WEST) && canEnterNeighbors(prevX - 1, prevY, prevGeoZ, Direction.SOUTH);
 			can = checkNearestNswe(geoX, geoY + 1, worldZ, Cell.NSWE_WEST) && checkNearestNswe(geoX - 1, geoY, worldZ, Cell.NSWE_SOUTH);
 		}
 		
@@ -169,8 +166,6 @@ public class GeoData
 		return _driver.getWorldY(geoY);
 	}
 	
-	// ///////////////////
-	// L2J METHODS
 	/**
 	 * Gets the height.
 	 * @param x the x coordinate
@@ -187,19 +182,19 @@ public class GeoData
 	 * Gets the spawn height.
 	 * @param x the x coordinate
 	 * @param y the y coordinate
-	 * @param z the the z coordinate
+	 * @param z the z coordinate
 	 * @return the spawn height
 	 */
 	public int getSpawnHeight(int x, int y, int z)
 	{
 		final int geoX = getGeoX(x);
 		final int geoY = getGeoY(y);
-
+		
 		if (!hasGeoPos(geoX, geoY))
 		{
 			return z;
 		}
-
+		
 		int nextLowerZ = getNextLowerZ(geoX, geoY, z + 20);
 		return Math.abs(nextLowerZ - z) <= SPAWN_Z_DELTA_LIMIT ? nextLowerZ : z;
 	}
@@ -222,14 +217,14 @@ public class GeoData
 	 */
 	public boolean canSeeTarget(L2Object cha, L2Object target)
 	{
-		if (target == null)
+		if (cha == null || target == null)
 		{
 			return false;
 		}
 		
 		if (target instanceof L2DoorInstance)
 		{
-			// can always see doors :o
+			// Can always see doors
 			return true;
 		}
 		
@@ -245,7 +240,8 @@ public class GeoData
 	{
 		if ((((nswe & Cell.NSWE_NORTH) != 0) && ((nswe & Cell.NSWE_SOUTH) != 0)) || (((nswe & Cell.NSWE_WEST) != 0) && ((nswe & Cell.NSWE_EAST) != 0)))
 		{
-			throw new RuntimeException("Multiple directions!");
+			// Early return to avoid exception on invalid NSWE
+			return prevGeoZ;
 		}
 		
 		if (checkNearestNsweAntiCornerCut(prevX, prevY, prevGeoZ, nswe))
@@ -275,15 +271,20 @@ public class GeoData
 		z = getNearestZ(geoX, geoY, z);
 		tz = getNearestZ(tGeoX, tGeoY, tz);
 		
-		// Fastpath
+		// Fastpath: same tile or distance < 64 (common in AI)
 		if ((geoX == tGeoX) && (geoY == tGeoY))
 		{
 			if (hasGeoPos(tGeoX, tGeoY))
 			{
 				return z == tz;
 			}
-			
 			return true;
+		}
+		
+		int distSq = (x - tx) * (x - tx) + (y - ty) * (y - ty);
+		if (distSq < 4096) // <64 units, fast LOS without iterator
+		{
+			return hasGeoPos(geoX, geoY) && hasGeoPos(tGeoX, tGeoY) && Math.abs(z - tz) <= MAX_SEE_OVER_HEIGHT;
 		}
 		
 		if (tz > z)
@@ -310,16 +311,26 @@ public class GeoData
 		}
 		
 		LinePointIterator3D pointIter = new LinePointIterator3D(geoX, geoY, z, tGeoX, tGeoY, tz);
-		// first point is guaranteed to be available, skip it, we can always see our own position
-		pointIter.next();
+		// First point is guaranteed to be available, skip it
+		if (!pointIter.next())
+		{
+			return true;
+		}
+		
 		int prevX = pointIter.x();
 		int prevY = pointIter.y();
 		int prevZ = pointIter.z();
 		int prevGeoZ = prevZ;
 		int ptIndex = 0;
-
-		while (pointIter.next())
+		int iterations = 0;
+		
+		while (pointIter.hasNext() && iterations < LinePointIterator.MAX_ITERATIONS)
 		{
+			iterations++;
+			
+			if (!pointIter.next())
+				break;
+			
 			int curX = pointIter.x();
 			int curY = pointIter.y();
 			
@@ -328,7 +339,7 @@ public class GeoData
 				continue;
 			}
 			
-			int beeCurZ = pointIter.z();
+			int curZ = pointIter.z();
 			int curGeoZ = prevGeoZ;
 			
 			// check if the position has geodata
@@ -336,47 +347,36 @@ public class GeoData
 			{
 				int nswe = GeoUtils.computeNswe(prevX, prevY, curX, curY);
 				curGeoZ = getLosGeoZ(prevX, prevY, prevGeoZ, curX, curY, nswe);
-				int maxHeight;
-				if (ptIndex < ELEVATED_SEE_OVER_DISTANCE)
+				int maxHeight = ptIndex < ELEVATED_SEE_OVER_DISTANCE ? z + MAX_SEE_OVER_HEIGHT : curZ + MAX_SEE_OVER_HEIGHT;
+				
+				boolean canSeeThrough = false;
+				if ((nswe & Cell.NSWE_NORTH_EAST) == Cell.NSWE_NORTH_EAST)
 				{
-					maxHeight = z + MAX_SEE_OVER_HEIGHT;
+					int northGeoZ = getLosGeoZ(prevX, prevY, prevGeoZ, prevX, prevY - 1, Cell.NSWE_EAST);
+					int eastGeoZ = getLosGeoZ(prevX, prevY, prevGeoZ, prevX + 1, prevY, Cell.NSWE_NORTH);
+					canSeeThrough = (northGeoZ <= maxHeight) && (eastGeoZ <= maxHeight) && (northGeoZ <= getNearestZ(prevX, prevY - 1, curZ)) && (eastGeoZ <= getNearestZ(prevX + 1, prevY, curZ));
+				}
+				else if ((nswe & Cell.NSWE_NORTH_WEST) == Cell.NSWE_NORTH_WEST)
+				{
+					int northGeoZ = getLosGeoZ(prevX, prevY, prevGeoZ, prevX, prevY - 1, Cell.NSWE_WEST);
+					int westGeoZ = getLosGeoZ(prevX, prevY, prevGeoZ, prevX - 1, prevY, Cell.NSWE_NORTH);
+					canSeeThrough = (northGeoZ <= maxHeight) && (westGeoZ <= maxHeight) && (northGeoZ <= getNearestZ(prevX, prevY - 1, curZ)) && (westGeoZ <= getNearestZ(prevX - 1, prevY, curZ));
+				}
+				else if ((nswe & Cell.NSWE_SOUTH_EAST) == Cell.NSWE_SOUTH_EAST)
+				{
+					int southGeoZ = getLosGeoZ(prevX, prevY, prevGeoZ, prevX, prevY + 1, Cell.NSWE_EAST);
+					int eastGeoZ = getLosGeoZ(prevX, prevY, prevGeoZ, prevX + 1, prevY, Cell.NSWE_SOUTH);
+					canSeeThrough = (southGeoZ <= maxHeight) && (eastGeoZ <= maxHeight) && (southGeoZ <= getNearestZ(prevX, prevY + 1, curZ)) && (eastGeoZ <= getNearestZ(prevX + 1, prevY, curZ));
+				}
+				else if ((nswe & Cell.NSWE_SOUTH_WEST) == Cell.NSWE_SOUTH_WEST)
+				{
+					int southGeoZ = getLosGeoZ(prevX, prevY, prevGeoZ, prevX, prevY + 1, Cell.NSWE_WEST);
+					int westGeoZ = getLosGeoZ(prevX, prevY, prevGeoZ, prevX - 1, prevY, Cell.NSWE_SOUTH);
+					canSeeThrough = (southGeoZ <= maxHeight) && (westGeoZ <= maxHeight) && (southGeoZ <= getNearestZ(prevX, prevY + 1, curZ)) && (westGeoZ <= getNearestZ(prevX - 1, prevY, curZ));
 				}
 				else
 				{
-					maxHeight = beeCurZ + MAX_SEE_OVER_HEIGHT;
-				}
-				
-				boolean canSeeThrough = false;
-				if (curGeoZ <= maxHeight)
-				{
-					if ((nswe & Cell.NSWE_NORTH_EAST) == Cell.NSWE_NORTH_EAST)
-					{
-						int northGeoZ = getLosGeoZ(prevX, prevY, prevGeoZ, prevX, prevY - 1, Cell.NSWE_EAST);
-						int eastGeoZ = getLosGeoZ(prevX, prevY, prevGeoZ, prevX + 1, prevY, Cell.NSWE_NORTH);
-						canSeeThrough = (northGeoZ <= maxHeight) && (eastGeoZ <= maxHeight) && (northGeoZ <= getNearestZ(prevX, prevY - 1, beeCurZ)) && (eastGeoZ <= getNearestZ(prevX + 1, prevY, beeCurZ));
-					}
-					else if ((nswe & Cell.NSWE_NORTH_WEST) == Cell.NSWE_NORTH_WEST)
-					{
-						int northGeoZ = getLosGeoZ(prevX, prevY, prevGeoZ, prevX, prevY - 1, Cell.NSWE_WEST);
-						int westGeoZ = getLosGeoZ(prevX, prevY, prevGeoZ, prevX - 1, prevY, Cell.NSWE_NORTH);
-						canSeeThrough = (northGeoZ <= maxHeight) && (westGeoZ <= maxHeight) && (northGeoZ <= getNearestZ(prevX, prevY - 1, beeCurZ)) && (westGeoZ <= getNearestZ(prevX - 1, prevY, beeCurZ));
-					}
-					else if ((nswe & Cell.NSWE_SOUTH_EAST) == Cell.NSWE_SOUTH_EAST)
-					{
-						int southGeoZ = getLosGeoZ(prevX, prevY, prevGeoZ, prevX, prevY + 1, Cell.NSWE_EAST);
-						int eastGeoZ = getLosGeoZ(prevX, prevY, prevGeoZ, prevX + 1, prevY, Cell.NSWE_SOUTH);
-						canSeeThrough = (southGeoZ <= maxHeight) && (eastGeoZ <= maxHeight) && (southGeoZ <= getNearestZ(prevX, prevY + 1, beeCurZ)) && (eastGeoZ <= getNearestZ(prevX + 1, prevY, beeCurZ));
-					}
-					else if ((nswe & Cell.NSWE_SOUTH_WEST) == Cell.NSWE_SOUTH_WEST)
-					{
-						int southGeoZ = getLosGeoZ(prevX, prevY, prevGeoZ, prevX, prevY + 1, Cell.NSWE_WEST);
-						int westGeoZ = getLosGeoZ(prevX, prevY, prevGeoZ, prevX - 1, prevY, Cell.NSWE_SOUTH);
-						canSeeThrough = (southGeoZ <= maxHeight) && (westGeoZ <= maxHeight) && (southGeoZ <= getNearestZ(prevX, prevY + 1, beeCurZ)) && (westGeoZ <= getNearestZ(prevX - 1, prevY, beeCurZ));
-					}
-					else
-					{
-						canSeeThrough = true;
-					}
+					canSeeThrough = curGeoZ <= maxHeight;
 				}
 				
 				if (!canSeeThrough)
@@ -389,6 +389,11 @@ public class GeoData
 			prevY = curY;
 			prevGeoZ = curGeoZ;
 			++ptIndex;
+		}
+		
+		if (iterations >= LinePointIterator.MAX_ITERATIONS)
+		{
+			return false;
 		}
 		
 		return true;
@@ -418,15 +423,24 @@ public class GeoData
 			return new Location(x, y, getHeight(x, y, z));
 		}
 		
-		LinePointIterator pointIter = new LinePointIterator(geoX, geoY, tGeoX, tGeoY);
-		// first point is guaranteed to be available
-		pointIter.next();
+		LinePointIterator2D pointIter = new LinePointIterator2D(geoX, geoY, tGeoX, tGeoY);
+		if (!pointIter.next())
+		{
+			return new Location(x, y, z);
+		}
+		
 		int prevX = pointIter.x();
 		int prevY = pointIter.y();
 		int prevZ = z;
+		int iterations = 0;
 		
-		while (pointIter.next())
+		while (pointIter.hasNext() && iterations < LinePointIterator.MAX_ITERATIONS)
 		{
+			iterations++;
+			
+			if (!pointIter.next())
+				break;
+			
 			int curX = pointIter.x();
 			int curY = pointIter.y();
 			int curZ = getNearestZ(curX, curY, prevZ);
@@ -436,7 +450,7 @@ public class GeoData
 				int nswe = GeoUtils.computeNswe(prevX, prevY, curX, curY);
 				if (!checkNearestNsweAntiCornerCut(prevX, prevY, prevZ, nswe))
 				{
-					// can't move, return previous location
+					// Can't move, return previous location
 					return new Location(getWorldX(prevX), getWorldY(prevY), prevZ);
 				}
 			}
@@ -446,9 +460,14 @@ public class GeoData
 			prevZ = curZ;
 		}
 		
+		if (iterations >= LinePointIterator.MAX_ITERATIONS)
+		{
+			return new Location(x, y, z);
+		}
+		
 		if (hasGeoPos(prevX, prevY) && (prevZ != tz))
 		{
-			// different floors, return start location
+			// Different floors, return start location
 			return new Location(x, y, z);
 		}
 		
@@ -479,15 +498,24 @@ public class GeoData
 			return false;
 		}
 		
-		LinePointIterator pointIter = new LinePointIterator(geoX, geoY, tGeoX, tGeoY);
-		// first point is guaranteed to be available
-		pointIter.next();
+		LinePointIterator2D pointIter = new LinePointIterator2D(geoX, geoY, tGeoX, tGeoY);
+		if (!pointIter.next())
+		{
+			return true;
+		}
+		
 		int prevX = pointIter.x();
 		int prevY = pointIter.y();
 		int prevZ = fromZ;
+		int iterations = 0;
 		
-		while (pointIter.next())
+		while (pointIter.hasNext() && iterations < LinePointIterator.MAX_ITERATIONS)
 		{
+			iterations++;
+			
+			if (!pointIter.next())
+				break;
+			
 			int curX = pointIter.x();
 			int curY = pointIter.y();
 			int curZ = getNearestZ(curX, curY, prevZ);
@@ -506,9 +534,14 @@ public class GeoData
 			prevZ = curZ;
 		}
 		
+		if (iterations >= LinePointIterator.MAX_ITERATIONS)
+		{
+			return false;
+		}
+		
 		if (hasGeoPos(prevX, prevY) && (prevZ != toZ))
 		{
-			// different floors
+			// Different floors
 			return false;
 		}
 		
@@ -523,18 +556,32 @@ public class GeoData
 		int tGeoX = getGeoX(tx);
 		int tGeoY = getGeoY(ty);
 		
-		LinePointIterator pointIter = new LinePointIterator(geoX, geoY, tGeoX, tGeoY);
-		// first point is guaranteed to be available
-		pointIter.next();
-		int prevZ = z;
-		
-		while (pointIter.next())
+		LinePointIterator2D pointIter = new LinePointIterator2D(geoX, geoY, tGeoX, tGeoY);
+		if (!pointIter.next())
 		{
+			return z;
+		}
+		
+		int prevZ = z;
+		int iterations = 0;
+		
+		while (pointIter.hasNext() && iterations < LinePointIterator.MAX_ITERATIONS)
+		{
+			iterations++;
+			
+			if (!pointIter.next())
+				break;
+			
 			int curX = pointIter.x();
 			int curY = pointIter.y();
 			int curZ = getNearestZ(curX, curY, prevZ);
 			
 			prevZ = curZ;
+		}
+		
+		if (iterations >= LinePointIterator.MAX_ITERATIONS)
+		{
+			return z;
 		}
 		
 		return prevZ;
