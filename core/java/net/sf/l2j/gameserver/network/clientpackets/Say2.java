@@ -54,6 +54,9 @@ public class Say2 extends L2GameClientPacket
 	public final static int TRADE = 8; // +
 	public final static int ALLIANCE = 9; // $
 	public final static int ANNOUNCEMENT = 10;
+	public final static int BOAT = 11;
+	public final static int L2FRIEND = 12;
+	public final static int MSNCHAT = 13;
 	public final static int PARTY_ROOM = 14;
 	public final static int CHANNEL_LEADER = 15; // (yellow)
 	public final static int CHANNEL_ALL = 16; // (blue)

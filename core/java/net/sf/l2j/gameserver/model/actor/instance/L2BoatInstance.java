@@ -306,9 +306,9 @@ public class L2BoatInstance extends L2Character
             case 10:
                 if (_cycle == 1)
                     
-                    sm = new CreatureSay(0, Say2.SHOUT, _t1._npc1, _t1._sysmess10_1);
+                    sm = new CreatureSay(0, Say2.BOAT, _t1._npc1, _t1._sysmess10_1);
                 else
-                    sm = new CreatureSay(0, Say2.SHOUT, _t2._npc1, _t2._sysmess10_1);
+                    sm = new CreatureSay(0, Say2.BOAT, _t2._npc1, _t2._sysmess10_1);
                 
                 ps = new PlaySound(0, "itemsound.ship_arrival_departure", 1, getObjectId(), this.getX(), this.getY(), this.getZ());
                 
@@ -320,9 +320,9 @@ public class L2BoatInstance extends L2Character
                 break;
             case 5:
                 if (_cycle == 1)
-                    sm = new CreatureSay(0, Say2.SHOUT, _t1._npc1, _t1._sysmess5_1);
+                    sm = new CreatureSay(0, Say2.BOAT, _t1._npc1, _t1._sysmess5_1);
                 else
-                    sm = new CreatureSay(0, Say2.SHOUT, _t2._npc1, _t2._sysmess5_1);
+                    sm = new CreatureSay(0, Say2.BOAT, _t2._npc1, _t2._sysmess5_1);
                 
                 ps = new PlaySound(0, "itemsound.ship_5min", 1, this.getObjectId(), this.getX(), this.getY(), this.getZ());
                 
@@ -334,9 +334,9 @@ public class L2BoatInstance extends L2Character
                 break;
             case 1:
                 if (_cycle == 1)
-                    sm = new CreatureSay(0, Say2.SHOUT, _t1._npc1, _t1._sysmess1_1);
+                    sm = new CreatureSay(0, Say2.BOAT, _t1._npc1, _t1._sysmess1_1);
                 else
-                    sm = new CreatureSay(0, Say2.SHOUT, _t2._npc1, _t2._sysmess1_1);
+                    sm = new CreatureSay(0, Say2.BOAT, _t2._npc1, _t2._sysmess1_1);
                 
                 ps = new PlaySound(0, "itemsound.ship_1min", 1, this.getObjectId(), this.getX(), this.getY(), this.getZ());
                 
@@ -348,18 +348,18 @@ public class L2BoatInstance extends L2Character
                 break;
             case 0:
                 if (_cycle == 1)
-                    sm = new CreatureSay(0, Say2.SHOUT, _t1._npc1, _t1._sysmess0_1);
+                    sm = new CreatureSay(0, Say2.BOAT, _t1._npc1, _t1._sysmess0_1);
                 else
-                    sm = new CreatureSay(0, Say2.SHOUT, _t2._npc1, _t2._sysmess0_1);
+                    sm = new CreatureSay(0, Say2.BOAT, _t2._npc1, _t2._sysmess0_1);
                 
                 for (L2PcInstance player : knownPlayers)
                     player.sendPacket(sm);
                 break;
             case -1:
                 if (_cycle == 1)
-                    sm = new CreatureSay(0, Say2.SHOUT, _t1._npc1, _t1._sysmessb_1);
+                    sm = new CreatureSay(0, Say2.BOAT, _t1._npc1, _t1._sysmessb_1);
                 else
-                    sm = new CreatureSay(0, Say2.SHOUT, _t2._npc1, _t2._sysmessb_1);
+                    sm = new CreatureSay(0, Say2.BOAT, _t2._npc1, _t2._sysmessb_1);
                 
                 ps = new PlaySound(0, "itemsound.ship_arrival_departure", 1, this.getObjectId(), this.getX(), this.getY(), this.getZ());
                 

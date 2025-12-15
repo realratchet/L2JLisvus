@@ -24,15 +24,15 @@ import net.sf.l2j.util.Point3D;
 
 public class RequestMoveToLocationInVehicle extends L2GameClientPacket
 {
-	private int _BoatId;
+	private int _boatId;
 	private Point3D _pos;
-	private Point3D _origin_pos;
+	private Point3D _originPos;
 
 	@Override
 	protected void readImpl()
 	{
 		int _x, _y, _z;
-		_BoatId = readD(); // objectId of boat
+		_boatId = readD(); // objectId of boat
 		_x = readD();
 		_y = readD();
 		_z = readD();
@@ -40,7 +40,7 @@ public class RequestMoveToLocationInVehicle extends L2GameClientPacket
 		_x = readD();
 		_y = readD();
 		_z = readD();
-		_origin_pos = new Point3D(_x, _y, _z);
+		_originPos = new Point3D(_x, _y, _z);
 	}
 
 	/*
@@ -66,7 +66,7 @@ public class RequestMoveToLocationInVehicle extends L2GameClientPacket
 		if (activeChar.isInBoat())
 		{
 			boat = activeChar.getBoat();
-			if (boat.getObjectId() != _BoatId)
+			if (boat.getObjectId() != _boatId)
 			{
 				activeChar.sendPacket(new ActionFailed());
 				return;
@@ -74,7 +74,7 @@ public class RequestMoveToLocationInVehicle extends L2GameClientPacket
 		}
 		else
 		{
-			boat = BoatManager.getInstance().getBoat(_BoatId);
+			boat = BoatManager.getInstance().getBoat(_boatId);
 			if (boat == null)
 			{
 				activeChar.sendPacket(new ActionFailed());
@@ -86,7 +86,7 @@ public class RequestMoveToLocationInVehicle extends L2GameClientPacket
 		if (activeChar.getAI().moveInBoat())
 		{
 			activeChar.setInBoatPosition(_pos);
-			activeChar.broadcastPacket(new MoveToLocationInVehicle(activeChar, _pos, _origin_pos));
+			activeChar.broadcastPacket(new MoveToLocationInVehicle(activeChar, _pos, _originPos));
 		}
 	}
 

@@ -25,40 +25,50 @@ public class CreatureSay extends L2GameServerPacket
 	private static final String _S__4A_CREATURESAY = "[S] 4A CreatureSay";
 	private final int _objectId;
 	private final int _textType;
+	private final boolean _snoop;
 	private final String _charName;
 	private final String _text;
-	private final boolean _snoop;
+	private final int _sysStringId;
+	private final int _sysMsgId;
 	
 	public CreatureSay(int objectId, int messageType, String charName, String text)
 	{
 		this(objectId, messageType, charName, text, true);
 	}
 	
-	public CreatureSay(int objectId, int messageType, String charName, String text, boolean snoop)
-	{
-		this(objectId, messageType, charName, text, null, snoop);
-	}
-	
-	public CreatureSay(int objectId, int messageType, String charName, String text, String targetName)
-	{
-		this(objectId, messageType, charName, text, targetName, true);
-	}
-	
 	/**
-	 * @param objectId 
-	 * @param messageType 
-	 * @param charName 
-	 * @param text 
-	 * @param targetName 
-	 * @param snoop 
+	 * @param objectId
+	 * @param messageType
+	 * @param charName
+	 * @param text
+	 * @param snoop
 	 */
-	public CreatureSay(int objectId, int messageType, String charName, String text, String targetName, boolean snoop)
+	public CreatureSay(int objectId, int messageType, String charName, String text, boolean snoop)
 	{
 		_objectId = objectId;
 		_textType = messageType;
 		_charName = charName;
-		_text = targetName != null && text.contains("$s1") ? text.replace("$s1", targetName) : text;
+		_text = text;
+		_sysStringId = 0;
+		_sysMsgId = 0;
 		_snoop = snoop;
+	}
+	
+	/**
+	 * @param objectId
+	 * @param messageType
+	 * @param sysStringId
+	 * @param sysMsgId
+	 */
+	public CreatureSay(int objectId, int messageType, int sysStringId, int sysMsgId)
+	{
+		_objectId = objectId;
+		_textType = messageType;
+		_charName = null;
+		_text = null;
+		_sysStringId = sysStringId;
+		_sysMsgId = sysMsgId;
+		_snoop = false;
 	}
 	
 	@Override
@@ -67,8 +77,17 @@ public class CreatureSay extends L2GameServerPacket
 		writeC(0x4a);
 		writeD(_objectId);
 		writeD(_textType);
-		writeS(_charName);
-		writeS(_text);
+		
+		if (_text != null)
+		{
+			writeS(_charName);
+			writeS(_text);
+		}
+		else
+		{
+			writeD(_sysStringId);
+			writeD(_sysMsgId);
+		}
 	}
 	
 	@Override
@@ -88,6 +107,7 @@ public class CreatureSay extends L2GameServerPacket
 	
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see net.sf.l2j.gameserver.serverpackets.L2GameServerPacket#getType()
 	 */
 	@Override
