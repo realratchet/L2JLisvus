@@ -43,7 +43,8 @@ public class StartRotating extends L2GameClientPacket
 		{
 			return;
 		}
-		
+
+		activeChar.setIsSelfRotating(true);
 		activeChar.broadcastPacket(new BeginRotation(activeChar.getObjectId(), _degree, _side, 0));
 	}
 	

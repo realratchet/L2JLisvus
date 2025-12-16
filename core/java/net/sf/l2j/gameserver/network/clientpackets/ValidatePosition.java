@@ -23,6 +23,7 @@ import net.sf.l2j.gameserver.model.L2Character;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.network.serverpackets.GetOnVehicle;
 import net.sf.l2j.gameserver.network.serverpackets.PartyMemberPosition;
+import net.sf.l2j.gameserver.network.serverpackets.StopRotation;
 import net.sf.l2j.gameserver.network.serverpackets.ValidateLocation;
 
 /**
@@ -38,7 +39,7 @@ public class ValidatePosition extends L2GameClientPacket
 	private int _y;
 	private int _z;
 	private int _heading;
-	private int _data; // vehicle id
+	private int _boatId;
 	
 	@Override
 	protected void readImpl()
@@ -47,7 +48,7 @@ public class ValidatePosition extends L2GameClientPacket
 		_y = readD();
 		_z = readD();
 		_heading = readD();
-		_data = readD();
+		_boatId = readD();
 	}
 	
 	@Override
@@ -67,6 +68,13 @@ public class ValidatePosition extends L2GameClientPacket
 		{
 			_log.fine("client pos: " + _x + " " + _y + " " + _z + " head " + _heading);
 			_log.fine("server pos: " + realX + " " + realY + " " + realZ + " head " + activeChar.getHeading());
+		}
+
+		// This is one way to stop infinite rotation glitch when finish rotation packet gets lost or interrupted due to player spamming arrow keys
+		if (activeChar.isSelfRotating())
+		{
+			activeChar.setIsSelfRotating(false);
+			activeChar.broadcastPacket(new StopRotation(activeChar.getObjectId(), _heading, 0));
 		}
 		
 		if ((_x == 0) && (_y == 0))
@@ -90,7 +98,7 @@ public class ValidatePosition extends L2GameClientPacket
 				diffSq = ((dx * dx) + (dy * dy));
 				if (diffSq > 250000)
 				{
-					sendPacket(new GetOnVehicle(activeChar.getObjectId(), _data, activeChar.getInBoatPosition()));
+					sendPacket(new GetOnVehicle(activeChar.getObjectId(), _boatId, activeChar.getInBoatPosition()));
 				}
 			}
 			return;
