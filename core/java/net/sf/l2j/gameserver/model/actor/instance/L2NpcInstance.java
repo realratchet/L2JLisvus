@@ -2369,6 +2369,7 @@ public class L2NpcInstance extends L2Character
 	 * <FONT COLOR=#FF0000><B> <U>Caution</U> : This method DOESN'T SEND Server->Client packets to players</B></FONT><BR>
 	 * <BR>
 	 */
+	@Override
 	public void deleteMe()
 	{
 		L2WorldRegion oldRegion = getWorldRegion();
@@ -2399,6 +2400,8 @@ public class L2NpcInstance extends L2Character
 		
 		// Remove L2Object object from _allObjects of L2World
 		L2World.getInstance().removeObject(this);
+
+		super.deleteMe();
 	}
 	
 	/**

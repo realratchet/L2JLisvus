@@ -1753,6 +1753,14 @@ public abstract class L2Character extends L2Object
 		getNotifyQuestOfDeath().clear();
 		return true;
 	}
+
+	public void deleteMe()
+	{
+		if (hasAI())
+		{
+			getAI().stopAITask();
+		}
+	}
 	
 	protected void calculateRewards(L2Character killer)
 	{

@@ -35,11 +35,11 @@ public class L2CabaleBufferInstance extends L2NpcInstance
 {
     private ScheduledFuture<?> _aiTask;
     
-    private class CabalaAI implements Runnable
+    private class CabaleAI implements Runnable
     {
         L2CabaleBufferInstance _caster;
         
-        protected CabalaAI(L2CabaleBufferInstance caster) 
+        protected CabaleAI(L2CabaleBufferInstance caster) 
         {
             _caster = caster;
         }
@@ -124,13 +124,15 @@ public class L2CabaleBufferInstance extends L2NpcInstance
             int skillLevel = (player.getLevel() > 40) ? 1 : 2;
 
             if (player.isDead() || !player.isVisible() || !isInsideRadius(player, getDistanceToWatchObject(player), false, false))
-                return false;
+                return false;
+
 
             L2Skill skill = SkillTable.getInstance().getInfo(skillId, skillLevel);
             if (player.getFirstEffect(skill) == null)
-            {
+            {
                 skill.getEffects(_caster, player);
-                broadcastPacket(new MagicSkillUse(_caster, player, skill.getId(), skillLevel, skill.getHitTime(), 0));
+                broadcastPacket(new MagicSkillUse(_caster, player, skill.getId(), skillLevel, skill.getHitTime(), 0));
+
                 SystemMessage sm = new SystemMessage(SystemMessage.YOU_FEEL_S1_EFFECT);
                 sm.addSkillName(skill);
                 player.sendPacket(sm);
@@ -148,7 +150,7 @@ public class L2CabaleBufferInstance extends L2NpcInstance
         if (_aiTask != null) 
         	_aiTask.cancel(true);
         
-        _aiTask = ThreadPoolManager.getInstance().scheduleAiAtFixedRate(new CabalaAI(this), 3000, 3000);
+        _aiTask = ThreadPoolManager.getInstance().scheduleAiAtFixedRate(new CabaleAI(this), 3000, 3000);
     }
     
     @Override

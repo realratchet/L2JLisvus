@@ -439,6 +439,8 @@ public final class L2PcInstance extends L2PlayableInstance
 	
 	/** True if the L2PcInstance is sitting */
 	private boolean _waitTypeSitting;
+
+	private boolean _isSelfRotating;
 	
 	/** The table containing all Quests began by the L2PcInstance */
 	private final Map<String, QuestState> _quests = new ConcurrentHashMap<>();
@@ -617,6 +619,7 @@ public final class L2PcInstance extends L2PlayableInstance
 	private ScheduledFuture<?> _dismountTask;
 	
 	private L2Fishing _fishCombat;
+	private FishData _fish;
 	private boolean _fishing = false;
 	private int _fishx = 0;
 	private int _fishy = 0;
@@ -2709,6 +2712,16 @@ public final class L2PcInstance extends L2PlayableInstance
 	{
 		return _shortCuts.deleteShortCutsByItem(item) > 0;
 	}
+
+	public boolean isSelfRotating()
+	{
+		return _isSelfRotating;
+	}
+
+	public void setIsSelfRotating(boolean val)
+	{
+		_isSelfRotating = val;
+	}
 	
 	/**
 	 * Return True if the L2PcInstance is sitting.<BR>
@@ -3285,7 +3298,6 @@ public final class L2PcInstance extends L2PlayableInstance
 	@Override
 	public boolean destroyItem(String process, int objectId, int count, L2Object reference, boolean sendMessage)
 	{
-		
 		L2ItemInstance item = _inventory.getItemByObjectId(objectId);
 		
 		if (item == null)
@@ -10251,6 +10263,7 @@ public final class L2PcInstance extends L2PlayableInstance
 	 * <li>Close the connection with the client</li><BR>
 	 * <BR>
 	 */
+	@Override
 	public void deleteMe()
 	{
 		try
@@ -10547,9 +10560,9 @@ public final class L2PcInstance extends L2PlayableInstance
 		{
 			_log.log(Level.SEVERE, "deletedMe()", e);
 		}
+
+		super.deleteMe();
 	}
-	
-	private FishData _fish;
 	
 	public void startFishing(int _x, int _y, int _z)
 	{
