@@ -38,7 +38,6 @@ import net.sf.l2j.gameserver.model.actor.knownlist.BoatKnownList;
 import net.sf.l2j.gameserver.model.actor.stat.BoatStat;
 import net.sf.l2j.gameserver.network.clientpackets.Say2;
 import net.sf.l2j.gameserver.network.serverpackets.CreatureSay;
-import net.sf.l2j.gameserver.network.serverpackets.InventoryUpdate;
 import net.sf.l2j.gameserver.network.serverpackets.PlaySound;
 import net.sf.l2j.gameserver.network.serverpackets.VehicleDeparture;
 import net.sf.l2j.gameserver.network.serverpackets.VehicleInfo;
@@ -81,7 +80,7 @@ public class L2BoatInstance extends L2Character
         getStat();
         setAI(initAI());
     }
-
+    
     @Override
     public L2BoatAI initAI()
     {
@@ -235,23 +234,10 @@ public class L2BoatInstance extends L2Character
     
     private void addPassenger(L2PcInstance player)
     {
-        final int itemId;
-        if (_cycle == 1)
-            itemId = _t1._idWTicket1;
-        else
-            itemId = _t2._idWTicket1;
-        
+        final int itemId = _cycle == 1 ? _t1._idWTicket1 : _t2._idWTicket1;
         if (itemId != 0)
         {
-            final L2ItemInstance it = player.getInventory().getItemByItemId(itemId);
-            if ((it != null) && (it.getCount() >= 1))
-            {
-                player.getInventory().destroyItem("Boat", it, 1, player, this);
-                InventoryUpdate iu = new InventoryUpdate();
-                iu.addModifiedItem(it);
-                player.sendPacket(iu);
-            }
-            else
+            if (!player.destroyItemByItemId("Boat", itemId, 1, this, false))
             {
                 oustPlayer(player);
                 return;
