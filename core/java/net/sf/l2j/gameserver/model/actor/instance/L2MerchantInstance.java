@@ -37,6 +37,26 @@ import net.sf.l2j.util.StringUtil;
  */
 public class L2MerchantInstance extends L2FolkInstance
 {
+	private static int PET_RENT_DATA[][] =
+	{
+		{
+			1800,
+			30
+		},
+		{
+			7200,
+			60
+		},
+		{
+			720000,
+			600
+		},
+		{
+			6480000,
+			1800
+		}
+	};
+	
 	/**
 	 * @param objectId
 	 * @param template
@@ -178,25 +198,45 @@ public class L2MerchantInstance extends L2FolkInstance
 	
 	public void showRentPetWindow(L2PcInstance player)
 	{
-		String html = StringUtil.concat(
-			"<html><body>Pet Manager:<br>",
-			"You can rent a wyvern or strider for adena.<br>My prices:<br1>",
-			"<table border=0><tr><td>Ride</td></tr>",
-			"<tr><td>Wyvern</td><td>Strider</td></tr>",
-			"<tr><td><a action=\"bypass -h npc_%objectId%_RentPet 1\">30 sec/1800 adena</a></td><td><a action=\"bypass -h npc_%objectId%_RentPet 11\">30 sec/900 adena</a></td></tr>",
-			"<tr><td><a action=\"bypass -h npc_%objectId%_RentPet 2\">1 min/7200 adena</a></td><td><a action=\"bypass -h npc_%objectId%_RentPet 12\">1 min/3600 adena</a></td></tr>",
-			"<tr><td><a action=\"bypass -h npc_%objectId%_RentPet 3\">10 min/720000 adena</a></td><td><a action=\"bypass -h npc_%objectId%_RentPet 13\">10 min/360000 adena</a></td></tr>",
-			"<tr><td><a action=\"bypass -h npc_%objectId%_RentPet 4\">30 min/6480000 adena</a></td><td><a action=\"bypass -h npc_%objectId%_RentPet 14\">30 min/3240000 adena</a></td></tr>",
-			"</table>",
-			"</body></html>");
+		StringBuilder sb = new StringBuilder(230 * PET_RENT_DATA.length);
 		
-		insertObjectIdAndShowChatWindow(player, html);
+		sb.append("<html><body>" + getTemplate().title + " " + getTemplate().name + ":<br>");
+		sb.append("You can rent a wyvern or strider for adena.<br>My prices:<br1>");
+		sb.append("<table border=0><tr><td>Ride</td></tr>");
+		sb.append("<tr><td>Wyvern</td><td>Strider</td></tr>");
+
+		for (int i = 0; i < PET_RENT_DATA.length; i++)
+		{
+			int[] rentData = PET_RENT_DATA[i];
+			int cost = rentData[0];
+			int duration = rentData[1];
+			int val = i + 1;
+
+			sb.append("<tr><td><a action=\"bypass -h npc_%objectId%_RentPet " + val + "\">" +  duration + " sec/" + cost + " adena</a></td><td><a action=\"bypass -h npc_%objectId%_RentPet " + (val + 10) + "\">" +  duration + " sec/" + ( cost / 2) + " adena</a></td></tr>");
+		}
+
+		sb.append("</table>");
+		sb.append("</body></html>");
+		
+		insertObjectIdAndShowChatWindow(player, sb.toString());
 	}
 	
 	public void tryRentPet(L2PcInstance player, int val)
 	{
-		if (player == null || player.getPet() != null || player.isMounted() || player.isRentedPet())
+		if (player == null)
 		{
+			return;
+		}
+
+		if (player.getPet() != null)
+		{
+			player.sendMessage("Please unsummon your current pet in order to rent one.");
+			return;
+		}
+
+		if (player.isMounted() || player.isRentedPet())
+		{
+			player.sendMessage("Cannot rent a pet while mounted.");
 			return;
 		}
 		
@@ -205,52 +245,38 @@ public class L2MerchantInstance extends L2FolkInstance
 			return;
 		}
 		
-		player.abortCast();
-		
 		int petId;
-		double price = 1;
-		int cost[] =
-		{
-			1800,
-			7200,
-			720000,
-			6480000
-		};
-		int ridetime[] =
-		{
-			30,
-			60,
-			600,
-			1800
-		};
+		double costRate;
 		
 		if (val > 10)
 		{
 			petId = 12526;
 			val -= 10;
-			price /= 2;
+			costRate = 0.5;
 		}
 		else
 		{
 			petId = 12621;
+			costRate = 1;
 		}
 		
-		if ((val < 1) || (val > 4))
+		if (val < 1 || val > PET_RENT_DATA.length)
+		{
+			return;
+		}
+
+		int[] rentData = PET_RENT_DATA[val - 1];
+		int price = (int) (costRate * rentData[0]);
+		int time = rentData[1];
+		
+		if (!player.reduceAdena("Rent", price, player.getLastFolkNPC(), true))
 		{
 			return;
 		}
 		
-		price *= cost[val - 1];
-		int time = ridetime[val - 1];
-		
-		if (!player.reduceAdena("Rent", (int) price, player.getLastFolkNPC(), true))
-		{
-			return;
-		}
-		
+		player.abortCast();
 		player.mount(petId, 0, false);
 		player.sendPacket(new SetupGauge(SetupGauge.GREEN, time * 1000));
-		
 		player.startRentPet(time);
 	}
 	
@@ -283,16 +309,16 @@ public class L2MerchantInstance extends L2FolkInstance
 			StringUtil.append(sb, "<html><body><table border=0>");
 			StringUtil.append(sb, "<tr><td>Current Target:</td></tr>");
 			StringUtil.append(sb, "<tr><td><br></td></tr>");
-
+			
 			StringUtil.append(sb, "<tr><td>Object ID: " + getObjectId() + "</td></tr>");
 			StringUtil.append(sb, "<tr><td>Template ID: " + getNpcId() + "</td></tr>");
 			StringUtil.append(sb, "<tr><td><br></td></tr>");
-
+			
 			StringUtil.append(sb, "<tr><td>HP: " + getCurrentHp() + "</td></tr>");
 			StringUtil.append(sb, "<tr><td>MP: " + getCurrentMp() + "</td></tr>");
 			StringUtil.append(sb, "<tr><td>Level: " + getLevel() + "</td></tr>");
 			StringUtil.append(sb, "<tr><td><br></td></tr>");
-
+			
 			StringUtil.append(sb, "<tr><td>Class: " + getClass().getName() + "</td></tr>");
 			StringUtil.append(sb, "<tr><td><br></td></tr>");
 			

@@ -3358,7 +3358,6 @@ public final class L2PcInstance extends L2PlayableInstance
 			{
 				sendPacket(new SystemMessage(SystemMessage.NOT_ENOUGH_ITEMS));
 			}
-			
 			return false;
 		}
 		
@@ -9617,9 +9616,7 @@ public final class L2PcInstance extends L2PlayableInstance
 			if (dismount())
 			{
 				_taskRentPet.cancel(true);
-				
 				_taskRentPet = null;
-				
 			}
 		}
 	}
@@ -9634,12 +9631,7 @@ public final class L2PcInstance extends L2PlayableInstance
 	
 	public boolean isRentedPet()
 	{
-		if (_taskRentPet != null)
-		{
-			return true;
-		}
-		
-		return false;
+		return _taskRentPet != null;
 	}
 	
 	public void stopWaterTask()
