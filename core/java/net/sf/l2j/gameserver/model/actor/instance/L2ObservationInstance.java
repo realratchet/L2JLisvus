@@ -58,23 +58,29 @@ public final class L2ObservationInstance extends L2FolkInstance
 		
 		if (command.startsWith("observeSiege"))
 		{
-			String val = command.substring(13);
-			StringTokenizer st = new StringTokenizer(val);
-			st.nextToken(); // Bypass cost
+			StringTokenizer st = new StringTokenizer(command.substring(13));
+			int cost = Integer.parseInt(st.nextToken());
+			int x = Integer.parseInt(st.nextToken());
+			int y = Integer.parseInt(st.nextToken());
+			int z = Integer.parseInt(st.nextToken());
 			
-			if (SiegeManager.getInstance().getSiege(Integer.parseInt(st.nextToken()), Integer.parseInt(st.nextToken()), Integer.parseInt(st.nextToken())) != null)
+			if (SiegeManager.getInstance().getSiege(x, y, z) != null)
 			{
-				doObserve(player, val);
+				doObserve(player, cost, x, y, z);
 			}
 			else
 			{
 				player.sendPacket(new SystemMessage(SystemMessage.ONLY_VIEW_SIEGE));
 			}
-			
 		}
 		else if (command.startsWith("observe"))
 		{
-			doObserve(player, command.substring(8));
+			StringTokenizer st = new StringTokenizer(command.substring(8));
+			int cost = Integer.parseInt(st.nextToken());
+			int x = Integer.parseInt(st.nextToken());
+			int y = Integer.parseInt(st.nextToken());
+			int z = Integer.parseInt(st.nextToken());
+			doObserve(player, cost, x, y, z);
 		}
 		else
 		{
@@ -98,13 +104,8 @@ public final class L2ObservationInstance extends L2FolkInstance
 		return "data/html/observation/" + pom + ".htm";
 	}
 	
-	private void doObserve(L2PcInstance player, String val)
+	private void doObserve(L2PcInstance player, int cost, int x, int y, int z)
 	{
-		StringTokenizer st = new StringTokenizer(val);
-		int cost = Integer.parseInt(st.nextToken());
-		int x = Integer.parseInt(st.nextToken());
-		int y = Integer.parseInt(st.nextToken());
-		int z = Integer.parseInt(st.nextToken());
 		if (player.reduceAdena("Broadcast", cost, this, true))
 		{
 			// enter mode
@@ -112,8 +113,7 @@ public final class L2ObservationInstance extends L2FolkInstance
 			{
 				player.enterObserverMode(x, y, z);
 			}
-			ItemList il = new ItemList(player, false);
-			player.sendPacket(il);
+			player.sendPacket(new ItemList(player, false));
 		}
 		player.sendPacket(new ActionFailed());
 	}

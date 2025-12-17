@@ -15,84 +15,90 @@
 package net.sf.l2j.gameserver.model.actor.instance;
 
 import net.sf.l2j.gameserver.datatables.SkillTable;
+import net.sf.l2j.gameserver.model.L2Summon;
 import net.sf.l2j.gameserver.network.serverpackets.ActionFailed;
 import net.sf.l2j.gameserver.network.serverpackets.NpcHtmlMessage;
 import net.sf.l2j.gameserver.templates.L2NpcTemplate;
 
 public class L2WyvernManagerInstance extends L2CastleChamberlainInstance
 {
-    public L2WyvernManagerInstance (int objectId, L2NpcTemplate template)
-    {
-        super(objectId, template);
-    }
-
-    @Override
+	private static final int CRYSTAL_COUNT = 10;
+	
+	public L2WyvernManagerInstance(int objectId, L2NpcTemplate template)
+	{
+		super(objectId, template);
+	}
+	
+	@Override
 	public void onBypassFeedback(L2PcInstance player, String command)
-    {
-        if (command.startsWith("RideWyvern"))
-        {
-            if (!player.isClanLeader())
-            {
-                player.sendMessage("You are not the lord of this castle.");
-                return;
-            }
-
-        	if (player.getPet() == null) 
-        	{   
-        		if (player.isMounted())
-        		{
-        			player.sendMessage("Already Have a Pet or Mounted.");
-        			return;
-        		}
-        		player.sendMessage("Summon your Strider.");
+	{
+		if (command.startsWith("RideWyvern"))
+		{
+			if (!player.isClanLeader())
+			{
+				player.sendMessage("You are not the lord of this castle.");
 				return;
-        	}            
-        	else if ((player.getPet().getNpcId() == 12526) || (player.getPet().getNpcId() == 12527) || (player.getPet().getNpcId() == 12528))
-            {
-        		if (player.getInventory().getItemByItemId(1460) != null && player.getInventory().getItemByItemId(1460).getCount() >= 10)
-        		{
-        			if (player.getPet().getLevel() < 55)
-        			{
-        				player.sendMessage("Your strider's level is lower than 55.");
-                		return;                
-        			}
-					player.getPet().unSummon(player);
-					if (player.mount(12621, 0, true))
-	                {
-	                    player.getInventory().destroyItemByItemId("Wyvern", 1460, 10, player, player.getTarget());
-	                    player.addSkill(SkillTable.getInstance().getInfo(4289, 1));
-	                    player.sendMessage("The Wyvern has been successfully summoned.");
-	                }
-	                return;
-        		}
-        		player.sendMessage("You need 10 Crystals: B Grade.");
+			}
+			
+			if (player.isMounted())
+			{
+				player.sendMessage("Cannot ride a wyvern while mounted.");
 				return;
-            }
-        	else
-        	{
-        		player.sendMessage("Unsummon your pet.");
-        		return;
-        	}
-        }
+			}
+			
+			L2Summon summon = player.getPet();
+			if (summon == null || (summon.getNpcId() != 12526) && (summon.getNpcId() != 12527) && (summon.getNpcId() != 12528))
+			{
+				player.sendMessage("Please summon your strider.");
+				return;
+			}
+			
+			if (summon.getLevel() < 55)
+			{
+				player.sendMessage("Your strider's level is lower than 55.");
+				return;
+			}
+			
+			if (!player.destroyItemByItemId("Wyvern", 1460, CRYSTAL_COUNT, player.getTarget(), false))
+			{
+				player.sendMessage("You need " + CRYSTAL_COUNT + " Crystal(s): B Grade.");
+				return;
+			}
+			
+			summon.unSummon(player);
+			
+			if (player.mount(12621, 0, true))
+			{
+				
+				player.addSkill(SkillTable.getInstance().getInfo(4289, 1));
+				player.sendMessage("You have successfully mounted a wyvern.");
+			}
+		}
 		super.onBypassFeedback(player, command);
-    }
-
-    @Override
+	}
+	
+	@Override
 	public void showChatWindow(L2PcInstance player)
-    {
-        String filename = "data/html/wyvernmanager/wyvernmanager-no.htm";
-        
-        int condition = validateCondition(player);
-        if (condition > COND_ALL_FALSE)
-        {
-            if (condition == COND_CASTLE_OWNER)                                     // Clan owns castle
-                filename = "data/html/wyvernmanager/wyvernmanager.htm";      // Owner message window
-        }
-        NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
-        html.setFile(filename);
-        html.replace("%objectId%", String.valueOf(getObjectId()));
-        html.replace("%npcname%", getName());
-        player.sendPacket(html);
-        player.sendPacket(new ActionFailed());
-    } 
+	{
+		String filename;
+		
+		int condition = validateCondition(player);
+		
+		// Clan owns castle, show owner message window
+		if (condition == COND_CASTLE_OWNER)
+		{
+			filename = "data/html/wyvernmanager/wyvernmanager.htm";
+		}
+		else
+		{
+			filename = "data/html/wyvernmanager/wyvernmanager-no.htm";
+		}
+		
+		NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
+		html.setFile(filename);
+		html.replace("%objectId%", String.valueOf(getObjectId()));
+		html.replace("%npcname%", getName());
+		player.sendPacket(html);
+		player.sendPacket(new ActionFailed());
+	}
 }
