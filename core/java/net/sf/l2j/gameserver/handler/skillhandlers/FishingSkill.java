@@ -59,7 +59,7 @@ public class FishingSkill implements ISkillHandler
 				player.sendPacket(new SystemMessage(SystemMessage.CAN_USE_REELING_ONLY_WHILE_FISHING));
 			}
 
-			player.sendPacket(new ActionFailed());
+			player.sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}
 

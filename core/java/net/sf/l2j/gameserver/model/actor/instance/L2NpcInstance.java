@@ -681,14 +681,14 @@ public class L2NpcInstance extends L2Character
 				else
 				{
 					// Send a Server->Client ActionFailed to the L2PcInstance in order to avoid that the client wait another packet
-					player.sendPacket(new ActionFailed());
+					player.sendPacket(ActionFailed.STATIC_PACKET);
 				}
 			}
 			else if (!isAutoAttackable(player))
 			{
 				if (Config.PLAYER_MOVEMENT_BLOCK_TIME > 0 && !player.isGM() && player.getNotMoveUntil() > System.currentTimeMillis())
 				{
-					player.sendPacket(new ActionFailed());
+					player.sendPacket(ActionFailed.STATIC_PACKET);
 					return;
 				}
 				
@@ -706,7 +706,7 @@ public class L2NpcInstance extends L2Character
 			}
 			else
 			{
-				player.sendPacket(new ActionFailed());
+				player.sendPacket(ActionFailed.STATIC_PACKET);
 			}
 		}
 	}
@@ -925,7 +925,7 @@ public class L2NpcInstance extends L2Character
 		}
 		
 		// Send a Server->Client ActionFailed to the L2PcInstance in order to avoid that the client wait another packet
-		player.sendPacket(new ActionFailed());
+		player.sendPacket(ActionFailed.STATIC_PACKET);
 	}
 	
 	/**
@@ -995,7 +995,7 @@ public class L2NpcInstance extends L2Character
 	{
 		if (isBusy() && (getBusyMessage().length() > 0))
 		{
-			player.sendPacket(new ActionFailed());
+			player.sendPacket(ActionFailed.STATIC_PACKET);
 			NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
 			html.setFile("data/html/npcbusy.htm");
 			html.replace("%busymessage%", getBusyMessage());
@@ -1364,7 +1364,7 @@ public class L2NpcInstance extends L2Character
 			_log.warning("buylist id:" + val);
 		}
 		
-		player.sendPacket(new ActionFailed());
+		player.sendPacket(ActionFailed.STATIC_PACKET);
 	}
 	
 	/**
@@ -1487,7 +1487,7 @@ public class L2NpcInstance extends L2Character
 		}
 		
 		// Send a Server->Client ActionFailed to the L2PcInstance in order to avoid that the client wait another packet
-		player.sendPacket(new ActionFailed());
+		player.sendPacket(ActionFailed.STATIC_PACKET);
 	}
 	
 	/**
@@ -1808,7 +1808,7 @@ public class L2NpcInstance extends L2Character
 		player.sendPacket(html);
 		
 		// Send a Server->Client ActionFailed to the L2PcInstance in order to avoid that the client wait another packet
-		player.sendPacket(new ActionFailed());
+		player.sendPacket(ActionFailed.STATIC_PACKET);
 	}
 	
 	public void makeCPRecovery(L2PcInstance player)
@@ -1829,7 +1829,7 @@ public class L2NpcInstance extends L2Character
 			setTarget(player);
 			doCast(skill);
 		}
-		player.sendPacket(new ActionFailed());
+		player.sendPacket(ActionFailed.STATIC_PACKET);
 	}
 	
 	/**
@@ -2106,7 +2106,7 @@ public class L2NpcInstance extends L2Character
 							if ((playerCabal != compWinner) || (playerCabal != sealAvariceOwner))
 							{
 								player.sendPacket(new SystemMessage(SystemMessage.CAN_BE_USED_BY_DAWN));
-								player.sendPacket(new ActionFailed());
+								player.sendPacket(ActionFailed.STATIC_PACKET);
 								return;
 							}
 							break;
@@ -2114,13 +2114,13 @@ public class L2NpcInstance extends L2Character
 							if ((playerCabal != compWinner) || (playerCabal != sealAvariceOwner))
 							{
 								player.sendPacket(new SystemMessage(SystemMessage.CAN_BE_USED_BY_DUSK));
-								player.sendPacket(new ActionFailed());
+								player.sendPacket(ActionFailed.STATIC_PACKET);
 								return;
 							}
 							break;
 						case SevenSigns.CABAL_NULL:
 							player.sendPacket(new SystemMessage(SystemMessage.CAN_BE_USED_DURING_QUEST_EVENT_PERIOD));
-							player.sendPacket(new ActionFailed());
+							player.sendPacket(ActionFailed.STATIC_PACKET);
 							return;
 					}
 				}
@@ -2135,7 +2135,7 @@ public class L2NpcInstance extends L2Character
 							if ((playerCabal != compWinner) || (playerCabal != sealGnosisOwner))
 							{
 								player.sendPacket(new SystemMessage(SystemMessage.CAN_BE_USED_BY_DAWN));
-								player.sendPacket(new ActionFailed());
+								player.sendPacket(ActionFailed.STATIC_PACKET);
 								return;
 							}
 							break;
@@ -2143,13 +2143,13 @@ public class L2NpcInstance extends L2Character
 							if ((playerCabal != compWinner) || (playerCabal != sealGnosisOwner))
 							{
 								player.sendPacket(new SystemMessage(SystemMessage.CAN_BE_USED_BY_DUSK));
-								player.sendPacket(new ActionFailed());
+								player.sendPacket(ActionFailed.STATIC_PACKET);
 								return;
 							}
 							break;
 						case SevenSigns.CABAL_NULL:
 							player.sendPacket(new SystemMessage(SystemMessage.CAN_BE_USED_DURING_QUEST_EVENT_PERIOD));
-							player.sendPacket(new ActionFailed());
+							player.sendPacket(ActionFailed.STATIC_PACKET);
 							return;
 					}
 				}
@@ -2207,7 +2207,7 @@ public class L2NpcInstance extends L2Character
 		player.sendPacket(html);
 		
 		// Send a Server->Client ActionFailed to the L2PcInstance in order to avoid that the client wait another packet
-		player.sendPacket(new ActionFailed());
+		player.sendPacket(ActionFailed.STATIC_PACKET);
 	}
 	
 	/**
@@ -2227,7 +2227,7 @@ public class L2NpcInstance extends L2Character
 		player.sendPacket(html);
 		
 		// Send a Server->Client ActionFailed to the L2PcInstance in order to avoid that the client wait another packet
-		player.sendPacket(new ActionFailed());
+		player.sendPacket(ActionFailed.STATIC_PACKET);
 	}
 	
 	/**

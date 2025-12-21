@@ -79,7 +79,7 @@ public class SetPrivateStoreListBuy extends L2GameClientPacket
 		if (player.isAttackingDisabled() || player.isOutOfControl() || player.isImmobilized() || player.isCastingNow())
 		{
 			player.sendPacket(new PrivateStoreManageListBuy(player));
-			player.sendPacket(new ActionFailed());
+			player.sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}
 
@@ -87,7 +87,7 @@ public class SetPrivateStoreListBuy extends L2GameClientPacket
 		{
 			player.sendPacket(new PrivateStoreManageListBuy(player));
 			player.sendMessage("Transactions are disabled for your Access Level.");
-			player.sendPacket(new ActionFailed());
+			player.sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}
 
@@ -95,7 +95,7 @@ public class SetPrivateStoreListBuy extends L2GameClientPacket
 		{
 			player.sendPacket(new PrivateStoreManageListBuy(player));
 			player.sendPacket(new SystemMessage(SystemMessage.NO_PRIVATE_STORE_HERE));
-			player.sendPacket(new ActionFailed());
+			player.sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}
 

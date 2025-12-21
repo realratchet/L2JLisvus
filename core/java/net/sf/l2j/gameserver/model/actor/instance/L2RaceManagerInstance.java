@@ -134,7 +134,7 @@ public class L2RaceManagerInstance extends L2NpcInstance
         html.replace("1race", String.valueOf(MonsterRace.getInstance().getRaceNumber()));
         html.replace("%objectId%", String.valueOf(getObjectId()));
         player.sendPacket(html);
-        player.sendPacket(new ActionFailed());
+        player.sendPacket(ActionFailed.STATIC_PACKET);
     }
     
     public void showMonsterInfo(L2PcInstance player)
@@ -152,7 +152,7 @@ public class L2RaceManagerInstance extends L2NpcInstance
         }
         html.replace("%objectId%", String.valueOf(getObjectId()));
         player.sendPacket(html);
-        player.sendPacket(new ActionFailed());
+        player.sendPacket(ActionFailed.STATIC_PACKET);
     }
     
     public void showBuyTicket(L2PcInstance player, int val)
@@ -260,7 +260,7 @@ public class L2RaceManagerInstance extends L2NpcInstance
         html.replace("1race", String.valueOf(raceNumber));
         html.replace("%objectId%", String.valueOf(getObjectId()));
         player.sendPacket(html);
-        player.sendPacket(new ActionFailed());
+        player.sendPacket(ActionFailed.STATIC_PACKET);
     }
     
     public class Race

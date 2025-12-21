@@ -55,7 +55,7 @@ public class RequestGetOnVehicle extends L2GameClientPacket
 		
 		if (activeChar.isFlying())
 		{
-			sendPacket(new ActionFailed());
+			sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}
 		
@@ -65,7 +65,7 @@ public class RequestGetOnVehicle extends L2GameClientPacket
 			boat = activeChar.getBoat();
 			if (boat.getObjectId() != _boatId)
 			{
-				sendPacket(new ActionFailed());
+				sendPacket(ActionFailed.STATIC_PACKET);
 				return;
 			}
 		}
@@ -74,7 +74,7 @@ public class RequestGetOnVehicle extends L2GameClientPacket
 			boat = BoatManager.getInstance().getBoat(_boatId);
 			if ((boat == null) || boat.isMoving() || !activeChar.isInsideRadius(boat, 1000, true, false))
 			{
-				sendPacket(new ActionFailed());
+				sendPacket(ActionFailed.STATIC_PACKET);
 				return;
 			}
 		}

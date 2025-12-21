@@ -62,7 +62,7 @@ public class ClientStat
 			_packetsSentInSec++;
 			if (_packetsSentInSec > 80)
 			{
-				_client.sendPacket(new ActionFailed());
+				_client.sendPacket(ActionFailed.STATIC_PACKET);
 				return true;
 			}
 		}

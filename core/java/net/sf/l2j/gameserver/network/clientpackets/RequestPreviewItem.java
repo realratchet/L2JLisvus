@@ -94,7 +94,7 @@ public class RequestPreviewItem extends L2GameClientPacket
 	{
 		if (_count < 1 || _listId >= 1000000)
 		{
-			sendPacket(new ActionFailed());
+			sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}
 
@@ -108,7 +108,7 @@ public class RequestPreviewItem extends L2GameClientPacket
 		if (player.isInStoreMode())
 		{
 			player.sendPacket(new SystemMessage(SystemMessage.CANNOT_TRADE_DISCARD_DROP_ITEM_WHILE_IN_SHOPMODE));
-			player.sendPacket(new ActionFailed());
+			player.sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}
 

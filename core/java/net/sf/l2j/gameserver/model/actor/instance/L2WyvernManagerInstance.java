@@ -99,6 +99,6 @@ public class L2WyvernManagerInstance extends L2CastleChamberlainInstance
 		html.replace("%objectId%", String.valueOf(getObjectId()));
 		html.replace("%npcname%", getName());
 		player.sendPacket(html);
-		player.sendPacket(new ActionFailed());
+		player.sendPacket(ActionFailed.STATIC_PACKET);
 	}
 }

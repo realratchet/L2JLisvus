@@ -61,7 +61,7 @@ public class AttackRequest extends L2GameClientPacket
 		if (activeChar.inObserverMode())
 		{
 			activeChar.sendPacket(new SystemMessage(SystemMessage.OBSERVERS_CANNOT_PARTICIPATE));
-			activeChar.sendPacket(new ActionFailed());
+			activeChar.sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}
 
@@ -92,7 +92,7 @@ public class AttackRequest extends L2GameClientPacket
 			}
 			else
 			{
-				activeChar.sendPacket(new ActionFailed());
+				activeChar.sendPacket(ActionFailed.STATIC_PACKET);
 			}
 		}
 	}

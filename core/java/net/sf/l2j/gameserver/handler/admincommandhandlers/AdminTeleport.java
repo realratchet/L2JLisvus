@@ -207,7 +207,7 @@ public class AdminTeleport implements IAdminCommandHandler
         else if (command.startsWith("admin_failed"))
         {
             activeChar.sendMessage("Trying ActionFailed...");
-            activeChar.sendPacket(new ActionFailed());
+            activeChar.sendPacket(ActionFailed.STATIC_PACKET);
         }
         else if (command.equals("admin_tele"))
         {

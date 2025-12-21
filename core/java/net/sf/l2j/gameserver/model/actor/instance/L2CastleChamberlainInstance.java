@@ -236,7 +236,7 @@ public class L2CastleChamberlainInstance extends L2FolkInstance
 					}
 					
 					showBuyWindow(player, Integer.parseInt(val + "1"));
-					player.sendPacket(new ActionFailed());
+					player.sendPacket(ActionFailed.STATIC_PACKET);
 					
 				}
 				else
@@ -383,7 +383,7 @@ public class L2CastleChamberlainInstance extends L2FolkInstance
 				if (CastleManorManager.getInstance().isUnderMaintenance())
 				{
 					player.sendPacket(new SystemMessage(SystemMessage.THE_MANOR_SYSTEM_IS_CURRENTLY_UNDER_MAINTENANCE));
-					player.sendPacket(new ActionFailed());
+					player.sendPacket(ActionFailed.STATIC_PACKET);
 					return;
 				}
 				
@@ -1319,7 +1319,7 @@ public class L2CastleChamberlainInstance extends L2FolkInstance
 		html.replace("%npcname%", getName());
 		player.sendPacket(html);
 		
-		player.sendPacket(new ActionFailed());
+		player.sendPacket(ActionFailed.STATIC_PACKET);
 	}
 	
 	private void sendHtmlMessage(L2PcInstance player, String htmlMessage)
@@ -1356,7 +1356,7 @@ public class L2CastleChamberlainInstance extends L2FolkInstance
 			_log.warning("No teleport destination with id:" + val);
 		}
 		
-		player.sendPacket(new ActionFailed());
+		player.sendPacket(ActionFailed.STATIC_PACKET);
 	}
 	
 	@Override

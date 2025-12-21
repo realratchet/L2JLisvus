@@ -43,7 +43,7 @@ public class L2PlayerAI extends L2CharacterAI
 	@Override
 	protected void clientActionFailed()
 	{
-		_actor.sendPacket(new ActionFailed());
+		_actor.sendPacket(ActionFailed.STATIC_PACKET);
 	}
 
 	/**

@@ -27,25 +27,25 @@ import net.sf.l2j.gameserver.templates.L2NpcTemplate;
 /**
  * @author NightMarez
  * @version $Revision: 1.3.2.2.2.5 $ $Date: 2005/03/27 15:29:32 $
- *
  */
 public final class L2CastleTeleporterInstance extends L2FolkInstance
 {
     private boolean _currentTask = false;
-
+    
     /**
-     * @param objectId 
+     * @param objectId
      * @param template
      */
     public L2CastleTeleporterInstance(int objectId, L2NpcTemplate template)
     {
         super(objectId, template);
     }
-
+    
     @Override
-	public void onBypassFeedback(L2PcInstance player, String command)
+    public void onBypassFeedback(L2PcInstance player, String command)
     {
-        StringTokenizer st = new StringTokenizer(command, " ");
+        StringTokenizer st = new StringTokenizer(command, " ");
+        
         String actualCommand = st.nextToken(); // Get actual command
         if (actualCommand.equalsIgnoreCase("tele"))
         {
@@ -56,22 +56,23 @@ public final class L2CastleTeleporterInstance extends L2FolkInstance
                     delay = 480000;
                 else
                     delay = 30000;
-
+                
                 setTask(true);
                 ThreadPoolManager.getInstance().scheduleGeneral(new oustAllPlayers(), delay);
             }
-
+            
             String filename = "data/html/teleporter/MassGK-1.htm";
             NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
             html.setFile(filename);
             player.sendPacket(html);
-            return;
+            return;
+            
         }
-		super.onBypassFeedback(player, command);
+        super.onBypassFeedback(player, command);
     }
-
+    
     @Override
-	public void showChatWindow(L2PcInstance player)
+    public void showChatWindow(L2PcInstance player)
     {
         String filename;
         if (!getTask())
@@ -83,34 +84,34 @@ public final class L2CastleTeleporterInstance extends L2FolkInstance
         }
         else
             filename = "data/html/teleporter/MassGK-1.htm";
-
+        
         NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
         html.setFile(filename);
         html.replace("%objectId%", String.valueOf(getObjectId()));
         player.sendPacket(html);
         
-        player.sendPacket(new ActionFailed());
+        player.sendPacket(ActionFailed.STATIC_PACKET);
     }
-
+    
     public void oustAllPlayers()
     {
         getCastle().oustAllPlayers();
     }
-
+    
     class oustAllPlayers implements Runnable
     {
         @Override
-		public void run()
+        public void run()
         {
             try
             {
                 if (getCastle().getSiege().getIsInProgress())
                 {
-                    NpcSay cs = new NpcSay(getObjectId(), 1, getNpcId(), "The defenders of "+ getCastle().getName()+" castle will be teleported to the inner castle.");
+                    NpcSay cs = new NpcSay(getObjectId(), 1, getNpcId(), "The defenders of " + getCastle().getName() + " castle will be teleported to the inner castle.");
                     int region = MapRegionTable.getInstance().getMapRegion(getX(), getY());
                     for (L2PcInstance player : L2World.getInstance().getAllPlayers())
                     {
-                        if (region == MapRegionTable.getInstance().getMapRegion(player.getX(),player.getY()))
+                        if (region == MapRegionTable.getInstance().getMapRegion(player.getX(), player.getY()))
                             player.sendPacket(cs);
                     }
                 }
@@ -123,12 +124,12 @@ public final class L2CastleTeleporterInstance extends L2FolkInstance
             }
         }
     }
-
+    
     public boolean getTask()
     {
         return _currentTask;
     }
-
+    
     public void setTask(boolean state)
     {
         _currentTask = state;

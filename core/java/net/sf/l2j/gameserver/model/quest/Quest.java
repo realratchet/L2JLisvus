@@ -954,7 +954,7 @@ public class Quest extends ManagedScript
 			html.setHtml(res);
 			html.replace("%playername%", player.getName());
 			player.sendPacket(html);
-			player.sendPacket(new ActionFailed());
+			player.sendPacket(ActionFailed.STATIC_PACKET);
 		}
 		else
 		{
@@ -1449,7 +1449,7 @@ public class Quest extends ManagedScript
 				html.setHtml(content);
 				html.replace("%playername%", player.getName());
 				player.sendPacket(html);
-				player.sendPacket(new ActionFailed());
+				player.sendPacket(ActionFailed.STATIC_PACKET);
 			}
 		}
 		

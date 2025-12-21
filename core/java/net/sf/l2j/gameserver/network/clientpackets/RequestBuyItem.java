@@ -86,7 +86,7 @@ public class RequestBuyItem extends L2GameClientPacket
 	{
 		if (_count < 1)
 		{
-			sendPacket(new ActionFailed());
+			sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}
 		
@@ -161,7 +161,7 @@ public class RequestBuyItem extends L2GameClientPacket
 		{
 			if (merchant != null && (merchant.getNpcId() != (_listId - 1000000)))
 			{
-				sendPacket(new ActionFailed());
+				sendPacket(ActionFailed.STATIC_PACKET);
 				return;
 			}
 		}
@@ -217,7 +217,7 @@ public class RequestBuyItem extends L2GameClientPacket
 			if (price < 0)
 			{
 				_log.warning("ERROR, no price found.. wrong buylist??");
-				sendPacket(new ActionFailed());
+				sendPacket(ActionFailed.STATIC_PACKET);
 				return;
 			}
 			

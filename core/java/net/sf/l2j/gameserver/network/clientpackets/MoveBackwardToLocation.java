@@ -83,7 +83,7 @@ public class MoveBackwardToLocation extends L2GameClientPacket
 
 		if (Config.PLAYER_MOVEMENT_BLOCK_TIME > 0 && !activeChar.isGM() && activeChar.getNotMoveUntil() > System.currentTimeMillis())
 		{
-			activeChar.sendPacket(new ActionFailed());
+			activeChar.sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}
 		
@@ -107,7 +107,7 @@ public class MoveBackwardToLocation extends L2GameClientPacket
 			{
 				activeChar.setTeleMode(0);
 			}
-			activeChar.sendPacket(new ActionFailed());
+			activeChar.sendPacket(ActionFailed.STATIC_PACKET);
 			activeChar.teleToLocation(_targetX, _targetY, _targetZ, false);
 			return;
 		}
@@ -117,7 +117,7 @@ public class MoveBackwardToLocation extends L2GameClientPacket
 		// Can't move if character is confused, or trying to move a huge distance
 		if (activeChar.isOutOfControl() || (((dx * dx) + (dy * dy)) > 98010000)) // 9900*9900
 		{
-			activeChar.sendPacket(new ActionFailed());
+			activeChar.sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}
 		

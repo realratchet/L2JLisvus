@@ -66,7 +66,7 @@ public class L2WeddingManagerInstance extends L2FolkInstance
 		}
 		
 		sendHtmlMessage(player, fileName, condition);
-		player.sendPacket(new ActionFailed());
+		player.sendPacket(ActionFailed.STATIC_PACKET);
 	}
 	
 	@Override

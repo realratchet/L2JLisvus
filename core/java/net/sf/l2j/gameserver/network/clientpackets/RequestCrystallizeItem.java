@@ -77,7 +77,7 @@ public class RequestCrystallizeItem extends L2GameClientPacket
 		if (skillLevel <= 0)
 		{
 			activeChar.sendPacket(new SystemMessage(SystemMessage.CRYSTALLIZE_LEVEL_TOO_LOW));
-			activeChar.sendPacket(new ActionFailed());
+			activeChar.sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}
 		
@@ -102,7 +102,7 @@ public class RequestCrystallizeItem extends L2GameClientPacket
 		if (skillLevel <= maximumRequiredLevel)
 		{
 			activeChar.sendPacket(new SystemMessage(SystemMessage.CRYSTALLIZE_LEVEL_TOO_LOW));
-			activeChar.sendPacket(new ActionFailed());
+			activeChar.sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}
 		

@@ -85,14 +85,14 @@ public class RequestActionUse extends L2GameClientPacket
 		// Don't do anything if player is dead
 		if (activeChar.isAlikeDead())
 		{
-			activeChar.sendPacket(new ActionFailed());
+			activeChar.sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}
 
 		// don't do anything if player is out of control
 		if (activeChar.isOutOfControl())
 		{
-			activeChar.sendPacket(new ActionFailed());
+			activeChar.sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}
 
@@ -278,7 +278,7 @@ public class RequestActionUse extends L2GameClientPacket
 			{
 				if (activeChar.isAlikeDead())
 				{
-					sendPacket(new ActionFailed());
+					sendPacket(ActionFailed.STATIC_PACKET);
 					return;
 				}
 				
@@ -360,7 +360,7 @@ public class RequestActionUse extends L2GameClientPacket
 				// Player shouldn't be able to set stores if he/she is alike dead (dead or fake death)
 				if (activeChar.isAlikeDead())
 				{
-					sendPacket(new ActionFailed());
+					sendPacket(ActionFailed.STATIC_PACKET);
 					return;
 				}
 				

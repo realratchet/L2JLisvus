@@ -48,7 +48,7 @@ public class Seed implements IItemHandler
             || (target instanceof L2GrandBossInstance) || (target instanceof L2RaidBossInstance))
         {
             activeChar.sendPacket(new SystemMessage(SystemMessage.THE_TARGET_IS_UNAVAILABLE_FOR_SEEDING));
-            activeChar.sendPacket(new ActionFailed());
+            activeChar.sendPacket(ActionFailed.STATIC_PACKET);
             return;
         }
 
@@ -57,13 +57,13 @@ public class Seed implements IItemHandler
         if (mob.isDead())
         {
             activeChar.sendPacket(new SystemMessage(SystemMessage.INCORRECT_TARGET));
-            activeChar.sendPacket(new ActionFailed());
+            activeChar.sendPacket(ActionFailed.STATIC_PACKET);
             return;
         }
 
         if (mob.isSeeded())
         {
-            activeChar.sendPacket(new ActionFailed());
+            activeChar.sendPacket(ActionFailed.STATIC_PACKET);
             return;
         }
 
@@ -71,7 +71,7 @@ public class Seed implements IItemHandler
         if (L2Manor.getInstance().getCastleIdForSeed(seedId) != MapRegionTable.getInstance().getAreaCastle(activeChar))
         {
             activeChar.sendPacket(new SystemMessage(SystemMessage.THIS_SEED_MAY_NOT_BE_SOWN_HERE));
-            activeChar.sendPacket(new ActionFailed());
+            activeChar.sendPacket(ActionFailed.STATIC_PACKET);
             return;
         }
 

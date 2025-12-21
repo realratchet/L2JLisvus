@@ -208,7 +208,7 @@ public abstract class L2Summon extends L2PlayableInstance
 			{
 				if (Config.PLAYER_MOVEMENT_BLOCK_TIME > 0 && !player.isGM() && player.getNotMoveUntil() > System.currentTimeMillis())
 				{
-					player.sendPacket(new ActionFailed());
+					player.sendPacket(ActionFailed.STATIC_PACKET);
 					return;
 				}
 				
@@ -218,7 +218,7 @@ public abstract class L2Summon extends L2PlayableInstance
 				player.sendPacket(new PetStatusShow(this));
 				
 				// This Action Failed packet avoids player getting stuck when clicking three or more times
-				player.sendPacket(new ActionFailed());
+				player.sendPacket(ActionFailed.STATIC_PACKET);
 				
 				if (Config.PLAYER_MOVEMENT_BLOCK_TIME > 0 && !player.isGM())
 				{
@@ -241,7 +241,7 @@ public abstract class L2Summon extends L2PlayableInstance
 			{
 				if (Config.PLAYER_MOVEMENT_BLOCK_TIME > 0 && !player.isGM() && player.getNotMoveUntil() > System.currentTimeMillis())
 				{
-					player.sendPacket(new ActionFailed());
+					player.sendPacket(ActionFailed.STATIC_PACKET);
 					return;
 				}
 				
@@ -258,7 +258,7 @@ public abstract class L2Summon extends L2PlayableInstance
 				}
 				
 				// This Action Failed packet avoids player getting stuck when clicking three or more times
-				player.sendPacket(new ActionFailed());
+				player.sendPacket(ActionFailed.STATIC_PACKET);
 				
 				if (GeoData.getInstance().canSeeTarget(player, this))
 				{
@@ -287,7 +287,7 @@ public abstract class L2Summon extends L2PlayableInstance
 		player.sendPacket(new ValidateLocation(this));
 		
 		// This Action Failed packet avoids player getting stuck when shift-clicking
-		player.sendPacket(new ActionFailed());
+		player.sendPacket(ActionFailed.STATIC_PACKET);
 	}
 	
 	public long getExpForThisLevel()
@@ -795,7 +795,7 @@ public abstract class L2Summon extends L2PlayableInstance
 			if (!isSrcTargetSelf && _owner.isInOlympiadMode() && !_owner.isOlympiadStart())
 			{
 				// if owner is in Olympiad and the match isn't already start, send a Server->Client packet ActionFailed
-				sendPacket(new ActionFailed());
+				sendPacket(ActionFailed.STATIC_PACKET);
 				return;
 			}
 			
@@ -826,7 +826,7 @@ public abstract class L2Summon extends L2PlayableInstance
 		if ((skill.getCastRange() > 0) && !GeoData.getInstance().canSeeTarget(this, target))
 		{
 			sendPacket(new SystemMessage(SystemMessage.CANT_SEE_TARGET));
-			sendPacket(new ActionFailed());
+			sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}
 		
@@ -856,7 +856,7 @@ public abstract class L2Summon extends L2PlayableInstance
 		{
 			_owner.sendPacket(new SystemMessage(SystemMessage.TARGET_IS_INCORRECT));
 			// Send a Server->Client packet ActionFailed to the L2PcInstance
-			_owner.sendPacket(new ActionFailed());
+			_owner.sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}
 		

@@ -40,7 +40,7 @@ public class ChestKey implements IItemHandler
         if (target == null || !(target instanceof L2ChestInstance))
         {
             activeChar.sendMessage("Invalid target.");
-            activeChar.sendPacket(new ActionFailed());
+            activeChar.sendPacket(ActionFailed.STATIC_PACKET);
         }
         else
         {
@@ -48,7 +48,7 @@ public class ChestKey implements IItemHandler
             if (chest.isDead() || chest.isInteracted())
             {
                 activeChar.sendMessage("The chest is empty.");
-                activeChar.sendPacket(new ActionFailed());
+                activeChar.sendPacket(ActionFailed.STATIC_PACKET);
                 return;
             }
             

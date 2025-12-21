@@ -424,7 +424,7 @@ public class L2PetInstance extends L2Summon
 		{
 			// Do not try to pickup anything that is not an item :)
 			_logPet.warning("Trying to pickup wrong target." + object);
-			getOwner().sendPacket(new ActionFailed());
+			getOwner().sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}
 		
@@ -434,13 +434,13 @@ public class L2PetInstance extends L2Summon
 		{
 			if (!target.isVisible())
 			{
-				getOwner().sendPacket(new ActionFailed());
+				getOwner().sendPacket(ActionFailed.STATIC_PACKET);
 				return;
 			}
 			
 			if (!target.getDropProtection().tryPickUp(getOwner()))
 			{
-				getOwner().sendPacket(new ActionFailed());
+				getOwner().sendPacket(ActionFailed.STATIC_PACKET);
 				SystemMessage smsg = new SystemMessage(SystemMessage.FAILED_TO_PICKUP_S1);
 				smsg.addItemName(target.getItemId());
 				getOwner().sendPacket(smsg);
@@ -461,7 +461,7 @@ public class L2PetInstance extends L2Summon
 			
 			if ((target.getOwnerId() != 0) && (target.getOwnerId() != getOwner().getObjectId()) && !getOwner().isInLooterParty(target.getOwnerId()))
 			{
-				getOwner().sendPacket(new ActionFailed());
+				getOwner().sendPacket(ActionFailed.STATIC_PACKET);
 				
 				if (target.getItemId() == Inventory.ADENA_ID)
 				{

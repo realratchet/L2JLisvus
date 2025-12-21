@@ -112,7 +112,7 @@ public class RequestSellItem extends L2GameClientPacket
 		{
 			if (merchant.getNpcId() != (_listId - 1000000))
 			{
-				sendPacket(new ActionFailed());
+				sendPacket(ActionFailed.STATIC_PACKET);
 				return;
 			}
 		}

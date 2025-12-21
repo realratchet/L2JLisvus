@@ -32,12 +32,13 @@ import net.sf.l2j.gameserver.network.serverpackets.StaticObject;
  */
 public class L2StaticObjectInstance extends L2Object
 {
-    private static final Logger _log = Logger.getLogger(L2StaticObjectInstance.class.getName());
+    private static final Logger _log = Logger.getLogger(L2StaticObjectInstance.class.getName());
+    
     /** The interaction distance of the L2StaticObjectInstance */
     public static final int INTERACTION_DISTANCE = 150;
-
+    
     private int _staticObjectId;
-    private int _type = -1;         // 0 - map signs, 1 - throne , 2 - arena signs
+    private int _type = -1; // 0 - map signs, 1 - throne , 2 - arena signs
     private int _x;
     private int _y;
     private String _texture;
@@ -49,16 +50,17 @@ public class L2StaticObjectInstance extends L2Object
     {
         return _staticObjectId;
     }
+    
     /**
-     * @param StaticObjectId 
+     * @param StaticObjectId
      */
     public void setStaticObjectId(int StaticObjectId)
     {
         _staticObjectId = StaticObjectId;
     }
-
+    
     /**
-     * @param objectId 
+     * @param objectId
      */
     public L2StaticObjectInstance(int objectId)
     {
@@ -75,22 +77,22 @@ public class L2StaticObjectInstance extends L2Object
     {
         _type = type;
     }
-
+    
     public void setMap(String texture, int x, int y)
     {
-        _texture = "town_map."+texture;
+        _texture = "town_map." + texture;
         _x = x;
         _y = y;
     }
-
+    
     private int getMapX()
     {
-    	return _x;
+        return _x;
     }
-
+    
     private int getMapY()
     {
-    	return _y;
+        return _y;
     }
     
     /**
@@ -98,11 +100,11 @@ public class L2StaticObjectInstance extends L2Object
      * @param player
      */
     @Override
-	public void onAction(L2PcInstance player)
+    public void onAction(L2PcInstance player)
     {
-    	if (_type < 0)
-    		_log.info("L2StaticObjectInstance: StaticObject with invalid type! StaticObjectId: "+getStaticObjectId());
-
+        if (_type < 0)
+            _log.info("L2StaticObjectInstance: StaticObject with invalid type! StaticObjectId: " + getStaticObjectId());
+        
         // Check if the L2PcInstance already target the L2NpcInstance
         if (this != player.getTarget())
         {
@@ -114,15 +116,15 @@ public class L2StaticObjectInstance extends L2Object
         {
             MyTargetSelected my = new MyTargetSelected(getObjectId(), 0);
             player.sendPacket(my);
-
+            
             // Calculate the distance between the L2PcInstance and the L2NpcInstance
             if (!player.isInsideRadius(this, INTERACTION_DISTANCE, false, false))
             {
                 // Notify the L2PcInstance AI with AI_INTENTION_INTERACT
                 player.getAI().setIntention(CtrlIntention.AI_INTENTION_INTERACT, this);
-
+                
                 // Send a Server->Client packet ActionFailed (target is out of interaction range) to the L2PcInstance player
-                player.sendPacket(new ActionFailed());
+                player.sendPacket(ActionFailed.STATIC_PACKET);
             }
             else
             {
@@ -131,18 +133,20 @@ public class L2StaticObjectInstance extends L2Object
                     String filename = "data/html/signboard.htm";
                     String content = HtmCache.getInstance().getHtm(filename);
                     NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
-
+                    
                     if (content == null)
-                        html.setHtml("<html><body>Signboard is missing:<br>"+filename+"</body></html>");
+                        html.setHtml("<html><body>Signboard is missing:<br>" + filename + "</body></html>");
                     else
                         html.setHtml(content);
-                    player.sendPacket(html);
-                    player.sendPacket(new ActionFailed());
+                    player.sendPacket(html);
+                    
+                    player.sendPacket(ActionFailed.STATIC_PACKET);
                 }
                 else if (_type == 0)
-                    player.sendPacket(new ShowTownMap(_texture, getMapX(), getMapY()));
+                    player.sendPacket(new ShowTownMap(_texture, getMapX(), getMapY()));
+                
                 // Send a Server->Client ActionFailed to the L2PcInstance in order to avoid that the client wait another packet
-                player.sendPacket(new ActionFailed());
+                player.sendPacket(ActionFailed.STATIC_PACKET);
             }
         }
     }
@@ -156,6 +160,6 @@ public class L2StaticObjectInstance extends L2Object
     @Override
     public void sendInfo(L2PcInstance activeChar)
     {
-    	activeChar.sendPacket(new StaticObject(this));
+        activeChar.sendPacket(new StaticObject(this));
     }
 }

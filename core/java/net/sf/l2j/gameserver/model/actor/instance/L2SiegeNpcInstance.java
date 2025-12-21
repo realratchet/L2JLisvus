@@ -55,7 +55,7 @@ public class L2SiegeNpcInstance extends L2FolkInstance
                 player.sendPacket(html);
             }
         }
-        player.sendPacket(new ActionFailed());
+        player.sendPacket(ActionFailed.STATIC_PACKET);
     }
 
     @Override

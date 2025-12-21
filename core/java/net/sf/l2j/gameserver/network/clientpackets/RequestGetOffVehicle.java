@@ -50,7 +50,7 @@ public class RequestGetOffVehicle extends L2GameClientPacket
 		
 		if (!activeChar.isInBoat() || (activeChar.getBoat().getObjectId() != _boatId) || !activeChar.isInsideRadius(_x, _y, _z, 1000, true, false))
 		{
-			sendPacket(new ActionFailed());
+			sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}
 		
@@ -61,7 +61,7 @@ public class RequestGetOffVehicle extends L2GameClientPacket
 		
 		activeChar.setBoat(null);
 		activeChar.setInBoatPosition(null);
-		sendPacket(new ActionFailed());
+		sendPacket(ActionFailed.STATIC_PACKET);
 		activeChar.broadcastPacket(new GetOffVehicle(activeChar.getObjectId(), _boatId, _x, _y, _z));
 		activeChar.setXYZ(_x, _y, _z);
 		activeChar.revalidateZone(true);

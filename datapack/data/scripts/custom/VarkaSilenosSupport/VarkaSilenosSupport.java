@@ -131,7 +131,7 @@ public class VarkaSilenosSupport extends Quest
 				htmltext = "8381-0.htm";
 			else
 			{
-				player.sendPacket(new ActionFailed());
+				player.sendPacket(ActionFailed.STATIC_PACKET);
 				player.setActiveWarehouse(player.getWarehouse());
 				player.sendPacket(new WareHouseWithdrawalList(player, 1));
 			}

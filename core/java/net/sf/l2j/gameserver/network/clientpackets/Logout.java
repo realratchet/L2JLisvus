@@ -53,14 +53,14 @@ public class Logout extends L2GameClientPacket
 		
 		if (player.getActiveEnchantItem() != null)
 		{
-			player.sendPacket(new ActionFailed());
+			player.sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}
 		
 		if (player.isLocked())
 		{
 			_log.warning("Player " + player.getName() + " tried to logout during class change.");
-			player.sendPacket(new ActionFailed());
+			player.sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}
 		
@@ -73,7 +73,7 @@ public class Logout extends L2GameClientPacket
 			}
 			
 			player.sendPacket(new SystemMessage(SystemMessage.CANT_LOGOUT_WHILE_FIGHTING));
-			player.sendPacket(new ActionFailed());
+			player.sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}
 		
@@ -85,7 +85,7 @@ public class Logout extends L2GameClientPacket
 			if (SevenSignsFestival.getInstance().isFestivalInitialized())
 			{
 				player.sendMessage("You cannot log out while you are a participant in a festival.");
-				player.sendPacket(new ActionFailed());
+				player.sendPacket(ActionFailed.STATIC_PACKET);
 				return;
 			}
 			

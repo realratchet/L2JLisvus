@@ -125,7 +125,7 @@ public class L2FolkInstance extends L2NpcInstance
 	        player.sendPacket(asl);
         }
 
-        player.sendPacket(new ActionFailed());
+        player.sendPacket(ActionFailed.STATIC_PACKET);
     }
 
     /**
@@ -206,7 +206,7 @@ public class L2FolkInstance extends L2NpcInstance
         	player.sendPacket(new SystemMessage(SystemMessage.THERE_IS_NO_SKILL_THAT_ENABLES_ENCHANT));
         }
         
-        player.sendPacket(new ActionFailed());
+        player.sendPacket(ActionFailed.STATIC_PACKET);
     }
 
     @Override

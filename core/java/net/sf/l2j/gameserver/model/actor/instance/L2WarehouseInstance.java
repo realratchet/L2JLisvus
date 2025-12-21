@@ -59,7 +59,7 @@ public final class L2WarehouseInstance extends L2FolkInstance
 	
 	private void showRetrieveWindow(L2PcInstance player)
 	{
-		player.sendPacket(new ActionFailed());
+		player.sendPacket(ActionFailed.STATIC_PACKET);
 		player.setActiveWarehouse(player.getWarehouse());
 		
 		if (player.getActiveWarehouse().getSize() == 0)
@@ -78,7 +78,7 @@ public final class L2WarehouseInstance extends L2FolkInstance
 	
 	private void showDepositWindow(L2PcInstance player)
 	{
-		player.sendPacket(new ActionFailed());
+		player.sendPacket(ActionFailed.STATIC_PACKET);
 		player.setActiveWarehouse(player.getWarehouse());
 		player.tempInventoryDisable();
 		
@@ -92,7 +92,7 @@ public final class L2WarehouseInstance extends L2FolkInstance
 	
 	private void showDepositWindowClan(L2PcInstance player)
 	{
-		player.sendPacket(new ActionFailed());
+		player.sendPacket(ActionFailed.STATIC_PACKET);
 		
 		if (player.getClan() != null)
 		{
@@ -118,7 +118,7 @@ public final class L2WarehouseInstance extends L2FolkInstance
 	
 	private void showWithdrawWindowClan(L2PcInstance player)
 	{
-		player.sendPacket(new ActionFailed());
+		player.sendPacket(ActionFailed.STATIC_PACKET);
 		if ((player.getClanPrivileges() & L2Clan.CP_CL_VIEW_WAREHOUSE) != L2Clan.CP_CL_VIEW_WAREHOUSE)
 		{
 			player.sendPacket(new SystemMessage(SystemMessage.YOU_DO_NOT_HAVE_THE_RIGHT_TO_USE_CLAN_WAREHOUSE));
@@ -145,7 +145,7 @@ public final class L2WarehouseInstance extends L2FolkInstance
 	
 	private void showWithdrawWindowFreight(L2PcInstance player)
 	{
-		player.sendPacket(new ActionFailed());
+		player.sendPacket(ActionFailed.STATIC_PACKET);
 		if (Config.DEBUG)
 		{
 			_log.fine("Showing freightened items");
@@ -194,7 +194,7 @@ public final class L2WarehouseInstance extends L2FolkInstance
 			Map<Integer, String> chars = player.getAccountChars();
 			if (chars.size() < 1)
 			{
-				player.sendPacket(new ActionFailed());
+				player.sendPacket(ActionFailed.STATIC_PACKET);
 				return;
 			}
 			

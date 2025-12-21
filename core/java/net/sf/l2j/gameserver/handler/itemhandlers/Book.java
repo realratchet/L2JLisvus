@@ -47,6 +47,6 @@ public class Book implements IItemHandler
         }
 
         activeChar.sendPacket(html);
-        activeChar.sendPacket(new ActionFailed());
+        activeChar.sendPacket(ActionFailed.STATIC_PACKET);
     }
 }

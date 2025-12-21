@@ -91,6 +91,6 @@ public class L2TvTManagerInstance extends L2NpcInstance
             }
         }
 
-        player.sendPacket(new ActionFailed());
+        player.sendPacket(ActionFailed.STATIC_PACKET);
     }
 }

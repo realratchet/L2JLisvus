@@ -182,7 +182,7 @@ public class L2DoormenInstance extends L2FolkInstance
         html.replace("%objectId%", String.valueOf(getObjectId()));
         player.sendPacket(html);
         
-        player.sendPacket(new ActionFailed());
+        player.sendPacket(ActionFailed.STATIC_PACKET);
     }
 
     @Override

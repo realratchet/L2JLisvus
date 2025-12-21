@@ -70,7 +70,7 @@ public final class L2MercManagerInstance extends L2FolkInstance
         html.replace("%npcname%", getName());
         player.sendPacket(html);
         
-        player.sendPacket(new ActionFailed());
+        player.sendPacket(ActionFailed.STATIC_PACKET);
     }
 
     @Override

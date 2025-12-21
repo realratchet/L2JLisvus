@@ -53,7 +53,7 @@ public class RequestPartyMatchConfig extends L2GameClientPacket
 		if (!activeChar.isInPartyMatchRoom() && (activeChar.getParty() != null) && (activeChar.getParty().getPartyMembers().get(0) != activeChar))
 		{
 			activeChar.sendPacket(new SystemMessage(SystemMessage.CANT_VIEW_PARTY_ROOMS));
-			activeChar.sendPacket(new ActionFailed());
+			activeChar.sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}
 		

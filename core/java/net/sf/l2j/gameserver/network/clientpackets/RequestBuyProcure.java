@@ -89,7 +89,7 @@ public class RequestBuyProcure extends L2GameClientPacket
 
 		if (_count < 1)
 		{
-			sendPacket(new ActionFailed());
+			sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}
 

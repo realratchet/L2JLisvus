@@ -601,7 +601,7 @@ public final class L2AuctioneerInstance extends L2FolkInstance
 		html.replace("%npcname%", getName());
 		player.sendPacket(html);
 		
-		player.sendPacket(new ActionFailed());
+		player.sendPacket(ActionFailed.STATIC_PACKET);
 	}
 	
 	@Override

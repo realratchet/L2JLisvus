@@ -74,7 +74,7 @@ public class L2NpcBufferInstance extends L2FolkInstance
             html.replace("%playerName%", player.getName());
             player.sendPacket(html);
         }
-        player.sendPacket(new ActionFailed());
+        player.sendPacket(ActionFailed.STATIC_PACKET);
     }
     
     private void showSchemeMenu(L2PcInstance player)
@@ -89,7 +89,7 @@ public class L2NpcBufferInstance extends L2FolkInstance
         html.replace("%schemeCount%", "(" + schemeNames.size() + "/" + Config.SCHEMES_MAX_AMOUNT + ")");
         html.replace("%schemes%", schemeNames.isEmpty() ? "" : String.join(";", schemeNames));
         player.sendPacket(html);
-        player.sendPacket(new ActionFailed());
+        player.sendPacket(ActionFailed.STATIC_PACKET);
     }
     
     private void showSchemeWindow(L2PcInstance player, int val)
@@ -125,7 +125,7 @@ public class L2NpcBufferInstance extends L2FolkInstance
             html.replace("%schemeInfo%", player.getEditingSchemeName() + " (" + buffs.size() + "/" + Config.BUFFS_MAX_AMOUNT + ")");
             player.sendPacket(html);
         }
-        player.sendPacket(new ActionFailed());
+        player.sendPacket(ActionFailed.STATIC_PACKET);
     }
 
     @Override

@@ -78,7 +78,7 @@ public class Action extends L2GameClientPacket
 		if (activeChar.inObserverMode())
 		{
 			activeChar.sendPacket(new SystemMessage(SystemMessage.OBSERVERS_CANNOT_PARTICIPATE));
-			activeChar.sendPacket(new ActionFailed());
+			activeChar.sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}
 
@@ -96,7 +96,7 @@ public class Action extends L2GameClientPacket
 		if (obj == null)
 		{
 			// Pressing e.g. pickup many times quickly would get you here
-			sendPacket(new ActionFailed());
+			sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}
 
@@ -126,14 +126,14 @@ public class Action extends L2GameClientPacket
 				default:
 					// Invalid action detected (probably client cheating), log this
 					_log.warning("Character: " + activeChar.getName() + " requested invalid action: " + _actionId);
-					sendPacket(new ActionFailed());
+					sendPacket(ActionFailed.STATIC_PACKET);
 					break;
 			}
 		}
 		else
 		{
 			// Actions prohibited when in trade
-			activeChar.sendPacket(new ActionFailed());
+			activeChar.sendPacket(ActionFailed.STATIC_PACKET);
 		}
 	}
 

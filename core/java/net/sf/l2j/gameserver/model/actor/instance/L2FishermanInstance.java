@@ -104,6 +104,6 @@ public class L2FishermanInstance extends L2FolkInstance
 			player.sendPacket(asl);
 		}
 
-		player.sendPacket(new ActionFailed());
+		player.sendPacket(ActionFailed.STATIC_PACKET);
 	}
 }

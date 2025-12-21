@@ -58,7 +58,7 @@ public class RequestMoveToLocationInVehicle extends L2GameClientPacket
 
 		if (activeChar.isSitting() || (activeChar.isAttackingNow() && (activeChar.getActiveWeaponItem() != null) && (activeChar.getActiveWeaponItem().getItemType() == L2WeaponType.BOW)))
 		{
-			activeChar.sendPacket(new ActionFailed());
+			activeChar.sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}
 
@@ -68,7 +68,7 @@ public class RequestMoveToLocationInVehicle extends L2GameClientPacket
 			boat = activeChar.getBoat();
 			if (boat.getObjectId() != _boatId)
 			{
-				activeChar.sendPacket(new ActionFailed());
+				activeChar.sendPacket(ActionFailed.STATIC_PACKET);
 				return;
 			}
 		}
@@ -77,7 +77,7 @@ public class RequestMoveToLocationInVehicle extends L2GameClientPacket
 			boat = BoatManager.getInstance().getBoat(_boatId);
 			if (boat == null)
 			{
-				activeChar.sendPacket(new ActionFailed());
+				activeChar.sendPacket(ActionFailed.STATIC_PACKET);
 				return;
 			}
 			activeChar.setBoat(boat);

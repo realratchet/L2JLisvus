@@ -103,7 +103,7 @@ public class UseItem extends L2GameClientPacket
 		if (activeChar.isInStoreMode())
 		{
 			activeChar.sendPacket(new SystemMessage(SystemMessage.CANNOT_TRADE_DISCARD_DROP_ITEM_WHILE_IN_SHOPMODE));
-			activeChar.sendPacket(new ActionFailed());
+			activeChar.sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}
 		

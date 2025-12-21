@@ -112,7 +112,7 @@ public class L2SepulcherNpcInstance extends L2NpcInstance
     {
         if (isDead())
         {
-            player.sendPacket(new ActionFailed());
+            player.sendPacket(ActionFailed.STATIC_PACKET);
             return;
         }
 
@@ -179,7 +179,7 @@ public class L2SepulcherNpcInstance extends L2NpcInstance
                     showChatWindow(player, 0);
             }
         }
-        player.sendPacket(new ActionFailed());
+        player.sendPacket(ActionFailed.STATIC_PACKET);
     }
 
     @Override
@@ -202,7 +202,7 @@ public class L2SepulcherNpcInstance extends L2NpcInstance
         html.setFile(filename);
         html.replace("%objectId%", String.valueOf(getObjectId()));
         player.sendPacket(html);
-        player.sendPacket(new ActionFailed());
+        player.sendPacket(ActionFailed.STATIC_PACKET);
     }
 
     @Override

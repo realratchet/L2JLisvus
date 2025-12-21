@@ -62,7 +62,7 @@ public class L2ManorManagerInstance extends L2MerchantInstance
 			_log.info("buylist id:" + val);
 		}
 		
-		player.sendPacket(new ActionFailed());
+		player.sendPacket(ActionFailed.STATIC_PACKET);
 	}
 	
 	@Override
@@ -80,7 +80,7 @@ public class L2ManorManagerInstance extends L2MerchantInstance
 			if (CastleManorManager.getInstance().isUnderMaintenance())
 			{
 				player.sendPacket(new SystemMessage(SystemMessage.THE_MANOR_SYSTEM_IS_CURRENTLY_UNDER_MAINTENANCE));
-				player.sendPacket(new ActionFailed());
+				player.sendPacket(ActionFailed.STATIC_PACKET);
 				return;
 			}
 			
@@ -196,7 +196,7 @@ public class L2ManorManagerInstance extends L2MerchantInstance
 			html.replace("%objectId%", String.valueOf(getObjectId()));
 			html.replace("%npcname%", getName());
 			player.sendPacket(html);
-			player.sendPacket(new ActionFailed());
+			player.sendPacket(ActionFailed.STATIC_PACKET);
 		}
 		else if (!player.isGM() // Player is not GM
 			&& (getCastle() != null) && (getCastle().getCastleId() > 0 // Verification of castle
@@ -222,6 +222,6 @@ public class L2ManorManagerInstance extends L2MerchantInstance
 		html.replace("%npcname%", getName());
 		player.sendPacket(html);
 		
-		player.sendPacket(new ActionFailed());
+		player.sendPacket(ActionFailed.STATIC_PACKET);
 	}
 }

@@ -61,20 +61,20 @@ public class RequestPetGetItem extends L2GameClientPacket
 		int castleId = MercTicketManager.getInstance().getTicketCastleId(item.getItemId());
 		if (castleId > 0)
 		{
-			sendPacket(new ActionFailed());
+			sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}
 		
 		if (activeChar.getPet() instanceof L2SummonInstance)
 		{
-			sendPacket(new ActionFailed());
+			sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}
 		
 		L2PetInstance pet = (L2PetInstance) activeChar.getPet();
 		if (pet == null || pet.isDead() || pet.isOutOfControl())
 		{
-			sendPacket(new ActionFailed());
+			sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}
 		

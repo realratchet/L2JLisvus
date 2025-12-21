@@ -65,7 +65,7 @@ public class AdminShop implements IAdminCommandHandler
             if (Config.DEBUG)
                 _log.fine("GM: "+activeChar.getName()+"("+activeChar.getObjectId()+") opened GM Shop sell list");
 
-            activeChar.sendPacket(new ActionFailed());
+            activeChar.sendPacket(ActionFailed.STATIC_PACKET);
         }
         else if (command.equals("admin_gmshop"))
         {
@@ -103,7 +103,7 @@ public class AdminShop implements IAdminCommandHandler
         else
             _log.warning("no buylist with id:" +val);
 
-        activeChar.sendPacket(new ActionFailed());
+        activeChar.sendPacket(ActionFailed.STATIC_PACKET);
     }
     
     @Override

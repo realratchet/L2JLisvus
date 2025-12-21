@@ -40,7 +40,7 @@ public class Harvester implements IItemHandler
         if (activeChar.getTarget() == null || !(activeChar.getTarget() instanceof L2MonsterInstance))
         {
             activeChar.sendPacket(new SystemMessage(SystemMessage.TARGET_IS_INCORRECT));
-            activeChar.sendPacket(new ActionFailed());
+            activeChar.sendPacket(ActionFailed.STATIC_PACKET);
             return;
         }
 
@@ -48,7 +48,7 @@ public class Harvester implements IItemHandler
         
         if (target == null || !target.isDead())
         {
-            activeChar.sendPacket(new ActionFailed());
+            activeChar.sendPacket(ActionFailed.STATIC_PACKET);
             return;
         }
 

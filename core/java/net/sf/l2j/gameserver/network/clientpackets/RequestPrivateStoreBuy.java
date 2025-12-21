@@ -100,7 +100,7 @@ public class RequestPrivateStoreBuy extends L2GameClientPacket
 		if (player.getAccessLevel() > 0 && player.getAccessLevel() < Config.GM_TRANSACTION)
 		{
 			player.sendMessage("Transactions are disabled for your Access Level.");
-			sendPacket(new ActionFailed());
+			sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}
 
@@ -116,7 +116,7 @@ public class RequestPrivateStoreBuy extends L2GameClientPacket
 
 		if (!storeList.privateStoreBuy(player, _items))
 		{
-			sendPacket(new ActionFailed());
+			sendPacket(ActionFailed.STATIC_PACKET);
 			_log.warning("PrivateStore buy has failed due to invalid list or request. Player: " + player.getName() + ", Private store of: " + storePlayer.getName());
 			return;
 		}
