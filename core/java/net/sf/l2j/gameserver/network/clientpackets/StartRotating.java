@@ -44,7 +44,13 @@ public class StartRotating extends L2GameClientPacket
 			return;
 		}
 
-		activeChar.setIsSelfRotating(true);
+		// Player is already rotating to that direction
+		if (activeChar.getRotationSide() == _side)
+		{
+			return;
+		}
+
+		activeChar.setRotationSide(_side);
 		activeChar.broadcastPacket(new BeginRotation(activeChar.getObjectId(), _degree, _side, 0));
 	}
 	

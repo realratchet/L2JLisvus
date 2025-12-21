@@ -43,9 +43,9 @@ public class FinishRotating extends L2GameClientPacket
 			return;
 		}
 
-		if (activeChar.isSelfRotating())
+		if (activeChar.getRotationSide() != 0)
 		{
-			activeChar.setIsSelfRotating(false);
+			activeChar.setRotationSide(0);
 			activeChar.broadcastPacket(new StopRotation(activeChar.getObjectId(), _degree, 0));
 		}
 	}

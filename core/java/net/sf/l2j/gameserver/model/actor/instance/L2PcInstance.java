@@ -440,7 +440,7 @@ public final class L2PcInstance extends L2PlayableInstance
 	/** True if the L2PcInstance is sitting */
 	private boolean _waitTypeSitting;
 
-	private boolean _isSelfRotating;
+	private int _rotationSide = 0;
 	
 	/** The table containing all Quests began by the L2PcInstance */
 	private final Map<String, QuestState> _quests = new ConcurrentHashMap<>();
@@ -2695,14 +2695,14 @@ public final class L2PcInstance extends L2PlayableInstance
 		return _inventory;
 	}
 
-	public boolean isSelfRotating()
+	public int getRotationSide()
 	{
-		return _isSelfRotating;
+		return _rotationSide;
 	}
 
-	public void setIsSelfRotating(boolean val)
+	public void setRotationSide(int val)
 	{
-		_isSelfRotating = val;
+		_rotationSide = val;
 	}
 	
 	/**

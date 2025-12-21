@@ -71,9 +71,9 @@ public class ValidatePosition extends L2GameClientPacket
 		}
 
 		// This is one way to stop infinite rotation glitch when finish rotation packet gets lost or interrupted due to player spamming arrow keys
-		if (activeChar.isSelfRotating())
+		if (activeChar.getRotationSide() != 0)
 		{
-			activeChar.setIsSelfRotating(false);
+			activeChar.setRotationSide(0);
 			activeChar.broadcastPacket(new StopRotation(activeChar.getObjectId(), _heading, 0));
 		}
 		
