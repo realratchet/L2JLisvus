@@ -149,7 +149,7 @@ public class L2SiegeZone extends L2ZoneSpawn
             if (!(temp instanceof L2PcInstance) || ((L2PcInstance)temp).getClanId() == ownerId)
                 continue;
             
-            ((L2PcInstance)temp).teleToLocation(MapRegionTable.TeleportWhereType.Town); 
+            temp.teleToLocation(MapRegionTable.TeleportWhereType.Town); 
         }
     }
 

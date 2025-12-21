@@ -25,6 +25,7 @@ import java.util.logging.Logger;
 import net.sf.l2j.L2DatabaseFactory;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.network.serverpackets.ExAutoSoulShot;
+import net.sf.l2j.gameserver.network.serverpackets.ShortCutDelete;
 import net.sf.l2j.gameserver.templates.L2EtcItemType;
 
 /**
@@ -131,67 +132,30 @@ public class ShortCuts
 					_owner.sendPacket(new ExAutoSoulShot(item.getItemId(), 0));
 				}
 			}
+
+			_owner.sendPacket(new ShortCutDelete(old));
 		}
 		finally
 		{
 			_lock.unlock();
 		}
 	}
-	
-	public int deleteShortCutsByItem(L2ItemInstance item)
+
+	public void deleteShortCuts(int objectId, int type)
 	{
-		_lock.lock();
-		
-		int count = 0;
-		
-		try
+		L2ShortCut[] shortCuts = getAllShortCuts();
+		for (L2ShortCut sc : shortCuts)
 		{
-			for (L2ShortCut shortCut : getAllShortCuts())
+			if (sc == null)
 			{
-				if (shortCut == null)
-				{
-					continue;
-				}
-				
-				if (shortCut.getType() == L2ShortCut.TYPE_ITEM && shortCut.getId() == item.getObjectId())
-				{
-					L2ShortCut toRemove = _shortCuts.remove(shortCut.getSlot() + (shortCut.getPage() * 12));
-					if (toRemove != null)
-					{
-						count++;
-					}
-				}
+				continue;
 			}
 			
-			// Now, remove them all from database at once.
-			if (_owner != null)
+			if (sc.getId() == objectId && sc.getType() == type)
 			{
-				try (Connection con = L2DatabaseFactory.getInstance().getConnection();
-					PreparedStatement statement = con.prepareStatement("DELETE FROM character_shortcuts WHERE char_obj_id=? AND shortcut_id=? AND class_index=?"))
-				{
-					statement.setInt(1, _owner.getObjectId());
-					statement.setInt(2, item.getObjectId());
-					statement.setInt(3, _owner.getClassIndex());
-					statement.execute();
-				}
-				catch (Exception e)
-				{
-					_log.warning("Could not delete character shortcuts: " + e);
-				}
-				
-				if (item.getItemType() == L2EtcItemType.SHOT)
-				{
-					_owner.removeAutoSoulShot(item.getItemId());
-					_owner.sendPacket(new ExAutoSoulShot(item.getItemId(), 0));
-				}
+				deleteShortCut(sc.getSlot(), sc.getPage());
 			}
 		}
-		finally
-		{
-			_lock.unlock();
-		}
-		
-		return count;
 	}
 	
 	/**

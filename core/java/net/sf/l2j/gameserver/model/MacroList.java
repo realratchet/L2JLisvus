@@ -94,16 +94,8 @@ public class MacroList
             deleteMacroFromDb(toRemove);
 
         _macroses.remove(id);
-
-        for (L2ShortCut sc : _owner.getAllShortCuts())
-        {
-            if (sc == null)
-                continue;
-
-            if (sc.getId() == id && sc.getType() == L2ShortCut.TYPE_MACRO)
-                _owner.deleteShortCut(sc.getSlot(), sc.getPage());
-        }
-
+        _owner.deleteShortCuts(id, L2ShortCut.TYPE_MACRO);
+        
         sendUpdate();
     }
 

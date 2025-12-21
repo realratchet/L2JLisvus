@@ -1238,19 +1238,8 @@ public final class L2PcInstance extends L2PlayableInstance
 		{
 			_log.warning("Attempted to remove unknown RecipeList: " + recipeId);
 		}
-		
-		for (L2ShortCut sc : getAllShortCuts())
-		{
-			if (sc == null)
-			{
-				continue;
-			}
-			
-			if ((sc.getId() == recipeId) && (sc.getType() == L2ShortCut.TYPE_RECIPE))
-			{
-				deleteShortCut(sc.getSlot(), sc.getPage());
-			}
-		}
+
+		deleteShortCuts(recipeId, L2ShortCut.TYPE_RECIPE);
 	}
 	
 	private void insertNewRecipeData(int recipeId, boolean isDwarf)
@@ -1633,6 +1622,17 @@ public final class L2PcInstance extends L2PlayableInstance
 	public void deleteShortCut(int slot, int page)
 	{
 		_shortCuts.deleteShortCut(slot, page);
+	}
+
+	/**
+	 * Delete the L2ShortCut instances corresponding to the object ID and type from the L2PcInstance _shortCuts.<BR>
+	 * <BR>
+	 * @param objectId
+	 * @param type
+	 */
+	public void deleteShortCuts(int objectId, int type)
+	{
+		_shortCuts.deleteShortCuts(objectId, type);
 	}
 	
 	/**
@@ -2693,17 +2693,6 @@ public final class L2PcInstance extends L2PlayableInstance
 	public PcInventory getInventory()
 	{
 		return _inventory;
-	}
-	
-	/**
-	 * Delete a ShortCut of the L2PcInstance _shortCuts.<BR>
-	 * <BR>
-	 * @param item
-	 * @return
-	 */
-	public boolean removeItemShortCuts(L2ItemInstance item)
-	{
-		return _shortCuts.deleteShortCutsByItem(item) > 0;
 	}
 
 	public boolean isSelfRotating()
@@ -6925,18 +6914,10 @@ public final class L2PcInstance extends L2PlayableInstance
 				_log.warning("Error could not delete skill: " + e);
 			}
 		}
-		
-		for (L2ShortCut sc : getAllShortCuts())
+
+		if (skill != null)
 		{
-			if (sc == null)
-			{
-				continue;
-			}
-			
-			if ((skill != null) && (sc.getId() == skill.getId()) && (sc.getType() == L2ShortCut.TYPE_SKILL))
-			{
-				deleteShortCut(sc.getSlot(), sc.getPage());
-			}
+			deleteShortCuts(skill.getId(), L2ShortCut.TYPE_SKILL);
 		}
 		
 		return oldSkill;

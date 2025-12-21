@@ -21,16 +21,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 
-import net.sf.l2j.Config;
 import net.sf.l2j.L2DatabaseFactory;
 import net.sf.l2j.gameserver.model.L2ItemInstance;
 import net.sf.l2j.gameserver.model.L2Object;
+import net.sf.l2j.gameserver.model.L2ShortCut;
 import net.sf.l2j.gameserver.model.TradeList;
 import net.sf.l2j.gameserver.model.L2ItemInstance.ItemLocation;
 import net.sf.l2j.gameserver.model.TradeList.TradeItem;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.network.serverpackets.ExAutoSoulShot;
-import net.sf.l2j.gameserver.network.serverpackets.ShortCutInit;
 import net.sf.l2j.gameserver.templates.L2Armor;
 import net.sf.l2j.gameserver.templates.L2Weapon;
 
@@ -44,7 +43,7 @@ public class PcInventory extends Inventory
 	{
 		this._owner = owner;
 	}
-
+	
 	@Override
 	public L2PcInstance getOwner()
 	{
@@ -73,22 +72,21 @@ public class PcInventory extends Inventory
 	{
 		return _adena != null ? _adena.getCount() : 0;
 	}
-
+	
 	public L2ItemInstance getAncientAdenaInstance()
 	{
 		return _ancientAdena;
 	}
-
+	
 	public int getAncientAdena()
 	{
 		return (_ancientAdena != null) ? _ancientAdena.getCount() : 0;
 	}
-
+	
 	/**
 	 * Returns the list of items in inventory available for transaction.
-	 * 
-	 * @param allowAdena 
-	 * @param allowAncientAdena 
+	 * @param allowAdena
+	 * @param allowAncientAdena
 	 * @return L2ItemInstance : items in inventory
 	 */
 	public L2ItemInstance[] getUniqueItems(boolean allowAdena, boolean allowAncientAdena)
@@ -125,7 +123,6 @@ public class PcInventory extends Inventory
 	
 	/**
 	 * Returns the list of armors and weapons in inventory available for transaction.
-	 * 
 	 * @return L2ItemInstance : items in inventory
 	 */
 	public L2ItemInstance[] getUniqueArmory()
@@ -159,9 +156,8 @@ public class PcInventory extends Inventory
 	/**
 	 * Returns the list of items in inventory available for transaction.
 	 * Allows an item to appear twice if and only if there is a difference in enchantment level.
-	 * 
-	 * @param allowAdena 
-	 * @param allowAncientAdena 
+	 * @param allowAdena
+	 * @param allowAncientAdena
 	 * @return L2ItemInstance : items in inventory
 	 */
 	public L2ItemInstance[] getUniqueItemsByEnchantLevel(boolean allowAdena, boolean allowAncientAdena)
@@ -177,7 +173,7 @@ public class PcInventory extends Inventory
 			{
 				continue;
 			}
-
+			
 			boolean isDuplicate = false;
 			for (L2ItemInstance litem : list)
 			{
@@ -196,7 +192,7 @@ public class PcInventory extends Inventory
 		
 		return list.toArray(new L2ItemInstance[list.size()]);
 	}
-
+	
 	/**
 	 * Returns the list of armors and weapons in inventory available for transaction.
 	 * Allows an item to appear twice if and only if there is a difference in enchantment level.
@@ -211,7 +207,7 @@ public class PcInventory extends Inventory
 			{
 				continue;
 			}
-
+			
 			boolean isDuplicate = false;
 			for (L2ItemInstance litem : list)
 			{
@@ -233,7 +229,7 @@ public class PcInventory extends Inventory
 	
 	/**
 	 * Returns the list of all items in inventory that have a given item id.
-	 * @param itemId 
+	 * @param itemId
 	 * @return L2ItemInstance[] : matching items from inventory
 	 */
 	public L2ItemInstance[] getAllItemsByItemId(int itemId)
@@ -252,8 +248,8 @@ public class PcInventory extends Inventory
 	
 	/**
 	 * Returns the list of all items in inventory that have a given item id AND a given enchantment level.
-	 * @param itemId 
-	 * @param enchantment 
+	 * @param itemId
+	 * @param enchantment
 	 * @return L2ItemInstance[] : matching items from inventory
 	 */
 	public L2ItemInstance[] getAllItemsByItemId(int itemId, int enchantment)
@@ -277,8 +273,8 @@ public class PcInventory extends Inventory
 	
 	/**
 	 * Returns the list of items in inventory available for transaction
-	 * @param allowAdena 
-	 * @param allowEquipped 
+	 * @param allowAdena
+	 * @param allowEquipped
 	 * @return L2ItemInstance : items in inventory
 	 */
 	public L2ItemInstance[] getAvailableItems(boolean allowAdena, boolean allowEquipped)
@@ -297,7 +293,7 @@ public class PcInventory extends Inventory
 	
 	/**
 	 * Returns the list of items in inventory available for transaction adjusted by tradeList
-	 * @param tradeList 
+	 * @param tradeList
 	 * @return L2ItemInstance : items in inventory
 	 */
 	public TradeList.TradeItem[] getAvailableItems(TradeList tradeList)
@@ -340,11 +336,11 @@ public class PcInventory extends Inventory
 				{
 					item.setCount(adjItem.getCount());
 				}
-
+				
 				return;
 			}
 		}
-
+		
 		item.setCount(0);
 	}
 	
@@ -377,7 +373,7 @@ public class PcInventory extends Inventory
 			destroyItemByItemId(process, ADENA_ID, count, actor, reference);
 		}
 	}
-
+	
 	/**
 	 * Adds specified amount of ancient adena to player inventory.
 	 * @param process : String Identifier of process triggering this action
@@ -448,7 +444,6 @@ public class PcInventory extends Inventory
 	
 	/**
 	 * Adds item in inventory and checks _adena and _ancientAdena.
-	 * 
 	 * @param process : String Identifier of process triggering this action
 	 * @param itemId : int Item Identifier of the item to be added
 	 * @param count : int Quantity of items to be added
@@ -609,7 +604,7 @@ public class PcInventory extends Inventory
 		
 		return item;
 	}
-
+	
 	/**
 	 * Drop item from inventory by using its <B>objectID</B> and checks _adena and _ancientAdena
 	 * @param process : String Identifier of process triggering this action
@@ -644,18 +639,13 @@ public class PcInventory extends Inventory
 	@Override
 	protected boolean removeItem(L2ItemInstance item)
 	{
-		// Removes any reference to the item from Shortcut bar
-		boolean forceRefresh = getOwner().removeItemShortCuts(item) && Config.FORCE_INVENTORY_UPDATE;
-		// Refresh in case inventory update isn't forced.
-		if (forceRefresh)
+		// Removes any reference to the item from skill bar
+		getOwner().deleteShortCuts(item.getObjectId(), L2ShortCut.TYPE_ITEM);
+		
+		// Re-enable ss/sps automation
+		for (int shotId : getOwner().getAutoSoulShot())
 		{
-			getOwner().sendPacket(new ShortCutInit(getOwner()));
-
-			// Re-enable ss/sps automation
-			for (int shotId : getOwner().getAutoSoulShot())
-			{
-				getOwner().sendPacket(new ExAutoSoulShot(shotId, 1));
-			}
+			getOwner().sendPacket(new ExAutoSoulShot(shotId, 1));
 		}
 		
 		// Removes active Enchant Scroll
@@ -685,7 +675,7 @@ public class PcInventory extends Inventory
 		super.refreshWeight();
 		getOwner().refreshOverloaded();
 	}
-
+	
 	/**
 	 * Get back items in inventory from database
 	 */
