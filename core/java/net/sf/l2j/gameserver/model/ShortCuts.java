@@ -62,7 +62,7 @@ public class ShortCuts
 		{
 			if (_owner.getInventory().getItemByObjectId(sc.getId()) == null)
 			{
-				deleteShortCut(sc.getSlot(), sc.getPage());
+				deleteShortCut(sc.getSlot(), sc.getPage(), true);
 				sc = null;
 			}
 			
@@ -108,8 +108,9 @@ public class ShortCuts
 	/**
 	 * @param slot
 	 * @param page
+	 * @param sendPacket 
 	 */
-	public void deleteShortCut(int slot, int page)
+	public void deleteShortCut(int slot, int page, boolean sendPacket)
 	{
 		_lock.lock();
 		
@@ -133,7 +134,10 @@ public class ShortCuts
 				}
 			}
 
-			_owner.sendPacket(new ShortCutDelete(old));
+			if (sendPacket)
+			{
+				_owner.sendPacket(new ShortCutDelete(old));
+			}
 		}
 		finally
 		{
@@ -153,7 +157,7 @@ public class ShortCuts
 			
 			if (sc.getId() == objectId && sc.getType() == type)
 			{
-				deleteShortCut(sc.getSlot(), sc.getPage());
+				deleteShortCut(sc.getSlot(), sc.getPage(), true);
 			}
 		}
 	}
@@ -234,7 +238,7 @@ public class ShortCuts
 			{
 				if (_owner.getInventory().getItemByObjectId(sc.getId()) == null)
 				{
-					deleteShortCut(sc.getSlot(), sc.getPage());
+					deleteShortCut(sc.getSlot(), sc.getPage(), false);
 				}
 			}
 		}

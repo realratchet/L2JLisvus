@@ -1618,10 +1618,11 @@ public final class L2PcInstance extends L2PlayableInstance
 	 * <BR>
 	 * @param slot
 	 * @param page
+	 * @param sendPacket 
 	 */
-	public void deleteShortCut(int slot, int page)
+	public void deleteShortCut(int slot, int page, boolean sendPacket)
 	{
-		_shortCuts.deleteShortCut(slot, page);
+		_shortCuts.deleteShortCut(slot, page, sendPacket);
 	}
 
 	/**
