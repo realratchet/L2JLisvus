@@ -780,12 +780,6 @@ public final class Config
 	public static boolean ALLOW_ENTIRE_TREE;
 	public static boolean ALTERNATE_CLASS_MASTER;
 	
-	/** Auto rewarding players */
-	public static boolean ALLOW_AUTO_REWARDER;
-	public static int AUTO_REWARD_DELAY;
-	public static int AUTO_REWARD_ID;
-	public static int AUTO_REWARD_COUNT;
-	
 	/** Custom starting spawn for new characters */
 	public static boolean CUSTOM_STARTING_SPAWN;
 	public static int CUSTOM_SPAWN_X;
@@ -1962,11 +1956,6 @@ public final class Config
 			CHAMPION_REWARD_HIGHER_CHANCE = Integer.parseInt(customSettings.getProperty("ChampionRewardHigherLvlItemChance", "0"));
 			CHAMPION_REWARD_ID = Integer.parseInt(customSettings.getProperty("ChampionRewardItemID", "6393"));
 			CHAMPION_REWARD_QTY = Integer.parseInt(customSettings.getProperty("ChampionRewardItemQty", "1"));
-			
-			ALLOW_AUTO_REWARDER = Boolean.valueOf(customSettings.getProperty("AllowAutoRewarder", "False"));
-			AUTO_REWARD_DELAY = Integer.parseInt(customSettings.getProperty("AutoRewardDelay", "1200"));
-			AUTO_REWARD_ID = Integer.parseInt(customSettings.getProperty("AutoRewardID", "57"));
-			AUTO_REWARD_COUNT = Integer.parseInt(customSettings.getProperty("AutoRewardCount", "1000"));
 			
 			CUSTOM_STARTING_SPAWN = Boolean.parseBoolean(customSettings.getProperty("CustomStartingSpawn", "False"));
 			CUSTOM_SPAWN_X = Integer.parseInt(customSettings.getProperty("CustomSpawnX", ""));

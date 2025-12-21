@@ -92,7 +92,6 @@ import net.sf.l2j.gameserver.model.AutoSpawnHandler;
 import net.sf.l2j.gameserver.model.L2Manor;
 import net.sf.l2j.gameserver.model.L2Multisell;
 import net.sf.l2j.gameserver.model.L2World;
-import net.sf.l2j.gameserver.model.entity.AutoRewarder;
 import net.sf.l2j.gameserver.model.entity.Hero;
 import net.sf.l2j.gameserver.model.olympiad.Olympiad;
 import net.sf.l2j.gameserver.network.L2GameClient;
@@ -350,11 +349,6 @@ public class GameServer
 		if ((Config.OFFLINE_TRADE_ENABLE || Config.OFFLINE_CRAFT_ENABLE) && Config.RESTORE_OFFLINERS)
 		{
 			OfflineTradersTable.restoreOfflineTraders();
-		}
-
-		if (Config.ALLOW_AUTO_REWARDER)
-		{
-			AutoRewarder.load();
 		}
 
 		// Initialize Event Engine
