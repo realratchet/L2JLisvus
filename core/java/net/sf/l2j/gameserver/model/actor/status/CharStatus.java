@@ -341,11 +341,6 @@ public class CharStatus
 			
 			if (newCp >= maxCp)
 			{
-				if (getActiveChar() instanceof L2PcInstance && ((L2PcInstance) getActiveChar()).isEquippingNow())
-				{
-					return;
-				}
-				
 				// Set the RegenActive flag to false
 				_currentCp = maxCp;
 				_flagsRegenActive &= ~REGEN_FLAG_CP;
@@ -398,11 +393,6 @@ public class CharStatus
 			
 			if (newHp >= maxHp)
 			{
-				if (getActiveChar() instanceof L2PcInstance && ((L2PcInstance) getActiveChar()).isEquippingNow())
-				{
-					return;
-				}
-				
 				// Set the RegenActive flag to false
 				_currentHp = maxHp;
 				_flagsRegenActive &= ~REGEN_FLAG_HP;
@@ -473,11 +463,6 @@ public class CharStatus
 			
 			if (newMp >= maxMp)
 			{
-				if (getActiveChar() instanceof L2PcInstance && ((L2PcInstance) getActiveChar()).isEquippingNow())
-				{
-					return;
-				}
-				
 				// Set the RegenActive flag to false
 				_currentMp = maxMp;
 				_flagsRegenActive &= ~REGEN_FLAG_MP;

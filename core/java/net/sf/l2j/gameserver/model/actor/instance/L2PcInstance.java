@@ -686,8 +686,6 @@ public final class L2PcInstance extends L2PlayableInstance
 	
 	private long _notMoveUntil = 0;
 	
-	private boolean _isEquippingNow = false;
-	
 	private boolean _getGainXpSp = true;
 	private boolean _isPendingSitting = false;
 	private boolean _isAIOBuffer = false;
@@ -2148,16 +2146,11 @@ public final class L2PcInstance extends L2PlayableInstance
 			}
 			sendPacket(sm);
 			
-			_isEquippingNow = true;
 			items = getInventory().unEquipItemInSlotAndRecord(item.getEquipSlot());
-			_isEquippingNow = false;
 		}
 		else
 		{
-			_isEquippingNow = true;
 			items = getInventory().equipItemAndRecord(item);
-			_isEquippingNow = false;
-			
 			if (item.isEquipped())
 			{
 				if (item.getEnchantLevel() > 0)
@@ -6019,15 +6012,10 @@ public final class L2PcInstance extends L2PlayableInstance
 	 */
 	public void updateAndBroadcastStatus(int broadcastType)
 	{
-		if (_isEquippingNow)
-		{
-			return;
-		}
-		
 		refreshOverloaded();
 		refreshExpertisePenalty();
+
 		// Send a Server->Client packet UserInfo to this L2PcInstance and CharInfo to all L2PcInstance in its _KnownPlayers (broadcast)
-		
 		if (broadcastType == 1)
 		{
 			sendPacket(new UserInfo(this));
@@ -11932,16 +11920,6 @@ public final class L2PcInstance extends L2PlayableInstance
 	public void updateNotMoveUntil()
 	{
 		_notMoveUntil = System.currentTimeMillis() + Config.PLAYER_MOVEMENT_BLOCK_TIME;
-	}
-	
-	public final boolean isEquippingNow()
-	{
-		return _isEquippingNow;
-	}
-	
-	public final void setIsEquippingNow(boolean val)
-	{
-		_isEquippingNow = val;
 	}
 	
 	public boolean getGainXpSp()
