@@ -27,24 +27,22 @@ import java.util.logging.Logger;
 import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.idfactory.IdFactory;
 import net.sf.l2j.gameserver.model.actor.instance.L2BoatInstance;
+import net.sf.l2j.gameserver.model.actor.vehicle.L2BoatTrajet;
+import net.sf.l2j.gameserver.model.actor.vehicle.L2VehiclePathPoint;
 import net.sf.l2j.gameserver.templates.L2CharTemplate;
 import net.sf.l2j.gameserver.templates.StatsSet;
 
 public class BoatManager
 {
     private final static Logger _log = Logger.getLogger(BoatManager.class.getName());
-
-    // =========================================================
-    // Data Field
+    
     private final Map<Integer, L2BoatInstance> _boats = new HashMap<>();
-
+    
     public static final BoatManager getInstance()
     {
         return SingletonHolder._instance;
     }
-
-    // =========================================================
-    // Constructor
+    
     private BoatManager()
     {
         if (Config.ALLOW_BOAT)
@@ -53,76 +51,151 @@ public class BoatManager
             load();
         }
     }
-
-    // =========================================================
-    // Method - Private
+    
     private final void load()
     {
+        Map<Integer, L2VehiclePathPoint[]> boatRoutes = loadBoatRoutes();
+
         File boatData = new File(Config.DATAPACK_ROOT, "data/boat.csv");
         try (FileReader fr = new FileReader(boatData);
             BufferedReader br = new BufferedReader(fr);
             LineNumberReader lnr = new LineNumberReader(br))
         {
             String line = null;
-            while ((line = lnr.readLine()) != null) 
+            while ((line = lnr.readLine()) != null)
             {
-                if (line.trim().length() == 0 || line.startsWith("#")) 
+                if (line.trim().length() == 0 || line.startsWith("#"))
+                {
                     continue;
+                }
+                
+                StringTokenizer st = new StringTokenizer(line, ";");
+                
+                L2BoatInstance boat = createBoat(st);
+                L2BoatTrajet[] trajets = new L2BoatTrajet[2];
 
-                L2BoatInstance boat = parseLine(line);
+                for (int i = 0; i < trajets.length; i++)
+                {
+                    int idWaypoint = Integer.parseInt(st.nextToken());
+                    int idWTicket = Integer.parseInt(st.nextToken());
+                    int ntx = Integer.parseInt(st.nextToken());
+                    int nty = Integer.parseInt(st.nextToken());
+                    int ntz = Integer.parseInt(st.nextToken());
+                    String npc = st.nextToken();
+                    String mess10 = st.nextToken();
+                    String mess5 = st.nextToken();
+                    String mess1 = st.nextToken();
+                    String mess0 = st.nextToken();
+                    String messb = st.nextToken();
+                    L2VehiclePathPoint[] path = boatRoutes.get(idWaypoint);
+
+                    if (path == null)
+                    {
+                        _log.warning(getClass().getSimpleName() + ": No path found for boat '" + boat.getName() + "' and route " + idWaypoint + "!");
+                    }
+
+                    trajets[i] = new L2BoatTrajet(idWaypoint, idWTicket, ntx, nty, ntz, npc, mess10, mess5, mess1, mess0, messb, path);
+                }
+
+                boat.setTrajets(trajets);
                 boat.beginCycle();
-
+                
                 _boats.put(boat.getObjectId(), boat);
-
+                
                 if (Config.DEBUG)
                     _log.info("Boat ID : " + boat.getObjectId());
-            }				
-        } 
-        catch (FileNotFoundException e) 
+            }
+        }
+        catch (FileNotFoundException e)
         {
-            _log.warning("boat.csv is missing in data folder");
-        } 
-        catch (Exception e) 
+            _log.warning(getClass().getSimpleName() + ": boat.csv is missing in data folder!");
+        }
+        catch (Exception e)
         {
-            _log.warning("error while creating boat table " + e);
+            _log.warning(getClass().getSimpleName() + ": Error while creating boat table " + e);
             e.printStackTrace();
         }
     }
+    
+    private final Map<Integer, L2VehiclePathPoint[]> loadBoatRoutes()
+    {
+        Map<Integer, L2VehiclePathPoint[]> routes = new HashMap<>();
 
+        File boatData = new File(Config.DATAPACK_ROOT, "data/boatpath.csv");
+        try (FileReader fr = new FileReader(boatData);
+            BufferedReader br = new BufferedReader(fr);
+            LineNumberReader lnr = new LineNumberReader(br))
+        {
+            String line = null;
+            while ((line = lnr.readLine()) != null)
+            {
+                if (line.trim().length() == 0 || line.startsWith("#"))
+                    continue;
+                
+                StringTokenizer st = new StringTokenizer(line, ";");
+                int routeId = Integer.parseInt(st.nextToken());
+                int max = Integer.parseInt(st.nextToken());
+                L2VehiclePathPoint[] path = new L2VehiclePathPoint[max];
+                
+                for (int i = 0; i < max; i++)
+                {
+                    int speed1 = Integer.parseInt(st.nextToken());
+                    int speed2 = Integer.parseInt(st.nextToken());
+                    int x = Integer.parseInt(st.nextToken());
+                    int y = Integer.parseInt(st.nextToken());
+                    int z = Integer.parseInt(st.nextToken());
+                    
+                    path[i] = new L2VehiclePathPoint(speed1, speed2, x, y, z);
+                }
+                
+                routes.put(routeId, path);
+            }
+        }
+        catch (FileNotFoundException e)
+        {
+            _log.warning(getClass().getSimpleName() + ": boatpath.csv is missing in data folder!");
+        }
+        catch (Exception e)
+        {
+            _log.warning(getClass().getSimpleName() + ": Error while reading boat route data " + e);
+        }
+
+        return routes;
+    }
+    
     /**
-     * @param line
+     * @param st
      * @return
      */
-    private L2BoatInstance parseLine(String line)
+    private L2BoatInstance createBoat(StringTokenizer st)
     {
         L2BoatInstance boat;
-        StringTokenizer st = new StringTokenizer(line, ";");
-
+        
         String name = st.nextToken();
         int id = Integer.parseInt(st.nextToken());
         int xspawn = Integer.parseInt(st.nextToken());
         int yspawn = Integer.parseInt(st.nextToken());
         int zspawn = Integer.parseInt(st.nextToken());
-        int heading = Integer.parseInt(st.nextToken());	
-
-        StatsSet npcDat = new StatsSet(); 
+        int heading = Integer.parseInt(st.nextToken());
+        
+        StatsSet npcDat = new StatsSet();
         npcDat.set("npcId", id);
         npcDat.set("level", 0);
         npcDat.set("jClass", "boat");
-
+        
         npcDat.set("baseSTR", 0);
         npcDat.set("baseCON", 0);
         npcDat.set("baseDEX", 0);
         npcDat.set("baseINT", 0);
         npcDat.set("baseWIT", 0);
         npcDat.set("baseMEN", 0);
-
+        
         npcDat.set("baseShldDef", 0);
         npcDat.set("baseShldRate", 0);
         npcDat.set("baseAccCombat", 38);
-        npcDat.set("baseEvasRate",  38);
-        npcDat.set("baseCritRate",  38);
-
+        npcDat.set("baseEvasRate", 38);
+        npcDat.set("baseCritRate", 38);
+        
         npcDat.set("collisionRadius", 0);
         npcDat.set("collisionHeight", 0);
         npcDat.set("sex", "male");
@@ -147,54 +220,28 @@ public class BoatManager
         npcDat.set("baseHpReg", 3.e-3f);
         npcDat.set("baseMpReg", 3.e-3f);
         npcDat.set("basePDef", 100);
-        npcDat.set("baseMDef", 100);		
-        L2CharTemplate template = new L2CharTemplate(npcDat);		
+        npcDat.set("baseMDef", 100);
+        
+        L2CharTemplate template = new L2CharTemplate(npcDat);
         boat = new L2BoatInstance(IdFactory.getInstance().getNextId(), template);
         boat.setName(name);
         boat.setHeading(heading);
-        boat.setXYZ(xspawn,yspawn,zspawn);
-
-        int IdWaypoint1 = Integer.parseInt(st.nextToken());
-        int IdWTicket1 = Integer.parseInt(st.nextToken());
-        int ntx1 = Integer.parseInt(st.nextToken());
-        int nty1 = Integer.parseInt(st.nextToken());
-        int ntz1 = Integer.parseInt(st.nextToken());		
-        String npc1 = st.nextToken();
-        String mess10_1 = st.nextToken();
-        String mess5_1 = st.nextToken();
-        String mess1_1 = st.nextToken();
-        String mess0_1 = st.nextToken();
-        String messb_1 = st.nextToken();						                   
-        boat.SetTrajet1(IdWaypoint1,IdWTicket1,ntx1,nty1,ntz1,npc1,mess10_1,mess5_1,mess1_1,mess0_1,messb_1);
-        IdWaypoint1 = Integer.parseInt(st.nextToken());
-        IdWTicket1 = Integer.parseInt(st.nextToken());
-        ntx1 = Integer.parseInt(st.nextToken());
-        nty1 = Integer.parseInt(st.nextToken());
-        ntz1 = Integer.parseInt(st.nextToken());		
-        npc1 = st.nextToken();
-        mess10_1 = st.nextToken();
-        mess5_1 = st.nextToken();
-        mess1_1 = st.nextToken();
-        mess0_1 = st.nextToken();
-        messb_1 = st.nextToken();
-        boat.SetTrajet2(IdWaypoint1,IdWTicket1,ntx1,nty1,ntz1,npc1,mess10_1,mess5_1,mess1_1,mess0_1,messb_1);
+        boat.setXYZ(xspawn, yspawn, zspawn);
+        
         return boat;
     }
-
-    // =========================================================
-    // Property - Public
-
+    
     /**
      * @param boatId
      * @return
      */
     public L2BoatInstance getBoat(int boatId)
-    {			
+    {
         return _boats.get(boatId);
     }
     
     private static class SingletonHolder
-	{
-		protected static final BoatManager _instance = new BoatManager();
-	}
+    {
+        protected static final BoatManager _instance = new BoatManager();
+    }
 }
