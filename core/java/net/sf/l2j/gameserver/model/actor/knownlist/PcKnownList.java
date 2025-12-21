@@ -119,7 +119,7 @@ public class PcKnownList extends PlayableKnownList
 		getActiveChar().sendPacket(new DeleteObject(object));
 		if (Config.DEBUG_KNOWNLIST && (object instanceof L2NpcInstance))
 		{
-			getActiveChar().sendMessage("Removed NPC: " + ((L2NpcInstance) object).getName());
+			getActiveChar().sendMessage("Removed NPC: " + object.getName());
 		}
 		return true;
 	}

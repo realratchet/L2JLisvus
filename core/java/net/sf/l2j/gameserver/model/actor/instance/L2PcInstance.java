@@ -8814,49 +8814,14 @@ public final class L2PcInstance extends L2PlayableInstance
 	{
 		sendPacket(SystemMessage.sendString(message));
 	}
-	
-	public void enterObserverMode(int x, int y, int z)
+
+	private void beforeObserverModeEnter(boolean storeCoords)
 	{
-		abortAttack();
-		abortCast();
-		
 		if (getPet() != null)
 		{
 			getPet().unSummon(this);
 		}
-		
-		if (getParty() != null)
-		{
-			getParty().removePartyMember(this, true);
-		}
-		
-		_obsX = getX();
-		_obsY = getY();
-		_obsZ = getZ();
-		
-		setTarget(null);
-		stopMove(null);
-		disableAllActions();
-		
-		setIsInvul(true);
-		getAppearance().setInvisible();
-		sendPacket(new ObservationMode(x, y, z));
-		getKnownList().removeAllKnownObjects();
-		setXYZ(x, y, z);
-		
-		_observerMode = true;
-		broadcastPacket(new CharInfo(this));
-	}
-	
-	public void enterOlympiadObserverMode(int x, int y, int z, int id, boolean storeCoords)
-	{
-		_olympiadGameId = id;
-		
-		if (getPet() != null)
-		{
-			getPet().unSummon(this);
-		}
-		
+
 		if (!_cubics.isEmpty())
 		{
 			for (L2CubicInstance cubic : _cubics)
@@ -8871,27 +8836,41 @@ public final class L2PcInstance extends L2PlayableInstance
 		{
 			getParty().removePartyMember(this, true);
 		}
-		
+
 		if (isSitting())
 		{
 			standUp();
 		}
-		
+
 		if (storeCoords)
 		{
 			_obsX = getX();
 			_obsY = getY();
 			_obsZ = getZ();
 		}
-		
+
 		setTarget(null);
-		
 		setIsInvul(true);
-		
 		getAppearance().setInvisible();
-		
+	}
+	
+	public void enterObserverMode(int x, int y, int z)
+	{
+		beforeObserverModeEnter(true);
+		disableAllActions();
+
 		teleToLocation(x, y, z, false);
+		sendPacket(new ObservationMode(x, y, z));
+		_observerMode = true;
+	}
+	
+	public void enterOlympiadObserverMode(int x, int y, int z, int id, boolean storeCoords)
+	{
+		_olympiadGameId = id;
 		
+		beforeObserverModeEnter(storeCoords);
+
+		teleToLocation(x, y, z, false);
 		sendPacket(new ExOlympiadMode(3));
 		_observerMode = true;
 		
@@ -8902,8 +8881,9 @@ public final class L2PcInstance extends L2PlayableInstance
 	public void leaveObserverMode()
 	{
 		setTarget(null);
-		getKnownList().removeAllKnownObjects();
-		setXYZ(_obsX, _obsY, _obsZ);
+		sendPacket(new ObservationReturn(this));
+		teleToLocation(_obsX, _obsY, _obsZ, false);
+
 		enableAllActions();
 		getAppearance().setVisible();
 		
@@ -8917,7 +8897,7 @@ public final class L2PcInstance extends L2PlayableInstance
 		setFalling();
 		
 		_observerMode = false;
-		sendPacket(new ObservationReturn(this));
+
 		broadcastPacket(new CharInfo(this));
 	}
 	

@@ -24,23 +24,23 @@ public class ObservationReturn extends L2GameServerPacket
 {
 	// ddSS
 	private static final String _S__E0_OBSERVRETURN = "[S] E0 ObservationReturn";
-	private final L2PcInstance _char;
+	private final L2PcInstance _cha;
 	
 	/**
 	 * @param observer
 	 */
 	public ObservationReturn(L2PcInstance observer)
 	{
-		_char = observer;
+		_cha = observer;
 	}
 	
 	@Override
 	protected final void writeImpl()
 	{
 		writeC(0xe0);
-		writeD(_char.getObsX());
-		writeD(_char.getObsY());
-		writeD(_char.getObsZ());
+		writeD(_cha.getObsX());
+		writeD(_cha.getObsY());
+		writeD(_cha.getObsZ());
 	}
 	
 	/*

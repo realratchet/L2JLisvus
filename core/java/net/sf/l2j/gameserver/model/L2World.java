@@ -327,7 +327,6 @@ public final class L2World
 	public void addVisibleObject(L2Object object, L2WorldRegion newRegion)
 	{
 		// If selected L2Object is a L2PcIntance, add it in L2ObjectHashSet(L2PcInstance) _allPlayers of L2World
-		// XXX TODO: this code should be obsoleted by protection in putObject func...
 		if (object instanceof L2PcInstance)
 		{
 			L2PcInstance player = (L2PcInstance) object;
@@ -435,14 +434,6 @@ public final class L2World
 					if (obj.getKnownList() != null)
 					{
 						obj.getKnownList().removeKnownObject(object);
-					}
-
-					// Remove surrounding L2WorldRegion L2Characters from the L2ObjectHashSet(L2Object) _KnownObjects of object
-					// If surrounding L2WorldRegion L2Characters is a L2PcInstance, remove it from the L2ObjectHashSet(L2PcInstance) _knownPlayer of object
-					// TODO: Delete this line if all the stuff is done by the next line object.removeAllKnownObjects()
-					if (object.getKnownList() != null)
-					{
-						object.getKnownList().removeKnownObject(obj);
 					}
 				}
 			}
