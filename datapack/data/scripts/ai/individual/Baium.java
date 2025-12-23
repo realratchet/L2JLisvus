@@ -17,6 +17,8 @@ package ai.individual;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.ThreadPoolManager;
@@ -35,7 +37,6 @@ import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PlayableInstance;
 import net.sf.l2j.gameserver.model.quest.Quest;
 import net.sf.l2j.gameserver.model.quest.QuestState;
-import net.sf.l2j.gameserver.model.quest.QuestTimer;
 import net.sf.l2j.gameserver.model.zone.type.L2BossZone;
 import net.sf.l2j.gameserver.network.serverpackets.Earthquake;
 import net.sf.l2j.gameserver.network.serverpackets.MoveToPawn;
@@ -106,7 +107,7 @@ public class Baium extends Quest
 	};
 
 	private long _lastAttackVsBaiumTime = 0;
-	private final List<L2Attackable> _angels = new ArrayList<>(5);
+	private final Set<L2Attackable> _angels = ConcurrentHashMap.newKeySet();
 	private L2BossZone _zone;
 	
 	public static void main(String[] args)
@@ -201,7 +202,10 @@ public class Baium extends Quest
 		}
 		else if (event.equalsIgnoreCase("clean_player"))
 		{
-			_target = getRandomTarget(npc);
+			if (npc != null && !npc.isDead())
+			{
+				_target = getRandomTarget(npc);
+			}
 		}
 		else if (event.equalsIgnoreCase("wakeup_action") && (npc != null))
 		{
@@ -292,6 +296,7 @@ public class Baium extends Quest
 							minion.deleteMe();
 						}
 					}
+					_angels.clear();
 
 					addSpawn(STONE_BAIUM, 116040, 17442, 10132, 41740, false, 0); // spawn stone-baium
 					GrandBossManager.getInstance().setBossStatus(LIVE_BAIUM, ASLEEP); // mark that Baium is not awake any more
@@ -464,6 +469,9 @@ public class Baium extends Quest
 		info.set("respawn_time", (System.currentTimeMillis()) + respawnTime);
 		GrandBossManager.getInstance().setStatsSet(LIVE_BAIUM, info);
 
+		cancelQuestTimer("skill_range", npc, null);
+		cancelQuestTimer("clean_player", npc, null);
+
 		for (L2NpcInstance minion : _angels)
 		{
 			if (minion != null)
@@ -472,11 +480,7 @@ public class Baium extends Quest
 				minion.deleteMe();
 			}
 		}
-
-		if (getQuestTimer("skill_range", npc, null) != null)
-		{
-			getQuestTimer("skill_range", npc, null).destroy();
-		}
+		_angels.clear();
 		
 		return super.onKill(npc, killer, isPet);
 	}
@@ -525,11 +529,8 @@ public class Baium extends Quest
 		}
 
 		Object[] characters = result.toArray();
-		QuestTimer timer = getQuestTimer("clean_player", npc, null);
-		if (timer != null)
-		{
-			timer.destroy();
-		}
+
+		cancelQuestTimer("clean_player", npc, null);
 		startQuestTimer("clean_player", 20000, npc, null);
 		L2Character target = (L2Character) characters[Rnd.get(characters.length)];
 		return target;
@@ -537,7 +538,7 @@ public class Baium extends Quest
 
 	public synchronized void callSkillAI(L2NpcInstance npc)
 	{
-		if (npc.isInvul() || npc.isCastingNow())
+		if (npc.isDead() || npc.isInvul() || npc.isCastingNow())
 		{
 			return;
 		}
