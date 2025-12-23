@@ -64,14 +64,15 @@ public class QuestTimer
         }
         
         _isActive = true;
-        
+
+        // Prepare auto end task
         if (_isRepeating)
         {
-            _scheduler = ThreadPoolManager.getInstance().scheduleGeneralAtFixedRate(new QuestTimerTask(this), _time, _time); // Prepare auto end task
+            _scheduler = ThreadPoolManager.getInstance().scheduleGeneralAtFixedRate(new QuestTimerTask(this), _time, _time);
         }
         else
         {
-            _scheduler = ThreadPoolManager.getInstance().scheduleGeneral(new QuestTimerTask(this), _time); // Prepare auto end task
+            _scheduler = ThreadPoolManager.getInstance().scheduleGeneral(new QuestTimerTask(this), _time);
         }
     }
     
@@ -89,9 +90,17 @@ public class QuestTimer
     public void destroy()
     {
         stop();
-        _quest.removeQuestTimer(this);
-        
-        _quest = null;
+
+        if (_quest != null)
+        {
+            _quest.removeQuestTimer(this);
+            _quest = null;
+        }
+        else
+        {
+            _log.warning("Quest timer '" + _name + "' has already been destroyed!");
+        }
+
         _player = null;
         _npc = null;
     }
