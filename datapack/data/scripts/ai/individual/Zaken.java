@@ -16,7 +16,6 @@ package ai.individual;
 
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.logging.Logger;
 
 import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.GameTimeController;
@@ -49,8 +48,6 @@ import net.sf.l2j.util.Rnd;
  */
 public class Zaken extends Quest
 {
-	private static final Logger _log = Logger.getLogger(Zaken.class.getName());
-	
 	private static final int ZAKEN = 12374;
 	private static final int DOLL_BLADER_B = 12376;
 	private static final int VALE_MASTER_B = 12377;
@@ -170,12 +167,6 @@ public class Zaken extends Quest
 	
 	public void spawnBoss(L2GrandBossInstance npc)
 	{
-		if (npc == null)
-		{
-			_log.warning("Zaken AI failed to load, missing Zaken in grandboss_data.sql");
-			return;
-		}
-		
 		GrandBossManager.getInstance().addBoss(npc);
 		npc.broadcastPacket(new PlaySound(1, "BS01_A", 1, npc.getObjectId(), npc.getX(), npc.getY(), npc.getZ()));
 		
@@ -187,13 +178,7 @@ public class Zaken extends Quest
 		_zakenLocation.setXYZ(npc.getX(), npc.getY(), npc.getZ());
 		_victims.clear();
 		
-		if (_zone == null)
-		{
-			_log.warning("Zaken AI failed to load, missing zone for Zaken");
-			return;
-		}
-		
-		if (_zone.isInsideZone(npc))
+		if (_zone != null && _zone.isInsideZone(npc))
 		{
 			_minionStatus = 1;
 			startQuestTimer("1003", 1700, null, null, true);
@@ -756,7 +741,7 @@ public class Zaken extends Quest
 		int npcId = npc.getNpcId();
 		if (npcId == ZAKEN)
 		{
-			if (_zone.isInsideZone(npc))
+			if (_zone != null && _zone.isInsideZone(npc))
 			{
 				L2Character target = isPet ? player.getPet() : player;
 				((L2Attackable) npc).addDamageHate(target, 1, 200);
