@@ -103,6 +103,10 @@ public class NpcInfo extends L2GameServerPacket
 		{
 			_title = cha.getTemplate().title;
 		}
+		else
+		{
+			_title = cha.getTitle();
+		}
 
 		if (Config.SHOW_NPC_LVL && (cha instanceof L2MonsterInstance))
 		{
@@ -170,6 +174,12 @@ public class NpcInfo extends L2GameServerPacket
 		_val = val;
 		collisionHeight = _cha.getTemplate().collisionHeight;
 		collisionRadius = _cha.getTemplate().collisionRadius;
+
+		if (cha.getTemplate().serverSideName)
+		{
+			_name = cha.getTemplate().name;
+		}
+		
 		_title = owner.isOnline() ? owner.getName() : "";
 		_playableFlag = 1;
 		_pvpFlag = owner.getPvpFlag();

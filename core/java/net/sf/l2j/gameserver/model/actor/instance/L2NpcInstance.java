@@ -266,9 +266,8 @@ public class L2NpcInstance extends L2Character
 		_currentCollisionHeight = getTemplate().collisionHeight;
 		_currentCollisionRadius = getTemplate().collisionRadius;
 		
-		// Set the name and title of the NPC
+		// Set the name of the NPC
 		setName(template.name);
-		setTitle(template.title);
 		
 		if (((template.ss > 0) || (template.bss > 0)) && (template.ssRate > 0))
 		{
