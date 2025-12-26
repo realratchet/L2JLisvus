@@ -334,7 +334,7 @@ public class Disablers implements ISkillHandler
 				case AGGREMOVE:
 				{
 					// these skills needs to be rechecked
-					if (target instanceof L2MonsterInstance)
+					if (target instanceof L2MonsterInstance && !target.isRaid())
 					{
 						if (Formulas.getInstance().calcSkillSuccess(activeChar, target, skill, ss, sps, bss))
 						{
