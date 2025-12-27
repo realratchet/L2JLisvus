@@ -53,7 +53,7 @@ import net.sf.l2j.util.Rnd;
 /**
  * @author sandman
  */
-public class FourSepulchersManager extends GrandBossManager
+public class FourSepulchersManager
 {
 	private static final Logger _log = Logger.getLogger(FourSepulchersManager.class.getName());
 	

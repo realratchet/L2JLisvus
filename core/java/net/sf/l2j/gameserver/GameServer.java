@@ -248,6 +248,7 @@ public class GameServer
 		RaidBossSpawnManager.getInstance();
 		DayNightSpawnManager.getInstance().notifyChangeMode();
 		DimensionalRiftManager.getInstance();
+		DoorTable.getInstance();
 		FourSepulchersManager.getInstance().init();
 		
 		// Start game time controller task
@@ -286,7 +287,6 @@ public class GameServer
 			ItemsAutoDestroy.getInstance();
 		}
 
-		DoorTable.getInstance();
 		CastleManager.getInstance().loadDoorUpgrades();
 
 		StaticObjects.getInstance();
