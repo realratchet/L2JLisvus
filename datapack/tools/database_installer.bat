@@ -84,7 +84,7 @@ cls
 set config_version=1
 if NOT %upgrade_mode% == 2 (
 set fresh_setup=1
-set mysqlBinPath=%ProgramFiles%\MySQL\MySQL Server 5.7\bin
+set mysqlBinPath=%ProgramFiles%\MySQL\MySQL Server 8.4\bin
 set lsuser=root
 set lspass=
 set lsdb=l2jdb
