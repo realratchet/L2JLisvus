@@ -827,7 +827,7 @@ public class L2NpcInstance extends L2Character
 			}
 			else
 			{
-				StringUtil.append(sb, "Respawn Time: " + (getSpawn() != null ? (getSpawn().getRespawnDelay() / 1000) + "  Seconds<br>" : "?  Seconds<br>"));
+				StringUtil.append(sb, "Respawn Time: " + (getSpawn() != null ? getSpawn().getRespawnDelay() + "  Seconds<br>" : "?  Seconds<br>"));
 			}
 			
 			StringUtil.append(sb, "<table border=\"0\" width=\"100%\">");

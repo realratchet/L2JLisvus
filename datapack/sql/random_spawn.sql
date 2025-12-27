@@ -6,16 +6,16 @@ CREATE TABLE random_spawn (
   groupId INT NOT NULL default 0,
   npcId INT NOT NULL default 0,
   count INT NOT NULL default 0,
-  initialDelay BIGINT NOT NULL default -1,
-  respawnDelay BIGINT NOT NULL default -1,
-  despawnDelay BIGINT NOT NULL default -1,
+  initialDelay INT(11) NOT NULL default -1,
+  respawnDelay INT(11) NOT NULL default -1,
+  despawnDelay INT(11) NOT NULL default -1,
   broadcastSpawn VARCHAR(5) NOT NULL default 'false',
   randomSpawn VARCHAR(5) NOT NULL default 'true',
   PRIMARY KEY  (groupId)
 );
 
 INSERT INTO `random_spawn` VALUES 
-(1,7556,1,-1,1800000,1800000,'false','true'),
+(1,7556,1,-1,1800,1800,'false','true'),
 (9,8111,1,-1,60,0,'false','false'),
 (10,8112,1,-1,60,0,'false','false'),
 (11,8113,1,-1,-1,-1,'true','true'),
@@ -116,7 +116,7 @@ INSERT INTO `random_spawn` VALUES
 (107,8171,1,-1,60,0,'false','false'),
 (108,8170,1,-1,60,0,'false','false'),
 (109,8171,1,-1,60,0,'false','false'),
-(110,5316,1,1800000,14400000,1800000,'false','false'),
+(110,5316,1,1800,14400,1800,'false','false'),
 (111,8094,1,-1,60,0,'false','false'),
 (112,8093,1,-1,60,0,'false','false'),
 (113,8094,1,-1,60,0,'false','false'),

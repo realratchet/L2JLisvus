@@ -409,7 +409,7 @@ public class L2Spawn
 			_scheduledCount++;
 
 			// Create a new SpawnTask to launch after the respawn Delay
-			ThreadPoolManager.getInstance().scheduleGeneral(new SpawnTask(oldNpc), _respawnDelay);
+			ThreadPoolManager.getInstance().scheduleGeneral(new SpawnTask(oldNpc), _respawnDelay * 1000L);
 		}
 	}
 
@@ -650,21 +650,21 @@ public class L2Spawn
 	}
 	
 	/**
-	 * @param i delay in seconds
+	 * @param delay delay in seconds
 	 */
-	public void setRespawnDelay(int i)
+	public void setRespawnDelay(int delay)
 	{
-		if (i < 0)
+		if (delay < 0)
 		{
-			_log.warning("respawn delay is negative for spawnId:" + _id);
+			_log.warning("L2Spawn: Respawn delay is negative for spawnId:" + _id);
 		}
 		
-		if (i < 60)
+		if (delay < 60)
 		{
-			i = 60;
+			delay = 60;
 		}
 		
-		_respawnDelay = i * 1000;
+		_respawnDelay = delay;
 	}
 	
 	public L2NpcInstance getLastSpawn()
