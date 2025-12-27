@@ -310,7 +310,7 @@ public class FourSepulchersManager
 				SpawnTable.getInstance().addNewSpawn(spawnDat, false);
 				spawnDat.doSpawn();
 				spawnDat.startRespawn();
-				_log.info("FourSepulchersManager: spawned " + spawnDat.getTemplate().name);
+				_log.info("FourSepulchersManager: Spawned " + spawnDat.getTemplate().name);
 			}
 			catch (SecurityException e)
 			{

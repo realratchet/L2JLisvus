@@ -300,21 +300,21 @@ public class L2Spawn
 	/**
 	 * Set Minimum Respawn Delay.<BR>
 	 * <BR>
-	 * @param date 
+	 * @param delay 
 	 */
-	public void setRespawnMinDelay(int date)
+	public void setRespawnMinDelay(int delay)
 	{
-		_respawnMinDelay = date;
+		_respawnMinDelay = delay;
 	}
 	
 	/**
 	 * Set Maximum Respawn Delay.<BR>
 	 * <BR>
-	 * @param date 
+	 * @param delay 
 	 */
-	public void setRespawnMaxDelay(int date)
+	public void setRespawnMaxDelay(int delay)
 	{
-		_respawnMaxDelay = date;
+		_respawnMaxDelay = delay;
 	}
 	
 	/**

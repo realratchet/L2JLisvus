@@ -33,6 +33,8 @@ import net.sf.l2j.gameserver.model.L2Object;
 import net.sf.l2j.gameserver.model.L2Spawn;
 import net.sf.l2j.gameserver.model.L2World;
 import net.sf.l2j.gameserver.model.Location;
+import net.sf.l2j.gameserver.model.actor.instance.L2GrandBossInstance;
+import net.sf.l2j.gameserver.model.actor.instance.L2MinionInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2NpcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.zone.type.L2TownZone;
@@ -591,46 +593,63 @@ public class AdminTeleport implements IAdminCommandHandler
     private void recallNPC(L2PcInstance activeChar)
     {
         L2Object obj = activeChar.getTarget();
-        if (obj != null && obj instanceof L2NpcInstance)
+        if (obj != null && obj instanceof L2NpcInstance && !(obj instanceof L2MinionInstance) && !(obj instanceof L2GrandBossInstance))
         {
             L2NpcInstance target = (L2NpcInstance) obj;
             L2NpcTemplate template = target.getTemplate();
+            L2Spawn oldSpawn = target.getSpawn();
             
-            L2Spawn spawn = target.getSpawn();
-            if (spawn == null)
+            if (oldSpawn == null)
             {
                 activeChar.sendMessage("Incorrect monster spawn.");
                 _log.warning("ERROR: NPC " + target.getObjectId() + " has a 'null' spawn.");
                 return;
             }
             
-            L2Spawn oldSpawn = spawn;
-            
             target.deleteMe();
-            spawn.stopRespawn();
-            SpawnTable.getInstance().deleteSpawn(spawn, true);
+            oldSpawn.stopRespawn();
+            
+            L2Spawn spawn;
             
             try
             {
-                spawn = new L2Spawn(template);
-                spawn.setLocX(activeChar.getX());
-                spawn.setLocY(activeChar.getY());
-                spawn.setLocZ(activeChar.getZ());
-                spawn.setAmount(oldSpawn.getAmount());
-                spawn.setHeading(activeChar.getHeading());
-                
-                if (RaidBossSpawnManager.getInstance().getValidTemplate(spawn.getNpcId()) != null)
+                if (RaidBossSpawnManager.getInstance().getBosses().containsKey(oldSpawn.getNpcId()))
                 {
+                    double curHP = target.getCurrentHp();
+                    double curMP = target.getCurrentMp();
+                    
+                    RaidBossSpawnManager.getInstance().deleteSpawn(oldSpawn, true);
+                    
+                    spawn = new L2Spawn(template);
+                    spawn.setCustom(oldSpawn.isCustom());
+                    spawn.setLocX(activeChar.getX());
+                    spawn.setLocY(activeChar.getY());
+                    spawn.setLocZ(activeChar.getZ());
+                    spawn.setAmount(oldSpawn.getAmount());
+                    spawn.setHeading(activeChar.getHeading());
+                    spawn.setLocation(spawn.getLocation());
                     spawn.setRespawnMinDelay(oldSpawn.getRespawnMinDelay());
                     spawn.setRespawnMaxDelay(oldSpawn.getRespawnMaxDelay());
+                    
+                    RaidBossSpawnManager.getInstance().addNewSpawn(spawn, 0, curHP, curMP, true);
                 }
                 else
                 {
+                    SpawnTable.getInstance().deleteSpawn(oldSpawn, true);
+                    
+                    spawn = new L2Spawn(template);
+                    spawn.setCustom(oldSpawn.isCustom());
+                    spawn.setLocX(activeChar.getX());
+                    spawn.setLocY(activeChar.getY());
+                    spawn.setLocZ(activeChar.getZ());
+                    spawn.setAmount(oldSpawn.getAmount());
+                    spawn.setHeading(activeChar.getHeading());
+                    spawn.setLocation(spawn.getLocation());
                     spawn.setRespawnDelay(oldSpawn.getRespawnDelay());
+                    
+                    SpawnTable.getInstance().addNewSpawn(spawn, true);
+                    spawn.init();
                 }
-                
-                SpawnTable.getInstance().addNewSpawn(spawn, true);
-                spawn.init();
                 
                 activeChar.sendMessage("Created " + template.name + " on " + target.getObjectId() + ".");
                 
