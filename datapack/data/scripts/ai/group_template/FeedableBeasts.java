@@ -156,7 +156,7 @@ public class FeedableBeasts extends Quest
     
 	public FeedableBeasts()
 	{
-		super(-1, "feedable_beasts", "ai");
+		super(-1, "feedable_beasts", "ai/group_template");
 		// Register NPCs
 		for (int id : FEEDABLE_BEASTS)
 		{

@@ -96,7 +96,6 @@ public class L2SkillSummonPet extends L2Skill
 			return;
 		}
 		
-		pet.setTitle(player.getName());
 		item.setEnchantLevel(pet.getLevel());
 		
 		if (!pet.isRespawned())

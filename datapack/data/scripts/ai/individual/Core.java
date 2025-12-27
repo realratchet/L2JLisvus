@@ -56,7 +56,7 @@ public class Core extends Quest
 	
 	public Core()
 	{
-		super(-1, "core", "ai");
+		super(-1, "core", "ai/individual");
 		registerNPC(CORE);
 		registerNPC(DEATH_KNIGHT);
 		registerNPC(DEATH_WRAITH);

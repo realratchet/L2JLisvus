@@ -23,7 +23,7 @@ import net.sf.l2j.gameserver.model.L2Party;
 import net.sf.l2j.gameserver.model.L2World;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.entity.Siege;
-import net.sf.l2j.gameserver.model.eventgame.L2Event;
+import net.sf.l2j.gameserver.model.quest.L2EventScript;
 import net.sf.l2j.gameserver.network.serverpackets.ConfirmDlg;
 import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
 
@@ -199,7 +199,7 @@ public class Wedding implements IVoicedCommandHandler
 			return null;
 		}
 		
-		L2Event event = partner.getEvent();
+		L2EventScript event = partner.getEvent();
 		if (event != null && event.isStarted())
 		{
 			activeChar.sendMessage("Your partner is in an event.");

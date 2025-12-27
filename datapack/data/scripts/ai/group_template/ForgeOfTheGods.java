@@ -72,6 +72,7 @@ public class ForgeOfTheGods extends Quest
 	public ForgeOfTheGods()
 	{
 		super(-1, "forgeofthegods", "ai/group_template");
+		
 		// Register NPCs
 		for (int id : FOG_SUICIDE_AND_SPAWN.keySet())
 		{

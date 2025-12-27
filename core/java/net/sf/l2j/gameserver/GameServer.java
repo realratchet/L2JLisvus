@@ -350,9 +350,6 @@ public class GameServer
 		{
 			OfflineTradersTable.restoreOfflineTraders();
 		}
-
-		// Initialize Event Engine
-		EventEngine.getInstance();
 		
 		KnownListUpdateTaskManager.getInstance();
 		if (Config.DEADLOCK_DETECTOR)

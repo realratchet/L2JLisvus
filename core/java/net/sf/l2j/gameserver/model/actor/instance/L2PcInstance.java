@@ -119,7 +119,6 @@ import net.sf.l2j.gameserver.model.base.SubClass;
 import net.sf.l2j.gameserver.model.entity.Castle;
 import net.sf.l2j.gameserver.model.entity.Hero;
 import net.sf.l2j.gameserver.model.entity.Siege;
-import net.sf.l2j.gameserver.model.eventgame.L2Event;
 import net.sf.l2j.gameserver.model.holder.BuffSkillHolder;
 import net.sf.l2j.gameserver.model.holder.SkillUseHolder;
 import net.sf.l2j.gameserver.model.itemcontainer.Inventory;
@@ -129,6 +128,7 @@ import net.sf.l2j.gameserver.model.itemcontainer.PcInventory;
 import net.sf.l2j.gameserver.model.itemcontainer.PcWarehouse;
 import net.sf.l2j.gameserver.model.itemcontainer.PetInventory;
 import net.sf.l2j.gameserver.model.olympiad.Olympiad;
+import net.sf.l2j.gameserver.model.quest.L2EventScript;
 import net.sf.l2j.gameserver.model.quest.Quest;
 import net.sf.l2j.gameserver.model.quest.QuestState;
 import net.sf.l2j.gameserver.model.quest.State;
@@ -579,7 +579,7 @@ public final class L2PcInstance extends L2PlayableInstance
 	private boolean _inOfflineMode = false;
 	private long _offlineShopStart = 0;
 	
-	private L2Event _event;
+	private L2EventScript _event;
 	private int _team = 0;
 	
 	private boolean _hero;
@@ -4637,7 +4637,7 @@ public final class L2PcInstance extends L2PlayableInstance
 			if (pk != null)
 			{
 				// Player is in event and killed
-				L2Event event = pk.getEvent();
+				L2EventScript event = pk.getEvent();
 				if (event != null && event.isStarted())
 				{
 					event.onKill(pk, this);
@@ -4645,7 +4645,7 @@ public final class L2PcInstance extends L2PlayableInstance
 			}
 			
 			// Player is in event and died
-			L2Event event = getEvent();
+			L2EventScript event = getEvent();
 			if (event != null && event.isStarted())
 			{
 				event.onDie(this);
@@ -9083,12 +9083,12 @@ public final class L2PcInstance extends L2PlayableInstance
 	}
 	
 	@Override
-	public L2Event getEvent()
+	public L2EventScript getEvent()
 	{
 		return _event;
 	}
 	
-	public void setEvent(L2Event event)
+	public void setEvent(L2EventScript event)
 	{
 		_event = event;
 	}
@@ -9624,19 +9624,22 @@ public final class L2PcInstance extends L2PlayableInstance
 		// Punishment task (chat ban, jail, etc)
 		updatePunishmentState();
 		
-		if (isInvul())
+		if (isGM())
 		{
-			sendMessage("Entering world in Invulnerable mode.");
-		}
+			if (isInvul() && !isTeleporting())
+			{
+				sendMessage("Entering world in invulnerable mode.");
+			}
 
-		if (getAppearance().getInvisible())
-		{
-			sendMessage("Entering world in Invisible mode.");
-		}
-		
-		if (getMessageRefusal())
-		{
-			sendMessage("Entering world in Message Refusal mode.");
+			if (getAppearance().getInvisible())
+			{
+				sendMessage("Entering world in invisible mode.");
+			}
+			
+			if (getMessageRefusal())
+			{
+				sendMessage("Entering world in message refusal mode.");
+			}
 		}
 		
 		revalidateZone(true);
@@ -10319,7 +10322,7 @@ public final class L2PcInstance extends L2PlayableInstance
 		try
 		{
 			// Player is in event
-			L2Event event = getEvent();
+			L2EventScript event = getEvent();
 			if (event != null)
 			{
 				event.removePlayer(this);
@@ -11096,7 +11099,7 @@ public final class L2PcInstance extends L2PlayableInstance
 				}
 				
 				// Player is in event
-				L2Event event = getEvent();
+				L2EventScript event = getEvent();
 				if (event != null)
 				{
 					event.removePlayer(this);

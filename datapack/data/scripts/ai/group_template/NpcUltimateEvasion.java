@@ -26,11 +26,22 @@ import net.sf.l2j.util.Rnd;
 
 /**
  * NpcUltimateEvasion behavior on low health.
- * 
  * @author Karakan
  */
 public class NpcUltimateEvasion extends Quest
 {
+	private static final int[] MOBS =
+	{
+		808, // Nos Lad
+		936, // Tanor Silenos
+		1524, // Blade of Splendor
+		1525, // Blade of Splendor
+		1531, // Punishment of Splendor
+		1539, // Wailing of Splendor
+		1540, // Wailing of Splendor
+		1658 // Punishment of Splendor
+	};
+	
 	public static void main(String[] args)
 	{
 		// Quest class
@@ -40,19 +51,8 @@ public class NpcUltimateEvasion extends Quest
 	public NpcUltimateEvasion()
 	{
 		super(-1, "npcultimateevasion", "ai/group_template");
-		int[] mobs =
-		{
-			808, // Nos Lad
-			936, // Tanor Silenos
-			1524, // Blade of Splendor
-			1525, // Blade of Splendor
-			1531, // Punishment of Splendor
-			1539, // Wailing of Splendor
-			1540, // Wailing of Splendor
-			1658 // Punishment of Splendor
-		};
 		
-		for (int id : mobs)
+		for (int id : MOBS)
 		{
 			registerNPC(id);
 		}

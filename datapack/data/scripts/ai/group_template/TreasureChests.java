@@ -62,7 +62,8 @@ public class TreasureChests extends Quest
 	
 	public TreasureChests()
 	{
-		super(-1, "treasurechests", "ai");
+		super(-1, "treasurechests", "ai/group_template");
+
 		for (int id : NPC_IDS)
 		{
 			registerNPC(id);

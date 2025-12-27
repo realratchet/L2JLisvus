@@ -55,7 +55,7 @@ public class Antharas extends Quest
 	// Boss: Antharas
 	public Antharas()
 	{
-		super(-1, "antharas", "ai");
+		super(-1, "antharas", "ai/individual");
 		registerNPC(ANTHARAS);
 		
 		_zone = GrandBossManager.getInstance().getZone(179700, 113800, -7709);

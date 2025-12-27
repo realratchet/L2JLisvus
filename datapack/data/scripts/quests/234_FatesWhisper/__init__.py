@@ -81,24 +81,26 @@ class Quest (JQuest) :
                             return
 			bGradeId = event.replace("selectBGrade_", "")
 			st.set("weaponId", bGradeId)
-                        htmltext = st.showHtmlFile("8002-13.htm").replace("%weaponname%",Weapons[int(bGradeId)])
+                        htmltext = st.loadHtmlFile("8002-13.htm").replace("%weaponname%",Weapons[int(bGradeId)])
                 elif event.startswith("confirmWeapon"):
                         st.set("bypass","1")
-                        htmltext = st.showHtmlFile("8002-14.htm").replace("%weaponname%",Weapons[st.getInt("weaponId")])
+                        htmltext = st.loadHtmlFile("8002-14.htm").replace("%weaponname%",Weapons[st.getInt("weaponId")])
 		elif event.startswith("selectAGrade_"):
 			if st.getInt("bypass"):
 				if st.getQuestItemsCount(st.getInt("weaponId")) > 0 :
-                                        aGradeItemId = int(event.replace("selectAGrade_", ""))
+                                        aGradeItemId = int(event.replace("selectAGrade_", ""))
+
                                         htmltext = "8002-12.htm"
                                         st.takeItems(st.getInt("weaponId"),1)
                                         st.giveItems(aGradeItemId,1)
                                         st.giveItems(STAR_OF_DESTINY,1)
-                                        st.setState(State.COMPLETED)
+                                        st.setState(State.COMPLETED)
+
                                         st.unset("cond")
                                         st.unset("bypass")
                                         st.unset("weaponId")
                                 else:
-                                        htmltext = st.showHtmlFile("8002-15.htm").replace("%weaponname%",Weapons[st.getInt("weaponId")])
+                                        htmltext = st.loadHtmlFile("8002-15.htm").replace("%weaponname%",Weapons[st.getInt("weaponId")])
 			else:
 				htmltext="<html><body>Maestro Reorin:<br>Are you trying to cheat me?! What happenned to the weapon you were about to give me for the neutralization of Infernum's evil aura?</body></html>"
 				#st.exitQuest(1)
@@ -169,9 +171,9 @@ class Quest (JQuest) :
 				elif cond == 10:
 					if st.getInt("bypass") :
                                                 if st.getQuestItemsCount(st.getInt("weaponId")) > 0 :
-                                                        htmltext = st.showHtmlFile("8002-AGradeList.htm").replace("%weaponname%",Weapons[st.getInt("weaponId")])
+                                                        htmltext = st.loadHtmlFile("8002-AGradeList.htm").replace("%weaponname%",Weapons[st.getInt("weaponId")])
 						else :
-                                                        htmltext = st.showHtmlFile("8002-15.htm").replace("%weaponname%",Weapons[st.getInt("weaponId")])
+                                                        htmltext = st.loadHtmlFile("8002-15.htm").replace("%weaponname%",Weapons[st.getInt("weaponId")])
 					else :
 						htmltext = "8002-BGradeList.htm"
 			## CLIFF.

@@ -28,72 +28,72 @@ import net.sf.l2j.util.Rnd;
 
 /**
  * @author Karakan
- * 
- * Elpies and Four Sepulcher victims AI.<br>
- * For L2JLisvus.
+ *         Elpies and Four Sepulcher victims AI.<br>
+ *         For L2JLisvus.
  */
 public class FleeingNpc extends Quest
 {
+	private static final int[] MOBS =
+	{
+		432, // Elpy
+		12985, // Victim
+		12986, // Victim 2
+		12987, // Victim 3
+		12988, // Victim 4
+		12989, // Victim 5
+		12990, // Victim 6
+		12991, // Victim 7
+		12992 // Victim 8
+	};
+	
 	public static void main(String[] args)
-    {
-        // Quest class
-        new FleeingNpc();
-    }
+	{
+		// Quest class
+		new FleeingNpc();
+	}
 	
 	public FleeingNpc()
 	{
 		super(-1, "fleeingnpc", "ai/group_template");
-		int[] mobs = 
-		{
-			432, 	// Elpy
-			12985, 	// Victim
-			12986, 	// Victim 2
-			12987, 	// Victim 3
-			12988, 	// Victim 4
-			12989, 	// Victim 5
-			12990, 	// Victim 6
-			12991, 	// Victim 7
-			12992  	// Victim 8
-		};
-		
-		for (int id : mobs)
+
+		for (int id : MOBS)
 		{
 			registerNPC(id);
 		}
 	}
-
+	
 	@Override
 	public String onAttack(L2NpcInstance npc, L2PcInstance attacker, int damage, boolean isPet)
 	{
-		final int rndX = npc.getX() + Rnd.get(-Config.MAX_DRIFT_RANGE, Config.MAX_DRIFT_RANGE); // Could be increased (+-500 for Dungeons,  +-1000 for Hunting Grounds)
-		final int rndY = npc.getY() + Rnd.get(-Config.MAX_DRIFT_RANGE, Config.MAX_DRIFT_RANGE); 
-
+		final int rndX = npc.getX() + Rnd.get(-Config.MAX_DRIFT_RANGE, Config.MAX_DRIFT_RANGE); // Could be increased (+-500 for Dungeons, +-1000 for Hunting Grounds)
+		final int rndY = npc.getY() + Rnd.get(-Config.MAX_DRIFT_RANGE, Config.MAX_DRIFT_RANGE);
+		
 		npc.disableCoreAI(true);
 		if (!npc.isMoving() && GeoData.getInstance().canMove(npc.getX(), npc.getY(), npc.getZ(), rndX, rndY, npc.getZ()))
 		{
 			npc.setRunning();
 			npc.getAI().setIntention(CtrlIntention.AI_INTENTION_MOVE_TO, new Location(rndX, rndY, npc.getZ()));
 		}
-
+		
 		return super.onAttack(npc, attacker, damage, isPet);
 	}
-
+	
 	@Override
 	public String onSkillSee(L2NpcInstance npc, L2PcInstance caster, L2Skill skill, L2Object[] targets, boolean isPet)
 	{
-		final int rndX = npc.getX() + Rnd.get(-Config.MAX_DRIFT_RANGE, Config.MAX_DRIFT_RANGE); // Could be increased (+-500 for Dungeons,  +-1000 for Hunting Grounds)
-		final int rndY = npc.getY() + Rnd.get(-Config.MAX_DRIFT_RANGE, Config.MAX_DRIFT_RANGE); 
-
+		final int rndX = npc.getX() + Rnd.get(-Config.MAX_DRIFT_RANGE, Config.MAX_DRIFT_RANGE); // Could be increased (+-500 for Dungeons, +-1000 for Hunting Grounds)
+		final int rndY = npc.getY() + Rnd.get(-Config.MAX_DRIFT_RANGE, Config.MAX_DRIFT_RANGE);
+		
 		npc.disableCoreAI(true);
 		if (skill.isOffensive() && Util.contains(targets, npc))
 		{
-			if (!npc.isMoving() && GeoData.getInstance().canMove(npc.getX(), npc.getY(), npc.getZ(), rndX, rndY, npc.getZ()))   
+			if (!npc.isMoving() && GeoData.getInstance().canMove(npc.getX(), npc.getY(), npc.getZ(), rndX, rndY, npc.getZ()))
 			{
 				npc.setRunning();
 				npc.getAI().setIntention(CtrlIntention.AI_INTENTION_MOVE_TO, new Location(rndX, rndY, npc.getZ()));
 			}
 		}
-
+		
 		return super.onSkillSee(npc, caster, skill, targets, isPet);
 	}
 }

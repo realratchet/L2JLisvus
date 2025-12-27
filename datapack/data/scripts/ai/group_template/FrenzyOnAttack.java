@@ -27,8 +27,7 @@ import net.sf.l2j.util.Rnd;
 
 /**
  * @author Karakan
- * 
- * Frenzy (Ultimate Buff) behavior on low health.
+ *         Frenzy (Ultimate Buff) behavior on low health.
  */
 public class FrenzyOnAttack extends Quest
 {
@@ -40,37 +39,38 @@ public class FrenzyOnAttack extends Quest
 		"You won't take me down easily."
 	};
 	
+	private static final int[] MOBS =
+	{
+		270, // Breka Orc Overlord
+		495, // Turek Orc Overlord
+		588, // Timak Orc Overlord
+		778, // Ragna Orc Overlord
+		1116, // Hames Orc Overlord
+		12955, // Halisha's Officer
+		12958, // Halisha's Officer 2
+		12961, // Halisha's Officer 3
+		12964, // Halisha's Officer 4
+		12993, // Executioner of Halisha
+		12994, // Executioner of Halisha 2
+		12995, // Executioner of Halisha 3
+		12996, // Executioner of Halisha 4
+		12997, // Executioner of Halisha 5
+		12998, // Executioner of Halisha 6
+		12999, // Executioner of Halisha 7
+		13000 // Executioner of Halisha 8
+	};
+	
 	public static void main(String[] args)
-    {
-        // Quest class
-        new FrenzyOnAttack();
-    }
+	{
+		// Quest class
+		new FrenzyOnAttack();
+	}
 	
 	public FrenzyOnAttack()
 	{
 		super(-1, "frenzyonattack", "ai/group_template");
-		int[] mobs = 
-		{
-			270,		// Breka Orc Overlord
-			495,		// Turek Orc Overlord
-			588,		// Timak Orc Overlord
-			778,		// Ragna Orc Overlord
-			1116,		// Hames Orc Overlord
-			12955,		// Halisha's Officer
-			12958,		// Halisha's Officer 2
-			12961,		// Halisha's Officer 3
-			12964,		// Halisha's Officer 4
-			12993,		// Executioner of Halisha
-			12994,		// Executioner of Halisha 2
-			12995,		// Executioner of Halisha 3
-			12996,		// Executioner of Halisha 4
-			12997,		// Executioner of Halisha 5
-			12998,		// Executioner of Halisha 6
-			12999,		// Executioner of Halisha 7
-			13000		// Executioner of Halisha 8
-		};
 		
-		for (int id : mobs)
+		for (int id : MOBS)
 		{
 			registerNPC(id);
 		}
@@ -85,7 +85,7 @@ public class FrenzyOnAttack extends Quest
 			npc.setScriptValue(0);
 		}
 		return super.onSpawn(npc);
-	}   
+	}
 	
 	@Override
 	public String onAttack(L2NpcInstance npc, L2PcInstance attacker, int damage, boolean isPet)
@@ -94,11 +94,11 @@ public class FrenzyOnAttack extends Quest
 		{
 			if (npc.getCurrentHp() / npc.getMaxHp() < 0.25 && Rnd.get(100) < 10)
 			{
-				if (npc.getNpcId() == 270 ||  npc.getNpcId() == 495 || npc.getNpcId() == 588 || npc.getNpcId() == 778 || npc.getNpcId() == 1116)
+				if (npc.getNpcId() == 270 || npc.getNpcId() == 495 || npc.getNpcId() == 588 || npc.getNpcId() == 778 || npc.getNpcId() == 1116)
 				{
 					npc.broadcastPacket(new NpcSay(npc.getObjectId(), 0, npc.getNpcId(), (ORC_WORDS[Rnd.get(ORC_WORDS.length)])));
 				}
-
+				
 				npc.getAI().setIntention(CtrlIntention.AI_INTENTION_IDLE);
 				npc.setTarget(npc);
 				npc.doCast(SkillTable.getInstance().getInfo(4318, 1));
@@ -117,11 +117,11 @@ public class FrenzyOnAttack extends Quest
 			{
 				if (npc.getCurrentHp() / npc.getMaxHp() < 0.25 && Rnd.get(100) < 10)
 				{
-					if (npc.getNpcId() == 270 ||  npc.getNpcId() == 495 || npc.getNpcId() == 588 || npc.getNpcId() == 778 || npc.getNpcId() == 1116)
+					if (npc.getNpcId() == 270 || npc.getNpcId() == 495 || npc.getNpcId() == 588 || npc.getNpcId() == 778 || npc.getNpcId() == 1116)
 					{
 						npc.broadcastPacket(new NpcSay(npc.getObjectId(), 0, npc.getNpcId(), (ORC_WORDS[Rnd.get(ORC_WORDS.length)])));
 					}
-
+					
 					npc.getAI().setIntention(CtrlIntention.AI_INTENTION_IDLE);
 					npc.setTarget(npc);
 					npc.doCast(SkillTable.getInstance().getInfo(4318, 1));

@@ -18,7 +18,7 @@ import net.sf.l2j.gameserver.instancemanager.PartyMatchRoomManager;
 import net.sf.l2j.gameserver.model.L2Party;
 import net.sf.l2j.gameserver.model.PartyMatchRoom;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.model.eventgame.L2Event;
+import net.sf.l2j.gameserver.model.quest.L2EventScript;
 import net.sf.l2j.gameserver.network.serverpackets.ExClosePartyRoom;
 import net.sf.l2j.gameserver.network.serverpackets.ExManagePartyRoomMember;
 import net.sf.l2j.gameserver.network.serverpackets.ExPartyRoomMember;
@@ -60,8 +60,8 @@ public class RequestAnswerJoinParty extends L2GameClientPacket
 		
 		if (_response == 1)
 		{
-			L2Event playerEvent = player.getEvent();
-			L2Event requestorEvent = requestor.getEvent();
+			L2EventScript playerEvent = player.getEvent();
+			L2EventScript requestorEvent = requestor.getEvent();
 
 			// Summary of people already in party and people that get invitation
 			if (requestor.isInParty() && !requestor.getParty().isLeader(requestor))

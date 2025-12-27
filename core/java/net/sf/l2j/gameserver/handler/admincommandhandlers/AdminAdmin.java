@@ -17,7 +17,6 @@ package net.sf.l2j.gameserver.handler.admincommandhandlers;
 import java.util.StringTokenizer;
 
 import net.sf.l2j.Config;
-import net.sf.l2j.gameserver.EventEngine;
 import net.sf.l2j.gameserver.TradeController;
 import net.sf.l2j.gameserver.cache.HtmCache;
 import net.sf.l2j.gameserver.datatables.AdminCommandRightsData;
@@ -406,11 +405,6 @@ public class AdminAdmin implements IAdminCommandHandler
                         activeChar.sendMessage("Quests are being reloaded...");
                         QuestManager.getInstance().reloadAllQuests();
                         activeChar.sendMessage("All Quests have been reloaded.");
-                    }
-                    else if (type.startsWith("event"))
-                    {
-                        EventEngine.getInstance().load();
-                        activeChar.sendMessage("All Events have been reloaded.");
                     }
                     else if (type.startsWith("aionpcbuff"))
                     {

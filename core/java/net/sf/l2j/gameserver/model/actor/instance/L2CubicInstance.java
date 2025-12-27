@@ -31,7 +31,7 @@ import net.sf.l2j.gameserver.model.L2Object;
 import net.sf.l2j.gameserver.model.L2Party;
 import net.sf.l2j.gameserver.model.L2Skill;
 import net.sf.l2j.gameserver.model.L2Skill.SkillType;
-import net.sf.l2j.gameserver.model.eventgame.L2Event;
+import net.sf.l2j.gameserver.model.quest.L2EventScript;
 import net.sf.l2j.gameserver.model.L2Summon;
 import net.sf.l2j.gameserver.network.serverpackets.MagicSkillUse;
 import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
@@ -222,7 +222,7 @@ public class L2CubicInstance
 			}
 			
 			// Events
-			L2Event event = _owner.getEvent();
+			L2EventScript event = _owner.getEvent();
 			if (event != null && event.isStarted())
 			{
 				L2PcInstance target = ownerTarget.getActingPlayer();

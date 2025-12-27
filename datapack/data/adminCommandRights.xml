@@ -121,7 +121,6 @@
 	<command name="admin_setun" val="100"/>
 	<command name="admin_setba" val="100"/>
 	<command name="admin_enchant" val="100"/>
-	<command name="admin_tvt_abort" val="75"/>
 	<command name="admin_server_shutdown" val="100"/>
 	<command name="admin_server_restart" val="75"/>
 	<command name="admin_server_abort" val="75"/>

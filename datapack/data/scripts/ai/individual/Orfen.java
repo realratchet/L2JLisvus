@@ -93,7 +93,7 @@ public class Orfen extends Quest
 	
 	public Orfen()
 	{
-		super(-1, "orfen", "ai");
+		super(-1, "orfen", "ai/individual");
 		registerNPC(ORFEN);
 		registerNPC(RAIKEL_LEOS);
 		registerNPC(RIBA_IREN);

@@ -20,7 +20,6 @@ import java.util.logging.Logger;
 
 import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.handler.voicedcommandhandlers.ChangePassword;
-import net.sf.l2j.gameserver.handler.voicedcommandhandlers.TvTCommand;
 import net.sf.l2j.gameserver.handler.voicedcommandhandlers.VoiceExperience;
 import net.sf.l2j.gameserver.handler.voicedcommandhandlers.Wedding;
 
@@ -43,7 +42,6 @@ public class VoicedCommandHandler
 	public void load()
 	{
 		registerVoicedCommandHandler(new ChangePassword());
-		registerVoicedCommandHandler(new TvTCommand());
 		registerVoicedCommandHandler(new VoiceExperience());
 		registerVoicedCommandHandler(new Wedding());
 
@@ -57,6 +55,16 @@ public class VoicedCommandHandler
 		{
 			if (Config.DEBUG) _log.fine("Adding handler for command " + id);
 			_dataTable.put(id, handler);
+		}
+	}
+
+	public void removeVoicedCommandHandler(IVoicedCommandHandler handler)
+	{
+		String[] ids = handler.getVoicedCommandList();
+		for (String id : ids)
+		{
+			if (Config.DEBUG) _log.fine("Removing handler for command " + id);
+			_dataTable.remove(id);
 		}
 	}
 	

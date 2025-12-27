@@ -63,7 +63,7 @@ public class QueenAnt extends Quest
 	
 	public QueenAnt()
 	{
-		super(-1, "queen_ant", "ai");
+		super(-1, "queen_ant", "ai/individual");
 		registerNPC(QUEEN);
 		registerNPC(LARVA);
 		registerNPC(NURSE);

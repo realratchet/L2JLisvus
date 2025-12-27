@@ -20,7 +20,7 @@ import net.sf.l2j.gameserver.instancemanager.DimensionalRiftManager;
 import net.sf.l2j.gameserver.instancemanager.GrandBossManager;
 import net.sf.l2j.gameserver.model.L2Skill;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.model.eventgame.L2Event;
+import net.sf.l2j.gameserver.model.quest.L2EventScript;
 import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
 
 public class Escape implements IUserCommandHandler
@@ -61,7 +61,7 @@ public class Escape implements IUserCommandHandler
             return false;
         }
         
-        L2Event event = activeChar.getEvent();
+        L2EventScript event = activeChar.getEvent();
         if (event != null && event.isStarted())
         {
             activeChar.sendPacket(new SystemMessage(SystemMessage.NO_UNSTUCK_PLEASE_SEND_PETITION));

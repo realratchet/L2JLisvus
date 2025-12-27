@@ -112,7 +112,7 @@ public class Zaken extends Quest
 	
 	public Zaken()
 	{
-		super(-1, "zaken", "ai");
+		super(-1, "zaken", "ai/individual");
 		registerNPC(ZAKEN);
 		registerNPC(DOLL_BLADER_B);
 		registerNPC(VALE_MASTER_B);

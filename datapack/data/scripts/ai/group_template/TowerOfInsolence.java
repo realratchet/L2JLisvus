@@ -51,6 +51,7 @@ public class TowerOfInsolence extends Quest
 	public TowerOfInsolence()
 	{
 		super(-1, "towerofinsolence", "ai/group_template");
+		
 		// Register NPCs
 		for (int id : ANGEL_SPAWNS.keySet())
 		{

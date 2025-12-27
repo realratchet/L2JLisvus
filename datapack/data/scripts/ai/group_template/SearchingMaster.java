@@ -22,26 +22,43 @@ import net.sf.l2j.gameserver.model.quest.Quest;
 
 /**
  * @author Karakan
- *
  */
 public class SearchingMaster extends Quest
 {
+	private static final int[] MOBS =
+	{
+		960,
+		961,
+		962,
+		963,
+		964,
+		965,
+		966,
+		967,
+		968,
+		969,
+		970,
+		971,
+		972,
+		973
+	};
+	
 	public static void main(String[] args)
-    {
-        // Quest class
-        new SearchingMaster();
-    }
+	{
+		// Quest class
+		new SearchingMaster();
+	}
 	
 	public SearchingMaster()
 	{
 		super(-1, "SearchingMaster", "ai/group_template");
-		int[] mobs = { 960, 961, 962, 963, 964, 965, 966, 967, 968, 969, 970, 971, 972, 973 };
-		for (int id : mobs)
+		
+		for (int id : MOBS)
 		{
 			registerNPC(id);
 		}
 	}
-
+	
 	@Override
 	public String onAttack(L2NpcInstance npc, L2PcInstance player, int damage, boolean isPet)
 	{
@@ -49,11 +66,11 @@ public class SearchingMaster extends Quest
 		{
 			return null;
 		}
-
+		
 		npc.setIsRunning(true);
 		((L2Attackable) npc).addDamageHate(player, 0, 100);
 		npc.getAI().setIntention(CtrlIntention.AI_INTENTION_ATTACK, player);
-
+		
 		return super.onAttack(npc, player, damage, isPet);
 	}
 }

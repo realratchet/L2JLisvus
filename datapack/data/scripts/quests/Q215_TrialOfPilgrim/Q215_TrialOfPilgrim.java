@@ -250,7 +250,7 @@ public class Q215_TrialOfPilgrim extends Quest
         else if (npcId == 7650 && st.getInt("cond") == 6 && st.getQuestItemsCount(TAG_OF_RUMOR_ID) > 0)
         {
             int requiredAdena = 100000 * (int) Config.RATE_DROP_ADENA;
-            htmltext = st.showHtmlFile("7650-01.htm").replace("RequiredAdena", String.valueOf(requiredAdena));
+            htmltext = st.loadHtmlFile("7650-01.htm").replace("RequiredAdena", String.valueOf(requiredAdena));
         }
         else if (npcId == 7650 && st.getInt("cond") >= 8 && st.getQuestItemsCount(GREY_BADGE_ID) > 0 && st.getQuestItemsCount(BOOK_OF_GERALD_ID) > 0)
         {

@@ -25,8 +25,8 @@ import net.sf.l2j.gameserver.model.L2SummonItem;
 import net.sf.l2j.gameserver.model.L2World;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PlayableInstance;
-import net.sf.l2j.gameserver.model.eventgame.L2Event;
 import net.sf.l2j.gameserver.model.holder.SkillHolder;
+import net.sf.l2j.gameserver.model.quest.L2EventScript;
 import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
 import net.sf.l2j.gameserver.templates.L2NpcTemplate;
 
@@ -67,7 +67,7 @@ public class SummonItems implements IItemHandler
             return;
         }
         
-        L2Event event = activeChar.getEvent();
+        L2EventScript event = activeChar.getEvent();
         if (event != null && event.isStarted())
         {
             activeChar.sendMessage("You may not summon a pet in events.");

@@ -85,7 +85,7 @@ public class Valakas extends Quest
 	// Boss: Valakas
 	public Valakas()
 	{
-		super(-1, "valakas", "ai");
+		super(-1, "valakas", "ai/individual");
 		registerNPC(VALAKAS);
 		
 		i_ai0 = 0;

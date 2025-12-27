@@ -174,7 +174,7 @@ class Quest (JQuest) :
        action,npc,coin=event.split("_")
        if grade <= EXCHANGE_LEVEL[int(npc)]:
          if int(coin) in EXCHANGE_LIST[int(npc)].keys():
-           htmltext=st.showHtmlFile(npc+"-06.htm").replace("%itemid%",coin)
+           htmltext=st.loadHtmlFile(npc+"-06.htm").replace("%itemid%",coin)
          else:
            htmltext="Cheating huh?"
            st.exitQuest(1)
@@ -285,7 +285,7 @@ class Quest (JQuest) :
                        msg.append(GAMBLE_COINS[i])
                     for var in ["grid","current","tries","chosen","coin","npc"]:
                        st.unset(var)
-                    return st.showHtmlFile(npc+"-"+next+".htm").replace("%first%",msg[0]).replace("%second%",msg[1]).replace("%third%",msg[2])
+                    return st.loadHtmlFile(npc+"-"+next+".htm").replace("%first%",msg[0]).replace("%second%",msg[1]).replace("%third%",msg[2])
             else :
               st.set("current",str(current+1))
           htmltext=npc+"-"+next+".htm"

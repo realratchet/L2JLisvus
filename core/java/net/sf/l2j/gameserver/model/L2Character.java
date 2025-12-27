@@ -60,9 +60,9 @@ import net.sf.l2j.gameserver.model.actor.instance.L2SummonInstance;
 import net.sf.l2j.gameserver.model.actor.knownlist.CharKnownList;
 import net.sf.l2j.gameserver.model.actor.stat.CharStat;
 import net.sf.l2j.gameserver.model.actor.status.CharStatus;
-import net.sf.l2j.gameserver.model.eventgame.L2Event;
 import net.sf.l2j.gameserver.model.holder.SkillUseHolder;
 import net.sf.l2j.gameserver.model.itemcontainer.Inventory;
+import net.sf.l2j.gameserver.model.quest.L2EventScript;
 import net.sf.l2j.gameserver.model.quest.Quest;
 import net.sf.l2j.gameserver.model.quest.QuestState;
 import net.sf.l2j.gameserver.network.serverpackets.ActionFailed;
@@ -1712,7 +1712,7 @@ public abstract class L2Character extends L2Object
 			keepEffects = true;
 		}
 		
-		L2Event event = getEvent();
+		L2EventScript event = getEvent();
 		if (event != null && event.isStarted() && event.isRemovingBuffsOnRespawn())
 		{
 			keepEffects = false;
@@ -1780,7 +1780,7 @@ public abstract class L2Character extends L2Object
 			setIsDead(false);
 			
 			// Check if character is in Event
-			L2Event event = getEvent();
+			L2EventScript event = getEvent();
 			if (event != null && event.isStarted())
 			{
 				// Character is in event and was revived
@@ -6840,7 +6840,7 @@ public abstract class L2Character extends L2Object
 		// Overridden in L2PcInstance
 	}
 	
-	public L2Event getEvent()
+	public L2EventScript getEvent()
 	{
 		// Overridden in L2PcInstance
 		return null;

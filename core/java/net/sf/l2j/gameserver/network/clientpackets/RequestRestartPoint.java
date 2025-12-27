@@ -28,7 +28,7 @@ import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.entity.Castle;
 import net.sf.l2j.gameserver.model.entity.ClanHall;
 import net.sf.l2j.gameserver.model.entity.Siege;
-import net.sf.l2j.gameserver.model.eventgame.L2Event;
+import net.sf.l2j.gameserver.model.quest.L2EventScript;
 import net.sf.l2j.gameserver.util.IllegalPlayerAction;
 import net.sf.l2j.gameserver.util.Util;
 
@@ -208,7 +208,7 @@ public class RequestRestartPoint extends L2GameClientPacket
 			return;
 		}
 		
-		L2Event event = activeChar.getEvent();
+		L2EventScript event = activeChar.getEvent();
 		if (event != null && event.isStarted())
 		{
 			_log.warning("Event player [" + activeChar.getName() + "] called RestartPointPacket to escape from event arena! Ban this player!");

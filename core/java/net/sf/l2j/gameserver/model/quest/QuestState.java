@@ -926,13 +926,13 @@ public final class QuestState
 	}
 	
 	/**
-	 * Show HTML file to client
+	 * Loads HTML file from server cache.
 	 * @param fileName
 	 * @return String : message sent to client
 	 */
-	public String showHtmlFile(String fileName)
+	public String loadHtmlFile(String fileName)
 	{
-		return getQuest().showHtmlFile(getPlayer(), fileName);
+		return getQuest().loadHtmlFile(getPlayer(), fileName);
 	}
 	
 	/**

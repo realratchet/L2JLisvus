@@ -440,11 +440,11 @@ public class Quest extends ManagedScript
 		if (timers == null)
 		{
 			QuestTimer timer = new QuestTimer(this, name, time, npc, player, repeating);
-
+			
 			timers = new CopyOnWriteArrayList<>();
 			timers.add(timer);
 			getQuestTimers().put(name, timers);
-
+			
 			timer.start();
 		}
 		else
@@ -455,7 +455,7 @@ public class Quest extends ManagedScript
 			{
 				QuestTimer timer = new QuestTimer(this, name, time, npc, player, repeating);
 				timers.add(timer);
-
+				
 				timer.start();
 			}
 		}
@@ -941,13 +941,22 @@ public class Quest extends ManagedScript
 	 * @param res : String pointing out the message to show at the player
 	 * @return boolean
 	 */
-	protected boolean showResult(L2PcInstance player, String res)
+	protected final boolean showResult(L2PcInstance player, String res)
 	{
 		if (res == null || res.isEmpty() || player == null)
 			return true;
 		
 		if (res.endsWith(".htm"))
-			showHtmlFile(player, res);
+		{
+			String content = loadHtmlFile(player, res);
+			if (content != null)
+			{
+				NpcHtmlMessage html = new NpcHtmlMessage(0);
+				html.setHtml(content);
+				player.sendPacket(html);
+				player.sendPacket(ActionFailed.STATIC_PACKET);
+			}
+		}
 		else if (res.startsWith("<html>"))
 		{
 			NpcHtmlMessage html = new NpcHtmlMessage(0);
@@ -1420,36 +1429,29 @@ public class Quest extends ManagedScript
 			addEventId(npcId, QuestEventType.ON_CREATURE_SEE);
 	}
 	
-	/**
-	 * Show HTML file to client
-	 * @param player
-	 * @param fileName
-	 * @return String : message sent to client
-	 */
-	public String showHtmlFile(L2PcInstance player, String fileName)
+	public final String loadHtmlFile(L2PcInstance player, String fileName)
 	{
-		String questId = getName();
+		String questName = getName();
 		
 		// Create handler to file linked to the quest
 		String directory = getDescr().toLowerCase();
-		String content = HtmCache.getInstance().getHtm("data/scripts/" + directory + "/" + questId + "/" + fileName);
+		String content = HtmCache.getInstance().getHtm("data/scripts/" + directory + "/" + questName + "/" + fileName);
 		
 		if (content == null)
-			content = HtmCache.getInstance().getHtmForce("data/scripts/quests/" + questId + "/" + fileName);
-		
-		if (player != null)
 		{
-			if (player.getTarget() != null)
-				content = content.replaceAll("%objectId%", String.valueOf(player.getTarget().getObjectId()));
-			
-			// Send message to client if message not empty
-			if (content != null)
+			content = HtmCache.getInstance().getHtmForce("data/scripts/quests/" + questName + "/" + fileName);
+		}
+		
+		if (content != null)
+		{
+			if (player != null)
 			{
-				NpcHtmlMessage html = new NpcHtmlMessage(0);
-				html.setHtml(content);
-				html.replace("%playername%", player.getName());
-				player.sendPacket(html);
-				player.sendPacket(ActionFailed.STATIC_PACKET);
+				content = content.replaceAll("%playername%", player.getName());
+
+				if (player.getTarget() != null)
+				{
+					content = content.replaceAll("%objectId%", String.valueOf(player.getTarget().getObjectId()));
+				}
 			}
 		}
 		

@@ -24,7 +24,7 @@ import net.sf.l2j.gameserver.model.L2Skill;
 import net.sf.l2j.gameserver.model.L2Character.TeleportType;
 import net.sf.l2j.gameserver.model.L2Skill.SkillType;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.model.eventgame.L2Event;
+import net.sf.l2j.gameserver.model.quest.L2EventScript;
 import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
 
 public class Recall implements ISkillHandler
@@ -86,7 +86,7 @@ public class Recall implements ISkillHandler
 					continue;
 				}
 				
-				L2Event event = target.getEvent();
+				L2EventScript event = target.getEvent();
 				if (event != null && event.isStarted())
 				{
 					activeChar.sendMessage("You may not use an escape skill in events.");

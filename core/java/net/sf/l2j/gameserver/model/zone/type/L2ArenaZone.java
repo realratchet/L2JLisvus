@@ -17,7 +17,7 @@ package net.sf.l2j.gameserver.model.zone.type;
 import net.sf.l2j.gameserver.datatables.MapRegionTable;
 import net.sf.l2j.gameserver.model.L2Character;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.model.eventgame.L2Event;
+import net.sf.l2j.gameserver.model.quest.L2EventScript;
 import net.sf.l2j.gameserver.model.zone.L2ZoneSpawn;
 import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
 
@@ -30,11 +30,12 @@ public class L2ArenaZone extends L2ZoneSpawn
 {
     private String _arenaName;
 
-    private L2Event _event;
+    private L2EventScript _event;
     
     public L2ArenaZone(int id)
     {
-        super(id);
+        super(id);
+
     }
 
     @Override
@@ -47,7 +48,7 @@ public class L2ArenaZone extends L2ZoneSpawn
             L2PcInstance player = (L2PcInstance)character;
             
             // Check if arena is currently hosting an event and player belongs to this event
-            L2Event event = getEvent();
+            L2EventScript event = getEvent();
             if (event != null && event.isStarted() && player.getEvent() != event)
             {
             	// Teleport foreigner to town
@@ -83,12 +84,12 @@ public class L2ArenaZone extends L2ZoneSpawn
 		_arenaName = arenaName;
 	}
 	
-	public L2Event getEvent()
+	public L2EventScript getEvent()
 	{
 		return _event;
 	}
 	
-	public void setEvent(L2Event event)
+	public void setEvent(L2EventScript event)
 	{
 		_event = event;
 	}

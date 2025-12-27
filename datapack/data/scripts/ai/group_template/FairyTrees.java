@@ -12,7 +12,7 @@
  * You should have received a copy of the GNU General Public License along with
  * this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package ai.quest;
+package ai.group_template;
 
 import net.sf.l2j.gameserver.ai.CtrlIntention;
 import net.sf.l2j.gameserver.datatables.SkillTable;
@@ -27,7 +27,6 @@ import net.sf.l2j.util.Rnd;
 
 /**
  * @author Karakan
- *
  */
 public class FairyTrees extends Quest
 {
@@ -37,30 +36,30 @@ public class FairyTrees extends Quest
 		"Get out of the sacred tree you scoundrel!",
 		"Death to the thieves of the pure water of the world!"
 	};
+	private static final int[] MOBS =
+	{
+		5185, // Fairy Tree Of Wind
+		5186, // Fairy Tree Of Star
+		5187, // Fairy Tree Of Twilight
+		5188 // Fairy Tree Of Abyss
+	};
 	
 	public static void main(String[] args)
-    {
-        // Quest class
-        new FairyTrees();
-    }
+	{
+		// Quest class
+		new FairyTrees();
+	}
 	
 	public FairyTrees()
 	{
 		super(-1, "fairytrees", "ai/group_template");
-		int[] mobs = 
-		{ 
-			5185, 	// Fairy Tree Of Wind
-			5186, 	// Fairy Tree Of Star
-			5187, 	// Fairy Tree Of Twilight
-			5188 	// Fairy Tree Of Abyss
-		};
 		
-		for (int id : mobs)
+		for (int id : MOBS)
 		{
 			registerNPC(id);
 		}
 	}
-
+	
 	@Override
 	public String onKill(L2NpcInstance npc, L2PcInstance killer, boolean isPet)
 	{
@@ -73,7 +72,7 @@ public class FairyTrees extends Quest
 			{
 				newNpc.onAction(killer);
 			}
-
+			
 			newNpc.setRunning();
 			
 			L2Character originalKiller = isPet ? killer.getPet() : killer;
@@ -93,7 +92,7 @@ public class FairyTrees extends Quest
 				}
 			}
 		}
-
+		
 		return super.onKill(npc, killer, isPet);
 	}
 }

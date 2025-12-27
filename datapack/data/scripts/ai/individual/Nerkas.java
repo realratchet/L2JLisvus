@@ -12,7 +12,7 @@
  * You should have received a copy of the GNU General Public License along with
  * this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package ai.quest;
+package ai.individual;
 
 import net.sf.l2j.gameserver.model.L2Object;
 import net.sf.l2j.gameserver.model.L2Skill;
@@ -27,18 +27,18 @@ import net.sf.l2j.util.Rnd;
  * 
  * For L2JLisvus.
  */
-public class Merkenis extends Quest
+public class Nerkas extends Quest
 {
 	public static void main(String[] args)
     {
         // Quest class
-        new Merkenis();
+        new Nerkas();
     }
 	
-	public Merkenis()
+	public Nerkas()
 	{
-		super(-1, "merkenis", "ai/quest");
-		registerNPC(5022); // Merkenis
+		super(-1, "nerkas", "ai/individual");
+		registerNPC(5016); // Nerkas
 	}
 	
 	@Override
@@ -57,7 +57,7 @@ public class Merkenis extends Quest
 	{
 		if (npc.getScriptValue() == 0)
 		{
-			npc.broadcastPacket(new NpcSay(npc.getObjectId(), 0, npc.getNpcId(), "I shall put you in a never-ending nightmare!"));
+			npc.broadcastPacket(new NpcSay(npc.getObjectId(), 0, npc.getNpcId(), "...How dare you challenge me!"));
 			npc.setScriptValue(1);
 		}
 
@@ -69,19 +69,19 @@ public class Merkenis extends Quest
 	{
 		if (npc.getScriptValue() == 0)
 		{
-			npc.broadcastPacket(new NpcSay(npc.getObjectId(), 0, npc.getNpcId(), "I shall put you in a never-ending nightmare!"));
+			npc.broadcastPacket(new NpcSay(npc.getObjectId(), 0, npc.getNpcId(), "...How dare you challenge me!"));
 			npc.setScriptValue(1);
 		}
 
 		return super.onSkillSee(npc, caster, skill, targets, isPet);
 	}
-
+	
 	@Override
 	public String onKill (L2NpcInstance npc, L2PcInstance killer, boolean isPet) 
 	{
 		if (Rnd.get(100) < 50)
 		{
-			npc.broadcastPacket(new NpcSay(npc.getObjectId(), 0, npc.getNpcId(), "My soul belongs to Icarus..."));
+			npc.broadcastPacket(new NpcSay(npc.getObjectId(), 0, npc.getNpcId(), "May Beleth's power be spread on the whole world...!"));
 		}
 
 		return super.onKill(npc,killer,isPet);

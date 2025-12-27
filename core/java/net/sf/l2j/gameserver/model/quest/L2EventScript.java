@@ -12,75 +12,36 @@
  * You should have received a copy of the GNU General Public License along with
  * this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package net.sf.l2j.gameserver.model.eventgame;
+package net.sf.l2j.gameserver.model.quest;
 
-import java.util.Properties;
-
-import net.sf.l2j.gameserver.model.actor.instance.L2NpcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.model.zone.type.L2ArenaZone;
 
 /**
  * @author DnR
- *
  */
-public abstract class L2Event
+public abstract class L2EventScript extends Quest
 {
 	/**
-	 *  Event States.
+	 * Event States.
 	 */
 	public static enum EventState
 	{
 		INITIAL,
 		REGISTER,
-		SCHEDULED_NEXT,
 		STARTED
 	}
-
-	protected boolean _isEnabled = false;
 	
 	// Event default state
-	protected EventState _state = EventState.INITIAL;
-	
-	// Event zone
-	protected L2ArenaZone _arena;
-	
-	// Event global parameters
-	protected int _minParticipants;
-	protected int _maxParticipants;
-	protected byte _minLevel;
-	protected byte _maxLevel;
+	private EventState _state = EventState.INITIAL;
 
-	protected L2NpcInstance _npcManager;
-	
-	protected int _eventDelay;
-	protected int _participationTime;
-	protected int _eventDuration;
-	protected int _playerRespawnDelay;
-	
-	protected boolean _isDualBoxAllowed;
-	protected boolean _isRemovingBuffsOnRespawn;
-	
-	protected int _npcX, _npcY, _npcZ;
-	
-	/**
-	 * Checks whether event is enabled.
-	 * 
-	 * @return
-	 */
-	public boolean isEnabled()
+	public L2EventScript(int questId, String name, String descr)
 	{
-		return _isEnabled;
+		super(questId, name, descr);
 	}
 	
 	public boolean isStarted()
 	{
 		return _state == EventState.STARTED;
-	}
-	
-	public boolean isRemovingBuffsOnRespawn()
-	{
-		return _isRemovingBuffsOnRespawn;
 	}
 	
 	public EventState getEventState()
@@ -92,37 +53,30 @@ public abstract class L2Event
 	{
 		_state = state;
 	}
-
+	
 	/**
-	 * 
 	 * @param player
 	 * @return
 	 */
 	public abstract boolean isRegistered(L2PcInstance player);
 	
 	/**
-	 * @param eventSettings
-	 */
-	public abstract void load(Properties eventSettings);
-	
-	/**
-	 * 
 	 * @param player
 	 */
-	public abstract  void onDie(L2PcInstance player);
+	public abstract void onDie(L2PcInstance player);
 	
 	/**
-	 * 
 	 * @param player
-	 * @param target 
+	 * @param target
 	 */
-	public abstract  void onKill(L2PcInstance player, L2PcInstance target);
+	public abstract void onKill(L2PcInstance player, L2PcInstance target);
 	
 	/**
-	 * 
 	 * @param player
 	 */
-	public abstract  void onRevive(L2PcInstance player);
+	public abstract void onRevive(L2PcInstance player);
+	
+	public abstract boolean isRemovingBuffsOnRespawn();
 	
 	/**
 	 * @param player
@@ -131,21 +85,12 @@ public abstract class L2Event
 	{
 		player.setEvent(this);
 	}
-
+	
 	/**
 	 * @param player
 	 */
 	public void removePlayer(L2PcInstance player)
 	{
 		player.setEvent(null);
-	}
-	
-	/**
-	 * 
-	 * @return
-	 */
-	public L2ArenaZone getArena()
-	{
-		return _arena;
 	}
 }

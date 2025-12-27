@@ -118,7 +118,7 @@ public class Baium extends Quest
 	
 	public Baium()
 	{
-		super(-1, "baium", "ai");
+		super(-1, "baium", "ai/individual");
 		registerNPC(LIVE_BAIUM);
 
 		// Quest NPC starter initialization

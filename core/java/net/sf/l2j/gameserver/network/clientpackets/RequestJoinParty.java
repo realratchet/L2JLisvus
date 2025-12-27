@@ -18,7 +18,7 @@ import java.util.logging.Logger;
 
 import net.sf.l2j.gameserver.model.L2World;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.model.eventgame.L2Event;
+import net.sf.l2j.gameserver.model.quest.L2EventScript;
 import net.sf.l2j.gameserver.network.serverpackets.AskJoinParty;
 import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
 
@@ -86,8 +86,8 @@ public class RequestJoinParty extends L2GameClientPacket
 			return;
 		}
 		
-		L2Event targetEvent = target.getEvent();
-		L2Event requestorEvent = requestor.getEvent();
+		L2EventScript targetEvent = target.getEvent();
+		L2EventScript requestorEvent = requestor.getEvent();
 		
 		if (targetEvent != null && targetEvent.isStarted() && target.getEventTeam() == 0 || target.getEventTeam() > 0 && target.getEventTeam() != requestor.getEventTeam())
 		{

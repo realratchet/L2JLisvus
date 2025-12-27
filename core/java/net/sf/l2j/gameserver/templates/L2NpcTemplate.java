@@ -124,7 +124,7 @@ public final class L2NpcTemplate extends L2CharTemplate
 		name = set.getString("name");
 		serverSideName = set.getBool("serverSideName");
 		title = set.getString("title");
-		isQuestMonster = title.equalsIgnoreCase("Quest Monster");
+		isQuestMonster = title != null && title.equalsIgnoreCase("Quest Monster");
 		serverSideTitle = set.getBool("serverSideTitle");
 		sex = set.getString("sex");
 		level = set.getByte("level");

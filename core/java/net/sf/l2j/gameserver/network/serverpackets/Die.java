@@ -21,7 +21,7 @@ import net.sf.l2j.gameserver.model.L2Character;
 import net.sf.l2j.gameserver.model.L2Clan;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.entity.Siege;
-import net.sf.l2j.gameserver.model.eventgame.L2Event;
+import net.sf.l2j.gameserver.model.quest.L2EventScript;
 
 /**
  * sample 0b 952a1048 objectId 00000000 00000000 00000000 00000000 00000000 00000000 format dddddd rev 377 format ddddddd rev 417
@@ -52,7 +52,7 @@ public class Die extends L2GameServerPacket
 			_accessLevel = player.getAccessLevel();
 			_clan = player.getClan();
 			
-			L2Event event = player.getEvent();
+			L2EventScript event = player.getEvent();
 			_inEvent = event != null && event.isStarted();
 		}
 		_chaId = cha.getObjectId();
