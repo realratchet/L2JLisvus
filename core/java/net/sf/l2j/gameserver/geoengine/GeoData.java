@@ -284,7 +284,11 @@ public class GeoData
 		int distSq = (x - tx) * (x - tx) + (y - ty) * (y - ty);
 		if (distSq < 4096) // <64 units, fast LOS without iterator
 		{
-			return hasGeoPos(geoX, geoY) && hasGeoPos(tGeoX, tGeoY) && Math.abs(z - tz) <= MAX_SEE_OVER_HEIGHT;
+			// Check for max see over height only if there's actual geodata
+			if (hasGeoPos(geoX, geoY) && hasGeoPos(tGeoX, tGeoY))
+			{
+				return Math.abs(z - tz) <= MAX_SEE_OVER_HEIGHT;
+			}
 		}
 		
 		if (tz > z)
