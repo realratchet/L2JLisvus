@@ -26,12 +26,12 @@ import net.sf.l2j.L2DatabaseFactory;
 import net.sf.l2j.gameserver.GameTimeController;
 import net.sf.l2j.gameserver.cache.HtmCache;
 import net.sf.l2j.gameserver.instancemanager.QuestManager;
+import net.sf.l2j.gameserver.model.L2Attackable;
 import net.sf.l2j.gameserver.model.L2Character;
 import net.sf.l2j.gameserver.model.L2Clan;
 import net.sf.l2j.gameserver.model.L2ClanMember;
 import net.sf.l2j.gameserver.model.L2DropData;
 import net.sf.l2j.gameserver.model.L2ItemInstance;
-import net.sf.l2j.gameserver.model.actor.instance.L2MonsterInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2NpcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.itemcontainer.Inventory;
@@ -1007,7 +1007,7 @@ public final class QuestState
 		getPlayer().sendPacket(new TutorialEnableClientEvent(number));
 	}
 	
-	public void dropItem(L2MonsterInstance npc, L2PcInstance player, int itemId, int count)
+	public void dropItem(L2Attackable npc, L2PcInstance player, int itemId, int count)
 	{
 		npc.dropItem(player, itemId, count);
 	}
