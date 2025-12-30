@@ -129,25 +129,13 @@ public class GeoPathFinding extends PathFinding
 		Location temp = GeoData.getInstance().moveCheck(x, y, z, start.getLoc().getX(), start.getLoc().getY(), start.getLoc().getZ());
 		if ((temp.getX() != start.getLoc().getX()) || (temp.getY() != start.getLoc().getY()))
 		{
-			// Retry adjusting Z to nearest
-			int adjustedZ = GeoData.getInstance().getNearestZ(gx << 4 + 8, gy << 4 + 8, z); // Center of the tile
-			temp = GeoData.getInstance().moveCheck(x, y, adjustedZ, start.getLoc().getX(), start.getLoc().getY(), start.getLoc().getZ());
-			if ((temp.getX() != start.getLoc().getX()) || (temp.getY() != start.getLoc().getY()))
-			{
-				return null;
-			}
+			return null; // cannot reach closest...
 		}
 		
 		temp = GeoData.getInstance().moveCheck(tx, ty, tz, end.getLoc().getX(), end.getLoc().getY(), end.getLoc().getZ());
 		if ((temp.getX() != end.getLoc().getX()) || (temp.getY() != end.getLoc().getY()))
 		{
-			// One last attempt to get nearest Z
-			int adjustedTZ = GeoData.getInstance().getNearestZ(gtx << 4 + 8, gty << 4 + 8, tz);
-			temp = GeoData.getInstance().moveCheck(tx, ty, adjustedTZ, end.getLoc().getX(), end.getLoc().getY(), end.getLoc().getZ());
-			if ((temp.getX() != end.getLoc().getX()) || (temp.getY() != end.getLoc().getY()))
-			{
-				return null;
-			}
+			return null; // cannot reach closest...
 		}
 		
 		return searchByClosest2(start, end);
@@ -155,6 +143,15 @@ public class GeoPathFinding extends PathFinding
 	
 	public List<AbstractNodeLoc> searchByClosest2(GeoNode start, GeoNode end)
 	{
+		// Always continues checking from the closest to target non-blocked
+		// node from to_visit list. There's extra length in path if needed
+		// to go backwards/sideways but when moving generally forwards, this is extra fast
+		// and accurate. And can reach insane distances (try it with 800 nodes..).
+		// Minimum required node count would be around 300-400.
+		// Generally returns a bit (only a bit) more intelligent looking routes than
+		// the basic version. Not a true distance image (which would increase CPU
+		// load) level of intelligence though.
+		
 		PriorityQueue<GeoNode> toVisit = new PriorityQueue<>((n1, n2) -> Double.compare(n1.getCost(), n2.getCost()));
 		toVisit.add(start);
 		int maxIterations = 800;
@@ -169,7 +166,7 @@ public class GeoPathFinding extends PathFinding
 		while (!toVisit.isEmpty() && i < maxIterations)
 		{
 			GeoNode node = toVisit.poll();
-
+			
 			// Path found
 			if (node.equals(end))
 			{
@@ -358,8 +355,12 @@ public class GeoPathFinding extends PathFinding
 		short nodeX = getNodePos(gx);
 		short nodeY = getNodePos(gy);
 		short regoffset = getRegionOffset(getRegionX(nodeX), getRegionY(nodeY));
+		
 		if (!pathNodesExist(regoffset))
+		{
 			return null;
+		}
+		
 		short nbx = getNodeBlock(nodeX);
 		short nby = getNodeBlock(nodeY);
 		int idx = _pathNodesIndex.get(regoffset).get((nby << 8) + nbx);
@@ -369,6 +370,7 @@ public class GeoPathFinding extends PathFinding
 		idx++;// byte
 		int idx2 = 0; // create index to nearest node by z
 		short lastZ = Short.MIN_VALUE;
+		
 		while (nodes > 0)
 		{
 			short node_z = pn.getShort(idx);
@@ -380,12 +382,7 @@ public class GeoPathFinding extends PathFinding
 			idx += 10; // short + 8 byte
 			nodes--;
 		}
-		// Fallback if no layer is found nearby
-		if (lastZ == Short.MIN_VALUE)
-		{
-			lastZ = (short) GeoData.getInstance().getNearestZ(gx << 4 + 8, gy << 4 + 8, z); // Center of the tile
-			idx2 = 0;
-		}
+		
 		return new GeoNode(new GeoNodeLoc(nodeX, nodeY, lastZ), idx2);
 	}
 	
