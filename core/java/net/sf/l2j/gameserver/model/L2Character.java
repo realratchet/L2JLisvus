@@ -4487,11 +4487,11 @@ public abstract class L2Character extends L2Object
 				
 				if (!isInBoat)
 				{
-					Location destiny = GeoData.getInstance().moveCheck(curX, curY, curZ, x, y, z);
+					Location dest = GeoData.getInstance().moveCheck(curX, curY, curZ, x, y, z);
 					// Location difference if destination wasn't reached (or just z coord is different)
-					x = destiny.getX();
-					y = destiny.getY();
-					z = destiny.getZ();
+					x = dest.getX();
+					y = dest.getY();
+					z = dest.getZ();
 					dx = x - curX;
 					dy = y - curY;
 					dz = z - curZ;
@@ -4509,18 +4509,24 @@ public abstract class L2Character extends L2Object
 				if (((this instanceof L2PlayableInstance) && !isInBoat) || isInCombat() || (this instanceof L2MinionInstance))
 				{
 					m.geoPath = PathFinding.getInstance().findPath(curX, curY, curZ, originalX, originalY, originalZ, this instanceof L2PlayableInstance);
-					if ((m.geoPath == null) || (m.geoPath.size() < 2)) // No path found
+					if (m.geoPath == null || m.geoPath.size() < 2) // No path found
 					{
-						
 						// Even though there's no path found (remember geonodes aren't perfect),
 						// the mob is attacking and right now we set it so that the mob will go
 						// after target anyway, if dz is small enough. Summons will follow their masters no matter what.
 						if ((this instanceof L2PcInstance) || (!(this instanceof L2PlayableInstance) && !(this instanceof L2MinionInstance) && (Math.abs(z - curZ) > 140)) || ((this instanceof L2Summon) && !((L2Summon) this).getFollowStatus()))
 						{
-							final Location destination = GeoData.getInstance().moveCheck(curX, curY, curZ, x, y, z);
-							getAI().setIntention(CtrlIntention.AI_INTENTION_MOVE_TO, destination);
-							return false;
+							final Location dest = GeoData.getInstance().moveCheck(curX, curY, curZ, x, y, z);
+
+							// Attempt to move to geo location provided that it's not the current location.
+							// Ignoring Z is fine as this is ground movement and it can't be the only different axis.
+							if (dest.getX() != curX || dest.getY() != curY)
+							{
+								getAI().setIntention(CtrlIntention.AI_INTENTION_MOVE_TO, dest);
+								return false;
+							}
 						}
+
 						m.disregardingGeodata = true;
 						x = originalX;
 						y = originalY;

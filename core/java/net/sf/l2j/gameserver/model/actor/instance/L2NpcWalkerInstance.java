@@ -77,10 +77,8 @@ public class L2NpcWalkerInstance extends L2NpcInstance
         {
             CreatureSay cs = new CreatureSay(getObjectId(), Say2.ALL, getName(), chat, false);
 
-            // we interact and list players here
             for (L2PcInstance players : _knownPlayers.values())
             {
-                // finally send packet :D
                 players.sendPacket(cs);
             }
         }

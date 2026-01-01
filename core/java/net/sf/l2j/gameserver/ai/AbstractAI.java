@@ -543,78 +543,78 @@ abstract class AbstractAI implements Ctrl
 	protected void moveToPawn(L2Object pawn, int offset)
 	{
 		// Check if actor can move
-		if (!_actor.isMovementDisabled())
+		if (_actor.isMovementDisabled())
 		{
-			if (offset < 10)
+			clientActionFailed();
+			return;
+		}
+
+		if (offset < 10)
+		{
+			offset = 10;
+		}
+
+		// prevent possible extra calls to this function (there is none?),
+		// also don't send movetopawn packets too often
+		boolean sendPacket = true;
+
+		if (_clientMoving && (_target == pawn))
+		{
+			if (_clientMovingToPawnOffset == offset)
 			{
-				offset = 10;
-			}
-			
-			// prevent possible extra calls to this function (there is none?),
-			// also don't send movetopawn packets too often
-			boolean sendPacket = true;
-			if (_clientMoving && (_target == pawn))
-			{
-				if (_clientMovingToPawnOffset == offset)
+				if (GameTimeController.getInstance().getGameTicks() < _moveToPawnTimeout)
 				{
-					if (GameTimeController.getInstance().getGameTicks() < _moveToPawnTimeout)
-					{
-						return;
-					}
-					sendPacket = false;
+					return;
 				}
-				else if (_actor.isOnGeodataPath())
-				{
-					// minimum time to calculate new route is 2 seconds
-					if (GameTimeController.getInstance().getGameTicks() < (_moveToPawnTimeout + 10))
-					{
-						return;
-					}
-				}
+				sendPacket = false;
 			}
-			
-			// Set AI movement data
-			_clientMoving = true;
-			_clientMovingToPawnOffset = offset;
-			_target = pawn;
-			_moveToPawnTimeout = GameTimeController.getInstance().getGameTicks();
-			_moveToPawnTimeout += 200 / GameTimeController.MILLIS_IN_TICK;
-			
-			if ((pawn == null) || (_accessor == null))
+			else if (_actor.isOnGeodataPath())
 			{
-				return;
-			}
-			
-			// Calculate movement data for a move to location action and add the actor to movingObjects of GameTimeController
-			_accessor.moveTo(pawn.getX(), pawn.getY(), pawn.getZ(), offset);
-			
-			if (!_actor.isMoving())
-			{
-				clientActionFailed();
-				return;
-			}
-			
-			// Send a Server->Client packet MoveToPawn/CharMoveToLocation to the actor and all L2PcInstance in its _knownPlayers
-			if (pawn instanceof L2Character)
-			{
-				if (_actor.isOnGeodataPath())
+				// minimum time to calculate new route is 2 seconds
+				if (GameTimeController.getInstance().getGameTicks() < (_moveToPawnTimeout + 10))
 				{
-					_actor.broadcastPacket(new CharMoveToLocation(_actor));
-					_clientMovingToPawnOffset = 0;
-				}
-				else if (sendPacket)
-				{
-					_actor.broadcastPacket(new MoveToPawn(_actor, (L2Character) pawn, offset));
+					return;
 				}
 			}
-			else
+		}
+		
+		// Set AI movement data
+		_clientMoving = true;
+		_clientMovingToPawnOffset = offset;
+		_target = pawn;
+		_moveToPawnTimeout = GameTimeController.getInstance().getGameTicks();
+		_moveToPawnTimeout += 200 / GameTimeController.MILLIS_IN_TICK;
+		
+		if ((pawn == null) || (_accessor == null))
+		{
+			return;
+		}
+		
+		// Calculate movement data for a move to location action and add the actor to movingObjects of GameTimeController
+		_accessor.moveTo(pawn.getX(), pawn.getY(), pawn.getZ(), offset);
+		
+		if (!_actor.isMoving())
+		{
+			clientActionFailed();
+			return;
+		}
+		
+		// Send a Server->Client packet MoveToPawn/CharMoveToLocation to the actor and all L2PcInstance in its _knownPlayers
+		if (pawn instanceof L2Character)
+		{
+			if (_actor.isOnGeodataPath())
 			{
 				_actor.broadcastPacket(new CharMoveToLocation(_actor));
+				_clientMovingToPawnOffset = 0;
+			}
+			else if (sendPacket)
+			{
+				_actor.broadcastPacket(new MoveToPawn(_actor, (L2Character) pawn, offset));
 			}
 		}
 		else
 		{
-			clientActionFailed();
+			_actor.broadcastPacket(new CharMoveToLocation(_actor));
 		}
 	}
 	
