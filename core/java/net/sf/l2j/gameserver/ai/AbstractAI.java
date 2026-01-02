@@ -670,15 +670,12 @@ abstract class AbstractAI implements Ctrl
 			_clientMoving = false;
 			
 			// Send a Server->Client packet StopMove to the actor and all L2PcInstance in its _knownPlayers
-			StopMove msg = new StopMove(_actor);
-			_actor.broadcastPacket(msg);
+			_actor.broadcastPacket(new StopMove(_actor));
 			
 			if (loc != null)
 			{
 				// Send a Server->Client packet StopRotation to the actor and all L2PcInstance in its _knownPlayers
-				StopRotation sr = new StopRotation(_actor.getObjectId(), loc.getHeading(), 0);
-				_actor.sendPacket(sr);
-				_actor.broadcastPacket(sr);
+				_actor.broadcastPacket(new StopRotation(_actor.getObjectId(), loc.getHeading(), 0));
 			}
 		}
 	}
