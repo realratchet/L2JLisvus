@@ -116,7 +116,7 @@ public class L2CharacterAI extends AbstractAI
 	 * <li>Set the AI Intention to AI_INTENTION_IDLE</li>
 	 * <li>Init cast and attack target</li>
 	 * <li>Stop the actor auto-attack client side by sending Server->Client packet AutoAttackStop (broadcast)</li>
-	 * <li>Stop the actor movement server side AND client side by sending Server->Client packet StopMove/StopRotation (broadcast)</li>
+	 * <li>Stop the actor movement server side AND client side by sending Server->Client packet StopMove (broadcast)</li>
 	 * <li>Stand up the actor server side AND client side by sending Server->Client packet ChangeWaitType (broadcast)</li><BR>
 	 * <BR>
 	 */
@@ -130,7 +130,7 @@ public class L2CharacterAI extends AbstractAI
 		setCastTarget(null);
 		setAttackTarget(null);
 
-		// Stop the actor movement server side AND client side by sending Server->Client packet StopMove/StopRotation (broadcast)
+		// Stop the actor movement server side AND client side by sending Server->Client packet StopMove (broadcast)
 		clientStopMoving(null);
 
 		// Stop the actor auto-attack client side by sending Server->Client packet AutoAttackStop (broadcast)
@@ -145,7 +145,7 @@ public class L2CharacterAI extends AbstractAI
 	 * <li>Set the AI Intention to AI_INTENTION_ACTIVE</li>
 	 * <li>Init cast and attack target</li>
 	 * <li>Stop the actor auto-attack client side by sending Server->Client packet AutoAttackStop (broadcast)</li>
-	 * <li>Stop the actor movement server side AND client side by sending Server->Client packet StopMove/StopRotation (broadcast)</li>
+	 * <li>Stop the actor movement server side AND client side by sending Server->Client packet StopMove (broadcast)</li>
 	 * <li>Launch the Think Event</li><BR>
 	 * <BR>
 	 */
@@ -162,7 +162,7 @@ public class L2CharacterAI extends AbstractAI
 			setCastTarget(null);
 			setAttackTarget(null);
 
-			// Stop the actor movement server side AND client side by sending Server->Client packet StopMove/StopRotation (broadcast)
+			// Stop the actor movement server side AND client side by sending Server->Client packet StopMove (broadcast)
 			clientStopMoving(null);
 
 			// Stop the actor auto-attack client side by sending Server->Client packet AutoAttackStop (broadcast)
@@ -532,7 +532,7 @@ public class L2CharacterAI extends AbstractAI
 	 * <B><U> Actions</U> :</B><BR>
 	 * <BR>
 	 * <li>Stop the actor auto-attack client side by sending Server->Client packet AutoAttackStop (broadcast)</li>
-	 * <li>Stop the actor movement server side AND client side by sending Server->Client packet StopMove/StopRotation (broadcast)</li>
+	 * <li>Stop the actor movement server side AND client side by sending Server->Client packet StopMove (broadcast)</li>
 	 * <li>Break an attack and send Server->Client ActionFailed packet and a System Message to the L2Character</li>
 	 * <li>Break a cast and send Server->Client ActionFailed packet and a System Message to the L2Character</li>
 	 * <li>Launch actions corresponding to the Event onAttacked (only for L2AttackableAI after the stunning period)</li><BR>
@@ -551,7 +551,7 @@ public class L2CharacterAI extends AbstractAI
 		// Stop Server AutoAttack also
 		setAutoAttacking(false);
 
-		// Stop the actor movement server side AND client side by sending Server->Client packet StopMove/StopRotation (broadcast)
+		// Stop the actor movement server side AND client side by sending Server->Client packet StopMove (broadcast)
 		clientStopMoving(null);
 
 		// Launch actions corresponding to the Event onAttacked (only for L2AttackableAI after the stunning period)
@@ -564,7 +564,7 @@ public class L2CharacterAI extends AbstractAI
 	 * <B><U> Actions</U> :</B><BR>
 	 * <BR>
 	 * <li>Stop the actor auto-attack client side by sending Server->Client packet AutoAttackStop (broadcast)</li>
-	 * <li>Stop the actor movement server side AND client side by sending Server->Client packet StopMove/StopRotation (broadcast)</li>
+	 * <li>Stop the actor movement server side AND client side by sending Server->Client packet StopMove (broadcast)</li>
 	 * <li>Break an attack and send Server->Client ActionFailed packet and a System Message to the L2Character</li>
 	 * <li>Break a cast and send Server->Client ActionFailed packet and a System Message to the L2Character</li>
 	 * <li>Launch actions corresponding to the Event onAttacked (only for L2AttackableAI after the paralyzing period)</li><BR>
@@ -583,7 +583,7 @@ public class L2CharacterAI extends AbstractAI
 		// Stop Server AutoAttack also
 		setAutoAttacking(false);
 
-		// Stop the actor movement server side AND client side by sending Server->Client packet StopMove/StopRotation (broadcast)
+		// Stop the actor movement server side AND client side by sending Server->Client packet StopMove (broadcast)
 		clientStopMoving(null);
 
 		// Launch actions corresponding to the Event onAttacked (only for L2AttackableAI after the paralyzing period)
@@ -596,7 +596,7 @@ public class L2CharacterAI extends AbstractAI
 	 * <B><U> Actions</U> :</B><BR>
 	 * <BR>
 	 * <li>Stop the actor auto-attack client side by sending Server->Client packet AutoAttackStop (broadcast)</li>
-	 * <li>Stop the actor movement server side AND client side by sending Server->Client packet StopMove/StopRotation (broadcast)</li>
+	 * <li>Stop the actor movement server side AND client side by sending Server->Client packet StopMove (broadcast)</li>
 	 * <li>Break an attack and send Server->Client ActionFailed packet and a System Message to the L2Character</li>
 	 * <li>Break a cast and send Server->Client ActionFailed packet and a System Message to the L2Character</li><BR>
 	 * <BR>
@@ -614,7 +614,7 @@ public class L2CharacterAI extends AbstractAI
 		// stop Server AutoAttack also
 		setAutoAttacking(false);
 
-		// Stop the actor movement server side AND client side by sending Server->Client packet StopMove/StopRotation (broadcast)
+		// Stop the actor movement server side AND client side by sending Server->Client packet StopMove (broadcast)
 		clientStopMoving(null);
 	}
 
@@ -623,7 +623,7 @@ public class L2CharacterAI extends AbstractAI
 	 * <BR>
 	 * <B><U> Actions</U> :</B><BR>
 	 * <BR>
-	 * <li>Stop the actor movement server side AND client side by sending Server->Client packet StopMove/StopRotation (broadcast)</li>
+	 * <li>Stop the actor movement server side AND client side by sending Server->Client packet StopMove (broadcast)</li>
 	 * <li>Launch actions corresponding to the Event onAttacked</li><BR>
 	 * <BR>
 	 */
@@ -635,7 +635,7 @@ public class L2CharacterAI extends AbstractAI
 		// if (AttackStanceTaskManager.getInstance().getAttackStanceTask(_actor))
 		// AttackStanceTaskManager.getInstance().removeAttackStanceTask(_actor);
 
-		// Stop the actor movement server side AND client side by sending Server->Client packet StopMove/StopRotation (broadcast)
+		// Stop the actor movement server side AND client side by sending Server->Client packet StopMove (broadcast)
 		clientStopMoving(null);
 
 		// Launch actions corresponding to the Event onAttacked
@@ -647,14 +647,14 @@ public class L2CharacterAI extends AbstractAI
 	 * <BR>
 	 * <B><U> Actions</U> :</B><BR>
 	 * <BR>
-	 * <li>Stop the actor movement server side AND client side by sending Server->Client packet StopMove/StopRotation (broadcast)</li>
+	 * <li>Stop the actor movement server side AND client side by sending Server->Client packet StopMove (broadcast)</li>
 	 * <li>Launch actions corresponding to the Event onAttacked</li><BR>
 	 * <BR>
 	 */
 	@Override
 	protected void onEvtConfused(L2Character attacker)
 	{
-		// Stop the actor movement server side AND client side by sending Server->Client packet StopMove/StopRotation (broadcast)
+		// Stop the actor movement server side AND client side by sending Server->Client packet StopMove (broadcast)
 		clientStopMoving(null);
 
 		// Launch actions corresponding to the Event onAttacked
@@ -758,7 +758,7 @@ public class L2CharacterAI extends AbstractAI
 	 * <BR>
 	 * <B><U> Actions</U> :</B><BR>
 	 * <BR>
-	 * <li>Stop the actor movement server side AND client side by sending Server->Client packet StopMove/StopRotation (broadcast)</li>
+	 * <li>Stop the actor movement server side AND client side by sending Server->Client packet StopMove (broadcast)</li>
 	 * <li>If the Intention was AI_INTENTION_MOVE_TO, set the Intention to AI_INTENTION_ACTIVE</li>
 	 * <li>Launch actions corresponding to the Event Think</li><BR>
 	 * <BR>
@@ -766,7 +766,7 @@ public class L2CharacterAI extends AbstractAI
 	@Override
 	protected void onEvtArrivedBlocked(Location loc)
 	{
-		// Stop the actor movement server side AND client side by sending Server->Client packet StopMove/StopRotation (broadcast)
+		// Stop the actor movement server side AND client side by sending Server->Client packet StopMove (broadcast)
 		clientStopMoving(loc);
 
 		// If the Intention was AI_INTENTION_MOVE_TO, set the Intention to AI_INTENTION_ACTIVE
@@ -833,7 +833,7 @@ public class L2CharacterAI extends AbstractAI
 		// Check if the object was targeted to follow
 		if (getFollowTarget() == object)
 		{
-			// Stop the actor movement server side AND client side by sending Server->Client packet StopMove/StopRotation (broadcast)
+			// Stop the actor movement server side AND client side by sending Server->Client packet StopMove (broadcast)
 			clientStopMoving(null);
 
 			// Stop an AI Follow Task
@@ -854,7 +854,7 @@ public class L2CharacterAI extends AbstractAI
 			// Stop an AI Follow Task
 			stopFollow();
 
-			// Stop the actor movement server side AND client side by sending Server->Client packet StopMove/StopRotation (broadcast)
+			// Stop the actor movement server side AND client side by sending Server->Client packet StopMove (broadcast)
 			clientStopMoving(null);
 
 			// Set the Intention of this AbstractAI to AI_INTENTION_IDLE
@@ -894,7 +894,7 @@ public class L2CharacterAI extends AbstractAI
 	 * <B><U> Actions</U> :</B><BR>
 	 * <BR>
 	 * <li>Stop an AI Follow Task</li>
-	 * <li>Kill the actor client side by sending Server->Client packet AutoAttackStop, StopMove/StopRotation, Die (broadcast)</li><BR>
+	 * <li>Kill the actor client side by sending Server->Client packet AutoAttackStop, StopMove, Die (broadcast)</li><BR>
 	 * <BR>
 	 */
 	@Override
@@ -903,7 +903,7 @@ public class L2CharacterAI extends AbstractAI
 		// Stop an AI Task
 		stopAITask();
 
-		// Kill the actor client side by sending Server->Client packet AutoAttackStop, StopMove/StopRotation, Die (broadcast)
+		// Kill the actor client side by sending Server->Client packet AutoAttackStop, StopMove, Die (broadcast)
 		clientNotifyDead();
 
 		if (!(_actor instanceof L2PlayableInstance))
@@ -925,7 +925,7 @@ public class L2CharacterAI extends AbstractAI
 		// Stop an AI Follow Task
 		stopFollow();
 
-		// Stop the actor movement and send Server->Client packet StopMove/StopRotation (broadcast)
+		// Stop the actor movement and send Server->Client packet StopMove (broadcast)
 		clientStopMoving(null);
 
 		// Init AI
@@ -950,13 +950,13 @@ public class L2CharacterAI extends AbstractAI
 	 * <BR>
 	 * <B><U> Actions</U> :</B><BR>
 	 * <BR>
-	 * <li>Stop the actor movement server side AND client side by sending Server->Client packet StopMove/StopRotation (broadcast)</li>
+	 * <li>Stop the actor movement server side AND client side by sending Server->Client packet StopMove (broadcast)</li>
 	 * <BR>
 	 */
 	@Override
 	protected void onEvtImmobilized()
 	{
-		// Stop the actor movement server side AND client side by sending Server->Client packet StopMove/StopRotation (broadcast)
+		// Stop the actor movement server side AND client side by sending Server->Client packet StopMove (broadcast)
 		clientStopMoving(null);
 	}
 	
@@ -977,7 +977,7 @@ public class L2CharacterAI extends AbstractAI
 	 * <BR>
 	 * <li>Get the distance between the current position of the L2Character and the target (x,y)</li>
 	 * <li>If the distance > offset+20, move the actor (by running) to Pawn server side AND client side by sending Server->Client packet MoveToPawn (broadcast)</li>
-	 * <li>If the distance <= offset+20, Stop the actor movement server side AND client side by sending Server->Client packet StopMove/StopRotation (broadcast)</li><BR>
+	 * <li>If the distance <= offset+20, Stop the actor movement server side AND client side by sending Server->Client packet StopMove (broadcast)</li><BR>
 	 * <BR>
 	 * <B><U> Example of use </U> :</B><BR>
 	 * <BR>
@@ -1078,7 +1078,7 @@ public class L2CharacterAI extends AbstractAI
 	 * <B><U> Actions</U> : <I>If the target is lost or dead</I></B><BR>
 	 * <BR>
 	 * <li>Stop the actor auto-attack client side by sending Server->Client packet AutoAttackStop (broadcast)</li>
-	 * <li>Stop the actor movement server side AND client side by sending Server->Client packet StopMove/StopRotation (broadcast)</li>
+	 * <li>Stop the actor movement server side AND client side by sending Server->Client packet StopMove (broadcast)</li>
 	 * <li>Set the Intention of this AbstractAI to AI_INTENTION_ACTIVE</li><BR>
 	 * <BR>
 	 * <B><U> Example of use </U> :</B><BR>
@@ -1121,7 +1121,7 @@ public class L2CharacterAI extends AbstractAI
 	 * <B><U> Actions</U> : <I>If the target is lost</I></B><BR>
 	 * <BR>
 	 * <li>Stop the actor auto-attack client side by sending Server->Client packet AutoAttackStop (broadcast)</li>
-	 * <li>Stop the actor movement server side AND client side by sending Server->Client packet StopMove/StopRotation (broadcast)</li>
+	 * <li>Stop the actor movement server side AND client side by sending Server->Client packet StopMove (broadcast)</li>
 	 * <li>Set the Intention of this AbstractAI to AI_INTENTION_ACTIVE</li><BR>
 	 * <BR>
 	 * <B><U> Example of use </U> :</B><BR>

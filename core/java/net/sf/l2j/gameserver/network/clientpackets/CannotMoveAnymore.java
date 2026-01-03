@@ -18,6 +18,7 @@ import java.util.logging.Logger;
 
 import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.ai.CtrlEvent;
+import net.sf.l2j.gameserver.ai.L2CharacterAI;
 import net.sf.l2j.gameserver.model.Location;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.network.serverpackets.PartyMemberPosition;
@@ -48,30 +49,41 @@ public class CannotMoveAnymore extends L2GameClientPacket
 	@Override
 	public void runImpl()
 	{
-		L2PcInstance player = getClient().getActiveChar();
-		if (player == null)
+		L2PcInstance activeChar = getClient().getActiveChar();
+		if (activeChar == null)
 		{
 			return;
 		}
 		
 		if (Config.DEBUG)
 		{
-			_log.fine("client: x:" + _x + " y:" + _y + " z:" + _z + " server x:" + player.getX() + " y:" + player.getY() + " z:" + player.getZ());
+			_log.fine("client: x: " + _x + " y: " + _y + " z: " + _z + " server x: " + activeChar.getX() + " y: " + activeChar.getY() + " z: " + activeChar.getZ());
 		}
 		
-		if (player.getAI() != null)
+		L2CharacterAI ai = activeChar.getAI();
+		if (ai != null)
 		{
-			player.getAI().notifyEvent(CtrlEvent.EVT_ARRIVED_BLOCKED, new Location(_x, _y, _z, _heading));
+			// This mode will always try to synchronize server with client
+			if (Config.COORD_SYNCHRONIZE == 1)
+			{
+				ai.notifyEvent(CtrlEvent.EVT_ARRIVED_BLOCKED, new Location(_x, _y, _z, _heading));
+			}
+			else
+			{
+				// Let server handle the position stop otherwise
+				ai.notifyEvent(CtrlEvent.EVT_ARRIVED_BLOCKED);
+			}
 		}
 		
-		if (player.getParty() != null)
+		if (activeChar.getParty() != null)
 		{
-			player.getParty().broadcastToPartyMembers(player, new PartyMemberPosition(player));
+			activeChar.getParty().broadcastToPartyMembers(activeChar, new PartyMemberPosition(activeChar));
 		}
 	}
 	
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see net.sf.l2j.gameserver.clientpackets.L2GameClientPacket#getType()
 	 */
 	@Override

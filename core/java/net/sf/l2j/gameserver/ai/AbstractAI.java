@@ -36,7 +36,6 @@ import net.sf.l2j.gameserver.network.serverpackets.CharMoveToLocation;
 import net.sf.l2j.gameserver.network.serverpackets.Die;
 import net.sf.l2j.gameserver.network.serverpackets.MoveToPawn;
 import net.sf.l2j.gameserver.network.serverpackets.StopMove;
-import net.sf.l2j.gameserver.network.serverpackets.StopRotation;
 import net.sf.l2j.gameserver.taskmanager.AttackStanceTaskManager;
 
 /**
@@ -649,7 +648,7 @@ abstract class AbstractAI implements Ctrl
 	}
 	
 	/**
-	 * Stop the actor movement server side AND client side by sending Server->Client packet StopMove/StopRotation <I>(broadcast)</I>.<BR>
+	 * Stop the actor movement server side AND client side by sending Server->Client packet StopMove <I>(broadcast)</I>.<BR>
 	 * <BR>
 	 * <FONT COLOR=#FF0000><B> <U>Caution</U> : Low level function, used by AI subclasses</B></FONT><BR>
 	 * <BR>
@@ -665,18 +664,23 @@ abstract class AbstractAI implements Ctrl
 		
 		_clientMovingToPawnOffset = 0;
 		
-		if (_clientMoving || (loc != null))
+		if (_clientMoving || loc != null)
 		{
 			_clientMoving = false;
 			
 			// Send a Server->Client packet StopMove to the actor and all L2PcInstance in its _knownPlayers
-			_actor.broadcastPacket(new StopMove(_actor));
-			
+			StopMove sm;
+
 			if (loc != null)
 			{
-				// Send a Server->Client packet StopRotation to the actor and all L2PcInstance in its _knownPlayers
-				_actor.broadcastPacket(new StopRotation(_actor.getObjectId(), loc.getHeading(), 0));
+				sm = new StopMove(_actor.getObjectId(), loc.getX(), loc.getY(), loc.getZ(), loc.getHeading());
 			}
+			else
+			{
+				sm = new StopMove(_actor);
+			}
+
+			_actor.broadcastPacket(sm);
 		}
 	}
 	
@@ -776,7 +780,7 @@ abstract class AbstractAI implements Ctrl
 	}
 	
 	/**
-	 * Kill the actor client side by sending Server->Client packet AutoAttackStop, StopMove/StopRotation, Die <I>(broadcast)</I>.<BR>
+	 * Kill the actor client side by sending Server->Client packet AutoAttackStop, StopMove, Die <I>(broadcast)</I>.<BR>
 	 * <BR>
 	 * <FONT COLOR=#FF0000><B> <U>Caution</U> : Low level function, used by AI subclasses</B></FONT><BR>
 	 * <BR>

@@ -4229,7 +4229,7 @@ public abstract class L2Character extends L2Object
 	 * <li>Remove the L2Object object from _gmList** of GmListTable</li>
 	 * <li>Remove object from _knownObjects and _knownPlayer* of all surrounding L2WorldRegion L2Characters</li><BR>
 	 * <BR>
-	 * <FONT COLOR=#FF0000><B> <U>Caution</U> : This method DOESN'T send Server->Client packet StopMove/StopRotation </B></FONT><BR>
+	 * <FONT COLOR=#FF0000><B> <U>Caution</U> : This method DOESN'T send Server->Client packet StopMove </B></FONT><BR>
 	 * <BR>
 	 * @param loc
 	 */
