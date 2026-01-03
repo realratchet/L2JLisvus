@@ -14,50 +14,11 @@
  */
 package net.sf.l2j.gameserver.scripting.scriptengine;
 
-import net.sf.l2j.gameserver.Announcements;
-import net.sf.l2j.gameserver.GameTimeController;
-import net.sf.l2j.gameserver.RecipeController;
-import net.sf.l2j.gameserver.datatables.CharNameTable;
-import net.sf.l2j.gameserver.datatables.CharTemplateTable;
-import net.sf.l2j.gameserver.datatables.ClanTable;
-import net.sf.l2j.gameserver.datatables.ItemTable;
-import net.sf.l2j.gameserver.datatables.MapRegionTable;
-import net.sf.l2j.gameserver.datatables.NpcTable;
-import net.sf.l2j.gameserver.datatables.SkillTable;
-import net.sf.l2j.gameserver.datatables.SkillTreeTable;
-import net.sf.l2j.gameserver.datatables.SpawnTable;
-import net.sf.l2j.gameserver.datatables.TeleportLocationTable;
-import net.sf.l2j.gameserver.idfactory.IdFactory;
-import net.sf.l2j.gameserver.model.L2World;
-
 /**
  * @author Luis Arias
  */
 public interface EngineInterface
 {
-    // Keep the references of Singletons to prevent garbage collection
-    public CharNameTable _charNametable = CharNameTable.getInstance();
-
-    public IdFactory _idFactory = IdFactory.getInstance();
-    public ItemTable _itemTable = ItemTable.getInstance();
-
-    public SkillTable _skillTable = SkillTable.getInstance();
-
-    public RecipeController _recipeController = RecipeController.getInstance();
-
-    public SkillTreeTable _skillTreeTable = SkillTreeTable.getInstance();
-    public CharTemplateTable _charTemplates = CharTemplateTable.getInstance();
-    public ClanTable _clanTable = ClanTable.getInstance();
-
-    public NpcTable _npcTable = NpcTable.getInstance();
-
-    public TeleportLocationTable _teleTable = TeleportLocationTable.getInstance();
-    public L2World _world = L2World.getInstance();   
-    public SpawnTable _spawnTable = SpawnTable.getInstance();
-    public GameTimeController _gameTimeController = GameTimeController.getInstance();
-    public Announcements _announcements = Announcements.getInstance();
-    public MapRegionTable _mapRegions = MapRegionTable.getInstance();
-
     public void addQuestDrop(int npcID, int itemID, int min, int max, int chance, String questID, String[] states);
     public void addEventDrop(int[] items, int[] count, double chance, DateRange range);
     public void onPlayerLogin(DateRange range);

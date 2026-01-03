@@ -21,6 +21,7 @@ import java.util.logging.Logger;
 import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.Announcements;
 import net.sf.l2j.gameserver.EventDroplist;
+import net.sf.l2j.gameserver.datatables.NpcTable;
 import net.sf.l2j.gameserver.model.L2DropCategory;
 import net.sf.l2j.gameserver.model.L2DropData;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
@@ -33,7 +34,7 @@ import net.sf.l2j.gameserver.templates.L2NpcTemplate;
  */
 public class FaenorInterface implements EngineInterface
 {
-	private static final Logger _log = Logger.getLogger(FaenorInterface.class.getName());
+    private static final Logger _log = Logger.getLogger(FaenorInterface.class.getName());
     
     public static FaenorInterface getInstance()
     {
@@ -43,25 +44,25 @@ public class FaenorInterface implements EngineInterface
     public FaenorInterface()
     {
     }
-
-    /* (non-Javadoc)
+    
+    /*
+     * (non-Javadoc)
+     * 
      * @see net.sf.l2j.gameserver.script.EngineInterface#getAllPlayers()
      */
     public List<L2PcInstance> getAllPlayers()
     {
         return null;
     }
-
+    
     /**
-     * 
-     * Adds a new Quest Drop to an NPC
-     * 
+     * Adds a new Quest Drop to an NPC.
      * @see net.sf.l2j.gameserver.scripting.scriptengine.EngineInterface#addQuestDrop(int, int, int, int, int, String, String[])
      */
     @Override
-	public void addQuestDrop(int npcID, int itemID, int min, int max, int chance, String questID, String[] states)
+    public void addQuestDrop(int npcID, int itemID, int min, int max, int chance, String questID, String[] states)
     {
-        L2NpcTemplate npc = _npcTable.getTemplate(npcID);
+        L2NpcTemplate npc = NpcTable.getInstance().getTemplate(npcID);
         if (npc == null)
         {
             throw new NullPointerException();
@@ -75,27 +76,25 @@ public class FaenorInterface implements EngineInterface
         drop.addStates(states);
         addDrop(npc, drop, false);
     }
-
+    
     /**
-     * 
-     * Adds a new Drop to an NPC
-     * @param npcID 
-     * @param itemID 
-     * @param min 
-     * @param max 
-     * @param sweep 
-     * @param chance 
-     * @throws NullPointerException 
-     * 
+     * Adds a new Drop to an NPC.
+     * @param npcID
+     * @param itemID
+     * @param min
+     * @param max
+     * @param sweep
+     * @param chance
+     * @throws NullPointerException
      * @see net.sf.l2j.gameserver.scripting.scriptengine.EngineInterface#addQuestDrop(int, int, int, int, int, String, String[])
      */
     public void addDrop(int npcID, int itemID, int min, int max, boolean sweep, int chance) throws NullPointerException
     {
-        L2NpcTemplate npc = _npcTable.getTemplate(npcID);
+        L2NpcTemplate npc = NpcTable.getInstance().getTemplate(npcID);
         if (npc == null)
         {
             if (Config.DEBUG)
-            	_log.info("NPC does not Exist");
+                _log.info("NPC does not Exist");
             throw new NullPointerException();
         }
         L2DropData drop = new L2DropData();
@@ -103,64 +102,62 @@ public class FaenorInterface implements EngineInterface
         drop.setMinDrop(min);
         drop.setMaxDrop(max);
         drop.setChance(chance);
-
+        
         addDrop(npc, drop, sweep);
     }
     
-	/**
-	 * Adds a new drop to an NPC.  If the drop is sweep, it adds it to the NPC's Sweep category
-	 * If the drop is non-sweep, it creates a new category for this drop. 
-	 *  
-	 * @param npc
-	 * @param drop
-	 * @param sweep
-	 */
+    /**
+     * Adds a new drop to an NPC. If the drop is sweep, it adds it to the NPC's Sweep category.
+     * If the drop is non-sweep, it creates a new category for this drop.
+     * @param npc
+     * @param drop
+     * @param sweep
+     */
     public void addDrop(L2NpcTemplate npc, L2DropData drop, boolean sweep)
     {
-    	if(sweep)
-    		addDrop(npc, drop,-1);
-    	else
-    	{
-        	int maxCategory = -1;
-
+        if (sweep)
+            addDrop(npc, drop, -1);
+        else
+        {
+            int maxCategory = -1;
+            
             if (npc.getDropData() != null)
             {
-	    	    for (L2DropCategory cat : npc.getDropData())
-	    	    {
-	    	    	if (maxCategory<cat.getCategoryType())
-	                    maxCategory = cat.getCategoryType();
-	    	    }
+                for (L2DropCategory cat : npc.getDropData())
+                {
+                    if (maxCategory < cat.getCategoryType())
+                        maxCategory = cat.getCategoryType();
+                }
             }
-	    	maxCategory++;
-	    	npc.addDropData(drop, maxCategory);
-    	}
+            maxCategory++;
+            npc.addDropData(drop, maxCategory);
+        }
     }
-
-	/**
-	 * Adds a new drop to an NPC, in the specified category.  If the category does not exist, 
-	 * it is created.  
-	 *  
-	 * @param npc
-	 * @param drop
-	 * @param category
-	 */
+    
+    /**
+     * Adds a new drop to an NPC, in the specified category.
+     * If the category does not exist, it is created.
+     * @param npc
+     * @param drop
+     * @param category
+     */
     public void addDrop(L2NpcTemplate npc, L2DropData drop, int category)
     {
-    	npc.addDropData(drop, category);
+        npc.addDropData(drop, category);
     }
-
+    
     /**
-     * @param npcID 
+     * @param npcID
      * @return Returns the _questDrops.
      */
     public List<L2DropData> getQuestDrops(int npcID)
     {
-        L2NpcTemplate npc = _npcTable.getTemplate(npcID);
+        L2NpcTemplate npc = NpcTable.getInstance().getTemplate(npcID);
         if (npc == null)
         {
             return null;
         }
-
+        
         List<L2DropData> questDrops = new ArrayList<>();
         if (npc.getDropData() != null)
         {
@@ -177,19 +174,19 @@ public class FaenorInterface implements EngineInterface
     }
     
     @Override
-	public void addEventDrop(int[] items, int[] count, double chance, DateRange range)
+    public void addEventDrop(int[] items, int[] count, double chance, DateRange range)
     {
-        EventDroplist.getInstance().addGlobalDrop(items, count, (int)(chance * L2DropData.MAX_CHANCE), range);
+        EventDroplist.getInstance().addGlobalDrop(items, count, (int) (chance * L2DropData.MAX_CHANCE), range);
     }
     
     @Override
-	public void onPlayerLogin(DateRange validDateRange)
+    public void onPlayerLogin(DateRange validDateRange)
     {
         Announcements.getInstance().addEventAnnouncement(validDateRange);
     }
     
     private static class SingletonHolder
-	{
-		protected static final FaenorInterface _instance = new FaenorInterface();
-	}
+    {
+        protected static final FaenorInterface _instance = new FaenorInterface();
+    }
 }
