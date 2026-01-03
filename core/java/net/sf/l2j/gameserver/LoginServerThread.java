@@ -317,7 +317,7 @@ public class LoginServerThread extends Thread
 								{
 									if (Config.DEBUG)
 									{
-										_log.info("Login accepted player " + wcToRemove.account + " waited(" + (GameTimeController.getInstance().getGameTicks() - wcToRemove.timestamp) + "ms)");
+										_log.info("Login accepted player " + wcToRemove.account + " (waited " + (System.currentTimeMillis() - wcToRemove.timestamp) + " ms)");
 									}
 									PlayerInGame pig = new PlayerInGame(par.getAccount());
 									sendPacket(pig);
@@ -666,15 +666,15 @@ public class LoginServerThread extends Thread
 
 	private class WaitingClient
 	{
-		public int timestamp;
-		public String account;
-		public L2GameClient gameClient;
-		public SessionKey session;
+		public final long timestamp;
+		public final String account;
+		public final L2GameClient gameClient;
+		public final SessionKey session;
 
 		public WaitingClient(String acc, L2GameClient client, SessionKey key)
 		{
 			account = acc;
-			timestamp = GameTimeController.getInstance().getGameTicks();
+			timestamp = System.currentTimeMillis();
 			gameClient = client;
 			session = key;
 		}
