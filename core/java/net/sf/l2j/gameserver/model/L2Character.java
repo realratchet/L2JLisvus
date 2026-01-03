@@ -4403,8 +4403,8 @@ public abstract class L2Character extends L2Object
 		
 		// Apply attack/follow range offset after geodata checks have been done.
 		// This ensures that we don't end up with a new location inside a wall.
-		int offsetX;
-		int offsetY;
+		int calculatedDestX;
+		int calculatedDestY;
 		
 		// Check if a movement offset is defined or no distance to go through
 		if ((offset > 0) || (distance < 1))
@@ -4435,16 +4435,16 @@ public abstract class L2Character extends L2Object
 			
 			distance -= (offset - 5); // due to rounding error, we have to move a bit closer to be in range
 			
-			offsetX = (int) (distance * cos);
-			offsetY = (int) (distance * sin);
+			calculatedDestX = curX + (int) (distance * cos);
+			calculatedDestY = curY + (int) (distance * sin);
 		}
 		else
 		{
 			// Calculate movement angles needed
 			sin = dy / distance;
 			cos = dx / distance;
-			offsetX = 0;
-			offsetY = 0;
+			calculatedDestX = x;
+			calculatedDestY = y;
 		}
 		
 		// Create and Init a MoveData object
@@ -4463,12 +4463,12 @@ public abstract class L2Character extends L2Object
 				m.disregardingGeodata = true;
 			}
 			
-			double originalDistance = distance;
-			int originalX = x;
-			int originalY = y;
-			int originalZ = z;
-			int gtx = (originalX - L2World.MAP_MIN_X) >> 4;
-			int gty = (originalY - L2World.MAP_MIN_Y) >> 4;
+			final double originalDistance = distance;
+			final int originalX = x;
+			final int originalY = y;
+			final int originalZ = z;
+			final int gtx = (calculatedDestX - L2World.MAP_MIN_X) >> 4;
+			final int gty = (calculatedDestY - L2World.MAP_MIN_Y) >> 4;
 			
 			// Movement checks:
 			// when PATHFINDING > 0, for all characters except mobs returning home (could be changed later to teleport if pathfinding fails)
@@ -4535,9 +4535,9 @@ public abstract class L2Character extends L2Object
 						// No path found
 						boolean disregardingGeodata = m.geoPath == null || m.geoPath.isEmpty();
 
-						// Apply offset early enough for geodata disregarding move check to make use of it
-						x = offsetX > 0 ? curX + offsetX : originalX;
-						y = offsetY > 0 ? curY + offsetY : originalY;
+						// Update destination offset early enough for geodata disregarding move check to make use of it
+						x = calculatedDestX;
+						y = calculatedDestY;
 						z = originalZ;
 						
 						if (disregardingGeodata)
@@ -4566,8 +4566,8 @@ public abstract class L2Character extends L2Object
 						m.onGeodataPathIndex = 0; // on first segment
 						m.geoPathGtx = gtx;
 						m.geoPathGty = gty;
-						m.geoPathAccurateTx = offsetX > 0 ? curX + offsetX : originalX;
-						m.geoPathAccurateTy = offsetY > 0 ? curY + offsetY : originalY;
+						m.geoPathAccurateTx = calculatedDestX;
+						m.geoPathAccurateTy = calculatedDestY;
 						
 						x = m.geoPath.get(m.onGeodataPathIndex).getX();
 						y = m.geoPath.get(m.onGeodataPathIndex).getY();
