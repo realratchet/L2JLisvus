@@ -1753,7 +1753,7 @@ public abstract class L2Character extends L2Object
 		getNotifyQuestOfDeath().clear();
 		return true;
 	}
-
+	
 	public void deleteMe()
 	{
 		if (hasAI())
@@ -1808,12 +1808,12 @@ public abstract class L2Character extends L2Object
 	{
 		doRevive();
 	}
-
+	
 	public L2CharacterAI initAI()
 	{
 		return new L2CharacterAI(new AIAccessor());
 	}
-
+	
 	/**
 	 * Return the L2CharacterAI of the L2Character and if its null create a new one.
 	 * @return
@@ -4133,10 +4133,14 @@ public abstract class L2Character extends L2Object
 			distFraction = distPassed / delta;
 		}
 		
+		int xNext, yNext, zNext;
+		
 		if (distFraction > 1) // already there
 		{
 			// Set the position of the L2Character to the destination
-			super.getPosition().setXYZ(m._xDestination, m._yDestination, m._zDestination);
+			xNext = m._xDestination;
+			yNext = m._yDestination;
+			zNext = m._zDestination;
 		}
 		else
 		{
@@ -4144,8 +4148,18 @@ public abstract class L2Character extends L2Object
 			m._yAccurate += dy * distFraction;
 			
 			// Set the position of the L2Character to estimated after partial move
-			super.getPosition().setXYZ((int) (m._xAccurate), (int) (m._yAccurate), zPrev + (int) ((dz * distFraction) + 0.5));
+			xNext = (int) (m._xAccurate);
+			yNext = (int) (m._yAccurate);
+			zNext = zPrev + (int) ((dz * distFraction) + 0.5);
 		}
+		
+		if (!isFloating && !GeoData.getInstance().canMove(xPrev, yPrev, zPrev, xNext, yNext, zNext))
+		{
+			fireArrivedEvent(true);
+			return true;
+		}
+		
+		super.getPosition().setXYZ(xNext, yNext, zNext);
 		
 		revalidateZone(false);
 		
@@ -4154,27 +4168,31 @@ public abstract class L2Character extends L2Object
 		
 		if (distFraction > 1)
 		{
-			ThreadPoolManager.getInstance().executeAi(() -> {
-				try
-				{
-					if (Config.MOVE_BASED_KNOWNLIST)
-					{
-						getKnownList().findObjects();
-						getKnownList().forgetObjects(true);
-					}
-					
-					getAI().notifyEvent(CtrlEvent.EVT_ARRIVED);
-				}
-				catch (Throwable t)
-				{
-					_log.log(Level.WARNING, "", t);
-				}
-			});
-			
+			fireArrivedEvent(false);
 			return true;
 		}
 		
 		return false;
+	}
+	
+	private void fireArrivedEvent(boolean isBlocked)
+	{
+		ThreadPoolManager.getInstance().executeAi(() -> {
+			try
+			{
+				if (Config.MOVE_BASED_KNOWNLIST)
+				{
+					getKnownList().findObjects();
+					getKnownList().forgetObjects(true);
+				}
+				
+				getAI().notifyEvent(isBlocked ? CtrlEvent.EVT_ARRIVED_BLOCKED : CtrlEvent.EVT_ARRIVED);
+			}
+			catch (Throwable t)
+			{
+				_log.log(Level.WARNING, "", t);
+			}
+		});
 	}
 	
 	public void revalidateZone(boolean force)
@@ -4189,13 +4207,13 @@ public abstract class L2Character extends L2Object
 		if (!force)
 		{
 			_zoneValidateCounter--;
-
+			
 			if (_zoneValidateCounter >= 0)
 			{
 				return;
 			}
 		}
-
+		
 		_zoneValidateCounter = 4;
 		
 		getWorldRegion().revalidateZones(this);
@@ -4383,6 +4401,11 @@ public abstract class L2Character extends L2Object
 		double cos;
 		double sin;
 		
+		// Apply attack/follow range offset after geodata checks have been done.
+		// This ensures that we don't end up with a new location inside a wall.
+		int offsetX;
+		int offsetY;
+		
 		// Check if a movement offset is defined or no distance to go through
 		if ((offset > 0) || (distance < 1))
 		{
@@ -4412,15 +4435,16 @@ public abstract class L2Character extends L2Object
 			
 			distance -= (offset - 5); // due to rounding error, we have to move a bit closer to be in range
 			
-			// Calculate the new destination with offset included
-			x = curX + (int) (distance * cos);
-			y = curY + (int) (distance * sin);
+			offsetX = (int) (distance * cos);
+			offsetY = (int) (distance * sin);
 		}
 		else
 		{
 			// Calculate movement angles needed
 			sin = dy / distance;
 			cos = dx / distance;
+			offsetX = 0;
+			offsetY = 0;
 		}
 		
 		// Create and Init a MoveData object
@@ -4450,19 +4474,15 @@ public abstract class L2Character extends L2Object
 			// when PATHFINDING > 0, for all characters except mobs returning home (could be changed later to teleport if pathfinding fails)
 			if (((Config.PATHFINDING > 0) && (!((this instanceof L2Attackable) && ((L2Attackable) this).isReturningToSpawnPoint()))) || ((this instanceof L2PcInstance) && !(isInBoat && (distance > 1500))) || isAfraid() || (this instanceof L2RiftInvaderInstance) || ((this instanceof L2Summon) && !(getAI().getIntention() == CtrlIntention.AI_INTENTION_FOLLOW)))
 			{
-				if (isOnGeodataPath())
+				final MoveData currentMove = _move;
+				
+				if (currentMove != null && isOnGeodataPath())
 				{
-					try
+					if ((gtx == currentMove.geoPathGtx) && (gty == currentMove.geoPathGty))
 					{
-						if ((gtx == _move.geoPathGtx) && (gty == _move.geoPathGty))
-						{
-							return false;
-						}
-						_move.onGeodataPathIndex = -1; // Set not on geodata path
+						return false;
 					}
-					catch (NullPointerException e)
-					{
-					}
+					currentMove.onGeodataPathIndex = -1; // Set not on geodata path
 				}
 				
 				if ((curX < L2World.MAP_MIN_X) || (curX > L2World.MAP_MAX_X) || (curY < L2World.MAP_MIN_Y) || (curY > L2World.MAP_MAX_Y))
@@ -4474,13 +4494,12 @@ public abstract class L2Character extends L2Object
 					{
 						((L2PcInstance) this).logout();
 					}
-					else if (this instanceof L2Summon)
-					{
-						return false;
-					}
 					else
 					{
-						onDecay();
+						if (!(this instanceof L2Summon))
+						{
+							onDecay();
+						}
 					}
 					return false;
 				}
@@ -4509,38 +4528,46 @@ public abstract class L2Character extends L2Object
 				if (((this instanceof L2PlayableInstance) && !isInBoat) || isInCombat() || (this instanceof L2MinionInstance))
 				{
 					m.geoPath = PathFinding.getInstance().findPath(curX, curY, curZ, originalX, originalY, originalZ, this instanceof L2PlayableInstance);
-					if (m.geoPath == null || m.geoPath.size() < 2) // No path found
+					
+					// No path found or could be a straight path
+					if (m.geoPath == null || m.geoPath.size() < 2)
 					{
-						// Even though there's no path found (remember geonodes aren't perfect),
-						// the mob is attacking and right now we set it so that the mob will go
-						// after target anyway, if dz is small enough. Summons will follow their masters no matter what.
-						if ((this instanceof L2PcInstance) || (!(this instanceof L2PlayableInstance) && !(this instanceof L2MinionInstance) && (Math.abs(z - curZ) > 140)) || ((this instanceof L2Summon) && !((L2Summon) this).getFollowStatus()))
-						{
-							final Location dest = GeoData.getInstance().moveCheck(curX, curY, curZ, x, y, z);
+						// No path found
+						boolean disregardingGeodata = m.geoPath == null || m.geoPath.isEmpty();
 
-							// Attempt to move to geo location provided that it's not the current location.
-							// Ignoring Z is fine as this is ground movement and it can't be the only different axis.
-							if (dest.getX() != curX || dest.getY() != curY)
+						// Apply offset early enough for geodata disregarding move check to make use of it
+						x = offsetX > 0 ? curX + offsetX : originalX;
+						y = offsetY > 0 ? curY + offsetY : originalY;
+						z = originalZ;
+						
+						if (disregardingGeodata)
+						{
+							// Even though there's no path found (remember geonodes aren't perfect),
+							// the mob is attacking and right now we set it so that the mob will go
+							// after target anyway, if dz is small enough. Summons will follow their masters no matter what.
+							if ((this instanceof L2PcInstance) || (!(this instanceof L2PlayableInstance) && !(this instanceof L2MinionInstance) && (Math.abs(z - curZ) > 140)) || ((this instanceof L2Summon) && !((L2Summon) this).getFollowStatus()))
 							{
+								final Location dest = GeoData.getInstance().moveCheck(curX, curY, curZ, x, y, z);
 								getAI().setIntention(CtrlIntention.AI_INTENTION_MOVE_TO, dest);
 								return false;
 							}
+							
+							m.disregardingGeodata = true;
 						}
-
-						m.disregardingGeodata = true;
-						x = originalX;
-						y = originalY;
-						z = originalZ;
+						else
+						{
+							m.disregardingGeodata = false;
+						}
+						
 						distance = originalDistance;
 					}
 					else
 					{
-						
 						m.onGeodataPathIndex = 0; // on first segment
 						m.geoPathGtx = gtx;
 						m.geoPathGty = gty;
-						m.geoPathAccurateTx = originalX;
-						m.geoPathAccurateTy = originalY;
+						m.geoPathAccurateTx = offsetX > 0 ? curX + offsetX : originalX;
+						m.geoPathAccurateTy = offsetY > 0 ? curY + offsetY : originalY;
 						
 						x = m.geoPath.get(m.onGeodataPathIndex).getX();
 						y = m.geoPath.get(m.onGeodataPathIndex).getY();
@@ -4554,7 +4581,7 @@ public abstract class L2Character extends L2Object
 							return false;
 						}
 						
-						for (int i = 0; i < (m.geoPath.size() - 1); i++)
+						for (int i = 0, length = (m.geoPath.size() - 1); i < length; i++)
 						{
 							if (DoorTable.getInstance().checkIfDoorsBetween(m.geoPath.get(i), m.geoPath.get(i + 1)))
 							{
@@ -4575,7 +4602,7 @@ public abstract class L2Character extends L2Object
 			}
 			
 			// If no distance to go through, the movement is cancelled
-			if ((distance < 1) && ((Config.PATHFINDING > 0) || (this instanceof L2PlayableInstance) || isAfraid() || (this instanceof L2RiftInvaderInstance)))
+			if (distance < 1 && (Config.PATHFINDING > 0 || this instanceof L2PlayableInstance || isAfraid() || this instanceof L2RiftInvaderInstance))
 			{
 				if (this instanceof L2Summon)
 				{
@@ -4652,8 +4679,8 @@ public abstract class L2Character extends L2Object
 			return false;
 		}
 		
-		MoveData md = _move;
-		if (md == null)
+		MoveData currentMove = _move;
+		if (currentMove == null)
 		{
 			return false;
 		}
@@ -4662,25 +4689,26 @@ public abstract class L2Character extends L2Object
 		MoveData m = new MoveData();
 		
 		// Update MoveData object
-		m.onGeodataPathIndex = md.onGeodataPathIndex + 1; // next segment
-		m.geoPath = md.geoPath;
-		m.geoPathGtx = md.geoPathGtx;
-		m.geoPathGty = md.geoPathGty;
-		m.geoPathAccurateTx = md.geoPathAccurateTx;
-		m.geoPathAccurateTy = md.geoPathAccurateTy;
+		m.onGeodataPathIndex = currentMove.onGeodataPathIndex + 1; // next segment
+		m.geoPath = currentMove.geoPath;
+		m.geoPathGtx = currentMove.geoPathGtx;
+		m.geoPathGty = currentMove.geoPathGty;
+		m.geoPathAccurateTx = currentMove.geoPathAccurateTx;
+		m.geoPathAccurateTy = currentMove.geoPathAccurateTy;
 		
-		if (md.onGeodataPathIndex == (md.geoPath.size() - 2))
+		if (currentMove.onGeodataPathIndex == (currentMove.geoPath.size() - 2))
 		{
-			m._xDestination = md.geoPathAccurateTx;
-			m._yDestination = md.geoPathAccurateTy;
-			m._zDestination = md.geoPath.get(m.onGeodataPathIndex).getZ();
+			m._xDestination = currentMove.geoPathAccurateTx;
+			m._yDestination = currentMove.geoPathAccurateTy;
+			m._zDestination = currentMove.geoPath.get(m.onGeodataPathIndex).getZ();
 		}
 		else
 		{
-			m._xDestination = md.geoPath.get(m.onGeodataPathIndex).getX();
-			m._yDestination = md.geoPath.get(m.onGeodataPathIndex).getY();
-			m._zDestination = md.geoPath.get(m.onGeodataPathIndex).getZ();
+			m._xDestination = currentMove.geoPath.get(m.onGeodataPathIndex).getX();
+			m._yDestination = currentMove.geoPath.get(m.onGeodataPathIndex).getY();
+			m._zDestination = currentMove.geoPath.get(m.onGeodataPathIndex).getZ();
 		}
+		
 		double dx = (m._xDestination - super.getX());
 		double dy = (m._yDestination - super.getY());
 		double distance = Math.sqrt((dx * dx) + (dy * dy));
@@ -4725,7 +4753,7 @@ public abstract class L2Character extends L2Object
 		
 		return true;
 	}
-
+	
 	public void setMoveData(MoveData m)
 	{
 		_move = m;
