@@ -547,16 +547,16 @@ abstract class AbstractAI implements Ctrl
 			clientActionFailed();
 			return;
 		}
-
+		
 		if (offset < 10)
 		{
 			offset = 10;
 		}
-
+		
 		// prevent possible extra calls to this function (there is none?),
 		// also don't send movetopawn packets too often
 		boolean sendPacket = true;
-
+		
 		if (_clientMoving && (_target == pawn))
 		{
 			if (_clientMovingToPawnOffset == offset)
@@ -661,27 +661,28 @@ abstract class AbstractAI implements Ctrl
 		{
 			_accessor.stopMove(loc);
 		}
-		
-		_clientMovingToPawnOffset = 0;
-		
-		if (_clientMoving || loc != null)
+		else
 		{
-			_clientMoving = false;
-			
-			// Send a Server->Client packet StopMove to the actor and all L2PcInstance in its _knownPlayers
-			StopMove sm;
-
-			if (loc != null)
+			if (_clientMoving || loc != null)
 			{
-				sm = new StopMove(_actor.getObjectId(), loc.getX(), loc.getY(), loc.getZ(), loc.getHeading());
+				// Send a Server->Client packet StopMove to the actor and all L2PcInstance in its _knownPlayers
+				StopMove sm;
+				
+				if (loc != null)
+				{
+					sm = new StopMove(_actor.getObjectId(), loc.getX(), loc.getY(), loc.getZ(), loc.getHeading());
+				}
+				else
+				{
+					sm = new StopMove(_actor);
+				}
+				
+				_actor.broadcastPacket(sm);
 			}
-			else
-			{
-				sm = new StopMove(_actor);
-			}
-
-			_actor.broadcastPacket(sm);
 		}
+
+		_clientMovingToPawnOffset = 0;
+		_clientMoving = false;
 	}
 	
 	// Client has already arrived to target, no need to force StopMove packet
