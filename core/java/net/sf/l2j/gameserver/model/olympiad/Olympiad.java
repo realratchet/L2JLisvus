@@ -65,40 +65,7 @@ public class Olympiad
     private static final String OLYMPIAD_DELETE_ALL = "TRUNCATE olympiad_nobles";
     private static final String OLYMPIAD_MONTH_CLEAR = "TRUNCATE olympiad_nobles_eom";
     private static final String OLYMPIAD_MONTH_CREATE = "INSERT INTO olympiad_nobles_eom SELECT * FROM olympiad_nobles";
-    private static final int[] HERO_IDS =
-    {
-        88,
-        89,
-        90,
-        91,
-        92,
-        93,
-        94,
-        95,
-        96,
-        97,
-        98,
-        99,
-        100,
-        101,
-        102,
-        103,
-        104,
-        105,
-        106,
-        107,
-        108,
-        109,
-        110,
-        111,
-        112,
-        113,
-        114,
-        115,
-        116,
-        117,
-        118
-    };
+    private static final int[] HERO_IDS = { 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118 };
     
     private static final int COMP_START = Config.ALT_OLY_START_TIME; // 8PM
     private static final int COMP_MIN = Config.ALT_OLY_MIN; // 00 mins
@@ -133,7 +100,7 @@ public class Olympiad
     protected long _nextWeeklyChange = 0;
     
     private long _compEnd;
-    private Calendar _compStart;
+    private long _compStart;
     
     public static final byte NONE = 0;
     public static final byte REGISTER = 1;
@@ -186,16 +153,18 @@ public class Olympiad
             _log.warning("Olympiad System: Error loading olympiad data from database: " + e);
         }
         
+        long currentTimeMillis = System.currentTimeMillis();
+        
         switch (_period)
         {
             case 0:
-                if (_olympiadEnd == 0 || _olympiadEnd < Calendar.getInstance().getTimeInMillis())
+                if (_olympiadEnd == 0 || _olympiadEnd < currentTimeMillis)
                     setNewOlympiadEnd();
                 else
                     scheduleWeeklyChange();
                 break;
             case 1:
-                if (_validationEnd > Calendar.getInstance().getTimeInMillis())
+                if (_validationEnd > currentTimeMillis)
                 {
                     loadNoblesRank();
                     _scheduledValidationTask = ThreadPoolManager.getInstance().scheduleGeneral(new ValidationEndTask(), getMillisToValidationEnd());
@@ -237,46 +206,44 @@ public class Olympiad
             e.printStackTrace();
         }
         
-        synchronized (this)
+        _log.info("Olympiad System: Loading Olympiad System....");
+        
+        if (_period == 0)
+            _log.info("Olympiad System: Currently in Olympiad Period");
+        else
+            _log.info("Olympiad System: Currently in Validation Period");
+        
+        _log.info("Olympiad System: Period Ends....");
+        
+        long milliToEnd;
+        if (_period == 0)
+            milliToEnd = getMillisToOlympiadEnd();
+        else
+            milliToEnd = getMillisToValidationEnd();
+        
+        double numSecs = (milliToEnd / 1000) % 60;
+        double countDown = ((milliToEnd / 1000) - numSecs) / 60;
+        int numMins = (int) Math.floor(countDown % 60);
+        countDown = (countDown - numMins) / 60;
+        int numHours = (int) Math.floor(countDown % 24);
+        int numDays = (int) Math.floor((countDown - numHours) / 24);
+        
+        _log.info("Olympiad System: In " + numDays + " days, " + numHours + " hours and " + numMins + " mins.");
+        
+        if (_period == 0)
         {
-            _log.info("Olympiad System: Loading Olympiad System....");
-            if (_period == 0)
-                _log.info("Olympiad System: Currently in Olympiad Period");
-            else
-                _log.info("Olympiad System: Currently in Validation Period");
+            _log.info("Olympiad System: Next Weekly Change is in....");
             
-            _log.info("Olympiad System: Period Ends....");
+            milliToEnd = getMillisToWeekChange();
             
-            long milliToEnd;
-            if (_period == 0)
-                milliToEnd = getMillisToOlympiadEnd();
-            else
-                milliToEnd = getMillisToValidationEnd();
+            double numSecs2 = (milliToEnd / 1000) % 60;
+            double countDown2 = ((milliToEnd / 1000) - numSecs2) / 60;
+            int numMins2 = (int) Math.floor(countDown2 % 60);
+            countDown2 = (countDown2 - numMins2) / 60;
+            int numHours2 = (int) Math.floor(countDown2 % 24);
+            int numDays2 = (int) Math.floor((countDown2 - numHours2) / 24);
             
-            double numSecs = (milliToEnd / 1000) % 60;
-            double countDown = ((milliToEnd / 1000) - numSecs) / 60;
-            int numMins = (int) Math.floor(countDown % 60);
-            countDown = (countDown - numMins) / 60;
-            int numHours = (int) Math.floor(countDown % 24);
-            int numDays = (int) Math.floor((countDown - numHours) / 24);
-            
-            _log.info("Olympiad System: In " + numDays + " days, " + numHours + " hours and " + numMins + " mins.");
-            
-            if (_period == 0)
-            {
-                _log.info("Olympiad System: Next Weekly Change is in....");
-                
-                milliToEnd = getMillisToWeekChange();
-                
-                double numSecs2 = (milliToEnd / 1000) % 60;
-                double countDown2 = ((milliToEnd / 1000) - numSecs2) / 60;
-                int numMins2 = (int) Math.floor(countDown2 % 60);
-                countDown2 = (countDown2 - numMins2) / 60;
-                int numHours2 = (int) Math.floor(countDown2 % 24);
-                int numDays2 = (int) Math.floor((countDown2 - numHours2) / 24);
-                
-                _log.info("Olympiad System: " + numDays2 + " days, " + numHours2 + " hours and " + numMins2 + " mins.");
-            }
+            _log.info("Olympiad System: " + numDays2 + " days, " + numHours2 + " hours and " + numMins2 + " mins.");
         }
         
         _log.info("Olympiad System: Loaded " + _nobles.size() + " nobles");
@@ -334,10 +301,24 @@ public class Olympiad
         if (_period == 1)
             return;
         
-        _compStart = Calendar.getInstance();
-        _compStart.set(Calendar.HOUR_OF_DAY, COMP_START);
-        _compStart.set(Calendar.MINUTE, COMP_MIN);
-        _compEnd = _compStart.getTimeInMillis() + COMP_PERIOD;
+        long currentTimeMillis = System.currentTimeMillis();
+        
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.HOUR_OF_DAY, COMP_START);
+        cal.set(Calendar.MINUTE, COMP_MIN);
+        // This is a workaround for servers that start olympiad before the end of day and end it at the next day
+        cal.add(Calendar.DAY_OF_MONTH, -1);
+        
+        _compStart = cal.getTimeInMillis();
+        _compEnd = _compStart + COMP_PERIOD;
+        
+        // The competition has already ended
+        if (_compEnd <= currentTimeMillis)
+        {
+            cal.add(Calendar.DAY_OF_MONTH, 1);
+            _compStart = cal.getTimeInMillis();
+            _compEnd = _compStart + COMP_PERIOD;
+        }
         
         if (_scheduledOlympiadEnd != null)
         {
@@ -347,6 +328,8 @@ public class Olympiad
         _scheduledOlympiadEnd = ThreadPoolManager.getInstance().scheduleGeneral(new OlympiadEndTask(), getMillisToOlympiadEnd());
         
         updateCompStatus();
+        
+        _log.info("Olympiad System: Event starts/started : " + cal.getTime());
     }
     
     protected class OlympiadEndTask implements Runnable
@@ -376,8 +359,7 @@ public class Olympiad
             
             updateMonthlyData();
             
-            Calendar validationEnd = Calendar.getInstance();
-            _validationEnd = validationEnd.getTimeInMillis() + VALIDATION_PERIOD;
+            _validationEnd = System.currentTimeMillis() + VALIDATION_PERIOD;
             
             loadNoblesRank();
             
@@ -632,20 +614,16 @@ public class Olympiad
     
     private void updateCompStatus()
     {
-        synchronized (this)
-        {
-            long milliToStart = getMillisToCompBegin();
-            
-            double numSecs = (milliToStart / 1000) % 60;
-            double countDown = ((milliToStart / 1000) - numSecs) / 60;
-            int numMins = (int) Math.floor(countDown % 60);
-            countDown = (countDown - numMins) / 60;
-            int numHours = (int) Math.floor(countDown % 24);
-            int numDays = (int) Math.floor((countDown - numHours) / 24);
-            
-            _log.info("Olympiad System: Competition Period Starts in " + numDays + " days, " + numHours + " hours and " + numMins + " mins.");
-            _log.info("Olympiad System: Event starts/started : " + _compStart.getTime());
-        }
+        long milliToStart = getMillisToCompBegin();
+        
+        double numSecs = (milliToStart / 1000) % 60;
+        double countDown = ((milliToStart / 1000) - numSecs) / 60;
+        int numMins = (int) Math.floor(countDown % 60);
+        countDown = (countDown - numMins) / 60;
+        int numHours = (int) Math.floor(countDown % 24);
+        int numDays = (int) Math.floor((countDown - numHours) / 24);
+        
+        _log.info("Olympiad System: Competition Period Starts in " + numDays + " days, " + numHours + " hours and " + numMins + " mins.");
         
         ThreadPoolManager.getInstance().scheduleGeneral(new Runnable()
         {
@@ -705,6 +683,7 @@ public class Olympiad
                             {
                             }
                         }
+                        
                         save();
                         init();
                     }
@@ -715,7 +694,7 @@ public class Olympiad
     
     private long getMillisToOlympiadEnd()
     {
-        return (_olympiadEnd - Calendar.getInstance().getTimeInMillis());
+        return (_olympiadEnd - System.currentTimeMillis());
     }
     
     public void manualSelectHeroes()
@@ -728,9 +707,8 @@ public class Olympiad
     
     protected long getMillisToValidationEnd()
     {
-        if (_validationEnd > Calendar.getInstance().getTimeInMillis())
-            return (_validationEnd - Calendar.getInstance().getTimeInMillis());
-        return 10L;
+        long currentTimeMillis = System.currentTimeMillis();
+        return _validationEnd > currentTimeMillis ? (_validationEnd - currentTimeMillis) : 10L;
     }
     
     public boolean isOlympiadEnd()
@@ -754,8 +732,7 @@ public class Olympiad
         currentTime.set(Calendar.SECOND, 0);
         _olympiadEnd = currentTime.getTimeInMillis();
         
-        Calendar nextChange = Calendar.getInstance();
-        _nextWeeklyChange = nextChange.getTimeInMillis() + WEEKLY_PERIOD;
+        _nextWeeklyChange = System.currentTimeMillis() + WEEKLY_PERIOD;
         scheduleWeeklyChange();
     }
     
@@ -766,38 +743,45 @@ public class Olympiad
     
     private long getMillisToCompBegin()
     {
-        if (_compStart.getTimeInMillis() < Calendar.getInstance().getTimeInMillis() && _compEnd > Calendar.getInstance().getTimeInMillis())
-            return 10L;
+        long currentTimeMillis = System.currentTimeMillis();
         
-        if (_compStart.getTimeInMillis() > Calendar.getInstance().getTimeInMillis())
-            return (_compStart.getTimeInMillis() - Calendar.getInstance().getTimeInMillis());
+        if (_compStart < currentTimeMillis && _compEnd > currentTimeMillis)
+        {
+            return 10L;
+        }
+        
+        if (_compStart > currentTimeMillis)
+        {
+            return (_compStart - currentTimeMillis);
+        }
         
         return setNewCompBegin();
     }
     
     private long setNewCompBegin()
     {
-        _compStart = Calendar.getInstance();
-        _compStart.set(Calendar.HOUR_OF_DAY, COMP_START);
-        _compStart.set(Calendar.MINUTE, COMP_MIN);
-        _compStart.add(Calendar.HOUR_OF_DAY, 24);
-        _compEnd = _compStart.getTimeInMillis() + COMP_PERIOD;
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.HOUR_OF_DAY, COMP_START);
+        cal.set(Calendar.MINUTE, COMP_MIN);
+        cal.add(Calendar.HOUR_OF_DAY, 24);
         
-        _log.info("Olympiad System: New Schedule @ " + _compStart.getTime());
+        _compStart = cal.getTimeInMillis();
+        _compEnd = _compStart + COMP_PERIOD;
         
-        return (_compStart.getTimeInMillis() - Calendar.getInstance().getTimeInMillis());
+        _log.info("Olympiad System: New Schedule @ " + cal.getTime());
+        
+        return (_compStart - System.currentTimeMillis());
     }
     
     protected long getMillisToCompEnd()
     {
-        return (_compEnd - Calendar.getInstance().getTimeInMillis());
+        return (_compEnd - System.currentTimeMillis());
     }
     
     private long getMillisToWeekChange()
     {
-        if (_nextWeeklyChange > Calendar.getInstance().getTimeInMillis())
-            return (_nextWeeklyChange - Calendar.getInstance().getTimeInMillis());
-        return 10L;
+        long currentTimeMillis = System.currentTimeMillis();
+        return (_nextWeeklyChange > currentTimeMillis) ? (_nextWeeklyChange - currentTimeMillis) : 10L;
     }
     
     private void scheduleWeeklyChange()
@@ -810,8 +794,7 @@ public class Olympiad
                 addWeeklyPoints();
                 _log.info("Olympiad System: Added weekly points to nobles");
                 
-                Calendar nextChange = Calendar.getInstance();
-                _nextWeeklyChange = nextChange.getTimeInMillis() + WEEKLY_PERIOD;
+                _nextWeeklyChange = System.currentTimeMillis() + WEEKLY_PERIOD;
             }
         }, getMillisToWeekChange(), WEEKLY_PERIOD);
     }
