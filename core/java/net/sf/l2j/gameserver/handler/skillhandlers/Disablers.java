@@ -292,18 +292,20 @@ public class Disablers implements ISkillHandler
 					// these skills needs to be rechecked
 					if (target instanceof L2MonsterInstance)
 					{
-						skill.getEffects(activeChar, target);
-						
-						double aggdiff = ((L2MonsterInstance) target).getHating(activeChar) - target.calcStat(Stats.AGGRESSION, ((L2MonsterInstance) target).getHating(activeChar), target, skill);
-						
 						if (skill.getPower() > 0)
 						{
 							target.getAI().notifyEvent(CtrlEvent.EVT_AGGRESSION, null, -(int) skill.getPower());
 						}
-						else if (aggdiff > 0)
+						else
 						{
-							target.getAI().notifyEvent(CtrlEvent.EVT_AGGRESSION, null, -(int) aggdiff);
+							double aggroDiff = ((L2MonsterInstance) target).getHating(activeChar) - target.calcStat(Stats.AGGRESSION, ((L2MonsterInstance) target).getHating(activeChar), target, skill);
+							if (aggroDiff > 0)
+							{
+								target.getAI().notifyEvent(CtrlEvent.EVT_AGGRESSION, null, -(int) aggroDiff);
+							}
 						}
+
+						skill.getEffects(activeChar, target);
 					}
 					break;
 				}
@@ -334,7 +336,7 @@ public class Disablers implements ISkillHandler
 				case AGGREMOVE:
 				{
 					// these skills needs to be rechecked
-					if (target instanceof L2MonsterInstance && !target.isRaid())
+					if (target instanceof L2MonsterInstance)
 					{
 						if (Formulas.getInstance().calcSkillSuccess(activeChar, target, skill, ss, sps, bss))
 						{

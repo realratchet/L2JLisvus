@@ -1807,6 +1807,7 @@ public final class Formulas
 					case MUTE:
 					case FEAR:
 					case AGGREDUCE_CHAR:
+					case AGGREMOVE:
 						multiplier = target.calcStat(Stats.DERANGEMENT_VULN, multiplier, target, null);
 						break;
 					case CONFUSION:

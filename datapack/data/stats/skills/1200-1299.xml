@@ -1714,16 +1714,15 @@
   <table name="#mpConsume_Init"> 24 26 28 31 32 33 35 36 37 38 39 40 41 </table>
   <table name="#mpConsume"> 93 103 112 122 127 132 137 142 147 151 155 159 163 </table>
   <table name="#magicLvl"> 44 48 52 56 58 60 62 64 66 68 70 72 74 </table>
-  <table name="#power"> 30.0 50.0 70.0 90.0 110.0 130.0 150.0 170.0 190.0 210.0 230.0 250.0 300.0 </table>
   <set name="mpInitialConsume" val="#mpConsume_Init"/>
   <set name="mpConsume" val="#mpConsume"/>
   <set name="magicLvl" val="#magicLvl"/>
-  <set name="power" val="#power"/>
+  <set name="power" val="40"/>
   <set name="target" val="TARGET_AURA"/>
   <set name="skillRadius" val="200"/>
   <set name="hitTime" val="4000"/>
   <set name="reuseDelay" val="20000"/>
-  <set name="skillType" val="AGGREDUCE"/>
+  <set name="skillType" val="AGGREMOVE"/>
   <set name="isMagic" val="true"/>
   <set name="operateType" val="OP_ACTIVE"/>
 </skill>
@@ -2067,7 +2066,8 @@
   <set name="castRange" val="900"/>
   <set name="effectRange" val="1400"/>
   <cond msg="Proper elemental seeds required.">
-    <player seed_various="2"/>
+    <player seed_various="2"/>
+
   </cond>
 </skill>
 <skill id="1289" levels="1" name="Inferno">
