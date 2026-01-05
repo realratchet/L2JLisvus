@@ -14,6 +14,7 @@
  */
 package net.sf.l2j.gameserver.model.actor.instance;
 
+import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.ThreadPoolManager;
 import net.sf.l2j.gameserver.instancemanager.RaidBossSpawnManager;
 import net.sf.l2j.gameserver.model.L2Character;
@@ -67,7 +68,7 @@ public final class L2RaidBossInstance extends L2MonsterInstance
 
 		if (killer instanceof L2PlayableInstance)
 		{
-			broadcastPacket(new SystemMessage(1209));
+			broadcastPacket(new SystemMessage(SystemMessage.RAID_WAS_SUCCESSFUL));
 		}
 
 		RaidBossSpawnManager.getInstance().updateStatus(this, true);
@@ -94,7 +95,7 @@ public final class L2RaidBossInstance extends L2MonsterInstance
 			{
 				// Teleport raid boss home if it's too far from home location
 				L2Spawn bossSpawn = getSpawn();
-				if (!isInsideRadius(bossSpawn.getLocX(), bossSpawn.getLocY(), bossSpawn.getLocZ(), 5000, true, false))
+				if (!isInsideRadius(bossSpawn.getLocX(), bossSpawn.getLocY(), bossSpawn.getLocZ(), Config.MAX_PURSUE_RANGE_RAID, true, false))
 				{
 					teleToLocation(bossSpawn.getLocX(), bossSpawn.getLocY(), bossSpawn.getLocZ(), true);
 					healFull(); // prevents minor exploiting with it

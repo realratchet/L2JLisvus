@@ -521,6 +521,7 @@ public class SystemMessage extends L2GameServerPacket
 	public static final int S1_S2_ALLIANCE = 1200;
 	public static final int S1_NO_ALLIANCE_EXISTS = 1202;
 	public static final int S1_DIED_DROPPED_S3_S2 = 1208;
+	public static final int RAID_WAS_SUCCESSFUL = 1209;
 	public static final int QUEST_EVENT_PERIOD_BEGUN = 1210;
 	public static final int QUEST_EVENT_PERIOD_ENDED = 1211;
 	public static final int DAWN_OBTAINED_AVARICE = 1212;

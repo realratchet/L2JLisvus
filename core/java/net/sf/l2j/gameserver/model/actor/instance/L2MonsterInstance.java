@@ -52,7 +52,7 @@ public class L2MonsterInstance extends L2Attackable
 	protected ScheduledFuture<?> _maintainTask = null;
 	
 	private static final int MONSTER_MAINTENANCE_INTERVAL = 1000;
-
+	
 	/** True if a Soul Crystal was successfully used on the L2Attackable */
 	private boolean _absorbed;
 	
@@ -75,6 +75,7 @@ public class L2MonsterInstance extends L2Attackable
 	{
 		super(objectId, template);
 		getKnownList();
+		
 		if (getTemplate().getMinionData() != null)
 		{
 			_minionList = new MinionList(this);
@@ -102,7 +103,7 @@ public class L2MonsterInstance extends L2Attackable
 		{
 			return false;
 		}
-
+		
 		return true;
 	}
 	
@@ -120,7 +121,7 @@ public class L2MonsterInstance extends L2Attackable
 	public void onSpawn()
 	{
 		super.onSpawn();
-
+		
 		resetAbsorbList();
 		
 		if (_minionList != null)
@@ -145,7 +146,7 @@ public class L2MonsterInstance extends L2Attackable
 	}
 	
 	/**
-	 * Spawn all minions at a regular interval
+	 * Spawn all minions at a regular interval.
 	 */
 	protected void startMaintenanceTask()
 	{
@@ -235,7 +236,7 @@ public class L2MonsterInstance extends L2Attackable
 		{
 			return false;
 		}
-
+		
 		// Enhance soul crystals of the attacker if this L2MonsterInstance had its soul absorbed
 		try
 		{
@@ -353,12 +354,12 @@ public class L2MonsterInstance extends L2Attackable
 			_minionList.clearRespawnList();
 		}
 	}
-
+	
 	private int getAbsorbLevel()
 	{
 		return getTemplate().absorbLevel;
 	}
-
+	
 	/**
 	 * Activate the absorbed soul condition on the L2Attackable.<BR>
 	 * <BR>
@@ -377,7 +378,7 @@ public class L2MonsterInstance extends L2Attackable
 	{
 		return _absorbed;
 	}
-
+	
 	/**
 	 * Adds an attacker that successfully absorbed the soul of this L2Attackable into the _absorbersList.<BR>
 	 * <BR>
@@ -439,7 +440,7 @@ public class L2MonsterInstance extends L2Attackable
 			resetAbsorbList();
 			return;
 		}
-
+		
 		// All boss mobs with maxAbsorbLevel 13 have minAbsorbLevel of 12 else 10
 		if (maxAbsorbLevel > 10)
 		{
@@ -496,7 +497,7 @@ public class L2MonsterInstance extends L2Attackable
 		{
 			// This is a naive method for selecting a random member. It gets any random party member and
 			// then checks if the member has a valid crystal. It does not select the random party member
-			// among those who have crystals, only.	However, this might actually be correct (same as retail).
+			// among those who have crystals, only. However, this might actually be correct (same as retail).
 			players.add(killer.getParty().getPartyMembers().get(Rnd.get(killer.getParty().getMemberCount())));
 		}
 		else
@@ -564,18 +565,17 @@ public class L2MonsterInstance extends L2Attackable
 			
 			/**
 			 * TODO: Confirm boss chance for crystal level up and for crystal breaking.
-             * It is known that bosses with FULL_PARTY crystal level ups have 100% success rate, but this is not
-             * the case for the other bosses (one-random or last-hit).
-             * While not confirmed, it is most reasonable that crystals leveled up at bosses will never break.
-             * Also, the chance to level up is guessed as around 70% if not higher.
-             */
+			 * It is known that bosses with FULL_PARTY crystal level ups have 100% success rate, but this is not
+			 * the case for the other bosses (one-random or last-hit).
+			 * While not confirmed, it is most reasonable that crystals leveled up at bosses will never break.
+			 * Also, the chance to level up is guessed as around 70% if not higher.
+			 */
 			final int chanceLevelUp = isBossMob ? 70 : SoulCrystalData.LEVEL_CHANCE;
 			
 			// If succeeds or it is a boss mob, level up the crystal.
 			// Ember and Anakazel(78) are not 100% success rate and each individual
 			// member of the party has a failure rate on leveling.
-			if (absorbType == L2NpcTemplate.AbsorbCrystalType.FULL_PARTY && getNpcId() != 10319 && getNpcId() != 10338 
-				|| (chance <= chanceLevelUp))
+			if (absorbType == L2NpcTemplate.AbsorbCrystalType.FULL_PARTY && getNpcId() != 10319 && getNpcId() != 10338 || (chance <= chanceLevelUp))
 			{
 				// Give staged crystal
 				exchangeCrystal(player, crystal.itemId, crystal.leveledItemId, false);
@@ -631,7 +631,7 @@ public class L2MonsterInstance extends L2Attackable
 		_absorbed = false;
 		_absorbersList.clear();
 	}
-
+	
 	/**
 	 * This class contains all AbsorberInfo of the L2Attackable against the absorber L2Character.<BR>
 	 * <BR>

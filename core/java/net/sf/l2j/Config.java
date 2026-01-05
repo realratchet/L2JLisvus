@@ -600,6 +600,9 @@ public final class Config
 	
 	/** Maximum range mobs can randomly go from spawn point */
 	public static int MAX_DRIFT_RANGE;
+
+	/** Maximum range at which raid bosses pursue players before they return to spawn point */
+	public static int MAX_PURSUE_RANGE_RAID;
 	
 	/** Allow fishing ? */
 	public static boolean ALLOW_FISHING;
@@ -1451,6 +1454,7 @@ public final class Config
 			ZONE_TOWN = Integer.parseInt(optionsSettings.getProperty("ZoneTown", "0"));
 			
 			MAX_DRIFT_RANGE = Integer.parseInt(optionsSettings.getProperty("MaxDriftRange", "300"));
+			MAX_PURSUE_RANGE_RAID = Integer.parseInt(optionsSettings.getProperty("MaxPursueRangeRaid", "5000"));
 			
 			MIN_NPC_ANIMATION = Integer.parseInt(optionsSettings.getProperty("MinNPCAnimation", "10"));
 			MAX_NPC_ANIMATION = Integer.parseInt(optionsSettings.getProperty("MaxNPCAnimation", "20"));
