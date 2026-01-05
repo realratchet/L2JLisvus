@@ -137,6 +137,25 @@ public abstract class L2Character extends L2Object
 	public static final byte ZONE_NO_STORE = 14;
 	
 	public static final int ZONE_TYPE_LENGTH = 15;
+
+	// Abnormal effect types
+	public static final int ABNORMAL_EFFECT_BLEEDING = 0x0001;
+	public static final int ABNORMAL_EFFECT_POISON = 0x0002;
+	public static final int ABNORMAL_EFFECT_UNKNOWN_3 = 0x0004;
+	public static final int ABNORMAL_EFFECT_UNKNOWN_4 = 0x0008;
+	public static final int ABNORMAL_EFFECT_UNKNOWN_5 = 0x0010;
+	public static final int ABNORMAL_EFFECT_UNKNOWN_6 = 0x0020;
+	public static final int ABNORMAL_EFFECT_STUN = 0x0040;
+	public static final int ABNORMAL_EFFECT_SLEEP = 0x0080;
+	public static final int ABNORMAL_EFFECT_MUTED = 0x0100;
+	public static final int ABNORMAL_EFFECT_ROOT = 0x0200;
+	public static final int ABNORMAL_EFFECT_HOLD_1 = 0x0400;
+	public static final int ABNORMAL_EFFECT_HOLD_2 = 0x0800;
+	public static final int ABNORMAL_EFFECT_UNKNOWN_13 = 0x1000;
+	public static final int ABNORMAL_EFFECT_BIG_HEAD = 0x2000;
+	public static final int ABNORMAL_EFFECT_FLAME = 0x4000;
+	public static final int ABNORMAL_EFFECT_TEXTURE_CHANGE = 0x8000;
+	public static final int ABNORMAL_EFFECT_GROW = 0x10000;
 	
 	public static enum TeleportType
 	{
@@ -150,9 +169,11 @@ public abstract class L2Character extends L2Object
 	private static final Calculator[] NPC_STD_CALCULATORS = Formulas.getInstance().getStdNPCCalculators();
 	
 	private static final int MIN_GAUGE_HIT_TIME = 420;
+
+	protected final CharEffectList _effects = new CharEffectList(this);
 	
-	// =========================================================
-	// Data Field
+	private int _abnormalEffects;
+	
 	private L2Skill _lastSkillCast;
 	private boolean _isAfraid = false; // Flee in a random direction
 	private boolean _isAiDisabled = false;
@@ -221,6 +242,9 @@ public abstract class L2Character extends L2Object
 	private Future<?> _skillCast;
 	
 	private Future<?> _hitTask;
+	private Future<?> _pvpRegTask;
+	
+	private long _pvpFlagLasts;
 	
 	/** Character coordinates from Client */
 	private int _clientX;
@@ -228,18 +252,12 @@ public abstract class L2Character extends L2Object
 	private int _clientZ;
 	private int _clientHeading;
 	
-	/** List of all QuestState instance that needs to be notified of this character's death */
-	private List<QuestState> _notifyQuestOfDeathList = new ArrayList<>();
-	
 	/** Map(Integer, L2Skill) containing all skills of the L2Character */
 	private final Map<Integer, L2Skill> _skills;
 	
 	private final byte[] _zones = new byte[ZONE_TYPE_LENGTH];
 	
 	private byte _zoneValidateCounter = 4;
-	
-	// =========================================================
-	// Constructor
 	
 	/**
 	 * Constructor of L2Character.<BR>
@@ -353,9 +371,6 @@ public abstract class L2Character extends L2Object
 		_hpUpdateDecCheck = getMaxHp() - _hpUpdateInterval;
 	}
 	
-	// =========================================================
-	// Event - Public
-	
 	public void endDecayTask()
 	{
 		// Overridden
@@ -421,9 +436,6 @@ public abstract class L2Character extends L2Object
 		// Force a revalidation
 		revalidateZone(true);
 	}
-	
-	// =========================================================
-	// Method - Public
 	
 	/**
 	 * Send a packet to the L2Character AND to all L2PcInstance in the _KnownPlayers of the L2Character.<BR>
@@ -642,9 +654,6 @@ public abstract class L2Character extends L2Object
 	{
 		teleToLocation(teleportWhere, TeleportType.ANY);
 	}
-	
-	// =========================================================
-	// Method - Private
 	
 	/**
 	 * Launch a physical attack against a target (Simple, Bow, Pole or Dual).<BR>
@@ -1131,7 +1140,6 @@ public abstract class L2Character extends L2Object
 		if (angleChar <= 0)
 		{
 			angleChar += 360;
-			// ===========================================================
 		}
 		
 		boolean hitted = doAttackHitSimple(attack, target, 100, sAtk);
@@ -1703,33 +1711,8 @@ public abstract class L2Character extends L2Object
 		// Stop HP/MP/CP Regeneration task
 		getStatus().stopHpMpRegeneration();
 		
-		boolean keepEffects = false;
-		
-		// Stop all active skills effects in progress on the L2Character,
-		// if the Character isn't a Noblesse Blessed L2PlayableInstance
-		if ((this instanceof L2PlayableInstance) && ((L2PlayableInstance) this).isNoblesseBlessed())
-		{
-			keepEffects = true;
-		}
-		
-		L2EventScript event = getEvent();
-		if (event != null && event.isStarted() && event.isRemovingBuffsOnRespawn())
-		{
-			keepEffects = false;
-		}
-		
-		if (keepEffects)
-		{
-			((L2PlayableInstance) this).stopNoblesseBlessing(null);
-			if (((L2PlayableInstance) this).getCharmOfLuck())
-			{
-				((L2PlayableInstance) this).stopCharmOfLuck(null);
-			}
-		}
-		else
-		{
-			stopAllEffects();
-		}
+		// Stop effects if needed
+		handleEffectsOnDeath();
 		
 		calculateRewards(killer);
 		
@@ -1739,18 +1722,6 @@ public abstract class L2Character extends L2Object
 		// Notify L2Character AI
 		getAI().notifyEvent(CtrlEvent.EVT_DEAD, null);
 		
-		// Notify Quest of character's death
-		for (QuestState qs : getNotifyQuestOfDeath())
-		{
-			if (qs == null)
-			{
-				continue;
-			}
-			
-			qs.getQuest().notifyDeath((killer == null ? this : killer), this, qs);
-		}
-		
-		getNotifyQuestOfDeath().clear();
 		return true;
 	}
 	
@@ -1760,6 +1731,11 @@ public abstract class L2Character extends L2Object
 		{
 			getAI().stopAITask();
 		}
+	}
+	
+	public void handleEffectsOnDeath()
+	{
+		stopAllEffects();
 	}
 	
 	protected void calculateRewards(L2Character killer)
@@ -2568,33 +2544,6 @@ public abstract class L2Character extends L2Object
 		}
 	}
 	
-	// =========================================================
-	// =========================================================
-	
-	// Abnormal Effect - Data Field
-	private int _abnormalEffects;
-	
-	protected CharEffectList _effects = new CharEffectList(this);
-	
-	public static final int ABNORMAL_EFFECT_BLEEDING = 0x0001;
-	public static final int ABNORMAL_EFFECT_POISON = 0x0002;
-	public static final int ABNORMAL_EFFECT_UNKNOWN_3 = 0x0004;
-	public static final int ABNORMAL_EFFECT_UNKNOWN_4 = 0x0008;
-	public static final int ABNORMAL_EFFECT_UNKNOWN_5 = 0x0010;
-	public static final int ABNORMAL_EFFECT_UNKNOWN_6 = 0x0020;
-	public static final int ABNORMAL_EFFECT_STUN = 0x0040;
-	public static final int ABNORMAL_EFFECT_SLEEP = 0x0080;
-	public static final int ABNORMAL_EFFECT_MUTED = 0x0100;
-	public static final int ABNORMAL_EFFECT_ROOT = 0x0200;
-	public static final int ABNORMAL_EFFECT_HOLD_1 = 0x0400;
-	public static final int ABNORMAL_EFFECT_HOLD_2 = 0x0800;
-	public static final int ABNORMAL_EFFECT_UNKNOWN_13 = 0x1000;
-	public static final int ABNORMAL_EFFECT_BIG_HEAD = 0x2000;
-	public static final int ABNORMAL_EFFECT_FLAME = 0x4000;
-	public static final int ABNORMAL_EFFECT_TEXTURE_CHANGE = 0x8000;
-	public static final int ABNORMAL_EFFECT_GROW = 0x10000;
-	
-	// Method - Public
 	/**
 	 * Launch and add L2Effect (including Stack Group management) to L2Character and update client magic icon.<BR>
 	 * <BR>
@@ -3289,10 +3238,6 @@ public abstract class L2Character extends L2Object
 		return _effects.getFirstEffect(tp);
 	}
 	
-	// =========================================================
-	
-	// =========================================================
-	// NEED TO ORGANIZE AND MOVE TO PROPER PLACE
 	/** This class permit to the L2Character AI to obtain informations and uses L2Character method */
 	public class AIAccessor
 	{
@@ -3423,36 +3368,6 @@ public abstract class L2Character extends L2Object
 		public int geoPathAccurateTy;
 		public int geoPathGtx;
 		public int geoPathGty;
-	}
-	
-	/**
-	 * Add QuestState instance that is to be notified of character's death.<BR>
-	 * <BR>
-	 * @param qs The QuestState that subscribe to this event
-	 */
-	public void addNotifyQuestOfDeath(QuestState qs)
-	{
-		if ((qs == null) || _notifyQuestOfDeathList.contains(qs))
-		{
-			return;
-		}
-		
-		_notifyQuestOfDeathList.add(qs);
-	}
-	
-	/**
-	 * Return a list of L2Character that attacked.<BR>
-	 * <BR>
-	 * @return
-	 */
-	public final List<QuestState> getNotifyQuestOfDeath()
-	{
-		if (_notifyQuestOfDeathList == null)
-		{
-			_notifyQuestOfDeathList = new ArrayList<>();
-		}
-		
-		return _notifyQuestOfDeathList;
 	}
 	
 	/**
@@ -4534,7 +4449,7 @@ public abstract class L2Character extends L2Object
 					{
 						// No path found
 						boolean disregardingGeodata = m.geoPath == null || m.geoPath.isEmpty();
-
+						
 						// Update destination offset early enough for geodata disregarding move check to make use of it
 						x = calculatedDestX;
 						y = calculatedDestY;
@@ -6115,7 +6030,6 @@ public abstract class L2Character extends L2Object
 					// Check if over-hit is possible
 					if (skill.isOverhit())
 					{
-						
 						if (target instanceof L2Attackable)
 						{
 							((L2Attackable) target).overhitEnabled(true);
@@ -6484,10 +6398,6 @@ public abstract class L2Character extends L2Object
 		return 1;
 	}
 	
-	private Future<?> _pvpRegTask;
-	
-	private long _pvpFlagLasts;
-	
 	public void setPvpFlagLasts(long time)
 	{
 		_pvpFlagLasts = time;
@@ -6567,10 +6477,7 @@ public abstract class L2Character extends L2Object
 	 * @return
 	 */
 	public abstract int getLevel();
-	// =========================================================
 	
-	// =========================================================
-	// Stat - NEED TO REMOVE ONCE L2CHARSTAT IS COMPLETE
 	public final double calcStat(Stats stat, double init, L2Character target, L2Skill skill)
 	{
 		return getStat().calcStat(stat, init, target, skill);
@@ -6755,11 +6662,7 @@ public abstract class L2Character extends L2Object
 	{
 		return getStat().getWIT();
 	}
-	// =========================================================
 	
-	// =========================================================
-	// Status - NEED TO REMOVE ONCE L2CHARTATUS IS COMPLETE
-	// Method - Public
 	public void addStatusListener(L2Character object)
 	{
 		getStatus().addStatusListener(object);
@@ -6841,7 +6744,6 @@ public abstract class L2Character extends L2Object
 	{
 		getStatus().setCurrentMp(newMp);
 	}
-	// =========================================================
 	
 	public void setAiClass(String aiClass)
 	{

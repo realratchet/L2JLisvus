@@ -21,193 +21,244 @@ import net.sf.l2j.gameserver.model.L2Skill;
 import net.sf.l2j.gameserver.model.actor.knownlist.PlayableKnownList;
 import net.sf.l2j.gameserver.model.actor.stat.PlayableStat;
 import net.sf.l2j.gameserver.model.actor.status.PlayableStatus;
+import net.sf.l2j.gameserver.model.quest.L2EventScript;
 import net.sf.l2j.gameserver.templates.L2CharTemplate;
 
 /**
- * This class represents all Playable characters in the world.<BR><BR>
- * 
- * L2PlayableInstance :<BR><BR>
+ * This class represents all Playable characters in the world.<BR>
+ * <BR>
+ * L2PlayableInstance :<BR>
+ * <BR>
  * <li>L2PcInstance</li>
- * <li>L2Summon</li><BR><BR>
- * 
+ * <li>L2Summon</li><BR>
+ * <BR>
  */
 public abstract class L2PlayableInstance extends L2Character
 {
     private boolean _isNoblesseBlessed = false; // For Noblesse Blessing skill, restores buffs after death
-    private boolean _getCharmOfLuck = false;    // Charm of Luck - During a Raid/Boss war, decreased chance of dropping items
-    private boolean _isSilentMoving = false;    // Silent Move
-
+    private boolean _getCharmOfLuck = false; // Charm of Luck - During a Raid/Boss war, decreased chance of dropping items
+    private boolean _isSilentMoving = false; // Silent Move
+    
     /**
-     * Constructor of L2PlayableInstance (use L2Character constructor).<BR><BR>
-     *  
-     * <B><U> Actions</U> :</B><BR><BR>
-     * <li>Call the L2Character constructor to create an empty _skills slot and link copy basic Calculator set to this L2PlayableInstance </li><BR><BR>
-     * 
+     * Constructor of L2PlayableInstance (use L2Character constructor).<BR>
+     * <BR>
+     * <B><U> Actions</U> :</B><BR>
+     * <BR>
+     * <li>Call the L2Character constructor to create an empty _skills slot and link copy basic Calculator set to this L2PlayableInstance</li><BR>
+     * <BR>
      * @param objectId Identifier of the object to initialized
      * @param template The L2CharTemplate to apply to the L2PlayableInstance
-     * 
      */
     public L2PlayableInstance(int objectId, L2CharTemplate template)
     {
         super(objectId, template);
-
+        
         getKnownList();
         getStat();
         getStatus();
     }
-
+    
     @Override
-	public PlayableKnownList getKnownList()
+    public PlayableKnownList getKnownList()
     {
         if (super.getKnownList() == null || !(super.getKnownList() instanceof PlayableKnownList))
             setKnownList(new PlayableKnownList(this));
-        return (PlayableKnownList)super.getKnownList();
+        return (PlayableKnownList) super.getKnownList();
     }
-
+    
     @Override
-	public PlayableStat getStat()
+    public PlayableStat getStat()
     {
         if (super.getStat() == null || !(super.getStat() instanceof PlayableStat))
             setStat(new PlayableStat(this));
-        return (PlayableStat)super.getStat();
+        return (PlayableStat) super.getStat();
     }
-
+    
     @Override
-	public PlayableStatus getStatus()
+    public PlayableStatus getStatus()
     {
         if (super.getStatus() == null || !(super.getStatus() instanceof PlayableStatus))
             setStatus(new PlayableStatus(this));
-        return (PlayableStatus)super.getStatus();
+        return (PlayableStatus) super.getStatus();
     }
-
+    
     @Override
-	public boolean doDie(L2Character killer)
+    public boolean doDie(L2Character killer)
     {
         if (!super.doDie(killer))
+        {
             return false;
-
+        }
+        
+        L2PcInstance actingPlayer = getActingPlayer();
+        
+        // Notify Quest of playable's death
+        actingPlayer.notifyQuestsOfDeath(killer, this);
+        
         if (killer != null)
         {
-            L2PcInstance player = killer.getActingPlayer();
-            if (player != null && (player.getEvent() == null || !player.getEvent().isStarted()))
-                player.onKillUpdatePvPKarma(this);
+            L2PcInstance killingPlayer = killer.getActingPlayer();
+            if (killingPlayer != null && (killingPlayer.getEvent() == null || !killingPlayer.getEvent().isStarted()))
+            {
+                killingPlayer.onKillUpdatePvPKarma(this);
+            }
         }
         return true;
     }
 
+    @Override
+    public void handleEffectsOnDeath()
+    {
+        boolean keepEffects = false;
+		
+		// Stop all active skills effects in progress on the playable,
+		// if the playable isn't noblesse blessed
+		if (isNoblesseBlessed())
+		{
+			keepEffects = true;
+		}
+		
+		L2EventScript event = getEvent();
+		if (event != null && event.isStarted() && event.isRemovingBuffsOnRespawn())
+		{
+			keepEffects = false;
+		}
+		
+		if (keepEffects)
+		{
+			stopNoblesseBlessing(null);
+			if (getCharmOfLuck())
+			{
+				stopCharmOfLuck(null);
+			}
+		}
+		else
+		{
+			super.handleEffectsOnDeath();
+		}
+    }
+    
     public boolean checkIfPvP(L2Character target)
     {
-        if (target == null) return false;                                               // Target is null
-        if (target == this) return false;                                               // Target is self
-        if (!(target instanceof L2PlayableInstance)) return false;                      // Target is not a L2PlayableInstance
-
+        if (target == null)
+            return false; // Target is null
+        if (target == this)
+            return false; // Target is self
+        if (!(target instanceof L2PlayableInstance))
+            return false; // Target is not a L2PlayableInstance
+            
         L2PcInstance player = getActingPlayer();
         if (player == null)
-            return false;                                               // Active player is null
-
+            return false; // Active player is null
+            
         if (player.getKarma() != 0)
-            return false;                                       // Active player has karma
-
+            return false; // Active player has karma
+            
         L2PcInstance targetPlayer = target.getActingPlayer();
         if (targetPlayer == null)
-            return false;                                         // Target player is null
-
+            return false; // Target player is null
+            
         if (targetPlayer == this)
-            return false;                                         // Target player is self
-
+            return false; // Target player is self
+            
         if (targetPlayer.getKarma() != 0)
-            return false;                                 // Target player has karma
-
+            return false; // Target player has karma
+            
         return true;
     }
-
+    
     /**
-     * Return True.<BR><BR>
+     * Return True.<BR>
+     * <BR>
      */
     @Override
-	public boolean isAttackable()
+    public boolean isAttackable()
     {
         return true;
     }
-
+    
     public final boolean isNoblesseBlessed()
     {
         return _isNoblesseBlessed;
     }
-
+    
     public final void setIsNoblesseBlessed(boolean value)
     {
         _isNoblesseBlessed = value;
     }
-
+    
     public final boolean getCharmOfLuck()
     {
         return _getCharmOfLuck;
     }
-
+    
     public final void setCharmOfLuck(boolean value)
     {
         _getCharmOfLuck = value;
     }
-
+    
     public boolean isSilentMoving()
     {
         return _isSilentMoving;
     }
-
+    
     public void setSilentMoving(boolean value)
     {
         _isSilentMoving = value;
     }
-
+    
     public final void startNoblesseBlessing()
     {
-    	setIsNoblesseBlessed(true);
-    	updateAbnormalEffect();
+        setIsNoblesseBlessed(true);
+        updateAbnormalEffect();
     }
-
+    
     public final void stopNoblesseBlessing(L2Effect effect)
     {
-    	if (effect == null)
+        if (effect == null)
             stopEffects(L2Effect.EffectType.NOBLESSE_BLESSING);
-    	else
+        else
             removeEffect(effect);
-
-    	setIsNoblesseBlessed(false);
-    	updateAbnormalEffect();
+        
+        setIsNoblesseBlessed(false);
+        updateAbnormalEffect();
     }
-
+    
     public final void startCharmOfLuck()
     {
         setCharmOfLuck(true);
         updateAbnormalEffect();
     }
-
+    
     public final void stopCharmOfLuck(L2Effect effect)
     {
         if (effect == null)
             stopEffects(L2Effect.EffectType.CHARM_OF_LUCK);
         else
             removeEffect(effect);
-
+        
         setCharmOfLuck(false);
         updateAbnormalEffect();
     }
-
+    
     @Override
-	public void updateEffectIcons(boolean partyOnly)
-	{
-		_effects.updateEffectIcons(partyOnly);
-	}
-
+    public void updateEffectIcons(boolean partyOnly)
+    {
+        _effects.updateEffectIcons(partyOnly);
+    }
+    
     public void useMagic(L2Skill skill, boolean forceUse, boolean dontMove)
     {
         useMagic(skill, forceUse, dontMove, 0);
     }
     
     public abstract void store();
+    
     public abstract void doPickupItem(L2Object object);
+    
     public abstract void useMagic(L2Skill skill, boolean forceUse, boolean dontMove, int controlItemObjectId);
+    
     public abstract boolean destroyItemByItemId(String process, int itemId, int count, L2Object reference, boolean sendMessage);
+    
     public abstract boolean destroyItem(String process, int objectId, int count, L2Object reference, boolean sendMessage);
 }

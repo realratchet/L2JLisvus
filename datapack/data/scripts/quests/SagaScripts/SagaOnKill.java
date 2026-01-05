@@ -93,7 +93,7 @@ public class SagaOnKill extends Quest
 		for (QuestState qs : questStates)
 		{
 			// Check if conditions are met
-			if (!qs.isStarted() || qs.isCompleted() || qs.getQuest().getQuestIntId() >= 1999)
+			if (!qs.isActive())
 			{
 				continue;
 			}

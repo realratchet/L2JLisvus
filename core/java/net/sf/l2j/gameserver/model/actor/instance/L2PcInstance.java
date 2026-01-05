@@ -308,9 +308,7 @@ public final class L2PcInstance extends L2PlayableInstance
 	}
 	
 	/** The table containing all minimum level needed for each Expertise (None, D, C, B, A, S) */
-	private static final int[] EXPERTISE_LEVELS =
-	{
-		SkillTreeTable.getInstance().getExpertiseLevel(0), // NONE
+	private static final int[] EXPERTISE_LEVELS = { SkillTreeTable.getInstance().getExpertiseLevel(0), // NONE
 		SkillTreeTable.getInstance().getExpertiseLevel(1), // D
 		SkillTreeTable.getInstance().getExpertiseLevel(2), // C
 		SkillTreeTable.getInstance().getExpertiseLevel(3), // B
@@ -318,18 +316,7 @@ public final class L2PcInstance extends L2PlayableInstance
 		SkillTreeTable.getInstance().getExpertiseLevel(5), // S
 	};
 	
-	private static final int[] COMMON_CRAFT_LEVELS =
-	{
-		5,
-		20,
-		28,
-		36,
-		43,
-		49,
-		55,
-		62,
-		70
-	};
+	private static final int[] COMMON_CRAFT_LEVELS = { 5, 20, 28, 36, 43, 49, 55, 62, 70 };
 	
 	public class AIAccessor extends L2Character.AIAccessor
 	{
@@ -439,7 +426,7 @@ public final class L2PcInstance extends L2PlayableInstance
 	
 	/** True if the L2PcInstance is sitting */
 	private boolean _waitTypeSitting;
-
+	
 	private int _rotationSide = 0;
 	
 	/** The table containing all Quests began by the L2PcInstance */
@@ -1238,7 +1225,7 @@ public final class L2PcInstance extends L2PlayableInstance
 		{
 			_log.warning("Attempted to remove unknown RecipeList: " + recipeId);
 		}
-
+		
 		deleteShortCuts(recipeId, L2ShortCut.TYPE_RECIPE);
 	}
 	
@@ -1349,25 +1336,24 @@ public final class L2PcInstance extends L2PlayableInstance
 		
 		for (QuestState qs : _quests.values())
 		{
-			if (qs.getQuest().getQuestIntId() >= 1999)
+			if (qs.isActive())
 			{
-				continue;
+				questStates.add(qs);
 			}
-			
-			if (qs.isCompleted() && !Config.DEVELOPER)
-			{
-				continue;
-			}
-			
-			if (!qs.isStarted() && !Config.DEVELOPER)
-			{
-				continue;
-			}
-			
-			questStates.add(qs);
 		}
 		
 		return questStates.toArray(new QuestState[questStates.size()]);
+	}
+	
+	public void notifyQuestsOfDeath(L2Character killer, L2PlayableInstance victim)
+	{
+		for (QuestState qs : _quests.values())
+		{
+			if (qs.isActive() && qs.isNotifyOfDeath())
+			{
+				qs.getQuest().notifyDeath((killer == null ? this : killer), victim, qs);
+			}
+		}
 	}
 	
 	/**
@@ -1394,10 +1380,7 @@ public final class L2PcInstance extends L2PlayableInstance
 					{
 						if (states == null)
 						{
-							states = new QuestState[]
-							{
-								getQuestState(quest.getName())
-							};
+							states = new QuestState[] { getQuestState(quest.getName()) };
 						}
 						else
 						{
@@ -1436,10 +1419,7 @@ public final class L2PcInstance extends L2PlayableInstance
 					{
 						if (states == null)
 						{
-							states = new QuestState[]
-							{
-								getQuestState(quest.getName())
-							};
+							states = new QuestState[] { getQuestState(quest.getName()) };
 						}
 						else
 						{
@@ -1479,10 +1459,7 @@ public final class L2PcInstance extends L2PlayableInstance
 					{
 						if (states == null)
 						{
-							states = new QuestState[]
-							{
-								qs
-							};
+							states = new QuestState[] { qs };
 						}
 						else
 						{
@@ -1618,13 +1595,13 @@ public final class L2PcInstance extends L2PlayableInstance
 	 * <BR>
 	 * @param slot
 	 * @param page
-	 * @param sendPacket 
+	 * @param sendPacket
 	 */
 	public void deleteShortCut(int slot, int page, boolean sendPacket)
 	{
 		_shortCuts.deleteShortCut(slot, page, sendPacket);
 	}
-
+	
 	/**
 	 * Delete the L2ShortCut instances corresponding to the object ID and type from the L2PcInstance _shortCuts.<BR>
 	 * <BR>
@@ -2695,12 +2672,12 @@ public final class L2PcInstance extends L2PlayableInstance
 	{
 		return _inventory;
 	}
-
+	
 	public int getRotationSide()
 	{
 		return _rotationSide;
 	}
-
+	
 	public void setRotationSide(int val)
 	{
 		_rotationSide = val;
@@ -6004,7 +5981,7 @@ public final class L2PcInstance extends L2PlayableInstance
 	{
 		refreshOverloaded();
 		refreshExpertisePenalty();
-
+		
 		// Send a Server->Client packet UserInfo to this L2PcInstance and CharInfo to all L2PcInstance in its _KnownPlayers (broadcast)
 		if (broadcastType == 1)
 		{
@@ -6915,7 +6892,7 @@ public final class L2PcInstance extends L2PlayableInstance
 				_log.warning("Error could not delete skill: " + e);
 			}
 		}
-
+		
 		if (skill != null)
 		{
 			deleteShortCuts(skill.getId(), L2ShortCut.TYPE_SKILL);
@@ -8782,14 +8759,14 @@ public final class L2PcInstance extends L2PlayableInstance
 	{
 		sendPacket(SystemMessage.sendString(message));
 	}
-
+	
 	private void beforeObserverModeEnter(boolean storeCoords)
 	{
 		if (getPet() != null)
 		{
 			getPet().unSummon(this);
 		}
-
+		
 		if (!_cubics.isEmpty())
 		{
 			for (L2CubicInstance cubic : _cubics)
@@ -8804,19 +8781,19 @@ public final class L2PcInstance extends L2PlayableInstance
 		{
 			getParty().removePartyMember(this, true);
 		}
-
+		
 		if (isSitting())
 		{
 			standUp();
 		}
-
+		
 		if (storeCoords)
 		{
 			_obsX = getX();
 			_obsY = getY();
 			_obsZ = getZ();
 		}
-
+		
 		setTarget(null);
 		setIsInvul(true);
 		getAppearance().setInvisible();
@@ -8826,7 +8803,7 @@ public final class L2PcInstance extends L2PlayableInstance
 	{
 		beforeObserverModeEnter(true);
 		disableAllActions();
-
+		
 		teleToLocation(x, y, z, false);
 		sendPacket(new ObservationMode(x, y, z));
 		_observerMode = true;
@@ -8837,7 +8814,7 @@ public final class L2PcInstance extends L2PlayableInstance
 		_olympiadGameId = id;
 		
 		beforeObserverModeEnter(storeCoords);
-
+		
 		teleToLocation(x, y, z, false);
 		sendPacket(new ExOlympiadMode(3));
 		_observerMode = true;
@@ -8851,7 +8828,7 @@ public final class L2PcInstance extends L2PlayableInstance
 		setTarget(null);
 		sendPacket(new ObservationReturn(this));
 		teleToLocation(_obsX, _obsY, _obsZ, false);
-
+		
 		enableAllActions();
 		getAppearance().setVisible();
 		
@@ -8865,7 +8842,7 @@ public final class L2PcInstance extends L2PlayableInstance
 		setFalling();
 		
 		_observerMode = false;
-
+		
 		broadcastPacket(new CharInfo(this));
 	}
 	
@@ -8898,17 +8875,17 @@ public final class L2PcInstance extends L2PlayableInstance
 	{
 		return _olympiadSide;
 	}
-
+	
 	public void setOlympiadSide(int i)
 	{
 		_olympiadSide = i;
 	}
-
+	
 	public int getOlympiadDmgDealt()
 	{
 		return _olympiadDmgDealt;
 	}
-
+	
 	public void setOlympiadDmgDealt(int dmg)
 	{
 		_olympiadDmgDealt = dmg;
@@ -8918,7 +8895,7 @@ public final class L2PcInstance extends L2PlayableInstance
 	{
 		return _olympiadGameId;
 	}
-
+	
 	public void setOlympiadGameId(int id)
 	{
 		_olympiadGameId = id;
@@ -9628,7 +9605,7 @@ public final class L2PcInstance extends L2PlayableInstance
 			{
 				sendMessage("Entering world in invulnerable mode.");
 			}
-
+			
 			if (getAppearance().getInvisible())
 			{
 				sendMessage("Entering world in invisible mode.");
@@ -10503,7 +10480,7 @@ public final class L2PcInstance extends L2PlayableInstance
 		{
 			_log.log(Level.SEVERE, "deletedMe()", e);
 		}
-
+		
 		super.deleteMe();
 	}
 	

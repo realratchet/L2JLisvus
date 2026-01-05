@@ -137,7 +137,7 @@ class Quest (JQuest) :
      leaderst.set("chest_try","0")
      skill = SkillTable.getInstance().getInfo(4082,1)
      skill.getEffects(player, player, False)
-     leaderst.addNotifyOfDeath(player)
+     leaderst.setNotifyOfDeath(1)
    elif event == "chest_timer" :
      htmltext = ""
      self.chest_game(leaderst,"stop")

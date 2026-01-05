@@ -41,6 +41,7 @@ import net.sf.l2j.gameserver.model.L2Skill;
 import net.sf.l2j.gameserver.model.L2Spawn;
 import net.sf.l2j.gameserver.model.actor.instance.L2NpcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.actor.instance.L2PlayableInstance;
 import net.sf.l2j.gameserver.network.serverpackets.ActionFailed;
 import net.sf.l2j.gameserver.network.serverpackets.NpcHtmlMessage;
 import net.sf.l2j.gameserver.scripting.ManagedScript;
@@ -577,7 +578,7 @@ public class Quest extends ManagedScript
 		return showResult(attacker, res);
 	}
 	
-	public final boolean notifyDeath(L2Character killer, L2Character victim, QuestState qs)
+	public final boolean notifyDeath(L2Character killer, L2PlayableInstance victim, QuestState qs)
 	{
 		String res = null;
 		try
@@ -792,11 +793,9 @@ public class Quest extends ManagedScript
 		return null;
 	}
 	
-	public String onDeath(L2Character killer, L2Character victim, QuestState qs)
+	public String onDeath(L2Character killer, L2PlayableInstance victim, QuestState qs)
 	{
-		if (killer instanceof L2NpcInstance)
-			return onAdvEvent("", (L2NpcInstance) killer, qs.getPlayer());
-		return onAdvEvent("", null, qs.getPlayer());
+		return onAdvEvent("", killer instanceof L2NpcInstance ? (L2NpcInstance) killer : null, qs.getPlayer());
 	}
 	
 	public String onAdvEvent(String event, L2NpcInstance npc, L2PcInstance player)

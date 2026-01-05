@@ -251,9 +251,8 @@ class Quest (JQuest) :
                elif SummonerStat == 2:          # ready to fight... already take the mission to kill his pet
                   htmltext = str(npcId)+"-08.htm"
                elif SummonerStat == 3:          # in battle...
-                  # this will add the player and his pet to the list of notified objects in onDeath Part
-                  st.addNotifyOfDeath(st.getPlayer())
-                  st.addNotifyOfDeath(st.getPlayer().getPet())
+                  # this will allow player quest state to emit death event
+                  st.setNotifyOfDeath(1)
                   htmltext = str(npcId)+"-09.htm"
                elif SummonerStat == 4:          # haha... your summon lose
                   htmltext = str(npcId)+"-05.htm"

@@ -84,6 +84,8 @@ public final class QuestState
 	/** Boolean flag letting QuestStateManager know to exit quest when cleaning up */
 	private boolean _isExitQuestOnCleanUp = false;
 	
+	private boolean _isNotifyOfDeath = false;
+	
 	/**
 	 * Constructor of the QuestState : save the quest in the list of quests of the player.<BR/>
 	 * <BR/>
@@ -179,12 +181,16 @@ public final class QuestState
 			
 			if (state == State.COMPLETED)
 			{
+				_isNotifyOfDeath = false;
+				
 				// Clean registered quest items
 				int[] itemIdList = getQuest().getRegisteredItemIds();
 				if (itemIdList != null)
 				{
 					for (int i = 0; i < itemIdList.length; i++)
+					{
 						takeItems(itemIdList[i], -1);
+					}
 				}
 			}
 			
@@ -192,6 +198,25 @@ public final class QuestState
 			getPlayer().sendPacket(new QuestList(getPlayer()));
 		}
 		return state;
+	}
+	
+	public boolean isActive()
+	{
+		if (getQuest().getQuestIntId() >= 1999 || !Config.DEVELOPER && (!isStarted() || isCompleted()))
+		{
+			return false;
+		}
+		return true;
+	}
+	
+	public boolean isNotifyOfDeath()
+	{
+		return _isNotifyOfDeath;
+	}
+	
+	public void setNotifyOfDeath(boolean val)
+	{
+		_isNotifyOfDeath = val;
 	}
 	
 	/**
@@ -319,18 +344,6 @@ public final class QuestState
 	}
 	
 	/**
-	 * Add player to get notification of characters death
-	 * @param character : L2Character of the character to get notification of death
-	 */
-	public void addNotifyOfDeath(L2Character character)
-	{
-		if (character == null)
-			return;
-		
-		character.addNotifyQuestOfDeath(this);
-	}
-	
-	/**
 	 * Check for an item in player's inventory.
 	 * @param itemId the ID of the item to check for
 	 * @return True if the item exists in player's inventory, false otherwise
@@ -355,7 +368,7 @@ public final class QuestState
 		}
 		return true;
 	}
-
+	
 	/**
 	 * Check if player possesses at least one given item.
 	 * @param itemIds a list of item IDs to check for
@@ -677,8 +690,6 @@ public final class QuestState
 			giveItems(itemId, (int) (itemCount * Config.RATE_QUEST_REWARD), 0);
 	}
 	
-	// TODO: More radar functions need to be added when the radar class is complete.
-	// BEGIN STUFF THAT WILL PROBABLY BE CHANGED
 	public void addRadar(int x, int y, int z)
 	{
 		getPlayer().getRadar().addMarker(x, y, z);
@@ -693,7 +704,6 @@ public final class QuestState
 	{
 		getPlayer().getRadar().removeAllMarkers();
 	}
-	// END STUFF THAT WILL PROBABLY BE CHANGED
 	
 	/**
 	 * Remove items from player's inventory when talking to NPC in order to have rewards.<BR>
@@ -944,6 +954,8 @@ public final class QuestState
 	{
 		if (isCompleted())
 			return this;
+		
+		_isNotifyOfDeath = false;
 		
 		// Say quest is completed
 		setState(State.COMPLETED);
