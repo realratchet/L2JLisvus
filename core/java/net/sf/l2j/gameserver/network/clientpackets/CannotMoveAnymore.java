@@ -19,6 +19,7 @@ import java.util.logging.Logger;
 import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.ai.CtrlEvent;
 import net.sf.l2j.gameserver.ai.L2CharacterAI;
+import net.sf.l2j.gameserver.geoengine.GeoData;
 import net.sf.l2j.gameserver.model.Location;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.network.serverpackets.PartyMemberPosition;
@@ -63,15 +64,18 @@ public class CannotMoveAnymore extends L2GameClientPacket
 		L2CharacterAI ai = activeChar.getAI();
 		if (ai != null)
 		{
-			// This mode will always try to synchronize server with client
+			// This mode will always try to synchronize server with client (not intended for server with geodata)
 			if (Config.COORD_SYNCHRONIZE == 1)
 			{
 				ai.notifyEvent(CtrlEvent.EVT_ARRIVED_BLOCKED, new Location(_x, _y, _z, _heading));
 			}
 			else
 			{
-				// Let server handle the position stop otherwise
-				ai.notifyEvent(CtrlEvent.EVT_ARRIVED_BLOCKED);
+				// Let server validate and decide the position otherwise
+				Location dest = GeoData.getInstance().moveCheck(activeChar.getX(), activeChar.getY(), activeChar.getZ(), _x, _y, _z);
+				dest.setHeading(_heading);
+
+				ai.notifyEvent(CtrlEvent.EVT_ARRIVED_BLOCKED, dest);
 			}
 		}
 		
