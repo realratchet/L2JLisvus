@@ -20,7 +20,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -54,9 +53,6 @@ import net.sf.l2j.util.Rnd;
 public class Quest extends ManagedScript
 {
 	private static Logger _log = Logger.getLogger(Quest.class.getName());
-	
-	/** HashMap containing events from String value of the event */
-	private static Map<String, Quest> _allEvents = new ConcurrentHashMap<>();
 	
 	private Map<String, List<QuestTimer>> _eventTimers;
 	
@@ -106,15 +102,6 @@ public class Quest extends ManagedScript
 	}
 	
 	/**
-	 * Return collection view of the values contains in the allEventS
-	 * @return Collection<Quest>
-	 */
-	public static Collection<Quest> findAllEvents()
-	{
-		return _allEvents.values();
-	}
-	
-	/**
 	 * (Constructor)Add values to class variables and put the quest in HashMaps.
 	 * @param questId : int pointing out the ID of the quest
 	 * @param name : String corresponding to the name of the quest
@@ -126,15 +113,7 @@ public class Quest extends ManagedScript
 		_name = name;
 		_descr = descr;
 		
-		if (questId != 0)
-		{
-			QuestManager.getInstance().addQuest(this);
-		}
-		else
-		{
-			_allEvents.put(name, this);
-		}
-		
+		QuestManager.getInstance().addScript(this);
 		initLoadGlobalData();
 	}
 	
@@ -201,6 +180,7 @@ public class Quest extends ManagedScript
 	public QuestState newQuestState(L2PcInstance player)
 	{
 		QuestState qs = new QuestState(this, player, getInitialState());
+		player.addQuestState(qs);
 		Quest.createQuestInDb(qs);
 		return qs;
 	}
@@ -972,98 +952,6 @@ public class Quest extends ManagedScript
 	}
 	
 	/**
-	 * Add quests to the L2PCInstance of the player.<BR>
-	 * <BR>
-	 * <U><I>Action : </U></I><BR>
-	 * Add state of quests, and variables for quests in the HashMap _quest of L2PcInstance
-	 * @param player : Player who is entering the world
-	 */
-	public final static void playerEnter(L2PcInstance player)
-	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
-		{
-			// Get list of quests owned by the player from database
-			try (PreparedStatement statement = con.prepareStatement("SELECT name,value FROM character_quests WHERE char_id=? AND var=?");
-				PreparedStatement invalidQuestData = con.prepareStatement("DELETE FROM character_quests WHERE char_id=? and name=?"))
-			{
-				statement.setInt(1, player.getObjectId());
-				statement.setString(2, "<state>");
-				try (ResultSet rs = statement.executeQuery())
-				{
-					while (rs.next())
-					{
-						// Get ID of the quest and ID of its state
-						String questId = rs.getString("name");
-						String stateName = rs.getString("value");
-						
-						// Search quest associated with the ID
-						Quest q = QuestManager.getInstance().getQuest(questId);
-						if (q == null)
-						{
-							_log.finer("Unknown quest " + questId + " for player " + player.getName());
-							if (Config.AUTODELETE_INVALID_QUEST_DATA)
-							{
-								invalidQuestData.setInt(1, player.getObjectId());
-								invalidQuestData.setString(2, questId);
-								invalidQuestData.executeUpdate();
-							}
-							continue;
-						}
-						
-						// Create a new QuestState for the player that will be added to the player's list of quests
-						new QuestState(q, player, State.getStateId(stateName));
-					}
-				}
-			}
-			
-			// Get list of quests owned by the player from the DB in order to add variables used in the quest.
-			try (PreparedStatement statement = con.prepareStatement("SELECT name,var,value FROM character_quests WHERE char_id=? AND var<>?");
-				PreparedStatement invalidQuestDataVar = con.prepareStatement("delete FROM character_quests WHERE char_id=? and name=? and var=?"))
-			{
-				statement.setInt(1, player.getObjectId());
-				statement.setString(2, "<state>");
-				try (ResultSet rs = statement.executeQuery())
-				{
-					while (rs.next())
-					{
-						String questId = rs.getString("name");
-						String var = rs.getString("var");
-						String value = rs.getString("value");
-						
-						// Get the QuestState saved in the loop before
-						QuestState qs = player.getQuestState(questId);
-						if (qs == null)
-						{
-							_log.finer("Lost variable " + var + " in quest " + questId + " for player " + player.getName());
-							if (Config.AUTODELETE_INVALID_QUEST_DATA)
-							{
-								invalidQuestDataVar.setInt(1, player.getObjectId());
-								invalidQuestDataVar.setString(2, questId);
-								invalidQuestDataVar.setString(3, var);
-								invalidQuestDataVar.executeUpdate();
-							}
-							continue;
-						}
-						
-						// Add parameter to the quest
-						qs.setInternal(var, value);
-					}
-				}
-			}
-		}
-		catch (Exception e)
-		{
-			_log.log(Level.WARNING, "could not insert char quest:", e);
-		}
-		
-		// Events
-		for (String name : _allEvents.keySet())
-		{
-			player.processQuestEvent(name, "enter");
-		}
-	}
-	
-	/**
 	 * Insert (or Update) in the database variables that need to stay persistant for this quest after a reboot.
 	 * This function is for storage of values that do not related to a specific player but are
 	 * global for all characters. For example, if we need to disable a quest-gatekeeper until
@@ -1601,8 +1489,6 @@ public class Quest extends ManagedScript
 	{
 		saveGlobalData();
 		
-		_allEvents.remove(_name);
-		
 		// Cancel all pending timers before reloading.
 		// If timers ought to be restarted, the quest can take care of it
 		// with its code (example: save global data indicating what timer must
@@ -1611,7 +1497,7 @@ public class Quest extends ManagedScript
 		
 		if (removeFromList)
 		{
-			QuestManager.getInstance().removeQuest(this);
+			QuestManager.getInstance().removeScript(this);
 		}
 	}
 }

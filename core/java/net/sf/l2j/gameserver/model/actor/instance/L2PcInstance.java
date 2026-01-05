@@ -429,8 +429,8 @@ public final class L2PcInstance extends L2PlayableInstance
 	
 	private int _rotationSide = 0;
 	
-	/** The table containing all Quests began by the L2PcInstance */
-	private final Map<String, QuestState> _quests = new ConcurrentHashMap<>();
+	/** The table containing all quest states began by the L2PcInstance */
+	private final Map<String, QuestState> _questStates = new ConcurrentHashMap<>();
 	
 	/** The list containing all shortCuts of this L2PcInstance */
 	private final ShortCuts _shortCuts = new ShortCuts(this);
@@ -1285,17 +1285,17 @@ public final class L2PcInstance extends L2PlayableInstance
 	 */
 	public QuestState getQuestState(String quest)
 	{
-		return _quests.get(quest);
+		return _questStates.get(quest);
 	}
-	
+
 	/**
 	 * Add a QuestState to the table _quest containing all quests began by the L2PcInstance.<BR>
 	 * <BR>
 	 * @param qs The QuestState to add to _quest
 	 */
-	public void setQuestState(QuestState qs)
+	public void addQuestState(QuestState qs)
 	{
-		_quests.put(qs.getQuestName(), qs);
+		_questStates.put(qs.getQuestName(), qs);
 	}
 	
 	/**
@@ -1303,9 +1303,9 @@ public final class L2PcInstance extends L2PlayableInstance
 	 * <BR>
 	 * @param quest The name of the quest
 	 */
-	public void delQuestState(String quest)
+	public void removeQuestState(String quest)
 	{
-		_quests.remove(quest);
+		_questStates.remove(quest);
 	}
 	
 	private QuestState[] addToQuestStateArray(QuestState[] questStateArray, QuestState state)
@@ -1322,7 +1322,7 @@ public final class L2PcInstance extends L2PlayableInstance
 	
 	public QuestState[] getAllQuestStates()
 	{
-		return _quests.values().toArray(new QuestState[_quests.size()]);
+		return _questStates.values().toArray(new QuestState[_questStates.size()]);
 	}
 	
 	/**
@@ -1334,7 +1334,7 @@ public final class L2PcInstance extends L2PlayableInstance
 	{
 		List<QuestState> questStates = new ArrayList<>();
 		
-		for (QuestState qs : _quests.values())
+		for (QuestState qs : _questStates.values())
 		{
 			if (qs.isActive())
 			{
@@ -1347,7 +1347,7 @@ public final class L2PcInstance extends L2PlayableInstance
 	
 	public void notifyQuestsOfDeath(L2Character killer, L2PlayableInstance victim)
 	{
-		for (QuestState qs : _quests.values())
+		for (QuestState qs : _questStates.values())
 		{
 			if (qs.isActive() && qs.isNotifyOfDeath())
 			{
@@ -1482,7 +1482,7 @@ public final class L2PcInstance extends L2PlayableInstance
 			event = "";
 		}
 		
-		if (!_quests.containsKey(quest))
+		if (!_questStates.containsKey(quest))
 		{
 			return retval;
 		}
@@ -6477,6 +6477,9 @@ public final class L2PcInstance extends L2PlayableInstance
 		
 		// Retrieve from the database the recipe book of this L2PcInstance.
 		restoreRecipeBook(true);
+
+		// Retrieve quest data from database
+		restoreQuestData();
 		
 		// Retrieve from the database all friends of this L2PcInstance and add them to _friendList
 		restoreFriendList();
@@ -6536,6 +6539,92 @@ public final class L2PcInstance extends L2PlayableInstance
 		catch (Exception e)
 		{
 			_log.log(Level.SEVERE, "Could not restore recipe book data:" + e.getMessage(), e);
+		}
+	}
+
+	private void restoreQuestData()
+	{
+		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		{
+			// Get list of quests owned by the player from database
+			try (PreparedStatement statement = con.prepareStatement("SELECT name,value FROM character_quests WHERE char_id=? AND var=?");
+				PreparedStatement invalidQuestData = con.prepareStatement("DELETE FROM character_quests WHERE char_id=? and name=?"))
+			{
+				statement.setInt(1, getObjectId());
+				statement.setString(2, "<state>");
+				try (ResultSet rs = statement.executeQuery())
+				{
+					while (rs.next())
+					{
+						// Get ID of the quest and ID of its state
+						String questId = rs.getString("name");
+						String stateName = rs.getString("value");
+						
+						// Search quest associated with the ID
+						Quest q = QuestManager.getInstance().getQuest(questId);
+						if (q == null)
+						{
+							_log.finer("Unknown quest " + questId + " for player " + getName());
+							if (Config.AUTODELETE_INVALID_QUEST_DATA)
+							{
+								invalidQuestData.setInt(1, getObjectId());
+								invalidQuestData.setString(2, questId);
+								invalidQuestData.executeUpdate();
+							}
+							continue;
+						}
+						
+						// Create a new QuestState for the player that will be added to the player's list of quests
+						addQuestState(new QuestState(q, this, State.getStateId(stateName)));
+					}
+				}
+			}
+			
+			// Get list of quests owned by the player from the DB in order to add variables used in the quest.
+			try (PreparedStatement statement = con.prepareStatement("SELECT name,var,value FROM character_quests WHERE char_id=? AND var<>?");
+				PreparedStatement invalidQuestDataVar = con.prepareStatement("DELETE FROM character_quests WHERE char_id=? and name=? and var=?"))
+			{
+				statement.setInt(1, getObjectId());
+				statement.setString(2, "<state>");
+				try (ResultSet rs = statement.executeQuery())
+				{
+					while (rs.next())
+					{
+						String questId = rs.getString("name");
+						String var = rs.getString("var");
+						String value = rs.getString("value");
+						
+						// Get the QuestState saved in the loop before
+						QuestState qs = getQuestState(questId);
+						if (qs == null)
+						{
+							_log.finer("Lost variable " + var + " in quest " + questId + " for player " + getName());
+
+							if (Config.AUTODELETE_INVALID_QUEST_DATA)
+							{
+								invalidQuestDataVar.setInt(1, getObjectId());
+								invalidQuestDataVar.setString(2, questId);
+								invalidQuestDataVar.setString(3, var);
+								invalidQuestDataVar.executeUpdate();
+							}
+							continue;
+						}
+						
+						// Add parameter to the quest
+						qs.setInternal(var, value);
+					}
+				}
+			}
+		}
+		catch (Exception e)
+		{
+			_log.log(Level.WARNING, "Could not insert char quest:", e);
+		}
+		
+		// Events
+		for (String name : QuestManager.getInstance().getOtherScripts().keySet())
+		{
+			processQuestEvent(name, "enter");
 		}
 	}
 	

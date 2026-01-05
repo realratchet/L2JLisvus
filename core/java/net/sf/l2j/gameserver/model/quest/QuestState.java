@@ -102,9 +102,6 @@ public final class QuestState
 		_questName = quest.getName();
 		_player = player;
 		
-		// Save the state of the quest for the player in the player's list of quest owned
-		getPlayer().setQuestState(this);
-		
 		// Set the state of the quest
 		_state = state;
 	}
@@ -963,7 +960,7 @@ public final class QuestState
 		// If quest is repeatable, delete quest from list of quest of the player and from database (quest CAN be created again => repeatable)
 		if (repeatable)
 		{
-			getPlayer().delQuestState(getQuestName());
+			getPlayer().removeQuestState(getQuestName());
 			Quest.deleteQuestInDb(this);
 		}
 		else

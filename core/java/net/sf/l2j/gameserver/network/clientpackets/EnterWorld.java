@@ -39,7 +39,6 @@ import net.sf.l2j.gameserver.model.entity.ClanHall;
 import net.sf.l2j.gameserver.model.entity.Couple;
 import net.sf.l2j.gameserver.model.entity.Siege;
 import net.sf.l2j.gameserver.model.olympiad.Olympiad;
-import net.sf.l2j.gameserver.model.quest.Quest;
 import net.sf.l2j.gameserver.model.quest.QuestState;
 import net.sf.l2j.gameserver.network.L2GameClient.GameClientState;
 import net.sf.l2j.gameserver.network.serverpackets.Die;
@@ -187,7 +186,6 @@ public class EnterWorld extends L2GameClientPacket
 		sendPacket(new ItemList(activeChar, false));
 		sendPacket(new ShortCutInit(activeChar));
 		sendPacket(new HennaInfo(activeChar));
-		Quest.playerEnter(activeChar);
 		activeChar.sendPacket(new QuestList(activeChar));
 		
 		loadTutorial(activeChar);
