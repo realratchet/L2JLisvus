@@ -4315,10 +4315,11 @@ public abstract class L2Character extends L2Object
 		double cos;
 		double sin;
 		
-		// Apply attack/follow range offset after geodata checks have been done.
-		// This ensures that we don't end up with a new location inside a wall.
-		int calculatedDestX;
-		int calculatedDestY;
+		/**
+		 * The attack/follow range offset diff.
+		 * This diff must not be included in the pathfinding procedure.
+		 */
+		final int xRangeDiff, yRangeDiff;
 		
 		// Check if a movement offset is defined or no distance to go through
 		if ((offset > 0) || (distance < 1))
@@ -4349,16 +4350,21 @@ public abstract class L2Character extends L2Object
 			
 			distance -= (offset - 5); // due to rounding error, we have to move a bit closer to be in range
 			
-			calculatedDestX = curX + (int) (distance * cos);
-			calculatedDestY = curY + (int) (distance * sin);
+			int rangeDestX = curX + (int) (distance * cos);
+			int rangeDestY = curY + (int) (distance * sin);
+
+			xRangeDiff = x - rangeDestX;
+			yRangeDiff = y - rangeDestY;
+			x = rangeDestX;
+			y = rangeDestY;
 		}
 		else
 		{
 			// Calculate movement angles needed
 			sin = dy / distance;
 			cos = dx / distance;
-			calculatedDestX = x;
-			calculatedDestY = y;
+			xRangeDiff = 0;
+			yRangeDiff = 0;
 		}
 		
 		// Create and Init a MoveData object
@@ -4381,8 +4387,8 @@ public abstract class L2Character extends L2Object
 			final int originalX = x;
 			final int originalY = y;
 			final int originalZ = z;
-			final int gtx = (calculatedDestX - L2World.MAP_MIN_X) >> 4;
-			final int gty = (calculatedDestY - L2World.MAP_MIN_Y) >> 4;
+			final int gtx = (originalX - L2World.MAP_MIN_X) >> 4;
+			final int gty = (originalY - L2World.MAP_MIN_Y) >> 4;
 			
 			// Movement checks:
 			// when PATHFINDING > 0, for all characters except mobs returning home (could be changed later to teleport if pathfinding fails)
@@ -4441,19 +4447,13 @@ public abstract class L2Character extends L2Object
 				// Overrides previous movement check
 				if (((this instanceof L2PlayableInstance) && !isInBoat) || isInCombat() || (this instanceof L2MinionInstance))
 				{
-					m.geoPath = PathFinding.getInstance().findPath(curX, curY, curZ, originalX, originalY, originalZ, this instanceof L2PlayableInstance);
+					m.geoPath = PathFinding.getInstance().findPath(curX, curY, curZ, (originalX + xRangeDiff), (originalY + yRangeDiff), originalZ, this instanceof L2PlayableInstance);
 					
 					// No path found or could be a straight path
 					if (m.geoPath == null || m.geoPath.size() < 2)
 					{
 						// No path found
 						boolean disregardingGeodata = m.geoPath == null || m.geoPath.isEmpty();
-						
-						// Update destination offset early enough for geodata disregarding move check to make use of it
-						x = calculatedDestX;
-						y = calculatedDestY;
-						z = originalZ;
-						
 						if (disregardingGeodata)
 						{
 							// Even though there's no path found (remember geonodes aren't perfect),
@@ -4461,7 +4461,7 @@ public abstract class L2Character extends L2Object
 							// after target anyway, if dz is small enough. Summons will follow their masters no matter what.
 							if ((this instanceof L2PcInstance) || (!(this instanceof L2PlayableInstance) && !(this instanceof L2MinionInstance) && (Math.abs(z - curZ) > 140)) || ((this instanceof L2Summon) && !((L2Summon) this).getFollowStatus()))
 							{
-								final Location dest = GeoData.getInstance().moveCheck(curX, curY, curZ, x, y, z);
+								final Location dest = GeoData.getInstance().moveCheck(curX, curY, curZ, originalX, originalY, originalZ);
 								getAI().setIntention(CtrlIntention.AI_INTENTION_MOVE_TO, dest);
 								return false;
 							}
@@ -4473,6 +4473,9 @@ public abstract class L2Character extends L2Object
 							m.disregardingGeodata = false;
 						}
 						
+						x = originalX;
+						y = originalY;
+						z = originalZ;
 						distance = originalDistance;
 					}
 					else
@@ -4480,8 +4483,8 @@ public abstract class L2Character extends L2Object
 						m.onGeodataPathIndex = 0; // on first segment
 						m.geoPathGtx = gtx;
 						m.geoPathGty = gty;
-						m.geoPathAccurateTx = calculatedDestX;
-						m.geoPathAccurateTy = calculatedDestY;
+						m.geoPathAccurateTx = originalX;
+						m.geoPathAccurateTy = originalY;
 						
 						x = m.geoPath.get(m.onGeodataPathIndex).getX();
 						y = m.geoPath.get(m.onGeodataPathIndex).getY();
