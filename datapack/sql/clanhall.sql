@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS `clanhall` (
   `location` varchar(15) NOT NULL default '',
   `paidUntil` decimal(20,0) NOT NULL default '0',
   `Grade` decimal(1,0) NOT NULL default '0',
-  `paid` int(1) NOT NULL default '0',
+  `paid` tinyint(1) NOT NULL default '0',
   PRIMARY KEY `id` (`id`),
   KEY `ownerId` (`ownerId`)
 );

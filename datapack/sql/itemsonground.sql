@@ -10,6 +10,6 @@ CREATE TABLE IF NOT EXISTS `itemsonground` (
   `y` int(11) default NULL,
   `z` int(11) default NULL,
   `drop_time` decimal(20,0) default NULL,
-  `equipable` int(1) default '0',
+  `equipable` tinyint(1) default '0',
   PRIMARY KEY  (`object_id`)
 );

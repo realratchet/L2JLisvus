@@ -11,7 +11,7 @@ CREATE TABLE `castle_siege_guards` (
   `z` int(11) NOT NULL DEFAULT 0,
   `heading` int(11) NOT NULL DEFAULT 0,
   `respawnDelay` int(11) NOT NULL DEFAULT 0,
-  `isHired` int(11) NOT NULL DEFAULT 1,
+  `isHired` tinyint(1) NOT NULL DEFAULT 1,
   PRIMARY KEY (`id`),
   KEY `id` (`castleId`)
 );

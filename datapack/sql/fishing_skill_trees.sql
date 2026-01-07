@@ -10,7 +10,7 @@ CREATE TABLE `fishing_skill_trees` (
   `min_level` int(10) NOT NULL default '0',
   `costid` int(10) NOT NULL default '0',
   `cost` int(10) NOT NULL default '0',
-  `isfordwarf` int(1) NOT NULL default '0',
+  `isfordwarf` tinyint(1) NOT NULL default '0',
   PRIMARY KEY  (`skill_id`,`level`)
 );
 --
