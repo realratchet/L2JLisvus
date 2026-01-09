@@ -48,10 +48,15 @@ public class TeleportWithCharm extends Quest
 	}
 	
 	@Override
-	public String onTalk(L2NpcInstance npc, QuestState st)
+	public String onTalk(L2NpcInstance npc, L2PcInstance player)
 	{
 		String htmltext = "";
-		L2PcInstance player = st.getPlayer();
+		
+		QuestState st = player.getQuestState(getName());
+		if (st == null)
+		{
+			return getNoQuestMsg();
+		}
 		
 		int npcId = npc.getNpcId();
 		if (npcId == WHIRPY)

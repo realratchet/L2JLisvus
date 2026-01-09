@@ -99,7 +99,7 @@ public class EchoCrystals extends Quest
 	}
 	
 	@Override
-	public String onTalk(L2NpcInstance npc, QuestState qs)
+	public String onTalk(L2NpcInstance npc, L2PcInstance player)
 	{
 		return "1.htm";
 	}

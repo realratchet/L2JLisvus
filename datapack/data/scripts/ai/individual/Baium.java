@@ -318,21 +318,22 @@ public class Baium extends Quest
 	}
 
 	@Override
-	public String onTalk(L2NpcInstance npc, QuestState st)
+	public String onTalk(L2NpcInstance npc, L2PcInstance player)
 	{
+		String htmltext = null;
 		int npcId = npc.getNpcId();
+
 		if (_zone == null)
 		{
 			_zone = GrandBossManager.getInstance().getZone(113100, 14500, 10077);
 		}
+
 		if (_zone == null)
 		{
-			return "<html><body>Angelic Vortex:<br>You may not enter while admin disabled this zone</body></html>";
+			htmltext = "<html><body>Angelic Vortex:<br>You may not enter while admin has this zone disabled!</body></html>";
 		}
-		if ((npcId == STONE_BAIUM) && (GrandBossManager.getInstance().getBossStatus(LIVE_BAIUM) == ASLEEP))
+		else if ((npcId == STONE_BAIUM) && (GrandBossManager.getInstance().getBossStatus(LIVE_BAIUM) == ASLEEP))
 		{
-			L2PcInstance player = st.getPlayer();
-
 			if (_zone.checkIfPlayerAllowed(player))
 			{
 				// once Baium is awaken, no more people may enter until he dies, the server reboots, or
@@ -353,37 +354,41 @@ public class Baium extends Quest
 			}
 			else
 			{
-				return "Conditions are not right to wake up Baium.";
+				htmltext = "Conditions are not right to wake up Baium.";
 			}
 		}
 		else if (npcId == ANGELIC_VORTEX)
 		{
-			if (GrandBossManager.getInstance().getBossStatus(LIVE_BAIUM) == ASLEEP)
+			QuestState st = player.getQuestState(getName());
+			if (st == null)
 			{
-				if (st.getPlayer().isFlying())
+				htmltext = getNoQuestMsg();
+			}
+			else if (GrandBossManager.getInstance().getBossStatus(LIVE_BAIUM) == ASLEEP)
+			{
+				if (player.isFlying())
 				{
-					return "<html><body>Angelic Vortex:<br>You may not enter while flying a wyvern.</body></html>";
+					htmltext = "<html><body>Angelic Vortex:<br>You may not enter while flying a wyvern.</body></html>";
 				}
 				else if (st.getQuestItemsCount(4295) > 0) // bloody fabric
 				{
 					st.takeItems(4295, 1);
 					// allow entry for the player for the next 30 secs (more than enough time for the TP to happen)
 					// Note: this just means 30secs to get in, no limits on how long it takes before we get out.
-					_zone.allowPlayerEntry(st.getPlayer(), 30);
-					st.getPlayer().teleToLocation(113100, 14500, 10077);
+					_zone.allowPlayerEntry(player, 30);
+					player.teleToLocation(113100, 14500, 10077);
 				}
 				else
 				{
-					return "<html><body>Angelic Vortex:<br>You do not have enough items.</body></html>";
+					htmltext = "<html><body>Angelic Vortex:<br>You do not have enough items.</body></html>";
 				}
 			}
 			else
 			{
-				return "<html><body>Angelic Vortex:<br>You may not enter at this time.</body></html>";
+				htmltext = "<html><body>Angelic Vortex:<br>You may not enter at this time.</body></html>";
 			}
 		}
-		st.exitQuest(true);
-		return null;
+		return htmltext;
 	}
 
 	@Override

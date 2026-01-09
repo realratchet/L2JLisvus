@@ -261,7 +261,7 @@ public class NpcLocationInfo extends Quest
 	}
 	
 	@Override
-	public String onTalk(L2NpcInstance npc, QuestState qs)
+	public String onTalk(L2NpcInstance npc, L2PcInstance player)
 	{
 		String htmltext = null;
 		int npcId = npc.getNpcId();

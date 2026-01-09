@@ -68,9 +68,15 @@ public class RaceTrack extends Quest
 	}
 	
 	@Override
-	public String onTalk(L2NpcInstance npc, QuestState st)
+	public String onTalk(L2NpcInstance npc, L2PcInstance player)
 	{
-		L2PcInstance player = st.getPlayer();
+		String htmltext = getNoQuestMsg();
+		QuestState st = player.getQuestState(getName());
+
+		if (st == null)
+		{
+			return htmltext;
+		}
 		
 		if (RETURN_LOCATIONS.containsKey(npc.getNpcId()))
 		{
