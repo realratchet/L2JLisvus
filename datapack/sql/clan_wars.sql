@@ -3,8 +3,8 @@
 --
 
 CREATE TABLE IF NOT EXISTS `clan_wars` (
-  `clan1` varchar(35) NOT NULL default '',
-  `clan2` varchar(35) NOT NULL default '',
+  `clan1` INT NOT NULL default 0,
+  `clan2` INT NOT NULL default 0,
   PRIMARY KEY (`clan1`,`clan2`)
 );
 

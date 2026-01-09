@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS `character_offline_trade` (
-  `char_id` int(11) NOT NULL,
-  `time` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `type` tinyint(4) NOT NULL DEFAULT '0',
+  `char_id` int NOT NULL,
+  `time` bigint unsigned NOT NULL DEFAULT '0',
+  `type` tinyint NOT NULL DEFAULT '0',
   `title` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`char_id`)
 );

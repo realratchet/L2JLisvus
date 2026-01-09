@@ -3,14 +3,14 @@
 --
 DROP TABLE IF EXISTS `fishing_skill_trees`;
 CREATE TABLE `fishing_skill_trees` (
-  `skill_id` int(10) NOT NULL default '0',
-  `level` int(10) NOT NULL default '0',
+  `skill_id` int NOT NULL default '0',
+  `level` int NOT NULL default '0',
   `name` varchar(25) NOT NULL default '',
-  `sp` int(10) NOT NULL default '0',
-  `min_level` int(10) NOT NULL default '0',
-  `costid` int(10) NOT NULL default '0',
-  `cost` int(10) NOT NULL default '0',
-  `isfordwarf` tinyint(1) NOT NULL default '0',
+  `sp` int NOT NULL default '0',
+  `min_level` int NOT NULL default '0',
+  `costid` int NOT NULL default '0',
+  `cost` int NOT NULL default '0',
+  `isfordwarf` tinyint NOT NULL default '0',
   PRIMARY KEY  (`skill_id`,`level`)
 );
 --

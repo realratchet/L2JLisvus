@@ -3,8 +3,8 @@
 --
 DROP TABLE IF EXISTS merchants;
 CREATE TABLE `merchants` (
-  `npc_id` int(11) NOT NULL default '0',
-  `merchant_area_id` tinyint(4) default NULL,
+  `npc_id` int NOT NULL default '0',
+  `merchant_area_id` tinyint default NULL,
   PRIMARY KEY  (`npc_id`)
 );
 

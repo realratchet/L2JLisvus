@@ -3,18 +3,18 @@
 -- ----------------------------
 DROP TABLE IF EXISTS `dimensional_rift`;
 CREATE TABLE `dimensional_rift` (
-  `type` tinyint(1) NOT NULL,
-  `room_id` tinyint(1) NOT NULL,
-  `xMin` int(11) NOT NULL,
-  `xMax` int(11) NOT NULL,
-  `yMin` int(11) NOT NULL,
-  `yMax` int(11) NOT NULL,
-  `zMin` int(11) NOT NULL,
-  `zMax` int(11) NOT NULL,
-  `xT` int(11) NOT NULL,
-  `yT` int(11) NOT NULL,
-  `zT` int(11) NOT NULL,
-  `boss` tinyint(1) NOT NULL default '0',
+  `type` tinyint NOT NULL,
+  `room_id` tinyint NOT NULL,
+  `xMin` int NOT NULL,
+  `xMax` int NOT NULL,
+  `yMin` int NOT NULL,
+  `yMax` int NOT NULL,
+  `zMin` int NOT NULL,
+  `zMax` int NOT NULL,
+  `xT` int NOT NULL,
+  `yT` int NOT NULL,
+  `zT` int NOT NULL,
+  `boss` tinyint NOT NULL default '0',
   PRIMARY KEY (`type`,`room_id`)
 );
 

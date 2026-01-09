@@ -4,15 +4,15 @@
 
 DROP TABLE IF EXISTS `raidboss_spawnlist`;
 CREATE TABLE `raidboss_spawnlist` (
-  `boss_id` int(11) NOT NULL DEFAULT 0,
-  `amount` int(11) NOT NULL DEFAULT 0,
-  `loc_x` int(11) NOT NULL DEFAULT 0,
-  `loc_y` int(11) NOT NULL DEFAULT 0,
-  `loc_z` int(11) NOT NULL DEFAULT 0,
-  `heading` int(11) NOT NULL DEFAULT 0,
-  `respawn_min_delay` int(11) NOT NULL DEFAULT 43200,
-  `respawn_max_delay` int(11) NOT NULL DEFAULT 129600,
-  `respawn_time` bigint(20) NOT NULL DEFAULT 0,
+  `boss_id` int NOT NULL DEFAULT 0,
+  `amount` int NOT NULL DEFAULT 0,
+  `loc_x` int NOT NULL DEFAULT 0,
+  `loc_y` int NOT NULL DEFAULT 0,
+  `loc_z` int NOT NULL DEFAULT 0,
+  `heading` int NOT NULL DEFAULT 0,
+  `respawn_min_delay` int NOT NULL DEFAULT 43200,
+  `respawn_max_delay` int NOT NULL DEFAULT 129600,
+  `respawn_time` bigint NOT NULL DEFAULT 0,
   `currentHp` decimal(8,0) DEFAULT NULL,
   `currentMp` decimal(8,0) DEFAULT NULL,
   PRIMARY KEY (`boss_id`,`loc_x`,`loc_y`,`loc_z`)

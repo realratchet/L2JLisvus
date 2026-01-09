@@ -2,16 +2,16 @@
 -- Table structure for clanhall
 -- ---------------------------
 CREATE TABLE IF NOT EXISTS `clanhall` (
-  `id` int(11) NOT NULL default '0',
+  `id` int NOT NULL default '0',
   `name` varchar(40) NOT NULL default '',
-  `ownerId` int(11) NOT NULL default '0',
-  `lease` int(10) NOT NULL default '0',
-  `defaultBid` int(11) NOT NULL default '0',
+  `ownerId` int NOT NULL default '0',
+  `lease` int NOT NULL default '0',
+  `defaultBid` int NOT NULL default '0',
   `desc` text NOT NULL,
   `location` varchar(15) NOT NULL default '',
   `paidUntil` decimal(20,0) NOT NULL default '0',
   `Grade` decimal(1,0) NOT NULL default '0',
-  `paid` tinyint(1) NOT NULL default '0',
+  `paid` tinyint NOT NULL default '0',
   PRIMARY KEY `id` (`id`),
   KEY `ownerId` (`ownerId`)
 );

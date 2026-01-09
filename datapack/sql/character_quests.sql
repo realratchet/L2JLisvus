@@ -6,6 +6,6 @@ CREATE TABLE IF NOT EXISTS `character_quests` (
   `name` VARCHAR(40) NOT NULL DEFAULT '',
   `var`  VARCHAR(20) NOT NULL DEFAULT '',
   `value` VARCHAR(255) ,
-  `class_index` int(1) NOT NULL default '0',
+  `class_index` INT NOT NULL default '0',
   PRIMARY KEY  (`char_id`,`name`,`var`,`class_index`)
 );

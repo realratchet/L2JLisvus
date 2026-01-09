@@ -3,12 +3,12 @@
 -- ----------------------------
 DROP TABLE IF EXISTS `droplist`;
 CREATE TABLE `droplist` (
-  `mobId` int(11) NOT NULL DEFAULT '0',
-  `itemId` int(11) NOT NULL DEFAULT '0',
-  `min_drop` int(11) NOT NULL DEFAULT '0',
-  `max_drop` int(11) NOT NULL DEFAULT '0',
-  `category` int(11) NOT NULL DEFAULT '0',
-  `chance` int(11) NOT NULL DEFAULT '0',
+  `mobId` int NOT NULL DEFAULT '0',
+  `itemId` int NOT NULL DEFAULT '0',
+  `min_drop` int NOT NULL DEFAULT '0',
+  `max_drop` int NOT NULL DEFAULT '0',
+  `category` int NOT NULL DEFAULT '0',
+  `chance` int NOT NULL DEFAULT '0',
   PRIMARY KEY (`mobId`,`itemId`,`category`),
   KEY `key_mobId` (`mobId`)
 );

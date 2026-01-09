@@ -9,7 +9,7 @@ CREATE TABLE `teleport` (
   `loc_y` decimal(9,0) DEFAULT NULL,
   `loc_z` decimal(9,0) DEFAULT NULL,
   `price` decimal(6,0) DEFAULT NULL,
-  `fornoble` tinyint(1) NOT NULL DEFAULT '0',
+  `fornoble` tinyint NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 );
 

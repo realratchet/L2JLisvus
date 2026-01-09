@@ -3,7 +3,7 @@
 --
 
 CREATE TABLE IF NOT EXISTS global_tasks (
-  id int(11) NOT NULL auto_increment,
+  id int NOT NULL auto_increment,
   task varchar(50) NOT NULL default '',
   type varchar(50) NOT NULL default '',
   last_activation decimal(20,0) NOT NULL default 0,

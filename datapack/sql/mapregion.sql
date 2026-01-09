@@ -3,18 +3,18 @@
 -- 
 DROP TABLE IF EXISTS mapregion;
 CREATE TABLE `mapregion` (
-`region` int(11) NOT NULL default '0',
-`sec0` int(2) NOT NULL default '0',
-`sec1` int(2) NOT NULL default '0',
-`sec2` int(2) NOT NULL default '0',
-`sec3` int(2) NOT NULL default '0',
-`sec4` int(2) NOT NULL default '0',
-`sec5` int(2) NOT NULL default '0',
-`sec6` int(2) NOT NULL default '0',
-`sec7` int(2) NOT NULL default '0',
-`sec8` int(2) NOT NULL default '0',
-`sec9` int(2) NOT NULL default '0',
-`sec10` int(2) NOT NULL default '0',
+`region` int NOT NULL default '0',
+`sec0` int NOT NULL default '0',
+`sec1` int NOT NULL default '0',
+`sec2` int NOT NULL default '0',
+`sec3` int NOT NULL default '0',
+`sec4` int NOT NULL default '0',
+`sec5` int NOT NULL default '0',
+`sec6` int NOT NULL default '0',
+`sec7` int NOT NULL default '0',
+`sec8` int NOT NULL default '0',
+`sec9` int NOT NULL default '0',
+`sec10` int NOT NULL default '0',
 PRIMARY KEY (`region`)
 );
 

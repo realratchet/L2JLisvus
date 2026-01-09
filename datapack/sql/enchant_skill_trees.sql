@@ -3,17 +3,17 @@
 #----------------------------
 DROP TABLE IF EXISTS enchant_skill_trees;
 CREATE TABLE `enchant_skill_trees` (
-  `skill_id` int(10) NOT NULL default '0',
-  `level` int(10) NOT NULL default '0',
+  `skill_id` int NOT NULL default '0',
+  `level` int NOT NULL default '0',
   `name` varchar(25) NOT NULL default '',
-  `base_lvl` int(2) NOT NULL default '0',
+  `base_lvl` int NOT NULL default '0',
   `enchant_type` varchar(25) default NULL,
-  `sp` int(10) NOT NULL default '0',
-  `exp` int(20) default NULL,
-  `min_skill_lvl` int(2) NOT NULL default '0',
-  `success_rate76` int(3) unsigned NOT NULL default '0',
-  `success_rate77` int(3) NOT NULL default '0',
-  `success_rate78` int(3) NOT NULL default '0',
+  `sp` int NOT NULL default '0',
+  `exp` int default NULL,
+  `min_skill_lvl` int NOT NULL default '0',
+  `success_rate76` int unsigned NOT NULL default '0',
+  `success_rate77` int NOT NULL default '0',
+  `success_rate78` int NOT NULL default '0',
   PRIMARY KEY  (`skill_id`,`level`)
 );
 

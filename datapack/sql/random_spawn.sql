@@ -6,9 +6,9 @@ CREATE TABLE random_spawn (
   groupId INT NOT NULL default 0,
   npcId INT NOT NULL default 0,
   count INT NOT NULL default 0,
-  initialDelay INT(11) NOT NULL default -1,
-  respawnDelay INT(11) NOT NULL default -1,
-  despawnDelay INT(11) NOT NULL default -1,
+  initialDelay INT NOT NULL default -1,
+  respawnDelay INT NOT NULL default -1,
+  despawnDelay INT NOT NULL default -1,
   broadcastSpawn TINYINT UNSIGNED NOT NULL DEFAULT 0,
   randomSpawn TINYINT UNSIGNED NOT NULL DEFAULT 1,
   PRIMARY KEY (groupId)

@@ -3,19 +3,19 @@
 -- ---------------------------------------------
 DROP TABLE IF EXISTS `four_sepulchers_spawnlist`;
 CREATE TABLE `four_sepulchers_spawnlist` (
-  `id` int(11) NOT NULL auto_increment,
+  `id` int NOT NULL auto_increment,
   `location` varchar(19) NOT NULL DEFAULT '',
-  `count` int(9) NOT NULL DEFAULT '0',
-  `npc_templateid` int(11) NOT NULL DEFAULT '0',
-  `locx` int(9) NOT NULL DEFAULT '0',
-  `locy` int(9) NOT NULL DEFAULT '0',
-  `locz` int(9) NOT NULL DEFAULT '0',
-  `randomx` int(9) NOT NULL DEFAULT '0',
-  `randomy` int(9) NOT NULL DEFAULT '0',
-  `heading` int(9) NOT NULL DEFAULT '0',
-  `respawn_delay` int(9) NOT NULL DEFAULT '0',
-  `key_npc_id` int(9) NOT NULL DEFAULT '0',
-  `spawntype` int(9) NOT NULL DEFAULT '0',
+  `count` int NOT NULL DEFAULT '0',
+  `npc_templateid` int NOT NULL DEFAULT '0',
+  `locx` int NOT NULL DEFAULT '0',
+  `locy` int NOT NULL DEFAULT '0',
+  `locz` int NOT NULL DEFAULT '0',
+  `randomx` int NOT NULL DEFAULT '0',
+  `randomy` int NOT NULL DEFAULT '0',
+  `heading` int NOT NULL DEFAULT '0',
+  `respawn_delay` int NOT NULL DEFAULT '0',
+  `key_npc_id` int NOT NULL DEFAULT '0',
+  `spawntype` int NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 );
 -- -------------------------------------------

@@ -3,9 +3,9 @@
 -- ----------------------------
 DROP TABLE IF EXISTS `aio_buffer`;
 CREATE TABLE `aio_buffer` (
-  `skill_id` INT(6) NOT NULL,
-  `skill_level` INT(6) NOT NULL DEFAULT 1,
-  `duration` INT(11) NOT NULL DEFAULT 0,
+  `skill_id` INT NOT NULL,
+  `skill_level` INT NOT NULL DEFAULT 1,
+  `duration` INT NOT NULL DEFAULT 0,
   PRIMARY KEY (`skill_id`)
 );
 

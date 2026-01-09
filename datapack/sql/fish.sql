@@ -3,17 +3,17 @@
 -- 
 DROP TABLE IF EXISTS `fish`;
 CREATE TABLE `fish` (
-  `id` int(5) NOT NULL default '0',
-  `level` int(5) NOT NULL default '0',
+  `id` INT NOT NULL default '0',
+  `level` INT NOT NULL default '0',
   `name` varchar(40) NOT NULL default '',
-  `hp` int(5) NOT NULL default '0',
-  `hpregen` int(3) NOT NULL default '5',
-  `fish_type` int(1) NOT NULL default '0', -- 0 = wide, 1 = swift, 2 = ugly, 3 = box, 4 = easy_wide, 5 = easy_swift, 6 = easy_ugly
-  `fish_group` int(1) NOT NULL default '0', -- 0 = easy, 1 = normal
-  `fish_guts` INT(4) NOT NULL default '0',
-  `guts_check_time` INT(4) NOT NULL default '0',
-  `wait_time` INT(5) NOT NULL default '0',
-  `combat_time` INT(5) NOT NULL default '0',
+  `hp` INT NOT NULL default '0',
+  `hpregen` INT NOT NULL default '5',
+  `fish_type` INT NOT NULL default '0', -- 0 = wide, 1 = swift, 2 = ugly, 3 = box, 4 = easy_wide, 5 = easy_swift, 6 = easy_ugly
+  `fish_group` INT NOT NULL default '0', -- 0 = easy, 1 = normal
+  `fish_guts` INT NOT NULL default '0',
+  `guts_check_time` INT NOT NULL default '0',
+  `wait_time` INT NOT NULL default '0',
+  `combat_time` INT NOT NULL default '0',
   PRIMARY KEY  (`id`,`level`)
 );
 

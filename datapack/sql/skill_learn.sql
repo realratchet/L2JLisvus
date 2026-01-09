@@ -3,8 +3,8 @@
 --
 DROP TABLE IF EXISTS skill_learn;
 CREATE TABLE skill_learn (
-  npc_id int(11) NOT NULL default '0',
-  class_id int(11) NOT NULL default '0',
+  npc_id int NOT NULL default '0',
+  class_id int NOT NULL default '0',
   PRIMARY KEY  (npc_id,class_id)
 );
 
