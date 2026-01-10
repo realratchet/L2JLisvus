@@ -2,7 +2,7 @@
 -- Table structure for pets
 -- ---------------------------
 CREATE TABLE IF NOT EXISTS pets (
-  item_obj_id decimal(11) NOT NULL default 0,
+  item_obj_id int NOT NULL default 0,
   name varchar(16),
   level decimal(11),
   curHp decimal(18,0),
