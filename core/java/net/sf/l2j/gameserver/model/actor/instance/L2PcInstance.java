@@ -940,10 +940,7 @@ public final class L2PcInstance extends L2PlayableInstance
 		// Create a L2Radar object
 		_radar = new L2Radar(this);
 		
-		if ((Hero.getInstance().getHeroes() != null) && Hero.getInstance().getHeroes().containsKey(getObjectId()))
-		{
-			setHero(true);
-		}
+		setHero(Hero.getInstance().isHero(getObjectId()));
 		
 		// Retrieve from the database all items of this L2PcInstance and add them to _inventory
 		getInventory().restore();

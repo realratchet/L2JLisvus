@@ -100,7 +100,6 @@ public class Olympiad
     protected long _nextWeeklyChange = 0;
     
     private long _compEnd;
-    private long _compStart;
     
     public static final byte NONE = 0;
     public static final byte REGISTER = 1;
@@ -128,7 +127,9 @@ public class Olympiad
         load();
         
         if (_period == 0)
-            init();
+        {
+            init(true);
+        }
     }
     
     private void load()
@@ -296,28 +297,36 @@ public class Olympiad
         }
     }
     
-    protected void init()
+    protected void init(boolean startup)
     {
         if (_period == 1)
+        {
             return;
+        }
         
         long currentTimeMillis = System.currentTimeMillis();
         
         Calendar cal = Calendar.getInstance();
         cal.set(Calendar.HOUR_OF_DAY, COMP_START);
         cal.set(Calendar.MINUTE, COMP_MIN);
-        // This is a workaround for servers that start olympiad before the end of day and end it at the next day
-        cal.add(Calendar.DAY_OF_MONTH, -1);
         
-        _compStart = cal.getTimeInMillis();
-        _compEnd = _compStart + COMP_PERIOD;
-        
-        // The competition has already ended
-        if (_compEnd <= currentTimeMillis)
+        if (startup)
         {
-            cal.add(Calendar.DAY_OF_MONTH, 1);
-            _compStart = cal.getTimeInMillis();
-            _compEnd = _compStart + COMP_PERIOD;
+            // This is a workaround for servers that start olympiad before the end of day and end it at the next day
+            cal.add(Calendar.DAY_OF_MONTH, -1);
+            
+            _compEnd = cal.getTimeInMillis() + COMP_PERIOD;
+            
+            // The competition has already ended
+            if (_compEnd <= currentTimeMillis)
+            {
+                cal.add(Calendar.DAY_OF_MONTH, 1);
+                _compEnd = cal.getTimeInMillis() + COMP_PERIOD;
+            }
+        }
+        else
+        {
+            _compEnd = cal.getTimeInMillis() + COMP_PERIOD;
         }
         
         if (_scheduledOlympiadEnd != null)
@@ -381,7 +390,7 @@ public class Olympiad
             _currentCycle++;
             deleteNobles();
             setNewOlympiadEnd();
-            init();
+            init(false);
         }
     }
     
@@ -685,7 +694,7 @@ public class Olympiad
                         }
                         
                         save();
-                        init();
+                        init(false);
                     }
                 }, getMillisToCompEnd());
             }
@@ -744,15 +753,16 @@ public class Olympiad
     private long getMillisToCompBegin()
     {
         long currentTimeMillis = System.currentTimeMillis();
+        long compStart = _compEnd - COMP_PERIOD;
         
-        if (_compStart < currentTimeMillis && _compEnd > currentTimeMillis)
+        if (compStart < currentTimeMillis && _compEnd > currentTimeMillis)
         {
             return 10L;
         }
         
-        if (_compStart > currentTimeMillis)
+        if (compStart > currentTimeMillis)
         {
-            return (_compStart - currentTimeMillis);
+            return (compStart - currentTimeMillis);
         }
         
         return setNewCompBegin();
@@ -765,12 +775,12 @@ public class Olympiad
         cal.set(Calendar.MINUTE, COMP_MIN);
         cal.add(Calendar.HOUR_OF_DAY, 24);
         
-        _compStart = cal.getTimeInMillis();
-        _compEnd = _compStart + COMP_PERIOD;
-        
+        long compStart = cal.getTimeInMillis();
+
+        _compEnd = compStart + COMP_PERIOD;
         _log.info("Olympiad System: New Schedule @ " + cal.getTime());
         
-        return (_compStart - System.currentTimeMillis());
+        return (compStart - System.currentTimeMillis());
     }
     
     protected long getMillisToCompEnd()
@@ -1042,7 +1052,7 @@ public class Olympiad
             return 0;
         
         int rank = _noblesRank.get(objId);
-        int points = (player.isHero() ? Config.ALT_OLY_HERO_POINTS : 0);
+        int points = (player.isHero() || Hero.getInstance().isUnclaimedHero(player.getObjectId()) ? Config.ALT_OLY_HERO_POINTS : 0);
         switch (rank)
         {
             case 1:

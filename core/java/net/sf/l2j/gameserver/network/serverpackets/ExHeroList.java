@@ -14,7 +14,7 @@
  */
 package net.sf.l2j.gameserver.network.serverpackets;
 
-import java.util.Map;
+import java.util.Collection;
 
 import net.sf.l2j.gameserver.model.entity.Hero;
 import net.sf.l2j.gameserver.model.olympiad.Olympiad;
@@ -27,11 +27,11 @@ import net.sf.l2j.gameserver.templates.StatsSet;
 public class ExHeroList extends L2GameServerPacket
 {
 	private static final String _S__FE_23_EXHEROLIST = "[S] FE:23 ExHeroList";
-	private final Map<Integer, StatsSet> _heroList;
+	private final Collection<StatsSet> _heroList;
 	
 	public ExHeroList()
 	{
-		_heroList = Hero.getInstance().getHeroes();
+		_heroList = Hero.getInstance().getHeroes().values();
 	}
 	
 	/*
@@ -45,9 +45,8 @@ public class ExHeroList extends L2GameServerPacket
 		writeH(0x23);
 		writeD(_heroList.size());
 		
-		for (Integer heroId : _heroList.keySet())
+		for (StatsSet hero : _heroList)
 		{
-			StatsSet hero = _heroList.get(heroId);
 			writeS(hero.getString(Olympiad.CHAR_NAME));
 			writeD(hero.getInteger(Olympiad.CLASS_ID));
 			writeS(hero.getString(Hero.CLAN_NAME, ""));
