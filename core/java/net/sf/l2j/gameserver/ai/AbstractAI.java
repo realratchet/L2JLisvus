@@ -816,8 +816,7 @@ abstract class AbstractAI implements Ctrl
 			if ((_clientMovingToPawnOffset != 0) && (_followTarget != null))
 			{
 				// Send a Server->Client packet MoveToPawn to the actor and all L2PcInstance in its _knownPlayers
-				MoveToPawn msg = new MoveToPawn(_actor, _followTarget, _clientMovingToPawnOffset);
-				player.sendPacket(msg);
+				player.sendPacket(new MoveToPawn(_actor, _followTarget, _clientMovingToPawnOffset));
 			}
 			else
 			{

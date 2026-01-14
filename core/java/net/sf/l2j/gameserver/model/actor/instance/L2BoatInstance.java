@@ -145,7 +145,6 @@ public class L2BoatInstance extends L2Character
     @Override
     public boolean moveToNextRoutePoint()
     {
-        setMoveData(null);
         _runState++;
         
         if (_runState < _currentPath.length)

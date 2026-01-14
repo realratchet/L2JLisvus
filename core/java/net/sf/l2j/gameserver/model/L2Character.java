@@ -4096,15 +4096,30 @@ public abstract class L2Character extends L2Object
 			boolean isBlocked = _move != null && _move.blocked;
 			
 			ThreadPoolManager.getInstance().executeAi(() -> {
+				if (Config.MOVE_BASED_KNOWNLIST)
+				{
+					getKnownList().findObjects();
+					getKnownList().forgetObjects(true);
+				}
+				
+				revalidateZone(true);
+				
 				try
 				{
-					if (Config.MOVE_BASED_KNOWNLIST)
+					if (isBlocked)
 					{
-						getKnownList().findObjects();
-						getKnownList().forgetObjects(true);
+						getAI().notifyEvent(CtrlEvent.EVT_ARRIVED_BLOCKED);
 					}
-					
-					getAI().notifyEvent(isBlocked ? CtrlEvent.EVT_ARRIVED_BLOCKED : CtrlEvent.EVT_ARRIVED);
+					else
+					{
+						if (!moveToNextRoutePoint())
+						{
+							// Cancel the move action
+							_move = null;
+							
+							getAI().notifyEvent(CtrlEvent.EVT_ARRIVED);
+						}
+					}
 				}
 				catch (Throwable t)
 				{
@@ -4472,7 +4487,7 @@ public abstract class L2Character extends L2Object
 				return false;
 			}
 		}
-
+		
 		// Check if a movement offset is defined
 		if (!isOnGeoPath && offset > 0 && (distance - offset) > 0)
 		{
@@ -4545,32 +4560,24 @@ public abstract class L2Character extends L2Object
 	public boolean moveToNextRoutePoint()
 	{
 		MoveData curMove = _move;
-		if (curMove == null)
+		if (curMove == null || isMovementDisabled() || !isOnGeodataPath())
 		{
-			return false;
-		}
-		
-		if (!isOnGeodataPath())
-		{
-			// Cancel the move action
-			_move = null;
 			return false;
 		}
 		
 		// Get the Move Speed of the L2Charcater
 		double speed = getMoveSpeed();
-		if ((speed <= 0) || isMovementDisabled())
+		
+		if (speed <= 0)
 		{
-			// Cancel the move action
-			_move = null;
 			return false;
 		}
-
+		
 		// Get current position of the L2Character
 		final int curX = super.getX();
 		final int curY = super.getY();
 		final int curZ = super.getZ();
-
+		
 		boolean isLastRoute = curMove.onGeodataPathIndex == (curMove.geoPath.size() - 2);
 		int newIndex = curMove.onGeodataPathIndex + 1;
 		int offset = curMove._offset;
@@ -4588,11 +4595,11 @@ public abstract class L2Character extends L2Object
 			yDest = curMove.geoPath.get(newIndex).getY();
 			zDest = curMove.geoPath.get(newIndex).getZ();
 		}
-
+		
 		double dx = (xDest - curX);
 		double dy = (yDest - curY);
 		double distance = Math.sqrt((dx * dx) + (dy * dy));
-
+		
 		// Check if a movement offset is defined
 		if (isLastRoute && offset > 0)
 		{
@@ -4601,7 +4608,7 @@ public abstract class L2Character extends L2Object
 			{
 				return false;
 			}
-
+			
 			// approximation for moving closer when z coordinates are different
 			// TODO: handle Z axis movement better
 			offset -= Math.abs(zDest - curZ);

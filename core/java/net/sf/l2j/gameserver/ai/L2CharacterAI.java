@@ -713,13 +713,6 @@ public class L2CharacterAI extends AbstractAI
 	@Override
 	protected void onEvtArrived()
 	{
-		_actor.revalidateZone(true);
-
-		if (_actor.moveToNextRoutePoint())
-		{
-			return;
-		}
-
 		if (_actor instanceof L2Attackable)
 		{
 			((L2Attackable) _actor).setIsReturningToSpawnPoint(false);
@@ -766,8 +759,6 @@ public class L2CharacterAI extends AbstractAI
 	@Override
 	protected void onEvtArrivedBlocked(Location loc)
 	{
-		_actor.revalidateZone(true);
-		
 		// Stop the actor movement server side AND client side by sending Server->Client packet StopMove (broadcast)
 		clientStopMoving(loc);
 
