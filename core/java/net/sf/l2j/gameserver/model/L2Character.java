@@ -136,7 +136,7 @@ public abstract class L2Character extends L2Object
 	public static final byte ZONE_NO_STORE = 14;
 	
 	public static final int ZONE_TYPE_LENGTH = 15;
-
+	
 	// Abnormal effect types
 	public static final int ABNORMAL_EFFECT_BLEEDING = 0x0001;
 	public static final int ABNORMAL_EFFECT_POISON = 0x0002;
@@ -168,7 +168,7 @@ public abstract class L2Character extends L2Object
 	private static final Calculator[] NPC_STD_CALCULATORS = Formulas.getInstance().getStdNPCCalculators();
 	
 	private static final int MIN_GAUGE_HIT_TIME = 420;
-
+	
 	protected final CharEffectList _effects = new CharEffectList(this);
 	
 	private int _abnormalEffects;
@@ -3359,8 +3359,10 @@ public abstract class L2Character extends L2Object
 		public double _yAccurate;
 		public double _zAccurate;
 		public int _heading;
+		public int _offset;
 		
 		public boolean disregardingGeodata;
+		public boolean blocked;
 		public int onGeodataPathIndex;
 		public List<AbstractNodeLoc> geoPath;
 		public int geoPathAccurateTx;
@@ -3847,14 +3849,16 @@ public abstract class L2Character extends L2Object
 	public final boolean isOnGeodataPath()
 	{
 		MoveData m = _move;
-		if (m == null)
+		if (m == null || m.geoPath == null)
 		{
 			return false;
 		}
+		
 		if (m.onGeodataPathIndex == -1)
 		{
 			return false;
 		}
+		
 		if (m.onGeodataPathIndex == (m.geoPath.size() - 1))
 		{
 			return false;
@@ -4069,7 +4073,7 @@ public abstract class L2Character extends L2Object
 		
 		if (!isFloating && !GeoData.getInstance().canMove(xPrev, yPrev, zPrev, xNext, yNext, zNext))
 		{
-			fireArrivedEvent(true);
+			m.blocked = true;
 			return true;
 		}
 		
@@ -4080,33 +4084,36 @@ public abstract class L2Character extends L2Object
 		// Set the timer of last position update to now
 		m._moveTimestamp = gameTicks;
 		
-		if (distFraction > 1)
-		{
-			fireArrivedEvent(false);
-			return true;
-		}
-		
-		return false;
+		return distFraction > 1;
 	}
 	
-	private void fireArrivedEvent(boolean isBlocked)
+	public final boolean checkIfArrived()
 	{
-		ThreadPoolManager.getInstance().executeAi(() -> {
-			try
-			{
-				if (Config.MOVE_BASED_KNOWNLIST)
+		boolean updatePos = updatePosition();
+		
+		if (updatePos)
+		{
+			boolean isBlocked = _move != null && _move.blocked;
+			
+			ThreadPoolManager.getInstance().executeAi(() -> {
+				try
 				{
-					getKnownList().findObjects();
-					getKnownList().forgetObjects(true);
+					if (Config.MOVE_BASED_KNOWNLIST)
+					{
+						getKnownList().findObjects();
+						getKnownList().forgetObjects(true);
+					}
+					
+					getAI().notifyEvent(isBlocked ? CtrlEvent.EVT_ARRIVED_BLOCKED : CtrlEvent.EVT_ARRIVED);
 				}
-				
-				getAI().notifyEvent(isBlocked ? CtrlEvent.EVT_ARRIVED_BLOCKED : CtrlEvent.EVT_ARRIVED);
-			}
-			catch (Throwable t)
-			{
-				_log.log(Level.WARNING, "", t);
-			}
-		});
+				catch (Throwable t)
+				{
+					_log.log(Level.WARNING, "", t);
+				}
+			});
+		}
+		
+		return updatePos;
 	}
 	
 	public void revalidateZone(boolean force)
@@ -4276,6 +4283,7 @@ public abstract class L2Character extends L2Object
 		double dy = (y - curY);
 		double dz = (z - curZ);
 		double distance = Math.sqrt((dx * dx) + (dy * dy));
+		boolean isOnGeoPath = false;
 		
 		final boolean verticalMovementOnly = isFlying() && (distance == 0) && (dz != 0);
 		if (verticalMovementOnly)
@@ -4302,77 +4310,13 @@ public abstract class L2Character extends L2Object
 			_log.fine("distance to target:" + distance);
 		}
 		
-		// Define movement angles needed
-		// ^
-		// | X (x,y)
-		// | /
-		// | /distance
-		// | /
-		// |/ angle
-		// X ---------->
-		// (curx,cury)
-		
-		double cos;
-		double sin;
-		
-		/**
-		 * The attack/follow range offset diff.
-		 * This diff must not be included in the pathfinding procedure.
-		 */
-		final int xRangeDiff, yRangeDiff;
-		
-		// Check if a movement offset is defined or no distance to go through
-		if ((offset > 0) || (distance < 1))
-		{
-			// approximation for moving closer when z coordinates are different
-			// TODO: handle Z axis movement better
-			offset -= Math.abs(dz);
-			if (offset < 5)
-			{
-				offset = 5;
-			}
-			
-			// If no distance to go through, the movement is cancelled
-			if ((distance < 1) || ((distance - offset) <= 0))
-			{
-				if (Config.DEBUG)
-				{
-					_log.fine("already in range, no movement needed.");
-				}
-				
-				// Notify the AI that the L2Character is arrived at destination
-				getAI().notifyEvent(CtrlEvent.EVT_ARRIVED, null);
-				return false;
-			}
-			// Calculate movement angles needed
-			sin = dy / distance;
-			cos = dx / distance;
-			
-			distance -= (offset - 5); // due to rounding error, we have to move a bit closer to be in range
-			
-			int rangeDestX = curX + (int) (distance * cos);
-			int rangeDestY = curY + (int) (distance * sin);
-
-			xRangeDiff = x - rangeDestX;
-			yRangeDiff = y - rangeDestY;
-			x = rangeDestX;
-			y = rangeDestY;
-		}
-		else
-		{
-			// Calculate movement angles needed
-			sin = dy / distance;
-			cos = dx / distance;
-			xRangeDiff = 0;
-			yRangeDiff = 0;
-		}
-		
 		// Create and Init a MoveData object
 		MoveData m = new MoveData();
 		
 		// GEODATA MOVEMENT CHECKS AND PATHFINDING
 		m.onGeodataPathIndex = -1; // Initialize not on geodata path
 		m.disregardingGeodata = false;
+		m._offset = offset;
 		
 		if (!isFlying() // currently flying characters not checked
 			&& !(this instanceof L2NpcWalkerInstance) && !(this instanceof L2BoatInstance) && (!isInsideZone(ZONE_WATER) || isInsideZone(ZONE_SIEGE))) // swimming also not checked - but distance is limited
@@ -4394,15 +4338,15 @@ public abstract class L2Character extends L2Object
 			// when PATHFINDING > 0, for all characters except mobs returning home (could be changed later to teleport if pathfinding fails)
 			if (((Config.PATHFINDING > 0) && (!((this instanceof L2Attackable) && ((L2Attackable) this).isReturningToSpawnPoint()))) || ((this instanceof L2PcInstance) && !(isInBoat && (distance > 1500))) || isAfraid() || (this instanceof L2RiftInvaderInstance) || ((this instanceof L2Summon) && !(getAI().getIntention() == CtrlIntention.AI_INTENTION_FOLLOW)))
 			{
-				final MoveData currentMove = _move;
+				final MoveData curMove = _move;
 				
-				if (currentMove != null && isOnGeodataPath())
+				if (curMove != null && isOnGeodataPath())
 				{
-					if ((gtx == currentMove.geoPathGtx) && (gty == currentMove.geoPathGty))
+					if ((gtx == curMove.geoPathGtx) && (gty == curMove.geoPathGty))
 					{
 						return false;
 					}
-					currentMove.onGeodataPathIndex = -1; // Set not on geodata path
+					curMove.onGeodataPathIndex = -1; // Set not on geodata path
 				}
 				
 				if ((curX < L2World.MAP_MIN_X) || (curX > L2World.MAP_MAX_X) || (curY < L2World.MAP_MIN_Y) || (curY > L2World.MAP_MAX_Y))
@@ -4447,7 +4391,7 @@ public abstract class L2Character extends L2Object
 				// Overrides previous movement check
 				if (((this instanceof L2PlayableInstance) && !isInBoat) || isInCombat() || (this instanceof L2MinionInstance))
 				{
-					m.geoPath = PathFinding.getInstance().findPath(curX, curY, curZ, (originalX + xRangeDiff), (originalY + yRangeDiff), originalZ, this instanceof L2PlayableInstance);
+					m.geoPath = PathFinding.getInstance().findPath(curX, curY, curZ, originalX, originalY, originalZ, this instanceof L2PlayableInstance);
 					
 					// No path found or could be a straight path
 					if (m.geoPath == null || m.geoPath.size() < 2)
@@ -4512,8 +4456,7 @@ public abstract class L2Character extends L2Object
 						dy = y - curY;
 						dz = z - curZ;
 						distance = verticalMovementOnly ? Math.abs(dz * dz) : Math.sqrt((dx * dx) + (dy * dy));
-						sin = dy / distance;
-						cos = dx / distance;
+						isOnGeoPath = true;
 					}
 				}
 			}
@@ -4528,6 +4471,27 @@ public abstract class L2Character extends L2Object
 				getAI().setIntention(CtrlIntention.AI_INTENTION_IDLE);
 				return false;
 			}
+		}
+
+		// Check if a movement offset is defined
+		if (!isOnGeoPath && offset > 0 && (distance - offset) > 0)
+		{
+			// approximation for moving closer when z coordinates are different
+			// TODO: handle Z axis movement better
+			offset -= Math.abs(dz);
+			if (offset < 5)
+			{
+				offset = 5;
+			}
+			
+			// Calculate movement angles needed
+			double sin = dy / distance;
+			double cos = dx / distance;
+			
+			distance -= (offset - 5); // due to rounding error, we have to move a bit closer to be in range
+			
+			x = curX + (int) (distance * cos);
+			y = curY + (int) (distance * sin);
 		}
 		
 		// Apply Z distance for flying or swimming for correct timing calculations
@@ -4549,7 +4513,7 @@ public abstract class L2Character extends L2Object
 		// Does not break heading on vertical movements
 		if (!verticalMovementOnly)
 		{
-			setHeading(Util.calculateHeadingFrom(cos, sin));
+			setHeading(Util.calculateHeadingFrom(curX, curY, x, y));
 		}
 		
 		if (Config.DEBUG)
@@ -4580,6 +4544,12 @@ public abstract class L2Character extends L2Object
 	
 	public boolean moveToNextRoutePoint()
 	{
+		MoveData curMove = _move;
+		if (curMove == null)
+		{
+			return false;
+		}
+		
 		if (!isOnGeodataPath())
 		{
 			// Cancel the move action
@@ -4595,40 +4565,75 @@ public abstract class L2Character extends L2Object
 			_move = null;
 			return false;
 		}
+
+		// Get current position of the L2Character
+		final int curX = super.getX();
+		final int curY = super.getY();
+		final int curZ = super.getZ();
+
+		boolean isLastRoute = curMove.onGeodataPathIndex == (curMove.geoPath.size() - 2);
+		int newIndex = curMove.onGeodataPathIndex + 1;
+		int offset = curMove._offset;
+		int xDest, yDest, zDest;
 		
-		MoveData currentMove = _move;
-		if (currentMove == null)
+		if (isLastRoute)
 		{
-			return false;
+			xDest = curMove.geoPathAccurateTx;
+			yDest = curMove.geoPathAccurateTy;
+			zDest = curMove.geoPath.get(newIndex).getZ();
+		}
+		else
+		{
+			xDest = curMove.geoPath.get(newIndex).getX();
+			yDest = curMove.geoPath.get(newIndex).getY();
+			zDest = curMove.geoPath.get(newIndex).getZ();
+		}
+
+		double dx = (xDest - curX);
+		double dy = (yDest - curY);
+		double distance = Math.sqrt((dx * dx) + (dy * dy));
+
+		// Check if a movement offset is defined
+		if (isLastRoute && offset > 0)
+		{
+			// Character is already close enough
+			if ((distance - offset) <= 0)
+			{
+				return false;
+			}
+
+			// approximation for moving closer when z coordinates are different
+			// TODO: handle Z axis movement better
+			offset -= Math.abs(zDest - curZ);
+			if (offset < 5)
+			{
+				offset = 5;
+			}
+			
+			// Calculate movement angles needed
+			double sin = dy / distance;
+			double cos = dx / distance;
+			
+			distance -= (offset - 5); // due to rounding error, we have to move a bit closer to be in range
+			
+			xDest = curX + (int) (distance * cos);
+			yDest = curY + (int) (distance * sin);
 		}
 		
 		// Create and Init a MoveData object
 		MoveData m = new MoveData();
 		
 		// Update MoveData object
-		m.onGeodataPathIndex = currentMove.onGeodataPathIndex + 1; // next segment
-		m.geoPath = currentMove.geoPath;
-		m.geoPathGtx = currentMove.geoPathGtx;
-		m.geoPathGty = currentMove.geoPathGty;
-		m.geoPathAccurateTx = currentMove.geoPathAccurateTx;
-		m.geoPathAccurateTy = currentMove.geoPathAccurateTy;
-		
-		if (currentMove.onGeodataPathIndex == (currentMove.geoPath.size() - 2))
-		{
-			m._xDestination = currentMove.geoPathAccurateTx;
-			m._yDestination = currentMove.geoPathAccurateTy;
-			m._zDestination = currentMove.geoPath.get(m.onGeodataPathIndex).getZ();
-		}
-		else
-		{
-			m._xDestination = currentMove.geoPath.get(m.onGeodataPathIndex).getX();
-			m._yDestination = currentMove.geoPath.get(m.onGeodataPathIndex).getY();
-			m._zDestination = currentMove.geoPath.get(m.onGeodataPathIndex).getZ();
-		}
-		
-		double dx = (m._xDestination - super.getX());
-		double dy = (m._yDestination - super.getY());
-		double distance = Math.sqrt((dx * dx) + (dy * dy));
+		m.onGeodataPathIndex = newIndex; // next segment
+		m.geoPath = curMove.geoPath;
+		m.geoPathGtx = curMove.geoPathGtx;
+		m.geoPathGty = curMove.geoPathGty;
+		m.geoPathAccurateTx = curMove.geoPathAccurateTx;
+		m.geoPathAccurateTy = curMove.geoPathAccurateTy;
+		m._offset = curMove._offset;
+		m._xDestination = xDest;
+		m._yDestination = yDest;
+		m._zDestination = zDest;
 		
 		// Calculate and set the heading of the L2Character
 		if (distance != 0)
@@ -4641,7 +4646,6 @@ public abstract class L2Character extends L2Object
 		int ticksToMove = 1 + (int) ((GameTimeController.TICKS_PER_SECOND * distance) / speed);
 		
 		m._heading = 0; // initial value for coordinate sync
-		
 		m._moveStartTime = GameTimeController.getInstance().getGameTicks();
 		
 		if (Config.DEBUG)
@@ -4693,42 +4697,6 @@ public abstract class L2Character extends L2Object
 		}
 		
 		return result;
-	}
-	
-	/**
-	 * Return the distance between the current position of the L2Character and the target (x,y).<BR>
-	 * <BR>
-	 * @param x X position of the target
-	 * @param y Y position of the target
-	 * @return the plan distance
-	 * @deprecated use getPlanDistanceSq(int x, int y, int z)
-	 */
-	@Deprecated
-	public final double getDistance(int x, int y)
-	{
-		double dx = x - getX();
-		double dy = y - getY();
-		
-		return Math.sqrt((dx * dx) + (dy * dy));
-	}
-	
-	/**
-	 * Return the distance between the current position of the L2Character and the target (x,y).<BR>
-	 * <BR>
-	 * @param x X position of the target
-	 * @param y Y position of the target
-	 * @param z
-	 * @return the plan distance
-	 * @deprecated use getPlanDistanceSq(int x, int y, int z)
-	 */
-	@Deprecated
-	public final double getDistance(int x, int y, int z)
-	{
-		double dx = x - getX();
-		double dy = y - getY();
-		double dz = z - getZ();
-		
-		return Math.sqrt((dx * dx) + (dy * dy) + (dz * dz));
 	}
 	
 	/**

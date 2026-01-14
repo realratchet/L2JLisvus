@@ -1035,6 +1035,7 @@ public class L2AttackableAI extends L2CharacterAI implements Runnable
 		
 		// Get all information needed to choose between physical or magical attack
 		_actor.setTarget(_mostHatedAnalysis.character);
+		
 		double dist2 = _actor.getPlanDistanceSq(_mostHatedAnalysis.character.getX(), _mostHatedAnalysis.character.getY());
 		final int collision = (int) _actor.getTemplate().collisionRadius;
 		final int combinedCollision = collision + (int) _mostHatedAnalysis.character.getTemplate().collisionRadius;
@@ -1415,13 +1416,11 @@ public class L2AttackableAI extends L2CharacterAI implements Runnable
 			{
 				range -= 100;
 			}
-			if (range < 5)
-			{
-				range = 5;
-			}
-			moveToPawn(_mostHatedAnalysis.character, range);
+
+			moveToPawn(_mostHatedAnalysis.character, Math.max(range, 5));
 			return;
 		}
+		
 		// **************************************************
 		// Else, if this is close enough for physical attacks
 		// In case many mobs are trying to hit from same place, move a bit,
@@ -1806,9 +1805,18 @@ public class L2AttackableAI extends L2CharacterAI implements Runnable
 			}
 		}
 		
-		// Finally, physical attacks
-		clientStopMoving(null);
-		_accessor.doAttack(getAttackTarget());
+		if (GeoData.getInstance().canSeeTarget(_actor, getAttackTarget()))
+		{
+			// Finally, physical attacks
+			clientStopMoving(null);
+			_accessor.doAttack(getAttackTarget());
+		}
+		else
+		{
+			// There's also the case of actor being in range of hated character but still can't see each other.
+			// In that case, let actor rely on pathfinding to get close enough to see character.
+			moveToPawn(getAttackTarget(), Math.max(range, 5));
+		}
 	}
 	
 	/**

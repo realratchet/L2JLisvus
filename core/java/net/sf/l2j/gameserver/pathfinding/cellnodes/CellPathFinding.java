@@ -156,11 +156,15 @@ public class CellPathFinding extends PathFinding
 		catch (Exception e)
 		{
 			e.printStackTrace();
-			return null;
 		}
 		finally
 		{
 			buffer.free();
+		}
+
+		if (path == null)
+		{
+			return null;
 		}
 		
 		if (path.size() < 3 || Config.MAX_POSTFILTER_PASSES <= 0)

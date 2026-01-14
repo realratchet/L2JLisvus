@@ -129,7 +129,7 @@ public class GameTimeController extends Thread
      */
     protected void moveObjects()
     {
-    	_movingObjects.removeIf(L2Character::updatePosition);
+    	_movingObjects.removeIf(L2Character::checkIfArrived);
     }
 
 	public void stopTimer()

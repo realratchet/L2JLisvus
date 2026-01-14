@@ -30,8 +30,6 @@ import net.sf.l2j.gameserver.ai.CtrlIntention;
 import net.sf.l2j.gameserver.ai.L2AttackableAI;
 import net.sf.l2j.gameserver.ai.L2CharacterAI;
 import net.sf.l2j.gameserver.datatables.ItemTable;
-import net.sf.l2j.gameserver.model.actor.instance.L2DoorInstance;
-import net.sf.l2j.gameserver.model.actor.instance.L2FolkInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2GrandBossInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2NpcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
@@ -258,31 +256,6 @@ public class L2Attackable extends L2NpcInstance
 	public L2CharacterAI initAI()
 	{
 		return new L2AttackableAI(new AIAccessor());
-	}
-	
-	// get condition to hate, actually isAggressive() is checked
-	// by monster and karma by guards in methods that overwrite this one.
-	/**
-	 * Not used.<BR>
-	 * <BR>
-	 * @param target
-	 * @return
-	 * @deprecated
-	 */
-	@Deprecated
-	public boolean getCondition2(L2Character target)
-	{
-		if ((target instanceof L2FolkInstance) || (target instanceof L2DoorInstance))
-		{
-			return false;
-		}
-		
-		if (target.isAlikeDead() || !isInsideRadius(target, getAggroRange(), false, false) || (Math.abs(getZ() - target.getZ()) > 100))
-		{
-			return false;
-		}
-		
-		return !target.isInvul();
 	}
 	
 	/**

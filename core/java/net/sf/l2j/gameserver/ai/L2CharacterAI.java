@@ -766,6 +766,8 @@ public class L2CharacterAI extends AbstractAI
 	@Override
 	protected void onEvtArrivedBlocked(Location loc)
 	{
+		_actor.revalidateZone(true);
+		
 		// Stop the actor movement server side AND client side by sending Server->Client packet StopMove (broadcast)
 		clientStopMoving(loc);
 

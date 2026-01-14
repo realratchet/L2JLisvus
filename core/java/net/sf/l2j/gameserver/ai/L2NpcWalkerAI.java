@@ -98,12 +98,13 @@ public class L2NpcWalkerAI extends L2CharacterAI implements Runnable
     @Override
     protected void onEvtArrivedBlocked(Location loc)
     {
+        super.onEvtArrivedBlocked(loc);
+        
         int destinationX = _route.get(_currentPos).getMoveX();
         int destinationY = _route.get(_currentPos).getMoveY();
         int destinationZ = _route.get(_currentPos).getMoveZ();
-        
+
         getActor().teleToLocation(destinationX, destinationY, destinationZ, false);
-        super.onEvtArrivedBlocked(loc);
     }
     
     private void checkArrived()

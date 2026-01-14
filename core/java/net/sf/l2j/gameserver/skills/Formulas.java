@@ -1112,7 +1112,6 @@ public final class Formulas
 		return (cha.calcStat(Stats.REGENERATE_CP_RATE, init, null, null) * cpRegenMultiplier) + cpRegenBonus;
 	}
 	
-	@SuppressWarnings("deprecation")
 	public final double calcFestivalRegenModifier(L2PcInstance activeChar)
 	{
 		final int[] festivalInfo = SevenSignsFestival.getInstance().getFestivalForPlayer(activeChar);
@@ -1137,7 +1136,7 @@ public final class Formulas
 		}
 		
 		// Check the distance between the player and the player spawn point, in the center of the arena.
-		double distToCenter = activeChar.getDistance(festivalCenter[0], festivalCenter[1]);
+		double distToCenter = Util.calculateDistance(festivalCenter[0], festivalCenter[1], activeChar.getX(), activeChar.getY());
 		
 		if (Config.DEBUG)
 		{
