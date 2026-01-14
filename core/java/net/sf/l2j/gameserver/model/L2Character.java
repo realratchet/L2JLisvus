@@ -4106,14 +4106,16 @@ public abstract class L2Character extends L2Object
 				
 				try
 				{
-					if (isBlocked)
+					// In the case of character being blocked, we give a chance to next route in case it helps with movement
+					if (!moveToNextRoutePoint())
 					{
-						getAI().notifyEvent(CtrlEvent.EVT_ARRIVED_BLOCKED);
-					}
-					else
-					{
-						if (!moveToNextRoutePoint())
+						if (isBlocked)
 						{
+							getAI().notifyEvent(CtrlEvent.EVT_ARRIVED_BLOCKED);
+						}
+						else
+						{
+							
 							// Cancel the move action
 							_move = null;
 							
