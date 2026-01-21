@@ -84,26 +84,23 @@ public class ClanHall
 		_paidUntil = paidUntil;
 		_grade = grade;
 		_paid = paid;
-		
-		if (_ownerId == 0)
-		{
-			return;
-		}
-		
-		L2Clan clan = ClanTable.getInstance().getClan(_ownerId);
-		if (clan != null)
-		{
-			clan.setHasHideout(_clanHallId);
-		}
-		
-		loadFunctions();
-		
+
 		if (_defaultBid > 0)
 		{
 			loadAuction();
 		}
-
-		startRentTask(false);
+		
+		if (_ownerId > 0)
+		{
+			L2Clan clan = ClanTable.getInstance().getClan(_ownerId);
+			if (clan != null)
+			{
+				clan.setHasHideout(_clanHallId);
+			}
+			
+			loadFunctions();
+			startRentTask(false);
+		}
 	}
 	
 	public void openCloseDoor(int doorId, boolean open)
@@ -222,9 +219,16 @@ public class ClanHall
 				_auction.removeBids(null);
 				_auction.deleteMe();
 
-				// Initialize a new auction instance and launch the auction task
-				initializeNPCAuction();
-				_auction.startAutoTask();
+				// If clan hall is still rentable, initialize a new auction instance and launch the auction task
+				if (_defaultBid > 0)
+				{
+					initializeNPCAuction();
+					_auction.startAutoTask();
+				}
+				else
+				{
+					_auction = null;
+				}
 			}
 		}
 		

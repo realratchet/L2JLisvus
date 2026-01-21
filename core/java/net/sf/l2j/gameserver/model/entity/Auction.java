@@ -123,7 +123,7 @@ public class Auction
 	private void updateAuctionDate()
 	{
 		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
-			PreparedStatement statement = con.prepareStatement("UPDATE auction SET endDate=? WHERE id=?"))
+			PreparedStatement statement = con.prepareStatement("UPDATE auction SET endDate=? WHERE hall_id=?"))
 		{
 			statement.setLong(1, _endDate);
 			statement.setInt(2, _clanHallId);
