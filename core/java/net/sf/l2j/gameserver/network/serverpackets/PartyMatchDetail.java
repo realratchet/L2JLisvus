@@ -43,7 +43,7 @@ public class PartyMatchDetail extends L2GameServerPacket
 		writeD(_room.getMinLvl()); // Level Min
 		writeD(_room.getMaxLvl()); // Level Max
 		writeD(_room.getLootType()); // Loot Type
-		writeD(_room.getLocation()); // Room Location
+		writeD(_room.getLocation(_room.getOwner())); // Room Location
 		writeS(_room.getTitle()); // Room title
 	}
 	

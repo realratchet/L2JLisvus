@@ -58,7 +58,7 @@ public class PartyMatchList extends L2GameServerPacket
 				continue;
 			}
 			
-			if ((_loc > 0) && (_loc != room.getLocation()))
+			if ((_loc > 0) && (_loc != room.getLocation(room.getOwner())))
 			{
 				continue;
 			}
@@ -90,7 +90,7 @@ public class PartyMatchList extends L2GameServerPacket
 		{
 			writeD(room.getId());
 			writeS(room.getTitle());
-			writeD(room.getLocation());
+			writeD(room.getLocation(room.getOwner()));
 			writeD(room.getMinLvl());
 			writeD(room.getMaxLvl());
 			writeD(room.getMembers());

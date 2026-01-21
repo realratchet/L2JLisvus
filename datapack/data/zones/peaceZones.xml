@@ -122,6 +122,7 @@
 	</zone>
 	<!-- Dimensional Rift -->
 	<zone id="13011" maxZ="-5500" minZ="-6900" shape="Cuboid" type="PeaceZone">
+		<stat name="restartPointGroup" val="57" />
 		<node X="-115384" Y="-178072" />
 		<node X="-114200" Y="-182120" />
 	</zone>

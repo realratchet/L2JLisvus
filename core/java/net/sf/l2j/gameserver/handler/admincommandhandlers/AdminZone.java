@@ -18,10 +18,11 @@ import java.util.List;
 import java.util.StringTokenizer;
 
 import net.sf.l2j.gameserver.cache.HtmCache;
-import net.sf.l2j.gameserver.datatables.MapRegionTable;
 import net.sf.l2j.gameserver.handler.IAdminCommandHandler;
+import net.sf.l2j.gameserver.instancemanager.MapRegionManager;
 import net.sf.l2j.gameserver.instancemanager.ZoneManager;
 import net.sf.l2j.gameserver.model.L2Character;
+import net.sf.l2j.gameserver.model.L2MapRegion;
 import net.sf.l2j.gameserver.model.L2World;
 import net.sf.l2j.gameserver.model.L2WorldRegion;
 import net.sf.l2j.gameserver.model.Location;
@@ -57,32 +58,39 @@ public class AdminZone implements IAdminCommandHandler
 		
 		if (actualCommand.equalsIgnoreCase("admin_zone_check"))
 		{
+			L2MapRegion mapRegion = MapRegionManager.getInstance().getMapRegion(activeChar);
+
 			showHtml(activeChar);
-			activeChar.sendMessage("MapRegion: x:" + MapRegionTable.getInstance().getMapRegionX(activeChar.getX()) + " y:" + MapRegionTable.getInstance().getMapRegionY(activeChar.getY()) + " ("+MapRegionTable.getInstance().getMapRegion(activeChar.getX(),activeChar.getY())+")");
+
+			if (mapRegion != null)
+			{
+				activeChar.sendMessage("MapRegion: " + mapRegion.getName());
+			}
+
+			activeChar.sendMessage("MapRegion: x:" + MapRegionManager.getInstance().getMapRegionX(activeChar.getX()) + " y:" + MapRegionManager.getInstance().getMapRegionY(activeChar.getY()) + " ("+MapRegionManager.getInstance().getMapRegion(activeChar.getX(),activeChar.getY())+")");
 			getGeoRegionXY(activeChar);
-			activeChar.sendMessage("Closest Town: " + MapRegionTable.getInstance().getClosestTownName(activeChar));
 			
 			Location loc;
 			
-			loc = MapRegionTable.getInstance().getTeleToLocation(activeChar, MapRegionTable.TeleportWhereType.Castle);
+			loc = MapRegionManager.getInstance().getTeleToLocation(activeChar, MapRegionManager.TeleportWhereType.Castle);
 			if (loc != null)
 			{
 				activeChar.sendMessage("TeleToLocation (Castle): x:" + loc.getX() + " y:" + loc.getY() + " z:" + loc.getZ());
 			}
 			
-			loc = MapRegionTable.getInstance().getTeleToLocation(activeChar, MapRegionTable.TeleportWhereType.ClanHall);
+			loc = MapRegionManager.getInstance().getTeleToLocation(activeChar, MapRegionManager.TeleportWhereType.ClanHall);
 			if (loc != null)
 			{
 				activeChar.sendMessage("TeleToLocation (ClanHall): x:" + loc.getX() + " y:" + loc.getY() + " z:" + loc.getZ());
 			}
 			
-			loc = MapRegionTable.getInstance().getTeleToLocation(activeChar, MapRegionTable.TeleportWhereType.SiegeFlag);
+			loc = MapRegionManager.getInstance().getTeleToLocation(activeChar, MapRegionManager.TeleportWhereType.SiegeFlag);
 			if (loc != null)
 			{
 				activeChar.sendMessage("TeleToLocation (SiegeFlag): x:" + loc.getX() + " y:" + loc.getY() + " z:" + loc.getZ());
 			}
 			
-			loc = MapRegionTable.getInstance().getTeleToLocation(activeChar, MapRegionTable.TeleportWhereType.Town);
+			loc = MapRegionManager.getInstance().getTeleToLocation(activeChar, MapRegionManager.TeleportWhereType.Town);
 			if (loc != null)
 			{
 				activeChar.sendMessage("TeleToLocation (Town): x:" + loc.getX() + " y:" + loc.getY() + " z:" + loc.getZ());

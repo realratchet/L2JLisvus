@@ -17,7 +17,7 @@ package net.sf.l2j.gameserver.model;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-import net.sf.l2j.gameserver.datatables.MapRegionTable;
+import net.sf.l2j.gameserver.instancemanager.MapRegionManager;
 import net.sf.l2j.gameserver.instancemanager.PartyMatchRoomManager;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.network.serverpackets.ExClosePartyRoom;
@@ -32,7 +32,6 @@ public class PartyMatchRoom
     private final int _id;
     private String _title;
     private int _loot;
-    private int _location;
     private int _minlvl;
     private int _maxlvl;
     private int _maxmem;
@@ -44,7 +43,6 @@ public class PartyMatchRoom
         _id = id;
         _title = title;
         _loot = loot;
-        _location = MapRegionTable.getInstance().getClosestTownNumber(owner);
         _minlvl = minlvl;
         _maxlvl = maxlvl;
         _maxmem = maxmem;
@@ -140,9 +138,10 @@ public class PartyMatchRoom
         return _maxlvl;
     }
     
-    public int getLocation()
+    public int getLocation(L2PcInstance member)
     {
-        return _location;
+        L2MapRegion mr = MapRegionManager.getInstance().getMapRegion(member);
+        return mr != null ? mr.getBbs() : 0;
     }
     
     public int getMembers()
@@ -165,7 +164,6 @@ public class PartyMatchRoom
         return _members.get(0);
     }
     
-    /* SET */
     public void setMinLvl(int minlvl)
     {
         _minlvl = minlvl;
@@ -174,11 +172,6 @@ public class PartyMatchRoom
     public void setMaxLvl(int maxlvl)
     {
         _maxlvl = maxlvl;
-    }
-    
-    public void setLocation(int loc)
-    {
-        _location = loc;
     }
     
     public void setLootType(int loot)

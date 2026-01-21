@@ -21,12 +21,13 @@ import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 
 import net.sf.l2j.Config;
-import net.sf.l2j.gameserver.datatables.MapRegionTable;
 import net.sf.l2j.gameserver.handler.IVoicedCommandHandler;
 import net.sf.l2j.gameserver.handler.VoicedCommandHandler;
+import net.sf.l2j.gameserver.instancemanager.MapRegionManager;
 import net.sf.l2j.gameserver.instancemanager.PartyMatchRoomManager;
 import net.sf.l2j.gameserver.instancemanager.PetitionManager;
 import net.sf.l2j.gameserver.model.BlockList;
+import net.sf.l2j.gameserver.model.L2MapRegion;
 import net.sf.l2j.gameserver.model.L2World;
 import net.sf.l2j.gameserver.model.PartyMatchRoom;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
@@ -242,10 +243,11 @@ public class Say2 extends L2GameClientPacket
 			case SHOUT:
 				if (Config.DEFAULT_GLOBAL_CHAT.equalsIgnoreCase("on") || (Config.DEFAULT_GLOBAL_CHAT.equalsIgnoreCase("gm") && activeChar.isGM()))
 				{
-					int region = MapRegionTable.getInstance().getMapRegion(activeChar.getX(), activeChar.getY());
+					L2MapRegion region = MapRegionManager.getInstance().getMapRegion(activeChar.getX(), activeChar.getY());
+
 					for (L2PcInstance player : L2World.getInstance().getAllPlayers())
 					{
-						if (region == MapRegionTable.getInstance().getMapRegion(player.getX(), player.getY()) && !BlockList.isBlocked(player, activeChar))
+						if (region == MapRegionManager.getInstance().getMapRegion(player.getX(), player.getY()) && !BlockList.isBlocked(player, activeChar))
 						{
 							player.sendPacket(cs);
 						}
@@ -272,10 +274,11 @@ public class Say2 extends L2GameClientPacket
 			case TRADE:
 				if (Config.DEFAULT_TRADE_CHAT.equalsIgnoreCase("on") || (Config.DEFAULT_TRADE_CHAT.equalsIgnoreCase("gm") && activeChar.isGM()))
 				{
-					int region = MapRegionTable.getInstance().getMapRegion(activeChar.getX(), activeChar.getY());
+					L2MapRegion region = MapRegionManager.getInstance().getMapRegion(activeChar.getX(), activeChar.getY());
+
 					for (L2PcInstance player : L2World.getInstance().getAllPlayers())
 					{
-						if (region == MapRegionTable.getInstance().getMapRegion(player.getX(), player.getY()) && !BlockList.isBlocked(player, activeChar))
+						if (region == MapRegionManager.getInstance().getMapRegion(player.getX(), player.getY()) && !BlockList.isBlocked(player, activeChar))
 						{
 							player.sendPacket(cs);
 						}

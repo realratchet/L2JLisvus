@@ -27,13 +27,12 @@ import net.sf.l2j.L2DatabaseFactory;
 import net.sf.l2j.gameserver.Announcements;
 import net.sf.l2j.gameserver.ThreadPoolManager;
 import net.sf.l2j.gameserver.datatables.ClanTable;
-import net.sf.l2j.gameserver.datatables.MapRegionTable;
-import net.sf.l2j.gameserver.datatables.MapRegionTable.TeleportWhereType;
 import net.sf.l2j.gameserver.datatables.NpcTable;
 import net.sf.l2j.gameserver.idfactory.IdFactory;
 import net.sf.l2j.gameserver.instancemanager.MercTicketManager;
 import net.sf.l2j.gameserver.instancemanager.SiegeGuardManager;
 import net.sf.l2j.gameserver.instancemanager.SiegeManager;
+import net.sf.l2j.gameserver.instancemanager.MapRegionManager.TeleportWhereType;
 import net.sf.l2j.gameserver.instancemanager.SiegeManager.SiegeSpawn;
 import net.sf.l2j.gameserver.model.L2Character;
 import net.sf.l2j.gameserver.model.L2Clan;
@@ -312,7 +311,7 @@ public class Siege
 			
 			loadSiegeClans(); // Load siege clan from db
 			updatePlayerSiegeStateFlags(false);
-			teleportPlayer(Siege.TeleportWhoType.Attacker, MapRegionTable.TeleportWhereType.Town); // Teleport to the closest town
+			teleportPlayer(Siege.TeleportWhoType.Attacker, TeleportWhereType.Town); // Teleport to the closest town
 			_controlTowerCount = 0;
 			spawnControlTower(getCastle().getCastleId()); // Spawn control tower
 			getCastle().spawnDoors(); // Spawn door
@@ -420,9 +419,10 @@ public class Siege
 						}
 					}
 				}
-				teleportPlayer(Siege.TeleportWhoType.Attacker, MapRegionTable.TeleportWhereType.SiegeFlag); // Teleport to siege flag or second closest town
-				teleportPlayer(Siege.TeleportWhoType.Spectator, MapRegionTable.TeleportWhereType.Town); // Teleport to the second closest town
-				
+
+				teleportPlayer(Siege.TeleportWhoType.Attacker, TeleportWhereType.SiegeFlag); // Teleport to siege flag or second closest town
+				teleportPlayer(Siege.TeleportWhoType.Spectator, TeleportWhereType.Town); // Teleport to the second closest town
+
 				removeDefenderFlags(); // Removes defenders' flags
 				getCastle().removeDoorUpgrade(); // Remove all castle door upgrades
 				getCastle().spawnDoors(true); // Respawn door to castle but make them weaker (50% hp)
@@ -462,9 +462,9 @@ public class Siege
 			}
 			
 			removeFlags(); // Removes all flags. Note: Remove flag before teleporting players
-			teleportPlayer(Siege.TeleportWhoType.Attacker, MapRegionTable.TeleportWhereType.Town); // Teleport to the second closest town
-			teleportPlayer(Siege.TeleportWhoType.DefenderNotOwner, MapRegionTable.TeleportWhereType.Town); // Teleport to the second closest town
-			teleportPlayer(Siege.TeleportWhoType.Spectator, MapRegionTable.TeleportWhereType.Town); // Teleport to the second closest town
+			teleportPlayer(Siege.TeleportWhoType.Attacker, TeleportWhereType.Town); // Teleport to the second closest town
+			teleportPlayer(Siege.TeleportWhoType.DefenderNotOwner, TeleportWhereType.Town); // Teleport to the second closest town
+			teleportPlayer(Siege.TeleportWhoType.Spectator, TeleportWhereType.Town); // Teleport to the second closest town
 			_isInProgress = false; // Flag so that siege instance can be started
 			updatePlayerSiegeStateFlags(true);
 			saveCastleSiege(); // Save castle specific data

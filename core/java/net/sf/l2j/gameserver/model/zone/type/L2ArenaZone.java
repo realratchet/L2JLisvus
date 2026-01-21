@@ -14,7 +14,7 @@
  */
 package net.sf.l2j.gameserver.model.zone.type;
 
-import net.sf.l2j.gameserver.datatables.MapRegionTable;
+import net.sf.l2j.gameserver.instancemanager.MapRegionManager.TeleportWhereType;
 import net.sf.l2j.gameserver.model.L2Character;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.quest.L2EventScript;
@@ -52,7 +52,7 @@ public class L2ArenaZone extends L2ZoneSpawn
             if (event != null && event.isStarted() && player.getEvent() != event)
             {
             	// Teleport foreigner to town
-            	player.teleToLocation(MapRegionTable.TeleportWhereType.Town);
+            	player.teleToLocation(TeleportWhereType.Town);
             }
             
             player.sendPacket(new SystemMessage(SystemMessage.ENTERED_COMBAT_ZONE));

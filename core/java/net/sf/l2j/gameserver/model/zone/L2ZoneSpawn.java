@@ -14,60 +14,30 @@
  */
 package net.sf.l2j.gameserver.model.zone;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import net.sf.l2j.gameserver.model.Location;
-import net.sf.l2j.util.Rnd;
-
 /**
  * Abstract zone with spawn locations
  * @author DS
- *
  */
 public abstract class L2ZoneSpawn extends L2ZoneType
 {
-    private List<Location> _spawnLocs = null;
-    private List<Location> _alternateSpawnLocs = null;
-
+    private int _restartPointGroup;
+    
     public L2ZoneSpawn(int id)
     {
         super(id);
     }
-
-    public final void addSpawn(int x, int y, int z)
-    {
-        if (_spawnLocs == null)
-            _spawnLocs = new ArrayList<>();
-
-        _spawnLocs.add(new Location(x, y, z));
-    }
-
-    public final void addAlternateSpawn(int x, int y, int z)
-    {
-        if (_alternateSpawnLocs == null)
-            _alternateSpawnLocs = new ArrayList<>();
-
-        _alternateSpawnLocs.add(new Location(x, y, z));
-    }
-
-    public List<Location> getSpawnLocs()
-    {
-    	return _spawnLocs;
-    }
     
-    public List<Location> getAlternateSpawnLocs()
+    @Override
+    public void setParameter(String name, String value)
     {
-    	return _alternateSpawnLocs;
-    }
-    
-    public Location getSpawnLoc()
-    {
-        return _spawnLocs != null && !_spawnLocs.isEmpty() ? _spawnLocs.get(Rnd.get(_spawnLocs.size())) : null;
+        if (name.equals("restartPointGroup"))
+        {
+            _restartPointGroup = Integer.parseInt(value);
+        }
     }
 
-    public Location getAlternateSpawnLoc()
+    public final int getRestartPointGroup()
     {
-        return _alternateSpawnLocs != null && !_alternateSpawnLocs.isEmpty() ? _alternateSpawnLocs.get(Rnd.get(_alternateSpawnLocs.size())) : getSpawnLoc();
+        return _restartPointGroup;
     }
 }

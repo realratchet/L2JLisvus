@@ -15,14 +15,14 @@
 package net.sf.l2j.gameserver.model.zone.type;
 
 import net.sf.l2j.gameserver.model.L2Character;
-import net.sf.l2j.gameserver.model.zone.L2ZoneType;
+import net.sf.l2j.gameserver.model.zone.L2ZoneSpawn;
 
 /**
  * A peaceful zone
  *
  * @author  durgus
  */
-public class L2PeaceZone extends L2ZoneType
+public class L2PeaceZone extends L2ZoneSpawn
 {
     public L2PeaceZone(int id)
     {

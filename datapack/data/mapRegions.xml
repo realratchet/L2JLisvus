@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<list>
+    <!-- Aden Town -->
+    <region name="aden_town" restartPointGroup="76" castleId="5" locId="924" bbs="13">
+        <map X="23" Y="18" />
+        <map X="24" Y="17" />
+        <map X="24" Y="18" />
+        <map X="25" Y="17" />
+        <map X="25" Y="18" />
+        <map X="25" Y="19" />
+    </region>
+    <!-- Coliseum -->
+    <region name="coliseum" restartPointGroup="76" castleId="5" locId="925" bbs="13">
+        <map X="24" Y="19" />
+    </region>
+    <!-- Dark Elven Village -->
+    <region name="darkelf_town" restartPointGroup="66" castleId="4" locId="915"
+        bbs="3">
+        <map X="20" Y="18" />
+        <map X="19" Y="18" />
+        <map X="19" Y="19" />
+        <map X="18" Y="19" />
+        <map X="18" Y="18" />
+        <map X="18" Y="20" />
+        <map X="17" Y="19" />
+    </region>
+    <!-- Dion Castle Town -->
+    <region name="dion_castle_town" restartPointGroup="73" castleId="2" locId="916"
+        bbs="5">
+        <map X="18" Y="10" />
+        <map X="20" Y="21" />
+        <map X="20" Y="22" />
+        <map X="21" Y="21" />
+        <map X="21" Y="22" />
+    </region>
+    <!-- DMZ -->
+    <region name="DMZ" restartPointGroup="72" castleId="0" locId="913" bbs="7">
+        <map X="19" Y="20" />
+    </region>
+    <!-- Dwarf Town -->
+    <region name="dwarf_town" restartPointGroup="71" castleId="0" locId="921" bbs="9">
+        <map X="23" Y="10" />
+        <map X="23" Y="11" />
+        <map X="23" Y="12" />
+        <map X="24" Y="10" />
+        <map X="24" Y="11" />
+        <map X="24" Y="12" />
+        <map X="25" Y="10" />
+        <map X="25" Y="11" />
+        <map X="25" Y="12" />
+    </region>
+    <!-- Elf Town -->
+    <region name="elf_town" restartPointGroup="68" castleId="4" locId="914" bbs="4">
+        <map X="21" Y="19" />
+        <map X="21" Y="20" />
+        <map X="20" Y="19" />
+        <map X="20" Y="20" />
+        <banned race="DARK_ELF" point="darkelf_town" />
+    </region>
+    <!-- Floran Town -->
+    <region name="floran_town" restartPointGroup="80" castleId="2" locId="917" bbs="5">
+        <map X="20" Y="23" />
+    </region>
+    <!-- Giran Castle Town -->
+    <region name="giran_castle_town" restartPointGroup="65" castleId="3" locId="918"
+        bbs="6">
+        <map X="21" Y="23" />
+        <map X="22" Y="21" />
+        <map X="22" Y="22" />
+        <map X="23" Y="21" />
+        <map X="23" Y="22" />
+        <map X="24" Y="21" />
+        <map X="25" Y="21" />
+    </region>
+    <!-- Giran Habor -->
+    <region name="giran_habor" restartPointGroup="65" castleId="3" locId="919" bbs="6">
+        <map X="20" Y="24" />
+        <map X="21" Y="24" />
+        <map X="21" Y="25" />
+    </region>
+    <!-- Gludin Town -->
+    <region name="gludin_town" restartPointGroup="70" castleId="1" locId="911"
+        bbs="2">
+        <map X="16" Y="20" />
+        <map X="16" Y="21" />
+        <map X="16" Y="22" />
+        <map X="17" Y="20" />
+        <map X="17" Y="21" />
+        <map X="17" Y="22" />
+        <map X="17" Y="23" />
+        <map X="18" Y="22" />
+        <map X="18" Y="23" />
+        <map X="18" Y="24" />
+        <map X="19" Y="24" />
+    </region>
+    <!-- Gludio Castle Town -->
+    <region name="gludio_castle_town" restartPointGroup="72" castleId="1"
+        locId="912" bbs="2">
+        <map X="18" Y="21" />
+        <map X="19" Y="21" />
+        <map X="19" Y="22" />
+        <map X="19" Y="23" />
+        <map X="19" Y="26" />
+        <map X="20" Y="26" />
+    </region>
+    <!-- Goddard Town -->
+    <region name="godard_town" restartPointGroup="77" castleId="7" locId="1538"
+        bbs="15">
+        <map X="23" Y="16" />
+        <map X="24" Y="14" />
+        <map X="24" Y="15" />
+        <map X="24" Y="16" />
+        <map X="25" Y="14" />
+        <map X="25" Y="15" />
+        <map X="25" Y="16" />
+        <map X="26" Y="14" />
+    </region>
+    <!-- Heine Town -->
+    <region name="heiness_town" restartPointGroup="79" castleId="6" locId="926"
+        bbs="12">
+        <map X="22" Y="23" />
+        <map X="22" Y="24" />
+        <map X="22" Y="25" />
+        <map X="23" Y="23" />
+        <map X="23" Y="24" />
+        <map X="23" Y="25" />
+        <map X="24" Y="23" />
+    </region>
+    <!-- Hunter Town -->
+    <region name="hunter_town" restartPointGroup="75" castleId="5" locId="923"
+        bbs="11">
+        <map X="20" Y="10" />
+        <map X="23" Y="20" />
+        <map X="23" Y="19" />
+        <map X="24" Y="20" />
+        <map X="25" Y="20" />
+    </region>
+    <!-- Orc Town -->
+    <region name="orc_town" restartPointGroup="69" castleId="0" locId="920" bbs="9">
+        <map X="18" Y="14" />
+        <map X="19" Y="13" />
+        <map X="19" Y="14" />
+        <map X="19" Y="15" />
+        <map X="19" Y="16" />
+        <map X="20" Y="13" />
+        <map X="20" Y="14" />
+        <map X="20" Y="15" />
+    </region>
+    <!-- Oren Castle Town -->
+    <region name="oren_castle_town" restartPointGroup="74" castleId="4" locId="922"
+        bbs="10">
+        <map X="19" Y="10" />
+        <map X="21" Y="18" />
+        <map X="22" Y="20" />
+        <map X="22" Y="19" />
+        <map X="22" Y="18" />
+        <map X="22" Y="17" />
+        <map X="23" Y="17" />
+    </region>
+    <!-- Rift Bitween Worlds -->
+    <region name="rift_bitween_worlds" restartPointGroup="57" castleId="0"
+        locId="1643" bbs="100">
+        <map X="16" Y="12" />
+    </region>
+    <!-- Rune Town -->
+    <region name="rune_town" restartPointGroup="78" castleId="0" locId="1537" bbs="14">
+        <map X="21" Y="15" />
+        <map X="21" Y="16" />
+        <map X="21" Y="17" />
+        <map X="22" Y="15" />
+        <map X="22" Y="16" />
+        <map X="23" Y="15" />
+        <map X="16" Y="11" />
+        <map X="17" Y="10" />
+        <map X="17" Y="11" />
+        <map X="19" Y="17" />
+        <map X="20" Y="16" />
+        <map X="20" Y="17" />
+        <map X="19" Y="16" />
+    </region>
+    <!-- Olympiad Stadium02 -->
+    <region name="olympiad_stadium02" restartPointGroup="78" castleId="0" locId="1537"
+        bbs="14">
+        <map X="15" Y="10" />
+    </region>
+    <!-- Olympiad Stadium03 -->
+    <region name="olympiad_stadium03" restartPointGroup="78" castleId="0" locId="1537"
+        bbs="14">
+        <map X="15" Y="11" />
+    </region>
+    <!-- Olympiad Stadium04 -->
+    <region name="olympiad_stadium04" restartPointGroup="78" castleId="0" locId="1537"
+        bbs="14">
+        <map X="15" Y="12" />
+    </region>
+    <!-- Talking Island Town -->
+	<region name="talking_island_town" restartPointGroup="67" castleId="1" locId="910" bbs="1">
+		<map X="15" Y="23" />
+		<map X="15" Y="24" />
+		<map X="15" Y="25" />
+		<map X="16" Y="23" />
+		<map X="16" Y="24" />
+		<map X="16" Y="25" />
+		<map X="17" Y="24" />
+		<map X="17" Y="25" />
+		<map X="18" Y="25" />
+	</region>
+</list>

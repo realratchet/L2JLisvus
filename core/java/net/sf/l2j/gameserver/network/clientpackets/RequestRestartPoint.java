@@ -17,10 +17,10 @@ package net.sf.l2j.gameserver.network.clientpackets;
 import java.util.logging.Logger;
 
 import net.sf.l2j.gameserver.ThreadPoolManager;
-import net.sf.l2j.gameserver.datatables.MapRegionTable;
 import net.sf.l2j.gameserver.instancemanager.CastleManager;
 import net.sf.l2j.gameserver.instancemanager.ClanHallManager;
 import net.sf.l2j.gameserver.instancemanager.DimensionalRiftManager;
+import net.sf.l2j.gameserver.instancemanager.MapRegionManager;
 import net.sf.l2j.gameserver.instancemanager.SiegeManager;
 import net.sf.l2j.gameserver.model.L2SiegeClan;
 import net.sf.l2j.gameserver.model.Location;
@@ -88,7 +88,7 @@ public class RequestRestartPoint extends L2GameClientPacket
 							Util.handleIllegalPlayerAction(activeChar, "Player " + activeChar.getName() + " used respawn cheat.", IllegalPlayerAction.PUNISH_KICK);
 							return;
 						}
-						loc = MapRegionTable.getInstance().getTeleToLocation(activeChar, MapRegionTable.TeleportWhereType.ClanHall);
+						loc = MapRegionManager.getInstance().getTeleToLocation(activeChar, MapRegionManager.TeleportWhereType.ClanHall);
 						
 						if ((ClanHallManager.getInstance().getClanHallByOwner(activeChar.getClan()) != null) && (ClanHallManager.getInstance().getClanHallByOwner(activeChar.getClan()).getFunction(ClanHall.FUNC_RESTORE_EXP) != null))
 						{
@@ -116,7 +116,7 @@ public class RequestRestartPoint extends L2GameClientPacket
 							Util.handleIllegalPlayerAction(activeChar, "Player " + activeChar.getName() + " used respawn cheat.", IllegalPlayerAction.PUNISH_KICK);
 							return;
 						}
-						loc = MapRegionTable.getInstance().getTeleToLocation(activeChar, MapRegionTable.TeleportWhereType.Castle);
+						loc = MapRegionManager.getInstance().getTeleToLocation(activeChar, MapRegionManager.TeleportWhereType.Castle);
 						break;
 					}
 					case 3: // to siege HQ
@@ -135,7 +135,7 @@ public class RequestRestartPoint extends L2GameClientPacket
 							Util.handleIllegalPlayerAction(activeChar, "Player " + activeChar.getName() + " used respawn cheat.", IllegalPlayerAction.PUNISH_KICK);
 							return;
 						}
-						loc = MapRegionTable.getInstance().getTeleToLocation(activeChar, MapRegionTable.TeleportWhereType.SiegeFlag);
+						loc = MapRegionManager.getInstance().getTeleToLocation(activeChar, MapRegionManager.TeleportWhereType.SiegeFlag);
 						break;
 					}
 					case 4: // Fixed or Player is a festival participant
@@ -166,7 +166,7 @@ public class RequestRestartPoint extends L2GameClientPacket
 					}
 					default:
 					{
-						loc = MapRegionTable.getInstance().getTeleToLocation(activeChar, MapRegionTable.TeleportWhereType.Town);
+						loc = MapRegionManager.getInstance().getTeleToLocation(activeChar, MapRegionManager.TeleportWhereType.Town);
 						break;
 					}
 				}

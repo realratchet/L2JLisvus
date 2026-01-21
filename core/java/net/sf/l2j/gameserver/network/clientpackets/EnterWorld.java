@@ -24,11 +24,11 @@ import net.sf.l2j.gameserver.cache.HtmCache;
 import net.sf.l2j.gameserver.communitybbs.Manager.RegionBBSManager;
 import net.sf.l2j.gameserver.datatables.AdminCommandRightsData;
 import net.sf.l2j.gameserver.datatables.GmListTable;
-import net.sf.l2j.gameserver.datatables.MapRegionTable;
 import net.sf.l2j.gameserver.instancemanager.ClanHallManager;
 import net.sf.l2j.gameserver.instancemanager.CoupleManager;
 import net.sf.l2j.gameserver.instancemanager.PetitionManager;
 import net.sf.l2j.gameserver.instancemanager.SiegeManager;
+import net.sf.l2j.gameserver.instancemanager.MapRegionManager.TeleportWhereType;
 import net.sf.l2j.gameserver.model.L2Character;
 import net.sf.l2j.gameserver.model.L2Clan;
 import net.sf.l2j.gameserver.model.L2Effect;
@@ -256,7 +256,7 @@ public class EnterWorld extends L2GameClientPacket
 
 		if (!activeChar.isGM() && activeChar.getSiegeState() < 2 && activeChar.isInsideZone(L2Character.ZONE_SIEGE))
 		{
-			activeChar.teleToLocation(MapRegionTable.TeleportWhereType.Town);
+			activeChar.teleToLocation(TeleportWhereType.Town);
 			activeChar.sendMessage("You have been teleported to the nearest town due to being in a siege zone.");
 		}
 

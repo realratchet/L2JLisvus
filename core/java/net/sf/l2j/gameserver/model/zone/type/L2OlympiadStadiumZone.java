@@ -110,11 +110,17 @@ public class L2OlympiadStadiumZone extends L2ZoneSpawn
 	}
 	public void addSpectator(L2PcInstance spec, boolean storeCoords)
 	{
-		Location loc = getAlternateSpawnLoc();
-		if (loc == null)
+		List<Location> spawns = getSpawnLocs();
+		if (spawns == null)
 		{
 			return;
 		}
+
+        Location loc = spawns.get(2);
+        if (loc == null)
+        {
+            return;
+        }
 		
 		spec.enterOlympiadObserverMode(loc.getX(), loc.getY(), loc.getZ(), getStadiumId(), storeCoords);
 		_spectators.add(spec);

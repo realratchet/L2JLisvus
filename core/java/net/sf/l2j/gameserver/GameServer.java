@@ -46,7 +46,6 @@ import net.sf.l2j.gameserver.datatables.HelperBuffTable;
 import net.sf.l2j.gameserver.datatables.HennaTable;
 import net.sf.l2j.gameserver.datatables.HennaTreeTable;
 import net.sf.l2j.gameserver.datatables.ItemTable;
-import net.sf.l2j.gameserver.datatables.MapRegionTable;
 import net.sf.l2j.gameserver.datatables.NobleSkillTable;
 import net.sf.l2j.gameserver.datatables.NpcTable;
 import net.sf.l2j.gameserver.datatables.NpcWalkerRoutesTable;
@@ -78,6 +77,7 @@ import net.sf.l2j.gameserver.instancemanager.DimensionalRiftManager;
 import net.sf.l2j.gameserver.instancemanager.FourSepulchersManager;
 import net.sf.l2j.gameserver.instancemanager.GrandBossManager;
 import net.sf.l2j.gameserver.instancemanager.ItemsOnGroundManager;
+import net.sf.l2j.gameserver.instancemanager.MapRegionManager;
 import net.sf.l2j.gameserver.instancemanager.MercTicketManager;
 import net.sf.l2j.gameserver.instancemanager.PartyMatchRoomManager;
 import net.sf.l2j.gameserver.instancemanager.PetitionManager;
@@ -254,7 +254,7 @@ public class GameServer
 		// Start game time controller task
 		GameTimeController.getInstance().start();
 
-		MapRegionTable.getInstance();
+		MapRegionManager.getInstance();
 		EventDroplist.getInstance();
 
 		/** Load Manor Data */

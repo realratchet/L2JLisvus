@@ -26,10 +26,6 @@ import net.sf.l2j.gameserver.model.olympiad.Olympiad.COMP_TYPE;
 import net.sf.l2j.gameserver.model.zone.type.L2OlympiadStadiumZone;
 import net.sf.l2j.util.Rnd;
 
-/**
- * @author DnR
- *
- */
 class OlympiadManager implements Runnable
 {
     private final Map<Integer, OlympiadGame> _olympiadInstances;

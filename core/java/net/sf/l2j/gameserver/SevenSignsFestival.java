@@ -30,9 +30,9 @@ import net.sf.l2j.Config;
 import net.sf.l2j.L2DatabaseFactory;
 import net.sf.l2j.gameserver.ai.CtrlIntention;
 import net.sf.l2j.gameserver.datatables.CharNameTable;
-import net.sf.l2j.gameserver.datatables.MapRegionTable;
 import net.sf.l2j.gameserver.datatables.NpcTable;
 import net.sf.l2j.gameserver.datatables.SpawnTable;
+import net.sf.l2j.gameserver.instancemanager.MapRegionManager.TeleportWhereType;
 import net.sf.l2j.gameserver.model.L2ItemInstance;
 import net.sf.l2j.gameserver.model.L2Party;
 import net.sf.l2j.gameserver.model.L2Spawn;
@@ -4589,7 +4589,7 @@ public class SevenSignsFestival implements SpawnListener
             }
             else
             {
-                participant.teleToLocation(MapRegionTable.TeleportWhereType.Town);
+                participant.teleToLocation(TeleportWhereType.Town);
             }
             
             participant.sendMessage("You have been removed from the festival arena.");

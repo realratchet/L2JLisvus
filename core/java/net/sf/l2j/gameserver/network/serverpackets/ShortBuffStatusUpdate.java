@@ -14,13 +14,9 @@
  */
 package net.sf.l2j.gameserver.network.serverpackets;
 
-/**
- * @author DnR
- *
- */
 public class ShortBuffStatusUpdate extends L2GameServerPacket
 {
-	private static final String _S__F4_SHORTBUFFSTATUSUPDATE = "[S] f4 MagicEffectIcons";
+	private static final String _S__F4_SHORTBUFFSTATUSUPDATE = "[S] f4 ShortBuffStatusUpdate";
 
 	private final int _skillId;
 	private final int _skillLvl;

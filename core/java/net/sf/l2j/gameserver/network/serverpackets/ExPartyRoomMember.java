@@ -14,7 +14,6 @@
  */
 package net.sf.l2j.gameserver.network.serverpackets;
 
-import net.sf.l2j.gameserver.datatables.MapRegionTable;
 import net.sf.l2j.gameserver.model.PartyMatchRoom;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 
@@ -39,20 +38,22 @@ public class ExPartyRoomMember extends L2GameServerPacket
 		writeH(0x0e);
 		writeD(_mode);
 		writeD(_room.getMembers());
-		for (L2PcInstance _member : _room.getPartyMembers())
+
+		for (L2PcInstance member : _room.getPartyMembers())
 		{
-			writeD(_member.getObjectId());
-			writeS(_member.getName());
-			writeD(_member.getActiveClass());
-			writeD(_member.getLevel());
-			writeD(MapRegionTable.getInstance().getClosestTownNumber(_member));
-			if (_room.getOwner().equals(_member))
+			writeD(member.getObjectId());
+			writeS(member.getName());
+			writeD(member.getActiveClass());
+			writeD(member.getLevel());
+			writeD(_room.getLocation(member));
+
+			if (_room.getOwner().equals(member))
 			{
 				writeD(1);
 			}
 			else
 			{
-				if ((_room.getOwner().isInParty() && _member.isInParty()) && (_room.getOwner().getParty().getPartyLeaderOID() == _member.getParty().getPartyLeaderOID()))
+				if ((_room.getOwner().isInParty() && member.isInParty()) && (_room.getOwner().getParty().getPartyLeaderOID() == member.getParty().getPartyLeaderOID()))
 				{
 					writeD(2);
 				}

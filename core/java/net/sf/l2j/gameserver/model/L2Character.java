@@ -32,13 +32,13 @@ import net.sf.l2j.gameserver.ai.CtrlIntention;
 import net.sf.l2j.gameserver.ai.L2AttackableAI;
 import net.sf.l2j.gameserver.ai.L2CharacterAI;
 import net.sf.l2j.gameserver.datatables.DoorTable;
-import net.sf.l2j.gameserver.datatables.MapRegionTable;
-import net.sf.l2j.gameserver.datatables.MapRegionTable.TeleportWhereType;
 import net.sf.l2j.gameserver.datatables.SkillTable;
 import net.sf.l2j.gameserver.geoengine.GeoData;
 import net.sf.l2j.gameserver.handler.ISkillHandler;
 import net.sf.l2j.gameserver.handler.SkillHandler;
+import net.sf.l2j.gameserver.instancemanager.MapRegionManager;
 import net.sf.l2j.gameserver.instancemanager.TownManager;
+import net.sf.l2j.gameserver.instancemanager.MapRegionManager.TeleportWhereType;
 import net.sf.l2j.gameserver.model.L2Skill.SkillType;
 import net.sf.l2j.gameserver.model.actor.instance.L2BoatInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2ControlTowerInstance;
@@ -646,7 +646,7 @@ public abstract class L2Character extends L2Object
 	
 	public void teleToLocation(TeleportWhereType teleportWhere, TeleportType tpType)
 	{
-		teleToLocation(MapRegionTable.getInstance().getTeleToLocation(this, teleportWhere), true, tpType);
+		teleToLocation(MapRegionManager.getInstance().getTeleToLocation(this, teleportWhere), true, tpType);
 	}
 	
 	public void teleToLocation(TeleportWhereType teleportWhere)

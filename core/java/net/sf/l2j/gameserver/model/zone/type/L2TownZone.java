@@ -27,7 +27,6 @@ import net.sf.l2j.gameserver.model.zone.L2ZoneSpawn;
 public class L2TownZone extends L2ZoneSpawn
 {
     private int _townId;
-    private int _redirectTownId;
     private int _taxById;
 
 
@@ -36,9 +35,6 @@ public class L2TownZone extends L2ZoneSpawn
         super(id);
 
         _taxById = 0;
-
-        // Default to Giran
-        _redirectTownId = 9;
     }
 
     @Override
@@ -46,8 +42,6 @@ public class L2TownZone extends L2ZoneSpawn
     {
         if (name.equals("townId"))
             _townId = Integer.parseInt(value);
-        else if (name.equals("redirectTownId"))
-            _redirectTownId = Integer.parseInt(value);
         else if (name.equals("taxById"))
             _taxById = Integer.parseInt(value);
         else
@@ -91,15 +85,6 @@ public class L2TownZone extends L2ZoneSpawn
     public int getTownId()
     {
         return _townId;
-    }
-
-    /**
-     * Gets the id for the redirect town of this town zone.
-     * @return
-     */
-    public int getRedirectTownId()
-    {
-        return _redirectTownId;
     }
 
     /**

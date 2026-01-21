@@ -61,7 +61,6 @@ import net.sf.l2j.gameserver.datatables.FishTable;
 import net.sf.l2j.gameserver.datatables.GmListTable;
 import net.sf.l2j.gameserver.datatables.HennaTable;
 import net.sf.l2j.gameserver.datatables.ItemTable;
-import net.sf.l2j.gameserver.datatables.MapRegionTable;
 import net.sf.l2j.gameserver.datatables.NobleSkillTable;
 import net.sf.l2j.gameserver.datatables.NpcTable;
 import net.sf.l2j.gameserver.datatables.PetDataTable;
@@ -76,6 +75,7 @@ import net.sf.l2j.gameserver.instancemanager.CastleManager;
 import net.sf.l2j.gameserver.instancemanager.CoupleManager;
 import net.sf.l2j.gameserver.instancemanager.DimensionalRiftManager;
 import net.sf.l2j.gameserver.instancemanager.ItemsOnGroundManager;
+import net.sf.l2j.gameserver.instancemanager.MapRegionManager;
 import net.sf.l2j.gameserver.instancemanager.PartyMatchRoomManager;
 import net.sf.l2j.gameserver.instancemanager.QuestManager;
 import net.sf.l2j.gameserver.instancemanager.SiegeManager;
@@ -9621,7 +9621,7 @@ public final class L2PcInstance extends L2PlayableInstance
 			// if the rent of a wyvern expires while over a flying zone, tp to town before unmounting
 			if (checkLandingState() && (getMountType() == 2))
 			{
-				teleToLocation(MapRegionTable.TeleportWhereType.Town);
+				teleToLocation(MapRegionManager.TeleportWhereType.Town);
 			}
 			
 			if (dismount())

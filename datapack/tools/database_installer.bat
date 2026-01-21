@@ -557,7 +557,6 @@ heroes.sql
 items.sql
 itemsonground.sql
 locations.sql
-mapregion.sql
 merchant_buylists.sql
 merchant_lease.sql
 merchant_shopids.sql

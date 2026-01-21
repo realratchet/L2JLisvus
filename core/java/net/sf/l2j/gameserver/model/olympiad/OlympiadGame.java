@@ -37,10 +37,6 @@ import net.sf.l2j.gameserver.network.serverpackets.InventoryUpdate;
 import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
 import net.sf.l2j.gameserver.templates.StatsSet;
 
-/**
- * @author DnR
- *
- */
 class OlympiadGame
 {
 	protected static final Logger _log = Logger.getLogger(OlympiadGame.class.getName());

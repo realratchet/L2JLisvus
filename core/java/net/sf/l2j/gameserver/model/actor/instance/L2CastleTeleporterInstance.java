@@ -17,7 +17,8 @@ package net.sf.l2j.gameserver.model.actor.instance;
 import java.util.StringTokenizer;
 
 import net.sf.l2j.gameserver.ThreadPoolManager;
-import net.sf.l2j.gameserver.datatables.MapRegionTable;
+import net.sf.l2j.gameserver.instancemanager.MapRegionManager;
+import net.sf.l2j.gameserver.model.L2MapRegion;
 import net.sf.l2j.gameserver.model.L2World;
 import net.sf.l2j.gameserver.network.serverpackets.ActionFailed;
 import net.sf.l2j.gameserver.network.serverpackets.NpcHtmlMessage;
@@ -108,10 +109,11 @@ public final class L2CastleTeleporterInstance extends L2FolkInstance
                 if (getCastle().getSiege().getIsInProgress())
                 {
                     NpcSay cs = new NpcSay(getObjectId(), 1, getNpcId(), "The defenders of " + getCastle().getName() + " castle will be teleported to the inner castle.");
-                    int region = MapRegionTable.getInstance().getMapRegion(getX(), getY());
+
+                    L2MapRegion region = MapRegionManager.getInstance().getMapRegion(getX(), getY());
                     for (L2PcInstance player : L2World.getInstance().getAllPlayers())
                     {
-                        if (region == MapRegionTable.getInstance().getMapRegion(player.getX(), player.getY()))
+                        if (region == MapRegionManager.getInstance().getMapRegion(player.getX(), player.getY()))
                             player.sendPacket(cs);
                     }
                 }

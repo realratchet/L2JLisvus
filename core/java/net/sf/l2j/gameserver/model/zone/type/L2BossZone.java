@@ -19,7 +19,7 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 import net.sf.l2j.gameserver.GameServer;
-import net.sf.l2j.gameserver.datatables.MapRegionTable;
+import net.sf.l2j.gameserver.instancemanager.MapRegionManager.TeleportWhereType;
 import net.sf.l2j.gameserver.model.L2Character;
 import net.sf.l2j.gameserver.model.L2Summon;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
@@ -122,7 +122,7 @@ public class L2BossZone extends L2ZoneType
 			}
 			else
 			{
-				player.teleToLocation(MapRegionTable.TeleportWhereType.Town);
+				player.teleToLocation(TeleportWhereType.Town);
 			}
 		}
 		else if (character instanceof L2Summon)
@@ -142,7 +142,7 @@ public class L2BossZone extends L2ZoneType
 				}
 				else
 				{
-					player.teleToLocation(MapRegionTable.TeleportWhereType.Town);
+					player.teleToLocation(TeleportWhereType.Town);
 				}
 			}
 			((L2Summon) character).unSummon(player);
@@ -207,7 +207,7 @@ public class L2BossZone extends L2ZoneType
 		if (_oustLoc[0] != 0 && _oustLoc[1] != 0 && _oustLoc[2] != 0)
 			player.teleToLocation(_oustLoc[0], _oustLoc[1], _oustLoc[2]);
 		else
-			player.teleToLocation(MapRegionTable.TeleportWhereType.Town);
+			player.teleToLocation(TeleportWhereType.Town);
 		
 		return false;
 	}
@@ -265,7 +265,7 @@ public class L2BossZone extends L2ZoneType
 					if (_oustLoc[0] != 0 && _oustLoc[1] != 0 && _oustLoc[2] != 0)
 						player.teleToLocation(_oustLoc[0], _oustLoc[1], _oustLoc[2]);
 					else
-						player.teleToLocation(MapRegionTable.TeleportWhereType.Town);
+						player.teleToLocation(TeleportWhereType.Town);
 				}
 			}
 		}

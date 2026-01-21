@@ -1,0 +1,796 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<list>
+    <restartPointGroup id="1" name="Giran Arena">
+        <spawn X="73890" Y="142656" Z="-3778" />
+    </restartPointGroup>
+    <restartPointGroup id="2" name="Gludin Arena">
+        <spawn X="-86979" Y="142402" Z="-3643" />
+    </restartPointGroup>
+    <restartPointGroup id="3" name="Coliseum">
+        <spawn X="147451" Y="46728" Z="-3410" />
+    </restartPointGroup>
+    <restartPointGroup id="4" name="">
+        <spawn X="12312" Y="182752" Z="-3558" />
+    </restartPointGroup>
+    <restartPointGroup id="5" name="Clan Hall 21">
+        <spawn X="43399" Y="108888" Z="-1980" />
+    </restartPointGroup>
+    <restartPointGroup id="6" name="Clan Hall 22">
+        <spawn X="-15975" Y="123562" Z="-3101" />
+    </restartPointGroup>
+    <restartPointGroup id="7" name="Clan Hall 23">
+        <spawn X="-14950" Y="125575" Z="-3128" />
+    </restartPointGroup>
+    <restartPointGroup id="8" name="Clan Hall 24">
+        <spawn X="-13875" Y="125375" Z="-3128" />
+    </restartPointGroup>
+    <restartPointGroup id="9" name="Clan Hall 25">
+        <spawn X="-12625" Y="124075" Z="-3096" />
+    </restartPointGroup>
+    <restartPointGroup id="10" name="Clan Hall 26">
+        <spawn X="-84475" Y="151950" Z="-3123" />
+    </restartPointGroup>
+    <restartPointGroup id="11" name="Clan Hall 27">
+        <spawn X="-83875" Y="153325" Z="-3159" />
+    </restartPointGroup>
+    <restartPointGroup id="12" name="Clan Hall 28">
+        <spawn X="-83800" Y="155500" Z="-3160" />
+    </restartPointGroup>
+    <restartPointGroup id="13" name="Clan Hall 29">
+        <spawn X="-79800" Y="149625" Z="-3038" />
+    </restartPointGroup>
+    <restartPointGroup id="14" name="Clan Hall 30">
+        <spawn X="-79500" Y="151800" Z="-3041" />
+    </restartPointGroup>
+    <restartPointGroup id="15" name="Clan Hall 31">
+        <spawn X="17700" Y="145075" Z="-3036" />
+    </restartPointGroup>
+    <restartPointGroup id="16" name="Clan Hall 32">
+        <spawn X="18725" Y="143350" Z="-3010" />
+    </restartPointGroup>
+    <restartPointGroup id="17" name="Clan Hall 33">
+        <spawn X="20175" Y="146150" Z="-3111" />
+    </restartPointGroup>
+    <restartPointGroup id="18" name="Clan Hall 34">
+        <spawn X="178256" Y="-15714" Z="-2263" />
+    </restartPointGroup>
+    <restartPointGroup id="19" name="Clan Hall 35">
+        <spawn X="80182" Y="-15484" Z="-1804" />
+    </restartPointGroup>
+    <restartPointGroup id="20" name="Clan Hall 36">
+        <spawn X="149134" Y="23139" Z="-2160" />
+    </restartPointGroup>
+    <restartPointGroup id="21" name="Clan Hall 37">
+        <spawn X="150643" Y="23653" Z="-2150" />
+    </restartPointGroup>
+    <restartPointGroup id="22" name="Clan Hall 38">
+        <spawn X="145667" Y="25355" Z="-2150" />
+    </restartPointGroup>
+    <restartPointGroup id="23" name="Clan Hall 39">
+        <spawn X="150748" Y="26540" Z="-2280" />
+    </restartPointGroup>
+    <restartPointGroup id="24" name="Clan Hall 40">
+        <spawn X="143991" Y="27091" Z="-2290" />
+    </restartPointGroup>
+    <restartPointGroup id="25" name="Clan Hall 41">
+        <spawn X="144014" Y="28202" Z="-2280" />
+    </restartPointGroup>
+    <restartPointGroup id="26" name="Clan Hall 42">
+        <spawn X="78590" Y="148101" Z="-3581" />
+    </restartPointGroup>
+    <restartPointGroup id="27" name="Clan Hall 43">
+        <spawn X="82056" Y="145336" Z="-3520" />
+    </restartPointGroup>
+    <restartPointGroup id="28" name="Clan Hall 44">
+        <spawn X="83393" Y="145313" Z="-3389" />
+    </restartPointGroup>
+    <restartPointGroup id="29" name="Clan Hall 45">
+        <spawn X="80971" Y="151587" Z="-3517" />
+    </restartPointGroup>
+    <restartPointGroup id="30" name="Clan Hall 46">
+        <spawn X="82101" Y="151911" Z="-3520" />
+    </restartPointGroup>
+    <restartPointGroup id="31" name="Clan Hall 47">
+        <spawn X="146025" Y="-55534" Z="-2765" />
+    </restartPointGroup>
+    <restartPointGroup id="32" name="Clan Hall 48">
+        <spawn X="146901" Y="-56857" Z="-2765" />
+    </restartPointGroup>
+    <restartPointGroup id="33" name="Clan Hall 49">
+        <spawn X="148479" Y="-56874" Z="-2765" />
+    </restartPointGroup>
+    <restartPointGroup id="34" name="Clan Hall 50">
+        <spawn X="149390" Y="-55587" Z="-2765" />
+    </restartPointGroup>
+    <restartPointGroup id="35" name="Olympiad Stadium 1">
+        <spawn X="-21453" Y="-21058" Z="-3051" />
+		<spawn X="-20254" Y="-21058" Z="-3051" />
+		<!-- Spectate Spawn -->
+		<spawn X="-20854" Y="-21058" Z="-3051" />
+    </restartPointGroup>
+    <restartPointGroup id="36" name="Olympiad Stadium 2">
+        <spawn X="-110508" Y="-218674" Z="-3357" />
+		<spawn X="-109311" Y="-218674" Z="-3357" />
+		<!-- Spectate Spawn -->
+		<spawn X="-109910" Y="-218674" Z="-3357" />
+    </restartPointGroup>
+    <restartPointGroup id="37" name="Olympiad Stadium 3">
+        <spawn X="-120939" Y="-225041" Z="-3357" />
+		<spawn X="-119718" Y="-225041" Z="-3357" />
+		<!-- Spectate Spawn -->
+		<spawn X="-120329" Y="-225041" Z="-3357" />
+    </restartPointGroup>
+    <restartPointGroup id="38" name="Olympiad Stadium 4">
+		<spawn X="-127235" Y="-218275" Z="-3357" />
+		<spawn X="-126041" Y="-218275" Z="-3357" />
+		<!-- Spectate Spawn -->
+		<spawn X="-126638" Y="-218275" Z="-3357" />
+    </restartPointGroup>
+    <restartPointGroup id="39" name="Olympiad Stadium 5">
+		<spawn X="-115162" Y="-213201" Z="-3357" />
+		<spawn X="-113968" Y="-213201" Z="-3357" />
+		<!-- Spectate Spawn -->
+		<spawn X="-114565" Y="-213201" Z="-3357" />
+    </restartPointGroup>
+    <restartPointGroup id="40" name="Olympiad Stadium 6">
+        <spawn X="-120870" Y="-207398" Z="-3357" />
+		<spawn X="-119718" Y="-207398" Z="-3357" />
+		<!-- Spectate Spawn -->
+		<spawn X="-120294" Y="-207398" Z="-3357" />
+    </restartPointGroup>
+    <restartPointGroup id="41" name="Olympiad Stadium 7">
+        <spawn X="-103125" Y="-209047" Z="-3357" />
+		<spawn X="-101933" Y="-209047" Z="-3357" />
+		<!-- Spectate Spawn -->
+		<spawn X="-102529" Y="-209047" Z="-3357" />
+    </restartPointGroup>
+    <restartPointGroup id="42" name="Olympiad Stadium 8">
+        <spawn X="-110237" Y="-201243" Z="-3357" />
+		<spawn X="-109022" Y="-201243" Z="-3357" />
+		<!-- Spectate Spawn -->
+		<spawn X="-109630" Y="-201243" Z="-3357" />
+    </restartPointGroup>
+    <restartPointGroup id="43" name="Olympiad Stadium 9">
+        <spawn X="-88209" Y="-257844" Z="-3356" />
+		<spawn X="-86981" Y="-257844" Z="-3356" />
+		<!-- Spectate Spawn -->
+		<spawn X="-87595" Y="-257844" Z="-3356" />
+    </restartPointGroup>
+    <restartPointGroup id="44" name="Olympiad Stadium 10">
+        <spawn X="-94489" Y="-251053" Z="-3356" />
+		<spawn X="-93289" Y="-251053" Z="-3356" />
+		<!-- Spectate Spawn -->
+		<spawn X="-93889" Y="-251053" Z="-3356" />
+    </restartPointGroup>
+    <restartPointGroup id="45" name="Olympiad Stadium 11">
+        <spawn X="-77780" Y="-251509" Z="-3356" />
+		<spawn X="-76544" Y="-251509" Z="-3356" />
+		<!-- Spectate Spawn -->
+		<spawn X="-77162" Y="-251509" Z="-3356" />
+    </restartPointGroup>
+    <restartPointGroup id="46" name="Olympiad Stadium 12">
+        <spawn X="-82415" Y="-246024" Z="-3356" />
+		<spawn X="-81206" Y="-246024" Z="-3356" />
+		<!-- Spectate Spawn -->
+		<spawn X="-81811" Y="-246024" Z="-3356" />
+    </restartPointGroup>
+    <restartPointGroup id="47" name="Olympiad Stadium 13">
+        <spawn X="-88165" Y="-240165" Z="-3356" />
+		<spawn X="-86949" Y="-240165" Z="-3356" />
+		<!-- Spectate Spawn -->
+		<spawn X="-87557" Y="-240165" Z="-3356" />
+    </restartPointGroup>
+    <restartPointGroup id="48" name="Olympiad Stadium 14">
+        <spawn X="-70382" Y="-241831" Z="-3356" />
+		<spawn X="-69178" Y="-241831" Z="-3356" />
+		<!-- Spectate Spawn -->
+		<spawn X="-69780" Y="-241831" Z="-3356" />
+    </restartPointGroup>
+    <restartPointGroup id="49" name="Olympiad Stadium 15">
+        <spawn X="-77470" Y="-234008" Z="-3356" />
+		<spawn X="-76268" Y="-234008" Z="-3356" />
+		<!-- Spectate Spawn -->
+		<spawn X="-76869" Y="-234008" Z="-3356" />
+    </restartPointGroup>
+    <restartPointGroup id="50" name="Olympiad Stadium 16">
+        <spawn X="-88267" Y="-225058" Z="-3357" />
+		<spawn X="-86867" Y="-225058" Z="-3357" />
+		<!-- Spectate Spawn -->
+		<spawn X="-87567" Y="-225058" Z="-3357" />
+    </restartPointGroup>
+    <restartPointGroup id="51" name="Olympiad Stadium 17">
+        <spawn X="-94466" Y="-218294" Z="-3357" />
+		<spawn X="-93239" Y="-218294" Z="-3357" />
+		<!-- Spectate Spawn -->
+		<spawn X="-93853" Y="-218294" Z="-3357" />
+    </restartPointGroup>
+    <restartPointGroup id="52" name="Olympiad Stadium 18">
+        <spawn X="-77777" Y="-218734" Z="-3357" />
+		<spawn X="-76525" Y="-218734" Z="-3357" />
+		<!-- Spectate Spawn -->
+		<spawn X="-77151" Y="-218734" Z="-3357" />
+    </restartPointGroup>
+    <restartPointGroup id="53" name="Olympiad Stadium 19">
+        <spawn X="-82459" Y="-213232" Z="-3357" />
+		<spawn X="-81115" Y="-213232" Z="-3357" />
+		<!-- Spectate Spawn -->
+		<spawn X="-81787" Y="-213232" Z="-3357" />
+    </restartPointGroup>
+    <restartPointGroup id="54" name="Olympiad Stadium 20">
+        <spawn X="-88166" Y="-207433" Z="-3357" />
+		<spawn X="-86918" Y="-207433" Z="-3357" />
+		<!-- Spectate Spawn -->
+		<spawn X="-87542" Y="-207433" Z="-3357" />
+    </restartPointGroup>
+    <restartPointGroup id="55" name="Olympiad Stadium 21">
+        <spawn X="-77493" Y="-201268" Z="-3357" />
+		<spawn X="-76245" Y="-201268" Z="-3357" />
+		<!-- Spectate Spawn -->
+		<spawn X="-76869" Y="-201268" Z="-3357" />
+    </restartPointGroup>
+    <restartPointGroup id="56" name="Olympiad Stadium 22">
+        <spawn X="-70392" Y="-209137" Z="-3357" />
+		<spawn X="-69176" Y="-209137" Z="-3357" />
+		<!-- Spectate Spawn -->
+		<spawn X="-69784" Y="-209137" Z="-3357" />
+    </restartPointGroup>
+    <restartPointGroup id="57" name="Dimensional Rift">
+        <spawn X="-114444" Y="-178322" Z="-6752" />
+		<spawn X="-114470" Y="-178883" Z="-6752" />
+		<spawn X="-114449" Y="-179708" Z="-6752" />
+		<spawn X="-114518" Y="-180567" Z="-6752" />
+		<spawn X="-114537" Y="-181419" Z="-6752" />
+		<spawn X="-114918" Y="-181706" Z="-6752" />
+		<spawn X="-115072" Y="-180844" Z="-6752" />
+		<spawn X="-115146" Y="-179844" Z="-6752" />
+		<spawn X="-115160" Y="-179060" Z="-6752" />
+		<spawn X="-114989" Y="-178312" Z="-6752" />
+		<spawn X="-114434" Y="-180128" Z="-6752" />
+		<spawn X="-114469" Y="-179415" Z="-6752" />
+		<spawn X="-115139" Y="-180236" Z="-6752" />
+		<spawn X="-115169" Y="-178312" Z="-6752" />
+		<spawn X="-114459" Y="-178615" Z="-6752" isChaotic="true" />
+		<spawn X="-114469" Y="-179415" Z="-6752" isChaotic="true" />
+		<spawn X="-114434" Y="-180128" Z="-6752" isChaotic="true" />
+		<spawn X="-114597" Y="-181000" Z="-6752" isChaotic="true" />
+		<spawn X="-114708" Y="-181823" Z="-6752" isChaotic="true" />
+		<spawn X="-115008" Y="-181224" Z="-6752" isChaotic="true" />
+		<spawn X="-115139" Y="-180236" Z="-6752" isChaotic="true" />
+		<spawn X="-115155" Y="-179354" Z="-6752" isChaotic="true" />
+		<spawn X="-115169" Y="-178312" Z="-6752" isChaotic="true" />
+    </restartPointGroup>
+    <restartPointGroup id="58" name="Gludio Castle">
+        <spawn X="-16770" Y="109356" Z="-1798" />
+    </restartPointGroup>
+    <restartPointGroup id="59" name="Dion Castle">
+        <spawn X="20515" Y="160384" Z="-1992" />
+    </restartPointGroup>
+    <restartPointGroup id="60" name="Giran Castle">
+        <spawn X="116553" Y="146396" Z="-1868" />
+    </restartPointGroup>
+    <restartPointGroup id="61" name="Oren Castle">
+        <spawn X="82644" Y="38542" Z="-1592" />
+    </restartPointGroup>
+    <restartPointGroup id="62" name="Aden Castle">
+        <spawn X="147726" Y="4611" Z="-2788" />
+    </restartPointGroup>
+    <restartPointGroup id="63" name="Innadril Castle">
+        <spawn X="114796" Y="249159" Z="-88" />
+    </restartPointGroup>
+    <restartPointGroup id="64" name="Goddard Castle">
+        <spawn X="147451" Y="-46878" Z="-961" />
+    </restartPointGroup>
+
+    <restartPointGroup id="65" name="Giran Castle Town">
+        <spawn X="82480" Y="149087" Z="-3350" />
+		<spawn X="81440" Y="149119" Z="-3350" />
+		<spawn X="81376" Y="148095" Z="-3350" />
+		<spawn X="82496" Y="148095" Z="-3350" />
+		<spawn X="83473" Y="149223" Z="-3300" />
+		<spawn X="83426" Y="148835" Z="-3300" />
+		<spawn X="83409" Y="148578" Z="-3300" />
+		<spawn X="83415" Y="148235" Z="-3300" />
+		<spawn X="82272" Y="147801" Z="-3350" />
+		<spawn X="81562" Y="147782" Z="-3350" />
+		<spawn X="81062" Y="148144" Z="-3350" />
+		<spawn X="81033" Y="148883" Z="-3350" />
+		<spawn X="81637" Y="149427" Z="-3350" />
+		<spawn X="82292" Y="149450" Z="-3350" />
+		<!-- Chaotic Spawns -->
+		<spawn X="74450" Y="144238" Z="-3730" isChaotic="true" />
+		<spawn X="74209" Y="142395" Z="-3730" isChaotic="true" />
+		<spawn X="77279" Y="145045" Z="-3630" isChaotic="true" />
+		<spawn X="74809" Y="146119" Z="-3600" isChaotic="true" />
+		<spawn X="75006" Y="143520" Z="-3700" isChaotic="true" />
+		<spawn X="81347" Y="140579" Z="-3520" isChaotic="true" />
+		<spawn X="79543" Y="142050" Z="-3500" isChaotic="true" />
+		<spawn X="86223" Y="140993" Z="-3400" isChaotic="true" />
+		<spawn X="78692" Y="154573" Z="-3450" isChaotic="true" />
+		<spawn X="77870" Y="156209" Z="-3430" isChaotic="true" />
+		<spawn X="79832" Y="154009" Z="-3500" isChaotic="true" />
+		<spawn X="75501" Y="147178" Z="-3530" isChaotic="true" />
+    </restartPointGroup>
+    <restartPointGroup id="66" name="DE Village">
+        <spawn X="11632" Y="16812" Z="-4500" />
+		<spawn X="11217" Y="16837" Z="-4500" />
+		<spawn X="11498" Y="16979" Z="-4500" />
+		<spawn X="11404" Y="16699" Z="-4500" />
+		<spawn X="12501" Y="16768" Z="-4500" />
+		<spawn X="12104" Y="17385" Z="-4500" />
+		<spawn X="11603" Y="17770" Z="-4500" />
+		<spawn X="12519" Y="16376" Z="-4500" />
+		<spawn X="10355" Y="17270" Z="-4500" />
+		<spawn X="10146" Y="16965" Z="-4500" />
+		<spawn X="10691" Y="16343" Z="-4500" />
+		<spawn X="11193" Y="15963" Z="-4500" />
+		<!-- Chaotic Spawns -->
+		<spawn X="3040" Y="24240" Z="-3700" isChaotic="true" />
+		<spawn X="1184" Y="21856" Z="-3240" isChaotic="true" />
+		<spawn X="3760" Y="25136" Z="-3700" isChaotic="true" />
+		<spawn X="672" Y="20096" Z="-3350" isChaotic="true" />
+		<spawn X="1248" Y="14512" Z="-3180" isChaotic="true" />
+		<spawn X="-8176" Y="23120" Z="-3450" isChaotic="true" />
+		<spawn X="-10208" Y="25408" Z="-3560" isChaotic="true" />
+		<spawn X="-11456" Y="23936" Z="-3700" isChaotic="true" />
+		<spawn X="-9632" Y="22624" Z="-3650" isChaotic="true" />
+		<spawn X="-5776" Y="22080" Z="-3510" isChaotic="true" />
+		<spawn X="2224" Y="11936" Z="-3050" isChaotic="true" />
+		<spawn X="1744" Y="8640" Z="-3250" isChaotic="true" />
+		<spawn X="2784" Y="7872" Z="-3110" isChaotic="true" />
+		<spawn X="3216" Y="10128" Z="-2980" isChaotic="true" />
+		<spawn X="3584" Y="6976" Z="-3020" isChaotic="true" />
+		<spawn X="-10768" Y="21952" Z="-3600" isChaotic="true" />
+		<spawn X="-11360" Y="22688" Z="-3600" isChaotic="true" />
+		<spawn X="-12784" Y="23232" Z="-3630" isChaotic="true" />
+		<spawn X="-13632" Y="21872" Z="-3620" isChaotic="true" />
+		<spawn X="-11984" Y="21232" Z="-3600" isChaotic="true" />
+    </restartPointGroup>
+    <restartPointGroup id="67" name="Talking Island">
+        <spawn X="-83990" Y="243336" Z="-3700" />
+		<spawn X="-83964" Y="242680" Z="-3700" />
+		<spawn X="-84512" Y="242679" Z="-3700" />
+		<spawn X="-84623" Y="243193" Z="-3700" />
+		<spawn X="-83742" Y="242214" Z="-3700" />
+		<spawn X="-83537" Y="242537" Z="-3700" />
+		<spawn X="-83700" Y="242896" Z="-3700" />
+		<spawn X="-83646" Y="243397" Z="-3700" />
+		<spawn X="-83808" Y="243637" Z="-3700" />
+		<spawn X="-84903" Y="243489" Z="-3700" />
+		<spawn X="-84852" Y="243174" Z="-3700" />
+		<spawn X="-84892" Y="242479" Z="-3700" />
+		<spawn X="-84756" Y="242155" Z="-3700" />
+		<spawn X="-83761" Y="243620" Z="-3700" />
+		<!-- Chaotic Spawns -->
+		<spawn X="-79411" Y="240677" Z="-3450" isChaotic="true" />
+		<spawn X="-80480" Y="242640" Z="-3690" isChaotic="true" />
+		<spawn X="-80336" Y="244656" Z="-3680" isChaotic="true" />
+		<spawn X="-82464" Y="247248" Z="-3570" isChaotic="true" />
+		<spawn X="-89522" Y="241696" Z="-3530" isChaotic="true" />
+		<spawn X="-87056" Y="237952" Z="-3580" isChaotic="true" />
+		<spawn X="-89536" Y="240336" Z="-3560" isChaotic="true" />
+		<spawn X="-88208" Y="241360" Z="-3560" isChaotic="true" />
+		<spawn X="-85328" Y="238080" Z="-3660" isChaotic="true" />
+		<spawn X="-89760" Y="237408" Z="-3660" isChaotic="true" />
+		<spawn X="-92976" Y="240560" Z="-3380" isChaotic="true" />
+		<spawn X="-94448" Y="240944" Z="-3300" isChaotic="true" />
+		<spawn X="-93552" Y="245296" Z="-3530" isChaotic="true" />
+		<spawn X="-91584" Y="238480" Z="-3650" isChaotic="true" />
+		<spawn X="-88720" Y="238976" Z="-3650" isChaotic="true" />
+		<spawn X="-91760" Y="243664" Z="-3440" isChaotic="true" />
+		<spawn X="-81680" Y="249696" Z="-3630" isChaotic="true" />
+		<spawn X="-83808" Y="251264" Z="-3630" isChaotic="true" />
+		<spawn X="-83328" Y="238304" Z="-3700" isChaotic="true" />
+		<spawn X="-91296" Y="236272" Z="-3690" isChaotic="true" />
+    </restartPointGroup>
+    <restartPointGroup id="68" name="Elven Village">
+        <spawn X="45487" Y="49767" Z="-2950" />
+		<spawn X="45080" Y="49614" Z="-2950" />
+		<spawn X="45284" Y="49309" Z="-2950" />
+		<spawn X="45576" Y="49412" Z="-2950" />
+		<spawn X="45896" Y="49831" Z="-2950" />
+		<spawn X="45463" Y="50097" Z="-2950" />
+		<spawn X="44935" Y="49798" Z="-2950" />
+		<spawn X="44798" Y="49475" Z="-2950" />
+		<spawn X="45100" Y="49025" Z="-2950" />
+		<spawn X="45912" Y="49363" Z="-2950" />
+		<spawn X="45788" Y="49861" Z="-2950" />
+		<spawn X="45325" Y="50067" Z="-2950" />
+		<!-- Chaotic Spawns -->
+		<spawn X="40720" Y="56064" Z="-3580" isChaotic="true" />
+		<spawn X="39760" Y="55040" Z="-3410" isChaotic="true" />
+		<spawn X="43152" Y="55920" Z="-3620" isChaotic="true" />
+		<spawn X="44192" Y="56960" Z="-3580" isChaotic="true" />
+		<spawn X="39328" Y="56256" Z="-3580" isChaotic="true" />
+		<spawn X="40448" Y="57744" Z="-3600" isChaotic="true" />
+		<spawn X="38080" Y="52048" Z="-3500" isChaotic="true" />
+		<spawn X="38784" Y="51824" Z="-3470" isChaotic="true" />
+		<spawn X="37088" Y="51248" Z="-3400" isChaotic="true" />
+		<spawn X="37952" Y="49680" Z="-3480" isChaotic="true" />
+		<spawn X="38848" Y="47072" Z="-3580" isChaotic="true" />
+		<spawn X="36688" Y="49856" Z="-3440" isChaotic="true" />
+		<spawn X="36096" Y="46544" Z="-3680" isChaotic="true" />
+		<spawn X="37200" Y="45232" Z="-3600" isChaotic="true" />
+		<spawn X="50128" Y="55472" Z="-3410" isChaotic="true" />
+		<spawn X="51856" Y="54432" Z="-3320" isChaotic="true" />
+		<spawn X="53136" Y="54592" Z="-3420" isChaotic="true" />
+		<spawn X="51824" Y="58624" Z="-3400" isChaotic="true" />
+		<spawn X="51232" Y="59216" Z="-3320" isChaotic="true" />
+		<spawn X="49808" Y="56240" Z="-3430" isChaotic="true" />
+    </restartPointGroup>
+    <restartPointGroup id="69" name="Orc Village">
+        <spawn X="-44316" Y="-113136" Z="-80" />
+		<spawn X="-44296" Y="-114048" Z="-80" />
+		<spawn X="-44704" Y="-112896" Z="-80" />
+		<spawn X="-44720" Y="-114304" Z="-80" />
+		<spawn X="-44206" Y="-113392" Z="-80" />
+		<spawn X="-43970" Y="-114150" Z="-80" />
+		<spawn X="-44328" Y="-114625" Z="-80" />
+		<spawn X="-44884" Y="-115063" Z="-80" />
+		<spawn X="-44923" Y="-114659" Z="-80" />
+		<spawn X="-44232" Y="-113701" Z="-80" />
+		<spawn X="-44596" Y="-112956" Z="-80" />
+		<spawn X="-44987" Y="-112394" Z="-80" />
+		<spawn X="-45498" Y="-111800" Z="-80" />
+		<spawn X="-44637" Y="-112373" Z="-80" />
+		<spawn X="-44189" Y="-113065" Z="-80" />
+		<spawn X="-44048" Y="-113463" Z="-80" />
+		<!-- Chaotic Spawns -->
+		<spawn X="-43552" Y="-121488" Z="-233" isChaotic="true" />
+		<spawn X="-42560" Y="-121344" Z="-188" isChaotic="true" />
+		<spawn X="-41536" Y="-122960" Z="-308" isChaotic="true" />
+		<spawn X="-40464" Y="-122752" Z="-364" isChaotic="true" />
+		<spawn X="-45568" Y="-107296" Z="-516" isChaotic="true" />
+		<spawn X="-46512" Y="-106032" Z="-700" isChaotic="true" />
+		<spawn X="-44304" Y="-105888" Z="-1156" isChaotic="true" />
+		<spawn X="-43728" Y="-106688" Z="-1304" isChaotic="true" />
+		<spawn X="-40000" Y="-109200" Z="-1736" isChaotic="true" />
+		<spawn X="-39792" Y="-110832" Z="-1860" isChaotic="true" />
+		<spawn X="-39136" Y="-112688" Z="-1844" isChaotic="true" />
+		<spawn X="-37888" Y="-112608" Z="-1772" isChaotic="true" />
+    </restartPointGroup>
+    <restartPointGroup id="70" name="Gludin Village">
+        <spawn X="-83520" Y="150560" Z="-3000" />
+		<spawn X="-82464" Y="150848" Z="-3000" />
+		<spawn X="-84064" Y="150864" Z="-3000" />
+		<spawn X="-83408" Y="151376" Z="-3000" />
+		<spawn X="-82195" Y="150489" Z="-3000" />
+		<spawn X="-81787" Y="150780" Z="-3000" />
+		<spawn X="-81721" Y="151202" Z="-3000" />
+		<spawn X="-82241" Y="151163" Z="-3000" />
+		<spawn X="-82575" Y="151025" Z="-3000" />
+		<spawn X="-82909" Y="150357" Z="-3000" />
+		<spawn X="-83584" Y="150512" Z="-3000" />
+		<spawn X="-83529" Y="151205" Z="-3000" />
+		<spawn X="-82035" Y="152647" Z="-3000" />
+		<spawn X="-80053" Y="154348" Z="-3000" />
+		<!-- Chaotic Spawns -->
+		<spawn X="-81616" Y="157104" Z="-3150" isChaotic="true" />
+		<spawn X="-80688" Y="157216" Z="-3150" isChaotic="true" />
+		<spawn X="-79568" Y="156960" Z="-3150" isChaotic="true" />
+		<spawn X="-78800" Y="157744" Z="-3150" isChaotic="true" />
+		<spawn X="-80448" Y="157968" Z="-3130" isChaotic="true" />
+		<spawn X="-81712" Y="159536" Z="-3230" isChaotic="true" />
+		<spawn X="-79744" Y="160592" Z="-3330" isChaotic="true" />
+		<spawn X="-79584" Y="159408" Z="-3180" isChaotic="true" />
+		<spawn X="-74016" Y="150656" Z="-2800" isChaotic="true" />
+		<spawn X="-72720" Y="149632" Z="-2780" isChaotic="true" />
+		<spawn X="-75904" Y="162000" Z="-3300" isChaotic="true" />
+		<spawn X="-75488" Y="161472" Z="-3250" isChaotic="true" />
+		<spawn X="-74688" Y="160736" Z="-3200" isChaotic="true" />
+		<spawn X="-74352" Y="161488" Z="-3250" isChaotic="true" />
+		<spawn X="-76656" Y="160768" Z="-3280" isChaotic="true" />
+		<spawn X="-77472" Y="160960" Z="-3470" isChaotic="true" />
+		<spawn X="-77776" Y="158752" Z="-3270" isChaotic="true" />
+		<spawn X="-80448" Y="161488" Z="-3420" isChaotic="true" />
+		<spawn X="-75440" Y="162672" Z="-3350" isChaotic="true" />
+		<spawn X="-81760" Y="161248" Z="-3200" isChaotic="true" />
+    </restartPointGroup>
+    <restartPointGroup id="71" name="Dwarven Village">
+        <spawn X="116176" Y="-182448" Z="-1400" />
+		<spawn X="116476" Y="-182904" Z="-1500" />
+		<spawn X="115248" Y="-178816" Z="-850" />
+		<spawn X="116352" Y="-179264" Z="-1000" />
+		<spawn X="115271" Y="-178561" Z="-820" />
+		<spawn X="115249" Y="-177859" Z="-820" />
+		<spawn X="115485" Y="-178077" Z="-820" />
+		<spawn X="115790" Y="-179146" Z="-890" />
+		<spawn X="116507" Y="-179597" Z="-1000" />
+		<spawn X="116725" Y="-180147" Z="-1000" />
+		<spawn X="116738" Y="-181494" Z="-1300" />
+		<spawn X="116775" Y="-182367" Z="-1400" />
+		<spawn X="116587" Y="-183032" Z="-1400" />
+		<spawn X="116321" Y="-182734" Z="-1400" />
+		<!-- Chaotic Spawns -->
+		<spawn X="118160" Y="-179328" Z="-1578" isChaotic="true" />
+		<spawn X="119024" Y="-180208" Z="-2180" isChaotic="true" />
+		<spawn X="119728" Y="-180912" Z="-2649" isChaotic="true" />
+		<spawn X="119776" Y="-181968" Z="-2948" isChaotic="true" />
+		<spawn X="119392" Y="-183968" Z="-3125" isChaotic="true" />
+		<spawn X="119520" Y="-184928" Z="-3196" isChaotic="true" />
+		<spawn X="119568" Y="-186016" Z="-3220" isChaotic="true" />
+		<spawn X="119984" Y="-187312" Z="-3260" isChaotic="true" />
+		<spawn X="119632" Y="-188352" Z="-3260" isChaotic="true" />
+		<spawn X="119264" Y="-188736" Z="-3203" isChaotic="true" />
+		<spawn X="118656" Y="-187760" Z="-2828" isChaotic="true" />
+    </restartPointGroup>
+    <restartPointGroup id="72" name="Gludio Castle Town">
+        <spawn X="-14288" Y="122752" Z="-3000" />
+		<spawn X="-14592" Y="123232" Z="-3000" />
+		<spawn X="-14704" Y="122032" Z="-3000" />
+		<spawn X="-13904" Y="123456" Z="-3000" />
+		<spawn X="-15314" Y="124131" Z="-3000" />
+		<spawn X="-15564" Y="123896" Z="-3000" />
+		<spawn X="-14279" Y="124446" Z="-3000" />
+		<spawn X="-14465" Y="124434" Z="-3000" />
+		<spawn X="-13709" Y="123563" Z="-3000" />
+		<spawn X="-13513" Y="123752" Z="-3000" />
+		<spawn X="-14683" Y="121945" Z="-3000" />
+		<spawn X="-14491" Y="121915" Z="-3000" />
+		<!-- Chaotic Spawns -->
+		<spawn X="-17280" Y="125392" Z="-3120" isChaotic="true" />
+		<spawn X="-16128" Y="126944" Z="-3120" isChaotic="true" />
+		<spawn X="-14464" Y="128288" Z="-3250" isChaotic="true" />
+		<spawn X="-13040" Y="128768" Z="-3350" isChaotic="true" />
+		<spawn X="-15600" Y="127904" Z="-3150" isChaotic="true" />
+		<spawn X="-16128" Y="128592" Z="-3230" isChaotic="true" />
+		<spawn X="-15632" Y="129456" Z="-3400" isChaotic="true" />
+		<spawn X="-16960" Y="127696" Z="-3200" isChaotic="true" />
+		<spawn X="-17632" Y="126320" Z="-3150" isChaotic="true" />
+		<spawn X="-18704" Y="124960" Z="-3100" isChaotic="true" />
+		<spawn X="-17760" Y="121888" Z="-3140" isChaotic="true" />
+		<spawn X="-17472" Y="122752" Z="-3100" isChaotic="true" />
+		<spawn X="-18720" Y="124080" Z="-3130" isChaotic="true" />
+		<spawn X="-19008" Y="122432" Z="-3200" isChaotic="true" />
+		<spawn X="-20048" Y="122432" Z="-3280" isChaotic="true" />
+		<spawn X="-19008" Y="126160" Z="-3250" isChaotic="true" />
+		<spawn X="-18480" Y="127184" Z="-3300" isChaotic="true" />
+		<spawn X="-19664" Y="125440" Z="-3180" isChaotic="true" />
+		<spawn X="-20176" Y="124512" Z="-3350" isChaotic="true" />
+		<spawn X="-19040" Y="121632" Z="-3200" isChaotic="true" />
+    </restartPointGroup>
+    <restartPointGroup id="73" name="Dion Castle Town">
+        <spawn X="19025" Y="145245" Z="-3107" />
+		<spawn X="18576" Y="145136" Z="-3104" />
+		<spawn X="18717" Y="145711" Z="-3097" />
+		<spawn X="18512" Y="145536" Z="-3100" />
+		<spawn X="18954" Y="144428" Z="-3000" />
+		<spawn X="19150" Y="143941" Z="-3020" />
+		<spawn X="19134" Y="144847" Z="-3020" />
+		<spawn X="19613" Y="145607" Z="-3020" />
+		<spawn X="18078" Y="145925" Z="-3020" />
+		<spawn X="17398" Y="145456" Z="-3000" />
+		<spawn X="17144" Y="145055" Z="-3000" />
+		<spawn X="19012" Y="145140" Z="-3020" />
+		<!-- Chaotic Spawns -->
+		<spawn X="17555" Y="170393" Z="-3400" isChaotic="true" />
+		<spawn X="17699" Y="170153" Z="-3400" isChaotic="true" />
+		<spawn X="17315" Y="170041" Z="-3400" isChaotic="true" />
+		<spawn X="17283" Y="170329" Z="-3400" isChaotic="true" />
+		<spawn X="17536" Y="170505" Z="-3400" isChaotic="true" />
+		<spawn X="17299" Y="170341" Z="-3400" isChaotic="true" />
+		<spawn X="17085" Y="170170" Z="-3400" isChaotic="true" />
+		<spawn X="17421" Y="169993" Z="-3400" isChaotic="true" />
+		<spawn X="17820" Y="170054" Z="-3400" isChaotic="true" />
+		<spawn X="18054" Y="170263" Z="-3400" isChaotic="true" />
+		<spawn X="17931" Y="170381" Z="-3400" isChaotic="true" />
+    </restartPointGroup>
+    <restartPointGroup id="74" name="Town of Oren">
+        <spawn X="80304" Y="56241" Z="-1500" />
+		<spawn X="80594" Y="55837" Z="-1500" />
+		<spawn X="79933" Y="55752" Z="-1500" />
+		<spawn X="80267" Y="55497" Z="-1500" />
+		<spawn X="80334" Y="54400" Z="-1500" />
+		<spawn X="82445" Y="56012" Z="-1480" />
+		<spawn X="82323" Y="55466" Z="-1480" />
+		<spawn X="82880" Y="55390" Z="-1480" />
+		<spawn X="82638" Y="53885" Z="-1440" />
+		<spawn X="82552" Y="53447" Z="-1440" />
+		<spawn X="82213" Y="53964" Z="-1440" />
+		<spawn X="80054" Y="53209" Z="-1500" />
+		<spawn X="79706" Y="52986" Z="-1500" />
+		<spawn X="82123" Y="53535" Z="-1440" />
+		<!-- Chaotic Spawns -->
+		<spawn X="76576" Y="50151" Z="-3200" isChaotic="true" />
+		<spawn X="77310" Y="50317" Z="-3160" isChaotic="true" />
+		<spawn X="77250" Y="51285" Z="-3160" isChaotic="true" />
+		<spawn X="78811" Y="51106" Z="-3160" isChaotic="true" />
+		<spawn X="75755" Y="51372" Z="-3250" isChaotic="true" />
+		<spawn X="75613" Y="52504" Z="-3200" isChaotic="true" />
+		<spawn X="74459" Y="52441" Z="-3260" isChaotic="true" />
+		<spawn X="74467" Y="53354" Z="-3200" isChaotic="true" />
+		<spawn X="73600" Y="53918" Z="-3170" isChaotic="true" />
+		<spawn X="71102" Y="57875" Z="-3330" isChaotic="true" />
+		<spawn X="70052" Y="59300" Z="-3580" isChaotic="true" />
+		<spawn X="70420" Y="57480" Z="-3480" isChaotic="true" />
+		<spawn X="75474" Y="60125" Z="-2730" isChaotic="true" />
+		<spawn X="74880" Y="60818" Z="-2820" isChaotic="true" />
+		<spawn X="88011" Y="56589" Z="-3560" isChaotic="true" />
+		<spawn X="91239" Y="53120" Z="-3430" isChaotic="true" />
+		<spawn X="81785" Y="46306" Z="-3160" isChaotic="true" />
+		<spawn X="80708" Y="44609" Z="-3120" isChaotic="true" />
+		<spawn X="70139" Y="55885" Z="-3550" isChaotic="true" />
+		<spawn X="80236" Y="45675" Z="-3150" isChaotic="true" />
+    </restartPointGroup>
+    <restartPointGroup id="75" name="Hunters Village">
+        <spawn X="116127" Y="76015" Z="-2729" />
+		<spawn X="115683" Y="77610" Z="-2650" />
+		<spawn X="117304" Y="76318" Z="-2670" />
+		<spawn X="119862" Y="76603" Z="-2220" />
+		<spawn X="117671" Y="78998" Z="-2210" />
+		<spawn X="117189" Y="78952" Z="-2210" />
+		<spawn X="115861" Y="75200" Z="-2550" />
+		<spawn X="118275" Y="74859" Z="-2557" />
+		<spawn X="118229" Y="74677" Z="-2450" />
+		<spawn X="115685" Y="75072" Z="-2550" />
+		<spawn X="116704" Y="75695" Z="-2680" />
+		<spawn X="116737" Y="76738" Z="-2650" />
+		<spawn X="115193" Y="77594" Z="-2670" />
+		<spawn X="116158" Y="77443" Z="-2660" />
+		<!-- Chaotic Spawns -->
+		<spawn X="122098" Y="70373" Z="-2864" isChaotic="true" />
+		<spawn X="118674" Y="71218" Z="-2743" isChaotic="true" />
+		<spawn X="118040" Y="67175" Z="-2905" isChaotic="true" />
+		<spawn X="119300" Y="70660" Z="-2850" isChaotic="true" />
+		<spawn X="118851" Y="70566" Z="-2800" isChaotic="true" />
+		<spawn X="112655" Y="70976" Z="-3122" isChaotic="true" />
+		<spawn X="119712" Y="66376" Z="-2960" isChaotic="true" />
+		<spawn X="107511" Y="82890" Z="-2515" isChaotic="true" />
+		<spawn X="105702" Y="82773" Z="-2803" isChaotic="true" />
+		<spawn X="104257" Y="82194" Z="-2581" isChaotic="true" />
+		<spawn X="104474" Y="81109" Z="-2651" isChaotic="true" />
+    </restartPointGroup>
+    <restartPointGroup id="76" name="Town of Aden">
+        <spawn X="146494" Y="30584" Z="-2420" />
+		<spawn X="146038" Y="30519" Z="-2420" />
+		<spawn X="148112" Y="30439" Z="-2420" />
+		<spawn X="148565" Y="30463" Z="-2420" />
+		<spawn X="150227" Y="29104" Z="-2420" />
+		<spawn X="144626" Y="29145" Z="-2420" />
+		<spawn X="144635" Y="26664" Z="-2220" />
+		<spawn X="144526" Y="24661" Z="-2100" />
+		<spawn X="144559" Y="22835" Z="-2100" />
+		<spawn X="145686" Y="21114" Z="-2100" />
+		<spawn X="148946" Y="21121" Z="-2070" />
+		<spawn X="148010" Y="27996" Z="-2256" />
+		<spawn X="147970" Y="27040" Z="-2191" />
+		<spawn X="146814" Y="27108" Z="-2189" />
+		<spawn X="146819" Y="28063" Z="-2252" />
+		<!-- Chaotic Spawns -->
+		<spawn X="136398" Y="28901" Z="-3582" isChaotic="true" />
+		<spawn X="137292" Y="28485" Z="-3290" isChaotic="true" />
+		<spawn X="155925" Y="28554" Z="-3164" isChaotic="true" />
+		<spawn X="157608" Y="23866" Z="-3760" isChaotic="true" />
+		<spawn X="157463" Y="28770" Z="-3371" isChaotic="true" />
+		<spawn X="159348" Y="28561" Z="-3400" isChaotic="true" />
+		<spawn X="160236" Y="14119" Z="-3892" isChaotic="true" />
+		<spawn X="156764" Y="13774" Z="-3960" isChaotic="true" />
+		<spawn X="161426" Y="23055" Z="-3670" isChaotic="true" />
+		<spawn X="136380" Y="21899" Z="-3647" isChaotic="true" />
+		<spawn X="137708" Y="15640" Z="-3800" isChaotic="true" />
+		<spawn X="136629" Y="28127" Z="-3258" isChaotic="true" />
+    </restartPointGroup>
+    <restartPointGroup id="77" name="Goddard Castle Town">
+        <spawn X="148560" Y="-55904" Z="-2779" />
+		<spawn X="150704" Y="-55744" Z="-2979" />
+		<spawn X="150400" Y="-56752" Z="-2979" />
+		<spawn X="149872" Y="-57424" Z="-2979" />
+		<spawn X="149088" Y="-56256" Z="-2779" />
+		<spawn X="147664" Y="-56464" Z="-2779" />
+		<spawn X="147680" Y="-56928" Z="-2779" />
+		<spawn X="146832" Y="-55904" Z="-2779" />
+		<spawn X="146368" Y="-56256" Z="-2779" />
+		<spawn X="149120" Y="-58064" Z="-2979" />
+		<spawn X="148288" Y="-58304" Z="-2979" />
+		<spawn X="147680" Y="-58208" Z="-2979" />
+		<spawn X="147232" Y="-58480" Z="-2979" />
+		<spawn X="146272" Y="-58176" Z="-2979" />
+		<spawn X="145696" Y="-57696" Z="-2979" />
+		<spawn X="145264" Y="-57680" Z="-2979" />
+		<spawn X="145392" Y="-56960" Z="-2979" />
+		<spawn X="144752" Y="-56752" Z="-2979" />
+		<spawn X="144960" Y="-56224" Z="-2979" />
+		<spawn X="144944" Y="-55392" Z="-2979" />
+		<spawn X="144496" Y="-55088" Z="-2979" />
+		<!-- Chaotic Spawns -->
+		<spawn X="142656" Y="-55008" Z="-3024" isChaotic="true" />
+		<spawn X="142832" Y="-55680" Z="-3462" isChaotic="true" />
+		<spawn X="143152" Y="-56368" Z="-3456" isChaotic="true" />
+		<spawn X="145344" Y="-59472" Z="-3344" isChaotic="true" />
+		<spawn X="145872" Y="-59744" Z="-3328" isChaotic="true" />
+		<spawn X="150304" Y="-59800" Z="-3504" isChaotic="true" />
+		<spawn X="152080" Y="-56576" Z="-3415" isChaotic="true" />
+		<spawn X="142880" Y="-56992" Z="-3418" isChaotic="true" />
+		<spawn X="144544" Y="-58976" Z="-3440" isChaotic="true" />
+		<spawn X="146688" Y="-60048" Z="-3447" isChaotic="true" />
+		<spawn X="146000" Y="-60704" Z="-3450" isChaotic="true" />
+		<spawn X="145248" Y="-60064" Z="-3440" isChaotic="true" />
+		<spawn X="144368" Y="-59616" Z="-3512" isChaotic="true" />
+		<spawn X="143536" Y="-57456" Z="-3424" isChaotic="true" />
+		<spawn X="150576" Y="-59024" Z="-3488" isChaotic="true" />
+		<spawn X="149680" Y="-59600" Z="-3440" isChaotic="true" />
+		<spawn X="149360" Y="-60576" Z="-3520" isChaotic="true" />
+    </restartPointGroup>
+    <restartPointGroup id="78" name="Rune Castle Town">
+        <spawn X="38096" Y="-46976" Z="899" />
+		<spawn X="38608" Y="-47168" Z="899" />
+		<spawn X="38752" Y="-47792" Z="899" />
+		<spawn X="38848" Y="-48640" Z="899" />
+		<spawn X="38272" Y="-49008" Z="899" />
+		<spawn X="38112" Y="-49792" Z="899" />
+		<spawn X="43408" Y="-51120" Z="-800" />
+		<spawn X="43536" Y="-50416" Z="-800" />
+		<spawn X="44368" Y="-50592" Z="-800" />
+		<spawn X="44000" Y="-49952" Z="-800" />
+		<spawn X="45072" Y="-49936" Z="-800" />
+		<spawn X="45824" Y="-49056" Z="-800" />
+		<spawn X="45632" Y="-47968" Z="-800" />
+		<spawn X="44864" Y="-47824" Z="-800" />
+		<spawn X="43744" Y="-47920" Z="-800" />
+		<spawn X="43792" Y="-48928" Z="-800" />
+		<!-- Chaotic Spawns -->
+		<spawn X="42640" Y="-54496" Z="-2310" isChaotic="true" />
+		<spawn X="38304" Y="-55440" Z="-1136" isChaotic="true" />
+		<spawn X="40192" Y="-57600" Z="-2343" isChaotic="true" />
+		<spawn X="38400" Y="-56832" Z="-992" isChaotic="true" />
+		<spawn X="35632" Y="-54800" Z="-1744" isChaotic="true" />
+		<spawn X="37152" Y="-56272" Z="-272" isChaotic="true" />
+		<spawn X="43936" Y="-56480" Z="-3627" isChaotic="true" />
+		<spawn X="39440" Y="-60080" Z="-2870" isChaotic="true" />
+		<spawn X="41376" Y="-55376" Z="-1488" isChaotic="true" />
+		<spawn X="41920" Y="-57760" Z="-2392" isChaotic="true" />
+		<spawn X="42496" Y="-58192" Z="-3264" isChaotic="true" />
+		<spawn X="40784" Y="-59888" Z="-2600" isChaotic="true" />
+    </restartPointGroup>
+    <restartPointGroup id="79" name="Innadril Castle Town">
+        <spawn X="107568" Y="218256" Z="-3624" />
+		<spawn X="107920" Y="218240" Z="-3624" />
+		<spawn X="107808" Y="217856" Z="-3624" />
+		<spawn X="108032" Y="218048" Z="-3624" />
+		<spawn X="107552" Y="218000" Z="-3624" />
+		<spawn X="110912" Y="219584" Z="-3624" />
+		<spawn X="110768" Y="219824" Z="-3624" />
+		<spawn X="110688" Y="220576" Z="-3624" />
+		<spawn X="110896" Y="220768" Z="-3624" />
+		<spawn X="111856" Y="220752" Z="-3624" />
+		<spawn X="112112" Y="220576" Z="-3624" />
+		<spawn X="112064" Y="219792" Z="-3624" />
+		<spawn X="111888" Y="219584" Z="-3624" />
+		<!-- Chaotic Spawns -->
+		<spawn X="117872" Y="225536" Z="-3200" isChaotic="true" />
+		<spawn X="118064" Y="225648" Z="-3200" isChaotic="true" />
+		<spawn X="101696" Y="221808" Z="-3520" isChaotic="true" />
+		<spawn X="101552" Y="221568" Z="-3520" isChaotic="true" />
+		<spawn X="100784" Y="218272" Z="-3420" isChaotic="true" />
+		<spawn X="100928" Y="218560" Z="-3420" isChaotic="true" />
+    </restartPointGroup>
+    <restartPointGroup id="80" name="Floran Village">
+        <spawn X="19025" Y="145245" Z="-3107" />
+		<spawn X="18576" Y="145136" Z="-3104" />
+		<spawn X="18717" Y="145711" Z="-3097" />
+		<spawn X="18512" Y="145536" Z="-3100" />
+		<spawn X="18954" Y="144428" Z="-3000" />
+		<spawn X="19150" Y="143941" Z="-3020" />
+		<spawn X="19134" Y="144847" Z="-3020" />
+		<spawn X="19613" Y="145607" Z="-3020" />
+		<spawn X="18078" Y="145925" Z="-3020" />
+		<spawn X="17398" Y="145456" Z="-3000" />
+		<spawn X="17144" Y="145055" Z="-3000" />
+		<spawn X="19012" Y="145140" Z="-3020" />
+		<!-- Chaotic Spawns -->
+		<spawn X="17555" Y="170393" Z="-3451" isChaotic="true" />
+		<spawn X="17699" Y="170153" Z="-3451" isChaotic="true" />
+		<spawn X="17315" Y="170041" Z="-3451" isChaotic="true" />
+		<spawn X="17283" Y="170329" Z="-3451" isChaotic="true" />
+		<spawn X="17536" Y="170505" Z="-3451" isChaotic="true" />
+		<spawn X="17299" Y="170341" Z="-3451" isChaotic="true" />
+		<spawn X="17085" Y="170170" Z="-3451" isChaotic="true" />
+		<spawn X="17421" Y="169993" Z="-3451" isChaotic="true" />
+		<spawn X="17820" Y="170054" Z="-3451" isChaotic="true" />
+		<spawn X="18054" Y="170263" Z="-3451" isChaotic="true" />
+		<spawn X="17931" Y="170381" Z="-3451" isChaotic="true" />
+    </restartPointGroup>
+    <restartPointGroup id="81" name="Monster Derby Track">
+        <spawn X="12661" Y="181687" Z="-3560" />
+    </restartPointGroup>
+</list>

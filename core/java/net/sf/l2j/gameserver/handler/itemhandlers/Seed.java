@@ -14,9 +14,9 @@
  */
 package net.sf.l2j.gameserver.handler.itemhandlers;
 
-import net.sf.l2j.gameserver.datatables.MapRegionTable;
 import net.sf.l2j.gameserver.handler.IItemHandler;
 import net.sf.l2j.gameserver.instancemanager.CastleManorManager;
+import net.sf.l2j.gameserver.instancemanager.MapRegionManager;
 import net.sf.l2j.gameserver.model.L2ItemInstance;
 import net.sf.l2j.gameserver.model.L2Manor;
 import net.sf.l2j.gameserver.model.L2Object;
@@ -68,7 +68,7 @@ public class Seed implements IItemHandler
         }
 
         int seedId = item.getItemId();
-        if (L2Manor.getInstance().getCastleIdForSeed(seedId) != MapRegionTable.getInstance().getAreaCastle(activeChar))
+        if (L2Manor.getInstance().getCastleIdForSeed(seedId) != MapRegionManager.getInstance().getAreaCastleId(activeChar))
         {
             activeChar.sendPacket(new SystemMessage(SystemMessage.THIS_SEED_MAY_NOT_BE_SOWN_HERE));
             activeChar.sendPacket(ActionFailed.STATIC_PACKET);

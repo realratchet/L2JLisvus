@@ -14,8 +14,8 @@
  */
 package net.sf.l2j.gameserver.model.zone.type;
 
-import net.sf.l2j.gameserver.datatables.MapRegionTable;
 import net.sf.l2j.gameserver.instancemanager.ClanHallManager;
+import net.sf.l2j.gameserver.instancemanager.MapRegionManager.TeleportWhereType;
 import net.sf.l2j.gameserver.model.L2Character;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.entity.ClanHall;
@@ -87,7 +87,7 @@ public class L2ClanHallZone extends L2ZoneSpawn
 			if (!(temp instanceof L2PcInstance) || ((L2PcInstance) temp).getClanId() == ownerId)
 				continue;
 			
-			temp.teleToLocation(MapRegionTable.TeleportWhereType.Town);
+			temp.teleToLocation(TeleportWhereType.Town);
 		}
 	}
 }
