@@ -132,7 +132,7 @@ public class L2NpcInstance extends L2Character
 	
 	/** Time of last social packet broadcast */
 	private long _lastSocialBroadcast = 0;
-
+	
 	private RandomAnimationTask _rAniTask = null;
 	
 	private double _currentCollisionHeight;
@@ -187,7 +187,7 @@ public class L2NpcInstance extends L2Character
 	/**
 	 * Send a packet SocialAction to all L2PcInstance in the _KnownPlayers of the L2NpcInstance and create a new RandomAnimation Task.<BR>
 	 * <BR>
-	 * @param chance 
+	 * @param chance
 	 */
 	public void onRandomAnimation(int chance)
 	{
@@ -817,9 +817,7 @@ public class L2NpcInstance extends L2Character
 			StringUtil.append(sb, "<html><body><center><font color=\"LEVEL\">NPC Information</font></center>");
 			StringUtil.append(sb, "<br>");
 			
-			StringUtil.append(sb, "Instance Type: " + className + "<br1>Faction: " + getFactionId() + "<br1>Spawn ID: " 
-				+ (getSpawn() != null ? getSpawn().getId() : 0) + "<br1>Location ID: " 
-				+ (getSpawn() != null ? getSpawn().getLocation() : 0) + "<br1>");
+			StringUtil.append(sb, "Instance Type: " + className + "<br1>Faction: " + getFactionId() + "<br1>Spawn ID: " + (getSpawn() != null ? getSpawn().getId() : 0) + "<br1>Location ID: " + (getSpawn() != null ? getSpawn().getLocation() : 0) + "<br1>");
 			
 			if (this instanceof L2ControllableMobInstance)
 			{
@@ -942,7 +940,7 @@ public class L2NpcInstance extends L2Character
 				_isInTown = town.getTaxById() != 0; // Npc was spawned in a town that pays taxes to a castle
 				castleId = town.getTaxById();
 			}
-
+			
 			int castleIdByNpc = getCastleIdByNpc();
 			castleId = castleIdByNpc != 0 ? castleIdByNpc : castleId;
 			if (castleId != 0)
@@ -964,11 +962,11 @@ public class L2NpcInstance extends L2Character
 		return CastleManager.getInstance().getCastles().get(_castleIndex);
 		
 	}
-
+	
 	protected int getCastleIdByNpc()
-    {
-        return 0;
-    }
+	{
+		return 0;
+	}
 	
 	public boolean getIsInCastleTown()
 	{
@@ -1419,24 +1417,27 @@ public class L2NpcInstance extends L2Character
 		}
 		else
 		{
-			if ((q.getQuestIntId() >= 1) && (q.getQuestIntId() < 1000) && (player.getWeightPenalty() >= 3) || ((player.getInventoryLimit() * 0.8) <= player.getInventory().getSize()))
+			if (q.getQuestIntId() >= 1 && q.getQuestIntId() < 1000)
 			{
-				player.sendPacket(new SystemMessage(SystemMessage.INVENTORY_80_PERCENT_FOR_QUEST));
-				return;
-			}
+				if (player.getWeightPenalty() >= 3 || (player.getInventoryLimit() * 0.8) <= player.getInventory().getSize())
+				{
+					player.sendPacket(new SystemMessage(SystemMessage.INVENTORY_80_PERCENT_FOR_QUEST));
+					return;
+				}
 
-			if (qs == null)
-			{
-				if ((q.getQuestIntId() >= 1) && (q.getQuestIntId() < 1000))
+				if (qs == null)
 				{
 					QuestState[] questStates = player.getAllActiveQuestStates();
-					if (questStates.length >= 15) // if too many ongoing quests, don't show window and send message
+					if (questStates.length >= 15)
 					{
-						player.sendPacket(new SystemMessage(401));
+						player.sendPacket(new SystemMessage(SystemMessage.TOO_MANY_QUESTS));
 						return;
-					}					
+					}
 				}
-				
+			}
+			
+			if (qs == null)
+			{
 				// Check for start point
 				Quest[] qlst = getTemplate().getEventQuests(Quest.QuestEventType.QUEST_START);
 				if ((qlst != null) && qlst.length > 0)
@@ -1467,16 +1468,16 @@ public class L2NpcInstance extends L2Character
 			content = HtmCache.getInstance().getHtm(path);
 			
 			if (Config.DEBUG)
-            {
-                if (content != null)
-                {
-                    _log.fine("Showing quest window for quest "+questId+" html path: " + path);
-                }
-                else
-                {
-                    _log.fine("File not exists for quest "+questId+" html path: " + path);
-                }
-            }
+			{
+				if (content != null)
+				{
+					_log.fine("Showing quest window for quest " + questId + " html path: " + path);
+				}
+				else
+				{
+					_log.fine("File not exists for quest " + questId + " html path: " + path);
+				}
+			}
 		}
 		
 		// Send a Server->Client packet NpcHtmlMessage to the L2PcInstance in order to display the message of the L2NpcInstance
@@ -1593,7 +1594,7 @@ public class L2NpcInstance extends L2Character
 			
 			filename = (getHtmlPath(npcId, 5));
 			html.setFile(filename);
-
+			
 			int count = 0;
 			int found = 0;
 			// counting buttons and unsetting button if found
@@ -1708,7 +1709,7 @@ public class L2NpcInstance extends L2Character
 			item.setEnchantLevel(enchant);
 			item.setCustomType2(type2);
 			player.getInventory().addItem("Loto", item, player, this);
-
+			
 			InventoryUpdate iu = new InventoryUpdate();
 			iu.addItem(item);
 			L2ItemInstance adenaupdate = player.getInventory().getItemByItemId(Inventory.ADENA_ID);
@@ -2337,7 +2338,7 @@ public class L2NpcInstance extends L2Character
 		{
 			((L2ControlTowerInstance) this).onDeath();
 		}
-
+		
 		if (getTemplate().getEventQuests(Quest.QuestEventType.ON_DECAY) != null)
 		{
 			for (Quest quest : getTemplate().getEventQuests(Quest.QuestEventType.ON_DECAY))
@@ -2399,7 +2400,7 @@ public class L2NpcInstance extends L2Character
 		
 		// Remove L2Object object from _allObjects of L2World
 		L2World.getInstance().removeObject(this);
-
+		
 		super.deleteMe();
 	}
 	

@@ -230,6 +230,7 @@ public class SystemMessage extends L2GameServerPacket
 	public static final int PETITION_ACCEPTED_RECEIPT_S1 = 389;
 	public static final int ALREADY_APPLIED_FOR_PETITION = 390;
 	public static final int PETITION_WITH_S1_UNDER_WAY = 394;
+	public static final int TOO_MANY_QUESTS = 401;
 	public static final int YOU_HAVE_EXCEEDED_POCKET_MONEY_LIMIT = 403;
 	public static final int PETITION_APPLICATION_ACCEPTED = 406;
 	public static final int S1_DISARMED = 417;
