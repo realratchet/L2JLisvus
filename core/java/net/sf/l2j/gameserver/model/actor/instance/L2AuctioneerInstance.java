@@ -22,8 +22,8 @@ import java.util.StringTokenizer;
 import java.util.concurrent.ConcurrentHashMap;
 
 import net.sf.l2j.Config;
-import net.sf.l2j.gameserver.datatables.MapRegionTable;
 import net.sf.l2j.gameserver.instancemanager.ClanHallManager;
+import net.sf.l2j.gameserver.instancemanager.MapRegionManager;
 import net.sf.l2j.gameserver.model.Bidder;
 import net.sf.l2j.gameserver.model.L2Clan;
 import net.sf.l2j.gameserver.model.entity.Auction;
@@ -188,10 +188,10 @@ public final class L2AuctioneerInstance extends L2FolkInstance
 			}
 			else if (actualCommand.equalsIgnoreCase("location"))
 			{
+				int locId = MapRegionManager.getInstance().getMapRegionLocId(this);
 				NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
-				html.setFile("data/html/auction/location.htm");
-				html.replace("%location%", MapRegionTable.getInstance().getClosestTownName(player));
-				html.replace("%LOCATION%", getPictureName(player));
+
+				html.setFile("data/html/auction/location-" + (locId > 0 ? locId : "default") + ".htm");
 				html.replace("%objectId%", String.valueOf(getObjectId()));
 				player.sendPacket(html);
 				return;
@@ -701,35 +701,5 @@ public final class L2AuctioneerInstance extends L2FolkInstance
 			}
 			player.sendPacket(html);
 		}
-	}
-	
-	private String getPictureName(L2PcInstance player)
-	{
-		int nearestTownId = MapRegionTable.getInstance().getMapRegion(player.getX(), player.getY());
-		String nearestTown;
-		
-		switch (nearestTownId)
-		{
-			case 5:
-				nearestTown = "GLUDIO";
-				break;
-			case 6:
-				nearestTown = "GLUDIN";
-				break;
-			case 7:
-				nearestTown = "DION";
-				break;
-			case 8:
-				nearestTown = "GIRAN";
-				break;
-			case 15:
-				nearestTown = "GODARD";
-				break;
-			default:
-				nearestTown = "ADEN";
-				break;
-		}
-		
-		return nearestTown;
 	}
 }

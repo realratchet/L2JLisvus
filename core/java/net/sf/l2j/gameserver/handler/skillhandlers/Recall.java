@@ -16,7 +16,6 @@ package net.sf.l2j.gameserver.handler.skillhandlers;
 
 import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.handler.ISkillHandler;
-import net.sf.l2j.gameserver.instancemanager.DimensionalRiftManager;
 import net.sf.l2j.gameserver.instancemanager.MapRegionManager.TeleportWhereType;
 import net.sf.l2j.gameserver.model.L2Character;
 import net.sf.l2j.gameserver.model.L2Object;
@@ -66,7 +65,7 @@ public class Recall implements ISkillHandler
 					continue;
 				}
 				
-				if ((target.isInParty() && target.getParty().isInDimensionalRift()) || DimensionalRiftManager.getInstance().checkIfInRiftZone(target.getX(), target.getY(), target.getZ(), true))
+				if (target.isInParty() && target.getParty().isInDimensionalRift())
 				{
 					target.sendMessage("Once a party is ported in another dimension, its members cannot get out of it.");
 					return;

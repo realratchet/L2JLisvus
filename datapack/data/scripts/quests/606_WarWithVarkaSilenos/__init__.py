@@ -5,6 +5,7 @@ from net.sf.l2j import Config
 from net.sf.l2j.gameserver.model.quest import State
 from net.sf.l2j.gameserver.model.quest import QuestState
 from net.sf.l2j.gameserver.model.quest.jython import QuestJython as JQuest
+from net.sf.l2j.util import Rnd
 
 qn = "606_WarWithVarkaSilenos"
 
@@ -100,9 +101,9 @@ class Quest (JQuest) :
          if npcId in Varka_Mobs and partyMember.getAllianceWithVarkaKetra() >= 1 :
         #see comments in 605 : Alliance with Ketra Orcs for reason for doing st2 check
             if not st2 :
-                numItems,chance = divmod(Chance[npcId]*Config.RATE_DROP_QUEST,1000)
-                if st.getRandom(1000) < chance :
-                    numItems += 1
+                chance = 50
+                if st.getRandom(100) < chance :
+                    numItems = Rnd.get(1, 5)
                 numItems = int(numItems)
                 if numItems != 0 :
                     if int((count+numItems)/100) > int(count/100) :

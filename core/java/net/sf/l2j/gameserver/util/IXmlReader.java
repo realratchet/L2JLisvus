@@ -62,7 +62,7 @@ public interface IXmlReader
                 }
                 else if (isXmlFile(file))
                 {
-                    parseFile(file);
+                    parseFileInternal(file);
                 }
             }
         }
@@ -78,20 +78,9 @@ public interface IXmlReader
     {
         parseFile(new File(Config.DATAPACK_ROOT, path));
     }
-    
-    /**
-     * Parses a single XML file.<br>
-     * If the file was successfully parsed, call {@link #parseDocument(Document, File)} for the parsed document.<br>
-     * @param f the XML file to parse.
-     */
-    default void parseFile(File f)
+
+    default void parseFileInternal(File f)
     {
-        if (!isXmlFile(f))
-        {
-            _log.warning(getClass().getSimpleName() + ": Could not parse " + f.getName() + " is not a file or it doesn't exist!");
-            return;
-        }
-        
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         factory.setValidating(false);
         factory.setIgnoringComments(true);
@@ -108,6 +97,28 @@ public interface IXmlReader
         {
             _log.warning(getClass().getSimpleName() + ": Could not parse file " + f.getName() + ": " + e);
         }
+    }
+    
+    /**
+     * Parses a single XML file.<br>
+     * If the file was successfully parsed, call {@link #parseDocument(Document, File)} for the parsed document.<br>
+     * @param f the XML file to parse.
+     */
+    default void parseFile(File f)
+    {
+        if (!f.exists())
+        {
+            _log.warning(getClass().getSimpleName() + ": File " + f.getAbsolutePath() + " does not exist!");
+            return;
+        }
+
+        if (!isXmlFile(f))
+        {
+            _log.warning(getClass().getSimpleName() + ": File " + f.getAbsolutePath() + " is not an XML file!");
+            return;
+        }
+        
+        parseFileInternal(f);
     }
     
     /**

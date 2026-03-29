@@ -24,6 +24,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.ScheduledFuture;
@@ -860,7 +861,7 @@ public class Olympiad
         }
     }
     
-    public List<L2PcInstance> getSpectators(int id)
+    public Set<L2PcInstance> getSpectators(int id)
     {
         OlympiadGame game = OlympiadManager.getInstance().getOlympiadGame(id);
         if (game == null)

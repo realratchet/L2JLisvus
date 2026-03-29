@@ -4,7 +4,7 @@
 	<zone id="11020" name="Giran Castle Town" maxZ="-3300" minZ="-3800" shape="NPoly" type="TownZone">
 		<stat name="townId" val="9" />
 		<stat name="taxById" val="3" />
-		<stat name="restartPointGroup" val="65" />
+		<stat name="restartPointGroup" val="giran_town" />
 		<node X="77170" Y="147420" />
 		<node X="79200" Y="147420" />
 		<node X="79200" Y="144780" />
@@ -51,7 +51,7 @@
 	<zone id="11021" name="DE Village" maxZ="-3600" minZ="-4700" shape="NPoly" type="TownZone">
 		<stat name="townId" val="1" />
 		<stat name="taxById" val="4" />
-		<stat name="restartPointGroup" val="66" />
+		<stat name="restartPointGroup" val="de_village" />
 		<node X="15704" Y="15397" />
 		<node X="15765" Y="15878" />
 		<node X="15801" Y="16332" />
@@ -69,7 +69,7 @@
 	<zone id="11022" name="Talking Island" maxZ="-3700" minZ="-3800" shape="NPoly" type="TownZone">
 		<stat name="townId" val="2" />
 		<stat name="taxById" val="1" />
-		<stat name="restartPointGroup" val="67" />
+		<stat name="restartPointGroup" val="ti_village" />
 		<node X="-83739" Y="245733" />
 		<node X="-84049" Y="246087" />
 		<node X="-84289" Y="246258" />
@@ -116,7 +116,7 @@
 	<zone id="11023" name="Elven Village" maxZ="-2750" minZ="-3600" shape="NPoly" type="TownZone">
 		<stat name="townId" val="3" />
 		<stat name="taxById" val="4" />
-		<stat name="restartPointGroup" val="68" />
+		<stat name="restartPointGroup" val="elven_village" />
 		<node X="45364" Y="46535" />
 		<node X="45895" Y="46578" />
 		<node X="46388" Y="46713" />
@@ -166,7 +166,7 @@
 	<zone id="11024" name="Orc Village" maxZ="-200" minZ="-400" shape="NPoly" type="TownZone">
 		<stat name="townId" val="4" />
 		<stat name="taxById" val="0" />
-		<stat name="restartPointGroup" val="69" />
+		<stat name="restartPointGroup" val="orc_village" />
 		<node X="-45528" Y="-110079" />
 		<node X="-45711" Y="-110075" />
 		<node X="-45704" Y="-110164" />
@@ -211,7 +211,7 @@
 	<zone id="11025" name="Gludin Village" maxZ="-3000" minZ="-3300" shape="NPoly" type="TownZone">
 		<stat name="townId" val="5" />
 		<stat name="taxById" val="1" />
-		<stat name="restartPointGroup" val="70" />
+		<stat name="restartPointGroup" val="gludin_village" />
 		<node X="-84867" Y="149371" />
 		<node X="-82581" Y="149364" />
 		<node X="-82499" Y="149139" />
@@ -235,7 +235,7 @@
 	<zone id="11026" name="Dwarven Village" maxZ="-800" minZ="-1600" shape="NPoly" type="TownZone">
 		<stat name="townId" val="6" />
 		<stat name="taxById" val="0" />
-		<stat name="restartPointGroup" val="71" />
+		<stat name="restartPointGroup" val="dwarven_village" />
 		<node X="115499" Y="-176771" />
 		<node X="115301" Y="-176769" />
 		<node X="114877" Y="-176811" />
@@ -272,7 +272,7 @@
 	<zone id="11027" name="Gludio Castle Town" maxZ="-2900" minZ="-3200" shape="NPoly" type="TownZone">
 		<stat name="townId" val="7" />
 		<stat name="taxById" val="1" />
-		<stat name="restartPointGroup" val="72" />
+		<stat name="restartPointGroup" val="gludio_town" />
 		<node X="-14960" Y="121148" />
 		<node X="-14875" Y="121120" />
 		<node X="-14717" Y="121106" />
@@ -299,7 +299,7 @@
 	<zone id="11028" name="Dion Castle Town" maxZ="-2600" minZ="-3250" shape="NPoly" type="TownZone">
 		<stat name="townId" val="8" />
 		<stat name="taxById" val="2" />
-		<stat name="restartPointGroup" val="73" />
+		<stat name="restartPointGroup" val="dion_town" />
 		<node X="15264" Y="141764" />
 		<node X="15434" Y="143574" />
 		<node X="15760" Y="144707" />
@@ -336,7 +336,7 @@
 	<zone id="11029" name="Town of Oren" maxZ="-1400" minZ="-2250" shape="NPoly" type="TownZone">
 		<stat name="townId" val="10" />
 		<stat name="taxById" val="4" />
-		<stat name="restartPointGroup" val="74" />
+		<stat name="restartPointGroup" val="oren_town" />
 		<node X="84014" Y="52245" />
 		<node X="84138" Y="54683" />
 		<node X="84143" Y="55029" />
@@ -370,7 +370,7 @@
 	<zone id="11030" name="Hunters Village" maxZ="-1500" minZ="-2800" shape="NPoly" type="TownZone">
 		<stat name="townId" val="11" />
 		<stat name="taxById" val="5" />
-		<stat name="restartPointGroup" val="75" />
+		<stat name="restartPointGroup" val="hunters_village" />
 		<node X="115318" Y="74260" />
 		<node X="115019" Y="74495" />
 		<node X="113919" Y="75365" />
@@ -391,7 +391,7 @@
 	<zone id="11031" name="Town of Aden" maxZ="-1900" minZ="-2700" shape="NPoly" type="TownZone">
 		<stat name="townId" val="12" />
 		<stat name="taxById" val="5" />
-		<stat name="restartPointGroup" val="76" />
+		<stat name="restartPointGroup" val="aden_town" />
 		<node X="143209" Y="25727" />
 		<node X="143209" Y="26975" />
 		<node X="143463" Y="27286" />
@@ -423,7 +423,7 @@
 	<zone id="11032" name="Goddard Castle Town" maxZ="-2600" minZ="-3550" shape="NPoly" type="TownZone">
 		<stat name="townId" val="13" />
 		<stat name="taxById" val="7" />
-		<stat name="restartPointGroup" val="77" />
+		<stat name="restartPointGroup" val="goddard_town" />
 		<node X="144345" Y="-53353" />
 		<node X="145283" Y="-52411" />
 		<node X="146840" Y="-51665" />
@@ -458,14 +458,14 @@
 	<zone id="11033" name="Rune Castle Town" maxZ="3000" minZ="-1200" shape="Cuboid" type="TownZone">
 		<stat name="townId" val="14" />
 		<stat name="taxById" val="0" />
-		<stat name="restartPointGroup" val="78" />
+		<stat name="restartPointGroup" val="rune_town" />
 		<node X="47150" Y="-44815" />
 		<node X="32531" Y="-52045" />
 	</zone>
 	<zone id="11034" name="Innadril Castle Town" maxZ="-3400" minZ="-3800" shape="NPoly" type="TownZone">
 		<stat name="townId" val="15" />
 		<stat name="taxById" val="6" />
-		<stat name="restartPointGroup" val="79" />
+		<stat name="restartPointGroup" val="innadril_town" />
 		<node X="111391" Y="216329" />
 		<node X="106872" Y="216579" />
 		<node X="106693" Y="217371" />
@@ -529,7 +529,7 @@
 	<zone id="11035" name="Floran Village" maxZ="-3400" minZ="-3600" shape="NPoly" type="TownZone">
 		<stat name="townId" val="16" />
 		<stat name="taxById" val="2" />
-		<stat name="restartPointGroup" val="80" />
+		<stat name="restartPointGroup" val="floran_village" />
 		<node X="16529" Y="170516" />
 		<node X="16645" Y="170141" />
 		<node X="16747" Y="169833" />

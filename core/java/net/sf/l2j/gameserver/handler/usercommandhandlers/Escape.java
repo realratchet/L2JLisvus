@@ -16,7 +16,6 @@ package net.sf.l2j.gameserver.handler.usercommandhandlers;
 
 import net.sf.l2j.gameserver.datatables.SkillTable;
 import net.sf.l2j.gameserver.handler.IUserCommandHandler;
-import net.sf.l2j.gameserver.instancemanager.DimensionalRiftManager;
 import net.sf.l2j.gameserver.instancemanager.GrandBossManager;
 import net.sf.l2j.gameserver.model.L2Skill;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
@@ -49,7 +48,7 @@ public class Escape implements IUserCommandHandler
             return false;
         }
         
-        if (activeChar.isInParty() && activeChar.getParty().isInDimensionalRift() || DimensionalRiftManager.getInstance().checkIfInRiftZone(activeChar.getX(), activeChar.getY(), activeChar.getZ(), true))
+        if (activeChar.isInParty() && activeChar.getParty().isInDimensionalRift())
         {
             activeChar.sendPacket(new SystemMessage(SystemMessage.NO_UNSTUCK_PLEASE_SEND_PETITION));
             return false;

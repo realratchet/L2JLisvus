@@ -29,7 +29,7 @@ import net.sf.l2j.util.Rnd;
 public class L2MapRegion
 {
     private final String _name;
-    private final int _restartPointGroup;
+    private final String _restartPointGroup;
     private final int _locId;
     private final int _castleId;
     private final int _bbs;
@@ -45,7 +45,7 @@ public class L2MapRegion
     public L2MapRegion(StatsSet set)
     {
         _name = set.getString("name");
-        _restartPointGroup = set.getInteger("restartPointGroup");
+        _restartPointGroup = set.getString("restartPointGroup");
         _locId = set.getInteger("locId");
         _castleId = set.getInteger("castleId");
         _bbs = set.getInteger("bbs");
@@ -56,7 +56,7 @@ public class L2MapRegion
         return _name;
     }
     
-    public final int getRestartPointGroup()
+    public final String getRestartPointGroup()
     {
         return _restartPointGroup;
     }

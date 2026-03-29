@@ -154,7 +154,10 @@ public class AdminEditNpc implements IAdminCommandHandler
                         category = Integer.parseInt(st.nextToken());
                         showEditDropData(activeChar, npcId, itemId, category);
     	            }
-    	            catch(Exception e) {}
+    	            catch(Exception e)
+                    {
+                        _log.fine("admin_edit_drop parements error: " + command);
+                    }
                 }
                 else if (st.countTokens() == 6)
                 {

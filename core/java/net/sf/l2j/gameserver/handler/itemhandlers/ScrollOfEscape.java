@@ -15,7 +15,6 @@
 package net.sf.l2j.gameserver.handler.itemhandlers;
 
 import net.sf.l2j.gameserver.handler.IItemHandler;
-import net.sf.l2j.gameserver.instancemanager.DimensionalRiftManager;
 import net.sf.l2j.gameserver.model.L2ItemInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PlayableInstance;
@@ -47,7 +46,7 @@ public class ScrollOfEscape implements IItemHandler
             return;
         }
         
-        if (activeChar.isInParty() && activeChar.getParty().isInDimensionalRift() || DimensionalRiftManager.getInstance().checkIfInRiftZone(activeChar.getX(), activeChar.getY(), activeChar.getZ(), true))
+        if (activeChar.isInParty() && activeChar.getParty().isInDimensionalRift())
         {
             activeChar.sendMessage("Once a party is ported in another dimension, its members cannot get out of it.");
             return;

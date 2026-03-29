@@ -19,6 +19,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -952,7 +953,7 @@ public class CharEffectList
 			// Olympiad Spelled packet
 			if (os != null)
 			{
-				List<L2PcInstance> spectators = Olympiad.getInstance().getSpectators(player.getOlympiadGameId());
+				Set<L2PcInstance> spectators = Olympiad.getInstance().getSpectators(player.getOlympiadGameId());
 				if (spectators != null)
 				{
 					for (L2PcInstance spectator : spectators)

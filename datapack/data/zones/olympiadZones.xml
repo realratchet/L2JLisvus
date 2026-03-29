@@ -3,134 +3,183 @@
 <list>
 	<zone id="11070" maxZ="-2700" minZ="-3100" shape="Cuboid" type="OlympiadStadiumZone">
 		<stat name="stadiumId" val="1"/>
-		<stat name="restartPointGroup" val="35" />
+		<stat name="playerOneSpawn" val="-21453 -21058 -3051"/>
+		<stat name="playerTwoSpawn" val="-20254 -21058 -3051"/>
+		<stat name="spectatorSpawn" val="-20854 -21058 -3051"/>
 		<node X="-18889" Y="-19464" />
 		<node X="-22768" Y="-22568" />
 	</zone>
 	<zone id="11071" maxZ="-3200" minZ="-3400" shape="Cuboid" type="OlympiadStadiumZone">
 		<stat name="stadiumId" val="2"/>
-		<stat name="restartPointGroup" val="36" />
+		<stat name="playerOneSpawn" val="-110508 -218674 -3357"/>
+		<stat name="playerTwoSpawn" val="-109311 -218674 -3357"/>
+		<stat name="spectatorSpawn" val="-109910 -218674 -3357"/>
 		<node X="-107967" Y="-217143" />
 		<node X="-111845" Y="-220273" />
 	</zone>
 	<zone id="11072" maxZ="-3200" minZ="-3400" shape="Cuboid" type="OlympiadStadiumZone">
 		<stat name="stadiumId" val="3"/>
-		<stat name="restartPointGroup" val="37" />
+		<stat name="playerOneSpawn" val="-120939 -225041 -3357"/>
+		<stat name="playerTwoSpawn" val="-119718 -225041 -3357"/>
+		<stat name="spectatorSpawn" val="-120329 -225041 -3357"/>
 		<node X="-118384" Y="-223397" />
 		<node X="-122186" Y="-226612" />
 	</zone>
 	<zone id="11073" maxZ="-3200" minZ="-3400" shape="Cuboid" type="OlympiadStadiumZone">
 		<stat name="stadiumId" val="4"/>
-		<stat name="restartPointGroup" val="38" />
+		<stat name="playerOneSpawn" val="-127235 -218275 -3357"/>
+		<stat name="playerTwoSpawn" val="-126041 -218275 -3357"/>
+		<stat name="spectatorSpawn" val="-126638 -218275 -3357"/>
 		<node X="-128500" Y="-219826" />
 		<node X="-124666" Y="-216698" />
 	</zone>
 	<zone id="11074" maxZ="-3200" minZ="-3400" shape="Cuboid" type="OlympiadStadiumZone">
 		<stat name="stadiumId" val="5"/>
-		<stat name="restartPointGroup" val="39" />
+		<stat name="playerOneSpawn" val="-115162 -213201 -3357"/>
+		<stat name="playerTwoSpawn" val="-113968 -213201 -3357"/>
+		<stat name="spectatorSpawn" val="-114565 -213201 -3357"/>
 		<node X="-112613" Y="-211596" />
 		<node X="-116473" Y="-214745" />
 	</zone>
 	<zone id="11075" maxZ="-3200" minZ="-3400" shape="Cuboid" type="OlympiadStadiumZone">
 		<stat name="stadiumId" val="6"/>
-		<stat name="restartPointGroup" val="40" />
+		<stat name="playerOneSpawn" val="-120870 -207398 -3357"/>
+		<stat name="playerTwoSpawn" val="-119718 -207398 -3357"/>
+		<stat name="spectatorSpawn" val="-120294 -207398 -3357"/>
 		<node X="-118318" Y="-205862" />
 		<node X="-122218" Y="-208906" />
 	</zone>
 	<zone id="11076" maxZ="-3200" minZ="-3400" shape="Cuboid" type="OlympiadStadiumZone">
 		<stat name="stadiumId" val="7"/>
-		<stat name="restartPointGroup" val="41" />
+		<stat name="playerOneSpawn" val="-103125 -209047 -3357"/>
+		<stat name="playerTwoSpawn" val="-101933 -209047 -3357"/>
+		<stat name="spectatorSpawn" val="-102529 -209047 -3357"/>
 		<node X="-104447" Y="-210562" />
 		<node X="-100612" Y="-207465" />
 	</zone>
 	<zone id="11077" maxZ="-3200" minZ="-3400" shape="Cuboid" type="OlympiadStadiumZone">
 		<stat name="stadiumId" val="8"/>
-		<stat name="restartPointGroup" val="42" />
+		<stat name="playerOneSpawn" val="-110237 -201243 -3357"/>
+		<stat name="playerTwoSpawn" val="-109022 -201243 -3357"/>
+		<stat name="spectatorSpawn" val="-109630 -201243 -3357"/>
 		<node X="-107684" Y="-199684" />
 		<node X="-111525" Y="-202828" />
 	</zone>
 	<zone id="11078" maxZ="-3200" minZ="-3400" shape="Cuboid" type="OlympiadStadiumZone">
 		<stat name="stadiumId" val="9"/>
-		<stat name="restartPointGroup" val="43" />
+		<stat name="playerOneSpawn" val="-88209 -257844 -3356"/>
+		<stat name="playerTwoSpawn" val="-86981 -257844 -3356"/>
+		<stat name="spectatorSpawn" val="-87595 -257844 -3356"/>
 		<node X="-89457" Y="-259331" />
 		<node X="-85585" Y="-256190" />
 	</zone>
 	<zone id="11079" maxZ="-3200" minZ="-3400" shape="Cuboid" type="OlympiadStadiumZone">
 		<stat name="stadiumId" val="10"/>
-		<stat name="restartPointGroup" val="44" />
+		<stat name="playerOneSpawn" val="-94489 -251053 -3356"/>
+		<stat name="playerTwoSpawn" val="-93289 -251053 -3356"/>
+		<stat name="spectatorSpawn" val="-93889 -251053 -3356"/>
 		<node X="-91880" Y="-249451" />
 		<node X="-95754" Y="-252596" />
 	</zone>
 	<zone id="11080" maxZ="-3200" minZ="-3400" shape="Cuboid" type="OlympiadStadiumZone">
 		<stat name="stadiumId" val="11"/>
-		<stat name="restartPointGroup" val="45" />
+		<stat name="playerOneSpawn" val="-77780 -251509 -3356"/>
+		<stat name="playerTwoSpawn" val="-76544 -251509 -3356"/>
+		<stat name="spectatorSpawn" val="-77162 -251509 -3356"/>
 		<node X="-75171" Y="-249932" />
 		<node X="-79045" Y="-253049" />
 	</zone>
 	<zone id="11081" maxZ="-3200" minZ="-3400" shape="Cuboid" type="OlympiadStadiumZone">
 		<stat name="stadiumId" val="12"/>
-		<stat name="restartPointGroup" val="46" />
+		<stat name="playerOneSpawn" val="-82415 -246024 -3356"/>
+		<stat name="playerTwoSpawn" val="-81206 -246024 -3356"/>
+		<stat name="spectatorSpawn" val="-81811 -246024 -3356"/>
 		<node X="-83690" Y="-247541" />
 		<node X="-79787" Y="-244454" />
 	</zone>
 	<zone id="11082" maxZ="-3200" minZ="-3400" shape="Cuboid" type="OlympiadStadiumZone">
 		<stat name="stadiumId" val="13"/>
-		<stat name="restartPointGroup" val="47" />
+		<stat name="playerOneSpawn" val="-88165 -240165 -3356"/>
+		<stat name="playerTwoSpawn" val="-86949 -240165 -3356"/>
+		<stat name="spectatorSpawn" val="-87557 -240165 -3356"/>
 		<node X="-89396" Y="-241735" />
 		<node X="-85523" Y="-238606" />
 	</zone>
 	<zone id="11083" maxZ="-3200" minZ="-3400" shape="Cuboid" type="OlympiadStadiumZone">
 		<stat name="stadiumId" val="14"/>
-		<stat name="restartPointGroup" val="48" />
+		<stat name="playerOneSpawn" val="-70382 -241831 -3356"/>
+		<stat name="playerTwoSpawn" val="-69178 -241831 -3356"/>
+		<stat name="spectatorSpawn" val="-69780 -241831 -3356"/>
 		<node X="-71707" Y="-243312" />
 		<node X="-67793" Y="-240230" />
 	</zone>
 	<zone id="11084" maxZ="-3200" minZ="-3400" shape="Cuboid" type="OlympiadStadiumZone">
 		<stat name="stadiumId" val="15"/>
-		<stat name="restartPointGroup" val="49" />
+		<stat name="playerOneSpawn" val="-77470 -234008 -3356"/>
+		<stat name="playerTwoSpawn" val="-76268 -234008 -3356"/>
+		<stat name="spectatorSpawn" val="-76869 -234008 -3356"/>
 		<node X="-74897" Y="-232470" />
 		<node X="-78788" Y="-235579" />
 	</zone>
 	<zone id="11085" maxZ="-3200" minZ="-3400" shape="Cuboid" type="OlympiadStadiumZone">
 		<stat name="stadiumId" val="16"/>
-		<stat name="restartPointGroup" val="50" />
+		<stat name="playerOneSpawn" val="-88267 -225058 -3357"/>
+		<stat name="playerTwoSpawn" val="-86867 -225058 -3357"/>
+		<stat name="spectatorSpawn" val="-87567 -225058 -3357"/>
 		<node X="-89455" Y="-226550" />
 		<node X="-85583" Y="-223455" />
 	</zone>
 	<zone id="11086" maxZ="-3200" minZ="-3400" shape="Cuboid" type="OlympiadStadiumZone">
 		<stat name="stadiumId" val="17"/>
-		<stat name="restartPointGroup" val="51" />
+		<stat name="playerOneSpawn" val="-94466 -218294 -3357"/>
+		<stat name="playerTwoSpawn" val="-93239 -218294 -3357"/>
+		<stat name="spectatorSpawn" val="-93853 -218294 -3357"/>
 		<node X="-95747" Y="-219818" />
 		<node X="-91865" Y="-216704" />
 	</zone>
 	<zone id="11087" maxZ="-3200" minZ="-3400" shape="Cuboid" type="OlympiadStadiumZone">
 		<stat name="stadiumId" val="18"/>
-		<stat name="restartPointGroup" val="52" />
 		<node X="-75157" Y="-217191" />
 		<node X="-79102" Y="-220234" />
+		<spawn X="-77777" Y="-218734" Z="-3357" />
+		<spawn X="-76525" Y="-218734" Z="-3357" />
+		<!-- Spectate Spawn -->
+		<spawn X="-77151" Y="-218734" Z="-3357" />
 	</zone>
 	<zone id="11088" maxZ="-3200" minZ="-3400" shape="Cuboid" type="OlympiadStadiumZone">
 		<stat name="stadiumId" val="19"/>
-		<stat name="restartPointGroup" val="53" />
 		<node X="-79781" Y="-211683" />
 		<node X="-83654" Y="-214804" />
+		<spawn X="-82459" Y="-213232" Z="-3357" />
+		<spawn X="-81115" Y="-213232" Z="-3357" />
+		<!-- Spectate Spawn -->
+		<spawn X="-81787" Y="-213232" Z="-3357" />
 	</zone>
 	<zone id="11089" maxZ="-3200" minZ="-3400" shape="Cuboid" type="OlympiadStadiumZone">
 		<stat name="stadiumId" val="20"/>
-		<stat name="restartPointGroup" val="54" />
 		<node X="-89438" Y="-208921" />
 		<node X="-85507" Y="-205854" />
+		<spawn X="-88166" Y="-207433" Z="-3357" />
+		<spawn X="-86918" Y="-207433" Z="-3357" />
+		<!-- Spectate Spawn -->
+		<spawn X="-87542" Y="-207433" Z="-3357" />
 	</zone>
 	<zone id="11090" maxZ="-3200" minZ="-3400" shape="Cuboid" type="OlympiadStadiumZone">
 		<stat name="stadiumId" val="21"/>
-		<stat name="restartPointGroup" val="55" />
 		<node X="-78775" Y="-202811" />
 		<node X="-74900" Y="-199678" />
+		<spawn X="-77493" Y="-201268" Z="-3357" />
+		<spawn X="-76245" Y="-201268" Z="-3357" />
+		<!-- Spectate Spawn -->
+		<spawn X="-76869" Y="-201268" Z="-3357" />
 	</zone>
 	<zone id="11091" maxZ="-3200" minZ="-3400" shape="Cuboid" type="OlympiadStadiumZone">
 		<stat name="stadiumId" val="22"/>
-		<stat name="restartPointGroup" val="56" />
 		<node X="-67737" Y="-207546" />
 		<node X="-71688" Y="-210571" />
+		<spawn X="-70392" Y="-209137" Z="-3357" />
+		<spawn X="-69176" Y="-209137" Z="-3357" />
+		<!-- Spectate Spawn -->
+		<spawn X="-69784" Y="-209137" Z="-3357" />
 	</zone>
 </list>

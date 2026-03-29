@@ -3,7 +3,7 @@
 <list>
 	<!-- Monster Derby Track -->
 	<zone id="11001" maxZ="-2000" minZ="-3600" shape="NPoly" type="DerbyTrackZone">
-		<stat name="restartPointGroup" val="81" />
+		<stat name="restartPointGroup" val="derby_track" />
 		<node X="11718" Y="181534" />
 		<node X="13308" Y="181332" />
 		<node X="13297" Y="181318" />

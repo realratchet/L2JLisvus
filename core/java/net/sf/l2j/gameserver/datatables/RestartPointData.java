@@ -38,14 +38,14 @@ public class RestartPointData implements IXmlReader
     
     private static Logger _log = Logger.getLogger(RestartPointData.class.getName());
     
-    private final Map<Integer, List<Location>> _restartPoints = new HashMap<>();
-    private final Map<Integer, List<Location>> _chaoticRestartPoints = new HashMap<>();
+    private final Map<String, List<Location>> _restartPoints = new HashMap<>();
+    private final Map<String, List<Location>> _chaoticRestartPoints = new HashMap<>();
     private int _count = 0;
     
     private RestartPointData()
     {
-        parseDatapackFile("data/restartpoints.xml");
-        _log.info("Loaded " + _count + " restart points.");
+        parseDatapackFile("data/restartPoints.xml");
+        _log.info(getClass().getSimpleName() + ": Loaded " + _count + " restart points.");
     }
     
     @Override
@@ -68,25 +68,37 @@ public class RestartPointData implements IXmlReader
                         attrs = d.getAttributes();
                         
                         attribute = attrs.getNamedItem("id");
-                        int id = attribute != null ? Integer.parseInt(attribute.getNodeValue()) : 0;
+                        String id = attribute != null ? attribute.getNodeValue() : null;
+
+                        if (id == null)
+                        {
+                            _log.warning("The restart point has no identifier: " + d);
+                            continue;
+                        }
+
+                        if (_restartPoints.containsKey(id) || _chaoticRestartPoints.containsKey(id))
+                        {
+                            _log.warning("Duplicate restart point ID '" + id + "'. This restart point will be ignored!");
+                            continue;
+                        }
                         
                         for (Node c = d.getFirstChild(); c != null; c = c.getNextSibling())
                         {
                             attrs = c.getAttributes();
                             
-                            if ("restartPointGroup".equalsIgnoreCase(c.getNodeName()))
+                            if ("spawn".equalsIgnoreCase(c.getNodeName()))
                             {
                                 int x, y, z;
                                 boolean isChaotic;
                                 
                                 attribute = attrs.getNamedItem("X");
-                                x = attribute != null ? Integer.parseInt(attribute.getNodeValue()) : null;
+                                x = attribute != null ? Integer.parseInt(attribute.getNodeValue()) : 0;
                                 attribute = attrs.getNamedItem("Y");
-                                y = attribute != null ? Integer.parseInt(attribute.getNodeValue()) : null;
+                                y = attribute != null ? Integer.parseInt(attribute.getNodeValue()) : 0;
                                 attribute = attrs.getNamedItem("Z");
-                                z = attribute != null ? Integer.parseInt(attribute.getNodeValue()) : null;
+                                z = attribute != null ? Integer.parseInt(attribute.getNodeValue()) : 0;
                                 attribute = attrs.getNamedItem("isChaotic");
-                                isChaotic = attribute != null ? Boolean.parseBoolean(attribute.getNodeValue()) : null;
+                                isChaotic = attribute != null ? Boolean.parseBoolean(attribute.getNodeValue()) : false;
                                 
                                 if (isChaotic)
                                 {
@@ -122,27 +134,49 @@ public class RestartPointData implements IXmlReader
             }
         }
     }
-
-    public List<Location> getSpawnLocsById(int id)
+    
+    public List<Location> getSpawnLocsById(String id)
     {
-    	return _restartPoints.get(id);
+        return _restartPoints.get(id);
     }
     
-    public List<Location> getChaoticSpawnLocsById(int id)
+    public List<Location> getChaoticSpawnLocsById(String id)
     {
-    	return _chaoticRestartPoints.get(id);
+        return _chaoticRestartPoints.get(id);
     }
     
-    public Location getSpawnLocById(int id)
+    public Location getSpawnLocById(String id)
     {
         List<Location> spawnLocs = _restartPoints.get(id);
-        return spawnLocs != null && !spawnLocs.isEmpty() ? spawnLocs.get(Rnd.get(spawnLocs.size())) : null;
+        Location loc;
+        
+        if (spawnLocs != null && !spawnLocs.isEmpty())
+        {
+            loc = spawnLocs.get(Rnd.get(spawnLocs.size()));
+        }
+        else
+        {
+            loc = null;
+            _log.warning(getClass().getSimpleName() + ": No restart points found for group ID " + id);
+        }
+        return loc;
     }
-
-    public Location getChaoticSpawnLocById(int id)
+    
+    public Location getChaoticSpawnLocById(String id)
     {
         List<Location> spawnLocs = _chaoticRestartPoints.get(id);
-        return spawnLocs != null && !spawnLocs.isEmpty() ? spawnLocs.get(Rnd.get(spawnLocs.size())) : null;
+        Location loc;
+        
+        if (spawnLocs != null && !spawnLocs.isEmpty())
+        {
+            loc = spawnLocs.get(Rnd.get(spawnLocs.size()));
+        }
+        else
+        {
+            loc = null;
+            _log.warning(getClass().getSimpleName() + ": No chaotic restart points found for group ID " + id);
+        }
+        return loc;
     }
     
     private static class SingletonHolder

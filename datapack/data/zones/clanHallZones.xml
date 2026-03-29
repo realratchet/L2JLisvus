@@ -3,163 +3,163 @@
 <list>
 	<zone id="11100" maxZ="-1800" minZ="-2000" shape="Cuboid" type="ClanHallZone">
 		<stat name="clanHallId" val="21" />
-		<stat name="restartPointGroup" val="5" />
+		<stat name="restartPointGroup" val="clan_hall_21" />
 		<node X="43151" Y="108377" />
 		<node X="43648" Y="109399" />
 	</zone>
 	<zone id="11101" maxZ="-3000" minZ="-3200" shape="Cuboid" type="ClanHallZone">
 		<stat name="clanHallId" val="22" />
-		<stat name="restartPointGroup" val="6" />
+		<stat name="restartPointGroup" val="clan_hall_22" />
 		<node X="-16400" Y="123275" />
 		<node X="-15551" Y="123850" />
 	</zone>
 	<zone id="11102" maxZ="-3000" minZ="-3200" shape="Cuboid" type="ClanHallZone">
 		<stat name="clanHallId" val="23" />
-		<stat name="restartPointGroup" val="7" />
+		<stat name="restartPointGroup" val="clan_hall_23" />
 		<node X="-15100" Y="125350" />
 		<node X="-14800" Y="125800" />
 	</zone>
 	<zone id="11103" maxZ="-3000" minZ="-3200" shape="Cuboid" type="ClanHallZone">
 		<stat name="clanHallId" val="24" />
-		<stat name="restartPointGroup" val="8" />
+		<stat name="restartPointGroup" val="clan_hall_24" />
 		<node X="-14050" Y="125050" />
 		<node X="-13700" Y="125700" />
 	</zone>
 	<zone id="11104" maxZ="-3000" minZ="-3200" shape="Cuboid" type="ClanHallZone">
 		<stat name="clanHallId" val="25" />
-		<stat name="restartPointGroup" val="9" />
+		<stat name="restartPointGroup" val="clan_hall_25" />
 		<node X="-12950" Y="123900" />
 		<node X="-12300" Y="124250" />
 	</zone>
 	<zone id="11105" maxZ="-3000" minZ="-3200" shape="Cuboid" type="ClanHallZone">
 		<stat name="clanHallId" val="26" />
-		<stat name="restartPointGroup" val="10" />
+		<stat name="restartPointGroup" val="clan_hall_26" />
 		<node X="-84700" Y="151550" />
 		<node X="-84250" Y="152350" />
 	</zone>
 	<zone id="11106" maxZ="-3000" minZ="-3200" shape="Cuboid" type="ClanHallZone">
 		<stat name="clanHallId" val="27" />
-		<stat name="restartPointGroup" val="11" />
+		<stat name="restartPointGroup" val="clan_hall_27" />
 		<node X="-84200" Y="153050" />
 		<node X="-83550" Y="153600" />
 	</zone>
 	<zone id="11107" maxZ="-3000" minZ="-3200" shape="Cuboid" type="ClanHallZone">
 		<stat name="clanHallId" val="28" />
-		<stat name="restartPointGroup" val="12" />
+		<stat name="restartPointGroup" val="clan_hall_28" />
 		<node X="-84100" Y="155300" />
 		<node X="-83500" Y="155700" />
 	</zone>
 	<zone id="11108" maxZ="-3000" minZ="-3200" shape="Cuboid" type="ClanHallZone">
 		<stat name="clanHallId" val="29" />
-		<stat name="restartPointGroup" val="13" />
+		<stat name="restartPointGroup" val="clan_hall_29" />
 		<node X="-80100" Y="149400" />
 		<node X="-79500" Y="149850" />
 	</zone>
 	<zone id="11109" maxZ="-3000" minZ="-3200" shape="Cuboid" type="ClanHallZone">
 		<stat name="clanHallId" val="30" />
-		<stat name="restartPointGroup" val="14" />
+		<stat name="restartPointGroup" val="clan_hall_30" />
 		<node X="-79700" Y="151350" />
 		<node X="-79300" Y="152250" />
 	</zone>
 	<zone id="11110" maxZ="-3000" minZ="-3200" shape="Cuboid" type="ClanHallZone">
 		<stat name="clanHallId" val="31" />
-		<stat name="restartPointGroup" val="15" />
+		<stat name="restartPointGroup" val="clan_hall_31" />
 		<node X="17400" Y="144800" />
 		<node X="18000" Y="145350" />
 	</zone>
 	<zone id="11111" maxZ="-3000" minZ="-3200" shape="Cuboid" type="ClanHallZone">
 		<stat name="clanHallId" val="32" />
-		<stat name="restartPointGroup" val="16" />
+		<stat name="restartPointGroup" val="clan_hall_32" />
 		<node X="18850" Y="143600" />
 		<node X="18600" Y="143100" />
 	</zone>
 	<zone id="11112" maxZ="-3000" minZ="-3200" shape="Cuboid" type="ClanHallZone">
 		<stat name="clanHallId" val="33" />
-		<stat name="restartPointGroup" val="17" />
+		<stat name="restartPointGroup" val="clan_hall_33" />
 		<node X="19950" Y="146000" />
 		<node X="20400" Y="146300" />
 	</zone>
 	<zone id="11113" maxZ="0" minZ="0" shape="Cuboid" type="ClanHallZone">
 		<stat name="clanHallId" val="34" />
-		<stat name="restartPointGroup" val="18" />
+		<stat name="restartPointGroup" val="clan_hall_34" />
 		<node X="0" Y="0" />
 		<node X="0" Y="0" />
 	</zone>
 	<zone id="11114" maxZ="-1800" minZ="-2000" shape="Cuboid" type="ClanHallZone">
 		<stat name="clanHallId" val="35" />
-		<stat name="restartPointGroup" val="19" />
+		<stat name="restartPointGroup" val="clan_hall_35" />
 		<node X="80738" Y="-15914" />
 		<node X="79627" Y="-15054" />
 	</zone>
 	<zone id="11115" maxZ="-2000" minZ="-2200" shape="Cuboid" type="ClanHallZone">
 		<stat name="clanHallId" val="36" />
-		<stat name="restartPointGroup" val="20" />
+		<stat name="restartPointGroup" val="clan_hall_36" />
 		<node X="148844" Y="22709" />
 		<node X="149424" Y="23569" />
 	</zone>
 	<zone id="11116" maxZ="-2000" minZ="-2200" shape="Cuboid" type="ClanHallZone">
 		<stat name="clanHallId" val="37" />
-		<stat name="restartPointGroup" val="21" />
+		<stat name="restartPointGroup" val="clan_hall_37" />
 		<node X="150343" Y="23193" />
 		<node X="150943" Y="24113" />
 	</zone>
 	<zone id="11117" maxZ="-2000" minZ="-2200" shape="Cuboid" type="ClanHallZone">
 		<stat name="clanHallId" val="38" />
-		<stat name="restartPointGroup" val="22" />
+		<stat name="restartPointGroup" val="clan_hall_38" />
 		<node X="145362" Y="24890" />
 		<node X="145972" Y="25820" />
 	</zone>
 	<zone id="11118" maxZ="-2000" minZ="-2300" shape="Cuboid" type="ClanHallZone">
 		<stat name="clanHallId" val="39" />
-		<stat name="restartPointGroup" val="23" />
+		<stat name="restartPointGroup" val="clan_hall_39" />
 		<node X="150460" Y="26108" />
 		<node X="151036" Y="26972" />
 	</zone>
 	<zone id="11119" maxZ="-2000" minZ="-2300" shape="Cuboid" type="ClanHallZone">
 		<stat name="clanHallId" val="40" />
-		<stat name="restartPointGroup" val="24" />
+		<stat name="restartPointGroup" val="clan_hall_40" />
 		<node X="143701" Y="26661" />
 		<node X="144281" Y="27521" />
 	</zone>
 	<zone id="11120" maxZ="-2000" minZ="-2300" shape="Cuboid" type="ClanHallZone">
 		<stat name="clanHallId" val="41" />
-		<stat name="restartPointGroup" val="25" />
+		<stat name="restartPointGroup" val="clan_hall_41" />
 		<node X="143704" Y="27734" />
 		<node X="144324" Y="28670" />
 	</zone>
 	<zone id="11121" maxZ="-3400" minZ="-3600" shape="Cuboid" type="ClanHallZone">
 		<stat name="clanHallId" val="42" />
-		<stat name="restartPointGroup" val="26" />
+		<stat name="restartPointGroup" val="clan_hall_42" />
 		<node X="78059" Y="147906" />
 		<node X="79122" Y="148296" />
 	</zone>
 	<zone id="11122" maxZ="-3400" minZ="-3600" shape="Cuboid" type="ClanHallZone">
 		<stat name="clanHallId" val="43" />
-		<stat name="restartPointGroup" val="27" />
+		<stat name="restartPointGroup" val="clan_hall_43" />
 		<node X="81859" Y="144802" />
 		<node X="82254" Y="145870" />
 	</zone>
 	<zone id="11123" maxZ="-3400" minZ="-3500" shape="Cuboid" type="ClanHallZone">
 		<stat name="clanHallId" val="44" />
-		<stat name="restartPointGroup" val="28" />
+		<stat name="restartPointGroup" val="clan_hall_44" />
 		<node X="83195" Y="144779" />
 		<node X="83591" Y="145847" />
 	</zone>
 	<zone id="11124" maxZ="-3400" minZ="-3600" shape="Cuboid" type="ClanHallZone">
 		<stat name="clanHallId" val="45" />
-		<stat name="restartPointGroup" val="29" />
+		<stat name="restartPointGroup" val="clan_hall_45" />
 		<node X="80773" Y="151053" />
 		<node X="81169" Y="152121" />
 	</zone>
 	<zone id="11125" maxZ="-3400" minZ="-3600" shape="Cuboid" type="ClanHallZone">
 		<stat name="clanHallId" val="46" />
-		<stat name="restartPointGroup" val="30" />
+		<stat name="restartPointGroup" val="clan_hall_46" />
 		<node X="81903" Y="151377" />
 		<node X="82299" Y="152445" />
 	</zone>
 	<zone id="11126" maxZ="-2600" minZ="-2800" shape="NPoly" type="ClanHallZone">
 		<stat name="clanHallId" val="47" />
-		<stat name="restartPointGroup" val="31" />
+		<stat name="restartPointGroup" val="clan_hall_47" />
 		<node X="145643" Y="-55883" />
 		<node X="146439" Y="-55714" />
 		<node X="146390" Y="-55288" />
@@ -167,7 +167,7 @@
 	</zone>
 	<zone id="11127" maxZ="-2600" minZ="-2800" shape="NPoly" type="ClanHallZone">
 		<stat name="clanHallId" val="48" />
-		<stat name="restartPointGroup" val="32" />
+		<stat name="restartPointGroup" val="clan_hall_48" />
 		<node X="146486" Y="-57148" />
 		<node X="146984" Y="-57388" />
 		<node X="147299" Y="-56613" />
@@ -175,7 +175,7 @@
 	</zone>
 	<zone id="11128" maxZ="-2600" minZ="-2800" shape="NPoly" type="ClanHallZone">
 		<stat name="clanHallId" val="49" />
-		<stat name="restartPointGroup" val="33" />
+		<stat name="restartPointGroup" val="clan_hall_49" />
 		<node X="148469" Y="-57355" />
 		<node X="148958" Y="-57115" />
 		<node X="148502" Y="-56409" />
@@ -183,7 +183,7 @@
 	</zone>
 	<zone id="11129" maxZ="-2600" minZ="-2800" shape="NPoly" type="ClanHallZone">
 		<stat name="clanHallId" val="50" />
-		<stat name="restartPointGroup" val="34" />
+		<stat name="restartPointGroup" val="clan_hall_50" />
 		<node X="148970" Y="-55727" />
 		<node X="149773" Y="-55874" />
 		<node X="149852" Y="-55302" />

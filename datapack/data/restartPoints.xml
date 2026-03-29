@@ -1,241 +1,109 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE xml>
 <list>
-    <restartPointGroup id="1" name="Giran Arena">
+    <restartPointGroup id="giran_arena">
         <spawn X="73890" Y="142656" Z="-3778" />
     </restartPointGroup>
-    <restartPointGroup id="2" name="Gludin Arena">
+    <restartPointGroup id="gludin_arena">
         <spawn X="-86979" Y="142402" Z="-3643" />
     </restartPointGroup>
-    <restartPointGroup id="3" name="Coliseum">
+    <restartPointGroup id="coliseum">
         <spawn X="147451" Y="46728" Z="-3410" />
     </restartPointGroup>
-    <restartPointGroup id="4" name="">
+    <restartPointGroup id="derby_track_arena">
         <spawn X="12312" Y="182752" Z="-3558" />
     </restartPointGroup>
-    <restartPointGroup id="5" name="Clan Hall 21">
+    <restartPointGroup id="clan_hall_21">
         <spawn X="43399" Y="108888" Z="-1980" />
     </restartPointGroup>
-    <restartPointGroup id="6" name="Clan Hall 22">
+    <restartPointGroup id="clan_hall_22">
         <spawn X="-15975" Y="123562" Z="-3101" />
     </restartPointGroup>
-    <restartPointGroup id="7" name="Clan Hall 23">
+    <restartPointGroup id="clan_hall_23">
         <spawn X="-14950" Y="125575" Z="-3128" />
     </restartPointGroup>
-    <restartPointGroup id="8" name="Clan Hall 24">
+    <restartPointGroup id="clan_hall_24">
         <spawn X="-13875" Y="125375" Z="-3128" />
     </restartPointGroup>
-    <restartPointGroup id="9" name="Clan Hall 25">
+    <restartPointGroup id="clan_hall_25">
         <spawn X="-12625" Y="124075" Z="-3096" />
     </restartPointGroup>
-    <restartPointGroup id="10" name="Clan Hall 26">
+    <restartPointGroup id="clan_hall_26">
         <spawn X="-84475" Y="151950" Z="-3123" />
     </restartPointGroup>
-    <restartPointGroup id="11" name="Clan Hall 27">
+    <restartPointGroup id="clan_hall_27">
         <spawn X="-83875" Y="153325" Z="-3159" />
     </restartPointGroup>
-    <restartPointGroup id="12" name="Clan Hall 28">
+    <restartPointGroup id="clan_hall_28">
         <spawn X="-83800" Y="155500" Z="-3160" />
     </restartPointGroup>
-    <restartPointGroup id="13" name="Clan Hall 29">
+    <restartPointGroup id="clan_hall_29">
         <spawn X="-79800" Y="149625" Z="-3038" />
     </restartPointGroup>
-    <restartPointGroup id="14" name="Clan Hall 30">
+    <restartPointGroup id="clan_hall_30">
         <spawn X="-79500" Y="151800" Z="-3041" />
     </restartPointGroup>
-    <restartPointGroup id="15" name="Clan Hall 31">
+    <restartPointGroup id="clan_hall_31">
         <spawn X="17700" Y="145075" Z="-3036" />
     </restartPointGroup>
-    <restartPointGroup id="16" name="Clan Hall 32">
+    <restartPointGroup id="clan_hall_32">
         <spawn X="18725" Y="143350" Z="-3010" />
     </restartPointGroup>
-    <restartPointGroup id="17" name="Clan Hall 33">
+    <restartPointGroup id="clan_hall_33">
         <spawn X="20175" Y="146150" Z="-3111" />
     </restartPointGroup>
-    <restartPointGroup id="18" name="Clan Hall 34">
+    <restartPointGroup id="clan_hall_34">
         <spawn X="178256" Y="-15714" Z="-2263" />
     </restartPointGroup>
-    <restartPointGroup id="19" name="Clan Hall 35">
+    <restartPointGroup id="clan_hall_35">
         <spawn X="80182" Y="-15484" Z="-1804" />
     </restartPointGroup>
-    <restartPointGroup id="20" name="Clan Hall 36">
+    <restartPointGroup id="clan_hall_36">
         <spawn X="149134" Y="23139" Z="-2160" />
     </restartPointGroup>
-    <restartPointGroup id="21" name="Clan Hall 37">
+    <restartPointGroup id="clan_hall_37">
         <spawn X="150643" Y="23653" Z="-2150" />
     </restartPointGroup>
-    <restartPointGroup id="22" name="Clan Hall 38">
+    <restartPointGroup id="clan_hall_38">
         <spawn X="145667" Y="25355" Z="-2150" />
     </restartPointGroup>
-    <restartPointGroup id="23" name="Clan Hall 39">
+    <restartPointGroup id="clan_hall_39">
         <spawn X="150748" Y="26540" Z="-2280" />
     </restartPointGroup>
-    <restartPointGroup id="24" name="Clan Hall 40">
+    <restartPointGroup id="clan_hall_40">
         <spawn X="143991" Y="27091" Z="-2290" />
     </restartPointGroup>
-    <restartPointGroup id="25" name="Clan Hall 41">
+    <restartPointGroup id="clan_hall_41">
         <spawn X="144014" Y="28202" Z="-2280" />
     </restartPointGroup>
-    <restartPointGroup id="26" name="Clan Hall 42">
+    <restartPointGroup id="clan_hall_42">
         <spawn X="78590" Y="148101" Z="-3581" />
     </restartPointGroup>
-    <restartPointGroup id="27" name="Clan Hall 43">
+    <restartPointGroup id="clan_hall_43">
         <spawn X="82056" Y="145336" Z="-3520" />
     </restartPointGroup>
-    <restartPointGroup id="28" name="Clan Hall 44">
+    <restartPointGroup id="clan_hall_44">
         <spawn X="83393" Y="145313" Z="-3389" />
     </restartPointGroup>
-    <restartPointGroup id="29" name="Clan Hall 45">
+    <restartPointGroup id="clan_hall_45">
         <spawn X="80971" Y="151587" Z="-3517" />
     </restartPointGroup>
-    <restartPointGroup id="30" name="Clan Hall 46">
+    <restartPointGroup id="clan_hall_46">
         <spawn X="82101" Y="151911" Z="-3520" />
     </restartPointGroup>
-    <restartPointGroup id="31" name="Clan Hall 47">
+    <restartPointGroup id="clan_hall_47">
         <spawn X="146025" Y="-55534" Z="-2765" />
     </restartPointGroup>
-    <restartPointGroup id="32" name="Clan Hall 48">
+    <restartPointGroup id="clan_hall_48">
         <spawn X="146901" Y="-56857" Z="-2765" />
     </restartPointGroup>
-    <restartPointGroup id="33" name="Clan Hall 49">
+    <restartPointGroup id="clan_hall_49">
         <spawn X="148479" Y="-56874" Z="-2765" />
     </restartPointGroup>
-    <restartPointGroup id="34" name="Clan Hall 50">
+    <restartPointGroup id="clan_hall_50">
         <spawn X="149390" Y="-55587" Z="-2765" />
     </restartPointGroup>
-    <restartPointGroup id="35" name="Olympiad Stadium 1">
-        <spawn X="-21453" Y="-21058" Z="-3051" />
-		<spawn X="-20254" Y="-21058" Z="-3051" />
-		<!-- Spectate Spawn -->
-		<spawn X="-20854" Y="-21058" Z="-3051" />
-    </restartPointGroup>
-    <restartPointGroup id="36" name="Olympiad Stadium 2">
-        <spawn X="-110508" Y="-218674" Z="-3357" />
-		<spawn X="-109311" Y="-218674" Z="-3357" />
-		<!-- Spectate Spawn -->
-		<spawn X="-109910" Y="-218674" Z="-3357" />
-    </restartPointGroup>
-    <restartPointGroup id="37" name="Olympiad Stadium 3">
-        <spawn X="-120939" Y="-225041" Z="-3357" />
-		<spawn X="-119718" Y="-225041" Z="-3357" />
-		<!-- Spectate Spawn -->
-		<spawn X="-120329" Y="-225041" Z="-3357" />
-    </restartPointGroup>
-    <restartPointGroup id="38" name="Olympiad Stadium 4">
-		<spawn X="-127235" Y="-218275" Z="-3357" />
-		<spawn X="-126041" Y="-218275" Z="-3357" />
-		<!-- Spectate Spawn -->
-		<spawn X="-126638" Y="-218275" Z="-3357" />
-    </restartPointGroup>
-    <restartPointGroup id="39" name="Olympiad Stadium 5">
-		<spawn X="-115162" Y="-213201" Z="-3357" />
-		<spawn X="-113968" Y="-213201" Z="-3357" />
-		<!-- Spectate Spawn -->
-		<spawn X="-114565" Y="-213201" Z="-3357" />
-    </restartPointGroup>
-    <restartPointGroup id="40" name="Olympiad Stadium 6">
-        <spawn X="-120870" Y="-207398" Z="-3357" />
-		<spawn X="-119718" Y="-207398" Z="-3357" />
-		<!-- Spectate Spawn -->
-		<spawn X="-120294" Y="-207398" Z="-3357" />
-    </restartPointGroup>
-    <restartPointGroup id="41" name="Olympiad Stadium 7">
-        <spawn X="-103125" Y="-209047" Z="-3357" />
-		<spawn X="-101933" Y="-209047" Z="-3357" />
-		<!-- Spectate Spawn -->
-		<spawn X="-102529" Y="-209047" Z="-3357" />
-    </restartPointGroup>
-    <restartPointGroup id="42" name="Olympiad Stadium 8">
-        <spawn X="-110237" Y="-201243" Z="-3357" />
-		<spawn X="-109022" Y="-201243" Z="-3357" />
-		<!-- Spectate Spawn -->
-		<spawn X="-109630" Y="-201243" Z="-3357" />
-    </restartPointGroup>
-    <restartPointGroup id="43" name="Olympiad Stadium 9">
-        <spawn X="-88209" Y="-257844" Z="-3356" />
-		<spawn X="-86981" Y="-257844" Z="-3356" />
-		<!-- Spectate Spawn -->
-		<spawn X="-87595" Y="-257844" Z="-3356" />
-    </restartPointGroup>
-    <restartPointGroup id="44" name="Olympiad Stadium 10">
-        <spawn X="-94489" Y="-251053" Z="-3356" />
-		<spawn X="-93289" Y="-251053" Z="-3356" />
-		<!-- Spectate Spawn -->
-		<spawn X="-93889" Y="-251053" Z="-3356" />
-    </restartPointGroup>
-    <restartPointGroup id="45" name="Olympiad Stadium 11">
-        <spawn X="-77780" Y="-251509" Z="-3356" />
-		<spawn X="-76544" Y="-251509" Z="-3356" />
-		<!-- Spectate Spawn -->
-		<spawn X="-77162" Y="-251509" Z="-3356" />
-    </restartPointGroup>
-    <restartPointGroup id="46" name="Olympiad Stadium 12">
-        <spawn X="-82415" Y="-246024" Z="-3356" />
-		<spawn X="-81206" Y="-246024" Z="-3356" />
-		<!-- Spectate Spawn -->
-		<spawn X="-81811" Y="-246024" Z="-3356" />
-    </restartPointGroup>
-    <restartPointGroup id="47" name="Olympiad Stadium 13">
-        <spawn X="-88165" Y="-240165" Z="-3356" />
-		<spawn X="-86949" Y="-240165" Z="-3356" />
-		<!-- Spectate Spawn -->
-		<spawn X="-87557" Y="-240165" Z="-3356" />
-    </restartPointGroup>
-    <restartPointGroup id="48" name="Olympiad Stadium 14">
-        <spawn X="-70382" Y="-241831" Z="-3356" />
-		<spawn X="-69178" Y="-241831" Z="-3356" />
-		<!-- Spectate Spawn -->
-		<spawn X="-69780" Y="-241831" Z="-3356" />
-    </restartPointGroup>
-    <restartPointGroup id="49" name="Olympiad Stadium 15">
-        <spawn X="-77470" Y="-234008" Z="-3356" />
-		<spawn X="-76268" Y="-234008" Z="-3356" />
-		<!-- Spectate Spawn -->
-		<spawn X="-76869" Y="-234008" Z="-3356" />
-    </restartPointGroup>
-    <restartPointGroup id="50" name="Olympiad Stadium 16">
-        <spawn X="-88267" Y="-225058" Z="-3357" />
-		<spawn X="-86867" Y="-225058" Z="-3357" />
-		<!-- Spectate Spawn -->
-		<spawn X="-87567" Y="-225058" Z="-3357" />
-    </restartPointGroup>
-    <restartPointGroup id="51" name="Olympiad Stadium 17">
-        <spawn X="-94466" Y="-218294" Z="-3357" />
-		<spawn X="-93239" Y="-218294" Z="-3357" />
-		<!-- Spectate Spawn -->
-		<spawn X="-93853" Y="-218294" Z="-3357" />
-    </restartPointGroup>
-    <restartPointGroup id="52" name="Olympiad Stadium 18">
-        <spawn X="-77777" Y="-218734" Z="-3357" />
-		<spawn X="-76525" Y="-218734" Z="-3357" />
-		<!-- Spectate Spawn -->
-		<spawn X="-77151" Y="-218734" Z="-3357" />
-    </restartPointGroup>
-    <restartPointGroup id="53" name="Olympiad Stadium 19">
-        <spawn X="-82459" Y="-213232" Z="-3357" />
-		<spawn X="-81115" Y="-213232" Z="-3357" />
-		<!-- Spectate Spawn -->
-		<spawn X="-81787" Y="-213232" Z="-3357" />
-    </restartPointGroup>
-    <restartPointGroup id="54" name="Olympiad Stadium 20">
-        <spawn X="-88166" Y="-207433" Z="-3357" />
-		<spawn X="-86918" Y="-207433" Z="-3357" />
-		<!-- Spectate Spawn -->
-		<spawn X="-87542" Y="-207433" Z="-3357" />
-    </restartPointGroup>
-    <restartPointGroup id="55" name="Olympiad Stadium 21">
-        <spawn X="-77493" Y="-201268" Z="-3357" />
-		<spawn X="-76245" Y="-201268" Z="-3357" />
-		<!-- Spectate Spawn -->
-		<spawn X="-76869" Y="-201268" Z="-3357" />
-    </restartPointGroup>
-    <restartPointGroup id="56" name="Olympiad Stadium 22">
-        <spawn X="-70392" Y="-209137" Z="-3357" />
-		<spawn X="-69176" Y="-209137" Z="-3357" />
-		<!-- Spectate Spawn -->
-		<spawn X="-69784" Y="-209137" Z="-3357" />
-    </restartPointGroup>
-    <restartPointGroup id="57" name="Dimensional Rift">
+    <restartPointGroup id="dimensional_rift">
         <spawn X="-114444" Y="-178322" Z="-6752" />
 		<spawn X="-114470" Y="-178883" Z="-6752" />
 		<spawn X="-114449" Y="-179708" Z="-6752" />
@@ -260,29 +128,28 @@
 		<spawn X="-115155" Y="-179354" Z="-6752" isChaotic="true" />
 		<spawn X="-115169" Y="-178312" Z="-6752" isChaotic="true" />
     </restartPointGroup>
-    <restartPointGroup id="58" name="Gludio Castle">
+    <restartPointGroup id="gludio_castle">
         <spawn X="-16770" Y="109356" Z="-1798" />
     </restartPointGroup>
-    <restartPointGroup id="59" name="Dion Castle">
+    <restartPointGroup id="dion_castle">
         <spawn X="20515" Y="160384" Z="-1992" />
     </restartPointGroup>
-    <restartPointGroup id="60" name="Giran Castle">
+    <restartPointGroup id="giran_castle">
         <spawn X="116553" Y="146396" Z="-1868" />
     </restartPointGroup>
-    <restartPointGroup id="61" name="Oren Castle">
+    <restartPointGroup id="oren_castle">
         <spawn X="82644" Y="38542" Z="-1592" />
     </restartPointGroup>
-    <restartPointGroup id="62" name="Aden Castle">
+    <restartPointGroup id="aden_castle">
         <spawn X="147726" Y="4611" Z="-2788" />
     </restartPointGroup>
-    <restartPointGroup id="63" name="Innadril Castle">
+    <restartPointGroup id="innadril_castle">
         <spawn X="114796" Y="249159" Z="-88" />
     </restartPointGroup>
-    <restartPointGroup id="64" name="Goddard Castle">
+    <restartPointGroup id="goddard_castle">
         <spawn X="147451" Y="-46878" Z="-961" />
     </restartPointGroup>
-
-    <restartPointGroup id="65" name="Giran Castle Town">
+    <restartPointGroup id="giran_town">
         <spawn X="82480" Y="149087" Z="-3350" />
 		<spawn X="81440" Y="149119" Z="-3350" />
 		<spawn X="81376" Y="148095" Z="-3350" />
@@ -311,7 +178,7 @@
 		<spawn X="79832" Y="154009" Z="-3500" isChaotic="true" />
 		<spawn X="75501" Y="147178" Z="-3530" isChaotic="true" />
     </restartPointGroup>
-    <restartPointGroup id="66" name="DE Village">
+    <restartPointGroup id="de_village">
         <spawn X="11632" Y="16812" Z="-4500" />
 		<spawn X="11217" Y="16837" Z="-4500" />
 		<spawn X="11498" Y="16979" Z="-4500" />
@@ -346,7 +213,7 @@
 		<spawn X="-13632" Y="21872" Z="-3620" isChaotic="true" />
 		<spawn X="-11984" Y="21232" Z="-3600" isChaotic="true" />
     </restartPointGroup>
-    <restartPointGroup id="67" name="Talking Island">
+    <restartPointGroup id="ti_village">
         <spawn X="-83990" Y="243336" Z="-3700" />
 		<spawn X="-83964" Y="242680" Z="-3700" />
 		<spawn X="-84512" Y="242679" Z="-3700" />
@@ -383,7 +250,7 @@
 		<spawn X="-83328" Y="238304" Z="-3700" isChaotic="true" />
 		<spawn X="-91296" Y="236272" Z="-3690" isChaotic="true" />
     </restartPointGroup>
-    <restartPointGroup id="68" name="Elven Village">
+    <restartPointGroup id="elven_village">
         <spawn X="45487" Y="49767" Z="-2950" />
 		<spawn X="45080" Y="49614" Z="-2950" />
 		<spawn X="45284" Y="49309" Z="-2950" />
@@ -418,7 +285,7 @@
 		<spawn X="51232" Y="59216" Z="-3320" isChaotic="true" />
 		<spawn X="49808" Y="56240" Z="-3430" isChaotic="true" />
     </restartPointGroup>
-    <restartPointGroup id="69" name="Orc Village">
+    <restartPointGroup id="orc_village">
         <spawn X="-44316" Y="-113136" Z="-80" />
 		<spawn X="-44296" Y="-114048" Z="-80" />
 		<spawn X="-44704" Y="-112896" Z="-80" />
@@ -449,7 +316,7 @@
 		<spawn X="-39136" Y="-112688" Z="-1844" isChaotic="true" />
 		<spawn X="-37888" Y="-112608" Z="-1772" isChaotic="true" />
     </restartPointGroup>
-    <restartPointGroup id="70" name="Gludin Village">
+    <restartPointGroup id="gludin_village">
         <spawn X="-83520" Y="150560" Z="-3000" />
 		<spawn X="-82464" Y="150848" Z="-3000" />
 		<spawn X="-84064" Y="150864" Z="-3000" />
@@ -486,7 +353,7 @@
 		<spawn X="-75440" Y="162672" Z="-3350" isChaotic="true" />
 		<spawn X="-81760" Y="161248" Z="-3200" isChaotic="true" />
     </restartPointGroup>
-    <restartPointGroup id="71" name="Dwarven Village">
+    <restartPointGroup id="dwarven_village">
         <spawn X="116176" Y="-182448" Z="-1400" />
 		<spawn X="116476" Y="-182904" Z="-1500" />
 		<spawn X="115248" Y="-178816" Z="-850" />
@@ -514,7 +381,7 @@
 		<spawn X="119264" Y="-188736" Z="-3203" isChaotic="true" />
 		<spawn X="118656" Y="-187760" Z="-2828" isChaotic="true" />
     </restartPointGroup>
-    <restartPointGroup id="72" name="Gludio Castle Town">
+    <restartPointGroup id="gludio_town">
         <spawn X="-14288" Y="122752" Z="-3000" />
 		<spawn X="-14592" Y="123232" Z="-3000" />
 		<spawn X="-14704" Y="122032" Z="-3000" />
@@ -549,7 +416,7 @@
 		<spawn X="-20176" Y="124512" Z="-3350" isChaotic="true" />
 		<spawn X="-19040" Y="121632" Z="-3200" isChaotic="true" />
     </restartPointGroup>
-    <restartPointGroup id="73" name="Dion Castle Town">
+    <restartPointGroup id="dion_town">
         <spawn X="19025" Y="145245" Z="-3107" />
 		<spawn X="18576" Y="145136" Z="-3104" />
 		<spawn X="18717" Y="145711" Z="-3097" />
@@ -575,7 +442,7 @@
 		<spawn X="18054" Y="170263" Z="-3400" isChaotic="true" />
 		<spawn X="17931" Y="170381" Z="-3400" isChaotic="true" />
     </restartPointGroup>
-    <restartPointGroup id="74" name="Town of Oren">
+    <restartPointGroup id="oren_town">
         <spawn X="80304" Y="56241" Z="-1500" />
 		<spawn X="80594" Y="55837" Z="-1500" />
 		<spawn X="79933" Y="55752" Z="-1500" />
@@ -612,7 +479,7 @@
 		<spawn X="70139" Y="55885" Z="-3550" isChaotic="true" />
 		<spawn X="80236" Y="45675" Z="-3150" isChaotic="true" />
     </restartPointGroup>
-    <restartPointGroup id="75" name="Hunters Village">
+    <restartPointGroup id="hunters_village">
         <spawn X="116127" Y="76015" Z="-2729" />
 		<spawn X="115683" Y="77610" Z="-2650" />
 		<spawn X="117304" Y="76318" Z="-2670" />
@@ -640,7 +507,7 @@
 		<spawn X="104257" Y="82194" Z="-2581" isChaotic="true" />
 		<spawn X="104474" Y="81109" Z="-2651" isChaotic="true" />
     </restartPointGroup>
-    <restartPointGroup id="76" name="Town of Aden">
+    <restartPointGroup id="aden_town">
         <spawn X="146494" Y="30584" Z="-2420" />
 		<spawn X="146038" Y="30519" Z="-2420" />
 		<spawn X="148112" Y="30439" Z="-2420" />
@@ -670,7 +537,7 @@
 		<spawn X="137708" Y="15640" Z="-3800" isChaotic="true" />
 		<spawn X="136629" Y="28127" Z="-3258" isChaotic="true" />
     </restartPointGroup>
-    <restartPointGroup id="77" name="Goddard Castle Town">
+    <restartPointGroup id="goddard_town">
         <spawn X="148560" Y="-55904" Z="-2779" />
 		<spawn X="150704" Y="-55744" Z="-2979" />
 		<spawn X="150400" Y="-56752" Z="-2979" />
@@ -711,7 +578,7 @@
 		<spawn X="149680" Y="-59600" Z="-3440" isChaotic="true" />
 		<spawn X="149360" Y="-60576" Z="-3520" isChaotic="true" />
     </restartPointGroup>
-    <restartPointGroup id="78" name="Rune Castle Town">
+    <restartPointGroup id="rune_town">
         <spawn X="38096" Y="-46976" Z="899" />
 		<spawn X="38608" Y="-47168" Z="899" />
 		<spawn X="38752" Y="-47792" Z="899" />
@@ -742,7 +609,7 @@
 		<spawn X="42496" Y="-58192" Z="-3264" isChaotic="true" />
 		<spawn X="40784" Y="-59888" Z="-2600" isChaotic="true" />
     </restartPointGroup>
-    <restartPointGroup id="79" name="Innadril Castle Town">
+    <restartPointGroup id="innadril_town">
         <spawn X="107568" Y="218256" Z="-3624" />
 		<spawn X="107920" Y="218240" Z="-3624" />
 		<spawn X="107808" Y="217856" Z="-3624" />
@@ -764,7 +631,7 @@
 		<spawn X="100784" Y="218272" Z="-3420" isChaotic="true" />
 		<spawn X="100928" Y="218560" Z="-3420" isChaotic="true" />
     </restartPointGroup>
-    <restartPointGroup id="80" name="Floran Village">
+    <restartPointGroup id="floran_village">
         <spawn X="19025" Y="145245" Z="-3107" />
 		<spawn X="18576" Y="145136" Z="-3104" />
 		<spawn X="18717" Y="145711" Z="-3097" />
@@ -790,7 +657,7 @@
 		<spawn X="18054" Y="170263" Z="-3451" isChaotic="true" />
 		<spawn X="17931" Y="170381" Z="-3451" isChaotic="true" />
     </restartPointGroup>
-    <restartPointGroup id="81" name="Monster Derby Track">
+    <restartPointGroup id="derby_track">
         <spawn X="12661" Y="181687" Z="-3560" />
     </restartPointGroup>
 </list>

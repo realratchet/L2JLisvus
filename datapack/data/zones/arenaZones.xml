@@ -2,17 +2,17 @@
 <!DOCTYPE xml>
 <list>
 	<zone id="11010" name="Giran Arena" type="ArenaZone" shape="Cuboid" minZ="-3800" maxZ="-3600">
-		<stat name="restartPointGroup" val="1" />
+		<stat name="restartPointGroup" val="giran_arena" />
 		<node X="72496" Y="142272" />
 		<node X="73472" Y="143248" />
 	</zone>
 	<zone id="11011" name="Gludin Arena" type="ArenaZone" shape="Cuboid" minZ="-3700" maxZ="-3500">
-		<stat name="restartPointGroup" val="2" />
+		<stat name="restartPointGroup" val="gludin_arena" />
 		<node X="-88416" Y="141728" />
 		<node X="-87440" Y="142704" />
 	</zone>
 	<zone id="11012" name="Coliseum" type="ArenaZone" shape="NPoly" minZ="-3500" maxZ="-3300">
-		<stat name="restartPointGroup" val="3" />
+		<stat name="restartPointGroup" val="coliseum" />
 		<node X="147784" Y="45100" />
 		<node X="151220" Y="45100" />
 		<node X="151220" Y="46200" />
@@ -26,8 +26,8 @@
 		<node X="148040" Y="46500" />
 		<node X="147784" Y="46200" />
 	</zone>
-	<zone id="11013" type="ArenaZone" shape="Cuboid" minZ="-3600" maxZ="-3500">
-		<stat name="restartPointGroup" val="4" />
+	<zone id="11013" name="Monster Derby Track" type="ArenaZone" shape="Cuboid" minZ="-3600" maxZ="-3500">
+		<stat name="restartPointGroup" val="derby_track_arena" />
 		<node X="11948" Y="183015" />
 		<node X="12939" Y="184015" />
 	</zone>

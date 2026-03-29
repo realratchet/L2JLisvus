@@ -51,6 +51,7 @@ import net.sf.l2j.gameserver.datatables.NpcTable;
 import net.sf.l2j.gameserver.datatables.NpcWalkerRoutesTable;
 import net.sf.l2j.gameserver.datatables.OfflineTradersTable;
 import net.sf.l2j.gameserver.datatables.PetDataTable;
+import net.sf.l2j.gameserver.datatables.RestartPointData;
 import net.sf.l2j.gameserver.datatables.SkillSpellbookTable;
 import net.sf.l2j.gameserver.datatables.SkillTable;
 import net.sf.l2j.gameserver.datatables.SkillTreeTable;
@@ -248,13 +249,15 @@ public class GameServer
 		RaidBossSpawnManager.getInstance();
 		DayNightSpawnManager.getInstance().notifyChangeMode();
 		DimensionalRiftManager.getInstance();
+
+		RestartPointData.getInstance();
+		MapRegionManager.getInstance();
 		DoorTable.getInstance();
 		FourSepulchersManager.getInstance().init();
 		
 		// Start game time controller task
 		GameTimeController.getInstance().start();
 
-		MapRegionManager.getInstance();
 		EventDroplist.getInstance();
 
 		/** Load Manor Data */

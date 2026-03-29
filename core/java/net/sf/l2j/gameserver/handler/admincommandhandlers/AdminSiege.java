@@ -17,12 +17,14 @@ package net.sf.l2j.gameserver.handler.admincommandhandlers;
 import java.util.StringTokenizer;
 
 import net.sf.l2j.gameserver.datatables.ClanTable;
+import net.sf.l2j.gameserver.datatables.RestartPointData;
 import net.sf.l2j.gameserver.handler.IAdminCommandHandler;
 import net.sf.l2j.gameserver.instancemanager.CastleManager;
 import net.sf.l2j.gameserver.instancemanager.ClanHallManager;
 import net.sf.l2j.gameserver.instancemanager.SiegeManager;
 import net.sf.l2j.gameserver.model.L2Clan;
 import net.sf.l2j.gameserver.model.L2Object;
+import net.sf.l2j.gameserver.model.Location;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.entity.Auction;
 import net.sf.l2j.gameserver.model.entity.Castle;
@@ -39,27 +41,8 @@ import net.sf.l2j.util.StringUtil;
  */
 public class AdminSiege implements IAdminCommandHandler
 {
-	private static String[] _adminCommands =
-	{
-		"admin_siege",
-		"admin_add_attacker",
-		"admin_add_defender",
-		"admin_add_guard",
-		"admin_list_siege_clans",
-		"admin_clear_siege_list",
-		"admin_move_defenders",
-		"admin_spawn_doors",
-		"admin_endsiege",
-		"admin_startsiege",
-		"admin_setcastle",
-		"admin_castledel",
-		"admin_clanhall",
-		"admin_clanhallset",
-		"admin_clanhalldel",
-		"admin_clanhallopendoors",
-		"admin_clanhallclosedoors",
-		"admin_clanhallteleportself"
-	};
+	private static String[] _adminCommands = { "admin_siege", "admin_add_attacker", "admin_add_defender", "admin_add_guard", "admin_list_siege_clans", "admin_clear_siege_list", "admin_move_defenders", "admin_spawn_doors", "admin_endsiege", "admin_startsiege", "admin_setcastle", "admin_castledel",
+		"admin_clanhall", "admin_clanhallset", "admin_clanhalldel", "admin_clanhallopendoors", "admin_clanhallclosedoors", "admin_clanhallteleportself" };
 	
 	@Override
 	public boolean useAdminCommand(String command, L2PcInstance activeChar)
@@ -255,8 +238,14 @@ public class AdminSiege implements IAdminCommandHandler
 					if (clanhall != null)
 					{
 						L2ClanHallZone zone = clanhall.getZone();
-						if (zone != null)
-							activeChar.teleToLocation(zone.getSpawnLoc(), true);
+						if (zone != null && zone.getRestartPointGroup() != null)
+						{
+							Location loc = RestartPointData.getInstance().getSpawnLocById(zone.getRestartPointGroup());
+							if (loc != null)
+							{
+								activeChar.teleToLocation(loc, true);
+							}
+						}
 					}
 				}
 				else if (command.equalsIgnoreCase("admin_spawn_doors"))

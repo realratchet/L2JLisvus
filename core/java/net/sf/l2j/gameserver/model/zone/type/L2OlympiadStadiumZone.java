@@ -14,29 +14,30 @@
  */
 package net.sf.l2j.gameserver.model.zone.type;
 
-import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
-import net.sf.l2j.gameserver.datatables.MapRegionTable;
+import net.sf.l2j.gameserver.instancemanager.MapRegionManager.TeleportWhereType;
 import net.sf.l2j.gameserver.model.L2Character;
 import net.sf.l2j.gameserver.model.L2Summon;
 import net.sf.l2j.gameserver.model.Location;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.model.zone.L2ZoneSpawn;
+import net.sf.l2j.gameserver.model.zone.L2ZoneType;
 import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
 
 /**
  * Olympiad stadium zone.
- *
- * @author  durgus
+ * @author durgus
  */
-public class L2OlympiadStadiumZone extends L2ZoneSpawn
+public class L2OlympiadStadiumZone extends L2ZoneType
 {
     private int _stadiumId;
-    
     private boolean _freeToUse = true;
-	private final List<L2PcInstance> _spectators = new CopyOnWriteArrayList<>();
-
+    private Location _playerOneSpawn;
+    private Location _playerTwoSpawn;
+    private Location _spectatorSpawn;
+    private final Set<L2PcInstance> _spectators = ConcurrentHashMap.newKeySet();
+    
     public L2OlympiadStadiumZone(int id)
     {
         super(id);
@@ -46,9 +47,25 @@ public class L2OlympiadStadiumZone extends L2ZoneSpawn
     public void setParameter(String name, String value)
     {
         if (name.equals("stadiumId"))
+        {
             _stadiumId = Integer.parseInt(value);
+        }
+        else if (name.equals("playerOneSpawn"))
+        {
+            _playerOneSpawn = parseSpawnLocation(name, value);
+        }
+        else if (name.equals("playerTwoSpawn"))
+        {
+            _playerOneSpawn = parseSpawnLocation(name, value);
+        }
+        else if (name.equals("spectatorSpawn"))
+        {
+            _spectatorSpawn = parseSpawnLocation(name, value);
+        }
         else
+        {
             super.setParameter(name, value);
+        }
     }
     
     @Override
@@ -56,84 +73,121 @@ public class L2OlympiadStadiumZone extends L2ZoneSpawn
     {
         character.setInsideZone(L2Character.ZONE_PVP, true);
         character.setInsideZone(L2Character.ZONE_NO_LANDING, true);
-
+        
         L2PcInstance player = null;
         if (character instanceof L2PcInstance)
         {
-            player = (L2PcInstance)character;
+            player = (L2PcInstance) character;
             player.sendPacket(new SystemMessage(SystemMessage.ENTERED_COMBAT_ZONE));
         }
         else if (character instanceof L2Summon)
-            player = ((L2Summon)character).getOwner();
-
+        {
+            player = ((L2Summon) character).getOwner();
+        }
+        
         if (player != null)
         {
             if (!player.isGM() && !player.isInOlympiadMode() && !player.inObserverMode())
-
-                player.teleToLocation(MapRegionTable.TeleportWhereType.Town);
+            {
+                player.teleToLocation(TeleportWhereType.Town);
+            }
             else
             {
                 if (player.isMounted())
+                {
                     player.dismount();
+                }
             }
         }
     }
-
+    
     @Override
     protected void onExit(L2Character character)
     {
         character.setInsideZone(L2Character.ZONE_PVP, false);
         character.setInsideZone(L2Character.ZONE_NO_LANDING, false);
-
+        
         if (character instanceof L2PcInstance)
-            ((L2PcInstance)character).sendPacket(new SystemMessage(SystemMessage.LEFT_COMBAT_ZONE));
+            ((L2PcInstance) character).sendPacket(new SystemMessage(SystemMessage.LEFT_COMBAT_ZONE));
     }
-
+    
     public int getStadiumId()
     {
         return _stadiumId;
     }
     
     public boolean isFreeToUse()
-	{
+    {
         return _freeToUse;
-	}
-
-	public void setStadiaBusy()
-	{
+    }
+    
+    public void setStadiaBusy()
+    {
         _freeToUse = false;
-	}
-
-	public void setStadiaFree()
-	{
+    }
+    
+    public void setStadiaFree()
+    {
         _freeToUse = true;
-	}
-	public void addSpectator(L2PcInstance spec, boolean storeCoords)
-	{
-		List<Location> spawns = getSpawnLocs();
-		if (spawns == null)
-		{
-			return;
-		}
-
-        Location loc = spawns.get(2);
+    }
+    
+    public void addSpectator(L2PcInstance spec, boolean storeCoords)
+    {
+        Location loc = _spectatorSpawn;
         if (loc == null)
         {
             return;
         }
-		
-		spec.enterOlympiadObserverMode(loc.getX(), loc.getY(), loc.getZ(), getStadiumId(), storeCoords);
-		_spectators.add(spec);
-	}
+        
+        spec.enterOlympiadObserverMode(loc.getX(), loc.getY(), loc.getZ(), getStadiumId(), storeCoords);
+        _spectators.add(spec);
+    }
+    
+    public Location getPlayerOneSpawn()
+    {
+        return _playerOneSpawn;
+    }
+    
+    public Location getPlayerTwoSpawn()
+    {
+        return _playerTwoSpawn;
+    }
 
-	public List<L2PcInstance> getSpectators()
+    public Set<L2PcInstance> getSpectators()
 	{
 		return _spectators;
 	}
-	
-	public void removeSpectator(L2PcInstance spec)
-	{
-		if (_spectators != null && _spectators.contains(spec))
-			_spectators.remove(spec);
-	}
+    
+    public void removeSpectator(L2PcInstance spec)
+    {
+        if (_spectators != null && _spectators.contains(spec))
+            _spectators.remove(spec);
+    }
+    
+    private Location parseSpawnLocation(String name, String value)
+    {
+        Location loc;
+        
+        String[] values = value.split(" ");
+        if (values.length < 3)
+        {
+            loc = null;
+            _log.warning("[L2OlympiadStadiumZone]: Invalid config property -> " + name + " = " + value);
+        }
+        else
+        {
+            int x = Integer.valueOf(values[0].trim());
+            int y = Integer.valueOf(values[1].trim());
+            int z = Integer.valueOf(values[2].trim());
+            
+            loc = new Location(x, y, z);
+            
+            if (values.length > 3)
+            {
+                _playerOneSpawn.setHeading(Integer.valueOf(values[3].trim()));
+            }
+        }
+        
+        return loc;
+    }
 }

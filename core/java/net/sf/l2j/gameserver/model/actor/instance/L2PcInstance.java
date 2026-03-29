@@ -10441,7 +10441,6 @@ public final class L2PcInstance extends L2PlayableInstance
 		// Deals with sudden exit in the middle of a request
 		if (getActiveRequester() != null)
 		{
-			
 			getActiveRequester().setLootInvitation(-1);
 			setActiveRequester(null);
 		}

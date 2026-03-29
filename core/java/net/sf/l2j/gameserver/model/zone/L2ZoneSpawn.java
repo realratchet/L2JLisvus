@@ -20,7 +20,7 @@ package net.sf.l2j.gameserver.model.zone;
  */
 public abstract class L2ZoneSpawn extends L2ZoneType
 {
-    private int _restartPointGroup;
+    private String _restartPointGroup;
     
     public L2ZoneSpawn(int id)
     {
@@ -32,11 +32,11 @@ public abstract class L2ZoneSpawn extends L2ZoneType
     {
         if (name.equals("restartPointGroup"))
         {
-            _restartPointGroup = Integer.parseInt(value);
+            _restartPointGroup = value;
         }
     }
 
-    public final int getRestartPointGroup()
+    public final String getRestartPointGroup()
     {
         return _restartPointGroup;
     }

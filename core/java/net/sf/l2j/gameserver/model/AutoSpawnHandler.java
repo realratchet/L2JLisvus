@@ -29,7 +29,6 @@ import net.sf.l2j.Config;
 import net.sf.l2j.L2DatabaseFactory;
 import net.sf.l2j.gameserver.Announcements;
 import net.sf.l2j.gameserver.ThreadPoolManager;
-import net.sf.l2j.gameserver.datatables.MapRegionTable;
 import net.sf.l2j.gameserver.datatables.NpcTable;
 import net.sf.l2j.gameserver.datatables.SpawnTable;
 import net.sf.l2j.gameserver.idfactory.IdFactory;
@@ -473,16 +472,18 @@ public class AutoSpawnHandler
                     }
                 }
                 
-                String nearestTown = MapRegionTable.getInstance().getClosestTownName(npcInst);
                 long despawnDelayMillis = spawnInst.getDespawnDelay() * 1000L;
                 
-                // Announce to all players that the spawn has taken place, with the nearest town location.
+                // Announce to all players that the spawn has taken place, with the nearest town location
+                // TODO: Remove broadcasting and create quest scripts for such cases in datapack
                 if (npcInst != null && spawnInst.isBroadcasting())
-                    Announcements.getInstance().announceToAll("The " + npcInst.getName() + " has spawned near " + nearestTown + "!");
+                {
+                    Announcements.getInstance().announceToAll("The " + npcInst.getName() + " has spawned in a new location!");
+                }
                 
                 if (Config.DEBUG)
                 {
-                    _log.info("AutoSpawnHandler: Spawned NPC ID " + spawnInst.getNpcId() + " at " + x + ", " + y + ", " + z + " (Near " + nearestTown + ") for " + (spawnInst.getRespawnDelay() / 60) + " minute(s).");
+                    _log.info("AutoSpawnHandler: Spawned NPC ID " + spawnInst.getNpcId() + " at " + x + ", " + y + ", " + z + " for " + (spawnInst.getRespawnDelay() / 60) + " minute(s).");
                 }
                 
                 // If there is no despawn time, do not create a despawn task.

@@ -251,10 +251,10 @@ public class DimensionalRiftManager
         loadSpawns();
     }
     
-    public boolean checkIfInRiftZone(int x, int y, int z, boolean ignorePeaceZone)
+    public boolean checkIfInRiftZone(int x, int y, int z)
     {
         Map<Byte, DimensionalRiftRoom> roomData = _rooms.get((byte) 0);
-        return ignorePeaceZone ? roomData.get((byte) 1).checkIfInZone(x, y, z) : roomData.get((byte) 1).checkIfInZone(x, y, z) && !roomData.get((byte) 0).checkIfInZone(x, y, z);
+        return roomData.get((byte) 1).checkIfInZone(x, y, z) && !roomData.get((byte) 0).checkIfInZone(x, y, z);
     }
     
     public boolean checkIfInPeaceZone(int x, int y, int z)
@@ -268,9 +268,13 @@ public class DimensionalRiftManager
         
         // just to avoid critical errors during restart
         if (player.isOnline())
+        {
             player.teleToLocation(coords[0], coords[1], coords[2]);
+        }
         else
+        {
             player.setXYZInvisible(coords[0], coords[1], coords[2]);
+        }
     }
     
     public synchronized void start(L2PcInstance player, byte type, L2NpcInstance npc)
@@ -397,7 +401,7 @@ public class DimensionalRiftManager
         byte roomId;
         List<Byte> emptyRooms;
         Map<Byte, DimensionalRiftRoom> roomData = _rooms.get(type);
-
+        
         do
         {
             emptyRooms = getFreeRooms(type);
@@ -405,7 +409,7 @@ public class DimensionalRiftManager
         }
         // find empty room
         while (roomData.get(roomId).isPartyInside());
-
+        
         new DimensionalRift(player.getParty(), type, roomId);
     }
     
@@ -460,27 +464,10 @@ public class DimensionalRiftManager
             _yMax = (yMax - 128);
             _zMin = zMin;
             _zMax = zMax;
-            _teleportCoords = new int[]
-            {
-                xT,
-                yT,
-                zT
-            };
+            _teleportCoords = new int[] { xT, yT, zT };
             _isBossRoom = isBossRoom;
             _roomSpawns = new ArrayList<>();
-            _s = new Polygon(new int[]
-            {
-                xMin,
-                xMax,
-                xMax,
-                xMin
-            }, new int[]
-            {
-                yMin,
-                yMin,
-                yMax,
-                yMax
-            }, 4);
+            _s = new Polygon(new int[] { xMin, xMax, xMax, xMin }, new int[] { yMin, yMin, yMax, yMax }, 4);
         }
         
         public byte getRoom()
@@ -596,7 +583,7 @@ public class DimensionalRiftManager
     {
         int count = 0;
         Map<Byte, DimensionalRiftRoom> roomData = _rooms.get(type);
-
+        
         for (Object room : roomData.values())
         {
             if (((DimensionalRiftRoom) room).isPartyInside())

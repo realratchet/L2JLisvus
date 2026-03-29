@@ -71,7 +71,7 @@ public class MapRegionManager implements IXmlReader
 	public void load()
 	{
 		parseDatapackFile("data/mapRegions.xml");
-		_log.info("Loaded " + _regions.size() + " map regions.");
+		_log.info(getClass().getSimpleName() + ": Loaded " + _regions.size() + " map regions.");
 	}
 	
 	@Override
@@ -153,23 +153,6 @@ public class MapRegionManager implements IXmlReader
 		return (posY >> 15) + 10 + 8;
 	}
 	
-	/**
-	 * Get town name by character position
-	 * @param activeChar
-	 * @return
-	 */
-	public String getClosestTownName(L2Character activeChar)
-	{
-		L2MapRegion region = getMapRegion(activeChar);
-		
-		if (region == null)
-		{
-			return "Aden Castle Town";
-		}
-		
-		return null;
-	}
-	
 	public int getAreaCastleId(L2Character activeChar)
 	{
 		L2MapRegion region = getMapRegion(activeChar);
@@ -221,7 +204,7 @@ public class MapRegionManager implements IXmlReader
 					}
 				}
 
-				if (spawnZone != null && spawnZone.getRestartPointGroup() > 0)
+				if (spawnZone != null && spawnZone.getRestartPointGroup() != null)
 				{
 					Location loc = RestartPointData.getInstance().getSpawnLocById(spawnZone.getRestartPointGroup());
 					if (loc != null)
@@ -268,7 +251,7 @@ public class MapRegionManager implements IXmlReader
 				L2ZoneSpawn zone = ZoneManager.getInstance().getZone(player, L2ZoneSpawn.class);
 				Location loc = null;
 
-				if (zone != null && zone.getRestartPointGroup() > 0)
+				if (zone != null && zone.getRestartPointGroup() != null)
 				{
 					loc = RestartPointData.getInstance().getChaoticSpawnLocById(zone.getRestartPointGroup());
 				}
@@ -304,7 +287,7 @@ public class MapRegionManager implements IXmlReader
 		// Get the nearest town
 		L2ZoneSpawn zone = ZoneManager.getInstance().getZone(activeChar, L2ZoneSpawn.class);
 
-		if (zone != null && zone.getRestartPointGroup() > 0)
+		if (zone != null && zone.getRestartPointGroup() != null)
 		{
 			loc = RestartPointData.getInstance().getSpawnLocById(zone.getRestartPointGroup());
 		}

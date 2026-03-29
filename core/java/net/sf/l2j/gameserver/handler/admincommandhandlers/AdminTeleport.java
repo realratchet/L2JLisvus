@@ -24,6 +24,7 @@ import java.util.logging.Logger;
 import net.sf.l2j.Config;
 import net.sf.l2j.L2DatabaseFactory;
 import net.sf.l2j.gameserver.ai.CtrlIntention;
+import net.sf.l2j.gameserver.datatables.RestartPointData;
 import net.sf.l2j.gameserver.datatables.SpawnTable;
 import net.sf.l2j.gameserver.handler.IAdminCommandHandler;
 import net.sf.l2j.gameserver.instancemanager.RaidBossSpawnManager;
@@ -57,30 +58,8 @@ public class AdminTeleport implements IAdminCommandHandler
 {
     private static final Logger _log = Logger.getLogger(AdminTeleport.class.getName());
     
-    private static String[] _adminCommands =
-    {
-        "admin_show_moves",
-        "admin_show_moves_other",
-        "admin_show_teleport",
-        "admin_teleport_to_character",
-        "admin_teleportto",
-        "admin_instant_move",
-        "admin_move_to",
-        "admin_teleport_character",
-        "admin_recall",
-        "admin_walk",
-        "admin_recall_npc",
-        "admin_gonorth",
-        "admin_gosouth",
-        "admin_goeast",
-        "admin_gowest",
-        "admin_goup",
-        "admin_godown",
-        "admin_tele",
-        "admin_teleto",
-        "admin_failed",
-        "admin_sendhome"
-    };
+    private static String[] _adminCommands = { "admin_show_moves", "admin_show_moves_other", "admin_show_teleport", "admin_teleport_to_character", "admin_teleportto", "admin_instant_move", "admin_move_to", "admin_teleport_character", "admin_recall", "admin_walk", "admin_recall_npc", "admin_gonorth",
+        "admin_gosouth", "admin_goeast", "admin_gowest", "admin_goup", "admin_godown", "admin_tele", "admin_teleto", "admin_failed", "admin_sendhome" };
     
     @Override
     public boolean useAdminCommand(String command, L2PcInstance activeChar)
@@ -697,9 +676,13 @@ public class AdminTeleport implements IAdminCommandHandler
         }
         
         L2TownZone zone = TownManager.getTown(townId);
-        if (zone != null)
+        if (zone != null && zone.getRestartPointGroup() != null)
         {
-            player.teleToLocation(zone.getSpawnLoc(), true);
+            Location loc = RestartPointData.getInstance().getSpawnLocById(zone.getRestartPointGroup());
+            if (loc != null)
+            {
+                player.teleToLocation(loc, true);
+            }
         }
     }
     

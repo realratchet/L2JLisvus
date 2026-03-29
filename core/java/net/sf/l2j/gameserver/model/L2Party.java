@@ -323,27 +323,20 @@ public class L2Party
 			if (player.isFestivalParticipant())
 				SevenSignsFestival.getInstance().updateParticipants(player, this);
 			
-			SystemMessage msg = new SystemMessage(SystemMessage.YOU_HAVE_BEEN_EXPELLED_FROM_PARTY);
-			if (hasLeft)
-				msg = new SystemMessage(SystemMessage.YOU_LEFT_PARTY);
-			
-			player.sendPacket(msg);
+			player.sendPacket(new SystemMessage(hasLeft ? SystemMessage.YOU_LEFT_PARTY : SystemMessage.YOU_HAVE_BEEN_EXPELLED_FROM_PARTY));
 			player.sendPacket(new PartySmallWindowDeleteAll());
 			player.setParty(null);
 			
-			if (hasLeft)
-				msg = new SystemMessage(SystemMessage.S1_LEFT_PARTY);
-			else
-				msg = new SystemMessage(SystemMessage.S1_WAS_EXPELLED_FROM_PARTY);
-			msg.addString(player.getName());
-			broadcastToPartyMembers(msg);
+			SystemMessage sm = new SystemMessage(hasLeft ? SystemMessage.S1_LEFT_PARTY : SystemMessage.S1_WAS_EXPELLED_FROM_PARTY);
+			sm.addString(player.getName());
+			broadcastToPartyMembers(sm);
 			broadcastToPartyMembers(new PartySmallWindowDelete(player));
 			
 			if (isLeader && getPartyMembers().size() > 1)
 			{
-				msg = new SystemMessage(SystemMessage.S1_HAS_BECOME_A_PARTY_LEADER);
-				msg.addString(getPartyMembers().get(0).getName());
-				broadcastToPartyMembers(msg);
+				sm = new SystemMessage(SystemMessage.S1_HAS_BECOME_A_PARTY_LEADER);
+				sm.addString(getPartyMembers().get(0).getName());
+				broadcastToPartyMembers(sm);
 				broadcastToPartyMembersNewLeader();
 			}
 			
@@ -367,16 +360,16 @@ public class L2Party
 		
 		if (player.isInPartyMatchRoom())
 		{
-			PartyMatchRoom _room = PartyMatchRoomManager.getInstance().getPlayerRoom(player);
-			if (_room != null)
+			PartyMatchRoom room = PartyMatchRoomManager.getInstance().getPlayerRoom(player);
+			if (room != null)
 			{
-				player.sendPacket(new PartyMatchDetail(_room));
-				for (L2PcInstance _member : _room.getPartyMembers())
+				player.sendPacket(new PartyMatchDetail(room));
+				for (L2PcInstance member : room.getPartyMembers())
 				{
-					if (_member == null)
+					if (member == null)
 						continue;
 					
-					_member.sendPacket(new ExManagePartyRoomMember(player, _room, 1));
+					member.sendPacket(new ExManagePartyRoomMember(player, room, 1));
 				}
 			}
 			player.broadcastUserInfo();

@@ -22,12 +22,12 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import net.sf.l2j.gameserver.Announcements;
 import net.sf.l2j.gameserver.datatables.DoorTable;
 import net.sf.l2j.gameserver.datatables.ItemTable;
-import net.sf.l2j.gameserver.datatables.MapRegionTable;
 import net.sf.l2j.gameserver.datatables.NpcTable;
 import net.sf.l2j.gameserver.handler.IVoicedCommandHandler;
 import net.sf.l2j.gameserver.handler.VoicedCommandHandler;
 import net.sf.l2j.gameserver.idfactory.IdFactory;
 import net.sf.l2j.gameserver.instancemanager.ZoneManager;
+import net.sf.l2j.gameserver.instancemanager.MapRegionManager.TeleportWhereType;
 import net.sf.l2j.gameserver.model.L2Character;
 import net.sf.l2j.gameserver.model.L2ItemInstance;
 import net.sf.l2j.gameserver.model.L2Party;
@@ -294,7 +294,7 @@ public class TvTEvent extends L2EventScript
                     continue;
                 }
                 
-                player.teleToLocation(MapRegionTable.TeleportWhereType.Town);
+                player.teleToLocation(TeleportWhereType.Town);
             }
         }
         
@@ -543,7 +543,7 @@ public class TvTEvent extends L2EventScript
                 else
                 {
                     // Player has probably left event
-                    player.teleToLocation(MapRegionTable.TeleportWhereType.Town);
+                    player.teleToLocation(TeleportWhereType.Town);
                 }
             }
         }

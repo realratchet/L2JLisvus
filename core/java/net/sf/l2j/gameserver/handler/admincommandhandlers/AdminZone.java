@@ -67,7 +67,7 @@ public class AdminZone implements IAdminCommandHandler
 				activeChar.sendMessage("MapRegion: " + mapRegion.getName());
 			}
 
-			activeChar.sendMessage("MapRegion: x:" + MapRegionManager.getInstance().getMapRegionX(activeChar.getX()) + " y:" + MapRegionManager.getInstance().getMapRegionY(activeChar.getY()) + " ("+MapRegionManager.getInstance().getMapRegion(activeChar.getX(),activeChar.getY())+")");
+			activeChar.sendMessage("MapRegion x:" + MapRegionManager.getInstance().getMapRegionX(activeChar.getX()) + " y:" + MapRegionManager.getInstance().getMapRegionY(activeChar.getY()) + " ("+MapRegionManager.getInstance().getMapRegionLocId(activeChar.getX(),activeChar.getY())+")");
 			getGeoRegionXY(activeChar);
 			
 			Location loc;
