@@ -36,6 +36,7 @@ import net.sf.l2j.gameserver.model.olympiad.Olympiad;
 import net.sf.l2j.gameserver.network.serverpackets.InventoryUpdate;
 import net.sf.l2j.gameserver.network.serverpackets.SocialAction;
 import net.sf.l2j.gameserver.network.serverpackets.UserInfo;
+import net.sf.l2j.gameserver.templates.L2Item;
 import net.sf.l2j.gameserver.templates.StatsSet;
 
 /**
@@ -160,6 +161,9 @@ public class Hero
         
         if (!_heroes.isEmpty())
         {
+            // Item slots that could be occupied by hero items
+            final int[] heroItemSlots = { Inventory.PAPERDOLL_RHAND, Inventory.PAPERDOLL_HAIR };
+            
             for (int objectId : _heroes.keySet())
             {
                 L2PcInstance player = L2World.getInstance().getPlayer(objectId);
@@ -170,8 +174,7 @@ public class Hero
                     InventoryUpdate iu = new InventoryUpdate();
                     
                     // Item slots that could be occupied by hero items
-                    int[] slots = { Inventory.PAPERDOLL_RHAND, Inventory.PAPERDOLL_HAIR };
-                    for (int slot : slots)
+                    for (int slot : heroItemSlots)
                     {
                         L2ItemInstance equippedItem = player.getInventory().getPaperdollItem(slot);
                         if (equippedItem != null && equippedItem.isHeroItem())
