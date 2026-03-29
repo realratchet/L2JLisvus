@@ -31,11 +31,11 @@ import net.sf.l2j.gameserver.model.L2Clan;
 import net.sf.l2j.gameserver.model.L2ItemInstance;
 import net.sf.l2j.gameserver.model.L2World;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.itemcontainer.Inventory;
 import net.sf.l2j.gameserver.model.olympiad.Olympiad;
 import net.sf.l2j.gameserver.network.serverpackets.InventoryUpdate;
 import net.sf.l2j.gameserver.network.serverpackets.SocialAction;
 import net.sf.l2j.gameserver.network.serverpackets.UserInfo;
-import net.sf.l2j.gameserver.templates.L2Item;
 import net.sf.l2j.gameserver.templates.StatsSet;
 
 /**
@@ -170,17 +170,17 @@ public class Hero
                     InventoryUpdate iu = new InventoryUpdate();
                     
                     // Item slots that could be occupied by hero items
-                    int[] slots = { L2Item.SLOT_LR_HAND, L2Item.SLOT_R_HAND, L2Item.SLOT_HAIR };
+                    int[] slots = { Inventory.PAPERDOLL_RHAND, Inventory.PAPERDOLL_HAIR };
                     for (int slot : slots)
                     {
                         L2ItemInstance equippedItem = player.getInventory().getPaperdollItem(slot);
                         if (equippedItem != null && equippedItem.isHeroItem())
                         {
-                            player.getInventory().unEquipItemInBodySlotAndRecord(slot);
+                            player.getInventory().unEquipItemInSlot(slot);
                         }
                     }
                     
-                    for (L2ItemInstance item : player.getInventory().getAvailableItems(false))
+                    for (L2ItemInstance item : player.getInventory().getItems())
                     {
                         if (item != null && item.isHeroItem())
                         {
