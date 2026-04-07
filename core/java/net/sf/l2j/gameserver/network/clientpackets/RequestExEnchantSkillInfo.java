@@ -44,7 +44,7 @@ public class RequestExEnchantSkillInfo extends L2GameClientPacket
 	
 	/*
 	 * (non-Javadoc)
-	 * @see net.sf.l2j.gameserver.clientpackets.L2GameClientPacket#runImpl()
+	 * @see net.sf.l2j.gameserver.network.clientpackets.L2GameClientPacket#runImpl()
 	 */
 	
 	@Override

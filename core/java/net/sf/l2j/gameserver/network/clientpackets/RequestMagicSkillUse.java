@@ -88,7 +88,7 @@ public class RequestMagicSkillUse extends L2GameClientPacket
 	
 	/*
 	 * (non-Javadoc)
-	 * @see net.sf.l2j.gameserver.clientpackets.L2GameClientPacket#getType()
+	 * @see net.sf.l2j.gameserver.network.clientpackets.L2GameClientPacket#getType()
 	 */
 	@Override
 	public String getType()
