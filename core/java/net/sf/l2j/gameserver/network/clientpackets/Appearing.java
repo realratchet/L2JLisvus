@@ -45,19 +45,6 @@ public class Appearing extends L2GameClientPacket
 			return;
 		}
 		
-		// If player was teleported while fishing, stop fishing now
-		if (activeChar.isFishing())
-		{
-			if (activeChar.getFishCombat() != null)
-			{
-				activeChar.getFishCombat().doDie(false, false);
-			}
-			else
-			{
-				activeChar.endFishing(false, false);
-			}
-		}
-		
 		if (activeChar.isTeleporting())
 		{
 			activeChar.onTeleported();

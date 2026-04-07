@@ -9967,6 +9967,19 @@ public final class L2PcInstance extends L2PlayableInstance
 		{
 			setProtection(true);
 		}
+
+		// If player was teleported while fishing, stop fishing now
+		if (isFishing())
+		{
+			if (getFishCombat() != null)
+			{
+				getFishCombat().doDie(false, false);
+			}
+			else
+			{
+				endFishing(false, false);
+			}
+		}
 		
 		// Modify the position of the pet if necessary
 		if (getPet() != null)
@@ -10840,20 +10853,23 @@ public final class L2PcInstance extends L2PlayableInstance
 	
 	public void endFishing(boolean win, boolean force)
 	{
-		
-		ExFishingEnd efe = new ExFishingEnd(win, this);
-		broadcastPacket(efe);
+		broadcastPacket(new ExFishingEnd(win, this));
+
 		_fishing = false;
 		_fishx = 0;
 		_fishy = 0;
 		_fishz = 0;
+
 		broadcastUserInfo();
+
 		if (_fishCombat == null)
 		{
 			sendPacket(new SystemMessage(SystemMessage.BAIT_LOST_FISH_GOT_AWAY));
 		}
+
 		_fishCombat = null;
 		_lureId = 0;
+
 		if (force) // Cancels fishing
 		{
 			sendPacket(new SystemMessage(SystemMessage.FISHING_ATTEMPT_CANCELLED));
@@ -10862,6 +10878,7 @@ public final class L2PcInstance extends L2PlayableInstance
 		{
 			sendPacket(new SystemMessage(SystemMessage.REEL_LINE_AND_STOP_FISHING));
 		}
+
 		setIsImmobilized(false);
 		stopLookingForFishTask();
 	}
