@@ -135,7 +135,7 @@ public class AdminTeleport implements IAdminCommandHandler
             catch (StringIndexOutOfBoundsException e)
             {
                 // Case of empty coordinates
-                activeChar.sendMessage("Wrong or no Co-ordinates given.");
+                activeChar.sendMessage("Wrong or no co-ordinates given.");
             }
         }
         else if (command.startsWith("admin_teleport_character"))

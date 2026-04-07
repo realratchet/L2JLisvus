@@ -25,12 +25,12 @@ public class RequestTargetCanceld extends L2GameClientPacket
 	private static final String _C__37_REQUESTTARGETCANCELD = "[C] 37 RequestTargetCanceld";
 	// private static Logger _log = Logger.getLogger(RequestTargetCanceld.class.getName());
 
-	private int _unselect;
+	private boolean _isEscKeyPressed;
 
 	@Override
 	protected void readImpl()
 	{
-		_unselect = readH();
+		_isEscKeyPressed = readH() == 0;
 	}
 
 	@Override
@@ -39,7 +39,7 @@ public class RequestTargetCanceld extends L2GameClientPacket
 		L2Character activeChar = getClient().getActiveChar();
 		if (activeChar != null)
 		{
-			if (_unselect == 0)
+			if (_isEscKeyPressed)
 			{
 				if (activeChar.isCastingNow() && activeChar.canAbortCast())
 				{
