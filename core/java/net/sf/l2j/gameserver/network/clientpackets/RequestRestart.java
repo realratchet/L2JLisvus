@@ -23,7 +23,6 @@ import net.sf.l2j.gameserver.model.L2Party;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.network.L2GameClient;
 import net.sf.l2j.gameserver.network.L2GameClient.GameClientState;
-import net.sf.l2j.gameserver.network.serverpackets.ActionFailed;
 import net.sf.l2j.gameserver.network.serverpackets.CharSelectInfo;
 import net.sf.l2j.gameserver.network.serverpackets.RestartResponse;
 import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
@@ -54,21 +53,21 @@ public class RequestRestart extends L2GameClientPacket
 
 		if (player.getActiveEnchantItem() != null)
 		{
-			player.sendPacket(ActionFailed.STATIC_PACKET);
+			player.sendPacket(RestartResponse.STATIC_PACKET_ERROR);
 			return;
 		}
 
 		if (player.isLocked())
 		{
 			_log.warning("Player " + player.getName() + " tried to restart during class change.");
-			player.sendPacket(ActionFailed.STATIC_PACKET);
+			player.sendPacket(RestartResponse.STATIC_PACKET_ERROR);
 			return;
 		}
 
 		if (player.isInStoreMode())
 		{
 			player.sendMessage("Cannot restart while trading.");
-			player.sendPacket(ActionFailed.STATIC_PACKET);
+			player.sendPacket(RestartResponse.STATIC_PACKET_ERROR);
 			return;
 		}
 
@@ -80,7 +79,7 @@ public class RequestRestart extends L2GameClientPacket
 			}
 
 			player.sendPacket(new SystemMessage(SystemMessage.CANT_RESTART_WHILE_FIGHTING));
-			player.sendPacket(ActionFailed.STATIC_PACKET);
+			player.sendPacket(RestartResponse.STATIC_PACKET_ERROR);
 			return;
 		}
 
@@ -92,7 +91,7 @@ public class RequestRestart extends L2GameClientPacket
 			if (SevenSignsFestival.getInstance().isFestivalInitialized())
 			{
 				player.sendMessage("You cannot restart while being a festival participant.");
-				player.sendPacket(ActionFailed.STATIC_PACKET);
+				player.sendPacket(RestartResponse.STATIC_PACKET_ERROR);
 				return;
 			}
 
@@ -119,8 +118,7 @@ public class RequestRestart extends L2GameClientPacket
 		// Return the client to the authed status
 		getClient().setState(GameClientState.AUTHED);
 
-		RestartResponse response = new RestartResponse();
-		sendPacket(response);
+		sendPacket(RestartResponse.STATIC_PACKET_OK);
 
 		// Send char list
 		CharSelectInfo cl = new CharSelectInfo(getClient().getAccountName(), getClient().getSessionId().playOkID1);
