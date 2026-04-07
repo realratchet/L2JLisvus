@@ -13,6 +13,9 @@
     <restartPointGroup id="derby_track_arena">
         <spawn X="12312" Y="182752" Z="-3558" />
     </restartPointGroup>
+	<restartPointGroup id="jail_room">
+        <spawn X="-114356" Y="-249645" Z="-2984" />
+    </restartPointGroup>
     <restartPointGroup id="clan_hall_21">
         <spawn X="43399" Y="108888" Z="-1980" />
     </restartPointGroup>

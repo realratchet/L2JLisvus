@@ -144,6 +144,18 @@ public class RestartPointData implements IXmlReader
     {
         return _chaoticRestartPoints.get(id);
     }
+
+    public Location getJailSpawnLoc()
+    {
+        Location loc = getSpawnLocById("jail_room");
+        // Keep the hardcoded location as a fallback here in case datapack is missing restart point for a reason
+        if (loc == null)
+        {
+            loc = new Location(-114356, -249645, -2984);
+            _log.warning(getClass().getSimpleName() + ": Could not find restart point for jail. Falling back to hardcoded location.");
+        }
+        return loc;
+    }
     
     public Location getSpawnLocById(String id)
     {

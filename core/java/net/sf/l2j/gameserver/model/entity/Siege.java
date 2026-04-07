@@ -505,6 +505,7 @@ public class Siege
 				break;
 			default:
 				players = getPlayersInZone();
+				break;
 		}
 		
 		for (L2PcInstance player : players)

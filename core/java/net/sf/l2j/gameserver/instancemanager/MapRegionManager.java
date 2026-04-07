@@ -168,6 +168,11 @@ public class MapRegionManager implements IXmlReader
 		if (activeChar instanceof L2PcInstance)
 		{
 			L2PcInstance player = ((L2PcInstance) activeChar);
+
+			if (player.isInJail())
+			{
+				return RestartPointData.getInstance().getJailSpawnLoc();
+			}
 			
 			if (player.getClan() != null)
 			{

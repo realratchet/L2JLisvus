@@ -24,9 +24,11 @@ import net.sf.l2j.Config;
 import net.sf.l2j.L2DatabaseFactory;
 import net.sf.l2j.gameserver.LoginServerThread;
 import net.sf.l2j.gameserver.datatables.CharNameTable;
+import net.sf.l2j.gameserver.datatables.RestartPointData;
 import net.sf.l2j.gameserver.handler.IAdminCommandHandler;
 import net.sf.l2j.gameserver.model.GMAudit;
 import net.sf.l2j.gameserver.model.L2World;
+import net.sf.l2j.gameserver.model.Location;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance.PunishmentLevel;
 
@@ -183,12 +185,14 @@ public class AdminBan implements IAdminCommandHandler
     private void jailOfflinePlayer(L2PcInstance activeChar, String name, int delay)
     {
         final int playerId = CharNameTable.getInstance().getIdByName(name);
+        final Location jailLoc = RestartPointData.getInstance().getJailSpawnLoc();
+
         try (Connection con = L2DatabaseFactory.getInstance().getConnection();
             PreparedStatement statement = con.prepareStatement("UPDATE characters SET x=?, y=?, z=?, punish_level=?, punish_timer=? WHERE obj_Id=? AND punish_level<=?"))
         {
-            statement.setInt(1, -114356);
-            statement.setInt(2, -249645);
-            statement.setInt(3, -2984);
+            statement.setInt(1, jailLoc.getX());
+            statement.setInt(2, jailLoc.getY());
+            statement.setInt(3, jailLoc.getZ());
             statement.setInt(4, PunishmentLevel.JAIL.ordinal());
             statement.setLong(5, delay * 60000);
             statement.setInt(6, playerId);

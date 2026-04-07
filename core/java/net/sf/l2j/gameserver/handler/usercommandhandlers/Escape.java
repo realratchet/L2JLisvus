@@ -42,7 +42,7 @@ public class Escape implements IUserCommandHandler
             return false;
         }
         
-        if (activeChar.isInOlympiadMode() || activeChar.inObserverMode() || activeChar.isFestivalParticipant() || activeChar.isInJail())
+        if (activeChar.isInOlympiadMode() || activeChar.inObserverMode() || activeChar.isFestivalParticipant())
         {
             activeChar.sendPacket(new SystemMessage(SystemMessage.NO_UNSTUCK_PLEASE_SEND_PETITION));
             return false;

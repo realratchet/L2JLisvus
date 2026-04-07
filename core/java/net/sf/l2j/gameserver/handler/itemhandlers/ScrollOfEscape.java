@@ -72,13 +72,6 @@ public class ScrollOfEscape implements IItemHandler
             return;
         }
         
-        // Check to see if player is in jail
-        if (activeChar.isInJail())
-        {
-            activeChar.sendMessage("You cannot escape from jail.");
-            return;
-        }
-        
 		if (!activeChar.destroyItem("Consume", item.getObjectId(), 1, null, false))
 		{
 			return;

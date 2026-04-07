@@ -2,6 +2,7 @@
 <!DOCTYPE xml>
 <list>
 	<zone id="11000" maxZ="-2800" minZ="-3200" shape="Cuboid" type="JailZone">
+		<stat name="restartPointGroup" val="jail_room" />
 		<node X="-117072" Y="-252544" />
 		<node X="-112080" Y="-247536" />
 	</zone>

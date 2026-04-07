@@ -78,13 +78,6 @@ public class Recall implements ISkillHandler
 					continue;
 				}
 				
-				// Check to see if player is in jail
-				if (target.isInJail())
-				{
-					target.sendMessage("You cannot escape from jail.");
-					continue;
-				}
-				
 				L2EventScript event = target.getEvent();
 				if (event != null && event.isStarted())
 				{

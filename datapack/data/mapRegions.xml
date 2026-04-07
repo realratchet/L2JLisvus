@@ -157,6 +157,10 @@
         <map X="22" Y="17" />
         <map X="23" Y="17" />
     </region>
+    <!-- Jail -->
+    <region name="gm_room" restartPointGroup="orc_village" castleId="0" locId="1222" bbs="9">
+        <map X="16" Y="10" />
+    </region>
     <!-- Rift Bitween Worlds -->
     <region name="rift_bitween_worlds" restartPointGroup="dimensional_rift" castleId="0"
         locId="1643" bbs="100">
@@ -194,15 +198,16 @@
         <map X="15" Y="12" />
     </region>
     <!-- Talking Island Town -->
-	<region name="talking_island_town" restartPointGroup="ti_village" castleId="1" locId="910" bbs="1">
-		<map X="15" Y="23" />
-		<map X="15" Y="24" />
-		<map X="15" Y="25" />
-		<map X="16" Y="23" />
-		<map X="16" Y="24" />
-		<map X="16" Y="25" />
-		<map X="17" Y="24" />
-		<map X="17" Y="25" />
-		<map X="18" Y="25" />
-	</region>
+    <region name="talking_island_town" restartPointGroup="ti_village" castleId="1" locId="910"
+        bbs="1">
+        <map X="15" Y="23" />
+        <map X="15" Y="24" />
+        <map X="15" Y="25" />
+        <map X="16" Y="23" />
+        <map X="16" Y="24" />
+        <map X="16" Y="25" />
+        <map X="17" Y="24" />
+        <map X="17" Y="25" />
+        <map X="18" Y="25" />
+    </region>
 </list>

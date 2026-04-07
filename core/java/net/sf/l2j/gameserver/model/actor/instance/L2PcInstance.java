@@ -64,6 +64,7 @@ import net.sf.l2j.gameserver.datatables.ItemTable;
 import net.sf.l2j.gameserver.datatables.NobleSkillTable;
 import net.sf.l2j.gameserver.datatables.NpcTable;
 import net.sf.l2j.gameserver.datatables.PetDataTable;
+import net.sf.l2j.gameserver.datatables.RestartPointData;
 import net.sf.l2j.gameserver.datatables.SkillTable;
 import net.sf.l2j.gameserver.datatables.SkillTreeTable;
 import net.sf.l2j.gameserver.geoengine.GeoData;
@@ -11185,7 +11186,7 @@ public final class L2PcInstance extends L2PlayableInstance
 					}
 					else
 					{
-						teleToLocation(-114356, -249645, -2984, false); // Jail
+						teleToLocation(RestartPointData.getInstance().getJailSpawnLoc(), false); // Jail
 					}
 					break;
 			}
@@ -11260,7 +11261,7 @@ public final class L2PcInstance extends L2PlayableInstance
 					// If player escaped, put him back in jail
 					if (!isInsideZone(ZONE_JAIL))
 					{
-						teleToLocation(-114356, -249645, -2984, false);
+						teleToLocation(RestartPointData.getInstance().getJailSpawnLoc(), false);
 					}
 					break;
 			}
