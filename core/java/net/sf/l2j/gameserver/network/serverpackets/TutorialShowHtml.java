@@ -26,7 +26,7 @@ public class TutorialShowHtml extends L2GameServerPacket
 	
 	/*
 	 * (non-Javadoc)
-	 * @see net.sf.l2j.gameserver.serverpackets.L2GameServerPacket#writeImpl()
+	 * @see net.sf.l2j.gameserver.network.serverpackets.L2GameServerPacket#writeImpl()
 	 */
 	@Override
 	protected final void writeImpl()

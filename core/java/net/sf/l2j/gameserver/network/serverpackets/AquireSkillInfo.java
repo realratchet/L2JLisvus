@@ -86,7 +86,7 @@ public class AquireSkillInfo extends L2GameServerPacket
 	
 	/*
 	 * (non-Javadoc)
-	 * @see net.sf.l2j.gameserver.serverpackets.L2GameServerPacket#getType()
+	 * @see net.sf.l2j.gameserver.network.serverpackets.L2GameServerPacket#getType()
 	 */
 	@Override
 	public String getType()
