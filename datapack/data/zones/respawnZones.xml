@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<list>
+    <!-- Border outpost - Oren -->
+	<zone id="13014" maxZ="3812" minZ="-4188" shape="NPoly" type="RespawnZone">
+        <stat name="restartPointGroup" val="oren_town" />
+		<node X="117258" Y="-17696" />
+		<node X="111573" Y="-6727" />
+		<node X="104357" Y="-204" />
+		<node X="98363" Y="-186" />
+		<node X="98372" Y="-24720" />
+	</zone>
+    <!-- Border outpost - Goddard -->
+	<zone id="13015" maxZ="1992" minZ="-4008" shape="NPoly" type="RespawnZone">
+        <stat name="restartPointGroup" val="goddard_town" />
+		<node X="97820" Y="-33007" />
+		<node X="130600" Y="-33101" />
+		<node X="131029" Y="-19205" />
+		<node X="114478" Y="-17118" />
+		<node X="113183" Y="-18971" />
+        <node X="97723" Y="-24594" />
+	</zone>
+    <!-- Border outpost - Aden -->
+	<zone id="13016" maxZ="3812" minZ="-4188" shape="NPoly" type="RespawnZone">
+        <stat name="restartPointGroup" val="aden_town" />
+		<node X="130704" Y="-21362" />
+		<node X="130886" Y="-209" />
+		<node X="112747" Y="-173" />
+		<node X="108637" Y="-3399" />
+		<node X="115372" Y="-13695" />
+	</zone>
+</list>
