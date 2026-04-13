@@ -30,9 +30,9 @@ import net.sf.l2j.util.Rnd;
 public final class L2RaidBossInstance extends L2MonsterInstance
 {
 	private static final int RAIDBOSS_MAINTENANCE_INTERVAL = 30000; // 30 sec
-
+	
 	private RaidBossSpawnManager.StatusEnum _raidStatus;
-
+	
 	/**
 	 * Constructor of L2RaidBossInstance (use L2Character and L2NpcInstance constructor).<BR>
 	 * <BR>
@@ -57,7 +57,7 @@ public final class L2RaidBossInstance extends L2MonsterInstance
 	{
 		return RAIDBOSS_MAINTENANCE_INTERVAL;
 	}
-
+	
 	@Override
 	public boolean doDie(L2Character killer)
 	{
@@ -65,18 +65,18 @@ public final class L2RaidBossInstance extends L2MonsterInstance
 		{
 			return false;
 		}
-
+		
 		if (killer instanceof L2PlayableInstance)
 		{
 			broadcastPacket(new SystemMessage(SystemMessage.RAID_WAS_SUCCESSFUL));
 		}
-
+		
 		RaidBossSpawnManager.getInstance().updateStatus(this, true);
-
+		
 		return true;
-
+		
 	}
-
+	
 	/**
 	 * Spawn all minions at a regular interval Also if boss is too far from home location at the time of this check, teleport it home
 	 */
@@ -87,19 +87,13 @@ public final class L2RaidBossInstance extends L2MonsterInstance
 		{
 			_minionList.spawnMinions();
 		}
-
+		
 		_maintainTask = ThreadPoolManager.getInstance().scheduleGeneralAtFixedRate(new Runnable()
 		{
 			@Override
 			public void run()
 			{
-				// Teleport raid boss home if it's too far from home location
-				L2Spawn bossSpawn = getSpawn();
-				if (!isInsideRadius(bossSpawn.getLocX(), bossSpawn.getLocY(), bossSpawn.getLocZ(), Config.MAX_PURSUE_RANGE_RAID, true, false))
-				{
-					teleToLocation(bossSpawn.getLocX(), bossSpawn.getLocY(), bossSpawn.getLocZ(), true);
-					healFull(); // prevents minor exploiting with it
-				}
+				checkAndReturnToSpawn();
 
 				if (_minionList != null)
 				{
@@ -108,34 +102,40 @@ public final class L2RaidBossInstance extends L2MonsterInstance
 			}
 		}, 60000, getMaintenanceInterval() + Rnd.get(5000));
 	}
-
+	
+	protected void checkAndReturnToSpawn()
+	{
+		if (isDead() || isMovementDisabled())
+		{
+			return;
+		}
+		
+		if (!isInCombat())
+		{
+			final L2Spawn spawn = getSpawn();
+			if (spawn == null)
+			{
+				return;
+			}
+			
+			final int spawnX = spawn.getLocX();
+			final int spawnY = spawn.getLocY();
+			final int spawnZ = spawn.getLocZ();
+			
+			if (!isInsideRadius(spawnX, spawnY, spawnZ, Math.max(Config.MAX_DRIFT_RANGE, 200), true, false))
+			{
+				teleToLocation(spawnX, spawnY, spawnZ, false);
+			}
+		}
+	}
+	
 	public void setRaidStatus(RaidBossSpawnManager.StatusEnum status)
 	{
 		_raidStatus = status;
 	}
-
+	
 	public RaidBossSpawnManager.StatusEnum getRaidStatus()
 	{
 		return _raidStatus;
-	}
-
-	/**
-	 * Reduce the current HP of the L2Attackable, update its _aggroList and launch the doDie Task if necessary.<BR>
-	 * <BR>
-	 * @param damage
-	 * @param attacker
-	 * @param awake
-	 * @param isDot
-	 */
-	@Override
-	public void reduceCurrentHp(double damage, L2Character attacker, boolean awake, boolean isDot)
-	{
-		super.reduceCurrentHp(damage, attacker, awake, isDot);
-	}
-
-	public void healFull()
-	{
-		super.setCurrentHp(super.getMaxHp());
-		super.setCurrentMp(super.getMaxMp());
 	}
 }

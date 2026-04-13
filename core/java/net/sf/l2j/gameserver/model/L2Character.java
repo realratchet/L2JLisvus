@@ -1867,12 +1867,7 @@ public abstract class L2Character extends L2Object
 	public int getDecayTime()
 	{
 		// Give more time to Raid Bosses
-		if (this instanceof L2RaidBossInstance)
-		{
-			return 30000;
-		}
-		
-		return 8500;
+		return this instanceof L2RaidBossInstance ? 30000 : 8500;
 	}
 	
 	public final L2Skill getLastSkillCast()
@@ -6647,26 +6642,19 @@ public abstract class L2Character extends L2Object
 		getStatus().addStatusListener(object);
 	}
 	
-	public void reduceCurrentHp(double i, L2Character attacker)
+	public void reduceCurrentHp(double damage, L2Character attacker)
 	{
-		reduceCurrentHp(i, attacker, true, false);
+		reduceCurrentHp(damage, attacker, true, false);
 	}
 	
-	public void reduceCurrentHp(double i, L2Character attacker, boolean awake, boolean isDot)
+	public void reduceCurrentHp(double damage, L2Character attacker, boolean awake, boolean isDot)
 	{
-		if (Config.CHAMPION_ENABLE && isChampion() && (Config.CHAMPION_HP != 0))
-		{
-			getStatus().reduceHp(i / Config.CHAMPION_HP, attacker, awake, isDot);
-		}
-		else
-		{
-			getStatus().reduceHp(i, attacker, awake, isDot);
-		}
+		getStatus().reduceHp(damage, attacker, awake, isDot);
 	}
 	
-	public void reduceCurrentMp(double i)
+	public void reduceCurrentMp(double damage)
 	{
-		getStatus().reduceMp(i);
+		getStatus().reduceMp(damage);
 	}
 	
 	public void removeStatusListener(L2Character object)

@@ -287,7 +287,14 @@ public class L2Attackable extends L2NpcInstance
 		}
 		
 		// Reduce the current HP of the L2Attackable and launch the doDie Task if necessary
-		super.reduceCurrentHp(damage, attacker, awake, isDot);
+		if (Config.CHAMPION_ENABLE && isChampion() && (Config.CHAMPION_HP != 0))
+		{
+			super.reduceCurrentHp(damage / Config.CHAMPION_HP, attacker, awake, isDot);
+		}
+		else
+		{
+			super.reduceCurrentHp(damage, attacker, awake, isDot);
+		}
 	}
 	
 	public synchronized void setMustRewardExpSp(boolean value)
