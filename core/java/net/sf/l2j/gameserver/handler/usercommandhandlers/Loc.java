@@ -34,7 +34,7 @@ public class Loc implements IUserCommandHandler
         int regionMsgId = MapRegionManager.getInstance().getMapRegionLocId(activeChar);
         if (regionMsgId <= 0)
         {
-            return false;
+            regionMsgId = SystemMessage.LOC_ADEN_S1_S2_S3;
         }
         
         SystemMessage sm = new SystemMessage(regionMsgId);
