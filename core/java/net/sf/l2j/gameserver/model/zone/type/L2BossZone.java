@@ -31,7 +31,6 @@ import net.sf.l2j.gameserver.model.zone.L2ZoneType;
 public class L2BossZone extends L2ZoneType
 {
 	private int _timeInvade;
-	private boolean _enabled = true; // default value, unless overridden by xml...
 	
 	// track the times that players got disconnected. Players are allowed
 	// to log back into the zone as long as their log-out was within _timeInvade
@@ -43,7 +42,7 @@ public class L2BossZone extends L2ZoneType
 	// after reboot/server downtime (outside of their control), within 30
 	// of server restart
 	private final Set<Integer> _playersAllowed = ConcurrentHashMap.newKeySet();
-
+	
 	private final int[] _oustLoc = new int[3];
 	
 	public L2BossZone(int id)
@@ -56,8 +55,6 @@ public class L2BossZone extends L2ZoneType
 	{
 		if (name.equals("InvadeTime"))
 			_timeInvade = Integer.parseInt(value);
-		else if (name.equals("EnabledByDefault"))
-			_enabled = Boolean.parseBoolean(value);
 		else if (name.equals("oustX"))
 			_oustLoc[0] = Integer.parseInt(value);
 		else if (name.equals("oustY"))
@@ -73,7 +70,7 @@ public class L2BossZone extends L2ZoneType
 	{
 		character.setInsideZone(L2Character.ZONE_BOSS, true);
 		
-		if (!_enabled)
+		if (!isEnabled())
 		{
 			return;
 		}
@@ -154,7 +151,7 @@ public class L2BossZone extends L2ZoneType
 	{
 		character.setInsideZone(L2Character.ZONE_BOSS, false);
 		
-		if (!_enabled)
+		if (!isEnabled())
 		{
 			return;
 		}
@@ -295,10 +292,13 @@ public class L2BossZone extends L2ZoneType
 			_playerAllowedReEntryTimes.put(objectId, System.currentTimeMillis() + duration);
 	}
 	
-	public void setZoneEnabled(boolean flag)
+	@Override
+	public void setEnabled(boolean val)
 	{
-		if (_enabled != flag)
+		if (isEnabled() != val)
+		{
 			oustAllPlayers();
-		_enabled = flag;
+		}
+		super.setEnabled(val);
 	}
 }

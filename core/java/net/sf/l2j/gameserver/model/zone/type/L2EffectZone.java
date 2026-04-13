@@ -17,15 +17,12 @@ package net.sf.l2j.gameserver.model.zone.type;
 import java.util.concurrent.Future;
 
 import net.sf.l2j.gameserver.ThreadPoolManager;
-import net.sf.l2j.gameserver.ai.CtrlIntention;
 import net.sf.l2j.gameserver.datatables.SkillTable;
 import net.sf.l2j.gameserver.handler.ISkillHandler;
 import net.sf.l2j.gameserver.handler.SkillHandler;
 import net.sf.l2j.gameserver.model.L2Character;
 import net.sf.l2j.gameserver.model.L2Skill;
-import net.sf.l2j.gameserver.model.actor.instance.L2MonsterInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.model.actor.instance.L2PlayableInstance;
 import net.sf.l2j.gameserver.model.zone.L2ZoneType;
 import net.sf.l2j.gameserver.network.serverpackets.EtcStatusUpdate;
 import net.sf.l2j.util.Rnd;
@@ -40,12 +37,10 @@ public class L2EffectZone extends L2ZoneType
 	private int _chance;
 	private int _initialDelay;
 	private int _reuse;
-	private boolean _enabled;
-	private String _target;
 	private Future<?> _task;
 
-	boolean _bypassConditions;
-	int[][] _skills;
+	private boolean _bypassConditions;
+	private int[][] _skills;
 
 	public L2EffectZone(int id)
 	{
@@ -53,8 +48,6 @@ public class L2EffectZone extends L2ZoneType
 		_chance = 100;
 		_initialDelay = 0;
 		_reuse = 30000;
-		_enabled = true;
-		_target = "pc";
 		_bypassConditions = false;
 	}
 
@@ -68,14 +61,6 @@ public class L2EffectZone extends L2ZoneType
 		else if (name.equals("initialDelay"))
 		{
 			_initialDelay = Integer.parseInt(value);
-		}
-		else if (name.equals("default_enabled"))
-		{
-			_enabled = Boolean.parseBoolean(value);
-		}
-		else if (name.equals("target"))
-		{
-			_target = String.valueOf(value);
 		}
 		else if (name.equals("reuse"))
 		{
@@ -124,19 +109,20 @@ public class L2EffectZone extends L2ZoneType
 	@Override
 	protected void onEnter(L2Character character)
 	{
-		if (((character instanceof L2PlayableInstance) && _target.equalsIgnoreCase("pc")) || ((character instanceof L2PcInstance) && _target.equalsIgnoreCase("pc_only")) || ((character instanceof L2MonsterInstance) && _target.equalsIgnoreCase("npc")))
+		if (_skills != null)
 		{
 			if (_task == null)
 			{
 				synchronized (this)
 				{
-					if ((_task == null) && (_skills != null))
+					if (_task == null)
 					{
 						_task = ThreadPoolManager.getInstance().scheduleGeneralAtFixedRate(new ApplySkill(this), _initialDelay, _reuse);
 					}
 				}
 			}
 		}
+
 		if (character instanceof L2PcInstance)
 		{
 			character.setInsideZone(L2Character.ZONE_DANGER_AREA, true);
@@ -161,34 +147,19 @@ public class L2EffectZone extends L2ZoneType
 			}
 		}
 	}
-	
-	public String getTargetType()
-	{
-		return _target;
-	}
-
-	public boolean isEnabled()
-	{
-		return _enabled;
-	}
 
 	public int getChance()
 	{
 		return _chance;
 	}
 
-	public void setZoneEnabled(boolean val)
-	{
-		_enabled = val;
-	}
-
 	private class ApplySkill implements Runnable
 	{
-		private final L2EffectZone _poisonZone;
+		private final L2EffectZone _zone;
 
 		ApplySkill(L2EffectZone zone)
 		{
-			_poisonZone = zone;
+			_zone = zone;
 		}
 
 		@Override
@@ -196,14 +167,11 @@ public class L2EffectZone extends L2ZoneType
 		{
 			if (isEnabled())
 			{
-				for (L2Character temp : _poisonZone.getCharacterList())
+				for (L2Character temp : _zone.getCharacterList())
 				{
 					if ((temp != null) && !temp.isDead())
 					{
-						if (Rnd.get(100) < getChance() && (temp instanceof L2PcInstance && getTargetType().equalsIgnoreCase("pc_only") 
-							|| temp instanceof L2PlayableInstance && getTargetType().equalsIgnoreCase("pc") 
-							|| temp instanceof L2MonsterInstance && temp.hasAI() && temp.getAI().getIntention() != CtrlIntention.AI_INTENTION_IDLE 
-							&& getTargetType().equalsIgnoreCase("npc")))
+						if (Rnd.get(100) < getChance() && isAffectedTargetType(temp))
 						{
 							for (int[] skillData : _skills)
 							{

@@ -24,7 +24,6 @@ import net.sf.l2j.gameserver.taskmanager.TaskTypes;
 
 /**
  * Updates all data of Olympiad nobles in db
- * 
  * @author godson
  */
 public class TaskOlympiadSave extends Task
@@ -33,23 +32,23 @@ public class TaskOlympiadSave extends Task
     public static final String NAME = "olympiad_save";
     
     @Override
-	public String getName()
+    public String getName()
     {
         return NAME;
     }
-
+    
     @Override
-	public void onTimeElapsed(ExecutedTask task)
+    public void onTimeElapsed(ExecutedTask task)
     {
-    	if (Olympiad.getInstance().getCompPeriodState() != Olympiad.NONE)
-		{
-    		Olympiad.getInstance().save();
-    		_log.info("Olympiad System: Data updated successfully.");
-		}
+        if (Olympiad.getInstance().getCompPeriodState() != Olympiad.NONE)
+        {
+            Olympiad.getInstance().save();
+            _log.info("Olympiad System: Data updated successfully.");
+        }
     }
     
     @Override
-	public void initialize()
+    public void initialize()
     {
         super.initialize();
         TaskManager.getInstance().addUniqueTask(NAME, TaskTypes.TYPE_FIXED_SHEDULED, "900000", "1800000", "");

@@ -21,7 +21,9 @@ import java.util.logging.Logger;
 
 import net.sf.l2j.gameserver.model.L2Character;
 import net.sf.l2j.gameserver.model.L2Object;
+import net.sf.l2j.gameserver.model.actor.instance.L2MonsterInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.actor.instance.L2PlayableInstance;
 import net.sf.l2j.gameserver.network.serverpackets.L2GameServerPacket;
 
 /**
@@ -31,38 +33,43 @@ import net.sf.l2j.gameserver.network.serverpackets.L2GameServerPacket;
 public abstract class L2ZoneType
 {
 	protected static final Logger _log = Logger.getLogger(L2ZoneType.class.getName());
-
+	
 	private final int _id;
 	protected L2ZoneForm _zone;
 	protected Map<Integer, L2Character> _characterList;
-
+	
 	/** Parameters to affect specific characters */
 	private boolean _checkAffected;
-
+	
+	private boolean _isEnabled;
+	
 	protected String _name;
 	private int _minLvl;
 	private int _maxLvl;
 	private int[] _race;
 	private int[] _class;
 	private char _classType;
-
+	private String _targetType = null;
+	
 	protected L2ZoneType(int id)
 	{
 		_id = id;
 		_characterList = new ConcurrentHashMap<>();
-
+		
 		_checkAffected = false;
-
+		_isEnabled = true;
+		
 		_name = null;
 		_minLvl = 0;
 		_maxLvl = 0xFF;
-
+		
 		_classType = 0;
-
+		_targetType = "playable";
+		
 		_race = null;
 		_class = null;
 	}
-
+	
 	public int getId()
 	{
 		return _id;
@@ -76,7 +83,7 @@ public abstract class L2ZoneType
 	public void setParameter(String name, String value)
 	{
 		_checkAffected = true;
-
+		
 		// Name
 		if (name.equals("name"))
 		{
@@ -98,19 +105,18 @@ public abstract class L2ZoneType
 			// Create a new array holding the affected race
 			if (_race == null)
 			{
-				_race = new int[1];
-				_race[0] = Integer.parseInt(value);
+				_race = new int[] { Integer.parseInt(value) };
 			}
 			else
 			{
 				int[] temp = new int[_race.length + 1];
-
+				
 				int i = 0;
 				for (; i < _race.length; i++)
 				{
 					temp[i] = _race[i];
 				}
-
+				
 				temp[i] = Integer.parseInt(value);
 				_race = temp;
 			}
@@ -121,19 +127,18 @@ public abstract class L2ZoneType
 			// Create a new array holding the affected classIds
 			if (_class == null)
 			{
-				_class = new int[1];
-				_class[0] = Integer.parseInt(value);
+				_class = new int[] { Integer.parseInt(value) };
 			}
 			else
 			{
 				int[] temp = new int[_class.length + 1];
-
+				
 				int i = 0;
 				for (; i < _class.length; i++)
 				{
 					temp[i] = _class[i];
 				}
-
+				
 				temp[i] = Integer.parseInt(value);
 				_class = temp;
 			}
@@ -150,8 +155,16 @@ public abstract class L2ZoneType
 				_classType = 2;
 			}
 		}
+		else if (name.equals("targetType"))
+		{
+			_targetType = value;
+		}
+		else if (name.equals("defaultEnabled"))
+		{
+			_isEnabled = Boolean.parseBoolean(value);
+		}
 	}
-
+	
 	/**
 	 * Checks if the given character is affected by this zone
 	 * @param character
@@ -164,7 +177,12 @@ public abstract class L2ZoneType
 		{
 			return false;
 		}
-
+		
+		if (!isAffectedTargetType(character))
+		{
+			return false;
+		}
+		
 		if (character instanceof L2PcInstance)
 		{
 			// Check class type
@@ -182,12 +200,12 @@ public abstract class L2ZoneType
 					return false;
 				}
 			}
-
+			
 			// Check race
 			if (_race != null)
 			{
 				boolean ok = false;
-
+				
 				for (int element : _race)
 				{
 					if (((L2PcInstance) character).getRace().ordinal() == element)
@@ -196,26 +214,26 @@ public abstract class L2ZoneType
 						break;
 					}
 				}
-
+				
 				if (!ok)
 				{
 					return false;
 				}
 			}
-
+			
 			// Check class
 			if (_class != null)
 			{
 				boolean ok = false;
-				for (int _clas : _class)
+				for (int cl : _class)
 				{
-					if (((L2PcInstance) character).getClassId().ordinal() == _clas)
+					if (((L2PcInstance) character).getClassId().ordinal() == cl)
 					{
 						ok = true;
 						break;
 					}
 				}
-
+				
 				if (!ok)
 				{
 					return false;
@@ -224,10 +242,39 @@ public abstract class L2ZoneType
 		}
 		return true;
 	}
+	
+	public boolean isAffectedTargetType(L2Character character)
+	{
+		boolean isAffected;
+		
+		if (_targetType == null)
+		{
+			isAffected = true;
+		}
+		else
+		{
+			switch (_targetType)
+			{
+				case "playable":
+					isAffected = character instanceof L2PlayableInstance;
+					break;
+				case "pc":
+					isAffected = character instanceof L2PcInstance;
+					break;
+				case "npc":
+					isAffected = character instanceof L2MonsterInstance;
+					break;
+				default:
+					isAffected = false;
+					break;
+			}
+		}
 
+		return isAffected;
+	}
+	
 	/**
 	 * Sets the zone for this L2ZoneType Instance.
-	 * 
 	 * @param zone
 	 */
 	public void setZone(L2ZoneForm zone)
@@ -237,7 +284,7 @@ public abstract class L2ZoneType
 		
 		_zone = zone;
 	}
-
+	
 	/**
 	 * Returns this zone's zone form
 	 * @return
@@ -246,10 +293,9 @@ public abstract class L2ZoneType
 	{
 		return _zone;
 	}
-
+	
 	/**
 	 * Sets the zone name.
-	 * 
 	 * @param name
 	 */
 	public void setName(String name)
@@ -259,7 +305,6 @@ public abstract class L2ZoneType
 	
 	/**
 	 * Returns zone name.
-	 * 
 	 * @return
 	 */
 	public String getName()
@@ -267,11 +312,16 @@ public abstract class L2ZoneType
 		return _name;
 	}
 	
+	public String getTargetType()
+	{
+		return _targetType;
+	}
+	
 	public boolean isInsideZone(int x, int y)
 	{
 		return _zone.isInsideZone(x, y, _zone.getHighZ());
 	}
-
+	
 	/**
 	 * Checks if the given coordinates are within the zone
 	 * @param x
@@ -283,7 +333,7 @@ public abstract class L2ZoneType
 	{
 		return _zone.isInsideZone(x, y, z);
 	}
-
+	
 	/**
 	 * Checks if the given object is inside the zone.
 	 * @param object
@@ -293,17 +343,17 @@ public abstract class L2ZoneType
 	{
 		return isInsideZone(object.getX(), object.getY(), object.getZ());
 	}
-
+	
 	public double getDistanceToZone(int x, int y)
 	{
 		return getZone().getDistanceToZone(x, y);
 	}
-
+	
 	public double getDistanceToZone(L2Object object)
 	{
 		return getZone().getDistanceToZone(object.getX(), object.getY());
 	}
-
+	
 	public void revalidateInZone(L2Character character)
 	{
 		// If the character can't be affected by this zone return
@@ -330,7 +380,7 @@ public abstract class L2ZoneType
 			removeCharacter(character);
 		}
 	}
-
+	
 	/**
 	 * Force fully removes a character from the zone Should use during teleport / logoff
 	 * @param character
@@ -343,7 +393,7 @@ public abstract class L2ZoneType
 			onExit(character);
 		}
 	}
-
+	
 	/**
 	 * Will scan the zones char list for the character
 	 * @param character
@@ -358,10 +408,9 @@ public abstract class L2ZoneType
 	{
 		return _characterList.values();
 	}
-
+	
 	/**
 	 * Broadcasts packet to all players inside the zone
-	 * 
 	 * @param packet
 	 */
 	public void broadcastPacket(L2GameServerPacket packet)
@@ -379,13 +428,23 @@ public abstract class L2ZoneType
 			}
 		}
 	}
-
+	
 	public void visualizeZone(int z)
 	{
 		getZone().visualizeZone(z);
 	}
 	
+	public void setEnabled(boolean state)
+	{
+		_isEnabled = state;
+	}
+	
+	public boolean isEnabled()
+	{
+		return _isEnabled;
+	}
+	
 	protected abstract void onEnter(L2Character character);
-
+	
 	protected abstract void onExit(L2Character character);
 }

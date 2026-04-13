@@ -617,16 +617,39 @@
   <set name="operateType" val="OP_PASSIVE"/>
 </skill>
 <skill id="4145" levels="3" name="Decrease P. Atk.">
-  <!-- NOT USED IN C4 -->
-  <set name="target" val="TARGET_SELF"/>
-  <set name="skillType" val="WEAKNESS"/>
-  <set name="operateType" val="OP_PASSIVE"/>
+  <table name="#pAtk"> 0.83 0.8 0.77 </table>
+  <set name="magicLvl" val="1" />
+  <set name="power" val="10" /> <!-- Base Land Rate -->
+  <set name="target" val="TARGET_ONE" />
+  <set name="isDebuff" val="true" />
+  <set name="skillType" val="DEBUFF" />
+  <set name="lvlDepend" val="1" />
+  <set name="operateType" val="OP_ACTIVE" />
+  <set name="aggroPoints" val="-100" />
+  <for>
+    <effect name="Debuff" time="5" val="0" stackOrder="#pAtk" stackType="pAtkDown">
+      <mul order="0x30" stat="pAtk" val="#pAtk" />
+    </effect>
+  </for>
 </skill>
-<skill id="4146" levels="3" name="Decrease M.Def">
-  <!-- NOT USED IN C4 -->
-  <set name="target" val="TARGET_SELF"/>
-  <set name="skillType" val="WEAKNESS"/>
-  <set name="operateType" val="OP_PASSIVE"/>
+<!-- The name is really Decrease M. Def on client-side, yet the description mentions p.def -->
+<skill id="4146" levels="3" name="Decrease M. Def">
+  <table name="#pDef"> 0.83 0.8 0.77 </table>
+  <set name="magicLvl" val="1"/>
+  <set name="power" val="10"/> <!-- Base Land Rate -->
+  <set name="target" val="TARGET_ONE"/>
+  <set name="isDebuff" val="true"/>
+  <set name="skillType" val="DEBUFF"/>
+  <set name="lvlDepend" val="1"/>
+  <set name="operateType" val="OP_ACTIVE"/>
+  <set name="castRange" val="-1"/>
+  <set name="effectRange" val="-1"/>
+  <set name="aggroPoints" val="-100"/>
+  <for>
+    <effect name="Debuff" time="5" count="1" val="0" stackOrder="#pDef" stackType="pDefDown">
+      <mul order="0x30" stat="pDef" val="#pDef"/>
+    </effect>
+  </for>
 </skill>
 <skill id="4147" levels="7" name="Area Dispel">
   <!-- NOT USED IN C4 -->
@@ -635,10 +658,20 @@
   <set name="operateType" val="OP_PASSIVE"/>
 </skill>
 <skill id="4148" levels="12" name="Poison">
-  <!-- NOT USED IN C4 -->
-  <set name="target" val="TARGET_SELF"/>
-  <set name="skillType" val="WEAKNESS"/>
-  <set name="operateType" val="OP_PASSIVE"/>
+  <table name="#dmg"> 12 18 24 31 38 44 48 48 49 49 48 48 </table>
+  <table name="#magicLvl"> 10 20 30 40 50 60 70 75 80 85 90 95 </table>
+  <table name="#stackOrder"> 2 3 4 5 6 7 8 8 9 9 10 10 </table>
+  <set name="magicLvl" val="#magicLvl" />
+  <set name="power" val="10" /> <!-- Base Land Rate -->
+  <set name="target" val="TARGET_ONE" />
+  <set name="isDebuff" val="true" />
+  <set name="skillType" val="POISON" />
+  <set name="lvlDepend" val="1" />
+  <set name="operateType" val="OP_ACTIVE" />
+  <set name="aggroPoints" val="-100" />
+  <for>
+    <effect count="2" name="DamOverTime" time="3" val="#dmg" abnormal="poison" stackOrder="#stackOrder" stackType="poison" />
+  </for>
 </skill>
 <skill id="4149" levels="12" name="Bleed">
   <!-- NOT USED IN C4 -->
@@ -647,10 +680,21 @@
   <set name="operateType" val="OP_PASSIVE"/>
 </skill>
 <skill id="4150" levels="12" name="Flame">
-  <!-- NOT USED IN C4 -->
-  <set name="target" val="TARGET_SELF"/>
-  <set name="skillType" val="WEAKNESS"/>
-  <set name="operateType" val="OP_PASSIVE"/>
+  <!-- Done by DJ MELERIX -->
+  <table name="#dmg"> 14 21 30 40 51 61 68 68 72 72 74 74 </table>
+  <table name="#magicLvl"> 10 20 30 40 50 60 70 75 80 85 90 95 </table>
+  <set name="element" val="2"/> <!-- Fire -->
+  <set name="isDebuff" val="true"/>
+  <set name="lvlDepend" val="1"/>
+  <set name="magicLvl" val="#magicLvl"/>
+  <set name="operateType" val="OP_ACTIVE"/>
+  <set name="power" val="10"/> <!-- Base Land Rate -->
+  <set name="skillRadius" val="200"/> <!-- Guess -->
+  <set name="skillType" val="DOT"/>
+  <set name="target" val="TARGET_ONE"/>
+  <for>
+    <effect count="5" name="DamOverTime" time="1" val="#dmg"/>
+  </for>
 </skill>
 <skill id="4151" levels="12" name="NPC Windstrike - Magic">
   <table name="#mpConsume"> 13 20 27 35 45 55 65 69 73 75 77 78 </table>
