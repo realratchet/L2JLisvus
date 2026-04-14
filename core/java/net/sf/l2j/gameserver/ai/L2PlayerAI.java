@@ -113,6 +113,23 @@ public class L2PlayerAI extends L2CharacterAI
 	}
 
 	@Override
+	protected void onEvtArrivedBlocked(Location loc)
+	{
+		L2PcInstance player = _actor.getActingPlayer();
+		if (player == null)
+		{
+			return;
+		}
+
+		if (player.isPendingSitting())
+		{
+			player.sitDown();
+		}
+
+		super.onEvtArrivedBlocked(loc);
+	}
+
+	@Override
 	protected void onEvtArrivedRevalidate()
 	{
 		super.onEvtArrivedRevalidate();

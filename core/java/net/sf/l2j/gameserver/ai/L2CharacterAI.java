@@ -770,7 +770,6 @@ public class L2CharacterAI extends AbstractAI
 
 		// Launch actions corresponding to the Event Think
 		onEvtThink();
-
 	}
 
 	/**
