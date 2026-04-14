@@ -16,6 +16,7 @@ package net.sf.l2j.gameserver.network.clientpackets;
 
 import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.communitybbs.CommunityBoard;
+import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 
 /**
  * This class ...
@@ -37,7 +38,13 @@ public class RequestShowBoard extends L2GameClientPacket
 	@Override
 	public void runImpl()
 	{
-		CommunityBoard.getInstance().handleCommands(getClient(), Config.BBS_DEFAULT);
+		L2PcInstance activeChar = getClient().getActiveChar();
+		if (activeChar == null)
+		{
+			return;
+		}
+
+		CommunityBoard.getInstance().handleCommands(activeChar, Config.BBS_DEFAULT);
 	}
 	
 	/*

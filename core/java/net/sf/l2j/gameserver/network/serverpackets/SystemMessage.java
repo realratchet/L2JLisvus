@@ -441,6 +441,9 @@ public class SystemMessage extends L2GameServerPacket
 	public static final int THE_HARVEST_FAILED_BECAUSE_THE_SEED_WAS_NOT_SOWN = 893;
 	public static final int ONLY_LEVEL_SUP_10_CAN_RECOMMEND = 898;
 	public static final int CANT_DRAW_SYMBOL = 899;
+	public static final int SYMBOLS_FULL = 900;
+	public static final int SYMBOL_NOT_FOUND = 901;
+	public static final int NUMBER_INCORRECT = 902;
 	public static final int LOC_TI_S1_S2_S3 = 910;
 	public static final int LOC_GLUDIN_S1_S2_S3 = 911;
 	public static final int LOC_GLUDIO_S1_S2_S3 = 912;

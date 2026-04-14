@@ -35,7 +35,6 @@ public class ExFishingHpRegen extends L2GameServerPacket
 		_goodUse = GoodUse;
 		_anim = anim;
 		_penalty = penalty;
-		
 	}
 	
 	/*

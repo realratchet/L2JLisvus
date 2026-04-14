@@ -22,7 +22,7 @@ import net.sf.l2j.util.Point3D;
  */
 public class MoveToLocationInVehicle extends L2GameServerPacket
 {
-	private final int _pciId;
+	private final int _playerId;
 	private final int _boatId;
 	private final Point3D _destination;
 	private final Point3D _origin;
@@ -34,7 +34,7 @@ public class MoveToLocationInVehicle extends L2GameServerPacket
 	 */
 	public MoveToLocationInVehicle(L2PcInstance player, Point3D destination, Point3D origin)
 	{
-		_pciId = player.getObjectId();
+		_playerId = player.getObjectId();
 		_boatId = player.getBoat().getObjectId();
 		_destination = destination;
 		_origin = origin;
@@ -49,7 +49,7 @@ public class MoveToLocationInVehicle extends L2GameServerPacket
 	{
 		writeC(0x71);
 		
-		writeD(_pciId);
+		writeD(_playerId);
 		writeD(_boatId);
 		writeD(_destination.getX());
 		writeD(_destination.getY());

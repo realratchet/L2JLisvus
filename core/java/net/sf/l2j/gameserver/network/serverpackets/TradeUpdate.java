@@ -35,32 +35,32 @@ public class TradeUpdate extends L2GameServerPacket
 		writeC(0x74);
 		
 		writeH(_activeChar.getActiveTradeList().getItems().length);
-		for (final TradeItem _item : _activeChar.getActiveTradeList().getItems())
+		for (final TradeItem ti : _activeChar.getActiveTradeList().getItems())
 		{
-			int _availableCount = 1;
-			boolean _stackable = false;
+			int availableCount = 1;
+			boolean stackable = false;
 			
-			L2ItemInstance item = _activeChar.getInventory().getItemByObjectId(_item.getObjectId());
+			L2ItemInstance item = _activeChar.getInventory().getItemByObjectId(ti.getObjectId());
 			if (item == null)
 			{
 				continue;
 			}
 			
-			if ((item.getCount() - _item.getCount()) > 0)
+			if ((item.getCount() - ti.getCount()) > 0)
 			{
-				_availableCount = item.getCount() - _item.getCount();
-				_stackable = _item.getItem().isStackable();
+				availableCount = item.getCount() - ti.getCount();
+				stackable = ti.getItem().isStackable();
 			}
 			
-			writeH(_stackable ? 3 : 2);
-			writeH(_item.getItem().getType1()); // item type1
-			writeD(_item.getObjectId());
-			writeD(_item.getItem().getItemId());
-			writeD(_availableCount);
-			writeH(_item.getItem().getType2()); // item type2
+			writeH(stackable ? 3 : 2);
+			writeH(ti.getItem().getType1()); // item type1
+			writeD(ti.getObjectId());
+			writeD(ti.getItem().getItemId());
+			writeD(availableCount);
+			writeH(ti.getItem().getType2()); // item type2
 			writeH(0x00); // ?
-			writeD(_item.getItem().getBodyPart()); // rev 415 slot 0006-lr.ear 0008-neck 0030-lr.finger 0040-head 0080-?? 0100-l.hand 0200-gloves 0400-chest 0800-pants 1000-feet 2000-?? 4000-r.hand 8000-r.hand
-			writeH(_item.getEnchant()); // enchant level
+			writeD(ti.getItem().getBodyPart()); // rev 415 slot 0006-lr.ear 0008-neck 0030-lr.finger 0040-head 0080-?? 0100-l.hand 0200-gloves 0400-chest 0800-pants 1000-feet 2000-?? 4000-r.hand 8000-r.hand
+			writeH(ti.getEnchant()); // enchant level
 			writeH(0x00); // ?
 			writeH(0x00);
 		}

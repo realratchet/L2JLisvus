@@ -27,8 +27,9 @@ import net.sf.l2j.gameserver.model.L2Manor;
 public class ExShowCropInfo extends L2GameServerPacket
 {
 	private static final String _S__FE_1C_EXSHOWSEEDINFO = "[S] FE:1D ExShowCropInfo";
-	private List<CropProcure> _crops;
+
 	private final int _manorId;
+	private final List<CropProcure> _crops;
 	
 	public ExShowCropInfo(int manorId, List<CropProcure> crops)
 	{

@@ -1063,16 +1063,13 @@ public class L2Attackable extends L2NpcInstance
 			}
 		}
 		
-		if (itemCount > 0)
+		if (itemCount <= 0)
 		{
-			return new RewardItem(drop.getItemId(), itemCount);
-		}
-		else if ((itemCount == 0) && Config.DEBUG)
-		{
-			_log.fine("Roll produced 0 items to drop...");
+			_log.fine("Roll produced " + itemCount + " items to drop...");
+			return null;
 		}
 		
-		return null;
+		return new RewardItem(drop.getItemId(), itemCount);
 	}
 	
 	/**
@@ -1238,9 +1235,10 @@ public class L2Attackable extends L2NpcInstance
 			{
 				return new RewardItem(drop.getItemId(), itemCount);
 			}
-			else if ((itemCount == 0) && Config.DEBUG)
+
+			if (Config.DEBUG)
 			{
-				_log.fine("Roll produced 0 items to drop...");
+				_log.fine("Roll produced " + itemCount + " items to drop...");
 			}
 		}
 		return null;

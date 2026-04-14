@@ -559,7 +559,7 @@ public class RecipeController
 		private void updateMakeInfo(int status)
 		{
 			if (_target == _player)
-				_target.sendPacket(new RecipeItemMakeInfo(_recipeList.getId(), _target, status));
+				_target.sendPacket(new RecipeItemMakeInfo(_recipeList.getId(), _target, _recipeList.isDwarvenRecipe(), status));
 			else
 				_target.sendPacket(new RecipeShopItemInfo(_recipeList.getId(), _player, status));
 		}

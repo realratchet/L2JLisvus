@@ -14,6 +14,8 @@
  */
 package net.sf.l2j.gameserver.network.clientpackets;
 
+import net.sf.l2j.gameserver.RecipeController;
+import net.sf.l2j.gameserver.model.L2RecipeList;
 import net.sf.l2j.gameserver.model.L2World;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance.PrivateStoreType;
@@ -46,13 +48,19 @@ public class RequestRecipeShopMakeInfo extends L2GameClientPacket
 			return;
 		}
 		
-		final L2PcInstance shop = L2World.getInstance().getPlayer(_playerObjectId);
-		if (shop == null || shop.getPrivateStoreType() != PrivateStoreType.DWARVEN_MANUFACTURE && shop.getPrivateStoreType() != PrivateStoreType.GENERAL_MANUFACTURE)
+		final L2PcInstance shopKeeper = L2World.getInstance().getPlayer(_playerObjectId);
+		if (shopKeeper == null || shopKeeper.getPrivateStoreType() != PrivateStoreType.DWARVEN_MANUFACTURE && shopKeeper.getPrivateStoreType() != PrivateStoreType.GENERAL_MANUFACTURE)
+		{
+			return;
+		}
+
+		L2RecipeList recipeList = RecipeController.getInstance().getRecipeById(_recipeId);
+		if (recipeList == null)
 		{
 			return;
 		}
 		
-		player.sendPacket(new RecipeShopItemInfo(_recipeId, shop));
+		player.sendPacket(new RecipeShopItemInfo(_recipeId, shopKeeper));
 	}
 	
 	@Override

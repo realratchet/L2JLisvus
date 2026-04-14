@@ -15,6 +15,7 @@
 package net.sf.l2j.gameserver.network.clientpackets;
 
 import net.sf.l2j.gameserver.communitybbs.CommunityBoard;
+import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 
 /**
  * Format SSSSSS
@@ -48,7 +49,13 @@ public class RequestBBSwrite extends L2GameClientPacket
 	@Override
 	public void runImpl()
 	{
-		CommunityBoard.getInstance().handleWriteCommands(getClient(), _url, _arg1, _arg2, _arg3, _arg4, _arg5);
+		L2PcInstance activeChar = getClient().getActiveChar();
+		if (activeChar == null)
+		{
+			return;
+		}
+
+		CommunityBoard.getInstance().handleWriteCommands(activeChar, _url, _arg1, _arg2, _arg3, _arg4, _arg5);
 	}
 	
 	/*

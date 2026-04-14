@@ -38,8 +38,8 @@ public class RequestLinkHtml extends L2GameClientPacket
 	@Override
 	public void runImpl()
 	{
-		L2PcInstance actor = getClient().getActiveChar();
-		if (actor == null)
+		L2PcInstance player = getClient().getActiveChar();
+		if (player == null)
 		{
 			return;
 		}
@@ -52,7 +52,7 @@ public class RequestLinkHtml extends L2GameClientPacket
 
 		NpcHtmlMessage html = new NpcHtmlMessage(0);
 		html.setFile(_link);
-		sendPacket(html);
+		player.sendPacket(html);
 	}
 
 	@Override

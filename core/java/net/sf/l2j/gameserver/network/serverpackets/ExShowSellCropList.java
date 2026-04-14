@@ -31,7 +31,7 @@ public class ExShowSellCropList extends L2GameServerPacket
 {
 	private static final String _S__FE_21_EXSHOWSELLCROPLIST = "[S] FE:21 ExShowSellCropList";
 	
-	private int _manorId = 1;
+	private final int _manorId;
 	private final Map<Integer, L2ItemInstance> _cropsItems;
 	private final Map<Integer, CropProcure> _castleCrops;
 	

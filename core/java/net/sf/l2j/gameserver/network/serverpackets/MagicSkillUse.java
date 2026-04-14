@@ -24,7 +24,7 @@ public class MagicSkillUse extends L2GameServerPacket
 {
 	private static final String _S__5A_MAGICSKILLUSER = "[S] 5A MagicSkillUse";
 	private final int _targetId;
-	private int _skillId;
+	private final int _skillId;
 	private final int _skillLevel;
 	private final int _hitTime;
 	private final int _reuseDelay;

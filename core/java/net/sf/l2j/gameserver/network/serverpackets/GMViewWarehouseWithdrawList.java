@@ -31,11 +31,9 @@ public class GMViewWarehouseWithdrawList extends L2GameServerPacket
 
 	public GMViewWarehouseWithdrawList(L2PcInstance cha)
 	{
-		
 		_character = cha;
 		_items = _character.getWarehouse().getItems();
 		_money = cha.getAdena();
-
 	}
 
 	@Override

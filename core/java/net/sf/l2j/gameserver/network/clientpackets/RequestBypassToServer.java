@@ -183,11 +183,11 @@ public class RequestBypassToServer extends L2GameClientPacket
 			}
 			else if (_command.startsWith("bbs_"))
 			{
-				CommunityBoard.getInstance().handleCommands(getClient(), _command);
+				CommunityBoard.getInstance().handleCommands(activeChar, _command);
 			}
 			else if (_command.startsWith("_bbs"))
 			{
-				CommunityBoard.getInstance().handleCommands(getClient(), _command);
+				CommunityBoard.getInstance().handleCommands(activeChar, _command);
 			}
 			else if (_command.startsWith("Quest "))
 			{
@@ -196,16 +196,15 @@ public class RequestBypassToServer extends L2GameClientPacket
 					return;
 				}
 				
-				L2PcInstance player = getClient().getActiveChar();
 				String p = _command.substring(6).trim();
 				int idx = p.indexOf(' ');
 				if (idx < 0)
 				{
-					player.processQuestEvent(p, "");
+					activeChar.processQuestEvent(p, "");
 				}
 				else
 				{
-					player.processQuestEvent(p.substring(0, idx), p.substring(idx).trim());
+					activeChar.processQuestEvent(p.substring(0, idx), p.substring(idx).trim());
 				}
 			}
 			else if (_command.startsWith("OlympiadArenaChange"))

@@ -24,7 +24,7 @@ public class SignsSky extends L2GameServerPacket
 {
 	private static final String _S__F8_SignsSky = "[S] F8 SignsSky";
 	
-	private static int _state = 0;
+	private int _state = 0;
 	
 	public SignsSky()
 	{

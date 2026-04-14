@@ -14,8 +14,6 @@
  */
 package net.sf.l2j.gameserver.network.serverpackets;
 
-import net.sf.l2j.gameserver.RecipeController;
-import net.sf.l2j.gameserver.model.L2RecipeList;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 
 /**
@@ -28,39 +26,36 @@ public class RecipeItemMakeInfo extends L2GameServerPacket
 	
 	private final int _recipeId;
 	private final L2PcInstance _player;
+	private final boolean _isDwarven;
 	private final int _status;
 	
-	public RecipeItemMakeInfo(int recipeId, L2PcInstance player, int status)
+	public RecipeItemMakeInfo(int recipeId, L2PcInstance player, boolean isDwarven, int status)
 	{
 		_recipeId = recipeId;
 		_player = player;
+		_isDwarven = isDwarven;
 		_status = status;
 	}
 	
-	public RecipeItemMakeInfo(int recipeId, L2PcInstance player)
+	public RecipeItemMakeInfo(int recipeId, L2PcInstance player, boolean isDwarven)
 	{
-		_recipeId = recipeId;
-		_player = player;
-		_status = -1;
+		this(recipeId, player, isDwarven, -1);
 	}
 	
 	@Override
 	protected final void writeImpl()
 	{
-		L2RecipeList recipe = RecipeController.getInstance().getRecipeById(_recipeId);
-		if (recipe != null)
-		{
-			writeC(0xd7);
-			writeD(_recipeId);
-			writeD(recipe.isDwarvenRecipe() ? 0 : 1); // 0 = Dwarven - 1 = Common
-			writeD((int) _player.getCurrentMp());
-			writeD(_player.getMaxMp());
-			writeD(_status);
-		}
+		writeC(0xd7);
+		writeD(_recipeId);
+		writeD(_isDwarven ? 0 : 1); // 0 = Dwarven - 1 = Common
+		writeD((int) _player.getCurrentMp());
+		writeD(_player.getMaxMp());
+		writeD(_status);
 	}
 	
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see net.sf.l2j.gameserver.network.serverpackets.L2GameServerPacket#getType()
 	 */
 	@Override

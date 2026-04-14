@@ -22,7 +22,7 @@ import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
  */
 public class PartyMemberPosition extends L2GameServerPacket
 {
-	L2Party _party;
+	private final L2Party _party;
 	
 	public PartyMemberPosition(L2PcInstance actor)
 	{

@@ -41,35 +41,38 @@ public class ChangeWaitType2 extends L2GameClientPacket
 	public void runImpl()
 	{
 		L2PcInstance player = getClient().getActiveChar();
-		if ((getClient() != null) && (player != null))
+		if (player == null)
 		{
-			if (player.isOutOfControl())
+			return;
+		}
+		
+		if (player.isOutOfControl())
+		{
+			player.sendPacket(ActionFailed.STATIC_PACKET);
+			return;
+		}
+		
+		if (player.getMountType() != 0)
+		{
+			return;
+		}
+		
+		if (_typeStand)
+		{
+			player.standUp();
+		}
+		else
+		{
+			if (!player.isPendingSitting())
 			{
-				player.sendPacket(ActionFailed.STATIC_PACKET);
-				return;
-			}
-			
-			if (player.getMountType() != 0)
-			{
-				return;
-			}
-			
-			L2Object target = player.getTarget();
-			
-			if ((target != null) && !player.isSitting() && !_typeStand && (target instanceof L2StaticObjectInstance) && (((L2StaticObjectInstance) target).getType() == 1) && (CastleManager.getInstance().getCastle(target) != null) && player.isInsideRadius(target, L2StaticObjectInstance.INTERACTION_DISTANCE, false, false))
-			{
-				ChairSit cs = new ChairSit(player, ((L2StaticObjectInstance) target).getStaticObjectId());
-				player.sitDown();
-				player.broadcastPacket(cs);
-			}
-			
-			if (_typeStand)
-			{
-				player.standUp();
-			}
-			else
-			{
-				if (!player.isPendingSitting())
+				L2Object target = player.getTarget();
+				
+				if (target != null && !player.isSitting() && (target instanceof L2StaticObjectInstance) && (((L2StaticObjectInstance) target).getType() == 1) && (CastleManager.getInstance().getCastle(target) != null) && player.isInsideRadius(target, L2StaticObjectInstance.INTERACTION_DISTANCE, false, false))
+				{
+					player.sitDown();
+					player.broadcastPacket(new ChairSit(player, ((L2StaticObjectInstance) target).getStaticObjectId()));
+				}
+				else
 				{
 					if (player.isMoving())
 					{
@@ -77,11 +80,6 @@ public class ChangeWaitType2 extends L2GameClientPacket
 					}
 					else
 					{
-						if (player.isAttackingDisabled() || player.isImmobilized() || player.isCastingNow())
-						{
-							return;
-						}
-						
 						player.sitDown();
 					}
 				}
@@ -91,6 +89,7 @@ public class ChangeWaitType2 extends L2GameClientPacket
 	
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see net.sf.l2j.gameserver.network.clientpackets.L2GameClientPacket#getType()
 	 */
 	@Override

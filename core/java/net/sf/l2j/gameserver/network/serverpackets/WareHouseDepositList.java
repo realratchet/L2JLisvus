@@ -26,12 +26,14 @@ import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
  */
 public class WareHouseDepositList extends L2GameServerPacket
 {
+	private static Logger _log = Logger.getLogger(WareHouseDepositList.class.getName());
+	private static final String _S__53_WAREHOUSEDEPOSITLIST = "[S] 41 WareHouseDepositList";
+	
 	public static final int Private = 1;
 	public static final int Clan = 2;
 	public static final int Castle = 3; // not sure
 	public static final int Freight = 4; // not sure
-	private static Logger _log = Logger.getLogger(WareHouseDepositList.class.getName());
-	private static final String _S__53_WAREHOUSEDEPOSITLIST = "[S] 41 WareHouseDepositList";
+
 	private final L2PcInstance _player;
 	private final int _playerAdena;
 	private final L2ItemInstance[] _items;

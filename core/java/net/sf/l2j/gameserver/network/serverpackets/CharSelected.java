@@ -105,7 +105,6 @@ public class CharSelected extends L2GameServerPacket
 		writeD(0x00); // c3
 		writeD(0x00); // c3
 		writeD(0x00); // c3
-		
 	}
 	
 	/*

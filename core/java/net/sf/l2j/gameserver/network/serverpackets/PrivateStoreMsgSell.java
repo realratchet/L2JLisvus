@@ -40,9 +40,7 @@ public class PrivateStoreMsgSell extends L2GameServerPacket
 	{
 		writeC(0x9c);
 		writeD(_player.getObjectId());
-		
 		writeS(_storeMsg);
-		
 	}
 	
 	/*

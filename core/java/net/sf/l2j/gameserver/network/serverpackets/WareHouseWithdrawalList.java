@@ -26,12 +26,13 @@ import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
  */
 public class WareHouseWithdrawalList extends L2GameServerPacket
 {
+	private static Logger _log = Logger.getLogger(WareHouseWithdrawalList.class.getName());
+	private static final String _S__54_WAREHOUSEWITHDRAWALLIST = "[S] 42 WareHouseWithdrawalList";
+	
 	public static final int Private = 1;
 	public static final int Clan = 2;
 	public static final int Castle = 3; // not sure
 	public static final int Freight = 4; // not sure
-	private static Logger _log = Logger.getLogger(WareHouseWithdrawalList.class.getName());
-	private static final String _S__54_WAREHOUSEWITHDRAWALLIST = "[S] 42 WareHouseWithdrawalList";
 
 	private L2PcInstance _player;
 	private int _playerAdena;

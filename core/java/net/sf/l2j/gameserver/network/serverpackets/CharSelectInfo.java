@@ -63,7 +63,7 @@ public class CharSelectInfo extends L2GameServerPacket
 	@Override
 	protected final void writeImpl()
 	{
-		int size = (_characterPackages.length);
+		int size = _characterPackages.length;
 		
 		writeC(0x13);
 		writeD(size);
@@ -78,7 +78,6 @@ public class CharSelectInfo extends L2GameServerPacket
 				lastAccess = _characterPackages[i].getLastAccess();
 				lastUsed = i;
 			}
-			
 		}
 		
 		for (int i = 0; i < size; i++)

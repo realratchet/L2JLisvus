@@ -26,7 +26,7 @@ public class ExShowManorDefaultInfo extends L2GameServerPacket
 {
 	private static final String _S__FE_1C_EXSHOWSEEDINFO = "[S] FE:1E ExShowManorDefaultInfo";
 	
-	private List<Integer> _crops = null;
+	private final List<Integer> _crops;
 	
 	public ExShowManorDefaultInfo()
 	{

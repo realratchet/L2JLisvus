@@ -34,22 +34,19 @@ public class PartyMatchList extends L2GameServerPacket
 	private final List<PartyMatchRoom> _rooms;
 	
 	/**
-	 * @param player 
-	 * @param auto 
-	 * @param location 
-	 * @param limit 
+	 * @param player
+	 * @param auto
+	 * @param location
+	 * @param limit
 	 */
 	public PartyMatchList(L2PcInstance player, int auto, int location, int limit)
 	{
 		_cha = player;
 		_loc = location;
 		_lim = limit;
-		_rooms = new ArrayList<>();
-	}
-	
-	@Override
-	protected final void writeImpl()
-	{
+		
+		final List<PartyMatchRoom> rooms = new ArrayList<>();
+		
 		for (PartyMatchRoom room : PartyMatchRoomManager.getInstance().getRooms())
 		{
 			if (room.getMembers() < 1 || room.getOwner() == null || !room.getOwner().isOnline() || room.getOwner().getPartyRoom() != room.getId())
@@ -68,13 +65,18 @@ public class PartyMatchList extends L2GameServerPacket
 				continue;
 			}
 			
-			_rooms.add(room);
+			rooms.add(room);
 		}
 		
-		int size = _rooms.size();
-		
+		_rooms = rooms;
+	}
+	
+	@Override
+	protected final void writeImpl()
+	{
 		writeC(0x96);
 		
+		int size = _rooms.size();
 		if (size > 0)
 		{
 			writeD(1);
@@ -101,6 +103,7 @@ public class PartyMatchList extends L2GameServerPacket
 	
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see net.sf.l2j.gameserver.network.serverpackets.L2GameServerPacket#getType()
 	 */
 	@Override

@@ -14,8 +14,6 @@
  */
 package net.sf.l2j.gameserver.network.serverpackets;
 
-import net.sf.l2j.gameserver.RecipeController;
-import net.sf.l2j.gameserver.model.L2RecipeList;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 
 /**
@@ -47,20 +45,17 @@ public class RecipeShopItemInfo extends L2GameServerPacket
 	@Override
 	protected final void writeImpl()
 	{
-		L2RecipeList recipe = RecipeController.getInstance().getRecipeById(_recipeId);
-		if (recipe != null)
-		{
-			writeC(0xda);
-			writeD(_player.getObjectId());
-			writeD(_recipeId);
-			writeD((int) _player.getCurrentMp());
-			writeD(_player.getMaxMp());
-			writeD(_status);
-		}
+		writeC(0xda);
+		writeD(_player.getObjectId());
+		writeD(_recipeId);
+		writeD((int) _player.getCurrentMp());
+		writeD(_player.getMaxMp());
+		writeD(_status);
 	}
 	
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see net.sf.l2j.gameserver.network.serverpackets.L2GameServerPacket#getType()
 	 */
 	@Override

@@ -98,10 +98,10 @@ public class CreatureSay extends L2GameServerPacket
 			return;
 		}
 		
-		L2PcInstance _pci = getClient().getActiveChar();
-		if (_pci != null)
+		L2PcInstance activeChar = getClient().getActiveChar();
+		if (activeChar != null)
 		{
-			_pci.broadcastSnoop(_textType, _charName, _text);
+			activeChar.broadcastSnoop(_textType, _charName, _text);
 		}
 	}
 	

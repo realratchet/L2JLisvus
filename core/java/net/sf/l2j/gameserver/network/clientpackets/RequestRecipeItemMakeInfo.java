@@ -14,11 +14,11 @@
  */
 package net.sf.l2j.gameserver.network.clientpackets;
 
+import net.sf.l2j.gameserver.RecipeController;
+import net.sf.l2j.gameserver.model.L2RecipeList;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.network.serverpackets.RecipeItemMakeInfo;
 
-/**
- */
 public class RequestRecipeItemMakeInfo extends L2GameClientPacket
 {
 	private static final String _C__AE_REQUESTRECIPEITEMMAKEINFO = "[C] AE RequestRecipeItemMakeInfo";
@@ -39,9 +39,14 @@ public class RequestRecipeItemMakeInfo extends L2GameClientPacket
 		{
 			return;
 		}
+
+		L2RecipeList recipeList = RecipeController.getInstance().getRecipeById(_id);
+		if (recipeList == null)
+		{
+			return;
+		}
 		
-		RecipeItemMakeInfo response = new RecipeItemMakeInfo(_id, activeChar);
-		sendPacket(response);
+		sendPacket(new RecipeItemMakeInfo(_id, activeChar, recipeList.isDwarvenRecipe()));
 	}
 	
 	/*

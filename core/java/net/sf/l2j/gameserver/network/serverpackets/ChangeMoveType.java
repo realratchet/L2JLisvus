@@ -26,11 +26,13 @@ public class ChangeMoveType extends L2GameServerPacket
 	
 	private final int _chaId;
 	private final boolean _running;
+	private final boolean _swimming;
 	
 	public ChangeMoveType(L2Character cha)
 	{
 		_chaId = cha.getObjectId();
 		_running = cha.isRunning();
+		_swimming = cha.isInsideZone(L2Character.ZONE_WATER);
 	}
 	
 	@Override
@@ -39,7 +41,7 @@ public class ChangeMoveType extends L2GameServerPacket
 		writeC(0x2e);
 		writeD(_chaId);
 		writeD(_running ? 1 : 0);
-		writeD(0); // c2
+		writeD(_swimming ? 1 : 0); // c2
 	}
 	
 	/*

@@ -27,13 +27,13 @@ public class EnchantScrolls implements IItemHandler
 	public void useItem(L2PlayableInstance playable, L2ItemInstance item)
 	{
 		if (!(playable instanceof L2PcInstance))
-                    return;
-
-		L2PcInstance activeChar = (L2PcInstance)playable;
-
-                if (activeChar.isCastingNow())
-                        return;
-
+			return;
+		
+		L2PcInstance activeChar = (L2PcInstance) playable;
+		
+		if (activeChar.isCastingNow())
+			return;
+		
 		activeChar.setActiveEnchantItem(item);
 		activeChar.sendPacket(new SystemMessage(SystemMessage.SELECT_ITEM_TO_ENCHANT));
 		activeChar.sendPacket(new ChooseInventoryItem(item.getItemId()));
