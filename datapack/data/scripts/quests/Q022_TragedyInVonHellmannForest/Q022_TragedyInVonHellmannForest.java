@@ -62,7 +62,7 @@ public class Q022_TragedyInVonHellmannForest extends Quest
 		addTalkId(INNOCENTIN, TIFAREN, GHOST_OF_PRIEST, GHOST_OF_ADVENTURER, WELL);
 		
 		addAttackId(SOUL_OF_WELL);
-		addKillId(SOUL_OF_WELL, 21553, 21554, 21555, 21556, 21561);
+		addKillId(SOUL_OF_WELL, 1553, 1554, 1555, 1556, 1561);
 	}
 	
 	@Override
