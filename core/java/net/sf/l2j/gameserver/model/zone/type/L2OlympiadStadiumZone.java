@@ -56,7 +56,7 @@ public class L2OlympiadStadiumZone extends L2ZoneType
         }
         else if (name.equals("playerTwoSpawn"))
         {
-            _playerOneSpawn = parseSpawnLocation(name, value);
+            _playerTwoSpawn = parseSpawnLocation(name, value);
         }
         else if (name.equals("spectatorSpawn"))
         {
