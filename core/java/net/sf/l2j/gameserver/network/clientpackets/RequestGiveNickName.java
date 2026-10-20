@@ -49,6 +49,12 @@ public class RequestGiveNickName extends L2GameClientPacket
 			return;
 		}
 		
+		// Title column is limited to 16 characters
+		if ((_title == null) || (_title.length() > 16))
+		{
+			return;
+		}
+		
 		// Noblesse can bestow a title to themselves
 		if (activeChar.isNoble() && _target.matches(activeChar.getName()))
 		{

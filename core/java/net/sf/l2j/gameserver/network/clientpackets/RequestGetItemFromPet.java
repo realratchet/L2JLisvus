@@ -20,6 +20,7 @@ import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.model.L2ItemInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PetInstance;
+import net.sf.l2j.gameserver.network.serverpackets.EnchantResult;
 import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
 import net.sf.l2j.gameserver.util.Util;
 
@@ -62,13 +63,38 @@ public class RequestGetItemFromPet extends L2GameClientPacket
 			return;
 		}
 		
-		L2ItemInstance item = pet.getInventory().getItemByObjectId(_objectId);
-		if (item == null || _amount == 0)
+		if (_amount == 0)
 		{
 			return;
 		}
 		
-		L2ItemInstance oldItem = pet.getInventory().getItemByItemId(item.getItemId());
+		if (!getClient().getFloodProtectors().getTransaction().tryPerformAction("getfrompet"))
+		{
+			player.sendMessage("You get items from pet too fast.");
+			return;
+		}
+		
+		if (player.getActiveEnchantItem() != null)
+		{
+			player.setActiveEnchantItem(null);
+			player.sendPacket(new SystemMessage(SystemMessage.ENCHANT_SCROLL_CANCELLED));
+			player.sendPacket(new EnchantResult(2));
+			return;
+		}
+		
+		L2ItemInstance item = pet.getInventory().getItemByObjectId(_objectId);
+		if (item == null)
+		{
+			return;
+		}
+		
+		if (_amount > item.getCount())
+		{
+			Util.handleIllegalPlayerAction(player, "[RequestGetItemFromPet] Character " + player.getName() + " of account " + player.getAccountName() + " tried to get item with oid " + _objectId + " from pet but has invalid count " + _amount + " item count: " + item.getCount(), Config.DEFAULT_PUNISH);
+			return;
+		}
+		
+		L2ItemInstance oldItem = player.getInventory().getItemByItemId(item.getItemId());
 		if (oldItem != null && ((long)oldItem.getCount() + _amount) > L2ItemInstance.getMaxItemCount(oldItem.getItemId()))
 		{
 			player.sendPacket(new SystemMessage(SystemMessage.YOU_HAVE_EXCEEDED_THE_LIMIT));

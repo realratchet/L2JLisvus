@@ -44,9 +44,15 @@ public class RequestLinkHtml extends L2GameClientPacket
 			return;
 		}
 
-		if (_link.contains("..") || !_link.contains(".htm"))
+		if (_link.contains("..") || !_link.contains(".htm") || !_link.startsWith("data/html/"))
 		{
 			_log.warning("[RequestLinkHtml] hack? link contains prohibited characters: '" + _link + "', skipped");
+			return;
+		}
+
+		if (!player.validateLink(_link))
+		{
+			_log.warning("[RequestLinkHtml] player [" + player.getName() + "] sent non cached html link: '" + _link + "', skipped");
 			return;
 		}
 

@@ -53,7 +53,7 @@ public class RequestGetOnVehicle extends L2GameClientPacket
 			return;
 		}
 		
-		if (activeChar.isFlying())
+		if (activeChar.isFlying() || activeChar.isAlikeDead() || activeChar.isMovementDisabled() || activeChar.isSitting())
 		{
 			sendPacket(ActionFailed.STATIC_PACKET);
 			return;
@@ -72,11 +72,17 @@ public class RequestGetOnVehicle extends L2GameClientPacket
 		else
 		{
 			boat = BoatManager.getInstance().getBoat(_boatId);
-			if ((boat == null) || boat.isMoving() || !activeChar.isInsideRadius(boat, 1000, true, false))
+			if ((boat == null) || boat.isMoving())
 			{
 				sendPacket(ActionFailed.STATIC_PACKET);
 				return;
 			}
+		}
+		
+		if (!activeChar.isInsideRadius(boat, 1000, true, false))
+		{
+			sendPacket(ActionFailed.STATIC_PACKET);
+			return;
 		}
 		
 		if (activeChar.getPet() != null)

@@ -491,8 +491,12 @@ public class AdminEditNpc implements IAdminCommandHandler
         final String table = Config.CUSTOM_MERCHANT_TABLES ? "custom_merchant_buylists" : "merchant_buylists";
 
         try (Connection con = L2DatabaseFactory.getInstance().getConnection();
-            PreparedStatement stmt = con.prepareStatement("INSERT INTO `" + table + "` (`item_id`,`price`,`shop_id`,`item_order`) values ("+itemID+","+price+","+tradeListID+","+order+")"))
+            PreparedStatement stmt = con.prepareStatement("INSERT INTO `" + table + "` (`item_id`,`price`,`shop_id`,`item_order`) values (?,?,?,?)"))
         {
+            stmt.setInt(1, itemID);
+            stmt.setInt(2, price);
+            stmt.setInt(3, tradeListID);
+            stmt.setInt(4, order);
 	    stmt.execute();
         }
         catch (Exception e)
@@ -508,16 +512,22 @@ public class AdminEditNpc implements IAdminCommandHandler
             int updated = 0;
             if (Config.CUSTOM_MERCHANT_TABLES)
             {
-                try (PreparedStatement stmt = con.prepareStatement("UPDATE custom_merchant_buylists SET `price`='"+price+"' WHERE `shop_id`='"+tradeListID+"' AND `item_order`='"+order+"'"))
+                try (PreparedStatement stmt = con.prepareStatement("UPDATE custom_merchant_buylists SET `price`=? WHERE `shop_id`=? AND `item_order`=?"))
                 {
+                	stmt.setInt(1, price);
+                	stmt.setInt(2, tradeListID);
+                	stmt.setInt(3, order);
                 	updated = stmt.executeUpdate();
                 }
             }
 
             if (updated == 0)
             {
-                try (PreparedStatement stmt = con.prepareStatement("UPDATE merchant_buylists SET `price`='"+price+"' WHERE `shop_id`='"+tradeListID+"' AND `item_order`='"+order+"'"))
+                try (PreparedStatement stmt = con.prepareStatement("UPDATE merchant_buylists SET `price`=? WHERE `shop_id`=? AND `item_order`=?"))
                 {
+                	stmt.setInt(1, price);
+                	stmt.setInt(2, tradeListID);
+                	stmt.setInt(3, order);
                 	stmt.executeUpdate();
                 }
             }
@@ -535,16 +545,20 @@ public class AdminEditNpc implements IAdminCommandHandler
             int updated = 0;
             if (Config.CUSTOM_MERCHANT_TABLES)
             {
-            	try (PreparedStatement stmt = con.prepareStatement("DELETE FROM custom_merchant_buylists WHERE `shop_id`='"+tradeListID+"' AND `item_order`='"+order+"'"))
+            	try (PreparedStatement stmt = con.prepareStatement("DELETE FROM custom_merchant_buylists WHERE `shop_id`=? AND `item_order`=?"))
                 {
+                    stmt.setInt(1, tradeListID);
+                    stmt.setInt(2, order);
                     updated = stmt.executeUpdate();
                 }
             }
 
             if (updated == 0)
             {
-            	try (PreparedStatement stmt = con.prepareStatement("DELETE FROM merchant_buylists WHERE `shop_id`='"+tradeListID+"' AND `item_order`='"+order+"'"))
+            	try (PreparedStatement stmt = con.prepareStatement("DELETE FROM merchant_buylists WHERE `shop_id`=? AND `item_order`=?"))
                 {
+                    stmt.setInt(1, tradeListID);
+                    stmt.setInt(2, order);
                     stmt.executeUpdate();
                 }
             }
@@ -561,20 +575,30 @@ public class AdminEditNpc implements IAdminCommandHandler
 
         try (Connection con = L2DatabaseFactory.getInstance().getConnection())
         {
-            try (PreparedStatement stmt = con.prepareStatement("SELECT * FROM merchant_buylists WHERE `shop_id`='"+tradeListID+"' AND `item_id` ='"+itemID+"' AND `price` = '"+price+"'");
-    	        ResultSet rs = stmt.executeQuery())
+            try (PreparedStatement stmt = con.prepareStatement("SELECT * FROM merchant_buylists WHERE `shop_id`=? AND `item_id`=? AND `price`=?"))
             {
-    	        if (rs.first())
-    	            order = rs.getInt("item_order");
+                stmt.setInt(1, tradeListID);
+                stmt.setInt(2, itemID);
+                stmt.setInt(3, price);
+                try (ResultSet rs = stmt.executeQuery())
+                {
+    	            if (rs.first())
+    	                order = rs.getInt("item_order");
+                }
             }
 
             if (order < 0 && Config.CUSTOM_MERCHANT_TABLES)
             {
-                try (PreparedStatement stmt = con.prepareStatement("SELECT * FROM custom_merchant_buylists WHERE `shop_id`='"+tradeListID+"' AND `item_id` ='"+itemID+"' AND `price` = '"+price+"'");
-    	            ResultSet rs = stmt.executeQuery())
+                try (PreparedStatement stmt = con.prepareStatement("SELECT * FROM custom_merchant_buylists WHERE `shop_id`=? AND `item_id`=? AND `price`=?"))
                 {
-    	            if (rs.first())
-    	                order = rs.getInt("item_order");
+                    stmt.setInt(1, tradeListID);
+                    stmt.setInt(2, itemID);
+                    stmt.setInt(3, price);
+                    try (ResultSet rs = stmt.executeQuery())
+                    {
+    	                if (rs.first())
+    	                    order = rs.getInt("item_order");
+                    }
                 }
             }
         }

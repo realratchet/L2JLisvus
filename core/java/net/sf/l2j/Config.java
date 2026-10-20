@@ -114,7 +114,7 @@ public final class Config
 	/** Login Server WebSocket listener for browser clients */
 	public static boolean LOGIN_WEBSOCKET_ENABLED;
 	public static int PORT_LOGIN_WEBSOCKET;
-	/** Comma separated WebSocket Origin allowlist, * allows any */
+	/** Comma separated WebSocket Origin allowlist, * allows any, empty rejects every browser */
 	public static String WEBSOCKET_ALLOWED_ORIGINS;
 	/** Login Server bind ip */
 	public static String LOGIN_BIND_ADDRESS;
@@ -122,6 +122,8 @@ public final class Config
 	public static int LOGIN_TRY_BEFORE_BAN;
 	/** Number of seconds the IP ban will last, default 10 minutes */
 	public static int LOGIN_BLOCK_AFTER_BAN;
+	/** Maximum concurrent client connections per IP on the login client ports, 0 disables */
+	public static int LOGIN_MAX_CONNECTIONS_PER_IP;
 	
 	/** Hostname of the Game Server */
 	public static String GAMESERVER_HOSTNAME;
@@ -1087,6 +1089,8 @@ public final class Config
 	
 	/** Accept new game server ? */
 	public static boolean ACCEPT_NEW_GAMESERVER;
+	/** Addresses allowed to connect as a game server, empty allows any */
+	public static List<String> GAME_SERVER_ALLOWED_ADDRESSES;
 	/** ID of the game server */
 	public static int SERVER_ID;
 	/** Hexadecimal ID of the game server */
@@ -2220,8 +2224,17 @@ public final class Config
 			
 			LOGIN_TRY_BEFORE_BAN = Integer.parseInt(serverSettings.getProperty("LoginTryBeforeBan", "10"));
 			LOGIN_BLOCK_AFTER_BAN = Integer.parseInt(serverSettings.getProperty("LoginBlockAfterBan", "600"));
+			LOGIN_MAX_CONNECTIONS_PER_IP = Integer.parseInt(serverSettings.getProperty("LoginMaxConnectionsPerIp", "10"));
 			
 			ACCEPT_NEW_GAMESERVER = Boolean.parseBoolean(serverSettings.getProperty("AcceptNewGameServer", "True"));
+			GAME_SERVER_ALLOWED_ADDRESSES = new ArrayList<>();
+			for (String address : serverSettings.getProperty("GameServerAllowedAddresses", "").split(","))
+			{
+				if (!address.trim().isEmpty())
+				{
+					GAME_SERVER_ALLOWED_ADDRESSES.add(address.trim());
+				}
+			}
 			SHOW_LICENCE = Boolean.parseBoolean(serverSettings.getProperty("ShowLicence", "true"));
 			
 			try

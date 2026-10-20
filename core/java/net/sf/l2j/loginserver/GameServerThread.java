@@ -99,9 +99,15 @@ public class GameServerThread extends Thread
 				lengthHi = _in.read();
 				length = (lengthHi * 256) + lengthLo;
 				
-				if ((lengthHi < 0) || _connection.isClosed())
+				if ((lengthLo < 0) || (lengthHi < 0) || _connection.isClosed())
 				{
 					_log.finer("LoginServerThread: Login terminated the connection.");
+					break;
+				}
+				
+				if (length < 2)
+				{
+					_log.warning("Invalid packet length " + length + " sent to the server, closing connection.(LS)");
 					break;
 				}
 				
@@ -109,9 +115,13 @@ public class GameServerThread extends Thread
 				
 				int receivedBytes = 0;
 				int newBytes = 0;
-				while (newBytes != -1 && receivedBytes < length - 2)
+				while (receivedBytes < (length - 2))
 				{
-					newBytes = _in.read(data, 0, length - 2);
+					newBytes = _in.read(data, receivedBytes, (length - 2) - receivedBytes);
+					if (newBytes == -1)
+					{
+						break;
+					}
 					receivedBytes = receivedBytes + newBytes;
 				}
 				

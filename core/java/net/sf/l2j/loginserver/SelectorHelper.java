@@ -18,6 +18,7 @@ import java.net.InetAddress;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Logger;
 
 import net.sf.l2j.loginserver.serverpackets.Init;
 import net.sf.l2j.mmocore.IAcceptFilter;
@@ -25,6 +26,7 @@ import net.sf.l2j.mmocore.IClientFactory;
 import net.sf.l2j.mmocore.IMMOExecutor;
 import net.sf.l2j.mmocore.MMOConnection;
 import net.sf.l2j.mmocore.ReceivablePacket;
+import net.sf.l2j.mmocore.SendablePacket;
 import net.sf.l2j.util.IPv4Filter;
 
 /**
@@ -32,6 +34,8 @@ import net.sf.l2j.util.IPv4Filter;
  */
 public class SelectorHelper implements IMMOExecutor<L2LoginClient>, IClientFactory<L2LoginClient>, IAcceptFilter
 {
+	private static final Logger _log = Logger.getLogger(SelectorHelper.class.getName());
+	
 	private final ThreadPoolExecutor _generalPacketsThreadPool;
 	private final IPv4Filter _ipv4filter;
 	
@@ -57,6 +61,13 @@ public class SelectorHelper implements IMMOExecutor<L2LoginClient>, IClientFacto
 	public L2LoginClient create(MMOConnection<L2LoginClient> con)
 	{
 		L2LoginClient client = new L2LoginClient(con);
+		// Counted here so that plain and WebSocket connections are both counted exactly once
+		if (!LoginController.getInstance().addConnectedClient(client))
+		{
+			_log.warning("Too many connections from " + con.getInetAddress().getHostAddress() + ", closing.");
+			con.close((SendablePacket<L2LoginClient>) null);
+			return client;
+		}
 		client.sendPacket(new Init(client));
 		return client;
 	}
@@ -67,6 +78,6 @@ public class SelectorHelper implements IMMOExecutor<L2LoginClient>, IClientFacto
 	@Override
 	public boolean accept(InetAddress address)
 	{
-		return _ipv4filter.accept(address) && !LoginController.getInstance().isBannedAddress(address.getHostAddress());
+		return _ipv4filter.accept(address) && !LoginController.getInstance().isBannedAddress(address.getHostAddress()) && LoginController.getInstance().canAcceptConnection(address);
 	}
 }

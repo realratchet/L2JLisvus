@@ -124,6 +124,20 @@ public class NpcHtmlMessage extends L2GameServerPacket
 				activeChar.addBypass(_html.substring(start, finish).trim());
 			}
 		}
+		
+		for (int i = 0; i < len; i++)
+		{
+			int start = _html.indexOf("\"link ", i);
+			int finish = _html.indexOf("\"", start + 1);
+			
+			if (start < 0 || finish < 0)
+			{
+				break;
+			}
+			
+			i = finish;
+			activeChar.addLink(_html.substring(start + 6, finish).trim());
+		}
 	}
 	
 	@Override

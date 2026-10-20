@@ -29,7 +29,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Base64;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -60,6 +62,11 @@ public class LoginController
 	private final Map<String, BanInfo> _bannedIps = new ConcurrentHashMap<>();
 	
 	private final Map<InetAddress, FailedLoginAttempt> _hackProtection = new ConcurrentHashMap<>();
+	
+	/** Every open client connection, used to kick clients that never authenticate */
+	private final Set<L2LoginClient> _connectedClients = ConcurrentHashMap.newKeySet();
+	/** Open client connections per address */
+	private final Map<InetAddress, Integer> _connectionsPerIp = new HashMap<>();
 	protected KeyPairGenerator _keyGen;
 	protected ScrambledKeyPair[] _keyPairs;
 	
@@ -430,12 +437,12 @@ public class LoginController
 			int failedCount;
 			if (failedAttempt == null)
 			{
-				_hackProtection.put(address, new FailedLoginAttempt(password));
+				_hackProtection.put(address, new FailedLoginAttempt());
 				failedCount = 1;
 			}
 			else
 			{
-				failedAttempt.increaseCounter(password);
+				failedAttempt.increaseCounter();
 				failedCount = failedAttempt.getCount();
 			}
 			
@@ -512,41 +519,96 @@ public class LoginController
 		return _bannedIps;
 	}
 	
+	/**
+	 * @param address
+	 * @return true if the address is below the concurrent connection limit
+	 */
+	public boolean canAcceptConnection(InetAddress address)
+	{
+		if (Config.LOGIN_MAX_CONNECTIONS_PER_IP <= 0)
+		{
+			return true;
+		}
+		
+		synchronized (_connectionsPerIp)
+		{
+			final Integer count = _connectionsPerIp.get(address);
+			return (count == null) || (count < Config.LOGIN_MAX_CONNECTIONS_PER_IP);
+		}
+	}
+	
+	/**
+	 * Registers a new client connection.
+	 * @param client
+	 * @return false if the client address has reached the concurrent connection limit, the client is not registered then
+	 */
+	public boolean addConnectedClient(L2LoginClient client)
+	{
+		final InetAddress address = client.getConnection().getInetAddress();
+		synchronized (_connectionsPerIp)
+		{
+			final Integer count = _connectionsPerIp.get(address);
+			if ((Config.LOGIN_MAX_CONNECTIONS_PER_IP > 0) && (count != null) && (count >= Config.LOGIN_MAX_CONNECTIONS_PER_IP))
+			{
+				return false;
+			}
+			_connectionsPerIp.put(address, count == null ? 1 : count + 1);
+		}
+		_connectedClients.add(client);
+		return true;
+	}
+	
+	/**
+	 * Unregisters a client connection. Safe to call several times, the connection is only released once.
+	 * @param client
+	 */
+	public void removeConnectedClient(L2LoginClient client)
+	{
+		if (!_connectedClients.remove(client))
+		{
+			return;
+		}
+		
+		final InetAddress address = client.getConnection().getInetAddress();
+		synchronized (_connectionsPerIp)
+		{
+			final Integer count = _connectionsPerIp.get(address);
+			if ((count == null) || (count <= 1))
+			{
+				_connectionsPerIp.remove(address);
+			}
+			else
+			{
+				_connectionsPerIp.put(address, count - 1);
+			}
+		}
+	}
+	
 	class FailedLoginAttempt
 	{
 		private int _count;
 		private long _lastAttemptTime;
-		private String _lastPassword;
 		
-		public FailedLoginAttempt(String lastPassword)
+		public FailedLoginAttempt()
 		{
 			_count = 1;
 			_lastAttemptTime = System.currentTimeMillis();
-			_lastPassword = lastPassword;
 		}
 		
-		public void increaseCounter(String password)
+		public void increaseCounter()
 		{
-			if (!_lastPassword.equals(password))
+			// Every failed attempt counts, otherwise the account name can be brute forced with a fixed password
+			// Check if there is a long time since last wrong try
+			if (System.currentTimeMillis() - _lastAttemptTime < 300 * 1000)
 			{
-				// Check if there is a long time since last wrong try
-				if (System.currentTimeMillis() - _lastAttemptTime < 300 * 1000)
-				{
-					_count++;
-				}
-				else
-				{
-					// restart the status
-					_count = 1;
-				}
-				_lastPassword = password;
-				_lastAttemptTime = System.currentTimeMillis();
+				_count++;
 			}
 			else
-			// Trying the same password is not brute force
 			{
-				_lastAttemptTime = System.currentTimeMillis();
+				// restart the status
+				_count = 1;
 			}
+			_lastAttemptTime = System.currentTimeMillis();
 		}
 		
 		public int getCount()
@@ -643,9 +705,26 @@ public class LoginController
 					}
 				}
 				
+				// Kick clients that did not authenticate in time
+				for (L2LoginClient client : _connectedClients)
+				{
+					switch (client.getState())
+					{
+						case CONNECTED:
+						case AUTHED_GG:
+							if ((client.getConnectionStartTime() + LOGIN_TIMEOUT) < System.currentTimeMillis())
+							{
+								client.close(LoginFailReason.REASON_ACCESS_FAILED);
+							}
+							break;
+						default:
+							break;
+					}
+				}
+				
 				try
 				{
-					Thread.sleep(LOGIN_TIMEOUT / 2);
+					Thread.sleep(5000);
 				}
 				catch (InterruptedException e)
 				{

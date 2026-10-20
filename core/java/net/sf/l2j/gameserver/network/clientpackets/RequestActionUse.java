@@ -238,7 +238,20 @@ public class RequestActionUse extends L2GameClientPacket
 						activeChar.sendPacket(new SystemMessage(SystemMessage.DEAD_PET_CANNOT_BE_RETURNED));
 						return;
 					}
-					
+
+					if (pet.isMovementDisabled())
+					{
+						activeChar.sendMessage("Your pet/servitor is currently in a state of distress.");
+						activeChar.sendPacket(ActionFailed.STATIC_PACKET);
+						return;
+					}
+
+					if (pet.isAttackingNow() || pet.isInCombat())
+					{
+						activeChar.sendPacket(new SystemMessage(SystemMessage.PET_CANNOT_SENT_BACK_DURING_BATTLE));
+						return;
+					}
+
 					// if it is a pet and not a summon
 					if (pet instanceof L2PetInstance)
 					{

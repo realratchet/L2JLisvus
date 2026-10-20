@@ -263,10 +263,17 @@ public final class L2ClassMasterInstance extends L2FolkInstance
         if ((getMinLevel(currentClassId.level()) > player.getLevel()) && !Config.ALLOW_ENTIRE_TREE)
             return false;
 
+        if ((val < 0) || (val >= ClassId.values().length))
+            return false;
+
         if (!validateClassId(currentClassId, val))
             return false;
 
         int newJobLevel = currentClassId.level() + 1;
+
+        // Class change must be enabled for this job level (and for the target class level)
+        if (!Config.CLASS_MASTER_SETTINGS.isAllowed(newJobLevel) || !Config.CLASS_MASTER_SETTINGS.isAllowed(ClassId.values()[val].level()))
+            return false;
 
         // Weight/Inventory check
         if (!Config.CLASS_MASTER_SETTINGS.getRewardItems(newJobLevel).isEmpty())

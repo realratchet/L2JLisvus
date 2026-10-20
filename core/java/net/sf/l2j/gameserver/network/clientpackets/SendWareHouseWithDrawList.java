@@ -26,6 +26,7 @@ import net.sf.l2j.gameserver.network.serverpackets.InventoryUpdate;
 import net.sf.l2j.gameserver.network.serverpackets.ItemList;
 import net.sf.l2j.gameserver.network.serverpackets.StatusUpdate;
 import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
+import net.sf.l2j.gameserver.util.Util;
 
 /**
  * This class ... 32 SendWareHouseWithDrawList cd (dd) WootenGil rox :P
@@ -103,7 +104,7 @@ public class SendWareHouseWithDrawList extends L2GameClientPacket
 			return;
 		}
 
-		int weight = 0;
+		long weight = 0;
 		int slots = 0;
 
 		for (int i = 0; i < _count; i++)
@@ -113,12 +114,13 @@ public class SendWareHouseWithDrawList extends L2GameClientPacket
 
 			// Calculate needed slots
 			L2ItemInstance item = warehouse.getItemByObjectId(objectId);
-			if (item == null)
+			if ((item == null) || (count <= 0) || (item.getCount() < count))
 			{
-				continue;
+				Util.handleIllegalPlayerAction(player, "Warning!! Character " + player.getName() + " of account " + player.getAccountName() + " tried to withdraw non-existent item from warehouse.", Config.DEFAULT_PUNISH);
+				return;
 			}
 			
-			weight += weight * item.getItem().getWeight();
+			weight += (long) count * item.getItem().getWeight();
 			if (!item.isStackable())
 			{
 				slots += count;
@@ -149,7 +151,7 @@ public class SendWareHouseWithDrawList extends L2GameClientPacket
 		}
 
 		// Weight limit Check
-		if (!player.getInventory().validateWeight(weight))
+		if ((weight > Integer.MAX_VALUE) || !player.getInventory().validateWeight((int) weight))
 		{
 			sendPacket(new SystemMessage(SystemMessage.WEIGHT_LIMIT_EXCEEDED));
 			return;
@@ -166,6 +168,7 @@ public class SendWareHouseWithDrawList extends L2GameClientPacket
 			if ((oldItem == null) || (oldItem.getCount() < count))
 			{
 				player.sendMessage("Cannot withdraw requested item(s).");
+				continue;
 			}
 			L2ItemInstance newItem = warehouse.transferItem("Warehouse", objectId, count, player.getInventory(), player, player.getLastFolkNPC());
 			if (newItem == null)

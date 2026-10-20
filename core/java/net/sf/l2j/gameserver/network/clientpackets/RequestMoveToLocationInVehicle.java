@@ -19,6 +19,7 @@ import net.sf.l2j.gameserver.model.actor.instance.L2BoatInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.network.serverpackets.ActionFailed;
 import net.sf.l2j.gameserver.network.serverpackets.MoveToLocationInVehicle;
+import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
 import net.sf.l2j.gameserver.templates.L2WeaponType;
 import net.sf.l2j.util.Point3D;
 
@@ -62,6 +63,19 @@ public class RequestMoveToLocationInVehicle extends L2GameClientPacket
 			return;
 		}
 
+		if (activeChar.isAlikeDead() || activeChar.isMovementDisabled())
+		{
+			activeChar.sendPacket(ActionFailed.STATIC_PACKET);
+			return;
+		}
+
+		if (activeChar.getPet() != null)
+		{
+			activeChar.sendPacket(new SystemMessage(SystemMessage.RELEASE_PET_ON_BOAT));
+			activeChar.sendPacket(ActionFailed.STATIC_PACKET);
+			return;
+		}
+
 		final L2BoatInstance boat;
 		if (activeChar.isInBoat())
 		{
@@ -75,7 +89,7 @@ public class RequestMoveToLocationInVehicle extends L2GameClientPacket
 		else
 		{
 			boat = BoatManager.getInstance().getBoat(_boatId);
-			if (boat == null)
+			if ((boat == null) || !activeChar.isInsideRadius(boat, 1000, true, false))
 			{
 				activeChar.sendPacket(ActionFailed.STATIC_PACKET);
 				return;

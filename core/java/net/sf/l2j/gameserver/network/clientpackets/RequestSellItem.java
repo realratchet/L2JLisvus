@@ -145,14 +145,21 @@ public class RequestSellItem extends L2GameClientPacket
 				continue;
 			}
 
-			int oldAdena = player.getAdena();
-			if ((oldAdena + (totalPrice + ((item.getReferencePrice() * count) / 2))) > L2ItemInstance.getMaxItemCount(Inventory.ADENA_ID))
+			long price = ((long) item.getReferencePrice() * count) / 2;
+			if (price > L2ItemInstance.getMaxItemCount(Inventory.ADENA_ID))
+			{
+				Util.handleIllegalPlayerAction(player, "Warning!! Character " + player.getName() + " of account " + player.getAccountName() + " tried to purchase over " + L2ItemInstance.getMaxItemCount(Inventory.ADENA_ID) + " adena worth of goods.", Config.DEFAULT_PUNISH);
+				return;
+			}
+			
+			long oldAdena = player.getAdena();
+			if ((oldAdena + totalPrice + price) > L2ItemInstance.getMaxItemCount(Inventory.ADENA_ID))
 			{
 				player.sendPacket(new SystemMessage(SystemMessage.YOU_HAVE_EXCEEDED_POCKET_MONEY_LIMIT));
 				break;
 			}
 			
-			totalPrice += (item.getReferencePrice() * count) / 2;
+			totalPrice += price;
 			if (totalPrice > L2ItemInstance.getMaxItemCount(Inventory.ADENA_ID))
 			{
 				Util.handleIllegalPlayerAction(player, "Warning!! Character " + player.getName() + " of account " + player.getAccountName() + " tried to purchase over " + L2ItemInstance.getMaxItemCount(Inventory.ADENA_ID) + " adena worth of goods.", Config.DEFAULT_PUNISH);

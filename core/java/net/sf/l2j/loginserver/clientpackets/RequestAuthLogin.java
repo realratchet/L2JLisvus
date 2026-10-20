@@ -89,6 +89,13 @@ public class RequestAuthLogin extends L2LoginClientPacket
 		}
 		
 		LoginController lc = LoginController.getInstance();
+		// Address may have been banned for failed attempts after this connection was accepted
+		if (lc.isBannedAddress(client.getConnection().getInetAddress().getHostAddress()))
+		{
+			client.close(LoginFailReason.REASON_ACCESS_FAILED);
+			return;
+		}
+		
 		AuthLoginResult result = lc.tryAuthLogin(_account, _password, client);
 		
 		switch (result)

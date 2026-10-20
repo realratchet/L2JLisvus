@@ -55,6 +55,12 @@ public class RequestCrystallizeItem extends L2GameClientPacket
 			return;
 		}
 		
+		if (!getClient().getFloodProtectors().getTransaction().tryPerformAction("crystallize"))
+		{
+			activeChar.sendMessage("You are crystallizing too fast.");
+			return;
+		}
+		
 		if (_count <= 0)
 		{
 			Util.handleIllegalPlayerAction(activeChar, "[RequestCrystallizeItem] count <= 0! ban! oid: " + _objectId + " owner: " + activeChar.getName(), IllegalPlayerAction.PUNISH_KICK);
@@ -108,68 +114,78 @@ public class RequestCrystallizeItem extends L2GameClientPacket
 		
 		activeChar.setInCrystallize(true);
 		
-		// Unequip if needed
-		if (item.isEquipped())
+		try
 		{
-			L2ItemInstance[] unequiped = activeChar.getInventory().unEquipItemInSlotAndRecord(item.getEquipSlot());
-			InventoryUpdate iu = new InventoryUpdate();
-			for (L2ItemInstance element : unequiped)
+			// Unequip if needed
+			if (item.isEquipped())
 			{
-				iu.addModifiedItem(element);
-			}
-			activeChar.sendPacket(iu);
-		}
-		
-		// Remove from inventory
-		L2ItemInstance removedItem = activeChar.getInventory().destroyItem("Crystallize", _objectId, _count, activeChar, null);
-		
-		// Add crystals
-		int crystalId = item.getItem().getCrystalItemId();
-		int crystalAmount = item.getCrystalCount();
-		L2ItemInstance createditem = activeChar.getInventory().addItem("Crystallize", crystalId, crystalAmount, activeChar, item);
-		
-		SystemMessage sm = new SystemMessage(SystemMessage.EARNED_S2_S1_s);
-		sm.addItemName(crystalId);
-		sm.addNumber(crystalAmount);
-		activeChar.sendPacket(sm);
-		sm = null;
-		
-		// Send inventory update
-		if (!Config.FORCE_INVENTORY_UPDATE)
-		{
-			InventoryUpdate iu = new InventoryUpdate();
-			if (removedItem.getCount() == 0)
-			{
-				iu.addRemovedItem(removedItem);
-			}
-			else
-			{
-				iu.addModifiedItem(removedItem);
+				L2ItemInstance[] unequiped = activeChar.getInventory().unEquipItemInSlotAndRecord(item.getEquipSlot());
+				InventoryUpdate iu = new InventoryUpdate();
+				for (L2ItemInstance element : unequiped)
+				{
+					iu.addModifiedItem(element);
+				}
+				activeChar.sendPacket(iu);
 			}
 			
-			if (createditem.getCount() != crystalAmount)
+			// Remove from inventory
+			L2ItemInstance removedItem = activeChar.getInventory().destroyItem("Crystallize", _objectId, _count, activeChar, null);
+			if (removedItem == null)
 			{
-				iu.addModifiedItem(createditem);
+				return;
+			}
+			
+			// Add crystals
+			int crystalId = item.getItem().getCrystalItemId();
+			int crystalAmount = item.getCrystalCount();
+			L2ItemInstance createditem = activeChar.getInventory().addItem("Crystallize", crystalId, crystalAmount, activeChar, item);
+			
+			SystemMessage sm = new SystemMessage(SystemMessage.EARNED_S2_S1_s);
+			sm.addItemName(crystalId);
+			sm.addNumber(crystalAmount);
+			activeChar.sendPacket(sm);
+			sm = null;
+			
+			// Send inventory update
+			if (!Config.FORCE_INVENTORY_UPDATE)
+			{
+				InventoryUpdate iu = new InventoryUpdate();
+				if (removedItem.getCount() == 0)
+				{
+					iu.addRemovedItem(removedItem);
+				}
+				else
+				{
+					iu.addModifiedItem(removedItem);
+				}
+			
+				if (createditem.getCount() != crystalAmount)
+				{
+					iu.addModifiedItem(createditem);
+				}
+				else
+				{
+					iu.addNewItem(createditem);
+				}
+				activeChar.sendPacket(iu);
 			}
 			else
 			{
-				iu.addNewItem(createditem);
+				activeChar.sendPacket(new ItemList(activeChar, false));
 			}
-			activeChar.sendPacket(iu);
+			
+			// Status & user info
+			StatusUpdate su = new StatusUpdate(activeChar.getObjectId());
+			su.addAttribute(StatusUpdate.CUR_LOAD, activeChar.getCurrentLoad());
+			activeChar.sendPacket(su);
+			
+			activeChar.broadcastUserInfo();
+			L2World.getInstance().removeObject(removedItem);
 		}
-		else
+		finally
 		{
-			activeChar.sendPacket(new ItemList(activeChar, false));
+			activeChar.setInCrystallize(false);
 		}
-		
-		// Status & user info
-		StatusUpdate su = new StatusUpdate(activeChar.getObjectId());
-		su.addAttribute(StatusUpdate.CUR_LOAD, activeChar.getCurrentLoad());
-		activeChar.sendPacket(su);
-		
-		activeChar.broadcastUserInfo();
-		L2World.getInstance().removeObject(removedItem);
-		activeChar.setInCrystallize(false);
 	}
 	
 	/*

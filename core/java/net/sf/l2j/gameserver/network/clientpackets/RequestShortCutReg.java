@@ -55,6 +55,11 @@ public class RequestShortCutReg extends L2GameClientPacket
 			return;
 		}
 		
+		if ((_page < 0) || (_page > 10) || (_slot < 0) || (_slot > 11))
+		{
+			return;
+		}
+		
 		switch (_type)
 		{
 			case 0x01: // item

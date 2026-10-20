@@ -85,6 +85,12 @@ public class ValidatePosition extends L2GameClientPacket
 			}
 		}
 		
+		// Position may legitimately lag behind while casting
+		if (activeChar.isCastingNow())
+		{
+			return;
+		}
+		
 		int dx, dy, dz;
 		double diffSq;
 		
@@ -115,10 +121,20 @@ public class ValidatePosition extends L2GameClientPacket
 			return;
 		}
 		
+		// Abnormal Z read from client, move back to server position
+		if ((_z < -20000) || (_z > 20000))
+		{
+			activeChar.teleToLocation(realX, realY, realZ, false);
+			return;
+		}
+		
 		dx = _x - realX;
 		dy = _y - realY;
 		dz = _z - realZ;
 		diffSq = ((dx * dx) + (dy * dy));
+		
+		// Client Z changes are only accepted within sane bounds
+		final boolean validZ = (Math.abs(dz) <= 200) || ((Math.abs(dz) < 1500) && (Math.abs(_z - activeChar.getClientZ()) < 800));
 		
 		if ((activeChar.getParty() != null) && (activeChar.getLastPartyPositionDistance(_x, _y, _z) > 150))
 		{
@@ -136,8 +152,11 @@ public class ValidatePosition extends L2GameClientPacket
 		
 		if (activeChar.isFlying() || activeChar.isInsideZone(L2Character.ZONE_WATER))
 		{
-			activeChar.setXYZ(realX, realY, _z);
-			if (diffSq > 90000)
+			if (validZ)
+			{
+				activeChar.setXYZ(realX, realY, _z);
+			}
+			if (!validZ || (diffSq > 90000))
 			{
 				activeChar.sendPacket(new ValidateLocation(activeChar));
 			}
@@ -146,12 +165,24 @@ public class ValidatePosition extends L2GameClientPacket
 		{
 			if (Config.COORD_SYNCHRONIZE == -1) // Only Z coordinate synchronized to server, mainly used when no geodata
 			{
-				activeChar.setXYZ(realX, realY, _z);
-				return;
+				if (validZ)
+				{
+					activeChar.setXYZ(realX, realY, _z);
+					realZ = _z;
+				}
+				else
+				{
+					activeChar.sendPacket(new ValidateLocation(activeChar));
+				}
 			}
-			
-			if (Config.COORD_SYNCHRONIZE == 1) // Trusting also client x,y coordinates (should not be used with geodata)
+			else if (Config.COORD_SYNCHRONIZE == 1) // Trusting also client x,y coordinates (should not be used with geodata)
 			{
+				if (!validZ)
+				{
+					activeChar.sendPacket(new ValidateLocation(activeChar));
+					return;
+				}
+				
 				if (!activeChar.isMoving() || !activeChar.validateMovementHeading(_heading)) // Heading changed on client = possible obstacle
 				{
 					// character is not moving, take coordinates from client
@@ -177,7 +208,7 @@ public class ValidatePosition extends L2GameClientPacket
 			// intended for geodata. Sends a validation packet to client
 			// when too far from server calculated true coordinate.
 			// Due to geodata "holes", some Z axis checks are made.
-			if ((diffSq > 250000) || (Math.abs(dz) > 200))
+			else if ((diffSq > 250000) || (Math.abs(dz) > 200))
 			{
 				if ((Math.abs(dz) > 200) && (Math.abs(dz) < 1500) && (Math.abs(_z - activeChar.getClientZ()) < 800))
 				{

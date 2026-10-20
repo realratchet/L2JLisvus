@@ -42,11 +42,11 @@ public class RequestJoinPledge extends L2GameClientPacket
 	{
 		L2PcInstance activeChar = getClient().getActiveChar();
 		
-		if (activeChar == null)
+		if ((activeChar == null) || (activeChar.getClan() == null))
 		{
 			return;
 		}
-		
+
 		L2PcInstance newMember = L2World.getInstance().getPlayer(_target);
 		if (newMember == null)
 		{

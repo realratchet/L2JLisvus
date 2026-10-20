@@ -26,6 +26,8 @@ public class SetPrivateStoreMsgBuy extends L2GameClientPacket
 	private static final String _C__94_SETPRIVATESTOREMSGBUY = "[C] 94 SetPrivateStoreMsgBuy";
 	// private static Logger _log = Logger.getLogger(SetPrivateStoreMsgBuy.class.getName());
 
+	private static final int MAX_MSG_LENGTH = 29;
+	
 	private String _storeMsg;
 
 	@Override
@@ -39,6 +41,11 @@ public class SetPrivateStoreMsgBuy extends L2GameClientPacket
 	{
 		L2PcInstance player = getClient().getActiveChar();
 		if ((player == null) || (player.getBuyList() == null))
+		{
+			return;
+		}
+
+		if ((_storeMsg != null) && (_storeMsg.length() > MAX_MSG_LENGTH))
 		{
 			return;
 		}

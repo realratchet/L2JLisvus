@@ -100,6 +100,13 @@ public class Action extends L2GameClientPacket
 			return;
 		}
 
+		// Invisible players cannot be targeted by non-GM players
+		if ((obj instanceof L2PcInstance) && ((L2PcInstance) obj).getAppearance().getInvisible() && !activeChar.isGM())
+		{
+			sendPacket(ActionFailed.STATIC_PACKET);
+			return;
+		}
+
 		if (obj instanceof L2ItemInstance)
 		{
 			_removeSpawnProtection = true;

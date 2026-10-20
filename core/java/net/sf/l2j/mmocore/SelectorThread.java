@@ -30,6 +30,8 @@ import java.util.Map;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Parts of design based on network core from WoodenGil
@@ -38,6 +40,8 @@ import java.util.concurrent.ConcurrentLinkedQueue;
  */
 public final class SelectorThread<T extends MMOClient<?>> extends Thread
 {
+	private static final Logger _log = Logger.getLogger(SelectorThread.class.getName());
+	
 	// default BYTE_ORDER
 	private static final ByteOrder BYTE_ORDER = ByteOrder.LITTLE_ENDIAN;
 	// default HEADER_SIZE
@@ -167,27 +171,48 @@ public final class SelectorThread<T extends MMOClient<?>> extends Thread
 					
 					con = (MMOConnection<T>) key.attachment();
 					
-					switch (key.readyOps())
+					// A failure on one connection must not kill the selector
+					try
 					{
-						case SelectionKey.OP_CONNECT:
-							finishConnection(key, con);
-							break;
-						case SelectionKey.OP_ACCEPT:
-							acceptConnection(key, con);
-							break;
-						case SelectionKey.OP_READ:
-							readPacket(key, con);
-							break;
-						case SelectionKey.OP_WRITE:
-							writePacket(key, con);
-							break;
-						case SelectionKey.OP_READ | SelectionKey.OP_WRITE:
-							writePacket(key, con);
-							if (key.isValid())
-							{
+						switch (key.readyOps())
+						{
+							case SelectionKey.OP_CONNECT:
+								finishConnection(key, con);
+								break;
+							case SelectionKey.OP_ACCEPT:
+								acceptConnection(key, con);
+								break;
+							case SelectionKey.OP_READ:
 								readPacket(key, con);
+								break;
+							case SelectionKey.OP_WRITE:
+								writePacket(key, con);
+								break;
+							case SelectionKey.OP_READ | SelectionKey.OP_WRITE:
+								writePacket(key, con);
+								if (key.isValid())
+								{
+									readPacket(key, con);
+								}
+								break;
+						}
+					}
+					catch (Exception e)
+					{
+						_log.log(Level.WARNING, "SelectorThread: Error on connection " + (con == null ? "" : con.getInetAddress()) + ", closing it.", e);
+						// The shared buffer may hold partial data of the failed connection
+						READ_BUFFER.clear();
+						if (con != null)
+						{
+							try
+							{
+								closeConnectionImpl(key, con);
 							}
-							break;
+							catch (Exception e2)
+							{
+								_log.log(Level.WARNING, "SelectorThread: Error while closing connection.", e2);
+							}
+						}
 					}
 				}
 			}
@@ -307,7 +332,9 @@ public final class SelectorThread<T extends MMOClient<?>> extends Thread
 			// going into infinite loop
 			if (buf.position() == buf.limit())
 			{
-				System.exit(0);
+				_log.warning("SelectorThread: Read buffer full for " + con.getInetAddress() + ", closing connection.");
+				closeConnectionImpl(key, con);
+				return;
 			}
 			
 			int result = -2;
@@ -405,7 +432,7 @@ public final class SelectorThread<T extends MMOClient<?>> extends Thread
 					if (dataPending > 0)
 					{
 						final int pos = buf.position();
-						parseClientPacket(pos, buf, dataPending, client);
+						parseClientPacket(pos, buf, dataPending, client, con);
 						buf.position(pos + dataPending);
 					}
 					
@@ -453,32 +480,42 @@ public final class SelectorThread<T extends MMOClient<?>> extends Thread
 		READ_BUFFER.clear();
 	}
 	
-	private final void parseClientPacket(final int pos, final ByteBuffer buf, final int dataSize, final T client)
+	private final void parseClientPacket(final int pos, final ByteBuffer buf, final int dataSize, final T client, final MMOConnection<T> con)
 	{
-		final boolean ret = client.decrypt(buf, dataSize);
-		
-		if (ret && buf.hasRemaining())
+		final int limit = buf.limit();
+		try
 		{
-			// apply limit
-			final int limit = buf.limit();
-			buf.limit(pos + dataSize);
-			final ReceivablePacket<T> cp = _packetHandler.handlePacket(buf, client);
+			final boolean ret = client.decrypt(buf, dataSize);
 			
-			if (cp != null)
+			if (ret && buf.hasRemaining())
 			{
-				cp._buf = buf;
-				cp._sbuf = STRING_BUFFER;
-				cp._client = client;
+				// apply limit
+				buf.limit(pos + dataSize);
+				final ReceivablePacket<T> cp = _packetHandler.handlePacket(buf, client);
 				
-				if (cp.read())
+				if (cp != null)
 				{
-					_executor.execute(cp);
+					cp._buf = buf;
+					cp._sbuf = STRING_BUFFER;
+					cp._client = client;
+					
+					if (cp.read())
+					{
+						_executor.execute(cp);
+					}
+					
+					cp._buf = null;
+					cp._sbuf = null;
 				}
-				
-				cp._buf = null;
-				cp._sbuf = null;
+				buf.limit(limit);
 			}
+		}
+		catch (RuntimeException e)
+		{
+			// Malformed packet, drop only this connection
+			_log.log(Level.WARNING, "SelectorThread: Failed to parse packet from " + con.getInetAddress() + ", closing connection.", e);
 			buf.limit(limit);
+			con.close((SendablePacket<T>) null);
 		}
 	}
 	

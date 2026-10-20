@@ -28,7 +28,8 @@ import net.sf.l2j.mmocore.IAcceptFilter;
  */
 public class IPv4Filter implements IAcceptFilter, Runnable
 {
-	private final Map<Integer, Flood> _ipFloodMap;
+	// Keyed by the full address, so IPv6 peers sharing the first 4 bytes do not collide
+	private final Map<InetAddress, Flood> _ipFloodMap;
 	
 	private static final long SLEEP_TIME = 5000;
 	
@@ -38,15 +39,6 @@ public class IPv4Filter implements IAcceptFilter, Runnable
 		Thread t = new Thread(this);
 		t.setDaemon(true);
 		t.start();
-	}
-	
-	/**
-	 * @param ip
-	 * @return
-	 */
-	private static final int hash(byte[] ip)
-	{
-		return (ip[0] & 0xFF) | ((ip[1] << 8) & 0xFF00) | ((ip[2] << 16) & 0xFF0000) | ((ip[3] << 24) & 0xFF000000);
 	}
 	
 	protected static final class Flood
@@ -65,14 +57,12 @@ public class IPv4Filter implements IAcceptFilter, Runnable
 	@Override
 	public boolean accept(InetAddress addr)
 	{
-		int h = hash(addr.getAddress());
-		
 		long current = System.currentTimeMillis();
 		Flood f;
 		
 		synchronized (_ipFloodMap)
 		{
-			f = _ipFloodMap.get(h);
+			f = _ipFloodMap.get(addr);
 		}
 		
 		if (f != null)
@@ -104,7 +94,7 @@ public class IPv4Filter implements IAcceptFilter, Runnable
 		{
 			synchronized (_ipFloodMap)
 			{
-				_ipFloodMap.put(h, new Flood());
+				_ipFloodMap.put(addr, new Flood());
 			}
 		}
 		
@@ -120,7 +110,7 @@ public class IPv4Filter implements IAcceptFilter, Runnable
 			
 			synchronized (_ipFloodMap)
 			{
-				Iterator<Entry<Integer, Flood>> it = _ipFloodMap.entrySet().iterator();
+				Iterator<Entry<InetAddress, Flood>> it = _ipFloodMap.entrySet().iterator();
 				while (it.hasNext())
 				{
 					Flood f = it.next().getValue();

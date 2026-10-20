@@ -272,6 +272,8 @@ public class L2LoginClient extends MMOClient<MMOConnection<L2LoginClient>>
 			_log.info("DISCONNECTED: "+toString());
 		}
 
+		LoginController.getInstance().removeConnectedClient(this);
+
 		if (_state != LoginClientState.JOINED_GS || (getConnectionStartTime() + LoginController.LOGIN_TIMEOUT) < System.currentTimeMillis())
 		{
 			LoginController.getInstance().removeAuthedLoginClient(getAccount());

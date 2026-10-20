@@ -144,7 +144,8 @@ public class Say2 extends L2GameClientPacket
 
 		if (activeChar.isChatBanned())
 		{
-			if ((_type == ALL) || (_type == SHOUT) || (_type == TRADE) || (_type == HERO_VOICE) || (_type == PARTY_ROOM))
+			// Voiced commands are still allowed
+			if ((_type != ALL) || !_text.startsWith("."))
 			{
 				activeChar.sendPacket(new SystemMessage(966));
 				return;

@@ -16,10 +16,12 @@ package net.sf.l2j.gameserver.network.clientpackets;
 
 import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.model.L2Character;
+import net.sf.l2j.gameserver.model.L2ItemInstance;
 import net.sf.l2j.gameserver.model.L2ManufactureItem;
 import net.sf.l2j.gameserver.model.L2ManufactureList;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance.PrivateStoreType;
+import net.sf.l2j.gameserver.model.itemcontainer.Inventory;
 import net.sf.l2j.gameserver.network.serverpackets.ActionFailed;
 import net.sf.l2j.gameserver.network.serverpackets.RecipeShopMsg;
 import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
@@ -41,11 +43,25 @@ public class RequestRecipeShopListSet extends L2GameClientPacket
 	protected void readImpl()
 	{
 		_count = readD();
+		if ((_count < 0) || (_count > Math.max(Config.DWARF_RECIPE_LIMIT, Config.COMMON_RECIPE_LIMIT)) || ((_count * 8) > _buf.remaining()))
+		{
+			_count = 0;
+			_items = null;
+			return;
+		}
+		
 		_items = new int[_count * 2];
 		for (int x = 0; x < _count; x++)
 		{
 			_items[(x * 2) + 0] = readD(); // recipeId
-			_items[(x * 2) + 1] = readD(); // cost
+			int cost = readD();
+			if (cost < 0)
+			{
+				_count = 0;
+				_items = null;
+				return;
+			}
+			_items[(x * 2) + 1] = cost; // cost
 		}
 	}
 	
@@ -55,6 +71,13 @@ public class RequestRecipeShopListSet extends L2GameClientPacket
 		L2PcInstance player = getClient().getActiveChar();
 		if (player == null)
 		{
+			return;
+		}
+		
+		// Malformed packet
+		if (_items == null)
+		{
+			player.sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}
 		
@@ -92,6 +115,12 @@ public class RequestRecipeShopListSet extends L2GameClientPacket
 				if (!player.hasRecipeList(recipeID))
 				{
 					Util.handleIllegalPlayerAction(player, "Warning!! Player " + player.getName() + " of account " + player.getAccountName() + " tried to set recipe which he dont have.", Config.DEFAULT_PUNISH);
+					return;
+				}
+				
+				if ((cost < 0) || (cost > L2ItemInstance.getMaxItemCount(Inventory.ADENA_ID)))
+				{
+					Util.handleIllegalPlayerAction(player, "Warning!! Player " + player.getName() + " of account " + player.getAccountName() + " tried to set price more than " + L2ItemInstance.getMaxItemCount(Inventory.ADENA_ID) + " adena in Private Manufacture.", Config.DEFAULT_PUNISH);
 					return;
 				}
 				

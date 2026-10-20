@@ -27,6 +27,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Set;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -53,10 +55,13 @@ public final class WebSocketListener extends WebSocketServer
 	private static final int MAX_FRAME_SIZE = 0xFFFF;
 	// Close a browser that stops reading instead of queueing without bound
 	private static final int MAX_QUEUED_FRAMES = 4096;
+	// Close a browser that sends faster than the hand-off socket drains
+	private static final int MAX_QUEUED_BYTES = 256 * 1024;
 
 	private final SelectorThread<?> _selectorThread;
 	private final InetSocketAddress _handOffTarget;
-	private final Set<String> _allowedOrigins;
+	private final boolean _allowAnyOrigin;
+	private final Set<String> _allowedOrigins = new HashSet<>();
 
 	/**
 	 * @param selectorThread the selector that serves the regular TCP listener
@@ -64,7 +69,7 @@ public final class WebSocketListener extends WebSocketServer
 	 * @param port WebSocket port
 	 * @param tcpBindAddress bind address of the regular TCP listener, null for all available addresses
 	 * @param tcpPort port of the regular TCP listener
-	 * @param allowedOrigins comma separated Origin allowlist, * allows any
+	 * @param allowedOrigins comma separated Origin allowlist, * allows any, empty rejects every browser
 	 */
 	public WebSocketListener(SelectorThread<?> selectorThread, InetAddress bindAddress, int port, InetAddress tcpBindAddress, int tcpPort, String allowedOrigins)
 	{
@@ -74,7 +79,18 @@ public final class WebSocketListener extends WebSocketServer
 		_handOffTarget = new InetSocketAddress(tcpBindAddress == null ? InetAddress.getLoopbackAddress() : tcpBindAddress, tcpPort);
 
 		final List<String> origins = Arrays.asList(allowedOrigins.trim().toLowerCase(Locale.ROOT).split("\\s*,\\s*"));
-		_allowedOrigins = origins.contains("*") ? null : new HashSet<>(origins);
+		_allowAnyOrigin = origins.contains("*");
+		for (String origin : origins)
+		{
+			if (!origin.isEmpty() && !origin.equals("*"))
+			{
+				_allowedOrigins.add(origin);
+			}
+		}
+		if (!_allowAnyOrigin && _allowedOrigins.isEmpty())
+		{
+			_log.warning("WebSocketAllowedOrigins is empty, every browser connection on port " + port + " will be refused.");
+		}
 
 		setReuseAddr(true);
 		setTcpNoDelay(true);
@@ -84,10 +100,11 @@ public final class WebSocketListener extends WebSocketServer
 	@Override
 	public ServerHandshakeBuilder onWebsocketHandshakeReceivedAsServer(WebSocket ws, Draft draft, ClientHandshake request) throws InvalidDataException
 	{
-		if (_allowedOrigins != null)
+		if (!_allowAnyOrigin)
 		{
-			final String origin = request.getFieldValue("Origin").toLowerCase(Locale.ROOT);
-			if (!_allowedOrigins.contains(origin))
+			// A missing Origin header is refused as well
+			final String origin = request.getFieldValue("Origin");
+			if ((origin == null) || !_allowedOrigins.contains(origin.trim().toLowerCase(Locale.ROOT)))
 			{
 				throw new InvalidDataException(CloseFrame.POLICY_VALIDATION, "Origin not allowed");
 			}
@@ -130,19 +147,21 @@ public final class WebSocketListener extends WebSocketServer
 			return;
 		}
 
-		ws.setAttachment(handOff);
+		final HandOff connection = new HandOff(handOff);
+		ws.setAttachment(connection);
 
-		final SocketChannel channel = handOff;
-		Thread.ofVirtual().name("WebSocketHandOff-" + ws.getRemoteSocketAddress()).start(() -> pump(ws, channel));
+		Thread.ofVirtual().name("WebSocketHandOff-" + ws.getRemoteSocketAddress()).start(() -> pump(ws, connection));
+		Thread.ofVirtual().name("WebSocketWriter-" + ws.getRemoteSocketAddress()).start(() -> write(ws, connection));
 	}
 
 	/**
 	 * Forwards server packets from the hand-off socket to the browser, one legacy packet per message.
 	 * @param ws
-	 * @param handOff
+	 * @param connection
 	 */
-	private static void pump(WebSocket ws, SocketChannel handOff)
+	private static void pump(WebSocket ws, HandOff connection)
 	{
+		final SocketChannel handOff = connection._channel;
 		final ByteBuffer buf = ByteBuffer.allocate(MAX_FRAME_SIZE * 2).order(ByteOrder.LITTLE_ENDIAN);
 		try
 		{
@@ -184,7 +203,41 @@ public final class WebSocketListener extends WebSocketServer
 		}
 		finally
 		{
-			closeQuietly(handOff);
+			connection.close();
+			ws.close(CloseFrame.NORMAL);
+		}
+	}
+
+	/**
+	 * Forwards browser messages to the hand-off socket in arrival order, off the WebSocket decoder thread.
+	 * @param ws
+	 * @param connection
+	 */
+	private static void write(WebSocket ws, HandOff connection)
+	{
+		try
+		{
+			byte[] data;
+			while ((data = connection._queue.take()) != HandOff.CLOSED)
+			{
+				final ByteBuffer buf = ByteBuffer.wrap(data);
+				while (buf.hasRemaining())
+				{
+					connection._channel.write(buf);
+				}
+				connection._queuedBytes.addAndGet(-data.length);
+			}
+		}
+		catch (Exception e)
+		{
+			if (ws.isOpen())
+			{
+				_log.log(Level.FINE, "WebSocket hand-off write for " + ws.getRemoteSocketAddress() + " failed: " + e.getMessage());
+			}
+		}
+		finally
+		{
+			connection.close();
 			ws.close(CloseFrame.NORMAL);
 		}
 	}
@@ -192,24 +245,22 @@ public final class WebSocketListener extends WebSocketServer
 	@Override
 	public void onMessage(WebSocket ws, ByteBuffer message)
 	{
-		final SocketChannel handOff = ws.getAttachment();
-		if (handOff == null)
+		final HandOff connection = ws.getAttachment();
+		if ((connection == null) || !connection._channel.isOpen() || !message.hasRemaining())
 		{
 			return;
 		}
 
-		try
+		final byte[] data = new byte[message.remaining()];
+		message.get(data);
+		if (connection._queuedBytes.addAndGet(data.length) > MAX_QUEUED_BYTES)
 		{
-			while (message.hasRemaining())
-			{
-				handOff.write(message);
-			}
+			_log.warning("WebSocket client " + ws.getRemoteSocketAddress() + " is sending too fast, closing.");
+			connection.close();
+			ws.close(CloseFrame.POLICY_VALIDATION, "Too fast");
+			return;
 		}
-		catch (IOException e)
-		{
-			closeQuietly(handOff);
-			ws.close(CloseFrame.NORMAL);
-		}
+		connection._queue.add(data);
 	}
 
 	@Override
@@ -221,7 +272,11 @@ public final class WebSocketListener extends WebSocketServer
 	@Override
 	public void onClose(WebSocket ws, int code, String reason, boolean remote)
 	{
-		closeQuietly(ws.getAttachment());
+		final HandOff connection = ws.getAttachment();
+		if (connection != null)
+		{
+			connection.close();
+		}
 	}
 
 	@Override
@@ -232,7 +287,11 @@ public final class WebSocketListener extends WebSocketServer
 			_log.log(Level.WARNING, "WebSocket listener error: " + e.getMessage(), e);
 			return;
 		}
-		closeQuietly(ws.getAttachment());
+		final HandOff connection = ws.getAttachment();
+		if (connection != null)
+		{
+			connection.close();
+		}
 	}
 
 	@Override
@@ -254,6 +313,31 @@ public final class WebSocketListener extends WebSocketServer
 		}
 		catch (IOException e)
 		{
+		}
+	}
+
+	/**
+	 * Hand-off socket of one browser with its pending browser to server data.
+	 */
+	private static final class HandOff
+	{
+		// Wakes up and stops the writer
+		static final byte[] CLOSED = new byte[0];
+
+		final SocketChannel _channel;
+		final LinkedBlockingQueue<byte[]> _queue = new LinkedBlockingQueue<>();
+		final AtomicInteger _queuedBytes = new AtomicInteger();
+
+		HandOff(SocketChannel channel)
+		{
+			_channel = channel;
+		}
+
+		void close()
+		{
+			closeQuietly(_channel);
+			_queue.clear();
+			_queue.add(CLOSED);
 		}
 	}
 }

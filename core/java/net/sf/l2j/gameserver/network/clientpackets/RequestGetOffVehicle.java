@@ -14,6 +14,8 @@
  */
 package net.sf.l2j.gameserver.network.clientpackets;
 
+import net.sf.l2j.gameserver.geoengine.GeoData;
+import net.sf.l2j.gameserver.model.actor.instance.L2BoatInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.network.serverpackets.ActionFailed;
 import net.sf.l2j.gameserver.network.serverpackets.GetOffVehicle;
@@ -24,6 +26,8 @@ import net.sf.l2j.gameserver.network.serverpackets.StopMoveInVehicle;
  */
 public class RequestGetOffVehicle extends L2GameClientPacket
 {
+	private static final int MAX_Z_DIFF = 200;
+	
 	private int _boatId, _x, _y, _z;
 	
 	@Override
@@ -48,16 +52,21 @@ public class RequestGetOffVehicle extends L2GameClientPacket
 			return;
 		}
 		
-		if (!activeChar.isInBoat() || (activeChar.getBoat().getObjectId() != _boatId) || !activeChar.isInsideRadius(_x, _y, _z, 1000, true, false))
+		if (!activeChar.isInBoat() || (activeChar.getBoat().getObjectId() != _boatId) || activeChar.getBoat().isMoving() || activeChar.isAlikeDead() || activeChar.isMovementDisabled())
 		{
 			sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}
 		
-		if (activeChar.getBoat().isMoving())
+		// Destination must be near the boat and, where geodata exists, on a valid surface
+		final L2BoatInstance boat = activeChar.getBoat();
+		if (!boat.isInsideRadius(_x, _y, _z, 1000, true, false) || (GeoData.getInstance().hasGeo(_x, _y) && (Math.abs(GeoData.getInstance().getHeight(_x, _y, _z) - _z) > MAX_Z_DIFF)))
 		{
-			activeChar.broadcastPacket(new StopMoveInVehicle(activeChar, _boatId));
+			sendPacket(ActionFailed.STATIC_PACKET);
+			return;
 		}
+		
+		activeChar.broadcastPacket(new StopMoveInVehicle(activeChar, _boatId));
 		
 		activeChar.setBoat(null);
 		activeChar.setInBoatPosition(null);

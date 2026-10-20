@@ -80,6 +80,13 @@ public class AttackRequest extends L2GameClientPacket
 			return;
 		}
 
+		// Invisible players cannot be targeted by non-GM players
+		if ((target instanceof L2PcInstance) && ((L2PcInstance) target).getAppearance().getInvisible() && !activeChar.isGM())
+		{
+			activeChar.sendPacket(ActionFailed.STATIC_PACKET);
+			return;
+		}
+
 		if (activeChar.getTarget() != target)
 		{
 			target.onAction(activeChar);

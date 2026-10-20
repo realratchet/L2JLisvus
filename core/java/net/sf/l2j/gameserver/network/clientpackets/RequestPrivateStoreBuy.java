@@ -20,6 +20,7 @@ import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.model.ItemRequest;
 import net.sf.l2j.gameserver.model.L2World;
 import net.sf.l2j.gameserver.model.TradeList;
+import net.sf.l2j.gameserver.model.actor.instance.L2NpcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance.PrivateStoreType;
 import net.sf.l2j.gameserver.network.serverpackets.ActionFailed;
@@ -73,6 +74,13 @@ public class RequestPrivateStoreBuy extends L2GameClientPacket
 		{
 			return;
 		}
+		
+		// Malformed packet
+		if (_items == null)
+		{
+			sendPacket(ActionFailed.STATIC_PACKET);
+			return;
+		}
 
 		if (!getClient().getFloodProtectors().getTransaction().tryPerformAction("privatestorebuy"))
 		{
@@ -83,6 +91,12 @@ public class RequestPrivateStoreBuy extends L2GameClientPacket
 		L2PcInstance storePlayer = L2World.getInstance().getPlayer(_storePlayerId);
 		if (storePlayer == null)
 		{
+			return;
+		}
+		
+		if (!player.isInsideRadius(storePlayer, L2NpcInstance.INTERACTION_DISTANCE, true, false))
+		{
+			sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}
 

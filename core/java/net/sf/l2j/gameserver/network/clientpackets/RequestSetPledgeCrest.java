@@ -120,7 +120,7 @@ public class RequestSetPledgeCrest extends L2GameClientPacket
 
 		if (clan.hasCrest())
 		{
-			crestCache.removeCrest(CrestType.PLEDGE, newId);
+			crestCache.removeCrest(CrestType.PLEDGE, clan.getCrestId());
 		}
 
 		if (!crestCache.saveCrest(CrestType.PLEDGE, newId, _data))

@@ -636,6 +636,7 @@ public final class L2PcInstance extends L2PlayableInstance
 	/** Bypass validations */
 	private final List<String> _validBypass = new ArrayList<>();
 	private final List<String> _validBypass2 = new ArrayList<>();
+	private final List<String> _validLink = new ArrayList<>();
 	
 	private boolean _inCrystallize;
 	private boolean _inCraftMode;
@@ -10171,6 +10172,26 @@ public final class L2PcInstance extends L2PlayableInstance
 		return false;
 	}
 	
+	public synchronized void addLink(String link)
+	{
+		if (link == null)
+		{
+			return;
+		}
+		
+		_validLink.add(link);
+	}
+	
+	public synchronized boolean validateLink(String link)
+	{
+		if (!Config.BYPASS_VALIDATION)
+		{
+			return true;
+		}
+		
+		return _validLink.contains(link);
+	}
+	
 	public boolean validateItemManipulation(int objectId, String action)
 	{
 		L2ItemInstance item = getInventory().getItemByObjectId(objectId);
@@ -10209,6 +10230,7 @@ public final class L2PcInstance extends L2PlayableInstance
 	{
 		_validBypass.clear();
 		_validBypass2.clear();
+		_validLink.clear();
 	}
 	
 	/**

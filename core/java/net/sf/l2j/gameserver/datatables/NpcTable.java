@@ -18,9 +18,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Logger;
 
@@ -42,6 +45,54 @@ import net.sf.l2j.gameserver.templates.StatsSet;
 public class NpcTable
 {
 	private static Logger _log = Logger.getLogger(NpcTable.class.getName());
+	
+	/** Lower case column names that saveNpc is allowed to update */
+	private static final Set<String> NPC_COLUMNS = new HashSet<>(Arrays.asList(
+		"idtemplate",
+		"name",
+		"serversidename",
+		"title",
+		"serversidetitle",
+		"class",
+		"collision_radius",
+		"collision_height",
+		"level",
+		"sex",
+		"type",
+		"attackrange",
+		"hp",
+		"mp",
+		"hpreg",
+		"mpreg",
+		"str",
+		"con",
+		"dex",
+		"int",
+		"wit",
+		"men",
+		"exp",
+		"sp",
+		"patk",
+		"pdef",
+		"matk",
+		"mdef",
+		"atkspd",
+		"aggro",
+		"matkspd",
+		"rhand",
+		"lhand",
+		"armor",
+		"walkspd",
+		"runspd",
+		"faction_id",
+		"faction_range",
+		"isundead",
+		"absorb_level",
+		"absorb_type",
+		"ss",
+		"bss",
+		"ss_rate",
+		"ai"));
 	
 	private static final String RESTORE_NPC = "SELECT " + L2DatabaseFactory.safetyString(new String[]
 	{
@@ -579,6 +630,7 @@ public class NpcTable
 			
 			String name = "";
 			String values = "";
+			List<Object> params = new ArrayList<>();
 			
 			for (Object obj : set.keySet())
 			{
@@ -589,12 +641,25 @@ public class NpcTable
 					continue;
 				}
 				
+				// Only known npc table columns may be used as column names
+				if (!NPC_COLUMNS.contains(name.toLowerCase()))
+				{
+					_log.warning("NPCTable: Skipping unknown NPC column: " + name);
+					continue;
+				}
+				
 				if (!values.isEmpty())
 				{
 					values += ", ";
 				}
 				
-				values += name + " = '" + set.get(name) + "'";
+				values += "`" + name + "` = ?";
+				params.add(set.get(name));
+			}
+			
+			if (values.isEmpty())
+			{
+				return;
 			}
 			
 			int updated = 0;
@@ -603,7 +668,12 @@ public class NpcTable
 				query = "UPDATE custom_npc SET " + values + " WHERE id = ?";
 				try (PreparedStatement statement = con.prepareStatement(query))
 				{
-					statement.setInt(1, npc.getInteger("npcId"));
+					int index = 1;
+					for (Object param : params)
+					{
+						statement.setString(index++, String.valueOf(param));
+					}
+					statement.setInt(index, npc.getInteger("npcId"));
 					updated = statement.executeUpdate();
 				}
 			}
@@ -613,7 +683,12 @@ public class NpcTable
 				query = "UPDATE npc SET " + values + " WHERE id = ?";
 				try (PreparedStatement statement = con.prepareStatement(query))
 				{
-					statement.setInt(1, npc.getInteger("npcId"));
+					int index = 1;
+					for (Object param : params)
+					{
+						statement.setString(index++, String.valueOf(param));
+					}
+					statement.setInt(index, npc.getInteger("npcId"));
 					statement.executeUpdate();
 				}
 			}

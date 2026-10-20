@@ -26,6 +26,7 @@ import net.sf.l2j.gameserver.model.actor.instance.L2ManorManagerInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2NpcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.entity.Castle;
+import net.sf.l2j.gameserver.model.itemcontainer.Inventory;
 import net.sf.l2j.gameserver.network.serverpackets.ActionFailed;
 import net.sf.l2j.gameserver.network.serverpackets.InventoryUpdate;
 import net.sf.l2j.gameserver.network.serverpackets.StatusUpdate;
@@ -143,6 +144,10 @@ public class RequestProcureCropList extends L2GameClientPacket
 			}
 			
 			CropProcure crop = castle.getCrop(itemId, CastleManorManager.PERIOD_CURRENT);
+			if (crop == null)
+			{
+				continue;
+			}
 			int rewardItemId = L2Manor.getInstance().getRewardItem(itemId, crop.getReward());
 			
 			L2Item template = ItemTable.getInstance().getTemplate(rewardItemId);
@@ -210,7 +215,7 @@ public class RequestProcureCropList extends L2GameClientPacket
 				continue;
 			}
 			
-			int fee = 0; // fee for selling to other manors
+			long fee = 0; // fee for selling to other manors
 			
 			int rewardItem = L2Manor.getInstance().getRewardItem(cropId, crop.getReward());
 			int rewardPrice = ItemTable.getInstance().getTemplate(rewardItem).getReferencePrice();
@@ -219,9 +224,13 @@ public class RequestProcureCropList extends L2GameClientPacket
 				continue;
 			}
 			
-			int sellPrice = (count * crop.getPrice());
+			long sellPrice = (long) count * crop.getPrice();
+			if (sellPrice > L2ItemInstance.getMaxItemCount(Inventory.ADENA_ID))
+			{
+				continue;
+			}
 			
-			int rewardItemCount = sellPrice / rewardPrice;
+			int rewardItemCount = (int) (sellPrice / rewardPrice);
 			if (rewardItemCount < 1)
 			{
 				SystemMessage sm = new SystemMessage(SystemMessage.FAILED_IN_TRADING_S2_OF_CROP_S1);
@@ -249,7 +258,7 @@ public class RequestProcureCropList extends L2GameClientPacket
 			}
 			
 			L2ItemInstance item = player.getInventory().getItemByObjectId(objId);
-			if (item == null)
+			if ((item == null) || (item.getItemId() != cropId))
 			{
 				continue;
 			}
@@ -268,7 +277,7 @@ public class RequestProcureCropList extends L2GameClientPacket
 			
 			if (fee > 0)
 			{
-				player.getInventory().reduceAdena("Manor", fee, player, manorManager);
+				player.getInventory().reduceAdena("Manor", (int) fee, player, manorManager);
 			}
 			crop.setAmount(crop.getAmount() - count);
 			
@@ -303,7 +312,7 @@ public class RequestProcureCropList extends L2GameClientPacket
 			if (fee > 0)
 			{
 				sm = new SystemMessage(SystemMessage.S1_ADENA_HAS_BEEN_WITHDRAWN_TO_PAY_FOR_PURCHASING_FEES);
-				sm.addNumber(fee);
+				sm.addNumber((int) fee);
 				player.sendPacket(sm);
 			}
 			
@@ -315,7 +324,7 @@ public class RequestProcureCropList extends L2GameClientPacket
 			if (fee > 0)
 			{
 				sm = new SystemMessage(SystemMessage.S1_ADENA_DISAPPEARED);
-				sm.addNumber(fee);
+				sm.addNumber((int) fee);
 				player.sendPacket(sm);
 			}
 			

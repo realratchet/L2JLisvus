@@ -14,6 +14,9 @@
  */
 package net.sf.l2j.gameserver.network.clientpackets;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.datatables.ItemTable;
 import net.sf.l2j.gameserver.instancemanager.CastleManager;
@@ -50,7 +53,7 @@ public class RequestBuySeed extends L2GameClientPacket
 		_manorId = readD();
 		_count = readD();
 		
-		if ((_count > 500) || ((_count * 8) < _buf.remaining())) // check values
+		if ((_count < 1) || (_count > 500) || ((_count * 8) > _buf.remaining())) // check values
 		{
 			_count = 0;
 			return;
@@ -105,11 +108,27 @@ public class RequestBuySeed extends L2GameClientPacket
 			return;
 		}
 		
-		long totalPrice = 0;
-		int slots = 0;
-		int totalWeight = 0;
+		// Manager must be in range and belong to the requested manor
+		L2ManorManagerInstance manager = (L2ManorManagerInstance) target;
+		if (!manager.canInteract(player) || (manager.getCastle() == null) || (manager.getCastle().getCastleId() != _manorId))
+		{
+			sendPacket(ActionFailed.STATIC_PACKET);
+			return;
+		}
 		
 		Castle castle = CastleManager.getInstance().getCastleById(_manorId);
+		if (castle == null)
+		{
+			sendPacket(ActionFailed.STATIC_PACKET);
+			return;
+		}
+		
+		long totalPrice = 0;
+		int slots = 0;
+		long totalWeight = 0;
+		
+		// Total requested amount per seed, so repeated seed ids cannot exceed the residual
+		Map<Integer, Long> requested = new HashMap<>();
 		
 		for (int i = 0; i < _count; i++)
 		{
@@ -119,6 +138,11 @@ public class RequestBuySeed extends L2GameClientPacket
 			int residual = 0;
 			
 			SeedProduction seed = castle.getSeed(seedId, CastleManorManager.PERIOD_CURRENT);
+			if (seed == null)
+			{
+				sendPacket(ActionFailed.STATIC_PACKET);
+				return;
+			}
 			price = seed.getPrice();
 			residual = seed.getCanProduce();
 			
@@ -127,15 +151,27 @@ public class RequestBuySeed extends L2GameClientPacket
 				return;
 			}
 			
-			if (residual < count)
+			Long previous = requested.get(seedId);
+			long totalCount = (previous == null ? 0 : previous) + count;
+			if (residual < totalCount)
 			{
 				return;
 			}
+			requested.put(seedId, totalCount);
 			
-			totalPrice += count * price;
+			totalPrice += (long) count * price;
+			if (totalPrice > L2ItemInstance.getMaxItemCount(Inventory.ADENA_ID))
+			{
+				Util.handleIllegalPlayerAction(player, "Warning!! Character " + player.getName() + " of account " + player.getAccountName() + " tried to purchase over " + L2ItemInstance.getMaxItemCount(Inventory.ADENA_ID) + " adena worth of goods.", Config.DEFAULT_PUNISH);
+				return;
+			}
 			
 			L2Item template = ItemTable.getInstance().getTemplate(seedId);
-			totalWeight += count * template.getWeight();
+			if (template == null)
+			{
+				return;
+			}
+			totalWeight += (long) count * template.getWeight();
 			if (!template.isStackable())
 			{
 				slots += count;
@@ -164,7 +200,7 @@ public class RequestBuySeed extends L2GameClientPacket
 			return;
 		}
 		
-		if (!player.getInventory().validateWeight(totalWeight))
+		if ((totalWeight > Integer.MAX_VALUE) || !player.getInventory().validateWeight((int) totalWeight))
 		{
 			sendPacket(new SystemMessage(SystemMessage.WEIGHT_LIMIT_EXCEEDED));
 			return;
