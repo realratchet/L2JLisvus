@@ -21,6 +21,7 @@ import java.util.logging.Logger;
 import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.handler.admincommandhandlers.AdminAdmin;
 import net.sf.l2j.gameserver.handler.admincommandhandlers.AdminAnnouncements;
+import net.sf.l2j.gameserver.handler.admincommandhandlers.AdminCamera;
 import net.sf.l2j.gameserver.handler.admincommandhandlers.AdminBBS;
 import net.sf.l2j.gameserver.handler.admincommandhandlers.AdminBan;
 import net.sf.l2j.gameserver.handler.admincommandhandlers.AdminBanChat;
@@ -90,6 +91,7 @@ public class AdminCommandHandler
 	public void load()
 	{
 		registerAdminCommandHandler(new AdminAdmin());
+		registerAdminCommandHandler(new AdminCamera());
 		registerAdminCommandHandler(new AdminInvul());
 		registerAdminCommandHandler(new AdminDelete());
 		registerAdminCommandHandler(new AdminKill());
