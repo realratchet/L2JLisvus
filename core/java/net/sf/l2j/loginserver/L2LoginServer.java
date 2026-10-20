@@ -31,6 +31,7 @@ import net.sf.l2j.L2DatabaseFactory;
 import net.sf.l2j.Server;
 import net.sf.l2j.mmocore.SelectorConfig;
 import net.sf.l2j.mmocore.SelectorThread;
+import net.sf.l2j.mmocore.WebSocketListener;
 import net.sf.l2j.util.UPnPService;
 
 /**
@@ -45,6 +46,7 @@ public class L2LoginServer
 	private static GameServerListener _gameServerListener;
 	
 	private SelectorThread<L2LoginClient> _selectorThread;
+	private WebSocketListener _webSocketListener;
 
 	public static int PROTOCOL_REV = 0x0102;
 
@@ -149,6 +151,13 @@ public class L2LoginServer
 		_selectorThread.start();
 		
 		_log.info("Login Server ready on " + Config.LOGIN_BIND_ADDRESS + ":" + Config.PORT_LOGIN);
+		
+		if (Config.LOGIN_WEBSOCKET_ENABLED)
+		{
+			_webSocketListener = new WebSocketListener(_selectorThread, bindAddress, Config.PORT_LOGIN_WEBSOCKET, bindAddress, Config.PORT_LOGIN, Config.WEBSOCKET_ALLOWED_ORIGINS);
+			_webSocketListener.start();
+			_log.info("Login Server WebSocket ready on " + Config.LOGIN_BIND_ADDRESS + ":" + Config.PORT_LOGIN_WEBSOCKET);
+		}
 		
 		UPnPService.getInstance();
 	}

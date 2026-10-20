@@ -106,6 +106,7 @@ import net.sf.l2j.gameserver.taskmanager.TaskManager;
 import net.sf.l2j.gameserver.util.DynamicExtension;
 import net.sf.l2j.mmocore.SelectorConfig;
 import net.sf.l2j.mmocore.SelectorThread;
+import net.sf.l2j.mmocore.WebSocketListener;
 import net.sf.l2j.util.DeadLockDetector;
 import net.sf.l2j.util.IPv4Filter;
 import net.sf.l2j.util.UPnPService;
@@ -119,6 +120,7 @@ public class GameServer
 	private static final Logger _log = Logger.getLogger(GameServer.class.getName());
 
 	private final SelectorThread<L2GameClient> _selectorThread;
+	private WebSocketListener _webSocketListener;
 	private final DeadLockDetector _deadDetectThread;
 	private static GameServer _gameServer;
 	
@@ -145,6 +147,11 @@ public class GameServer
 	public SelectorThread<L2GameClient> getSelectorThread()
 	{
 		return _selectorThread;
+	}
+
+	public WebSocketListener getWebSocketListener()
+	{
+		return _webSocketListener;
 	}
 
 	public GameServer() throws Exception
@@ -407,6 +414,13 @@ public class GameServer
 			System.exit(1);
 		}
 		_selectorThread.start();
+
+		if (Config.GAME_WEBSOCKET_ENABLED)
+		{
+			_webSocketListener = new WebSocketListener(_selectorThread, bindAddress, Config.PORT_GAME_WEBSOCKET, bindAddress, Config.PORT_GAME, Config.WEBSOCKET_ALLOWED_ORIGINS);
+			_webSocketListener.start();
+			_log.info("GameServer WebSocket ready on " + Config.GAMESERVER_HOSTNAME + ":" + Config.PORT_GAME_WEBSOCKET);
+		}
 
 		AutoAnnounceTaskManager.getInstance();
 

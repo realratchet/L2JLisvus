@@ -285,6 +285,7 @@ public class LoginServerThread extends Thread
 							{
 								st.addAttribute(ServerStatus.SERVER_LIST_STATUS, ServerStatus.STATUS_AUTO);
 							}
+							st.addAttribute(ServerStatus.WEBSOCKET_PORT, Config.GAME_WEBSOCKET_ENABLED ? Config.PORT_GAME_WEBSOCKET : 0);
 							sendPacket(st);
 							if (L2World.getInstance().getAllPlayersCount() > 0)
 							{

@@ -263,6 +263,7 @@ public class GameServerTable
 		private String _internalHost;
 		private String _externalHost;
 		private int _port;
+		private int _webSocketPort;
 		
 		// config
 		private boolean _isPvp = true;
@@ -366,6 +367,16 @@ public class GameServerTable
 			_port = port;
 		}
 		
+		public int getWebSocketPort()
+		{
+			return _webSocketPort;
+		}
+		
+		public void setWebSocketPort(int port)
+		{
+			_webSocketPort = port;
+		}
+		
 		public void setMaxPlayers(int maxPlayers)
 		{
 			_maxPlayers = maxPlayers;
@@ -415,6 +426,7 @@ public class GameServerTable
 		{
 			setAuthed(false);
 			setPort(0);
+			setWebSocketPort(0);
 			setGameServerThread(null);
 			setStatus(ServerStatus.STATUS_DOWN);
 		}

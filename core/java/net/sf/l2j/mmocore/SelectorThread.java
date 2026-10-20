@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.net.ServerSocket;
+import java.net.SocketAddress;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.channels.SelectionKey;
@@ -25,7 +26,9 @@ import java.nio.channels.Selector;
 import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.Queue;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 /**
@@ -46,6 +49,8 @@ public final class SelectorThread<T extends MMOClient<?>> extends Thread
 	private final IMMOExecutor<T> _executor;
 	private final IClientFactory<T> _clientFactory;
 	private final IAcceptFilter _acceptFilter;
+	// Loopback hand-offs from the WebSocket listener: hand-off socket local address -> browser address
+	private final Map<SocketAddress, InetSocketAddress> _webSocketPeers = new ConcurrentHashMap<>();
 	// Configurations
 	private final int HELPER_BUFFER_SIZE;
 	private final int HELPER_BUFFER_COUNT;
@@ -236,6 +241,26 @@ public final class SelectorThread<T extends MMOClient<?>> extends Thread
 		}
 	}
 	
+	/**
+	 * Announces a loopback connection that the WebSocket listener is about to open on behalf of a browser.
+	 * @param handOff local address of the hand-off socket, as seen by this selector's server socket
+	 * @param peer the browser address
+	 */
+	public void registerWebSocketPeer(SocketAddress handOff, InetSocketAddress peer)
+	{
+		_webSocketPeers.put(handOff, peer);
+	}
+	
+	public void unregisterWebSocketPeer(SocketAddress handOff)
+	{
+		_webSocketPeers.remove(handOff);
+	}
+	
+	public IAcceptFilter getAcceptFilter()
+	{
+		return _acceptFilter;
+	}
+	
 	private final void acceptConnection(final SelectionKey key, MMOConnection<T> con)
 	{
 		ServerSocketChannel ssc = (ServerSocketChannel) key.channel();
@@ -245,11 +270,13 @@ public final class SelectorThread<T extends MMOClient<?>> extends Thread
 		{
 			while ((sc = ssc.accept()) != null)
 			{
-				if ((_acceptFilter == null) || _acceptFilter.accept(sc))
+				// WebSocket peers were already checked by the accept filter with their real address
+				final InetSocketAddress webSocketPeer = _webSocketPeers.remove(sc.getRemoteAddress());
+				if ((webSocketPeer != null) || (_acceptFilter == null) || _acceptFilter.accept(sc))
 				{
 					sc.configureBlocking(false);
 					SelectionKey clientKey = sc.register(_selector, SelectionKey.OP_READ);
-					con = new MMOConnection<>(this, sc.socket(), clientKey, TCP_NODELAY);
+					con = new MMOConnection<>(this, sc.socket(), clientKey, TCP_NODELAY, webSocketPeer);
 					con.setClient(_clientFactory.create(con));
 					clientKey.attach(con);
 				}

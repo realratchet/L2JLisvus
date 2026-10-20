@@ -14,7 +14,7 @@
  */
 package net.sf.l2j.loginserver;
 
-import java.nio.channels.SocketChannel;
+import java.net.InetAddress;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
@@ -62,11 +62,11 @@ public class SelectorHelper implements IMMOExecutor<L2LoginClient>, IClientFacto
 	}
 	
 	/**
-	 * @see net.sf.l2j.mmocore.IAcceptFilter#accept(java.nio.channels.SocketChannel)
+	 * @see net.sf.l2j.mmocore.IAcceptFilter#accept(java.net.InetAddress)
 	 */
 	@Override
-	public boolean accept(SocketChannel sc)
+	public boolean accept(InetAddress address)
 	{
-		return _ipv4filter.accept(sc) && !LoginController.getInstance().isBannedAddress(sc.socket().getInetAddress().getHostAddress());
+		return _ipv4filter.accept(address) && !LoginController.getInstance().isBannedAddress(address.getHostAddress());
 	}
 }

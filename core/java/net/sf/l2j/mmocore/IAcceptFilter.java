@@ -14,6 +14,7 @@
  */
 package net.sf.l2j.mmocore;
 
+import java.net.InetAddress;
 import java.nio.channels.SocketChannel;
 
 /**
@@ -21,5 +22,10 @@ import java.nio.channels.SocketChannel;
  */
 public interface IAcceptFilter
 {
-	public boolean accept(SocketChannel sc);
+	public boolean accept(InetAddress address);
+	
+	public default boolean accept(SocketChannel sc)
+	{
+		return accept(sc.socket().getInetAddress());
+	}
 }

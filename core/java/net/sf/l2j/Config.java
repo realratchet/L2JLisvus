@@ -106,8 +106,16 @@ public final class Config
 	
 	/** Game Server ports */
 	public static int PORT_GAME;
+	/** Game Server WebSocket listener for browser clients */
+	public static boolean GAME_WEBSOCKET_ENABLED;
+	public static int PORT_GAME_WEBSOCKET;
 	/** Login Server port */
 	public static int PORT_LOGIN;
+	/** Login Server WebSocket listener for browser clients */
+	public static boolean LOGIN_WEBSOCKET_ENABLED;
+	public static int PORT_LOGIN_WEBSOCKET;
+	/** Comma separated WebSocket Origin allowlist, * allows any */
+	public static String WEBSOCKET_ALLOWED_ORIGINS;
 	/** Login Server bind ip */
 	public static String LOGIN_BIND_ADDRESS;
 	/** Number of tries of login before ban */
@@ -1321,6 +1329,9 @@ public final class Config
 			
 			GAMESERVER_HOSTNAME = serverSettings.getProperty("GameserverHostname");
 			PORT_GAME = Integer.parseInt(serverSettings.getProperty("GameserverPort", "7777"));
+			GAME_WEBSOCKET_ENABLED = Boolean.parseBoolean(serverSettings.getProperty("GameserverWebSocketEnabled", "False"));
+			PORT_GAME_WEBSOCKET = Integer.parseInt(serverSettings.getProperty("GameserverWebSocketPort", "8777"));
+			WEBSOCKET_ALLOWED_ORIGINS = serverSettings.getProperty("WebSocketAllowedOrigins", "*");
 			
 			INTERNAL_HOSTNAME = serverSettings.getProperty("InternalHostname", "*");
 			EXTERNAL_HOSTNAME = serverSettings.getProperty("ExternalHostname", "*");
@@ -2203,6 +2214,9 @@ public final class Config
 			
 			LOGIN_BIND_ADDRESS = serverSettings.getProperty("LoginserverHostname", "*");
 			PORT_LOGIN = Integer.parseInt(serverSettings.getProperty("LoginserverPort", "2106"));
+			LOGIN_WEBSOCKET_ENABLED = Boolean.parseBoolean(serverSettings.getProperty("LoginserverWebSocketEnabled", "False"));
+			PORT_LOGIN_WEBSOCKET = Integer.parseInt(serverSettings.getProperty("LoginserverWebSocketPort", "3106"));
+			WEBSOCKET_ALLOWED_ORIGINS = serverSettings.getProperty("WebSocketAllowedOrigins", "*");
 			
 			LOGIN_TRY_BEFORE_BAN = Integer.parseInt(serverSettings.getProperty("LoginTryBeforeBan", "10"));
 			LOGIN_BLOCK_AFTER_BAN = Integer.parseInt(serverSettings.getProperty("LoginBlockAfterBan", "600"));

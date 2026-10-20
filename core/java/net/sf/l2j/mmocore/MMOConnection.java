@@ -16,6 +16,7 @@ package net.sf.l2j.mmocore;
 
 import java.io.IOException;
 import java.net.InetAddress;
+import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.net.SocketException;
 import java.nio.ByteBuffer;
@@ -54,16 +55,27 @@ public class MMOConnection<T extends MMOClient<?>>
 	
 	private volatile boolean _pendingClose;
 	
+	private final boolean _isWebSocket;
+	
 	private T _client;
 	
 	public MMOConnection(final SelectorThread<T> selectorThread, final Socket socket, final SelectionKey key, boolean tcpNoDelay)
 	{
+		this(selectorThread, socket, key, tcpNoDelay, null);
+	}
+	
+	/**
+	 * @param webSocketPeer the real browser address when the socket is a loopback hand-off from the WebSocket listener, otherwise null
+	 */
+	public MMOConnection(final SelectorThread<T> selectorThread, final Socket socket, final SelectionKey key, boolean tcpNoDelay, InetSocketAddress webSocketPeer)
+	{
 		_selectorThread = selectorThread;
 		_socket = socket;
-		_address = socket.getInetAddress();
+		_isWebSocket = webSocketPeer != null;
+		_address = _isWebSocket ? webSocketPeer.getAddress() : socket.getInetAddress();
 		_readableByteChannel = socket.getChannel();
 		_writableByteChannel = socket.getChannel();
-		_port = socket.getPort();
+		_port = _isWebSocket ? webSocketPeer.getPort() : socket.getPort();
 		_selectionKey = key;
 		
 		_sendQueue = new NioNetStackList<>();
@@ -118,6 +130,11 @@ public class MMOConnection<T extends MMOClient<?>>
 	final SelectionKey getSelectionKey()
 	{
 		return _selectionKey;
+	}
+	
+	public final boolean isWebSocket()
+	{
+		return _isWebSocket;
 	}
 	
 	public final InetAddress getInetAddress()

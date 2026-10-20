@@ -15,7 +15,6 @@
 package net.sf.l2j.util;
 
 import java.net.InetAddress;
-import java.nio.channels.SocketChannel;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -64,9 +63,8 @@ public class IPv4Filter implements IAcceptFilter, Runnable
 	}
 	
 	@Override
-	public boolean accept(SocketChannel sc)
+	public boolean accept(InetAddress addr)
 	{
-		InetAddress addr = sc.socket().getInetAddress();
 		int h = hash(addr.getAddress());
 		
 		long current = System.currentTimeMillis();

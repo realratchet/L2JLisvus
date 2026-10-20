@@ -31,6 +31,7 @@ public class ServerStatus extends GameServerBasePacket
     public static final int SERVER_LIST_SQUARE_BRACKET = 0x03;
     public static final int MAX_PLAYERS = 0x04;
     public static final int TEST_SERVER = 0x05;
+    public static final int WEBSOCKET_PORT = 0x06;
 
     public static final int STATUS_AUTO = 0x00;
     public static final int STATUS_GOOD = 0x01;
