@@ -100,6 +100,7 @@ public class NpcHtmlMessage extends L2GameServerPacket
 		}
 		
 		activeChar.clearBypass();
+		activeChar.setLinkNpcObjectId(_npcObjId);
 		
 		int len = _html.length();
 		for (int i = 0; i < len; i++)

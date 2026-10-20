@@ -80,6 +80,8 @@ public class GameServerThread extends Thread
 		{
 			_log.info("GameServerRegistration: IP Address " + _connectionIPAddress + " is on Banned IP list.");
 			forceClose(LoginServerFail.REASON_IP_BANNED);
+			L2LoginServer.getGameServerListener().removeGameServer(this);
+			L2LoginServer.getGameServerListener().removeFloodProtection(_connectionIp);
 			// ensure no further processing for this connection
 			return;
 		}

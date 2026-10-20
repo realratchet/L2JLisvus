@@ -637,6 +637,8 @@ public final class L2PcInstance extends L2PlayableInstance
 	private final List<String> _validBypass = new ArrayList<>();
 	private final List<String> _validBypass2 = new ArrayList<>();
 	private final List<String> _validLink = new ArrayList<>();
+	private int _linkNpcObjectId;
+	private final List<String> _validTutorialLink = new ArrayList<>();
 	
 	private boolean _inCrystallize;
 	private boolean _inCraftMode;
@@ -10190,6 +10192,44 @@ public final class L2PcInstance extends L2PlayableInstance
 		}
 		
 		return _validLink.contains(link);
+	}
+	
+	/**
+	 * @param objectId the NPC that sent the html whose links are cached, 0 if none
+	 */
+	public synchronized void setLinkNpcObjectId(int objectId)
+	{
+		_linkNpcObjectId = objectId;
+	}
+	
+	public synchronized int getLinkNpcObjectId()
+	{
+		return _linkNpcObjectId;
+	}
+	
+	public synchronized void addTutorialLink(String link)
+	{
+		if (link == null)
+		{
+			return;
+		}
+		
+		_validTutorialLink.add(link);
+	}
+	
+	public synchronized boolean validateTutorialLink(String link)
+	{
+		if (!Config.BYPASS_VALIDATION)
+		{
+			return true;
+		}
+		
+		return _validTutorialLink.contains(link);
+	}
+	
+	public synchronized void clearTutorialLinks()
+	{
+		_validTutorialLink.clear();
 	}
 	
 	public boolean validateItemManipulation(int objectId, String action)

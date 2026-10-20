@@ -14,6 +14,9 @@
  */
 package net.sf.l2j.gameserver.network.serverpackets;
 
+import net.sf.l2j.Config;
+import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+
 public class TutorialShowHtml extends L2GameServerPacket
 {
 	private static final String _S__A0_TUTORIALSHOWHTML = "[S] a0 TutorialShowHtml";
@@ -22,6 +25,36 @@ public class TutorialShowHtml extends L2GameServerPacket
 	public TutorialShowHtml(String html)
 	{
 		_html = html;
+	}
+	
+	@Override
+	public void runImpl()
+	{
+		if (!Config.BYPASS_VALIDATION)
+		{
+			return;
+		}
+		
+		L2PcInstance activeChar = getClient().getActiveChar();
+		if (activeChar == null)
+		{
+			return;
+		}
+		
+		// Only links of the tutorial window currently shown may be requested
+		activeChar.clearTutorialLinks();
+		for (int i = 0; i < _html.length(); i++)
+		{
+			int start = _html.indexOf("\"link ", i);
+			int finish = _html.indexOf("\"", start + 1);
+			if ((start < 0) || (finish < 0))
+			{
+				break;
+			}
+			
+			i = finish;
+			activeChar.addTutorialLink(_html.substring(start + 6, finish).trim());
+		}
 	}
 	
 	/*

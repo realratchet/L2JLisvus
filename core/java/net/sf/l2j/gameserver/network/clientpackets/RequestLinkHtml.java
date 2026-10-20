@@ -16,6 +16,9 @@ package net.sf.l2j.gameserver.network.clientpackets;
 
 import java.util.logging.Logger;
 
+import net.sf.l2j.gameserver.model.L2Object;
+import net.sf.l2j.gameserver.model.L2World;
+import net.sf.l2j.gameserver.model.actor.instance.L2NpcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.network.serverpackets.NpcHtmlMessage;
 
@@ -56,7 +59,18 @@ public class RequestLinkHtml extends L2GameClientPacket
 			return;
 		}
 
-		NpcHtmlMessage html = new NpcHtmlMessage(0);
+		// The NPC that sent the link must still be in reach
+		final int npcObjId = player.getLinkNpcObjectId();
+		if (npcObjId > 0)
+		{
+			final L2Object npc = L2World.getInstance().findObject(npcObjId);
+			if (!(npc instanceof L2NpcInstance) || !player.isInsideRadius(npc, L2NpcInstance.INTERACTION_DISTANCE, false, false))
+			{
+				return;
+			}
+		}
+
+		NpcHtmlMessage html = new NpcHtmlMessage(npcObjId);
 		html.setFile(_link);
 		player.sendPacket(html);
 	}

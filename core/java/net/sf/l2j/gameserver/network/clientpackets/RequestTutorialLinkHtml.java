@@ -14,6 +14,8 @@
  */
 package net.sf.l2j.gameserver.network.clientpackets;
 
+import java.util.logging.Logger;
+
 import net.sf.l2j.gameserver.model.actor.instance.L2ClassMasterInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.quest.QuestState;
@@ -21,6 +23,7 @@ import net.sf.l2j.gameserver.model.quest.QuestState;
 public class RequestTutorialLinkHtml extends L2GameClientPacket
 {
 	private static final String _C__7b_REQUESTTUTORIALLINKHTML = "[C] 7b RequestTutorialLinkHtml";
+	private static final Logger _log = Logger.getLogger(RequestTutorialLinkHtml.class.getName());
 	private String _bypass;
 	
 	@Override
@@ -35,6 +38,12 @@ public class RequestTutorialLinkHtml extends L2GameClientPacket
 		L2PcInstance player = getClient().getActiveChar();
 		if (player == null)
 		{
+			return;
+		}
+		
+		if (!player.validateTutorialLink(_bypass))
+		{
+			_log.warning("[RequestTutorialLinkHtml] player [" + player.getName() + "] sent non cached tutorial link: '" + _bypass + "', skipped");
 			return;
 		}
 		

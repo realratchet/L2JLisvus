@@ -118,15 +118,16 @@ public class RequestSetPledgeCrest extends L2GameClientPacket
 
 		int newId = IdFactory.getInstance().getNextId();
 
-		if (clan.hasCrest())
-		{
-			crestCache.removeCrest(CrestType.PLEDGE, clan.getCrestId());
-		}
-
 		if (!crestCache.saveCrest(CrestType.PLEDGE, newId, _data))
 		{
 			_log.log(Level.INFO, "Error loading crest of clan:" + clan.getName());
 			return;
+		}
+
+		// Old crest is removed only once the new one is stored
+		if (clan.hasCrest())
+		{
+			crestCache.removeCrest(CrestType.PLEDGE, clan.getCrestId());
 		}
 
 		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
