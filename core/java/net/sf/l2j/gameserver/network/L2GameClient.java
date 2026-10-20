@@ -110,6 +110,9 @@ public final class L2GameClient extends MMOClient<MMOConnection<L2GameClient>>
 
 	private final List<Integer> _charSlotMapping = new ArrayList<>();
 
+	// Time a new connection has to authenticate
+	private static final long AUTHENTICATION_TIMEOUT = 60000L;
+
 	public L2GameClient(MMOConnection<L2GameClient> con)
 	{
 		super(con);
@@ -117,6 +120,16 @@ public final class L2GameClient extends MMOClient<MMOConnection<L2GameClient>>
 		_crypt = new GameCrypt();
 		_stat = new ClientStat(this);
 		_autoSaveInDB = ThreadPoolManager.getInstance().scheduleGeneralAtFixedRate(new AutoSaveTask(), 300000L, 900000L);
+		
+		// Drop connections that never authenticate, so idle sockets cannot pile up
+		ThreadPoolManager.getInstance().scheduleGeneral(() ->
+		{
+			if ((getState() == GameClientState.CONNECTED) && !getConnection().isClosed())
+			{
+				_log.info("Client " + toString() + " did not authenticate in time, closing.");
+				closeNow();
+			}
+		}, AUTHENTICATION_TIMEOUT);
 	}
 
 	public byte[] enableCrypt()
