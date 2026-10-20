@@ -32,6 +32,7 @@ import net.sf.l2j.gameserver.model.actor.vehicle.L2BoatTrajet;
 import net.sf.l2j.gameserver.model.actor.vehicle.L2VehiclePathPoint;
 import net.sf.l2j.gameserver.network.clientpackets.Say2;
 import net.sf.l2j.gameserver.network.serverpackets.CreatureSay;
+import net.sf.l2j.gameserver.network.serverpackets.GetOffVehicle;
 import net.sf.l2j.gameserver.network.serverpackets.PlaySound;
 import net.sf.l2j.gameserver.network.serverpackets.VehicleDeparture;
 import net.sf.l2j.gameserver.network.serverpackets.VehicleInfo;
@@ -229,6 +230,7 @@ public class L2BoatInstance extends L2Character
         {
             if (!player.destroyItemByItemId("Boat", itemId, 1, this, false))
             {
+                player.sendMessage("You do not possess the ticket required for this route.");
                 oustPlayer(player);
                 return;
             }
@@ -245,7 +247,15 @@ public class L2BoatInstance extends L2Character
         final int z = trajet.getOustZ();
         
         removePassenger(player);
-        
+
+        // Clear boat state so that neither server nor client keep treating the player as aboard
+        if (player.getBoat() == this)
+        {
+            player.setBoat(null);
+            player.setInBoatPosition(null);
+            player.broadcastPacket(new GetOffVehicle(player.getObjectId(), getObjectId(), x, y, z));
+        }
+
         if (player.isOnline())
             player.teleToLocation(x, y, z);
         else

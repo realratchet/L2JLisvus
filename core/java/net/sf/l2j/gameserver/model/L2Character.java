@@ -4066,7 +4066,7 @@ public abstract class L2Character extends L2Object
 			zNext = zPrev + (int) ((dz * distFraction) + 0.5);
 		}
 		
-		if (!isFloating && !GeoData.getInstance().canMove(xPrev, yPrev, zPrev, xNext, yNext, zNext))
+		if (!isFloating && !(this instanceof L2BoatInstance) && !GeoData.getInstance().canMove(xPrev, yPrev, zPrev, xNext, yNext, zNext))
 		{
 			m.blocked = true;
 			return true;
@@ -4082,50 +4082,43 @@ public abstract class L2Character extends L2Object
 		return distFraction > 1;
 	}
 	
-	public final boolean checkIfArrived()
+	public final void onMoveFinished()
 	{
-		boolean updatePos = updatePosition();
+		boolean isBlocked = _move != null && _move.blocked;
 		
-		if (updatePos)
-		{
-			boolean isBlocked = _move != null && _move.blocked;
+		ThreadPoolManager.getInstance().executeAi(() -> {
+			if (Config.MOVE_BASED_KNOWNLIST)
+			{
+				getKnownList().findObjects();
+				getKnownList().forgetObjects(true);
+			}
 			
-			ThreadPoolManager.getInstance().executeAi(() -> {
-				if (Config.MOVE_BASED_KNOWNLIST)
+			revalidateZone(true);
+			
+			try
+			{
+				// In the case of character being blocked, we give a chance to next route in case it helps with movement
+				if (!moveToNextRoutePoint())
 				{
-					getKnownList().findObjects();
-					getKnownList().forgetObjects(true);
-				}
-				
-				revalidateZone(true);
-				
-				try
-				{
-					// In the case of character being blocked, we give a chance to next route in case it helps with movement
-					if (!moveToNextRoutePoint())
+					if (isBlocked)
 					{
-						if (isBlocked)
-						{
-							getAI().notifyEvent(CtrlEvent.EVT_ARRIVED_BLOCKED);
-						}
-						else
-						{
-							
-							// Cancel the move action
-							_move = null;
-							
-							getAI().notifyEvent(CtrlEvent.EVT_ARRIVED);
-						}
+						getAI().notifyEvent(CtrlEvent.EVT_ARRIVED_BLOCKED);
+					}
+					else
+					{
+						
+						// Cancel the move action
+						_move = null;
+						
+						getAI().notifyEvent(CtrlEvent.EVT_ARRIVED);
 					}
 				}
-				catch (Throwable t)
-				{
-					_log.log(Level.WARNING, "", t);
-				}
-			});
-		}
-		
-		return updatePos;
+			}
+			catch (Throwable t)
+			{
+				_log.log(Level.WARNING, "", t);
+			}
+		});
 	}
 	
 	public void revalidateZone(boolean force)

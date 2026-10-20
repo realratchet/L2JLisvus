@@ -129,7 +129,15 @@ public class GameTimeController extends Thread
      */
     protected void moveObjects()
     {
-    	_movingObjects.removeIf(L2Character::checkIfArrived);
+    	for (L2Character cha : _movingObjects)
+    	{
+    		if (!cha.updatePosition())
+    			continue;
+
+    		// Remove before notifying arrival, since the AI may register the character again for its next route
+    		_movingObjects.remove(cha);
+    		cha.onMoveFinished();
+    	}
     }
 
 	public void stopTimer()
