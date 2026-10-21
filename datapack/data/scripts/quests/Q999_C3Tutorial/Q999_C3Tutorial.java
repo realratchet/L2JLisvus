@@ -256,30 +256,33 @@ public class Q999_C3Tutorial extends Quest
         {
             if (player.getRace().ordinal() == raceId)
             {
-                htmltext = htmlfiles[0];
-                
                 if (npcType == 1)
                 {
-                    if (step == 0 && ex < 0)
+                    final boolean isMage = player.getClassId().isMage();
+                    
+                    // Fighters get the melee version of the helper texts
+                    htmltext = isMage ? htmlfiles[0] : "7530-01.htm";
+                    
+                    if (step == 0)
                     {
-                        tutorialSt.set("Ex", "0");
-                        st.startQuestTimer("TimerEx_NewbieHelper", 30000);
+                        if (ex < 0)
+                        {
+                            tutorialSt.set("Ex", "0");
+                            st.startQuestTimer("TimerEx_NewbieHelper", 30000);
+                        }
                         
-                        if (player.getClassId().isMage())
-                        {
-                            st.set("step", "1");
+                        st.set("step", "1");
+                        if (st.getState() != State.COMPLETED)
                             st.setState(State.STARTED);
-                            st.playSound("ItemSound.quest_tutorial");
-                        }
-                        else
-                        {
-                            htmltext = "7530-01.htm";
-                            st.set("step", "1");
-                            st.setState(State.STARTED);
-                            st.playSound("ItemSound.quest_tutorial");
-                        }
+                        st.playSound("ItemSound.quest_tutorial");
+                        step = 1;
+                        
+                        // Show the mission first, unless the gem was already recovered
+                        if (st.getQuestItemsCount(BLUE_GEM) == 0)
+                            return htmltext;
                     }
-                    else if (step == 1 && st.getQuestItemsCount(item) == 0)
+                    
+                    if (step == 1 && st.getQuestItemsCount(item) == 0)
                     {
                         if (st.getQuestItemsCount(BLUE_GEM) > 0)
                         {
@@ -291,7 +294,7 @@ public class Q999_C3Tutorial extends Quest
                             tutorialSt.set("ucMemo", "3");
                             st.playSound("ItemSound.quest_middle");
                             
-                            if (player.getClassId().isMage())
+                            if (isMage)
                             {
                                 st.playTutorialVoice("tutorial_voice_027");
                                 st.giveItems(SPIRITSHOT_NOVICE, 100);
@@ -308,32 +311,19 @@ public class Q999_C3Tutorial extends Quest
                                     htmltext = "<html><body>I am sorry. I only help mystics. Please go to another Newbie Helper who may assist you.</body></html>";
                             }
                         }
+                        else if (isMage)
+                            htmltext = player.getRace().ordinal() == 3 ? "7575-02.htm" : "7131-02.htm";
                         else
-                        {
-                            if (player.getClassId().isMage())
-                            {
-                                if (player.getRace().ordinal() == 3)
-                                {
-                                    htmltext = "7575-02.htm";
-                                }
-                                else
-                                {
-                                    htmltext = "7131-02.htm";
-                                }
-                            }
-                            else
-                            {
-                                htmltext = "7530-02.htm";
-                            }
-                        }
+                            htmltext = "7530-02.htm";
                     }
-                    else if (step == 2)
+                    else if (step >= 1)
                     {
                         htmltext = htmlfiles[3];
                     }
                 }
                 else if (npcType == 0)
                 {
+                    // Before meeting the newbie helper, keep the regular dialog (and its quests) available
                     if (step == 1)
                         htmltext = htmlfiles[0];
                     else if (step == 2)

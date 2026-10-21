@@ -22,6 +22,7 @@ import net.sf.l2j.gameserver.GameTimeController;
 import net.sf.l2j.gameserver.ThreadPoolManager;
 import net.sf.l2j.gameserver.ai.CtrlIntention;
 import net.sf.l2j.gameserver.ai.L2BoatAI;
+import net.sf.l2j.gameserver.instancemanager.BoatManager;
 import net.sf.l2j.gameserver.model.L2Character;
 import net.sf.l2j.gameserver.model.L2ItemInstance;
 import net.sf.l2j.gameserver.model.Location;
@@ -105,6 +106,8 @@ public class L2BoatInstance extends L2Character
         // firstly, check passengers
         checkPassengers();
         
+        BoatManager.getInstance().undockShip(this);
+        
         _runState = 0;
         _currentPath = getCurrentTrajet().getPath();
         
@@ -151,6 +154,15 @@ public class L2BoatInstance extends L2Character
         if (_runState < _currentPath.length)
         {
             final L2VehiclePathPoint point = _currentPath[_runState];
+            
+            // Final point is the harbour dock, which may be shared with other routes
+            if (_runState == _currentPath.length - 1 && !BoatManager.getInstance().dockShip(this, point.getX(), point.getY()))
+            {
+                // Another boat is anchored, wait off the harbour
+                ThreadPoolManager.getInstance().scheduleGeneral(() -> approachDock(), 5000);
+                return false;
+            }
+            
             if (!isMovementDisabled())
             {
                 getStat().setMoveSpeed(point.getMoveSpeed());
@@ -188,6 +200,21 @@ public class L2BoatInstance extends L2Character
         say(10);
         ThreadPoolManager.getInstance().scheduleGeneral(new L2BoatCaptain(1, this), 300000);
         return false;
+    }
+    
+    private void approachDock()
+    {
+        final L2VehiclePathPoint point = _currentPath[_runState];
+        if (!BoatManager.getInstance().dockShip(this, point.getX(), point.getY()))
+        {
+            // Another boat is anchored, wait off the harbour
+            ThreadPoolManager.getInstance().scheduleGeneral(() -> approachDock(), 5000);
+            return;
+        }
+        
+        getStat().setMoveSpeed(point.getMoveSpeed());
+        getStat().setRotationSpeed(point.getRotationSpeed());
+        getAI().setIntention(CtrlIntention.AI_INTENTION_MOVE_TO, new Location(point.getX(), point.getY(), point.getZ()));
     }
     
     @Override

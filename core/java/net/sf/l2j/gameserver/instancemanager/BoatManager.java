@@ -22,6 +22,7 @@ import java.io.LineNumberReader;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.StringTokenizer;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Logger;
 
 import net.sf.l2j.Config;
@@ -37,6 +38,7 @@ public class BoatManager
     private final static Logger _log = Logger.getLogger(BoatManager.class.getName());
     
     private final Map<Integer, L2BoatInstance> _boats = new HashMap<>();
+    private final Map<Long, L2BoatInstance> _docks = new ConcurrentHashMap<>();
     
     public static final BoatManager getInstance()
     {
@@ -98,6 +100,7 @@ public class BoatManager
                 }
 
                 boat.setTrajets(trajets);
+                dockShip(boat, boat.getX(), boat.getY());
                 boat.beginCycle();
                 
                 _boats.put(boat.getObjectId(), boat);
@@ -238,6 +241,28 @@ public class BoatManager
     public L2BoatInstance getBoat(int boatId)
     {
         return _boats.get(boatId);
+    }
+    
+    /**
+     * Reserves the dock at given location for a boat.
+     * @param boat
+     * @param x
+     * @param y
+     * @return true if dock is free or already held by this boat
+     */
+    public boolean dockShip(L2BoatInstance boat, int x, int y)
+    {
+        final L2BoatInstance holder = _docks.putIfAbsent(((long) x << 32) | (y & 0xFFFFFFFFL), boat);
+        return holder == null || holder == boat;
+    }
+    
+    /**
+     * Releases any dock held by a boat.
+     * @param boat
+     */
+    public void undockShip(L2BoatInstance boat)
+    {
+        _docks.values().removeIf(b -> b == boat);
     }
     
     private static class SingletonHolder
