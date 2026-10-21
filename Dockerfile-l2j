@@ -6,19 +6,22 @@ ADD ./datapack/build/datapack.tar.gz /var/l2j/
 RUN chmod +x /var/l2j/login/dockerStartLogin.sh
 RUN chmod +x /var/l2j/gameserver/dockerStartGameServer.sh
 
+# Servers run unprivileged; code stays root owned, only runtime data is writable
+RUN addgroup -S -g 10001 l2j && adduser -S -D -H -u 10001 -G l2j -h /var/l2j l2j \
+    && mkdir -p /var/l2j/login/log /var/l2j/gameserver/log /var/l2j/gameserver/data/crests /var/gameserver/hexid \
+    && chown -R l2j:l2j /var/l2j/login/log /var/l2j/gameserver/log /var/l2j/gameserver/data/crests /var/gameserver/hexid \
+    && chown l2j:l2j /var/l2j/gameserver/data/announcements.txt
+
 ENV LOGIN_MEMORY_INITIAL=128M
 ENV LOGIN_MEMORY_MAXIMUM=256M
 ENV GAMESERVER_MEMORY_INITIAL=1024M
 ENV GAMESERVER_MEMORY_MAXIMUM=2048M
 
-RUN mkdir /var/l2j/gameserver/hexid
 ENV HEXID_FILE="/var/gameserver/hexid/hexid.txt"
 
+# Database credentials are passed at runtime (props.LoginServer.Login/Password, props.GameServer.Login/Password)
 ENV props.LoginServer.URL=jdbc:mariadb://db/l2jdb?useSSL=false
-ENV props.LoginServer.Login=docker
-ENV props.LoginServer.Password=docker
-
 ENV props.GameServer.LoginHost=login
 ENV props.GameServer.URL=jdbc:mariadb://db/l2jdb?useSSL=false
-ENV props.GameServer.Login=docker
-ENV props.GameServer.Password=docker
+
+USER l2j

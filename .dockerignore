@@ -1,0 +1,4 @@
+# Images only need the built packages
+*
+!core/build/core.tar.gz
+!datapack/build/datapack.tar.gz

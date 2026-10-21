@@ -1,5 +1,15 @@
 version: '3.1'
 
+# Copy .env.example to .env and set L2J_DB_PASSWORD before the first start.
+# Ports are published on IPv4 only: IPv6 goes through docker-proxy and every
+# IPv6 player would show up with the same (gateway) address.
+
+x-hardening: &hardening
+  security_opt:
+    - no-new-privileges:true
+  cap_drop:
+    - ALL
+
 services:
 
   db:
@@ -7,36 +17,69 @@ services:
       context: .
       dockerfile: Dockerfile-db
     restart: no
+    <<: *hardening
+    # The entrypoint starts as root and switches to the mysql user
+    cap_add:
+      - CHOWN
+      - DAC_OVERRIDE
+      - FOWNER
+      - SETGID
+      - SETUID
+    mem_limit: 1g
+    pids_limit: 512
+    environment:
+      - MYSQL_PASSWORD=${L2J_DB_PASSWORD:?set L2J_DB_PASSWORD in .env}
+      - MARIADB_AUTO_UPGRADE=1
     volumes:
       - ${PWD}/docker/mysql:/var/lib/mysql
 
+  # Database admin UI, reachable from this machine only
   adminer:
     image: adminer
     restart: no
+    profiles: [tools]
+    <<: *hardening
+    mem_limit: 256m
+    pids_limit: 128
     ports:
-      - 27015:8080
+      - 127.0.0.1:27015:8080
 
   login:
     build:
       context: .
       dockerfile: Dockerfile-l2j
     restart: no
+    <<: *hardening
+    mem_limit: 512m
+    pids_limit: 512
     working_dir: /var/l2j/login
     entrypoint: sh -c ./dockerStartLogin.sh
+    environment:
+      - props.LoginServer.Login=docker
+      - props.LoginServer.Password=${L2J_DB_PASSWORD:?set L2J_DB_PASSWORD in .env}
+      # Only the game server container may register as a game server
+      - props.LoginServer.GameServerAllowedAddresses=gameserver
     volumes:
       - ${PWD}/docker/login/log:/var/l2j/login/log
     ports:
-      - 2106:2106
+      - 0.0.0.0:2106:2106
 
   gameserver:
     build:
       context: .
       dockerfile: Dockerfile-l2j
     restart: no
+    <<: *hardening
+    mem_limit: 3g
+    pids_limit: 2048
     working_dir: /var/l2j/gameserver
     entrypoint: sh -c ./dockerStartGameServer.sh
+    environment:
+      - props.GameServer.Login=docker
+      - props.GameServer.Password=${L2J_DB_PASSWORD:?set L2J_DB_PASSWORD in .env}
     volumes:
       - ${PWD}/docker/gameserver/hexid:/var/gameserver/hexid
       - ${PWD}/docker/gameserver/log:/var/l2j/gameserver/log
+      - ${PWD}/docker/gameserver/crests:/var/l2j/gameserver/data/crests
     ports:
-      - 7777:7777
+      - 0.0.0.0:7777:7777
