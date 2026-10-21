@@ -252,7 +252,8 @@ public class Q999_C3Tutorial extends Quest
             npc.showChatWindow(player);
             return null;
         }
-        else if (onlyone == 0 && player.getLevel() < 10)
+        // Master keeps accepting the recommendation even if the player outgrew the tutorial meanwhile
+        else if (onlyone == 0 && (player.getLevel() < 10 || (npcType == 0 && step == 2)))
         {
             if (player.getRace().ordinal() == raceId)
             {
@@ -333,7 +334,7 @@ public class Q999_C3Tutorial extends Quest
                 }
             }
         }
-        else if (st.getState() != State.COMPLETED && npcType == 0)
+        else if (st.getState() != State.COMPLETED && npcType == 0 && onlyone != 0 && player.getLevel() < 10 && player.getRace().ordinal() == raceId)
         {
             htmltext = npc.getNpcId() + "-04.htm";
         }
@@ -371,7 +372,9 @@ public class Q999_C3Tutorial extends Quest
                 tutorialSt.set("Ex", "2");
             }
             
-            if ((ex == 0 || ex == 1 || ex == 2) && st.getQuestItemsCount(BLUE_GEM) == 0)
+            // Tutorial windows may push Ex below zero again, so the helper mission itself also allows the drop
+            final int step = st.getInt("step");
+            if ((ex == 0 || ex == 1 || ex == 2 || step == 1) && step < 2 && st.getInt("onlyone") == 0 && st.getQuestItemsCount(BLUE_GEM) == 0)
             {
                 if (npc instanceof L2Attackable && st.getRandom(100) < 50)
                 {

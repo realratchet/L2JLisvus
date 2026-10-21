@@ -71,6 +71,7 @@ public class ClanHall
 	private L2ClanHallZone _zone;
 	private boolean _paid;
 	private Auction _auction;
+	private Future<?> _rentTask;
 	
 	public ClanHall(int clanHallId, String name, int ownerId, int lease, int defaultBid, String desc, String location, long paidUntil, int grade, boolean paid)
 	{
@@ -177,6 +178,15 @@ public class ClanHall
 	{
 		if (clan != null)
 		{
+			// Functions belong to the previous owner
+			if (_ownerId != clan.getClanId())
+			{
+				for (int type : _functions.keySet())
+				{
+					removeFunction(type);
+				}
+			}
+			
 			// Update owner id property
 			_ownerId = clan.getClanId();
 			
@@ -200,6 +210,7 @@ public class ClanHall
 		else
 		{
 			// Removals
+			cancelRentTask();
 			_paidUntil = 0;
 			_ownerId = 0;
 			_paid = false;
@@ -218,17 +229,14 @@ public class ClanHall
 				// Remove existing bids
 				_auction.removeBids(null);
 				_auction.deleteMe();
-
-				// If clan hall is still rentable, initialize a new auction instance and launch the auction task
-				if (_defaultBid > 0)
-				{
-					initializeNPCAuction();
-					_auction.startAutoTask();
-				}
-				else
-				{
-					_auction = null;
-				}
+				_auction = null;
+			}
+			
+			// If clan hall is still rentable, initialize a new auction instance and launch the auction task
+			if (_defaultBid > 0)
+			{
+				initializeNPCAuction();
+				_auction.startAutoTask();
 			}
 		}
 		
@@ -281,7 +289,8 @@ public class ClanHall
 
 		if (_auction == null)
 		{
-			needsDefaultAuction = true;
+			// Owned clan halls are only auctioned when their owner puts them up for sale
+			needsDefaultAuction = _ownerId == 0;
 		}
 		else
 		{
@@ -298,7 +307,11 @@ public class ClanHall
 		{
 			initializeNPCAuction();
 		}
-		_auction.startAutoTask();
+		
+		if (_auction != null)
+		{
+			_auction.startAutoTask();
+		}
 	}
 
 	private void initializeNPCAuction()
@@ -616,28 +629,33 @@ public class ClanHall
 				try
 				{
 					L2Clan clan = ClanTable.getInstance().getClan(getOwnerId());
-					if (clan != null && clan.getWarehouse().getAdena() >= _fee && clan.getWarehouse().getAdena() >= (_fee * 2)) // if player didn't pay before add extra fee
-					{
-						if ((_endTime - System.currentTimeMillis()) <= 0)
-						{
-							clan.getWarehouse().destroyItemByItemId("CH_function_fee", Inventory.ADENA_ID, _fee, null, null);
-							
-							if (Config.DEBUG)
-							{
-								_log.warning("deducted " + _fee + " adena from " + getName() + " owner's cwh for functions");
-							}
-							
-							_endTime = System.currentTimeMillis() + getRate();
-							
-							updateFunctionRent();
-						}
-						
-						_functionTask = ThreadPoolManager.getInstance().scheduleGeneral(new FunctionTask(), _endTime - System.currentTimeMillis());
-					}
-					else
+					if (clan == null)
 					{
 						removeFunction(getType());
+						return;
 					}
+
+					if ((_endTime - System.currentTimeMillis()) <= 0)
+					{
+						if (clan.getWarehouse().getAdena() < (_fee * 2)) // if player didn't pay before add extra fee
+						{
+							removeFunction(getType());
+							return;
+						}
+
+						clan.getWarehouse().destroyItemByItemId("CH_function_fee", Inventory.ADENA_ID, _fee, null, null);
+
+						if (Config.DEBUG)
+						{
+							_log.warning("deducted " + _fee + " adena from " + getName() + " owner's cwh for functions");
+						}
+
+						_endTime = System.currentTimeMillis() + getRate();
+
+						updateFunctionRent();
+					}
+
+					_functionTask = ThreadPoolManager.getInstance().scheduleGeneral(new FunctionTask(), _endTime - System.currentTimeMillis());
 				}
 				catch (Throwable t)
 				{
@@ -686,7 +704,7 @@ public class ClanHall
 						_log.warning("deducted " + getLease() + " adena from " + getName() + " owner's cwh for ClanHall _paidUntil" + _paidUntil);
 					}
 					
-					ThreadPoolManager.getInstance().scheduleGeneral(new RentTask(), _paidUntil - System.currentTimeMillis());
+					scheduleRentTask(_paidUntil - System.currentTimeMillis());
 					_paid = true;
 					updateDb();
 				}
@@ -705,11 +723,11 @@ public class ClanHall
 						
 						if ((System.currentTimeMillis() + (1000 * 60 * 60 * 24)) <= (_paidUntil + PAYMENT_TIME))
 						{
-							ThreadPoolManager.getInstance().scheduleGeneral(new RentTask(), (1000 * 60 * 60 * 24)); // 1 day
+							scheduleRentTask((1000 * 60 * 60 * 24)); // 1 day
 						}
 						else
 						{
-							ThreadPoolManager.getInstance().scheduleGeneral(new RentTask(), (_paidUntil + PAYMENT_TIME) - System.currentTimeMillis());
+							scheduleRentTask((_paidUntil + PAYMENT_TIME) - System.currentTimeMillis());
 						}
 					}
 				}
@@ -720,22 +738,39 @@ public class ClanHall
 		}
 	}
 	
+	private void scheduleRentTask(long delay)
+	{
+		cancelRentTask();
+		_rentTask = ThreadPoolManager.getInstance().scheduleGeneral(new RentTask(), delay);
+	}
+	
+	private void cancelRentTask()
+	{
+		if (_rentTask != null)
+		{
+			_rentTask.cancel(false);
+			_rentTask = null;
+		}
+	}
+	
 	private void startRentTask(boolean forced)
 	{
+		cancelRentTask();
+		
 		long currentTime = System.currentTimeMillis();
 		if (_paidUntil > currentTime)
 		{
-			ThreadPoolManager.getInstance().scheduleGeneral(new RentTask(), _paidUntil - currentTime);
+			scheduleRentTask(_paidUntil - currentTime);
 		}
 		else if (!_paid && !forced)
 		{
 			if ((System.currentTimeMillis() + (1000 * 60 * 60 * 24)) <= (_paidUntil + PAYMENT_TIME))
 			{
-				ThreadPoolManager.getInstance().scheduleGeneral(new RentTask(), (1000 * 60 * 60 * 24)); // 1 day
+				scheduleRentTask((1000 * 60 * 60 * 24)); // 1 day
 			}
 			else
 			{
-				ThreadPoolManager.getInstance().scheduleGeneral(new RentTask(), (_paidUntil + PAYMENT_TIME) - System.currentTimeMillis());
+				scheduleRentTask((_paidUntil + PAYMENT_TIME) - System.currentTimeMillis());
 			}
 		}
 		else

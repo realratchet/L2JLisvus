@@ -302,6 +302,7 @@ public final class TaskManager
                 min.set(Calendar.HOUR_OF_DAY, Integer.valueOf(hour[0]));
                 min.set(Calendar.MINUTE, Integer.valueOf(hour[1]));
                 min.set(Calendar.SECOND, Integer.valueOf(hour[2]));
+                min.set(Calendar.MILLISECOND, 0);
             }
             catch (Exception e)
             {
@@ -311,7 +312,8 @@ public final class TaskManager
 
             long delay = min.getTimeInMillis() - System.currentTimeMillis();
 
-            if (check.after(min) || delay < 0)
+            // Last run time includes task run duration, so allow a minute of tolerance before skipping today's run
+            if (check.getTimeInMillis() > min.getTimeInMillis() + 60000 || delay < 0)
             {
                 delay += interval;
             }

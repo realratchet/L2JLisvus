@@ -14,6 +14,7 @@
  */
 package net.sf.l2j.gameserver.model.actor.instance;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
@@ -25,6 +26,7 @@ import net.sf.l2j.gameserver.ai.L2BoatAI;
 import net.sf.l2j.gameserver.instancemanager.BoatManager;
 import net.sf.l2j.gameserver.model.L2Character;
 import net.sf.l2j.gameserver.model.L2ItemInstance;
+import net.sf.l2j.gameserver.model.L2World;
 import net.sf.l2j.gameserver.model.Location;
 import net.sf.l2j.gameserver.model.actor.knownlist.BoatKnownList;
 import net.sf.l2j.gameserver.model.actor.stat.BoatStat;
@@ -48,6 +50,11 @@ import net.sf.l2j.gameserver.util.Util;
  */
 public class L2BoatInstance extends L2Character
 {
+    // Boats waiting for a busy dock stay at least this far from it
+    private static final int DOCK_APPROACH_RANGE = 2500;
+    // Harbour announcements reach players this far from the boat
+    private static final int ANNOUNCE_RANGE = 10000;
+    
     private final Set<L2PcInstance> _passengers = ConcurrentHashMap.newKeySet();
     private L2VehiclePathPoint[] _currentPath;
     
@@ -155,8 +162,9 @@ public class L2BoatInstance extends L2Character
         {
             final L2VehiclePathPoint point = _currentPath[_runState];
             
-            // Final point is the harbour dock, which may be shared with other routes
-            if (_runState == _currentPath.length - 1 && !BoatManager.getInstance().dockShip(this, point.getX(), point.getY()))
+            // Harbour dock may be shared with other routes, so wait far enough off it
+            final L2VehiclePathPoint dock = _currentPath[_currentPath.length - 1];
+            if (Util.calculateDistance(point.getX(), point.getY(), dock.getX(), dock.getY()) < DOCK_APPROACH_RANGE && !BoatManager.getInstance().dockShip(this, dock.getX(), dock.getY()))
             {
                 // Another boat is anchored, wait off the harbour
                 ThreadPoolManager.getInstance().scheduleGeneral(() -> approachDock(), 5000);
@@ -205,7 +213,8 @@ public class L2BoatInstance extends L2Character
     private void approachDock()
     {
         final L2VehiclePathPoint point = _currentPath[_runState];
-        if (!BoatManager.getInstance().dockShip(this, point.getX(), point.getY()))
+        final L2VehiclePathPoint dock = _currentPath[_currentPath.length - 1];
+        if (!BoatManager.getInstance().dockShip(this, dock.getX(), dock.getY()))
         {
             // Another boat is anchored, wait off the harbour
             ThreadPoolManager.getInstance().scheduleGeneral(() -> approachDock(), 5000);
@@ -300,8 +309,15 @@ public class L2BoatInstance extends L2Character
      */
     public void say(int i)
     {
-        final Collection<L2PcInstance> knownPlayers = getKnownList().getKnownPlayers().values();
-        if (knownPlayers == null || knownPlayers.isEmpty())
+        // Known list range is too short to reach the whole harbour
+        final Collection<L2PcInstance> knownPlayers = new ArrayList<>();
+        for (L2PcInstance player : L2World.getInstance().getAllPlayers())
+        {
+            if (player != null && isInsideRadius(player, ANNOUNCE_RANGE, false, false))
+                knownPlayers.add(player);
+        }
+        
+        if (knownPlayers.isEmpty())
             return;
         
         L2BoatTrajet trajet = getCurrentTrajet();

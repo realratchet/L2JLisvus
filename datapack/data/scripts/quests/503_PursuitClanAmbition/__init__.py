@@ -366,7 +366,7 @@ class Quest (JQuest) :
 					elif cond == 12:
 						htmltext = "7760-19t.htm"
 					elif cond == 13:
-						htmltext = "7766-24t.htm"
+						htmltext = "7760-24t.htm"
 				return htmltext
 
 	def onAttack(self, npc, player, damage, isPet):

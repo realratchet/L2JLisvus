@@ -3311,7 +3311,8 @@ public class SevenSignsFestival implements SpawnListener
     {
         // Start the Festival Manager for the first time after the server has started
         // at the specified time, then invoke it automatically after every cycle.
-        if (_managerInstance != null)
+        // A manager cancelled at the end of the competition period may be started again
+        if (_managerInstance != null && _managerScheduledTask != null && !_managerScheduledTask.isDone())
         {
             return; // Already started
         }

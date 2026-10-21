@@ -245,8 +245,10 @@ public class DayNightSpawnManager
     
     public L2RaidBossInstance handleBoss(L2Spawn spawnDat)
     {
-        if (_bosses.containsKey(spawnDat))
-            return _bosses.get(spawnDat);
+        // A killed boss stays stored, so it must be spawned anew on respawn
+        final L2RaidBossInstance stored = _bosses.get(spawnDat);
+        if (stored != null && !stored.isDead())
+            return stored;
 
         if (GameTimeController.getInstance().isNight())
         {    

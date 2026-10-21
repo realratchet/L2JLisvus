@@ -361,9 +361,16 @@ public class Valakas extends Quest
 		{
 			if (event.equalsIgnoreCase("valakas_unlock"))
 			{
-				L2GrandBossInstance valakas = (L2GrandBossInstance) addSpawn(VALAKAS, -105200, -253104, -15264, 32768, false, 0);
-				GrandBossManager.getInstance().addBoss(valakas);
+				L2GrandBossInstance valakas = (L2GrandBossInstance) addSpawn(VALAKAS, _spawnLoc.getX(), _spawnLoc.getY(), _spawnLoc.getZ(), 0, false, 0);
 				GrandBossManager.getInstance().setBossStatus(VALAKAS, DORMANT);
+				GrandBossManager.getInstance().addBoss(valakas);
+				
+				ThreadPoolManager.getInstance().scheduleGeneral(() -> {
+					valakas.setIsInvul(true);
+					valakas.decayMe();
+				}, 100L);
+				
+				startQuestTimer("1003", 60000, valakas, null, true);
 			}
 			else if (event.equalsIgnoreCase("remove_players"))
 			{

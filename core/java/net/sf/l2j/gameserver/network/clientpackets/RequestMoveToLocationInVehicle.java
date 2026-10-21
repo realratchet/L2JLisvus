@@ -89,7 +89,8 @@ public class RequestMoveToLocationInVehicle extends L2GameClientPacket
 		else
 		{
 			boat = BoatManager.getInstance().getBoat(_boatId);
-			if ((boat == null) || !activeChar.isInsideRadius(boat, 1000, true, false))
+			// Boarding a moving boat would skip the ticket check and passenger list
+			if ((boat == null) || boat.isMoving() || !activeChar.isInsideRadius(boat, 1000, true, false))
 			{
 				activeChar.sendPacket(ActionFailed.STATIC_PACKET);
 				return;

@@ -202,7 +202,7 @@ public class DimensionalRiftManager
                                                     y = riftRoom.getRandomY();
                                                     z = riftRoom.getTeleportCoords()[2];
                                                     
-                                                    spawnDat = new L2Spawn(template);
+                                                    spawnDat = new RiftSpawn(template);
                                                     spawnDat.setAmount(1);
                                                     spawnDat.setLocX(x);
                                                     spawnDat.setLocY(y);
@@ -437,6 +437,30 @@ public class DimensionalRiftManager
         {
             d.getSpawnTimer().cancel();
             d.setSpawnTimer(null);
+        }
+    }
+    
+    /**
+     * Rift room spawn that ignores respawn tasks left pending from a previous visit of the room,
+     * since the room is respawned on every entrance and such tasks would add extra monsters.
+     */
+    private static class RiftSpawn extends L2Spawn
+    {
+        public RiftSpawn(L2NpcTemplate template) throws SecurityException, ClassNotFoundException, NoSuchMethodException
+        {
+            super(template);
+        }
+        
+        @Override
+        public void respawnNpc(L2NpcInstance oldNpc)
+        {
+            final L2NpcInstance lastSpawn = getLastSpawn();
+            if (lastSpawn != null && lastSpawn != oldNpc && lastSpawn.isVisible() && !lastSpawn.isDead())
+            {
+                return;
+            }
+            
+            super.respawnNpc(oldNpc);
         }
     }
     

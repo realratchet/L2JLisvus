@@ -122,6 +122,9 @@ public class SevenSigns
 	
 	protected int _bossId = 0;
 	
+	// Time of the last status save, restored at startup (0 if unknown).
+	private long _lastStatusSave = 0;
+	
 	private final Map<Integer, StatsSet> _signsPlayerData;
 	private final Map<Integer, Integer> _signsSealOwners;
 	private final Map<Integer, Integer> _signsDuskSealTotals;
@@ -167,8 +170,20 @@ public class SevenSigns
 			_log.info("SevenSigns: The " + getCabalName(getCabalHighestScore()) + " are in the lead this week.");
 		}
 		
+		// Compute the change time of the stored period from the last time it was known to be active,
+		// so that a period change missed while the server was down is not postponed by a week.
+		if (_lastStatusSave > 0 && _lastStatusSave < _calendar.getTimeInMillis())
+			_calendar.setTimeInMillis(_lastStatusSave);
+		
 		setCalendarForNextPeriodChange();
 		long milliToChange = getMilliToPeriodChange();
+		
+		if (milliToChange < 0)
+		{
+			// Missed period change(s); each change schedules the next one, so all missed changes are caught up in a row.
+			_log.info("SevenSigns: A period change was missed while the server was down, it will be performed shortly.");
+			milliToChange = 60000;
+		}
 		
 		// Schedule a time for the next period change.
 		SevenSignsPeriodChange sspc = new SevenSignsPeriodChange();
@@ -196,8 +211,8 @@ public class SevenSigns
 		final AutoSpawnInstance blacksmithSpawn = AutoSpawnHandler.getInstance().getAutoSpawnInstance(MAMMON_BLACKSMITH_ID, false);
 		final AutoSpawnInstance spiritInSpawn = AutoSpawnHandler.getInstance().getAutoSpawnInstance(SPIRIT_IN_ID, false);
 		final AutoSpawnInstance spiritOutSpawn = AutoSpawnHandler.getInstance().getAutoSpawnInstance(SPIRIT_OUT_ID, false);
-		final AutoSpawnInstance crestofdawnspawn = AutoSpawnHandler.getInstance().getAutoSpawnInstance(CREST_OF_DAWN_ID, false);
-		final AutoSpawnInstance crestofduskspawn = AutoSpawnHandler.getInstance().getAutoSpawnInstance(CREST_OF_DUSK_ID, false);
+		final Map<Integer, AutoSpawnInstance> crestOfDawnSpawns = AutoSpawnHandler.getInstance().getAutoSpawnInstances(CREST_OF_DAWN_ID);
+		final Map<Integer, AutoSpawnInstance> crestOfDuskSpawns = AutoSpawnHandler.getInstance().getAutoSpawnInstances(CREST_OF_DUSK_ID);
 		
 		final Map<Integer, AutoSpawnInstance> marketeerSpawns = AutoSpawnHandler.getInstance().getAutoSpawnInstances(MAMMON_MARKETEER_ID);
 		final Map<Integer, AutoSpawnInstance> oratorSpawns = AutoSpawnHandler.getInstance().getAutoSpawnInstances(ORATOR_NPC_ID);
@@ -270,27 +285,46 @@ public class SevenSigns
 						// Lilith
 						_bossId = LILITH_NPC_ID;
 						
-						if (!AutoSpawnHandler.getInstance().getAutoSpawnInstance(crestofdawnspawn.getObjectId(), true).isSpawnActive())
-							AutoSpawnHandler.getInstance().setSpawnActive(crestofdawnspawn, true);
+						for (AutoSpawnInstance spawnInst : crestOfDawnSpawns.values())
+						{
+							if (!spawnInst.isSpawnActive())
+								AutoSpawnHandler.getInstance().setSpawnActive(spawnInst, true);
+						}
 						
-						AutoSpawnHandler.getInstance().setSpawnActive(crestofduskspawn, false);
+						for (AutoSpawnInstance spawnInst : crestOfDuskSpawns.values())
+						{
+							AutoSpawnHandler.getInstance().setSpawnActive(spawnInst, false);
+						}
 						break;
 					case CABAL_DUSK:
 						// Anakim
 						_bossId = ANAKIM_NPC_ID;
 						
-						if (!AutoSpawnHandler.getInstance().getAutoSpawnInstance(crestofduskspawn.getObjectId(), true).isSpawnActive())
-							AutoSpawnHandler.getInstance().setSpawnActive(crestofduskspawn, true);
+						for (AutoSpawnInstance spawnInst : crestOfDuskSpawns.values())
+						{
+							if (!spawnInst.isSpawnActive())
+								AutoSpawnHandler.getInstance().setSpawnActive(spawnInst, true);
+						}
 						
-						AutoSpawnHandler.getInstance().setSpawnActive(crestofdawnspawn, false);
+						for (AutoSpawnInstance spawnInst : crestOfDawnSpawns.values())
+						{
+							AutoSpawnHandler.getInstance().setSpawnActive(spawnInst, false);
+						}
 						break;
 				}
 			}
 			else
 			{
 				AutoSpawnHandler.getInstance().setSpawnActive(merchantSpawn, false);
-				AutoSpawnHandler.getInstance().setSpawnActive(crestofdawnspawn, false);
-				AutoSpawnHandler.getInstance().setSpawnActive(crestofduskspawn, false);
+				for (AutoSpawnInstance spawnInst : crestOfDawnSpawns.values())
+				{
+					AutoSpawnHandler.getInstance().setSpawnActive(spawnInst, false);
+				}
+				
+				for (AutoSpawnInstance spawnInst : crestOfDuskSpawns.values())
+				{
+					AutoSpawnHandler.getInstance().setSpawnActive(spawnInst, false);
+				}
 				AutoSpawnHandler.getInstance().setSpawnActive(spiritInSpawn, false);
 				AutoSpawnHandler.getInstance().setSpawnActive(spiritOutSpawn, false);
 			}
@@ -299,8 +333,15 @@ public class SevenSigns
 		{
 			AutoSpawnHandler.getInstance().setSpawnActive(merchantSpawn, false);
 			AutoSpawnHandler.getInstance().setSpawnActive(blacksmithSpawn, false);
-			AutoSpawnHandler.getInstance().setSpawnActive(crestofdawnspawn, false);
-			AutoSpawnHandler.getInstance().setSpawnActive(crestofduskspawn, false);
+			for (AutoSpawnInstance spawnInst : crestOfDawnSpawns.values())
+			{
+				AutoSpawnHandler.getInstance().setSpawnActive(spawnInst, false);
+			}
+			
+			for (AutoSpawnInstance spawnInst : crestOfDuskSpawns.values())
+			{
+				AutoSpawnHandler.getInstance().setSpawnActive(spawnInst, false);
+			}
 			AutoSpawnHandler.getInstance().setSpawnActive(spiritInSpawn, false);
 			AutoSpawnHandler.getInstance().setSpawnActive(spiritOutSpawn, false);
 			
@@ -674,6 +715,11 @@ public class SevenSigns
 					_activePeriod = rset.getInt("active_period");
 					_previousWinner = rset.getInt("previous_winner");
 					
+					// Values up to 7 are a legacy day of week, otherwise the time of the last save in minutes.
+					final int lastSave = rset.getInt("date");
+					if (lastSave > 7)
+						_lastStatusSave = lastSave * 60000L;
+					
 					_dawnStoneScore = rset.getDouble("dawn_stone_score");
 					_dawnFestivalScore = rset.getInt("dawn_festival_score");
 					_duskStoneScore = rset.getDouble("dusk_stone_score");
@@ -690,12 +736,6 @@ public class SevenSigns
 					_signsDuskSealTotals.put(SEAL_GNOSIS, rset.getInt("gnosis_dusk_score"));
 					_signsDuskSealTotals.put(SEAL_STRIFE, rset.getInt("strife_dusk_score"));
 				}
-			}
-			
-			try (PreparedStatement statement = con.prepareStatement("UPDATE seven_signs_status SET date=? WHERE id=0"))
-			{
-				statement.setInt(1, Calendar.getInstance().get(Calendar.DAY_OF_WEEK));
-				statement.execute();
 			}
 		}
 		catch (SQLException e)
@@ -804,7 +844,7 @@ public class SevenSigns
 				statement.setInt(18 + i, SevenSignsFestival.getInstance().getAccumulatedBonus(i));
 			}
 			
-			statement.setInt(18 + SevenSignsFestival.FESTIVAL_COUNT, Calendar.getInstance().get(Calendar.DAY_OF_WEEK));
+			statement.setInt(18 + SevenSignsFestival.FESTIVAL_COUNT, (int) (System.currentTimeMillis() / 60000));
 			statement.execute();
 			
 			if (Config.DEBUG)

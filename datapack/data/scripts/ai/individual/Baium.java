@@ -163,6 +163,10 @@ public class Baium extends Quest
 			baium.setCurrentHpMp(hp, mp);
 			baium.setIsInvul(true);
 			baium.setRunning();
+
+			// start monitoring baium's inactivity
+			_lastAttackVsBaiumTime = System.currentTimeMillis();
+			startQuestTimer("baium_despawn", 60000, baium, null, true);
 			
 			for (int[] element : ANGEL_LOCATION)
 			{
@@ -171,6 +175,7 @@ public class Baium extends Quest
 			}
 
 			ThreadPoolManager.getInstance().scheduleGeneral(() -> {
+				baium.setIsInvul(false);
 				for (L2Attackable angel : _angels)
 				{
 					// Add Baium to the angel knownlist

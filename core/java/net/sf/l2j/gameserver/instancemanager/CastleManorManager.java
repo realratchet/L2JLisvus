@@ -395,7 +395,7 @@ public class CastleManorManager
             if (!(cwh instanceof ClanWarehouse))
             {
                 _log.info("Can't get clan warehouse for clan " + ClanTable.getInstance().getClan(c.getOwnerId()));
-                return;
+                continue;
             }
             
             for (CropProcure crop : c.getCropProcure(PERIOD_CURRENT))
@@ -490,7 +490,7 @@ public class CastleManorManager
                 if (!(cwh instanceof ClanWarehouse))
                 {
                     _log.info("Can't get clan warehouse for clan " + ClanTable.getInstance().getClan(c.getOwnerId()));
-                    return;
+                    continue;
                 }
                 
                 int slots = 0;

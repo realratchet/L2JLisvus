@@ -217,8 +217,9 @@ class OlympiadManager implements Runnable
                 allGamesTerminated = true;
             else
             {
+                allGamesTerminated = true;
                 for (OlympiadGameTask game : _gamesQueue.values())
-                    allGamesTerminated = allGamesTerminated || game.isTerminated();
+                    allGamesTerminated = allGamesTerminated && game.isTerminated();
             }
         }
 

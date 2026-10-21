@@ -362,10 +362,11 @@ class Quest (JQuest) :
                 if classId in QMCb.keys():
                    htmltext = QMCb[classId]
             elif MarkId == 26 :
-                if st.getPlayer().getClassId().isMage() and classId != 49 :
-                    htmltext = "tutorial_newbie004b.htm"
-                else :
+                # Novice shot quests hand out spiritshots to every mystic, orc mystic included
+                if st.getPlayer().getClassId().isMage() :
                     htmltext = "tutorial_newbie004a.htm"
+                else :
+                    htmltext = "tutorial_newbie004b.htm"
             elif MarkId == 27 :
                 htmltext = "tutorial_20.htm"
             elif MarkId == 34 :

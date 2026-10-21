@@ -160,8 +160,10 @@ public class Olympiad
         switch (_period)
         {
             case 0:
-                if (_olympiadEnd == 0 || _olympiadEnd < currentTimeMillis)
+                if (_olympiadEnd == 0)
                     setNewOlympiadEnd();
+                else if (_olympiadEnd < currentTimeMillis)
+                    _log.info("Olympiad System: Olympiad period ended while the server was down, ending it now.");
                 else
                     scheduleWeeklyChange();
                 break;
@@ -337,6 +339,12 @@ public class Olympiad
         
         _scheduledOlympiadEnd = ThreadPoolManager.getInstance().scheduleGeneral(new OlympiadEndTask(), getMillisToOlympiadEnd());
         
+        // Olympiad period is already over, competitions are scheduled again when validation ends
+        if (getMillisToOlympiadEnd() <= 0)
+        {
+            return;
+        }
+        
         updateCompStatus();
         
         _log.info("Olympiad System: Event starts/started : " + cal.getTime());
@@ -362,14 +370,13 @@ public class Olympiad
             saveNobleData();
             
             _period = 1;
+            _validationEnd = System.currentTimeMillis() + VALIDATION_PERIOD;
             Hero.getInstance().computeNewHeroes(getHeroesToBe());
             
             // Save Olympiad status data
             saveOlympiadStatus();
             
             updateMonthlyData();
-            
-            _validationEnd = System.currentTimeMillis() + VALIDATION_PERIOD;
             
             loadNoblesRank();
             

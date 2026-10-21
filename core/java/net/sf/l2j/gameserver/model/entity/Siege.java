@@ -189,20 +189,25 @@ public class Siege
 			try
 			{
 				long timeRemaining = getSiegeDate().getTimeInMillis() - Calendar.getInstance().getTimeInMillis();
+				
+				// Registration ends 24 hours before siege start, also if the server was restarted after that point
+				if (timeRemaining <= 86400000)
+					_isRegistrationOver = true;
+				
 				if (timeRemaining > 86400000)
 				{
 					ThreadPoolManager.getInstance().scheduleGeneral(new ScheduleStartSiegeTask(castle), timeRemaining - 86400000); // Prepare task for 24 before siege start to end registration
 				}
-				else if ((timeRemaining <= 86400000) && (timeRemaining > 13600000))
+				else if ((timeRemaining <= 86400000) && (timeRemaining > 3600000))
 				{
 					SystemMessage sm = new SystemMessage(SystemMessage.REGISTRATION_TERM_FOR_S1_ENDED);
 					sm.addString(getCastle().getName());
 					Announcements.getInstance().announceToAll(sm);
 					_isRegistrationOver = true;
 					clearSiegeWaitingClans();
-					ThreadPoolManager.getInstance().scheduleGeneral(new ScheduleStartSiegeTask(castle), timeRemaining - 13600000); // Prepare task for 1 hr left before siege start.
+					ThreadPoolManager.getInstance().scheduleGeneral(new ScheduleStartSiegeTask(castle), timeRemaining - 3600000); // Prepare task for 1 hr left before siege start.
 				}
-				else if ((timeRemaining <= 13600000) && (timeRemaining > 600000))
+				else if ((timeRemaining <= 3600000) && (timeRemaining > 600000))
 				{
 					ThreadPoolManager.getInstance().scheduleGeneral(new ScheduleStartSiegeTask(castle), timeRemaining - 600000); // Prepare task for 10 minute left.
 				}
@@ -248,6 +253,9 @@ public class Siege
 	private boolean _isInProgress = false;
 	private boolean _isRegistrationOver = false;
 	
+	// Castle owner when siege started
+	private int _startOwnerId = 0;
+	
 	// =========================================================
 	// Constructor
 	public Siege(Castle castle)
@@ -255,10 +263,8 @@ public class Siege
 		_castle = castle;
 		_siegeGuardManager = new SiegeGuardManager(getCastle());
 		
-		// Set siege end date
 		_siegeEndDate = Calendar.getInstance();
-		_siegeEndDate.setTimeInMillis(getCastle().getSiegeDate().getTimeInMillis());
-		_siegeEndDate.add(Calendar.HOUR_OF_DAY, SiegeManager.getInstance().getSiegeLength());
+		updateSiegeEndDate();
 		
 		// Set registration end date
 		_siegeRegistrationEndDate = Calendar.getInstance();
@@ -304,10 +310,14 @@ public class Siege
 				}
 				sm.addString(getCastle().getName());
 				Announcements.getInstance().announceToAll(sm);
+				
+				// Schedule the next siege, otherwise registration stays closed until restart
+				saveCastleSiege();
 				return;
 			}
 			
 			_isInProgress = true; // Flag so that same siege instance cannot be started again
+			_startOwnerId = getCastle().getOwnerId();
 			
 			loadSiegeClans(); // Load siege clan from db
 			updatePlayerSiegeStateFlags(false);
@@ -468,6 +478,13 @@ public class Siege
 			_isInProgress = false; // Flag so that siege instance can be started
 			updatePlayerSiegeStateFlags(true);
 			saveCastleSiege(); // Save castle specific data
+			
+			// New owner must not inherit manor settings of previous owner (castle without owner is already reset)
+			if (getCastle().getOwnerId() > 0 && getCastle().getOwnerId() != _startOwnerId)
+			{
+				getCastle().resetManor();
+			}
+			
 			removeControlTowers(); // Remove all control tower from this castle
 			_siegeGuardManager.unspawnSiegeGuard(); // Remove all spawned siege guard from this castle
 			if (getCastle().getOwnerId() > 0)
@@ -1239,6 +1256,15 @@ public class Siege
 	}
 	
 	/**
+	 * Sets siege end date according to current siege date.
+	 */
+	private void updateSiegeEndDate()
+	{
+		_siegeEndDate.setTimeInMillis(getCastle().getSiegeDate().getTimeInMillis());
+		_siegeEndDate.add(Calendar.HOUR_OF_DAY, SiegeManager.getInstance().getSiegeLength());
+	}
+	
+	/**
 	 * Return the correct siege date as Calendar.<BR>
 	 * <BR>
 	 */
@@ -1268,6 +1294,8 @@ public class Siege
 		}
 		
 		getCastle().getSiegeDate().set(Calendar.MINUTE, 0);
+		
+		updateSiegeEndDate();
 		
 		if (corrected)
 		{
