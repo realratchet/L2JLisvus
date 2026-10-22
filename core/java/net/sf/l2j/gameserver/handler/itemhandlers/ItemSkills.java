@@ -19,6 +19,7 @@ import net.sf.l2j.gameserver.handler.ISkillHandler;
 import net.sf.l2j.gameserver.handler.SkillHandler;
 import net.sf.l2j.gameserver.model.L2ItemInstance;
 import net.sf.l2j.gameserver.model.L2Skill;
+import net.sf.l2j.gameserver.model.L2Skill.SkillTargetType;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PetInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PlayableInstance;
@@ -61,6 +62,13 @@ public class ItemSkills implements IItemHandler
 				return;
 			}
 			
+			// Item skills aimed at a target need it before the item is consumed
+			final boolean isTargeted = skill.getTargetType() == SkillTargetType.TARGET_ONE;
+			if (isTargeted && skill.getFirstOfTargetList(playable) == null)
+			{
+				return;
+			}
+			
 			if (playable.isSkillDisabled(skill.getId(), false))
 			{
 				SystemMessage sm = new SystemMessage(SystemMessage.S1_PREPARED_FOR_REUSE);
@@ -74,7 +82,7 @@ public class ItemSkills implements IItemHandler
 				return;
 			}
 			
-			if (skill.getHitTime() > 0)
+			if (skill.getHitTime() > 0 || isTargeted)
 			{
 				playable.useMagic(skill, false, false, item.getObjectId());
 			}

@@ -85,6 +85,8 @@
     <set name="weight" val="500" />
     <set name="price" val="0" />
     <set name="is_stackable" val="true" />
+    <set name="handler" val="ItemSkills" />
+    <set name="item_skill" val="2166-2" />
   </item>
   <item id="6410" name="2005 Battle Tournament - Quick Healing Potion" type="EtcItem">
     <set name="etcitem_type" val="POTION" />
@@ -92,6 +94,8 @@
     <set name="weight" val="180" />
     <set name="price" val="0" />
     <set name="is_stackable" val="true" />
+    <set name="handler" val="ItemSkills" />
+    <set name="item_skill" val="2038-1" />
   </item>
   <item id="6411" name="Small Nimble Green Fish" type="EtcItem">
     <set name="etcitem_type" val="OTHER" />

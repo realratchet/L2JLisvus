@@ -626,6 +626,8 @@
     <set name="weight" val="120" />
     <set name="price" val="0" />
     <set name="is_stackable" val="true" />
+    <set name="handler" val="ItemSkills" />
+    <set name="item_skill" val="2074-1" />
   </item>
   <item id="4678" name="Decrease Haste Potion" type="EtcItem">
     <set name="etcitem_type" val="POTION" />
@@ -633,6 +635,8 @@
     <set name="weight" val="180" />
     <set name="price" val="0" />
     <set name="is_stackable" val="true" />
+    <set name="handler" val="ItemSkills" />
+    <set name="item_skill" val="2075-1" />
   </item>
   <item id="4679" name="Bless of Eva" type="EtcItem">
     <set name="etcitem_type" val="POTION" />
@@ -640,6 +644,8 @@
     <set name="weight" val="180" />
     <set name="price" val="500" />
     <set name="is_stackable" val="true" />
+    <set name="handler" val="ItemSkills" />
+    <set name="item_skill" val="2076-1" />
   </item>
   <item id="4680" name="Potion of Revenge" type="EtcItem">
     <set name="etcitem_type" val="POTION" />
@@ -647,6 +653,8 @@
     <set name="weight" val="180" />
     <set name="price" val="0" />
     <set name="is_stackable" val="true" />
+    <set name="handler" val="ItemSkills" />
+    <set name="item_skill" val="2077-1" />
   </item>
   <item id="4681" name="Stormbringer - Critical Anger" type="Weapon">
     <set name="weapon_type" val="SWORD" />

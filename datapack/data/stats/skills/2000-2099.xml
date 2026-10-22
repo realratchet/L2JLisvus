@@ -601,8 +601,10 @@
   </for>
 </skill>
 <skill id="2075" levels="1" name="Decrease Hate Scroll">
-  <set name="target" val="TARGET_NONE"/>
-  <set name="skillType" val="NOTDONE"/>
+  <set name="magicLvl" val="1"/>
+  <set name="power" val="70"/>
+  <set name="target" val="TARGET_ONE"/>
+  <set name="skillType" val="AGGREDUCE_CHAR"/>
   <set name="operateType" val="OP_ACTIVE"/>
   <set name="castRange" val="600"/>
   <set name="effectRange" val="800"/>
@@ -619,10 +621,16 @@
   </for>
 </skill>
 <skill id="2077" levels="1" name="Potion of Revenge">
-  <set name="power" val="3.0"/>
-  <set name="target" val="TARGET_NONE"/>
-  <set name="skillType" val="NOTDONE"/>
+  <set name="magicLvl" val="1"/>
+  <set name="target" val="TARGET_SELF"/>
+  <set name="skillType" val="BUFF"/>
   <set name="operateType" val="OP_ACTIVE"/>
+  <for>
+    <effect count="1" name="Buff" time="30" val="0" stackOrder="3" stackType="DmgShield">
+      <mul order="0x30" stat="pDef" val="0.83"/>
+      <add order="0x40" stat="reflectDam" val="20"/>
+    </effect>
+  </for>
 </skill>
 <skill id="2078" levels="1" name="Compressed Package of Soulshots: No Grade">
   <set name="target" val="TARGET_NONE"/>

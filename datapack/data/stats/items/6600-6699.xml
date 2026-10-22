@@ -1054,6 +1054,8 @@
     <set name="weight" val="120" />
     <set name="price" val="400" />
     <set name="is_stackable" val="true" />
+    <set name="handler" val="ScrollOfEscape" />
+    <set name="item_skill" val="2213-4" />
   </item>
   <item id="6664" name="Scroll of Escape: Silenos Village" type="EtcItem">
     <set name="etcitem_type" val="SCROLL" />
@@ -1061,6 +1063,8 @@
     <set name="weight" val="120" />
     <set name="price" val="400" />
     <set name="is_stackable" val="true" />
+    <set name="handler" val="ScrollOfEscape" />
+    <set name="item_skill" val="2213-21" />
   </item>
   <item id="6665" name="Deluxe Chest Key - Grade 1" type="EtcItem">
     <set name="etcitem_type" val="OTHER" />
