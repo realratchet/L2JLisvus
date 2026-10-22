@@ -44,7 +44,7 @@ public class RequestSetAllyCrest extends L2GameClientPacket
 	protected void readImpl()
 	{
 		_length = readD();
-		if (_length > 192)
+		if ((_length < 0) || (_length > CrestCache.ALLY_CREST_SIZE))
 		{
 			return;
 		}
@@ -68,9 +68,9 @@ public class RequestSetAllyCrest extends L2GameClientPacket
 			return;
 		}
 
-		if (_length > 192)
+		if (!CrestCache.isValidCrest(CrestType.ALLY, _data))
 		{
-			activeChar.sendMessage("The file size is more than 192 bytes.");
+			activeChar.sendMessage("The alliance crest file must be an 8x12 256 color bitmap.");
 			return;
 		}
 
@@ -78,8 +78,14 @@ public class RequestSetAllyCrest extends L2GameClientPacket
 		{
 			L2Clan leaderclan = ClanTable.getInstance().getClan(activeChar.getAllyId());
 
-			if ((activeChar.getClanId() != leaderclan.getClanId()) || !activeChar.isClanLeader())
+			if ((leaderclan == null) || (activeChar.getClanId() != leaderclan.getClanId()) || !activeChar.isClanLeader())
 			{
+				return;
+			}
+
+			if (!CrestCache.getInstance().tryCrestUpdate(activeChar.getObjectId()))
+			{
+				activeChar.sendMessage("You cannot change the crest so often.");
 				return;
 			}
 

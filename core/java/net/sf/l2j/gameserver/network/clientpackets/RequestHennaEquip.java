@@ -18,7 +18,10 @@ import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.datatables.HennaTable;
 import net.sf.l2j.gameserver.datatables.HennaTreeTable;
 import net.sf.l2j.gameserver.model.L2HennaInstance;
+import net.sf.l2j.gameserver.model.L2Object;
+import net.sf.l2j.gameserver.model.actor.instance.L2NpcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.actor.instance.L2SymbolMakerInstance;
 import net.sf.l2j.gameserver.network.serverpackets.InventoryUpdate;
 import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
 import net.sf.l2j.gameserver.templates.L2Henna;
@@ -48,6 +51,13 @@ public class RequestHennaEquip extends L2GameClientPacket
 		
 		if (activeChar == null)
 		{
+			return;
+		}
+		
+		L2Object target = activeChar.getTarget();
+		if (!activeChar.isGM() && (!(target instanceof L2SymbolMakerInstance) || !activeChar.isInsideRadius(target, L2NpcInstance.INTERACTION_DISTANCE, false, false)))
+		{
+			activeChar.sendPacket(new SystemMessage(SystemMessage.CANT_DRAW_SYMBOL));
 			return;
 		}
 		
@@ -86,10 +96,26 @@ public class RequestHennaEquip extends L2GameClientPacket
 		{
 		}
 		
-		if (!cheater && (_count >= henna.getAmountDyeRequire()) && (activeChar.getAdena() >= henna.getPrice()) && activeChar.addHenna(henna))
+		if (!cheater && (_count >= henna.getAmountDyeRequire()) && (activeChar.getAdena() >= henna.getPrice()) && (activeChar.getHennaEmptySlots() > 0))
 		{
-			activeChar.destroyItemByItemId("Henna", henna.getItemIdDye(), henna.getAmountDyeRequire(), activeChar, true);
-			activeChar.getInventory().reduceAdena("Henna", henna.getPrice(), activeChar, activeChar.getLastFolkNPC());
+			if (!activeChar.destroyItemByItemId("Henna", henna.getItemIdDye(), henna.getAmountDyeRequire(), activeChar, true))
+			{
+				activeChar.sendPacket(new SystemMessage(SystemMessage.CANT_DRAW_SYMBOL));
+				return;
+			}
+			
+			if (!activeChar.getInventory().reduceAdena("Henna", henna.getPrice(), activeChar, activeChar.getLastFolkNPC()))
+			{
+				// Give the dyes back
+				activeChar.addItem("Henna", henna.getItemIdDye(), henna.getAmountDyeRequire(), activeChar, true);
+				activeChar.sendPacket(new SystemMessage(SystemMessage.CANT_DRAW_SYMBOL));
+				return;
+			}
+			
+			if (!activeChar.addHenna(henna))
+			{
+				return;
+			}
 			
 			InventoryUpdate iu = new InventoryUpdate();
 			iu.addItem(activeChar.getInventory().getAdenaInstance());

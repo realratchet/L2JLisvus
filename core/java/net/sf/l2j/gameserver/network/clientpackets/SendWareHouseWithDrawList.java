@@ -22,6 +22,7 @@ import net.sf.l2j.gameserver.model.L2ItemInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2FolkInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.itemcontainer.ItemContainer;
+import net.sf.l2j.gameserver.model.itemcontainer.PcFreight;
 import net.sf.l2j.gameserver.network.serverpackets.InventoryUpdate;
 import net.sf.l2j.gameserver.network.serverpackets.ItemList;
 import net.sf.l2j.gameserver.network.serverpackets.StatusUpdate;
@@ -104,6 +105,19 @@ public class SendWareHouseWithDrawList extends L2GameClientPacket
 			return;
 		}
 
+		if (player.isInStoreMode() || (player.getActiveTradeList() != null))
+		{
+			player.sendPacket(new SystemMessage(SystemMessage.CANNOT_TRADE_DISCARD_DROP_ITEM_WHILE_IN_SHOPMODE));
+			return;
+		}
+		
+		// Freight may only be withdrawn at the warehouse it was opened at
+		final PcFreight freight = (warehouse instanceof PcFreight) ? (PcFreight) warehouse : null;
+		if ((freight != null) && !Config.ALT_GAME_FREIGHTS && (freight.getActiveLocation() != manager.getNpcId()))
+		{
+			return;
+		}
+		
 		long weight = 0;
 		int slots = 0;
 
@@ -114,7 +128,7 @@ public class SendWareHouseWithDrawList extends L2GameClientPacket
 
 			// Calculate needed slots
 			L2ItemInstance item = warehouse.getItemByObjectId(objectId);
-			if ((item == null) || (count <= 0) || (item.getCount() < count))
+			if ((item == null) || (count <= 0) || (item.getCount() < count) || ((freight != null) && !freight.isAvailableAtActiveLocation(item)))
 			{
 				Util.handleIllegalPlayerAction(player, "Warning!! Character " + player.getName() + " of account " + player.getAccountName() + " tried to withdraw non-existent item from warehouse.", Config.DEFAULT_PUNISH);
 				return;
@@ -165,7 +179,7 @@ public class SendWareHouseWithDrawList extends L2GameClientPacket
 			int count = _items[(i * 2) + 1];
 			
 			L2ItemInstance oldItem = warehouse.getItemByObjectId(objectId);
-			if ((oldItem == null) || (oldItem.getCount() < count))
+			if ((oldItem == null) || (oldItem.getCount() < count) || ((freight != null) && !freight.isAvailableAtActiveLocation(oldItem)))
 			{
 				player.sendMessage("Cannot withdraw requested item(s).");
 				continue;

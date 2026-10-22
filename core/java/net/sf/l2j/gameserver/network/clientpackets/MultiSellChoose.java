@@ -78,6 +78,12 @@ public class MultiSellChoose extends L2GameClientPacket
 			return;
 		}
 		
+		if (player.isInStoreMode() || (player.getActiveTradeList() != null))
+		{
+			player.sendPacket(new SystemMessage(SystemMessage.CANNOT_TRADE_DISCARD_DROP_ITEM_WHILE_IN_SHOPMODE));
+			return;
+		}
+		
 		MultiSellListContainer list = L2Multisell.getInstance().getList(_listId);
 		if (list == null)
 		{
@@ -135,16 +141,24 @@ public class MultiSellChoose extends L2GameClientPacket
 				continue;
 			}
 			
+			// Product count must fit in an int
+			final long productCount = (long) e.getItemCount() * _amount;
+			if (productCount > L2ItemInstance.getMaxItemCount(e.getItemId()))
+			{
+				player.sendPacket(new SystemMessage(SystemMessage.YOU_HAVE_EXCEEDED_QUANTITY_THAT_CAN_BE_INPUTTED));
+				return;
+			}
+			
 			if (!template.isStackable())
 			{
-				slots += e.getItemCount() * _amount;
+				slots += productCount;
 			}
 			else
 			{
 				L2ItemInstance oldItem = player.getInventory().getItemByItemId(e.getItemId());
 				if (oldItem != null)
 				{
-					if ((oldItem.getCount() + ((long) e.getItemCount() * _amount)) > L2ItemInstance.getMaxItemCount(oldItem.getItemId()))
+					if ((oldItem.getCount() + productCount) > L2ItemInstance.getMaxItemCount(oldItem.getItemId()))
 					{
 						player.sendPacket(new SystemMessage(e.getItemId() == Inventory.ADENA_ID ? 
 							SystemMessage.YOU_HAVE_EXCEEDED_POCKET_MONEY_LIMIT : SystemMessage.YOU_HAVE_EXCEEDED_THE_LIMIT));
@@ -157,7 +171,7 @@ public class MultiSellChoose extends L2GameClientPacket
 				}
 			}
 			
-			weight += e.getItemCount() * _amount * template.getWeight();
+			weight += productCount * template.getWeight();
 		}
 		
 		if (weight > Integer.MAX_VALUE || !inv.validateWeight((int) weight))

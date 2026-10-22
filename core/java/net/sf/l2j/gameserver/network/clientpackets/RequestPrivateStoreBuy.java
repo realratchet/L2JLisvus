@@ -126,6 +126,33 @@ public class RequestPrivateStoreBuy extends L2GameClientPacket
 				Util.handleIllegalPlayerAction(player, msgErr, Config.DEFAULT_PUNISH);
 				return;
 			}
+			
+			// Package must be bought exactly as a whole: same objects, same counts, no duplicates
+			if (storeList.getItemCount() != _count)
+			{
+				sendPacket(ActionFailed.STATIC_PACKET);
+				return;
+			}
+			
+			for (int i = 0; i < _count; i++)
+			{
+				ItemRequest request = _items[i];
+				TradeList.TradeItem storeItem = storeList.getItem(request.getObjectId());
+				if ((storeItem == null) || (storeItem.getCount() != request.getCount()) || (storeItem.getPrice() != request.getPrice()))
+				{
+					sendPacket(ActionFailed.STATIC_PACKET);
+					return;
+				}
+				
+				for (int j = 0; j < i; j++)
+				{
+					if (_items[j].getObjectId() == request.getObjectId())
+					{
+						sendPacket(ActionFailed.STATIC_PACKET);
+						return;
+					}
+				}
+			}
 		}
 
 		if (!storeList.privateStoreBuy(player, _items))

@@ -67,7 +67,7 @@ public class RequestCrystallizeItem extends L2GameClientPacket
 			return;
 		}
 		
-		if (activeChar.isInStoreMode() || activeChar.isInCrystallize())
+		if (activeChar.isInStoreMode() || (activeChar.getActiveTradeList() != null) || activeChar.isInCrystallize())
 		{
 			activeChar.sendPacket(new SystemMessage(SystemMessage.CANNOT_TRADE_DISCARD_DROP_ITEM_WHILE_IN_SHOPMODE));
 			return;

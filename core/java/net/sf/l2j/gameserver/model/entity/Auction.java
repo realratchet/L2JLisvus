@@ -138,12 +138,31 @@ public class Auction
 	public synchronized void setBid(L2PcInstance player, int bid)
 	{
 		L2Clan clan = player.getClan();
-		if (clan == null)
+		if ((clan == null) || !player.isClanLeader())
 		{
 			return;
 		}
 		
-		if (bid <= _sellerBid)
+		// Re-check bidding requirements, the bid window may be bypassed
+		if (clan.getLevel() < 2)
+		{
+			player.sendPacket(new SystemMessage(SystemMessage.AUCTION_ONLY_CLAN_LEVEL_2_HIGHER));
+			return;
+		}
+		
+		if (clan.getHasHideout() > 0)
+		{
+			player.sendPacket(new SystemMessage(SystemMessage.CANNOT_PARTICIPATE_IN_AUCTION));
+			return;
+		}
+		
+		if ((clan.getAuctionBiddedAt() > 0) && (clan.getAuctionBiddedAt() != _clanHallId))
+		{
+			player.sendPacket(new SystemMessage(SystemMessage.ALREADY_SUBMITTED_BID));
+			return;
+		}
+		
+		if ((bid <= 0) || (bid <= _sellerBid))
 		{
 			player.sendPacket(new SystemMessage(SystemMessage.BID_PRICE_MUST_BE_HIGHER));
 			return;
@@ -228,9 +247,13 @@ public class Auction
 			return false;
 		}
 		
+		if (quantity <= 0)
+		{
+			return quantity == 0;
+		}
+		
 		// Take item from clan warehouse
-		bidder.getClan().getWarehouse().destroyItemByItemId("Buy", ADENA_ID, quantity, bidder, bidder);
-		return true;
+		return clan.getWarehouse().destroyItemByItemId("Buy", ADENA_ID, quantity, bidder, bidder) != null;
 	}
 	
 	private void updateBidInDB(L2PcInstance bidder, int bid, long time, boolean isNew)

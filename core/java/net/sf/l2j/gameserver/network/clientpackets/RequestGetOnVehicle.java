@@ -14,6 +14,7 @@
  */
 package net.sf.l2j.gameserver.network.clientpackets;
 
+import net.sf.l2j.gameserver.geoengine.GeoData;
 import net.sf.l2j.gameserver.instancemanager.BoatManager;
 import net.sf.l2j.gameserver.model.actor.instance.L2BoatInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
@@ -73,6 +74,13 @@ public class RequestGetOnVehicle extends L2GameClientPacket
 		{
 			boat = BoatManager.getInstance().getBoat(_boatId);
 			if ((boat == null) || boat.isMoving())
+			{
+				sendPacket(ActionFailed.STATIC_PACKET);
+				return;
+			}
+			
+			// Boat must be in sight, no boarding through walls
+			if (GeoData.getInstance().hasGeo(activeChar.getX(), activeChar.getY()) && !GeoData.getInstance().canSeeTarget(activeChar, boat))
 			{
 				sendPacket(ActionFailed.STATIC_PACKET);
 				return;

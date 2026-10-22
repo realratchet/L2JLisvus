@@ -62,7 +62,7 @@ public class RequestGiveItemToPet extends L2GameClientPacket
 			return;
 		}
 		
-		if (player.isInStoreMode())
+		if (player.isInStoreMode() || (player.getActiveTradeList() != null))
 		{
 			player.sendPacket(new SystemMessage(SystemMessage.CANNOT_TRADE_DISCARD_DROP_ITEM_WHILE_IN_SHOPMODE));
 			return;

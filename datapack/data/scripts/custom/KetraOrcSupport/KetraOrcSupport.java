@@ -115,7 +115,14 @@ public class KetraOrcSupport extends Quest
 		
 		if (StringUtil.isDigit(event))
 		{
-			final int[] buffInfo = BUFF[Integer.parseInt(event)];
+			// Buffs are given by the soul guide only, to allies of enough level
+			final int index = (event.length() < 3) ? Integer.parseInt(event) - 1 : -1;
+			if ((npc == null) || (npc.getNpcId() != ASEFA) || (player.getAllianceWithVarkaKetra() < 3) || (index < 0) || (index >= BUFF.length))
+			{
+				return null;
+			}
+			
+			final int[] buffInfo = BUFF[index];
 			if (st.getQuestItemsCount(HORN) >= buffInfo[2])
 			{
 				htmltext = "8372-4.htm";
@@ -127,6 +134,11 @@ public class KetraOrcSupport extends Quest
 		}
 		else if (event.equals("Withdraw"))
 		{
+			if ((npc == null) || (npc.getNpcId() != JAFF) || (player.getAllianceWithVarkaKetra() < 2))
+			{
+				return null;
+			}
+			
 			if (player.getWarehouse().getSize() == 0)
 				htmltext = "8374-0.htm";
 			else

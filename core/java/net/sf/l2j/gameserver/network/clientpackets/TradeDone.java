@@ -58,6 +58,8 @@ public class TradeDone extends L2GameClientPacket
 		
 		if (trade.isLocked())
 		{
+			// A locked but still active trade is stuck, cancel it
+			player.cancelActiveTrade();
 			return;
 		}
 		

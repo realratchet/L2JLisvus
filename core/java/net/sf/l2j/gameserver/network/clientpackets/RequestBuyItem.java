@@ -117,33 +117,33 @@ public class RequestBuyItem extends L2GameClientPacket
 			return;
 		}
 		
+		if (player.isInStoreMode() || (player.getActiveTradeList() != null))
+		{
+			player.sendPacket(new SystemMessage(SystemMessage.CANNOT_TRADE_DISCARD_DROP_ITEM_WHILE_IN_SHOPMODE));
+			return;
+		}
+		
 		L2MerchantInstance merchant = ((target != null) && (target instanceof L2MerchantInstance)) ? (L2MerchantInstance) target : null;
+		L2NpcInstance npc = (target instanceof L2NpcInstance) ? (L2NpcInstance) target : null;
 		L2TradeList list = null;
 		
-		if (merchant != null)
+		if (!player.isGM())
 		{
-			List<L2TradeList> lists = TradeController.getInstance().getBuyListByNpcId(merchant.getNpcId());
-			
-			if (!player.isGM())
+			// Only a buylist that belongs to the targeted npc is accepted
+			List<L2TradeList> lists = (npc != null) ? TradeController.getInstance().getBuyListByNpcId(npc.getNpcId()) : null;
+			if (lists == null)
 			{
-				if (lists == null)
-				{
-					Util.handleIllegalPlayerAction(player, "Warning!! Character " + player.getName() + " of account " + player.getAccountName() + " sent a false BuyList list_id.", Config.DEFAULT_PUNISH);
-					return;
-				}
-				
-				for (L2TradeList tradeList : lists)
-				{
-					if (tradeList.getListId() == _listId)
-					{
-						list = tradeList;
-						break;
-					}
-				}
+				Util.handleIllegalPlayerAction(player, "Warning!! Character " + player.getName() + " of account " + player.getAccountName() + " sent a false BuyList list_id.", Config.DEFAULT_PUNISH);
+				return;
 			}
-			else
+			
+			for (L2TradeList tradeList : lists)
 			{
-				list = TradeController.getInstance().getBuyList(_listId);
+				if (tradeList.getListId() == _listId)
+				{
+					list = tradeList;
+					break;
+				}
 			}
 		}
 		else
@@ -159,17 +159,18 @@ public class RequestBuyItem extends L2GameClientPacket
 		
 		if (_listId > 1000000) // lease
 		{
-			if (merchant != null && (merchant.getNpcId() != (_listId - 1000000)))
+			if (npc != null && (npc.getNpcId() != (_listId - 1000000)))
 			{
 				sendPacket(ActionFailed.STATIC_PACKET);
 				return;
 			}
 		}
 		
+		// Manor manager buylists are shown without tax
 		double taxRate = 0;
-		if (merchant != null && merchant.getIsInCastleTown())
+		if ((npc != null) && !(npc instanceof L2ManorManagerInstance) && npc.getIsInCastleTown())
 		{
-			taxRate = merchant.getCastle().getTaxRate();
+			taxRate = npc.getCastle().getTaxRate();
 		}
 		
 		long subTotal = 0;
@@ -278,9 +279,9 @@ public class RequestBuyItem extends L2GameClientPacket
 			return;
 		}
 		
-		if ((merchant != null) && merchant.getIsInCastleTown() && (merchant.getCastle().getOwnerId() > 0))
+		if ((tax > 0) && (npc != null) && npc.getIsInCastleTown() && (npc.getCastle().getOwnerId() > 0))
 		{
-			merchant.getCastle().addToTreasury(tax);
+			npc.getCastle().addToTreasury(tax);
 		}
 		
 		// Proceed the purchase

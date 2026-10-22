@@ -308,10 +308,18 @@ public final class L2AuctioneerInstance extends L2FolkInstance
 						return;
 					}
 					
+					// Hall already on sale
+					if (ch.getAuction() != null)
+					{
+						_pendingAuctions.remove(ch.getId());
+						return;
+					}
+					
 					Auction auction = _pendingAuctions.remove(ch.getId());
 					if (auction.takeItem(player, ch.getLease()))
 					{
 						auction.save();
+						ch.setAuction(auction);
 						auction.startAutoTask();
 						
 						showSelectedItems(player, clan);

@@ -2933,7 +2933,14 @@ public final class L2PcInstance extends L2PlayableInstance
 		if (count > 0)
 		{
 			L2ItemInstance adenaItem = _inventory.getAdenaInstance();
-			_inventory.reduceAdena(process, count, this, reference);
+			if (!_inventory.reduceAdena(process, count, this, reference))
+			{
+				if (sendMessage)
+				{
+					sendPacket(new SystemMessage(SystemMessage.YOU_NOT_ENOUGH_ADENA));
+				}
+				return false;
+			}
 			
 			// Send update packet
 			if (!Config.FORCE_INVENTORY_UPDATE)
@@ -3016,7 +3023,14 @@ public final class L2PcInstance extends L2PlayableInstance
 		if (count > 0)
 		{
 			L2ItemInstance ancientAdenaItem = _inventory.getAncientAdenaInstance();
-			_inventory.reduceAncientAdena(process, count, this, reference);
+			if (!_inventory.reduceAncientAdena(process, count, this, reference))
+			{
+				if (sendMessage)
+				{
+					sendPacket(new SystemMessage(SystemMessage.YOU_NOT_ENOUGH_ADENA));
+				}
+				return false;
+			}
 			
 			if (!Config.FORCE_INVENTORY_UPDATE)
 			{
@@ -8480,6 +8494,17 @@ public final class L2PcInstance extends L2PlayableInstance
 				sendMessage("Cannot mount while in event.");
 				return false;
 			}
+			else if (isInOlympiadMode() || isCastingNow())
+			{
+				sendPacket(ActionFailed.STATIC_PACKET);
+				return false;
+			}
+			else if (isInsideZone(ZONE_SIEGE) || isInsideZone(ZONE_BOSS))
+			{
+				sendMessage("You cannot mount a strider here.");
+				sendPacket(ActionFailed.STATIC_PACKET);
+				return false;
+			}
 			else if (!Util.checkIfInRange(100, this, pet, true))
 			{
 				sendMessage("Your pet is too far to ride it.");
@@ -8915,6 +8940,13 @@ public final class L2PcInstance extends L2PlayableInstance
 	
 	public void leaveObserverMode()
 	{
+		// Olympiad spectators must leave through their own routine
+		if (_observerMode && (_olympiadGameId != -1))
+		{
+			leaveOlympiadObserverMode();
+			return;
+		}
+		
 		setTarget(null);
 		sendPacket(new ObservationReturn(this));
 		teleToLocation(_obsX, _obsY, _obsZ, false);
@@ -8938,6 +8970,13 @@ public final class L2PcInstance extends L2PlayableInstance
 	
 	public void leaveOlympiadObserverMode()
 	{
+		// Siege/admin observers must leave through their own routine
+		if (_olympiadGameId == -1)
+		{
+			leaveObserverMode();
+			return;
+		}
+		
 		setTarget(null);
 		sendPacket(new ExOlympiadMatchEnd());
 		sendPacket(new ExOlympiadMode(0));

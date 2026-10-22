@@ -93,6 +93,12 @@ public class L2DoormenInstance extends L2FolkInstance
 
                     if (condition == 2)
                     {
+                        if ((player.getClanPrivileges() & L2Clan.CP_CS_OPEN_DOOR) != L2Clan.CP_CS_OPEN_DOOR)
+                        {
+                            player.sendPacket(new SystemMessage(SystemMessage.YOU_ARE_NOT_AUTHORIZED));
+                            return;
+                        }
+
                         while (st.hasMoreTokens())
                         {
                             getCastle().openDoor(player, Integer.parseInt(st.nextToken()));
@@ -123,6 +129,12 @@ public class L2DoormenInstance extends L2FolkInstance
 
                     if (condition == 2)
                     {
+                        if ((player.getClanPrivileges() & L2Clan.CP_CS_OPEN_DOOR) != L2Clan.CP_CS_OPEN_DOOR)
+                        {
+                            player.sendPacket(new SystemMessage(SystemMessage.YOU_ARE_NOT_AUTHORIZED));
+                            return;
+                        }
+
                         while (st.hasMoreTokens())
                         {
                             getCastle().closeDoor(player, Integer.parseInt(st.nextToken()));

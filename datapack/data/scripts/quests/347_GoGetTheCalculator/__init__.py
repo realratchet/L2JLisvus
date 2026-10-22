@@ -29,13 +29,16 @@ class Quest (JQuest) :
 
  def onEvent (self,event,st) :
     htmltext = event
+    cond = st.getInt("cond")
     if event == "1" :
+        if st.getState() != State.CREATED : return
         st.set("id","0")
         st.set("cond","1")
         st.setState(State.STARTED)
         st.playSound("ItemSound.quest_accept")
         htmltext = str(BRUNON)+"-02.htm"
     elif event == "7533_1" :
+        if cond not in [1,3] : return
         if st.getQuestItemsCount(ADENA)>100 :
             st.takeItems(ADENA, 100)
             if st.getInt("cond")== 1:
@@ -46,6 +49,7 @@ class Quest (JQuest) :
         else :
             htmltext = str(BALANKI)+"-03.htm"
     elif event == "7532_1" :
+        if cond not in [1,2] : return
         htmltext = str(SPIRON)+"-02a.htm"
         if st.getInt("cond")== 1:
             st.set("cond","3")
@@ -56,20 +60,22 @@ class Quest (JQuest) :
     elif event == "7532_3" :
         htmltext = str(SPIRON)+"-02c.htm"
     elif event == "7526_1" :
-        st.giveItems(CALCULATOR,1)
+        if cond != 6 or st.getQuestItemsCount(CALCULATOR_Q) != 1 : return
         st.takeItems(CALCULATOR_Q,1)
         st.playSound("ItemSound.quest_middle")
         st.setState(State.COMPLETED)
         st.set("cond","0")
         st.exitQuest(1)
+        st.giveItems(CALCULATOR,1)
         htmltext = str(BRUNON)+"-05.htm"
     elif event == "7526_2" :
-        st.giveItems(ADENA,1000)
+        if cond != 6 or st.getQuestItemsCount(CALCULATOR_Q) != 1 : return
         st.takeItems(CALCULATOR_Q,1)
         st.playSound("ItemSound.quest_middle")
         st.setState(State.COMPLETED)
         st.set("cond","0")
         st.exitQuest(1)
+        st.giveItems(ADENA,1000)
         htmltext = str(BRUNON)+"-06.htm"
     return htmltext
 

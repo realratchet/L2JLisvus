@@ -142,7 +142,7 @@ public class OrcOccupationChange2 extends Quest
 		ClassChangeData ccd = CLASSES.get(event);
 		String[] states = ccd.getStates();
 		
-		if (player.getRace() == ccd.getRequiredRace() && player.getClassId() == ccd.getRequiredClass())
+		if (!player.isSubClassActive() && player.getRace() == ccd.getRequiredRace() && player.getClassId() == ccd.getRequiredClass())
 		{
 			String suffix = "-";
 			

@@ -22,21 +22,30 @@ class Quest (JQuest) :
 
  def onEvent (self,event,st) :
    htmltext = event
+   cond = st.getInt("cond")
    if event == "8518-1.htm" :
+     if cond != 0 or st.getPlayer().getLevel() < 60 : return
      st.set("cond","1")
      st.setState(State.STARTED)
      st.playSound("ItemSound.quest_accept")
    elif event == "8518-3.htm" :
+     if cond != 2 or st.getQuestItemsCount(GEM_OF_SUBMISSION) < 300 : return
      st.takeItems(GEM_OF_SUBMISSION,300)
-     st.giveItems(SEAL_OF_LIGHT,1)
      st.set("cond","3")
+     st.giveItems(SEAL_OF_LIGHT,1)
    elif event == "8519-1.htm" :
+     if cond != 3 or not st.getQuestItemsCount(SEAL_OF_LIGHT) : return
      st.takeItems(SEAL_OF_LIGHT,1)
-     st.giveItems(GEM_OF_SAINTS,1)
      st.set("cond","4")
+     st.giveItems(GEM_OF_SAINTS,1)
    elif event == "8518-5.htm" :
+     if cond != 4 or not st.getQuestItemsCount(GEM_OF_SAINTS) : return
      st.takeItems(GEM_OF_SAINTS,1)
-   else :
+     st.set("cond","5")
+   elif event in ["8518-6.htm","8518-7.htm","8518-8.htm","8518-9.htm","8518-10.htm"] :
+     if cond != 5 : return
+     st.playSound("ItemSound.quest_finish")
+     st.exitQuest(1)
      if event == "8518-6.htm" :
        st.giveItems(ADENA,100000)
      elif event == "8518-7.htm" :
@@ -47,8 +56,8 @@ class Quest (JQuest) :
        st.giveItems(ENRIA,6)
      elif event == "8518-10.htm" :
        st.giveItems(MOLD_HARDENER,6)
-     st.playSound("ItemSound.quest_finish")
-     st.exitQuest(1)
+   else :
+     return
    return htmltext
 
  def onTalk (self,npc,st):
@@ -69,6 +78,8 @@ class Quest (JQuest) :
         htmltext = "8518-2.htm"
       elif st.getQuestItemsCount(GEM_OF_SAINTS) :
         htmltext = "8518-4.htm"
+      elif cond == 5 :
+        htmltext = "8518-5.htm"
    elif npcId == ENFEUX and st.getQuestItemsCount(SEAL_OF_LIGHT) :
      htmltext = "8519-0.htm"
    return htmltext

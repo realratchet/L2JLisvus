@@ -16,6 +16,7 @@ package net.sf.l2j.gameserver.network.clientpackets;
 
 import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.model.L2CommandChannel;
+import net.sf.l2j.gameserver.model.L2Party;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
 
@@ -54,7 +55,7 @@ public class RequestExAcceptJoinMPCC extends L2GameClientPacket
 		
 		if (_response == 1)
 		{
-			if (requestor.isInParty() && player.isInParty())
+			if (canJoinChannel(requestor, player))
 			{
 				if (!requestor.getParty().isInCommandChannel())
 				{
@@ -97,6 +98,34 @@ public class RequestExAcceptJoinMPCC extends L2GameClientPacket
 		
 		player.setActiveRequester(null);
 		requestor.onTransactionResponse();
+	}
+	
+	private static boolean canJoinChannel(L2PcInstance requestor, L2PcInstance player)
+	{
+		// Pending request is a party invitation
+		if (requestor.getLootInvitation() >= 0)
+		{
+			return false;
+		}
+		
+		L2Party requestorParty = requestor.getParty();
+		L2Party playerParty = player.getParty();
+		if ((requestorParty == null) || (playerParty == null) || (requestorParty == playerParty))
+		{
+			return false;
+		}
+		
+		if (!requestorParty.isLeader(requestor) || !playerParty.isLeader(player) || playerParty.isInCommandChannel())
+		{
+			return false;
+		}
+		
+		if (requestorParty.isInCommandChannel())
+		{
+			return requestorParty.getCommandChannel().getChannelLeader() == requestor;
+		}
+		
+		return (requestor.getClan() != null) && (requestor.getClan().getLevel() > 4) && (requestor.getClan().getLeaderId() == requestor.getObjectId());
 	}
 	
 	/*

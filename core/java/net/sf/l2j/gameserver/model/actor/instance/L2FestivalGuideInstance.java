@@ -210,6 +210,37 @@ public final class L2FestivalGuideInstance extends L2FolkInstance
                     showChatWindow(player, 1, null, false);
                     break;
                 case 2: // Festival 2 xxxx
+                    // Re-check the registration conditions, the bypass can be sent directly.
+                    if (SevenSigns.getInstance().isSealValidationPeriod())
+                    {
+                        showChatWindow(player, 2, "a", false);
+                        return;
+                    }
+                    
+                    if (SevenSignsFestival.getInstance().isFestivalInitialized())
+                    {
+                        player.sendMessage("You cannot sign up while a festival is in progress.");
+                        return;
+                    }
+                    
+                    if ((playerParty == null) || (playerParty.getMemberCount() < Config.ALT_FESTIVAL_MIN_PLAYER))
+                    {
+                        showChatWindow(player, 2, "b", false);
+                        return;
+                    }
+                    
+                    if (!playerParty.isLeader(player))
+                    {
+                        showChatWindow(player, 2, "c", false);
+                        return;
+                    }
+                    
+                    if (playerParty.getLevel() > SevenSignsFestival.getMaxLevelForFestival(_festivalType))
+                    {
+                        showChatWindow(player, 2, "d", false);
+                        return;
+                    }
+                    
                     int stoneType = Integer.parseInt(command.substring(11));
                     int stonesNeeded = 0;
                     
@@ -225,6 +256,9 @@ public final class L2FestivalGuideInstance extends L2FolkInstance
                             stonesNeeded = _redStonesNeeded;
                             break;
                     }
+                    
+                    if (stonesNeeded <= 0)
+                        return;
                     
                     if (!player.destroyItemByItemId("SevenSigns", stoneType, stonesNeeded, this, true))
                         return;

@@ -22,8 +22,10 @@ import java.io.RandomAccessFile;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -40,7 +42,15 @@ public class CrestCache
 {
 	private static final Logger _log = Logger.getLogger(CrestCache.class.getName());
 	
-	private final static List<CrestData> _cache = new ArrayList<>();
+	private final static List<CrestData> _cache = new CopyOnWriteArrayList<>();
+	
+	// Exact DXT1 DDS sizes sent by the C4 client (128 bytes header + data)
+	public static final int PLEDGE_CREST_SIZE = 256;
+	public static final int PLEDGE_LARGE_CREST_SIZE = 2176;
+	public static final int ALLY_CREST_SIZE = 192;
+	
+	private static final long CREST_UPDATE_INTERVAL = 10000;
+	private final Map<Integer, Long> _lastCrestUpdate = new ConcurrentHashMap<>();
 
 	private long _bytesBuffLen;
 	
@@ -184,6 +194,55 @@ public class CrestCache
 		}
 	}
 	
+	/**
+	 * @param crestType
+	 * @param data
+	 * @return true if data has the exact size and DDS format the client uploads for this crest type
+	 */
+	public static boolean isValidCrest(CrestType crestType, byte[] data)
+	{
+		if (data == null)
+		{
+			return false;
+		}
+		
+		int size;
+		switch (crestType)
+		{
+			case PLEDGE:
+				size = PLEDGE_CREST_SIZE;
+				break;
+			case PLEDGE_LARGE:
+				size = PLEDGE_LARGE_CREST_SIZE;
+				break;
+			case ALLY:
+				size = ALLY_CREST_SIZE;
+				break;
+			default:
+				return false;
+		}
+		
+		// "DDS " magic
+		return (data.length == size) && (data[0] == 'D') && (data[1] == 'D') && (data[2] == 'S') && (data[3] == ' ');
+	}
+	
+	/**
+	 * Allows one crest change per interval for the given player.
+	 * @param objectId
+	 * @return
+	 */
+	public boolean tryCrestUpdate(int objectId)
+	{
+		final long now = System.currentTimeMillis();
+		final Long last = _lastCrestUpdate.get(objectId);
+		if ((last != null) && ((now - last) < CREST_UPDATE_INTERVAL))
+		{
+			return false;
+		}
+		_lastCrestUpdate.put(objectId, now);
+		return true;
+	}
+	
 	public byte[] getCrest(CrestType crestType, int id)
 	{
 		for (CrestData crest : _cache)
@@ -199,6 +258,11 @@ public class CrestCache
 	
 	public void removeCrest(CrestType crestType, int id)
 	{
+		if (id <= 0)
+		{
+			return;
+		}
+		
 		String crestDirPrefix = crestType.getDirPrefix();
 		
 		if (crestType != CrestType.PLEDGE_OLD)

@@ -110,8 +110,8 @@ public class RequestProcureCropList extends L2GameClientPacket
 		int currentManorId = manorManager.getCastle().getCastleId();
 		
 		// Calculate summary values
-		int slots = 0;
-		int weight = 0;
+		long slots = 0;
+		long weight = 0;
 		
 		for (int i = 0; i < _size; i++)
 		{
@@ -153,26 +153,26 @@ public class RequestProcureCropList extends L2GameClientPacket
 			L2Item template = ItemTable.getInstance().getTemplate(rewardItemId);
 			if (template != null)
 			{
-				weight += count * template.getWeight();
+				weight += (long) count * template.getWeight();
 				
 				if (!template.isStackable())
 				{
 					slots += count;
 				}
-				else if (player.getInventory().getItemByItemId(itemId) == null)
+				else if (player.getInventory().getItemByItemId(rewardItemId) == null)
 				{
 					slots++;
 				}
 			}
 		}
 		
-		if (!player.getInventory().validateWeight(weight))
+		if ((weight > Integer.MAX_VALUE) || !player.getInventory().validateWeight((int) weight))
 		{
 			sendPacket(new SystemMessage(SystemMessage.WEIGHT_LIMIT_EXCEEDED));
 			return;
 		}
 		
-		if (!player.getInventory().validateCapacity(slots))
+		if ((slots > Integer.MAX_VALUE) || !player.getInventory().validateCapacity((int) slots))
 		{
 			sendPacket(new SystemMessage(SystemMessage.SLOTS_FULL));
 			return;
@@ -269,17 +269,39 @@ public class RequestProcureCropList extends L2GameClientPacket
 				continue;
 			}
 			
-			L2ItemInstance itemDel = player.getInventory().destroyItem("Manor", objId, count, player, manorManager);
-			if (itemDel == null)
+			// Reserve the procure amount atomically so parallel packets can't exceed it
+			synchronized (crop)
 			{
+				if (count > crop.getAmount())
+				{
+					continue;
+				}
+				crop.setAmount(crop.getAmount() - count);
+			}
+			
+			// Fee is taken first, so a crop is never sold without paying it
+			if ((fee > 0) && !player.getInventory().reduceAdena("Manor", (int) fee, player, manorManager))
+			{
+				synchronized (crop)
+				{
+					crop.setAmount(crop.getAmount() + count);
+				}
 				continue;
 			}
 			
-			if (fee > 0)
+			L2ItemInstance itemDel = player.getInventory().destroyItem("Manor", objId, count, player, manorManager);
+			if (itemDel == null)
 			{
-				player.getInventory().reduceAdena("Manor", (int) fee, player, manorManager);
+				synchronized (crop)
+				{
+					crop.setAmount(crop.getAmount() + count);
+				}
+				if (fee > 0)
+				{
+					player.getInventory().addAdena("Manor", (int) fee, player, manorManager);
+				}
+				continue;
 			}
-			crop.setAmount(crop.getAmount() - count);
 			
 			if (Config.ALT_MANOR_SAVE_ALL_ACTIONS)
 			{

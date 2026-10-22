@@ -37,6 +37,7 @@ import net.sf.l2j.gameserver.network.serverpackets.NpcHtmlMessage;
 import net.sf.l2j.gameserver.network.serverpackets.PledgeShowInfoUpdate;
 import net.sf.l2j.gameserver.network.serverpackets.StatusUpdate;
 import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
+import net.sf.l2j.gameserver.taskmanager.AttackStanceTaskManager;
 import net.sf.l2j.gameserver.templates.L2NpcTemplate;
 import net.sf.l2j.util.StringUtil;
 
@@ -119,6 +120,13 @@ public final class L2VillageMasterInstance extends L2FolkInstance
             if (Olympiad.getInstance().isRegisteredInComp(player))
             {
                 player.sendPacket(new SystemMessage(SystemMessage.YOU_HAVE_ALREADY_BEEN_REGISTERED_IN_A_WAITING_LIST_OF_AN_EVENT));
+                return;
+            }
+
+            if (player.isDead() || player.isInOlympiadMode() || player.isInsideZone(L2Character.ZONE_SIEGE) || (player.getPvpFlag() > 0)
+                || AttackStanceTaskManager.getInstance().getAttackStanceTask(player) || player.isOverloaded())
+            {
+                player.sendMessage("You cannot change your subclass at this time.");
                 return;
             }
 
@@ -274,9 +282,14 @@ public final class L2VillageMasterInstance extends L2FolkInstance
                             allowAddition = false;
                     }
 
+                    if (allowAddition && !isAvailableSubClass(player, paramOne))
+                        allowAddition = false;
+
                     ////////////////// \\\\\\\\\\\\\\\\\\
                     if (allowAddition)
                     {
+                        unsummonPet(player);
+
                         if (!player.addSubClass(paramOne, player.getTotalSubClasses() + 1))
                         {
                             player.sendMessage("The subclass could not be added.");
@@ -305,6 +318,10 @@ public final class L2VillageMasterInstance extends L2FolkInstance
                         return;
                     }
 
+                    if ((paramOne != 0) && !player.getSubClasses().containsKey(paramOne))
+                        return;
+
+                    unsummonPet(player);
                     player.setActiveClass(paramOne);
 
                     StringUtil.append(content, "Change Subclass:<br>Your active sub class is now a <font color=\"LEVEL\">"
@@ -344,6 +361,11 @@ public final class L2VillageMasterInstance extends L2FolkInstance
                         _log.warning("Player "+player.getName()+" has performed a subclass change too fast");
                         return;
                     }
+
+                    if (!player.getSubClasses().containsKey(paramOne) || !isAvailableSubClass(player, paramTwo))
+                        return;
+
+                    unsummonPet(player);
 
                     if (player.modifySubClass(paramOne, paramTwo))
                     {
@@ -600,6 +622,26 @@ public final class L2VillageMasterInstance extends L2FolkInstance
         }
         else
             player.sendPacket(new SystemMessage(SystemMessage.FAILED_TO_INCREASE_CLAN_LEVEL));
+    }
+
+    private final boolean isAvailableSubClass(L2PcInstance player, int classId)
+    {
+        final Set<PlayerClass> subsAvailable = getAvailableSubClasses(player);
+        if (subsAvailable == null)
+            return false;
+
+        for (PlayerClass subClass : subsAvailable)
+        {
+            if (subClass.ordinal() == classId)
+                return true;
+        }
+        return false;
+    }
+
+    private static void unsummonPet(L2PcInstance player)
+    {
+        if (player.getPet() != null)
+            player.getPet().unSummon(player);
     }
 
     private final Set<PlayerClass> getAvailableSubClasses(L2PcInstance player)

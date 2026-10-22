@@ -58,6 +58,12 @@ public class RequestAnswerJoinParty extends L2GameClientPacket
 			return;
 		}
 		
+		// Pending request must be a party invitation
+		if (requestor.getLootInvitation() < 0)
+		{
+			return;
+		}
+		
 		if (_response == 1)
 		{
 			L2EventScript playerEvent = player.getEvent();

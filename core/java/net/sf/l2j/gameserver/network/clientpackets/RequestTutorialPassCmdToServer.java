@@ -36,6 +36,12 @@ public class RequestTutorialPassCmdToServer extends L2GameClientPacket
 			return;
 		}
 		
+		// Tutorial commands are only "TE" followed by a short numeric id
+		if ((_bypass == null) || !_bypass.matches("TE[0-9]{1,3}"))
+		{
+			return;
+		}
+		
 		QuestState qs = player.getQuestState("255_Tutorial");
 		if (qs != null)
 		{

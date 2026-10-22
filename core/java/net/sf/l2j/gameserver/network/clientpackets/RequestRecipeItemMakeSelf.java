@@ -47,7 +47,7 @@ public class RequestRecipeItemMakeSelf extends L2GameClientPacket
 			return;
 		}
 		
-		if (activeChar.isInStoreMode())
+		if (activeChar.isInStoreMode() || (activeChar.getActiveTradeList() != null))
 		{
 			activeChar.sendMessage("Cannot make items while trading.");
 			return;

@@ -57,7 +57,7 @@ public class SendWareHouseDepositList extends L2GameClientPacket
 			int objectId = readD();
 			_items[(i * 2) + 0] = objectId;
 			int count = readD();
-			if (count < 0)
+			if (count < 1)
 			{
 				_count = 0;
 				_items = null;
@@ -101,7 +101,7 @@ public class SendWareHouseDepositList extends L2GameClientPacket
 			return;
 		}
 
-		if (player.isInStoreMode())
+		if (player.isInStoreMode() || (player.getActiveTradeList() != null))
 		{
 			player.sendPacket(new SystemMessage(SystemMessage.CANNOT_TRADE_DISCARD_DROP_ITEM_WHILE_IN_SHOPMODE));
 			return;

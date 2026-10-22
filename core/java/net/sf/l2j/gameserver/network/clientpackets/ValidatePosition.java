@@ -19,8 +19,10 @@ import java.util.logging.Logger;
 import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.geoengine.GeoData;
 import net.sf.l2j.gameserver.geoengine.geoeditorcon.GeoEditorListener;
+import net.sf.l2j.gameserver.instancemanager.ZoneManager;
 import net.sf.l2j.gameserver.model.L2Character;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.zone.type.L2WaterZone;
 import net.sf.l2j.gameserver.network.serverpackets.GetOnVehicle;
 import net.sf.l2j.gameserver.network.serverpackets.PartyMemberPosition;
 import net.sf.l2j.gameserver.network.serverpackets.StopRotation;
@@ -34,6 +36,9 @@ public class ValidatePosition extends L2GameClientPacket
 {
 	private static Logger _log = Logger.getLogger(ValidatePosition.class.getName());
 	private static final String _C__48_VALIDATEPOSITION = "[C] 48 ValidatePosition";
+	
+	// Max distance between client Z and geodata floor for client Z to be accepted
+	private static final int GEO_Z_TOLERANCE = 100;
 	
 	private int _x;
 	private int _y;
@@ -134,7 +139,23 @@ public class ValidatePosition extends L2GameClientPacket
 		diffSq = ((dx * dx) + (dy * dy));
 		
 		// Client Z changes are only accepted within sane bounds
-		final boolean validZ = (Math.abs(dz) <= 200) || ((Math.abs(dz) < 1500) && (Math.abs(_z - activeChar.getClientZ()) < 800));
+		boolean validZ = (Math.abs(dz) <= 200) || ((Math.abs(dz) < 1500) && (Math.abs(_z - activeChar.getClientZ()) < 800));
+		
+		// With geodata, client Z must match the floor the server knows the player is on
+		if (validZ && !activeChar.isFlying() && GeoData.getInstance().hasGeo(_x, _y))
+		{
+			final int floorZ = GeoData.getInstance().getHeight(_x, _y, realZ);
+			if (activeChar.isInsideZone(L2Character.ZONE_WATER))
+			{
+				// Swimming: claimed point must be inside water and not below the bottom, or on the floor (leaving water)
+				final boolean inWater = ZoneManager.getInstance().getZone(realX, realY, _z, L2WaterZone.class) != null;
+				validZ = (inWater && (_z >= (GeoData.getInstance().getHeight(_x, _y, _z) - GEO_Z_TOLERANCE))) || (Math.abs(_z - floorZ) <= GEO_Z_TOLERANCE);
+			}
+			else
+			{
+				validZ = Math.abs(_z - floorZ) <= GEO_Z_TOLERANCE;
+			}
+		}
 		
 		if ((activeChar.getParty() != null) && (activeChar.getLastPartyPositionDistance(_x, _y, _z) > 150))
 		{
@@ -156,7 +177,7 @@ public class ValidatePosition extends L2GameClientPacket
 			{
 				activeChar.setXYZ(realX, realY, _z);
 			}
-			if (!validZ || (diffSq > 90000))
+			if ((!validZ && (Math.abs(dz) > 200)) || (diffSq > 90000))
 			{
 				activeChar.sendPacket(new ValidateLocation(activeChar));
 			}
@@ -170,7 +191,7 @@ public class ValidatePosition extends L2GameClientPacket
 					activeChar.setXYZ(realX, realY, _z);
 					realZ = _z;
 				}
-				else
+				else if (Math.abs(dz) > 200)
 				{
 					activeChar.sendPacket(new ValidateLocation(activeChar));
 				}
@@ -179,7 +200,10 @@ public class ValidatePosition extends L2GameClientPacket
 			{
 				if (!validZ)
 				{
-					activeChar.sendPacket(new ValidateLocation(activeChar));
+					if (Math.abs(dz) > 200)
+					{
+						activeChar.sendPacket(new ValidateLocation(activeChar));
+					}
 					return;
 				}
 				
@@ -210,7 +234,7 @@ public class ValidatePosition extends L2GameClientPacket
 			// Due to geodata "holes", some Z axis checks are made.
 			else if ((diffSq > 250000) || (Math.abs(dz) > 200))
 			{
-				if ((Math.abs(dz) > 200) && (Math.abs(dz) < 1500) && (Math.abs(_z - activeChar.getClientZ()) < 800))
+				if (validZ && (Math.abs(dz) > 200) && (Math.abs(dz) < 1500) && (Math.abs(_z - activeChar.getClientZ()) < 800))
 				{
 					activeChar.setXYZ(realX, realY, _z);
 					realZ = _z;

@@ -120,17 +120,18 @@ class Quest (JQuest) :
 		elif event == "7649_1" :
 			htmltext = "7649-02.htm"
 		elif event == "7649_2" :
+			if st.getState() != State.STARTED or st.getInt("step") != 3 or not st.getQuestItemsCount(WARSPIRIT_TOTEM_ID) : return
+			st.setState(State.COMPLETED)
+			for var in STATS:
+				st.unset(var)
 			st.takeItems(WARSPIRIT_TOTEM_ID,-1)
 			st.takeItems(BRAKIS_REMAINS2_ID,-1)
 			st.takeItems(HERMODTS_REMAINS2_ID,-1)
 			st.takeItems(KIRUNAS_REMAINS2_ID,-1)
-			st.addExpAndSp(63483,17500)
 			st.takeItems(TONARS_REMAINS2_ID,-1)
+			st.addExpAndSp(63483,17500)
 			st.giveItems(MARK_OF_WARSPIRIT_ID,1)
 			htmltext = "7649-03.htm"
-			for var in STATS:
-				st.unset(var)
-			st.setState(State.COMPLETED)
 			st.playSound("ItemSound.quest_finish")
 		return htmltext
 

@@ -896,12 +896,12 @@ public class Castle
 			production = _productionNext;
 		}
 		
-		int total = 0;
+		long total = 0;
 		if (production != null)
 		{
 			for (SeedProduction seed : production)
 			{
-				total += L2Manor.getInstance().getSeedBuyPrice(seed.getId()) * seed.getStartProduce();
+				total += (long) L2Manor.getInstance().getSeedBuyPrice(seed.getId()) * seed.getStartProduce();
 			}
 		}
 		
@@ -909,10 +909,11 @@ public class Castle
 		{
 			for (CropProcure crop : procure)
 			{
-				total += crop.getPrice() * crop.getStartAmount();
+				total += (long) crop.getPrice() * crop.getStartAmount();
 			}
 		}
-		return total;
+		// Clamp so overflow can't turn the cost negative
+		return (int) Math.min(total, Integer.MAX_VALUE);
 	}
 	
 	// Save manor production data

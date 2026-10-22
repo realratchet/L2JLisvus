@@ -365,13 +365,15 @@ public class PcInventory extends Inventory
 	 * @param count : int Quantity of adena to be removed
 	 * @param actor : L2PcInstance Player requesting the item add
 	 * @param reference : L2Object Object referencing current action like NPC selling item or previous item in transformation
+	 * @return true if the adena was removed
 	 */
-	public void reduceAdena(String process, int count, L2PcInstance actor, L2Object reference)
+	public boolean reduceAdena(String process, int count, L2PcInstance actor, L2Object reference)
 	{
 		if (count > 0)
 		{
-			destroyItemByItemId(process, ADENA_ID, count, actor, reference);
+			return destroyItemByItemId(process, ADENA_ID, count, actor, reference) != null;
 		}
+		return true;
 	}
 	
 	/**
@@ -395,13 +397,15 @@ public class PcInventory extends Inventory
 	 * @param count : int Quantity of adena to be removed
 	 * @param actor : L2PcInstance Player requesting the item add
 	 * @param reference : L2Object Object referencing current action like NPC selling item or previous item in transformation
+	 * @return true if the ancient adena was removed
 	 */
-	public void reduceAncientAdena(String process, int count, L2PcInstance actor, L2Object reference)
+	public boolean reduceAncientAdena(String process, int count, L2PcInstance actor, L2Object reference)
 	{
 		if (count > 0)
 		{
-			destroyItemByItemId(process, ANCIENT_ADENA_ID, count, actor, reference);
+			return destroyItemByItemId(process, ANCIENT_ADENA_ID, count, actor, reference) != null;
 		}
+		return true;
 	}
 	
 	@Override

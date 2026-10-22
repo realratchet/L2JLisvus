@@ -96,6 +96,12 @@ public class RequestBuySeed extends L2GameClientPacket
 			return;
 		}
 		
+		if (player.isInStoreMode() || (player.getActiveTradeList() != null))
+		{
+			player.sendPacket(new SystemMessage(SystemMessage.CANNOT_TRADE_DISCARD_DROP_ITEM_WHILE_IN_SHOPMODE));
+			return;
+		}
+		
 		L2Object target = player.getTarget();
 		
 		if (!(target instanceof L2ManorManagerInstance))

@@ -34,7 +34,7 @@ public class L2WyvernManagerInstance extends L2CastleChamberlainInstance
 	{
 		if (command.startsWith("RideWyvern"))
 		{
-			if (!player.isClanLeader())
+			if (!player.isClanLeader() || (getCastle() == null) || (getCastle().getCastleId() <= 0) || (getCastle().getOwnerId() != player.getClanId()))
 			{
 				player.sendMessage("You are not the lord of this castle.");
 				return;

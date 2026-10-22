@@ -224,6 +224,16 @@ public class ThreadPoolManager
 		_generalPacketsThreadPool.execute(pkt);
 	}
 
+	public void executePacket(Runnable r)
+	{
+		_generalPacketsThreadPool.execute(r);
+	}
+
+	public void executeIOPacket(Runnable r)
+	{
+		_ioPacketsThreadPool.execute(r);
+	}
+
 	public void executeCommunityPacket(Runnable r)
 	{
 		_generalPacketsThreadPool.execute(r);

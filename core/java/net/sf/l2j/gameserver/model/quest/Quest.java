@@ -1318,6 +1318,12 @@ public class Quest extends ManagedScript
 	
 	public final String loadHtmlFile(L2PcInstance player, String fileName)
 	{
+		// File names may come from client events, so never leave the quest folder
+		if ((fileName == null) || fileName.contains("..") || fileName.contains("/") || fileName.contains("\\"))
+		{
+			return null;
+		}
+		
 		String questName = getName();
 		
 		// Create handler to file linked to the quest

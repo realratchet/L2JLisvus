@@ -128,7 +128,7 @@ public class ElvenHumanMystics1 extends Quest
 		String[] states = ccd.getStates();
 		int npcId = npc.getNpcId();
 		
-		if (player.getRace() == ccd.getRequiredRace() && player.getClassId() == ccd.getRequiredClass())
+		if (!player.isSubClassActive() && player.getRace() == ccd.getRequiredRace() && player.getClassId() == ccd.getRequiredClass())
 		{
 			String suffix = "-";
 			

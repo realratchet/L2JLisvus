@@ -820,14 +820,8 @@ public final class L2GamePacketHandler implements IPacketHandler<L2GameClient>, 
 	{
 		try
 		{
-			if (rp.getClient().getState() == GameClientState.IN_GAME)
-			{
-				ThreadPoolManager.getInstance().executePacket(rp);
-			}
-			else
-			{
-				ThreadPoolManager.getInstance().executeIOPacket(rp);
-			}
+			// Packets of one client run one at a time, so they cannot race each other
+			rp.getClient().queuePacket(rp);
 		}
 		catch (RejectedExecutionException e)
 		{

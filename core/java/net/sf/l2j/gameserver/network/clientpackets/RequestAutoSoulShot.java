@@ -20,6 +20,7 @@ import net.sf.l2j.gameserver.model.L2Summon;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.network.serverpackets.ExAutoSoulShot;
 import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
+import net.sf.l2j.gameserver.templates.L2EtcItem;
 
 /**
  * This class ...
@@ -56,6 +57,12 @@ public class RequestAutoSoulShot extends L2GameClientPacket
 		
 		L2ItemInstance item = activeChar.getInventory().getItemByItemId(_itemId);
 		if (item == null)
+		{
+			return;
+		}
+		
+		// Only real soulshots/spiritshots can be automated
+		if ((_type == 1) && !isAutoShot(item))
 		{
 			return;
 		}
@@ -122,6 +129,32 @@ public class RequestAutoSoulShot extends L2GameClientPacket
 			SystemMessage sm = new SystemMessage(SystemMessage.AUTO_USE_OF_S1_CANCELLED);
 			sm.addString(item.getItemName());
 			activeChar.sendPacket(sm);
+		}
+	}
+	
+	private static boolean isAutoShot(L2ItemInstance item)
+	{
+		if (!(item.getItem() instanceof L2EtcItem))
+		{
+			return false;
+		}
+		
+		final String handler = ((L2EtcItem) item.getItem()).getHandlerName();
+		if (handler == null)
+		{
+			return false;
+		}
+		
+		switch (handler)
+		{
+			case "SoulShot":
+			case "SpiritShot":
+			case "BlessedSpiritShot":
+			case "BeastSoulShot":
+			case "BeastSpiritShot":
+				return true;
+			default:
+				return false;
 		}
 	}
 	

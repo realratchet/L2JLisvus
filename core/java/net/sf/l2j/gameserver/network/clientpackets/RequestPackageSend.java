@@ -71,6 +71,11 @@ public class RequestPackageSend extends L2GameClientPacket
 		{
 			int id = readD(); // this is some id sent in PackageSendableList
 			int count = readD();
+			if (count < 1)
+			{
+				_count = -1;
+				return;
+			}
 			_items.add(new Item(id, count));
 		}
 	}
@@ -116,22 +121,21 @@ public class RequestPackageSend extends L2GameClientPacket
 			return;
 		}
 		
-		if (player.isInStoreMode())
+		if (player.isInStoreMode() || (player.getActiveTradeList() != null))
 		{
 			player.sendPacket(new SystemMessage(SystemMessage.CANNOT_TRADE_DISCARD_DROP_ITEM_WHILE_IN_SHOPMODE));
 			return;
 		}
 
-		PcFreight freight = null;
-		if (warehouse instanceof PcFreight)
-		{
-			freight = (PcFreight) warehouse;
-		}
-
-		if (freight == null)
+		// Only a package-send window (ownerless freight) is accepted here
+		if (!(warehouse instanceof PcFreight) || (((PcFreight) warehouse).getOwner() != null))
 		{
 			return;
 		}
+
+		// Use a fresh container for each request so it never carries stale items
+		PcFreight freight = new PcFreight(null);
+		warehouse = freight;
 
 		// Restore player items from database
 		freight.doQuickRestore(_objectID);

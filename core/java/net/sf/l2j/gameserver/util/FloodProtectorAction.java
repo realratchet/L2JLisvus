@@ -82,7 +82,7 @@ public final class FloodProtectorAction
 	 * @param command command issued or short command description
 	 * @return true if action is allowed, otherwise false
 	 */
-	public boolean tryPerformAction(final String command)
+	public synchronized boolean tryPerformAction(final String command)
 	{
 		final int curTick = GameTimeController.getInstance().getGameTicks();
 

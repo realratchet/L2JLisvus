@@ -15,12 +15,19 @@
 package net.sf.l2j.gameserver.network.clientpackets;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.instancemanager.CastleManager;
 import net.sf.l2j.gameserver.instancemanager.CastleManorManager;
 import net.sf.l2j.gameserver.instancemanager.CastleManorManager.SeedProduction;
+import net.sf.l2j.gameserver.model.L2Clan;
+import net.sf.l2j.gameserver.model.L2Manor;
+import net.sf.l2j.gameserver.model.L2Object;
+import net.sf.l2j.gameserver.model.actor.instance.L2CastleChamberlainInstance;
+import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.entity.Castle;
 
 /**
@@ -70,13 +77,38 @@ public class RequestSetSeed extends L2GameClientPacket
 			return;
 		}
 
-		Castle castle = CastleManager.getInstance().getCastleById(_manorId);
-		if (castle == null)
+		L2PcInstance player = getClient().getActiveChar();
+		if (player == null)
 		{
 			return;
 		}
 
+		if (CastleManorManager.getInstance().isDisabled() || CastleManorManager.getInstance().isUnderMaintenance())
+		{
+			return;
+		}
+
+		Castle castle = CastleManager.getInstance().getCastleById(_manorId);
+		if (castle == null || castle.isNextPeriodApproved())
+		{
+			return;
+		}
+
+		// Only castle owner clan members with castle rights, talking to that castle's chamberlain
+		if ((player.getClan() == null) || (castle.getOwnerId() != player.getClanId()) || (!player.isClanLeader() && ((player.getClanPrivileges() & L2Clan.CP_CS_OTHER_RIGHTS) != L2Clan.CP_CS_OTHER_RIGHTS)))
+		{
+			return;
+		}
+
+		L2Object npc = player.getLastFolkNPC();
+		if (!(npc instanceof L2CastleChamberlainInstance) || (((L2CastleChamberlainInstance) npc).getCastle() != castle) || !((L2CastleChamberlainInstance) npc).canInteract(player))
+		{
+			return;
+		}
+
+		List<Integer> castleSeeds = L2Manor.getInstance().getSeedsForCastle(_manorId);
 		List<SeedProduction> seeds = new ArrayList<>();
+		Set<Integer> seen = new HashSet<>();
 		for (int i = 0; i < _size; i++)
 		{
 			int id = _items[(i * 3) + 0];
@@ -84,6 +116,16 @@ public class RequestSetSeed extends L2GameClientPacket
 			int price = _items[(i * 3) + 2];
 			if (id > 0)
 			{
+				// Reject the whole list on any invalid entry
+				if (!castleSeeds.contains(id) || !seen.add(id) || (sales < 0) || (sales > L2Manor.getInstance().getSeedSaleLimit(id)))
+				{
+					return;
+				}
+				int basePrice = L2Manor.getInstance().getSeedBasicPrice(id);
+				if ((sales > 0) && ((price < ((basePrice * 60) / 100)) || (price > (basePrice * 10))))
+				{
+					return;
+				}
 				seeds.add(CastleManorManager.getInstance().getNewSeedProduction(id, sales, price, sales));
 			}
 		}

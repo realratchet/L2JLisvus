@@ -106,6 +106,19 @@ public abstract class IdFactory
 		{
 			"itemsonground",
 			"object_id"
+		},
+		// Crest ids are taken from the same pool
+		{
+			"clan_data WHERE crest_id > 0",
+			"crest_id"
+		},
+		{
+			"clan_data WHERE crest_large_id > 0",
+			"crest_large_id"
+		},
+		{
+			"clan_data WHERE ally_crest_id > 0",
+			"ally_crest_id"
 		}
 	};
 	

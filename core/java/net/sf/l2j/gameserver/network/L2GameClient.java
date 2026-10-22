@@ -21,9 +21,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Queue;
+import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.Future;
 import java.util.concurrent.RejectedExecutionException;
 import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -46,6 +50,7 @@ import net.sf.l2j.gameserver.network.serverpackets.ServerClose;
 import net.sf.l2j.gameserver.util.FloodProtectors;
 import net.sf.l2j.mmocore.MMOClient;
 import net.sf.l2j.mmocore.MMOConnection;
+import net.sf.l2j.mmocore.ReceivablePacket;
 
 /**
  * Represents a client connected on Game Server
@@ -109,6 +114,13 @@ public final class L2GameClient extends MMOClient<MMOConnection<L2GameClient>>
 	private final FloodProtectors _floodProtectors = new FloodProtectors(this);
 
 	private final List<Integer> _charSlotMapping = new ArrayList<>();
+
+	// Received packets, executed one at a time in arrival order
+	private static final int MAX_QUEUED_PACKETS = 100;
+	private static final int PACKETS_PER_RUN = 20;
+	private final Queue<ReceivablePacket<L2GameClient>> _packetQueue = new ConcurrentLinkedQueue<>();
+	private final AtomicInteger _packetQueueSize = new AtomicInteger();
+	private final AtomicBoolean _packetQueueRunning = new AtomicBoolean();
 
 	// Time a new connection has to authenticate
 	private static final long AUTHENTICATION_TIMEOUT = 60000L;
@@ -584,6 +596,75 @@ public final class L2GameClient extends MMOClient<MMOConnection<L2GameClient>>
 		}
 	}
 
+	/**
+	 * Queues a received packet. Packets of this client are executed sequentially,
+	 * so that state checks done by one packet cannot be raced by another one.
+	 * @param packet
+	 */
+	public void queuePacket(ReceivablePacket<L2GameClient> packet)
+	{
+		if (_packetQueueSize.incrementAndGet() > MAX_QUEUED_PACKETS)
+		{
+			_packetQueueSize.decrementAndGet();
+			_log.warning("Client " + toString() + " exceeded packet queue size, dropping " + packet.getClass().getSimpleName() + ".");
+			return;
+		}
+		
+		_packetQueue.add(packet);
+		schedulePacketQueue();
+	}
+	
+	private void schedulePacketQueue()
+	{
+		if (_packetQueue.isEmpty() || !_packetQueueRunning.compareAndSet(false, true))
+		{
+			return;
+		}
+		
+		try
+		{
+			if (getState() == GameClientState.IN_GAME)
+			{
+				ThreadPoolManager.getInstance().executePacket(this::runPacketQueue);
+			}
+			else
+			{
+				ThreadPoolManager.getInstance().executeIOPacket(this::runPacketQueue);
+			}
+		}
+		catch (RejectedExecutionException e)
+		{
+			// Server is shutting down
+			_packetQueueRunning.set(false);
+		}
+	}
+	
+	private void runPacketQueue()
+	{
+		try
+		{
+			// Limit packets per run so that one busy client cannot hold a pool thread
+			ReceivablePacket<L2GameClient> packet;
+			for (int i = 0; (i < PACKETS_PER_RUN) && ((packet = _packetQueue.poll()) != null); i++)
+			{
+				_packetQueueSize.decrementAndGet();
+				try
+				{
+					packet.run();
+				}
+				catch (Throwable t)
+				{
+					_log.log(Level.SEVERE, "Client " + toString() + " failed running " + packet.getClass().getSimpleName(), t);
+				}
+			}
+		}
+		finally
+		{
+			_packetQueueRunning.set(false);
+			schedulePacketQueue();
+		}
+	}
+	
 	public void closeNow()
 	{
 		super.getConnection().close(new ServerClose());

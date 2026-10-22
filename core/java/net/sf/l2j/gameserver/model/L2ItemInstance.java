@@ -327,7 +327,7 @@ public final class L2ItemInstance extends L2Object
 	 * @param creator : L2PcInstance Player requesting the item creation
 	 * @param reference : L2Object Object referencing current action like NPC selling item or previous item in transformation
 	 */
-	public void changeCount(String process, int count, L2PcInstance creator, L2Object reference)
+	public synchronized void changeCount(String process, int count, L2PcInstance creator, L2Object reference)
 	{
 		if (count == 0)
 			return;

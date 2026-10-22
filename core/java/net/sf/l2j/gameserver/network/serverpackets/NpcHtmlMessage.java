@@ -118,7 +118,8 @@ public class NpcHtmlMessage extends L2GameServerPacket
 			int finish2 = _html.indexOf("$", start);
 			if (finish2 < finish && finish2 > 0)
 			{
-				activeChar.addBypass2(_html.substring(start, finish2).trim());
+				// Keep the separator before the variable part, so that the prefix cannot match a longer argument
+				activeChar.addBypass2(_html.substring(start, finish2).stripLeading());
 			}
 			else
 			{

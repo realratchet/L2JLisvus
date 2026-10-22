@@ -318,7 +318,7 @@ class Quest (JQuest) :
             if st.getQuestItemsCount(Test_Instructions_2) :
                 htmltext = "7745-04.htm"
         elif event == "Tor_list_1" :
-            if not st.getInt("hasTask") :
+            if st.getState() == State.STARTED and st.getQuestItemsCount(License_1) and not st.getInt("hasTask") :
                 htmltext = "<html><body>Guild Member Tor:<br>"
                 pins = st.getQuestItemsCount(Leaf_Pin)
                 reply_0 = Rnd.get(12)
@@ -344,8 +344,9 @@ class Quest (JQuest) :
                     reply_3 = Rnd.get(6) + 6
                 htmltext += Tor_menu[reply_0] + Tor_menu[reply_1] + Tor_menu[reply_2] + Tor_menu[reply_3] + Tor_menu[reply_4]
                 htmltext += "</body></html>"
+                st.set("torOffer",",".join([Tor_menu[i].split("335_TheSongOfTheHunter ")[1].split('"')[0] for i in [reply_0,reply_1,reply_2,reply_3,reply_4]]))
         elif event == "Tor_list_2" :
-            if not st.getInt("hasTask") :
+            if st.getState() == State.STARTED and st.getQuestItemsCount(License_2) and not st.getInt("hasTask") :
                 htmltext = "<html><body>Guild Member Tor:<br>"
                 pins = st.getQuestItemsCount(Leaf_Pin)
                 reply_0 = Rnd.get(10)
@@ -365,6 +366,7 @@ class Quest (JQuest) :
                         reply_1 = Rnd.get(3) + 16
                 htmltext += Tor_menu[reply_0 + 20] + Tor_menu[reply_1 + 20] + Tor_menu[reply_2 + 20] + Tor_menu[reply_3 + 20] + Tor_menu[reply_4 + 20]
                 htmltext += "</body></html>"
+                st.set("torOffer",",".join([Tor_menu[i + 20].split("335_TheSongOfTheHunter ")[1].split('"')[0] for i in [reply_0,reply_1,reply_2,reply_3,reply_4]]))
         elif event == "7745-10.htm" :
             st.takeItems(Leaf_Pin,1)
             for item in range(3727,3811) :
@@ -389,6 +391,10 @@ class Quest (JQuest) :
             st.takeItems(3697,-1)
             st.takeItems(3471,-1)
         elif event.isdigit() :
+            # only a request offered in the last list, once, without a running task
+            offer = st.get("torOffer")
+            if st.getState() != State.STARTED or st.getInt("hasTask") or not offer or event not in offer.split(",") : return
+            st.unset("torOffer")
             event = int(event)
             st.giveItems(event,1)
             st.set("hasTask","1")

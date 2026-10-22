@@ -14,11 +14,9 @@
  */
 package net.sf.l2j.gameserver.handler.voicedcommandhandlers;
 
-import java.security.MessageDigest;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.Base64;
 import java.util.StringTokenizer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -28,6 +26,7 @@ import net.sf.l2j.L2DatabaseFactory;
 import net.sf.l2j.gameserver.handler.IVoicedCommandHandler;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.network.serverpackets.NpcHtmlMessage;
+import net.sf.l2j.util.PasswordHash;
 
 /**
  * @author Nik
@@ -116,11 +115,7 @@ public class ChangePassword implements IVoicedCommandHandler
 		String accountName = activeChar.getAccountName();
 		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
 		{
-			MessageDigest md = MessageDigest.getInstance("SHA");
-			byte[] raw = curPass.getBytes("UTF-8");
-			byte[] hash = md.digest(raw);
-			
-			byte[] expected = null;
+			String expected = null;
 			
 			// Get current password from database
 			try (PreparedStatement statement = con.prepareStatement("SELECT password FROM accounts WHERE login=?"))
@@ -130,7 +125,7 @@ public class ChangePassword implements IVoicedCommandHandler
 				{
 					if (rset.next())
 					{
-						expected = Base64.getDecoder().decode(rset.getString("password"));
+						expected = rset.getString("password");
 					}
 				}
 			}
@@ -141,16 +136,8 @@ public class ChangePassword implements IVoicedCommandHandler
 				return;
 			}
 			
-			boolean isValid = true;
 			// Check if given password matches current password
-			for (int i = 0; i < expected.length; i++)
-			{
-				if (hash[i] != expected[i])
-				{
-					isValid = false;
-					break;
-				}
-			}
+			boolean isValid = PasswordHash.verify(curPass, expected);
 			
 			// Password is not correct
 			if (!isValid)
@@ -161,13 +148,9 @@ public class ChangePassword implements IVoicedCommandHandler
 			
 			if (isValid)
 			{
-				// Hash new password
-				raw = newPass.getBytes("UTF-8");
-				hash = md.digest(raw);
-				
 				try (PreparedStatement statement = con.prepareStatement("UPDATE accounts SET password=? WHERE login=?"))
 				{
-					statement.setString(1, Base64.getEncoder().encodeToString(hash));
+					statement.setString(1, PasswordHash.hash(newPass));
 					statement.setString(2, accountName);
 					statement.execute();
 				}

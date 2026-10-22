@@ -87,7 +87,7 @@ public class RequestSellItem extends L2GameClientPacket
 			return;
 		}
 
-		if (player.isInStoreMode())
+		if (player.isInStoreMode() || (player.getActiveTradeList() != null))
 		{
 			player.sendPacket(new SystemMessage(SystemMessage.CANNOT_TRADE_DISCARD_DROP_ITEM_WHILE_IN_SHOPMODE));
 			return;
@@ -159,14 +159,18 @@ public class RequestSellItem extends L2GameClientPacket
 				break;
 			}
 			
-			totalPrice += price;
-			if (totalPrice > L2ItemInstance.getMaxItemCount(Inventory.ADENA_ID))
+			if ((totalPrice + price) > L2ItemInstance.getMaxItemCount(Inventory.ADENA_ID))
 			{
 				Util.handleIllegalPlayerAction(player, "Warning!! Character " + player.getName() + " of account " + player.getAccountName() + " tried to purchase over " + L2ItemInstance.getMaxItemCount(Inventory.ADENA_ID) + " adena worth of goods.", Config.DEFAULT_PUNISH);
-				return;
+				break;
 			}
 
+			// Pay only for items that were really taken
 			item = player.getInventory().destroyItem("Sell", objectId, count, player, null);
+			if (item != null)
+			{
+				totalPrice += price;
+			}
 		}
 		player.addAdena("Sell", (int) totalPrice, merchant, false);
 

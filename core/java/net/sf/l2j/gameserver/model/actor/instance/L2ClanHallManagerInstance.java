@@ -19,6 +19,7 @@ import java.util.Calendar;
 import java.util.StringTokenizer;
 
 import net.sf.l2j.Config;
+import net.sf.l2j.gameserver.cache.HtmCache;
 import net.sf.l2j.gameserver.datatables.SkillTable;
 import net.sf.l2j.gameserver.datatables.TeleportLocationTable;
 import net.sf.l2j.gameserver.instancemanager.ClanHallManager;
@@ -740,7 +741,25 @@ public class L2ClanHallManagerInstance extends L2FolkInstance
 						{
 							skillLvl = Integer.parseInt(st.nextToken());
 						}
+						// Only skills offered by the active support function level may be cast
+						ClanHall.ClanHallFunction support = getClanHall().getFunction(ClanHall.FUNC_SUPPORT);
+						if ((support == null) || (support.getLvl() <= 0))
+						{
+							return;
+						}
+
+						String supportHtm = HtmCache.getInstance().getHtm("data/html/clanHallManager/support" + support.getLvl() + ".htm");
+						if ((supportHtm == null) || !supportHtm.contains("_support " + skillId + " " + skillLvl + "\""))
+						{
+							return;
+						}
+
 						skill = SkillTable.getInstance().getInfo(skillId, skillLvl);
+						if (skill == null)
+						{
+							return;
+						}
+
 						if (skill.getSkillType() == SkillType.SUMMON)
 						{
 							player.doCast(skill);

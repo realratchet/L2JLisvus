@@ -112,15 +112,16 @@ class Quest (JQuest) :
 			htmltext = "7630-21.htm"
 			st.takeItems(PURGATORY_KEY_ID,1)
 		elif event == "7630_10" :
+			if st.getState() != State.STARTED or st.getInt("step") != 15 : return
+			st.setState(State.COMPLETED)
+			for var in STATS:
+				st.unset(var)
 			st.takeItems(SWORD_OF_BINDING_ID,1)
 			st.takeItems(IKERS_AMULET_ID,1)
 			st.takeItems(ORIMS_INSTRUCTIONS_ID,1)
 			st.addExpAndSp(139796,40000)
 			st.giveItems(MARK_OF_WITCHCRAFT_ID,1)
 			htmltext = "7630-22.htm"
-			for var in STATS:
-				st.unset(var)
-			st.setState(State.COMPLETED)
 			st.playSound("ItemSound.quest_finish")
 		# Alexandrias Events
 		elif event == "7098_1" :

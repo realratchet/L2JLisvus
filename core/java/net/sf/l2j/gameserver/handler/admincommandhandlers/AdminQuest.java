@@ -15,6 +15,7 @@
 package net.sf.l2j.gameserver.handler.admincommandhandlers;
 
 import java.io.File;
+import java.io.IOException;
 
 import javax.script.ScriptException;
 
@@ -88,7 +89,18 @@ public class AdminQuest implements IAdminCommandHandler
             else
             {
                 File file = new File(L2ScriptEngineManager.SCRIPT_FOLDER, parts[1]);
-                if (file.isFile())
+                // Only scripts inside the script folder may be executed
+                boolean insideFolder = false;
+                try
+                {
+                    insideFolder = file.getCanonicalPath().startsWith(L2ScriptEngineManager.SCRIPT_FOLDER.getCanonicalPath() + File.separator);
+                }
+                catch (IOException e)
+                {
+                }
+                if (!insideFolder)
+                    activeChar.sendMessage("Script must be inside the scripts folder.");
+                else if (file.isFile())
                 {
                     try
                     {

@@ -14,20 +14,7 @@
  */
 package net.sf.l2j.gameserver.network.clientpackets;
 
-import net.sf.l2j.Config;
-import net.sf.l2j.gameserver.datatables.ItemTable;
-import net.sf.l2j.gameserver.instancemanager.CastleManorManager;
-import net.sf.l2j.gameserver.model.L2ItemInstance;
-import net.sf.l2j.gameserver.model.L2Manor;
-import net.sf.l2j.gameserver.model.L2Object;
-import net.sf.l2j.gameserver.model.actor.instance.L2ManorManagerInstance;
-import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.network.serverpackets.ActionFailed;
-import net.sf.l2j.gameserver.network.serverpackets.InventoryUpdate;
-import net.sf.l2j.gameserver.network.serverpackets.StatusUpdate;
-import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
-import net.sf.l2j.gameserver.templates.L2Item;
-import net.sf.l2j.gameserver.util.Util;
 
 public class RequestBuyProcure extends L2GameClientPacket
 {
@@ -42,7 +29,7 @@ public class RequestBuyProcure extends L2GameClientPacket
 	{
 		_listId = readD();
 		_count = readD();
-		if (_count > 500) // protect server
+		if ((_count < 1) || (_count > 500)) // protect server
 		{
 			_count = 0;
 			return;
@@ -68,142 +55,9 @@ public class RequestBuyProcure extends L2GameClientPacket
 	@Override
 	public void runImpl()
 	{
-		L2PcInstance player = getClient().getActiveChar();
-		if (player == null)
-		{
-			return;
-		}
-
-		if (!getClient().getFloodProtectors().getManor().tryPerformAction("BuyProcure"))
-		{
-			return;
-		}
-
-		// Alt game - Karma punishment
-		if (!Config.ALT_GAME_KARMA_PLAYER_CAN_SHOP && (player.getKarma() > 0))
-		{
-			return;
-		}
-
-		L2Object target = player.getTarget();
-
-		if (_count < 1)
-		{
-			sendPacket(ActionFailed.STATIC_PACKET);
-			return;
-		}
-
-		// Check for buylist validity and calculates summary values
-		int slots = 0;
-		int weight = 0;
-		L2ManorManagerInstance manor = ((target != null) && (target instanceof L2ManorManagerInstance)) ? (L2ManorManagerInstance) target : null;
-		if (manor == null)
-		{
-			return;
-		}
-
-		for (int i = 0; i < _count; i++)
-		{
-			int itemId = _items[(i * 2) + 0];
-			int count = _items[(i * 2) + 1];
-
-			if (count > L2ItemInstance.getMaxItemCount(itemId))
-			{
-				Util.handleIllegalPlayerAction(player, "Warning!! Character " + player.getName() + " of account " + player.getAccountName() + " tried to purchase over " + L2ItemInstance.getMaxItemCount(itemId) + " items at the same time.", Config.DEFAULT_PUNISH);
-				SystemMessage sm = new SystemMessage(SystemMessage.YOU_HAVE_EXCEEDED_QUANTITY_THAT_CAN_BE_INPUTTED);
-				sendPacket(sm);
-				return;
-			}
-
-			L2Item template = ItemTable.getInstance().getTemplate(L2Manor.getInstance().getRewardItem(itemId, manor.getCastle().getCrop(itemId, CastleManorManager.PERIOD_CURRENT).getReward()));
-			weight += count * template.getWeight();
-
-			if (!template.isStackable())
-			{
-				slots += count;
-			}
-			else
-			{
-				L2ItemInstance oldItem = player.getInventory().getItemByItemId(itemId);
-				if (oldItem != null)
-				{
-					if (((long)oldItem.getCount() + count) > L2ItemInstance.getMaxItemCount(itemId))
-					{
-						player.sendPacket(new SystemMessage(SystemMessage.YOU_HAVE_EXCEEDED_THE_LIMIT));
-						return;
-					}
-				}
-				else
-				{
-					slots++;
-				}
-			}
-		}
-
-		if (!player.getInventory().validateWeight(weight))
-		{
-			sendPacket(new SystemMessage(SystemMessage.WEIGHT_LIMIT_EXCEEDED));
-			return;
-		}
-
-		if (!player.getInventory().validateCapacity(slots))
-		{
-			sendPacket(new SystemMessage(SystemMessage.SLOTS_FULL));
-			return;
-		}
-
-		// Proceed the purchase
-		InventoryUpdate playerIU = new InventoryUpdate();
-		
-		for (int i = 0; i < _count; i++)
-		{
-			int itemId = _items[(i * 2) + 0];
-			int count = _items[(i * 2) + 1];
-			if (count < 0)
-			{
-				count = 0;
-			}
-
-			int rewardItemId = L2Manor.getInstance().getRewardItem(itemId, manor.getCastle().getCrop(itemId, CastleManorManager.PERIOD_CURRENT).getReward());
-			int rewardItemCount = count / 1;
-
-			// Add item to Inventory and adjust update packet
-			L2ItemInstance iteme = player.getInventory().destroyItemByItemId("Manor", itemId, count, player, manor);
-			if (iteme == null)
-			{
-				continue;
-			}
-			
-			L2ItemInstance item = player.getInventory().addItem("Manor", rewardItemId, rewardItemCount, player, manor);
-			if (item == null)
-			{
-				continue;
-			}
-
-			playerIU.addRemovedItem(iteme);
-			if (item.getCount() > rewardItemCount)
-			{
-				playerIU.addModifiedItem(item);
-			}
-			else
-			{
-				playerIU.addNewItem(item);
-			}
-
-			// Send Char Buy Messages
-			SystemMessage sm = new SystemMessage(SystemMessage.EARNED_S2_S1_s);
-			sm.addItemName(rewardItemId);
-			sm.addNumber(rewardItemCount);
-			player.sendPacket(sm);
-			sm = null;
-		}
-
-		// Send update packets
-		player.sendPacket(playerIU);
-
-		StatusUpdate su = new StatusUpdate(player.getObjectId());
-		su.addAttribute(StatusUpdate.CUR_LOAD, player.getCurrentLoad());
-		player.sendPacket(su);
+		// Unused by the C4 client flow (SellListProcure is never sent); crop sales go through RequestProcureCropList.
+		// The old handler had no range, procure amount or price checks, so it is intentionally a no-op.
+		sendPacket(ActionFailed.STATIC_PACKET);
 	}
 
 	@Override

@@ -362,19 +362,32 @@ public class RecipeController
 			// check that customer can afford to pay for creation services
 			if (_player != _target)
 			{
-				for (L2ManufactureItem temp : _player.getCreateList().getList())
+				boolean found = false;
+				if (_player.getCreateList() != null)
 				{
-					if (temp.getRecipeId() == _recipeList.getId()) // find recipe for item we want manufactured
+					for (L2ManufactureItem temp : _player.getCreateList().getList())
 					{
-						_price = temp.getCost();
-						if (_target.getAdena() < _price) // check price
+						if (temp.getRecipeId() == _recipeList.getId()) // find recipe for item we want manufactured
 						{
-							_target.sendPacket(new SystemMessage(SystemMessage.YOU_NOT_ENOUGH_ADENA));
-							abort();
-							return;
+							found = true;
+							_price = temp.getCost();
+							if (_target.getAdena() < _price) // check price
+							{
+								_target.sendPacket(new SystemMessage(SystemMessage.YOU_NOT_ENOUGH_ADENA));
+								abort();
+								return;
+							}
+							break;
 						}
-						break;
 					}
+				}
+				
+				// Recipe is not offered by this manufacture shop
+				if (!found)
+				{
+					_target.sendPacket(ActionFailed.STATIC_PACKET);
+					abort();
+					return;
 				}
 			}
 			
@@ -409,7 +422,7 @@ public class RecipeController
 			updateCurMp();
 			updateCurLoad();
 			
-			_player.isInCraftMode(false);
+			// Craft mode stays on until crafting finishes or aborts
 			_isValid = true;
 		}
 		
@@ -503,13 +516,24 @@ public class RecipeController
 		
 		private void finishCrafting()
 		{
-			// First take adena for manufacture
+			// First take materials from inventory
+			if ((_items = listItems(true)) == null)
+			{
+				// Handle possible cheaters here
+				// (they click craft then try to get rid of items in order to get free craft)
+				// listItems has already aborted
+				return;
+			}
+			
+			// Then take adena for manufacture
 			if (_target != _player && _price > 0) // customer must pay for services
 			{
 				// attempt to pay for item
-				L2ItemInstance adenaTransfer = _target.transferItem("PayManufacture", _target.getInventory().getAdenaInstance().getObjectId(), _price, _player.getInventory(), _player);
+				L2ItemInstance adena = _target.getInventory().getAdenaInstance();
+				L2ItemInstance adenaTransfer = (adena == null) ? null : _target.transferItem("PayManufacture", adena.getObjectId(), _price, _player.getInventory(), _player);
 				if (adenaTransfer == null)
 				{
+					returnMaterials(_items);
 					_target.sendPacket(new SystemMessage(SystemMessage.YOU_NOT_ENOUGH_ADENA));
 					abort();
 					return;
@@ -517,13 +541,7 @@ public class RecipeController
 			}
 			
 			byte status;
-			if ((_items = listItems(true)) == null) // This line actually takes materials from inventory
-			{
-				// Handle possible cheaters here
-				// (they click craft then try to get rid of items in order to get free craft)
-				status = -1;
-			}
-			else if (Rnd.get(100) < _recipeList.getSuccessRate())
+			if (Rnd.get(100) < _recipeList.getSuccessRate())
 			{
 				rewardPlayer(); // and immediately puts created item in its place
 				status = 1;
@@ -681,12 +699,31 @@ public class RecipeController
 			
 			if (remove)
 			{
-				for (TempItem tmp : materials)
+				synchronized (inv)
 				{
-					inv.destroyItemByItemId("Manufacture", tmp.getItemId(), tmp.getQuantity(), _target, _player);
+					List<TempItem> taken = new ArrayList<>();
+					for (TempItem tmp : materials)
+					{
+						if (inv.destroyItemByItemId("Manufacture", tmp.getItemId(), tmp.getQuantity(), _target, _player) == null)
+						{
+							// Give back the materials already taken
+							returnMaterials(taken);
+							abort();
+							return null;
+						}
+						taken.add(tmp);
+					}
 				}
 			}
 			return materials;
+		}
+		
+		private void returnMaterials(List<TempItem> materials)
+		{
+			for (TempItem tmp : materials)
+			{
+				_target.getInventory().addItem("Manufacture", tmp.getItemId(), tmp.getQuantity(), _target, _player);
+			}
 		}
 		
 		private void abort()

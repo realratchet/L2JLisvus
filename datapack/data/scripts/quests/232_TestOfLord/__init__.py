@@ -115,16 +115,17 @@ class Quest (JQuest) :
 				st.giveItems(CHIANTA_CHARM_ID,1)
 		elif st.getInt("phase")==2:
 			if event == "7565_2":
-				htmltext = "7565-12.htm"
-				st.addExpAndSp(92955,16250)
-				st.giveItems(MARK_OF_LORD_ID,1)
-				st.takeItems(IMMORTAL_FLAME_ID,1)
-				st.playSound("ItemSound.quest_finish")
+				if st.getState() != State.STARTED or st.getInt("markantusStat") < 3 or not st.getQuestItemsCount(IMMORTAL_FLAME_ID) : return
+				st.setState(State.COMPLETED)
 				for var in STATS[0]:
 					st.unset(var)
 				for var in STATS[1]:
 					st.unset(var)
-				st.setState(State.COMPLETED)
+				st.takeItems(IMMORTAL_FLAME_ID,1)
+				htmltext = "7565-12.htm"
+				st.addExpAndSp(92955,16250)
+				st.giveItems(MARK_OF_LORD_ID,1)
+				st.playSound("ItemSound.quest_finish")
 			elif event == "7649_1" :
 				htmltext = "7649-02.htm"
 			elif event == "7649_2" :

@@ -14,9 +14,6 @@
  */
 package net.sf.l2j.gameserver.network.clientpackets;
 
-import net.sf.l2j.gameserver.datatables.ClanTable;
-import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-
 public class RequestReplySurrenderPledgeWar extends L2GameClientPacket
 {
 	private static final String _C__52_REQUESTREPLYSURRENDERPLEDGEWAR = "[C] 52 RequestReplySurrenderPledgeWar";
@@ -34,24 +31,8 @@ public class RequestReplySurrenderPledgeWar extends L2GameClientPacket
 	@Override
 	public void runImpl()
 	{
-		L2PcInstance activeChar = getClient().getActiveChar();
-		if (activeChar == null)
-		{
-			return;
-		}
-		L2PcInstance requestor = activeChar.getActiveRequester();
-		if (requestor == null)
-		{
-			return;
-		}
-		
-		if (_answer == 1)
-		{
-			requestor.deathPenalty(false, false, false);
-			ClanTable.getInstance().deleteClanWars(requestor.getClanId(), activeChar.getClanId());
-		}
-		
-		activeChar.onTransactionRequest(null);
+		// War declaration, stop and surrender are applied directly by their request packets;
+		// no reply is ever expected, so a client reply must not change any state.
 	}
 	
 	@Override

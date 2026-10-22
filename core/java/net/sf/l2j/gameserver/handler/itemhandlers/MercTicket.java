@@ -77,31 +77,35 @@ public class MercTicket implements IItemHandler
             return;
         }
 
-        if (MercTicketManager.getInstance().isAtCastleLimit(item.getItemId()))
+        // Limit checks and placement must be atomic, or parallel requests exceed castle limits
+        synchronized (MercTicketManager.getInstance())
         {
-            activeChar.sendPacket(new SystemMessage(SystemMessage.THIS_MERCENARY_CANNOT_BE_POSITIONED_ANYMORE));
-            return;
+            if (MercTicketManager.getInstance().isAtCastleLimit(item.getItemId()))
+            {
+                activeChar.sendPacket(new SystemMessage(SystemMessage.THIS_MERCENARY_CANNOT_BE_POSITIONED_ANYMORE));
+                return;
+            }
+
+            if (MercTicketManager.getInstance().isAtTypeLimit(item.getItemId()))
+            {
+                activeChar.sendPacket(new SystemMessage(SystemMessage.THIS_MERCENARY_CANNOT_BE_POSITIONED_ANYMORE));
+                return;
+            }
+
+            if (MercTicketManager.getInstance().isTooCloseToAnotherTicket(activeChar.getX(), activeChar.getY(), activeChar.getZ()))
+            {
+                activeChar.sendPacket(new SystemMessage(SystemMessage.POSITIONING_CANNOT_BE_DONE_BECAUSE_DISTANCE_BETWEEN_MERCENARIES_TOO_SHORT));
+                return;
+            }
+
+            // Remove item from char's inventory
+            if (!activeChar.destroyItem("Consume", item.getObjectId(), 1, null, false))
+        	{
+            	return;
+        	}
+
+            int npcId = MercTicketManager.getInstance().addTicket(item.getItemId(), activeChar, _messages);
+            activeChar.sendMessage("Hired mercenary ("+itemId+","+npcId+") at coords:" + activeChar.getX() + "," + activeChar.getY() + "," + activeChar.getZ() + " heading:" + activeChar.getHeading());
         }
-
-        if (MercTicketManager.getInstance().isAtTypeLimit(item.getItemId()))
-        {
-            activeChar.sendPacket(new SystemMessage(SystemMessage.THIS_MERCENARY_CANNOT_BE_POSITIONED_ANYMORE));
-            return;
-        }
-
-        if (MercTicketManager.getInstance().isTooCloseToAnotherTicket(activeChar.getX(), activeChar.getY(), activeChar.getZ()))
-        {
-            activeChar.sendPacket(new SystemMessage(SystemMessage.POSITIONING_CANNOT_BE_DONE_BECAUSE_DISTANCE_BETWEEN_MERCENARIES_TOO_SHORT));
-            return;
-        }
-
-        // Remove item from char's inventory
-        if (!activeChar.destroyItem("Consume", item.getObjectId(), 1, null, false))
-    	{
-        	return;
-    	}
-
-        int npcId = MercTicketManager.getInstance().addTicket(item.getItemId(), activeChar, _messages);
-        activeChar.sendMessage("Hired mercenary ("+itemId+","+npcId+") at coords:" + activeChar.getX() + "," + activeChar.getY() + "," + activeChar.getZ() + " heading:" + activeChar.getHeading());
     }
 }

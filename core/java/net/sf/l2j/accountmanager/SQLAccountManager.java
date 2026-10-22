@@ -17,17 +17,16 @@ package net.sf.l2j.accountmanager;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.LineNumberReader;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
+import java.security.GeneralSecurityException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Base64;
 
 import net.sf.l2j.Config;
 import net.sf.l2j.L2DatabaseFactory;
 import net.sf.l2j.Server;
+import net.sf.l2j.util.PasswordHash;
 
 /**
  * This class SQL Account Manager
@@ -42,7 +41,7 @@ public class SQLAccountManager
     private static String _level = "";
     private static String _mode = "";
 
-    public static void main(String[] args) throws SQLException, IOException, NoSuchAlgorithmException
+    public static void main(String[] args) throws SQLException, IOException, GeneralSecurityException
     {
         Server.SERVER_MODE = Server.MODE_LOGINSERVER;
         Config.load();
@@ -167,20 +166,14 @@ public class SQLAccountManager
         }
     }
 
-    private static void AddOrUpdateAccount(String account, String password, String level) throws IOException, SQLException, NoSuchAlgorithmException		
+    private static void AddOrUpdateAccount(String account, String password, String level) throws IOException, SQLException, GeneralSecurityException		
     {
-        // Encode Password		
-        MessageDigest md = MessageDigest.getInstance("SHA");
-        byte[] newpass;
-        newpass = password.getBytes("UTF-8");
-        newpass = md.digest(newpass);
-
         // Add to Base
         try (Connection con = L2DatabaseFactory.getInstance().getConnection();	
             PreparedStatement statement = con.prepareStatement("REPLACE accounts (login, password, access_level) VALUES (?,?,?)"))
         {
             statement.setString(1, account);
-            statement.setString(2, Base64.getEncoder().encodeToString(newpass));
+            statement.setString(2, PasswordHash.hash(password));
             statement.setString(3, level);
             statement.executeUpdate();
         }

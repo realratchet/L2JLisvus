@@ -18,6 +18,7 @@ import java.util.logging.Logger;
 
 import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.model.L2ItemInstance;
+import net.sf.l2j.gameserver.model.actor.instance.L2NpcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PetInstance;
 import net.sf.l2j.gameserver.network.serverpackets.EnchantResult;
@@ -56,6 +57,17 @@ public class RequestGetItemFromPet extends L2GameClientPacket
 		}
 		
 		L2PetInstance pet = (L2PetInstance) player.getPet();
+		
+		if (player.isInStoreMode() || (player.getActiveTradeList() != null))
+		{
+			player.sendPacket(new SystemMessage(SystemMessage.CANNOT_TRADE_DISCARD_DROP_ITEM_WHILE_IN_SHOPMODE));
+			return;
+		}
+		
+		if (pet.isDead() || !player.isInsideRadius(pet, L2NpcInstance.INTERACTION_DISTANCE, false, false))
+		{
+			return;
+		}
 		
 		if (_amount < 0)
 		{

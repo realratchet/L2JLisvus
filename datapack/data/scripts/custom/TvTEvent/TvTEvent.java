@@ -526,6 +526,12 @@ public class TvTEvent extends L2EventScript
     @Override
     public String onAdvEvent(String event, L2NpcInstance npc, L2PcInstance player)
     {
+        // Only participation requests come from players, everything else must be a running timer
+        if (!event.equalsIgnoreCase("tvt_event_participation") && !event.equalsIgnoreCase("tvt_event_remove_participation") && (getQuestTimer(event, npc, player) == null))
+        {
+            return null;
+        }
+
         if (event.equalsIgnoreCase("player_revive"))
         {
             if (player.isDead() && !player.isPendingRevive())

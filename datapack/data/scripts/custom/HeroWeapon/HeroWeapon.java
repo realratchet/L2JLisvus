@@ -77,7 +77,7 @@ public class HeroWeapon extends Quest
 	{
 		for (int id : ITEM_DATA.keySet())
 		{
-			if (st.getQuestItemsCount(id) > 0)
+			if ((st.getQuestItemsCount(id) > 0) || (st.getPlayer().getWarehouse().getItemByItemId(id) != null))
 			{
 				return true;
 			}
@@ -120,14 +120,18 @@ public class HeroWeapon extends Quest
 				int itemId = Integer.parseInt(event);
 				if (ITEM_DATA.containsKey(itemId))
 				{
-					if (hasReceivedHeroWeapon(st))
+					// Check and give atomically, so parallel requests can't get more than one weapon
+					synchronized (player)
 					{
-						htmltext = "already_have_weapon.htm";
-					}
-					else
-					{
-						st.giveItems(itemId, 1);
-						st.playSound("ItemSound.quest_fanfare_2");
+						if (hasReceivedHeroWeapon(st))
+						{
+							htmltext = "already_have_weapon.htm";
+						}
+						else
+						{
+							st.giveItems(itemId, 1);
+							st.playSound("ItemSound.quest_fanfare_2");
+						}
 					}
 				}
 			}

@@ -21,19 +21,26 @@ class Quest (JQuest) :
 
  def onEvent (self,event,st) :
    htmltext = event
+   cond = st.getInt("cond")
    if event == "8517-1.htm" :
+     if cond != 0 or st.getPlayer().getLevel() < 60 : return
      st.set("cond","1")
      st.setState(State.STARTED)
      st.playSound("ItemSound.quest_accept")
    elif event == "8517-3.htm" :
+     if cond != 2 or st.getQuestItemsCount(BLOOD_OF_SAINT) < 300 : return
      st.takeItems(BLOOD_OF_SAINT,300)
-   else :
+     st.set("cond","3")
+   elif event in ["8517-4.htm","8517-5.htm"] :
+     if cond != 3 : return
+     st.playSound("ItemSound.quest_finish")
+     st.exitQuest(1)
      if event == "8517-4.htm" :
        st.addExpAndSp(162773,12500)
      elif event == "8517-5.htm" :
        st.giveItems(ADENA,100000)
-     st.playSound("ItemSound.quest_finish")
-     st.exitQuest(1)
+   else :
+     return
    return htmltext
 
  def onTalk (self,npc,st):
@@ -49,6 +56,8 @@ class Quest (JQuest) :
        st.exitQuest(1)
    elif st.getQuestItemsCount(BLOOD_OF_SAINT) == 300 :
      htmltext = "8517-2.htm"
+   elif cond == 3 :
+     htmltext = "8517-3.htm"
    return htmltext
 
  def onKill (self,npc,player,isPet):

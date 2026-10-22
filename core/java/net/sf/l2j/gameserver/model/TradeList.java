@@ -558,13 +558,11 @@ public class TradeList
 					{
 						partnerList.lock();
 						this.lock();
-						if (!partnerList.validate())
+						if (!partnerList.validate() || !this.validate())
 						{
-							return false;
-						}
-						
-						if (!this.validate())
-						{
+							// Do not leave both trade lists locked and the trade hanging
+							partnerList.getOwner().onTradeFinish(false);
+							this.getOwner().onTradeFinish(false);
 							return false;
 						}
 						
@@ -611,13 +609,49 @@ public class TradeList
 		for (TradeItem titem : _items)
 		{
 			L2ItemInstance item = _owner.checkItemManipulation(titem.getObjectId(), titem.getCount(), "transfer");
-			if ((item == null) || (titem.getCount() < 1))
+			if ((item == null) || (titem.getCount() < 1) || !item.isTradable() || (item.getLocation() != ItemLocation.INVENTORY))
 			{
 				_log.warning(_owner.getName() + ": Invalid Item in TradeList");
 				return false;
 			}
+			
+			// Same object must not be listed twice
+			for (TradeItem other : _items)
+			{
+				if ((other != titem) && (other.getObjectId() == titem.getObjectId()))
+				{
+					_log.warning(_owner.getName() + ": Duplicate Item in TradeList");
+					return false;
+				}
+			}
 		}
 		
+		return true;
+	}
+	
+	/**
+	 * Checks that all TradeItems can be transferred to partner
+	 * @param partner 
+	 * @return 
+	 */
+	private boolean checkTransferItems(L2PcInstance partner)
+	{
+		for (TradeItem titem : _items)
+		{
+			L2ItemInstance oldItem = _owner.getInventory().getItemByObjectId(titem.getObjectId());
+			if ((oldItem == null) || (oldItem.getCount() < titem.getCount()))
+			{
+				return false;
+			}
+			
+			L2ItemInstance partnerItem = partner.getInventory().getItemByItemId(oldItem.getItemId());
+			if (partnerItem != null && ((long)partnerItem.getCount() + titem.getCount()) > L2ItemInstance.getMaxItemCount(partnerItem.getItemId()))
+			{
+				partner.sendPacket(new SystemMessage(oldItem.getItemId() == Inventory.ADENA_ID ? 
+					SystemMessage.YOU_HAVE_EXCEEDED_POCKET_MONEY_LIMIT : SystemMessage.YOU_HAVE_EXCEEDED_THE_LIMIT));
+				return false;
+			}
+		}
 		return true;
 	}
 	
@@ -633,16 +667,9 @@ public class TradeList
 		for (TradeItem titem : _items)
 		{
 			L2ItemInstance oldItem = _owner.getInventory().getItemByObjectId(titem.getObjectId());
-			if (oldItem == null)
+			if ((oldItem == null) || (oldItem.getCount() < titem.getCount()))
 			{
-				return false;
-			}
-			
-			L2ItemInstance partnerItem = partner.getInventory().getItemByItemId(oldItem.getItemId());
-			if (partnerItem != null && ((long)partnerItem.getCount() + titem.getCount()) > L2ItemInstance.getMaxItemCount(partnerItem.getItemId()))
-			{
-				partner.sendPacket(new SystemMessage(oldItem.getItemId() == Inventory.ADENA_ID ? 
-					SystemMessage.YOU_HAVE_EXCEEDED_POCKET_MONEY_LIMIT : SystemMessage.YOU_HAVE_EXCEEDED_THE_LIMIT));
+				_log.warning(_owner.getName() + ": Trade item vanished during exchange with " + partner.getName());
 				return false;
 			}
 			
@@ -717,9 +744,9 @@ public class TradeList
 	 * Calculate weight of items in tradeList
 	 * @return 
 	 */
-	public int calcItemsWeight()
+	public long calcItemsWeight()
 	{
-		int weight = 0;
+		long weight = 0;
 		
 		for (TradeItem item : _items)
 		{
@@ -732,7 +759,7 @@ public class TradeList
 			{
 				continue;
 			}
-			weight += item.getCount() * template.getWeight();
+			weight += (long) item.getCount() * template.getWeight();
 		}
 		
 		return weight;
@@ -745,9 +772,42 @@ public class TradeList
 	 */
 	private void doExchange(TradeList partnerList)
 	{
+		final PcInventory ownerInv = getOwner().getInventory();
+		final PcInventory partnerInv = partnerList.getOwner().getInventory();
+		
+		// Lock both inventories in a consistent order to avoid deadlock
+		final PcInventory lock1, lock2;
+		if (getOwner().getObjectId() > partnerList.getOwner().getObjectId())
+		{
+			lock1 = partnerInv;
+			lock2 = ownerInv;
+		}
+		else
+		{
+			lock1 = ownerInv;
+			lock2 = partnerInv;
+		}
+		
+		synchronized (lock1)
+		{
+			synchronized (lock2)
+			{
+				doExchangeLocked(partnerList);
+			}
+		}
+	}
+	
+	private void doExchangeLocked(TradeList partnerList)
+	{
 		boolean success = false;
+		final long partnerWeight = partnerList.calcItemsWeight();
+		final long ownerWeight = calcItemsWeight();
 		// check weight and slots
-		if ((!this.getOwner().getInventory().validateWeight(partnerList.calcItemsWeight())) || !(partnerList.getOwner().getInventory().validateWeight(this.calcItemsWeight())))
+		if (!validate() || !partnerList.validate() || !checkTransferItems(partnerList.getOwner()) || !partnerList.checkTransferItems(getOwner()))
+		{
+			// Items changed since trade was confirmed or partner cannot hold them
+		}
+		else if ((partnerWeight > Integer.MAX_VALUE) || (ownerWeight > Integer.MAX_VALUE) || (!this.getOwner().getInventory().validateWeight((int) partnerWeight)) || !(partnerList.getOwner().getInventory().validateWeight((int) ownerWeight)))
 		{
 			partnerList.getOwner().sendPacket(new SystemMessage(SystemMessage.WEIGHT_LIMIT_EXCEEDED));
 			this.getOwner().sendPacket(new SystemMessage(SystemMessage.WEIGHT_LIMIT_EXCEEDED));
@@ -931,7 +991,11 @@ public class TradeList
 		final InventoryUpdate playerIU = new InventoryUpdate();
 		
 		L2ItemInstance adenaItem = playerInventory.getAdenaInstance();
-		playerInventory.reduceAdena("PrivateStore", (int) totalPrice, player, _owner);
+		if (!playerInventory.reduceAdena("PrivateStore", (int) totalPrice, player, _owner))
+		{
+			player.sendPacket(new SystemMessage(SystemMessage.YOU_NOT_ENOUGH_ADENA));
+			return false;
+		}
 		playerIU.addItem(adenaItem);
 		ownerInventory.addAdena("PrivateStore", (int) totalPrice, _owner, player);
 		ownerIU.addItem(ownerInventory.getAdenaInstance());
@@ -1040,6 +1104,9 @@ public class TradeList
 		final InventoryUpdate ownerIU = new InventoryUpdate();
 		final InventoryUpdate playerIU = new InventoryUpdate();
 		
+		// Owner adena is reserved item by item before the seller's item is taken
+		final L2ItemInstance ownerAdenaItem = ownerInventory.getAdenaInstance();
+		
 		int totalPrice = 0;
 		for (ItemRequest item : items)
 		{
@@ -1092,7 +1159,8 @@ public class TradeList
 				continue;
 			}
 			
-			if (ownerInventory.getAdena() < tempPrice)
+			final int itemPrice = (int) (tempPrice - totalPrice);
+			if (ownerInventory.getAdena() < itemPrice)
 			{
 				continue;
 			}
@@ -1121,11 +1189,19 @@ public class TradeList
 			{
 				continue;
 			}
+			
+			// Take the payment from the store owner first
+			if (!ownerInventory.reduceAdena("PrivateStore", itemPrice, _owner, player))
+			{
+				continue;
+			}
 
 			// Proceed with item transfer
 			L2ItemInstance newItem = playerInventory.transferItem("PrivateStore", objectId, item.getCount(), ownerInventory, player, _owner);
 			if (newItem == null)
 			{
+				// Give the payment back
+				ownerInventory.addAdena("PrivateStore", itemPrice, _owner, player);
 				continue;
 			}
 
@@ -1185,15 +1261,11 @@ public class TradeList
 		
 		if (totalPrice > 0)
 		{
-			// Transfer adena
-			if (totalPrice > ownerInventory.getAdena())
+			// Transfer adena, owner already paid
+			if (ownerAdenaItem != null)
 			{
-				return false;
+				ownerIU.addItem(ownerAdenaItem);
 			}
-			
-			final L2ItemInstance adenaItem = ownerInventory.getAdenaInstance();
-			ownerInventory.reduceAdena("PrivateStore", totalPrice, _owner, player);
-			ownerIU.addItem(adenaItem);
 			playerInventory.addAdena("PrivateStore", totalPrice, player, _owner);
 			playerIU.addItem(playerInventory.getAdenaInstance());
 		}

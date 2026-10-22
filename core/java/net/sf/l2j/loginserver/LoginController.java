@@ -20,14 +20,13 @@ import java.net.UnknownHostException;
 import java.security.GeneralSecurityException;
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
-import java.security.MessageDigest;
+import java.security.SecureRandom;
 import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
 import java.security.spec.RSAKeyGenParameterSpec;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.Base64;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -44,6 +43,7 @@ import net.sf.l2j.loginserver.GameServerTable.GameServerInfo;
 import net.sf.l2j.loginserver.gameserverpackets.ServerStatus;
 import net.sf.l2j.loginserver.serverpackets.LoginFail.LoginFailReason;
 import net.sf.l2j.util.Log;
+import net.sf.l2j.util.PasswordHash;
 import net.sf.l2j.util.Rnd;
 
 /**
@@ -59,6 +59,9 @@ public class LoginController
 	
 	/** This map contains the connections of the players that are in the login server */
 	private final Map<String, L2LoginClient> _loginServerClients = new ConcurrentHashMap<>();
+	
+	// Session and crypt keys must not be predictable from values sent to clients
+	protected static final SecureRandom SECURE_RANDOM = new SecureRandom();
 	private final Map<String, BanInfo> _bannedIps = new ConcurrentHashMap<>();
 	
 	private final Map<InetAddress, FailedLoginAttempt> _hackProtection = new ConcurrentHashMap<>();
@@ -144,7 +147,7 @@ public class LoginController
 		for (int i = 0; i < BLOWFISH_KEYS; i++)
 		{
 			for (int j = 0; j < _blowfishKeys[i].length; j++)
-				_blowfishKeys[i][j] = (byte) (Rnd.get(255) + 1);
+				_blowfishKeys[i][j] = (byte) (SECURE_RANDOM.nextInt(255) + 1);
 		}
 		_log.info("Stored " + _blowfishKeys.length + " keys for Blowfish communication.");
 	}
@@ -163,7 +166,7 @@ public class LoginController
 	
 	public void assignKeyToLogin(L2LoginClient client)
 	{
-		client.setSessionKey(new SessionKey(Rnd.nextInt(), Rnd.nextInt(), Rnd.nextInt(), Rnd.nextInt()));
+		client.setSessionKey(new SessionKey(SECURE_RANDOM.nextInt(), SECURE_RANDOM.nextInt(), SECURE_RANDOM.nextInt(), SECURE_RANDOM.nextInt()));
 		_loginServerClients.put(client.getAccount(), client);
 	}
 	
@@ -332,11 +335,7 @@ public class LoginController
 		
 		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
 		{
-			MessageDigest md = MessageDigest.getInstance("SHA");
-			byte[] raw = password.getBytes("UTF-8");
-			byte[] hash = md.digest(raw);
-			
-			byte[] expected = null;
+			String expected = null;
 			int access = 0;
 			int lastServer = 1;
 			
@@ -347,7 +346,7 @@ public class LoginController
 				{
 					if (rset.next())
 					{
-						expected = Base64.getDecoder().decode(rset.getString("password"));
+						expected = rset.getString("password");
 						access = rset.getInt("access_level");
 						lastServer = rset.getInt("last_server");
 						if (lastServer <= 0)
@@ -372,7 +371,7 @@ public class LoginController
 						try (PreparedStatement statement = con.prepareStatement("INSERT INTO accounts (login,password,last_active,access_level,last_ip) values(?,?,?,?,?)"))
 						{
 							statement.setString(1, user);
-							statement.setString(2, Base64.getEncoder().encodeToString(hash));
+							statement.setString(2, PasswordHash.hash(password));
 							statement.setLong(3, System.currentTimeMillis());
 							statement.setInt(4, 0);
 							statement.setString(5, address.getHostAddress());
@@ -397,15 +396,7 @@ public class LoginController
 				return false;
 			}
 			
-			ok = true;
-			for (int i = 0; i < expected.length; i++)
-			{
-				if (hash[i] != expected[i])
-				{
-					ok = false;
-					break;
-				}
-			}
+			ok = PasswordHash.verify(password, expected);
 
 			if (ok)
 			{

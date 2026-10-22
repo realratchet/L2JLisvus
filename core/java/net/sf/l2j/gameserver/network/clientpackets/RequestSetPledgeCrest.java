@@ -44,7 +44,7 @@ public class RequestSetPledgeCrest extends L2GameClientPacket
 	protected void readImpl()
 	{
 		_length = readD();
-		if (_length > 256)
+		if ((_length < 0) || (_length > CrestCache.PLEDGE_CREST_SIZE))
 		{
 			return;
 		}
@@ -68,9 +68,9 @@ public class RequestSetPledgeCrest extends L2GameClientPacket
 			return;
 		}
 
-		if (_length > 256)
+		if ((_length != 0) && !CrestCache.isValidCrest(CrestType.PLEDGE, _data))
 		{
-			activeChar.sendMessage("The clan crest file size is greater than 256 bytes.");
+			activeChar.sendMessage("The clan crest file must be a 16x12 256 color bitmap.");
 			return;
 		}
 		
@@ -94,10 +94,23 @@ public class RequestSetPledgeCrest extends L2GameClientPacket
 
 		CrestCache crestCache = CrestCache.getInstance();
 
+		if (!crestCache.tryCrestUpdate(activeChar.getObjectId()))
+		{
+			activeChar.sendMessage("You cannot change the crest so often.");
+			return;
+		}
+
 		if ((_length == 0) || (_data.length == 0))
 		{
-			crestCache.removeCrest(CrestType.PLEDGE, clan.getCrestId());
+			if (!clan.hasCrest())
+			{
+				return;
+			}
 
+			crestCache.removeCrest(CrestType.PLEDGE, clan.getCrestId());
+			updateCrestId(clan, 0);
+
+			clan.setCrestId(0);
 			clan.setHasCrest(false);
 			activeChar.sendMessage("The clan crest has been deleted.");
 
@@ -130,17 +143,7 @@ public class RequestSetPledgeCrest extends L2GameClientPacket
 			crestCache.removeCrest(CrestType.PLEDGE, clan.getCrestId());
 		}
 
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
-			PreparedStatement statement = con.prepareStatement("UPDATE clan_data SET crest_id = ? WHERE clan_id = ?"))
-		{
-			statement.setInt(1, newId);
-			statement.setInt(2, clan.getClanId());
-			statement.executeUpdate();
-		}
-		catch (SQLException e)
-		{
-			_log.warning("could not update the crest id:" + e.getMessage());
-		}
+		updateCrestId(clan, newId);
 
 		clan.setCrestId(newId);
 		clan.setHasCrest(true);
@@ -148,6 +151,21 @@ public class RequestSetPledgeCrest extends L2GameClientPacket
 		for (L2PcInstance member : clan.getOnlineMembers(0))
 		{
 			member.broadcastUserInfo();
+		}
+	}
+
+	private static void updateCrestId(L2Clan clan, int crestId)
+	{
+		try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+			PreparedStatement statement = con.prepareStatement("UPDATE clan_data SET crest_id = ? WHERE clan_id = ?"))
+		{
+			statement.setInt(1, crestId);
+			statement.setInt(2, clan.getClanId());
+			statement.executeUpdate();
+		}
+		catch (SQLException e)
+		{
+			_log.warning("could not update the crest id:" + e.getMessage());
 		}
 	}
 

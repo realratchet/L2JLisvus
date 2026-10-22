@@ -52,6 +52,20 @@ public class PcFreight extends ItemContainer
 		_activeLocationId = locationId;
 	}
 	
+	public int getActiveLocation()
+	{
+		return _activeLocationId;
+	}
+	
+	/**
+	 * @param item
+	 * @return true if item can be withdrawn at the currently active location
+	 */
+	public boolean isAvailableAtActiveLocation(L2ItemInstance item)
+	{
+		return (item.getEquipSlot() == 0) || (_activeLocationId == 0) || (item.getEquipSlot() == _activeLocationId);
+	}
+	
 	/**
 	 * Returns the quantity of items in the inventory
 	 * @return int

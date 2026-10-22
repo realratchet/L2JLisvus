@@ -56,6 +56,7 @@ class Quest (JQuest) :
     id = st.getState()
     htmltext = event
     if event == "7515-4.htm" :
+       if id != State.CREATED : return
        st.setState(State.STARTED)
        st.set("progress","PART1")
        st.set("awaitSealedMStone","1")
@@ -85,13 +86,17 @@ class Quest (JQuest) :
           elif id == State.STARTED and st.get("progress") == "PART2" :
              htmltext = "7515-10.htm"
     elif event == "buy" :
+       if id != State.STARTED or st.getInt("allow") != 1 : return
        htmltext = render_shop()
-    elif int(event) in SHOP_LIST.keys() :
+    elif event.isdigit() and int(event) in SHOP_LIST.keys() :
+       if id != State.STARTED or st.getInt("allow") != 1 : return
        st.set("allow","0")
        st.giveItems(57,SHOP_LIST[int(event)][2])
        st.giveItems(int(event),SHOP_LIST[int(event)][1])
        st.playSound("ItemSound.quest_finish")
        htmltext = "7515-11.htm"
+    else :
+       return
     return htmltext
 
  def onTalk (self,npc,st):

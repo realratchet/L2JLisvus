@@ -14,6 +14,8 @@
  */
 package net.sf.l2j.gameserver.network.clientpackets;
 
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Logger;
 
 import net.sf.l2j.gameserver.ThreadPoolManager;
@@ -40,6 +42,9 @@ public class RequestRestartPoint extends L2GameClientPacket
 {
 	private static final String _C__6d_REQUESTRESTARTPOINT = "[C] 6d RequestRestartPoint";
 	private static Logger _log = Logger.getLogger(RequestRestartPoint.class.getName());
+	
+	// Players waiting for a delayed siege respawn
+	private static final Set<Integer> _pendingRespawns = ConcurrentHashMap.newKeySet();
 	
 	private int _requestPointType;
 	
@@ -91,11 +96,17 @@ public class RequestRestartPoint extends L2GameClientPacket
 			{
 				if (siege.getAttackerRespawnDelay() > 0)
 				{
+					if (!_pendingRespawns.add(activeChar.getObjectId()))
+					{
+						return;
+					}
+					
 					activeChar.sendMessage("You will be re-spawned in " + (siege.getAttackerRespawnDelay() / 1000) + " seconds");
 					
 					// Schedule respawn delay for attacker
 					ThreadPoolManager.getInstance().scheduleGeneral(() -> {
-						if (activeChar.isOnline())
+						_pendingRespawns.remove(activeChar.getObjectId());
+						if (activeChar.isOnline() && activeChar.isDead())
 						{
 							portPlayer(activeChar, _requestPointType);
 						}
@@ -109,6 +120,12 @@ public class RequestRestartPoint extends L2GameClientPacket
 	
 	private void portPlayer(L2PcInstance activeChar, int requestPointType)
 	{
+		// Already being ported
+		if (activeChar.isTeleporting())
+		{
+			return;
+		}
+		
 		Location loc = null;
 		
 		if (activeChar.isFestivalParticipant())

@@ -350,7 +350,10 @@ public class L2SignsPriestInstance extends L2FolkInstance
 						break;
 					}
 					
-					player.reduceAncientAdena("SevenSigns", ancientAdenaConvert, this, true);
+					if (!player.reduceAncientAdena("SevenSigns", ancientAdenaConvert, this, true))
+					{
+						break;
+					}
 					player.addAdena("SevenSigns", ancientAdenaConvert, this, true);
 					
 					iu = new InventoryUpdate();

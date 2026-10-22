@@ -37,6 +37,11 @@ public class RequestTutorialClientEvent extends L2GameClientPacket
 			return;
 		}
 		
+		if (eventId < 0)
+		{
+			return;
+		}
+		
 		QuestState qs = player.getQuestState("255_Tutorial");
 		if (qs != null)
 		{

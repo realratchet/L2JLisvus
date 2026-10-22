@@ -14,6 +14,7 @@
  */
 package net.sf.l2j.gameserver.network.clientpackets;
 
+import net.sf.l2j.gameserver.datatables.DoorTable;
 import net.sf.l2j.gameserver.geoengine.GeoData;
 import net.sf.l2j.gameserver.model.actor.instance.L2BoatInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
@@ -61,6 +62,13 @@ public class RequestGetOffVehicle extends L2GameClientPacket
 		// Destination must be near the boat and, where geodata exists, on a valid surface
 		final L2BoatInstance boat = activeChar.getBoat();
 		if (!boat.isInsideRadius(_x, _y, _z, 1000, true, false) || (GeoData.getInstance().hasGeo(_x, _y) && (Math.abs(GeoData.getInstance().getHeight(_x, _y, _z) - _z) > MAX_Z_DIFF)))
+		{
+			sendPacket(ActionFailed.STATIC_PACKET);
+			return;
+		}
+		
+		// Exit point must be in sight of the boat, no stepping off through walls or doors
+		if (GeoData.getInstance().hasGeo(_x, _y) && (!GeoData.getInstance().canSeeTarget(boat.getX(), boat.getY(), boat.getZ(), _x, _y, _z) || DoorTable.getInstance().checkIfDoorsBetween(boat.getX(), boat.getY(), boat.getZ(), _x, _y, _z)))
 		{
 			sendPacket(ActionFailed.STATIC_PACKET);
 			return;

@@ -149,7 +149,14 @@ class Quest (JQuest) :
    if not st: return
    htmltext = event
    npcId = str(npc.getNpcId())
+   name = player.getName()
+   if event.startswith("select_") :
+       # only a running game accepts picks, numbers 1-9 once each, in order
+       if len(event) != 10 or not event[9].isdigit() or event[9] == "0" or not self.gameStatus.has_key(name) or st.getState() != State.STARTED : return
+       num_guesses = len(self.gameStatus[name][1])
+       if (event.startswith("select_1-") and num_guesses != 0) or (event.startswith("select_2-") and not 1 <= num_guesses <= 4) or (event.startswith("select_3-") and num_guesses != 5) : return
    if event == "7182-05.htm" :
+       if st.getState() != State.CREATED : return
        st.playSound("ItemSound.quest_accept")
        st.setState(State.STARTED)
        st.set("cond","1")
@@ -157,12 +164,14 @@ class Quest (JQuest) :
        st.playSound("ItemSound.quest_finish")
        st.exitQuest(1)
    elif event == npcId + "-11.htm" :
+       if st.getState() != State.STARTED : return
        if st.getQuestItemsCount(Medal) >= 10 :
            st.takeItems(Medal,10)
            self.generateBoard(player,10)
        else :
            htmltext = npcId + "-12.htm"
    elif event == npcId + "-13.htm" :
+       if st.getState() != State.STARTED : return
        if st.getQuestItemsCount(Medal) >= 100 :
            st.takeItems(Medal,100)
            self.generateBoard(player,100)
@@ -194,6 +203,8 @@ class Quest (JQuest) :
            self.gameStatus[player.getName()][1].append(selection)
            wins = self.checkWin(player)
            bet = self.gameStatus[player.getName()][2]
+           # game is over, clear it before any reward
+           game = self.gameStatus.pop(name)
            if wins == 3 :
                item = self.getReward(eval("Rewards_"+str(bet)+"_Win"))
                st.giveItems(item,1)
@@ -205,9 +216,9 @@ class Quest (JQuest) :
                htmltext = HtmCache.getInstance().getHtm("data/scripts/quests/" + qn + "/" + npcId + "-25.htm")
            else :
                htmltext = HtmCache.getInstance().getHtm("data/scripts/quests/" + qn + "/" + npcId + "-24.htm")
-           guess = self.gameStatus[player.getName()][1]
+           guess = game[1]
            for i in range(9) :
-              num = self.gameStatus[player.getName()][0][i]
+              num = game[0][i]
               htmltext = htmltext.replace("<?Cell"+str(i+1)+"?>",str(num))
               if num in guess :
                   htmltext = htmltext.replace("<?FontColor"+str(i+1)+"?>","ff0000")

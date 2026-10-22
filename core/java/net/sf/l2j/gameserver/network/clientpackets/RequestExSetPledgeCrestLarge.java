@@ -44,7 +44,7 @@ public class RequestExSetPledgeCrestLarge extends L2GameClientPacket
 	protected void readImpl()
 	{
 		_size = readD();
-		if (_size > 2176)
+		if ((_size < 0) || (_size > CrestCache.PLEDGE_LARGE_CREST_SIZE))
 		{
 			return;
 		}
@@ -72,9 +72,9 @@ public class RequestExSetPledgeCrestLarge extends L2GameClientPacket
 			return;
 		}
 		
-		if (_size > 2176)
+		if ((_size != 0) && !CrestCache.isValidCrest(CrestType.PLEDGE_LARGE, _data))
 		{
-			activeChar.sendMessage("The insignia file size is greater than 2176 bytes.");
+			activeChar.sendMessage("The insignia file must be a 64x32 256 color bitmap.");
 			return;
 		}
 		
@@ -96,9 +96,21 @@ public class RequestExSetPledgeCrestLarge extends L2GameClientPacket
 			return;
 		}
 		
+		if (!CrestCache.getInstance().tryCrestUpdate(activeChar.getObjectId()))
+		{
+			activeChar.sendMessage("You cannot change the crest so often.");
+			return;
+		}
+		
 		int newId = 0;
 		if (_data != null && _data.length > 0)
 		{
+			if (clan.getLevel() < 3)
+			{
+				activeChar.sendPacket(new SystemMessage(SystemMessage.CLAN_LVL_3_NEEDED_TO_SET_CREST));
+				return;
+			}
+			
 			newId = IdFactory.getInstance().getNextId();
 			if (!CrestCache.getInstance().saveCrest(CrestType.PLEDGE_LARGE, newId, _data))
 			{

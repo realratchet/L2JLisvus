@@ -517,21 +517,27 @@ public abstract class Inventory extends ItemContainer
 	public L2ItemInstance dropItem(String process, int objectId, int count, L2PcInstance actor, L2Object reference)
 	{
 		L2ItemInstance item = getItemByObjectId(objectId);
-		if (item == null)
+		if ((item == null) || (count < 1))
 			return null;
 		
 		// Adjust item quantity and create new instance to drop
-		if (item.getCount() > count)
+		synchronized (item)
 		{
-			item.changeCount(process, -count, actor, reference);
-			item.setLastChange(L2ItemInstance.MODIFIED);
-			item.updateDatabase();
+			if (getItemByObjectId(objectId) != item)
+				return null;
 			
-			item = ItemTable.getInstance().createItem(process, item.getItemId(), count, actor, reference);
-			
-			item.updateDatabase();
-			refreshWeight();
-			return item;
+			if (item.getCount() > count)
+			{
+				item.changeCount(process, -count, actor, reference);
+				item.setLastChange(L2ItemInstance.MODIFIED);
+				item.updateDatabase();
+				
+				L2ItemInstance newItem = ItemTable.getInstance().createItem(process, item.getItemId(), count, actor, reference);
+				
+				newItem.updateDatabase();
+				refreshWeight();
+				return newItem;
+			}
 		}
 		return dropItem(process, item, actor, reference);
 	}

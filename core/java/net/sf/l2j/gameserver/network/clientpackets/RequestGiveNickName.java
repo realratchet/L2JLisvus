@@ -56,7 +56,7 @@ public class RequestGiveNickName extends L2GameClientPacket
 		}
 		
 		// Noblesse can bestow a title to themselves
-		if (activeChar.isNoble() && _target.matches(activeChar.getName()))
+		if (activeChar.isNoble() && activeChar.getName().equalsIgnoreCase(_target))
 		{
 			activeChar.setTitle(_title);
 			activeChar.sendPacket(new SystemMessage(SystemMessage.TITLE_CHANGED));
