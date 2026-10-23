@@ -39,7 +39,6 @@ import net.sf.l2j.gameserver.model.quest.Quest;
 import net.sf.l2j.gameserver.model.quest.QuestState;
 import net.sf.l2j.gameserver.model.zone.type.L2BossZone;
 import net.sf.l2j.gameserver.network.serverpackets.Earthquake;
-import net.sf.l2j.gameserver.network.serverpackets.MoveToPawn;
 import net.sf.l2j.gameserver.network.serverpackets.NpcSay;
 import net.sf.l2j.gameserver.network.serverpackets.PlaySound;
 import net.sf.l2j.gameserver.network.serverpackets.SocialAction;
@@ -504,7 +503,7 @@ public class Baium extends Quest
 			{
 				if (obj instanceof L2Character)
 				{
-					if (((obj.getZ() < (npc.getZ() - 100)) && (obj.getZ() > (npc.getZ() + 100))) 
+					if (((obj.getZ() < (npc.getZ() - 100)) || (obj.getZ() > (npc.getZ() + 100))) 
 						|| !(GeoData.getInstance().canSeeTarget(obj.getX(), obj.getY(), obj.getZ(), npc.getX(), npc.getY(), npc.getZ())) 
 						|| ((L2Character) obj).isGM())
 					{
@@ -573,26 +572,16 @@ public class Baium extends Quest
 			return;
 		}
 
-		if (Util.checkIfInRange(skill.getCastRange(), npc, target, true))
+		// Aura skills have no cast range, their target must be inside the skill radius
+		int range = skill.getCastRange() < 0 ? skill.getSkillRadius() : skill.getCastRange();
+		if (Util.checkIfInRange(range, npc, target, true))
 		{
 			npc.getAI().setIntention(CtrlIntention.AI_INTENTION_IDLE);
 			npc.setTarget(target);
 			_target = null;
 			_skill = null;
-			if (getDist(skill.getCastRange()) > 0)
-			{
-				npc.broadcastPacket(new MoveToPawn(npc, target, getDist(skill.getCastRange())));
-			}
-
-			try
-			{
-				Thread.sleep(1000);
-				npc.stopMove(null);
-				npc.doCast(skill);
-			}
-			catch (Exception e)
-			{
-			}
+			npc.stopMove(null);
+			npc.doCast(skill);
 		}
 		else
 		{
@@ -693,22 +682,5 @@ public class Baium extends Quest
 		}
 
 		return super.onSkillSee(npc, caster, skill, targets, isPet);
-	}
-
-	public int getDist(int range)
-	{
-		int dist = 0;
-		switch (range)
-		{
-			case -1:
-				break;
-			case 100:
-				dist = 85;
-				break;
-			default:
-				dist = range - 85;
-				break;
-		}
-		return dist;
 	}
 }
