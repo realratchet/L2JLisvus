@@ -5559,7 +5559,8 @@ public abstract class L2Character extends L2Object
 				{
 					L2Character activeTarget = (L2Character) target;
 					
-					if (!isInsideRadius(activeTarget, escapeRange, true, false))
+					// Range is measured from the caster's edge, so big casters do not lose targets
+					if (!isInsideRadius(activeTarget, escapeRange + (int) getTemplate().collisionRadius, true, false))
 					{
 						continue;
 					}
