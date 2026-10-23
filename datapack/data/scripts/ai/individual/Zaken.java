@@ -32,6 +32,7 @@ import net.sf.l2j.gameserver.model.L2Character;
 import net.sf.l2j.gameserver.model.L2Effect;
 import net.sf.l2j.gameserver.model.L2Object;
 import net.sf.l2j.gameserver.model.L2Skill;
+import net.sf.l2j.gameserver.model.L2Skill.SkillTargetType;
 import net.sf.l2j.gameserver.model.Location;
 import net.sf.l2j.gameserver.model.actor.instance.L2DoorInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2GrandBossInstance;
@@ -41,6 +42,7 @@ import net.sf.l2j.gameserver.model.quest.Quest;
 import net.sf.l2j.gameserver.model.zone.type.L2BossZone;
 import net.sf.l2j.gameserver.network.serverpackets.PlaySound;
 import net.sf.l2j.gameserver.templates.StatsSet;
+import net.sf.l2j.gameserver.util.Util;
 import net.sf.l2j.util.Rnd;
 
 /**
@@ -590,23 +592,19 @@ public class Zaken extends Quest
 				int i0 = Rnd.get(LOCS.length * LOCS.length);
 				if (i0 < 1)
 				{
-					npc.setTarget(attacker);
-					npc.doCast(SkillTable.getInstance().getInfo(4216, 1));
+					castOn(npc, attacker, SkillTable.getInstance().getInfo(4216, 1));
 				}
 				else if (i0 < 2)
 				{
-					npc.setTarget(attacker);
-					npc.doCast(SkillTable.getInstance().getInfo(4217, 1));
+					castOn(npc, attacker, SkillTable.getInstance().getInfo(4217, 1));
 				}
 				else if (i0 < 4)
 				{
-					npc.setTarget(attacker);
-					npc.doCast(SkillTable.getInstance().getInfo(4219, 1));
+					castOn(npc, attacker, SkillTable.getInstance().getInfo(4219, 1));
 				}
 				else if (i0 < 8)
 				{
-					npc.setTarget(attacker);
-					npc.doCast(SkillTable.getInstance().getInfo(4218, 1));
+					castOn(npc, attacker, SkillTable.getInstance().getInfo(4218, 1));
 				}
 				else if (i0 < 15)
 				{
@@ -629,8 +627,7 @@ public class Zaken extends Quest
 				{
 					if (attacker == ((L2Attackable) npc).getMostHated())
 					{
-						npc.setTarget(attacker);
-						npc.doCast(SkillTable.getInstance().getInfo(4220, 1));
+						castOn(npc, attacker, SkillTable.getInstance().getInfo(4220, 1));
 					}
 				}
 			}
@@ -686,23 +683,19 @@ public class Zaken extends Quest
 				int i0 = Rnd.get(LOCS.length * LOCS.length);
 				if (i0 < 1)
 				{
-					npc.setTarget(caster);
-					npc.doCast(SkillTable.getInstance().getInfo(4216, 1));
+					castOn(npc, caster, SkillTable.getInstance().getInfo(4216, 1));
 				}
 				else if (i0 < 2)
 				{
-					npc.setTarget(caster);
-					npc.doCast(SkillTable.getInstance().getInfo(4217, 1));
+					castOn(npc, caster, SkillTable.getInstance().getInfo(4217, 1));
 				}
 				else if (i0 < 4)
 				{
-					npc.setTarget(caster);
-					npc.doCast(SkillTable.getInstance().getInfo(4219, 1));
+					castOn(npc, caster, SkillTable.getInstance().getInfo(4219, 1));
 				}
 				else if (i0 < 8)
 				{
-					npc.setTarget(caster);
-					npc.doCast(SkillTable.getInstance().getInfo(4218, 1));
+					castOn(npc, caster, SkillTable.getInstance().getInfo(4218, 1));
 				}
 				else if (i0 < 15)
 				{
@@ -725,8 +718,7 @@ public class Zaken extends Quest
 				{
 					if (caster == ((L2Attackable) npc).getMostHated())
 					{
-						npc.setTarget(caster);
-						npc.doCast(SkillTable.getInstance().getInfo(4220, 1));
+						castOn(npc, caster, SkillTable.getInstance().getInfo(4220, 1));
 					}
 				}
 			}
@@ -759,23 +751,19 @@ public class Zaken extends Quest
 					int chance = Rnd.get(LOCS.length * LOCS.length);
 					if (chance < 1)
 					{
-						npc.setTarget(player);
-						npc.doCast(SkillTable.getInstance().getInfo(4216, 1));
+						castOn(npc, player, SkillTable.getInstance().getInfo(4216, 1));
 					}
 					else if (chance < 2)
 					{
-						npc.setTarget(player);
-						npc.doCast(SkillTable.getInstance().getInfo(4217, 1));
+						castOn(npc, player, SkillTable.getInstance().getInfo(4217, 1));
 					}
 					else if (chance < 4)
 					{
-						npc.setTarget(player);
-						npc.doCast(SkillTable.getInstance().getInfo(4219, 1));
+						castOn(npc, player, SkillTable.getInstance().getInfo(4219, 1));
 					}
 					else if (chance < 8)
 					{
-						npc.setTarget(player);
-						npc.doCast(SkillTable.getInstance().getInfo(4218, 1));
+						castOn(npc, player, SkillTable.getInstance().getInfo(4218, 1));
 					}
 					else if (chance < 15)
 					{
@@ -798,8 +786,7 @@ public class Zaken extends Quest
 					{
 						if (player == ((L2Attackable) npc).getMostHated())
 						{
-							npc.setTarget(player);
-							npc.doCast(SkillTable.getInstance().getInfo(4220, 1));
+							castOn(npc, player, SkillTable.getInstance().getInfo(4220, 1));
 						}
 					}
 				}
@@ -807,5 +794,24 @@ public class Zaken extends Quest
 		}
 		
 		return super.onAggroRangeEnter(npc, player, isPet);
+	}
+	
+	/**
+	 * Casts the skill only when the target can actually be hit from where Zaken stands.
+	 * @param npc
+	 * @param target
+	 * @param skill
+	 */
+	private static void castOn(L2NpcInstance npc, L2Character target, L2Skill skill)
+	{
+		// Aura skills hit around Zaken, other skills land up to their effect range
+		boolean inRange = skill.getTargetType() == SkillTargetType.TARGET_AURA ? Util.checkIfInRange(skill.getSkillRadius(), npc, target, true) : npc.isInsideRadius(target, skill.getEffectRange(), true, false);
+		if (!inRange)
+		{
+			return;
+		}
+		
+		npc.setTarget(target);
+		npc.doCast(skill);
 	}
 }

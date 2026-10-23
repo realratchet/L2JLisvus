@@ -1360,7 +1360,9 @@ public class Valakas extends Quest
 			return;
 		}
 		
-		if (Util.checkIfInRange(skill.getCastRange(), npc, target, true))
+		// Aura skills have no cast range, their target must be inside the skill radius
+		int range = skill.getCastRange() < 0 ? skill.getSkillRadius() : skill.getCastRange();
+		if (Util.checkIfInRange(range, npc, target, true))
 		{
 			timer.destroy();
 			npc.getAI().setIntention(AI_INTENTION_IDLE);

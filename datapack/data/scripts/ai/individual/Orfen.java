@@ -295,8 +295,13 @@ public class Orfen extends Quest
 		int callerId = caller.getNpcId();
 		if ((npcId == RAIKEL_LEOS) && (Rnd.get(20) == 0))
 		{
-			npc.setTarget(attacker);
-			npc.doCast(SkillTable.getInstance().getInfo(4067, 4));
+			L2Skill skill = SkillTable.getInstance().getInfo(4067, 4);
+			// Mortal blow only lands on nearby attackers
+			if (npc.isInsideRadius(attacker, skill.getEffectRange(), true, false))
+			{
+				npc.setTarget(attacker);
+				npc.doCast(skill);
+			}
 		}
 		else if (npcId == RIBA_IREN)
 		{

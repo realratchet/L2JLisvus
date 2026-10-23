@@ -87,7 +87,8 @@ public class FairyTrees extends Quest
 					L2Skill skill = SkillTable.getInstance().getInfo(4243, 1);
 					if (skill != null)
 					{
-						npc.doCast(skill);
+						newNpc.setTarget(originalKiller);
+						newNpc.doCast(skill);
 					}
 				}
 			}
