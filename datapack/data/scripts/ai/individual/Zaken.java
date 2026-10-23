@@ -200,11 +200,8 @@ public class Zaken extends Quest
 		
 		if (event.equalsIgnoreCase("1001"))
 		{
+			final boolean isNight = GameTimeController.getInstance().isNight();
 			boolean isInNightMode = (npc.getAbnormalEffect() & L2Character.ABNORMAL_EFFECT_TEXTURE_CHANGE) == L2Character.ABNORMAL_EFFECT_TEXTURE_CHANGE;
-			if (!isInNightMode)
-			{
-				isInNightMode = true;
-			}
 			
 			int sk_4227 = 0;
 			L2Effect[] effects = npc.getAllEffects();
@@ -220,7 +217,7 @@ public class Zaken extends Quest
 				}
 			}
 			
-			if (GameTimeController.getInstance().isNight())
+			if (isNight)
 			{
 				final L2Character mostHated = ((L2Attackable) npc).getMostHated();
 				
@@ -320,7 +317,7 @@ public class Zaken extends Quest
 				_teleportCheck = 3;
 			}
 			
-			if (sk_4227 == 1) // when switching to day time, cancel zaken night regen
+			if (!isNight && (sk_4227 == 1)) // when switching to day time, cancel zaken night regen
 			{
 				npc.setTarget(npc);
 				npc.doCast(SkillTable.getInstance().getInfo(4242, 1));
