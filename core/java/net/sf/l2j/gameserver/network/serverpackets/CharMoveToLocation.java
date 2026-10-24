@@ -35,7 +35,18 @@ public class CharMoveToLocation extends L2GameServerPacket
 		_yDst = cha.getYdestination();
 		_zDst = cha.getZdestination();
 	}
-	
+
+	public CharMoveToLocation(L2Character cha, int xDst, int yDst, int zDst)
+	{
+		_objectId = cha.getObjectId();
+		_x = cha.getX();
+		_y = cha.getY();
+		_z = cha.getZ();
+		_xDst = xDst;
+		_yDst = yDst;
+		_zDst = zDst;
+	}
+
 	@Override
 	protected final void writeImpl()
 	{

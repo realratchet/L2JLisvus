@@ -22,6 +22,7 @@ import java.util.concurrent.Future;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.GameTimeController;
 import net.sf.l2j.gameserver.ThreadPoolManager;
 import net.sf.l2j.gameserver.model.L2Character;
@@ -37,6 +38,7 @@ import net.sf.l2j.gameserver.network.serverpackets.Die;
 import net.sf.l2j.gameserver.network.serverpackets.MoveToPawn;
 import net.sf.l2j.gameserver.network.serverpackets.StopMove;
 import net.sf.l2j.gameserver.taskmanager.AttackStanceTaskManager;
+import net.sf.l2j.gameserver.util.Broadcast;
 
 /**
  * Mother class of all objects AI in the world.<BR>
@@ -637,7 +639,16 @@ abstract class AbstractAI implements Ctrl
 			
 			// Calculate movement data for a move to location action and add the actor to movingObjects of GameTimeController
 			_accessor.moveTo(x, y, z);
-			
+
+			if (!Config.PLAYER_PATHFINDING && (_actor instanceof L2PcInstance) && !((L2PcInstance) _actor).isInBoat())
+			{
+				// Player's own client walks to the requested point and stops on its own collision,
+				// server keeps the geodata checked destination and validates client positions
+				_actor.sendPacket(new CharMoveToLocation(_actor, x, y, z));
+				Broadcast.toKnownPlayers(_actor, new CharMoveToLocation(_actor));
+				return;
+			}
+
 			// Send a Server->Client packet CharMoveToLocation to the actor and all L2PcInstance in its _knownPlayers
 			_actor.broadcastPacket(new CharMoveToLocation(_actor));
 		}

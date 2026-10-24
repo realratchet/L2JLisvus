@@ -625,6 +625,7 @@ public final class L2PcInstance extends L2PlayableInstance
 	
 	/** Stored from last ValidatePosition **/
 	private final Point3D _lastServerPosition = new Point3D(0, 0, 0);
+	private long _lastValidatePositionTime;
 	
 	/** Previous coordinate sent to party in ValidatePosition **/
 	private final Point3D _lastPartyPosition = new Point3D(0, 0, 0);
@@ -10063,6 +10064,18 @@ public final class L2PcInstance extends L2PlayableInstance
 	public Point3D getLastServerPosition()
 	{
 		return _lastServerPosition;
+	}
+
+	/**
+	 * Sets the time of the last position validation and returns the milliseconds passed since the previous one.
+	 * @return the milliseconds passed since the previous validation
+	 */
+	public long updateValidatePositionTime()
+	{
+		final long now = System.currentTimeMillis();
+		final long elapsed = now - _lastValidatePositionTime;
+		_lastValidatePositionTime = now;
+		return elapsed;
 	}
 	
 	public boolean checkLastServerPosition(int x, int y, int z)
