@@ -27,7 +27,6 @@ import net.sf.l2j.gameserver.network.serverpackets.GetOnVehicle;
 import net.sf.l2j.gameserver.network.serverpackets.PartyMemberPosition;
 import net.sf.l2j.gameserver.network.serverpackets.StopRotation;
 import net.sf.l2j.gameserver.network.serverpackets.ValidateLocation;
-import net.sf.l2j.gameserver.util.Broadcast;
 
 /**
  * This class ...
@@ -138,8 +137,7 @@ public class ValidatePosition extends L2GameClientPacket
 		dy = _y - realY;
 		dz = _z - realZ;
 		diffSq = ((dx * dx) + (dy * dy));
-		final long elapsed = Math.min(activeChar.updateValidatePositionTime(), 1000);
-
+		
 		// Client Z changes are only accepted within sane bounds
 		boolean validZ = (Math.abs(dz) <= 200) || ((Math.abs(dz) < 1500) && (Math.abs(_z - activeChar.getClientZ()) < 800));
 		
@@ -232,28 +230,6 @@ public class ValidatePosition extends L2GameClientPacket
 				return;
 			}
 			
-			// Without player pathfinding the client handles collisions: while the server has the player
-			// stopped, follow client positions that geodata allows and the move speed could reach
-			else if (!Config.PLAYER_PATHFINDING && !activeChar.isMoving() && (diffSq > 0))
-			{
-				final double maxDist = ((activeChar.getMoveSpeed() * elapsed * 1.2) / 1000) + 16;
-				if (validZ && !activeChar.isMovementDisabled() && (diffSq <= (maxDist * maxDist)) && GeoData.getInstance().canMove(realX, realY, realZ, _x, _y, _z))
-				{
-					activeChar.setXYZ(_x, _y, _z);
-					realX = _x;
-					realY = _y;
-					realZ = _z;
-					if (diffSq > 256)
-					{
-						Broadcast.toKnownPlayers(activeChar, new ValidateLocation(activeChar));
-					}
-				}
-				else if (diffSq > 1024)
-				{
-					activeChar.sendPacket(new ValidateLocation(activeChar));
-				}
-			}
-
 			// Sync 2 (or other),
 			// intended for geodata. Sends a validation packet to client
 			// when too far from server calculated true coordinate.
