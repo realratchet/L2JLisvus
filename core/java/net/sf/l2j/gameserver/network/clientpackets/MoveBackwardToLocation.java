@@ -18,6 +18,8 @@ import java.nio.BufferUnderflowException;
 
 import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.ai.CtrlIntention;
+import net.sf.l2j.gameserver.geoengine.GeoData;
+import net.sf.l2j.gameserver.model.L2Character;
 import net.sf.l2j.gameserver.model.Location;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.network.serverpackets.ActionFailed;
@@ -43,6 +45,9 @@ public class MoveBackwardToLocation extends L2GameClientPacket
 	private int _originZ;
 
 	private static final String _C__01_MOVEBACKWARDTOLOC = "[C] 01 MoveBackwardToLoc";
+
+	// Client origin farther than this from the server position is not trusted
+	private static final int ORIGIN_SYNC_RANGE_SQ = 64 * 64;
 
 	@Override
 	protected void readImpl()
@@ -110,6 +115,24 @@ public class MoveBackwardToLocation extends L2GameClientPacket
 			activeChar.sendPacket(ActionFailed.STATIC_PACKET);
 			activeChar.teleToLocation(_targetX, _targetY, _targetZ, false);
 			return;
+		}
+
+		// Without player pathfinding the client handles collisions and may stand a bit off the server position
+		// (e.g. pressed into a wall), start the move from the client position when geodata allows it to avoid a warp
+		if (!Config.PLAYER_PATHFINDING && !activeChar.isMoving() && !activeChar.isInBoat() && !activeChar.isMovementDisabled())
+		{
+			final int odx = _originX - activeChar.getX();
+			final int ody = _originY - activeChar.getY();
+			if (((odx * odx) + (ody * ody)) <= ORIGIN_SYNC_RANGE_SQ)
+			{
+				final GeoData geo = GeoData.getInstance();
+				final boolean sameCell = (geo.getGeoX(_originX) == geo.getGeoX(activeChar.getX())) && (geo.getGeoY(_originY) == geo.getGeoY(activeChar.getY()));
+				if (sameCell || geo.canMove(activeChar.getX(), activeChar.getY(), activeChar.getZ(), _originX, _originY, activeChar.getZ()))
+				{
+					final boolean floating = activeChar.isFlying() || activeChar.isInsideZone(L2Character.ZONE_WATER);
+					activeChar.setXYZ(_originX, _originY, floating ? activeChar.getZ() : geo.getHeight(_originX, _originY, activeChar.getZ()));
+				}
+			}
 		}
 
 		double dx = _targetX - activeChar.getX();
