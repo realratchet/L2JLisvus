@@ -4390,7 +4390,7 @@ public abstract class L2Character extends L2Object
 			// Pathfinding checks. Only when geodata setting is 2, the LoS check gives shorter result
 			// than the original movement was and the LoS gives a shorter distance than 2000
 			// This way of detecting need for pathfinding could be changed.
-			if ((Config.PATHFINDING > 0) && ((originalDistance - distance) > 30) && !isAfraid() && (Config.PLAYER_PATHFINDING || !(this instanceof L2PcInstance)))
+			if ((Config.PATHFINDING > 0) && ((originalDistance - distance) > 30) && !isAfraid())
 			{
 				// Path calculation
 				// Overrides previous movement check

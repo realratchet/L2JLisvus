@@ -1254,7 +1254,6 @@ public final class Config
 	
 	/** GeoData Settings */
 	public static int PATHFINDING;
-	public static boolean PLAYER_PATHFINDING;
 	public static File PATHNODE_DIR;
 	public static String PATHFIND_BUFFERS;
 	/**
@@ -2130,7 +2129,6 @@ public final class Config
 			EnvProperties geoDataSettings = new EnvProperties(GEODATA_FILE);
 
 			PATHFINDING = Integer.parseInt(geoDataSettings.getProperty("PathFinding", "0"));
-			PLAYER_PATHFINDING = Boolean.parseBoolean(geoDataSettings.getProperty("PlayerPathFinding", "True"));
 			
 			try
 			{
