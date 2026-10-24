@@ -4480,7 +4480,7 @@ public abstract class L2Character extends L2Object
 		else if (!isFlying() && !(this instanceof L2BoatInstance) && (this instanceof L2PlayableInstance) && isInsideZone(ZONE_WATER) && !(((this instanceof L2PcInstance) && ((L2PcInstance) this).isInBoat())))
 		{
 			// Swimming keeps its own Z, but walls and doors still block horizontal movement
-			final Location dest = GeoData.getInstance().moveCheck(curX, curY, curZ, x, y, z);
+			final Location dest = GeoData.getInstance().swimCheck(curX, curY, curZ, x, y, z);
 			if ((dest.getX() != x) || (dest.getY() != y))
 			{
 				final double ratio = distance > 0 ? Math.sqrt(((dest.getX() - curX) * (dest.getX() - curX)) + ((dest.getY() - curY) * (dest.getY() - curY))) / distance : 0;

@@ -480,7 +480,79 @@ public class GeoData
 		
 		return new Location(tx, ty, tz);
 	}
-	
+
+	/**
+	 * Swim check. Swimmers are not bound to a floor, only the walls of the floor below them block movement.
+	 * @param x the x coordinate
+	 * @param y the y coordinate
+	 * @param z the z coordinate
+	 * @param tx the target's x coordinate
+	 * @param ty the target's y coordinate
+	 * @param tz the target's z coordinate
+	 * @return the last Location (x,y,z) where character can swim - just before wall
+	 */
+	public Location swimCheck(int x, int y, int z, int tx, int ty, int tz)
+	{
+		if (DoorTable.getInstance().checkIfDoorsBetween(x, y, z, tx, ty, tz))
+		{
+			return new Location(x, y, z);
+		}
+
+		final int geoX = getGeoX(x);
+		final int geoY = getGeoY(y);
+		final int tGeoX = getGeoX(tx);
+		final int tGeoY = getGeoY(ty);
+
+		LinePointIterator2D pointIter = new LinePointIterator2D(geoX, geoY, tGeoX, tGeoY);
+		if (!pointIter.next())
+		{
+			return new Location(tx, ty, tz);
+		}
+
+		final int steps = Math.max(Math.abs(tGeoX - geoX), Math.abs(tGeoY - geoY));
+		int prevX = pointIter.x();
+		int prevY = pointIter.y();
+		int prevZ = z;
+		int iterations = 0;
+
+		while (pointIter.hasNext() && iterations < LinePointIterator.MAX_ITERATIONS)
+		{
+			iterations++;
+
+			if (!pointIter.next())
+				break;
+
+			int curX = pointIter.x();
+			int curY = pointIter.y();
+
+			if (hasGeoPos(prevX, prevY))
+			{
+				// No floor below (e.g. shaft under another layer) means nothing to collide with
+				int floorZ = getNextLowerZ(prevX, prevY, prevZ);
+				if (floorZ < prevZ)
+				{
+					int nswe = GeoUtils.computeNswe(prevX, prevY, curX, curY);
+					if (!checkNearestNsweAntiCornerCut(prevX, prevY, floorZ, nswe))
+					{
+						// Can't move, return previous location
+						return new Location(getWorldX(prevX), getWorldY(prevY), prevZ);
+					}
+				}
+			}
+
+			prevX = curX;
+			prevY = curY;
+			prevZ = z + (int) (((long) (tz - z) * iterations) / steps);
+		}
+
+		if (iterations >= LinePointIterator.MAX_ITERATIONS)
+		{
+			return new Location(x, y, z);
+		}
+
+		return new Location(tx, ty, tz);
+	}
+
 	/**
 	 * Checks if its possible to move from one location to another.
 	 * @param fromX the X coordinate to start checking from

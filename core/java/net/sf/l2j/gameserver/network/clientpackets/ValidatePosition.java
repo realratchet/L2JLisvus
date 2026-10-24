@@ -148,8 +148,10 @@ public class ValidatePosition extends L2GameClientPacket
 			if (activeChar.isInsideZone(L2Character.ZONE_WATER))
 			{
 				// Swimming: claimed point must be inside water and not below the bottom, or on the floor (leaving water)
+				// A floor below the swimmer also counts, for shafts and tunnels under another layer
 				final boolean inWater = ZoneManager.getInstance().getZone(realX, realY, _z, L2WaterZone.class) != null;
-				validZ = (inWater && (_z >= (GeoData.getInstance().getHeight(_x, _y, _z) - GEO_Z_TOLERANCE))) || (Math.abs(_z - floorZ) <= GEO_Z_TOLERANCE);
+				final boolean aboveFloor = (_z >= (GeoData.getInstance().getHeight(_x, _y, _z) - GEO_Z_TOLERANCE)) || (GeoData.getInstance().getNextLowerZ(GeoData.getInstance().getGeoX(_x), GeoData.getInstance().getGeoY(_y), _z) < _z);
+				validZ = (inWater && aboveFloor) || (Math.abs(_z - floorZ) <= GEO_Z_TOLERANCE);
 			}
 			else
 			{
