@@ -154,7 +154,7 @@ public class L2LoginServer
 		
 		if (Config.LOGIN_WEBSOCKET_ENABLED)
 		{
-			_webSocketListener = new WebSocketListener(_selectorThread, bindAddress, Config.PORT_LOGIN_WEBSOCKET, bindAddress, Config.PORT_LOGIN, Config.WEBSOCKET_ALLOWED_ORIGINS);
+			_webSocketListener = new WebSocketListener(_selectorThread, bindAddress, Config.PORT_LOGIN_WEBSOCKET, bindAddress, Config.PORT_LOGIN, Config.WEBSOCKET_ALLOWED_ORIGINS, Config.WEBSOCKET_TRUSTED_PROXIES, Config.WEBSOCKET_REAL_IP_HEADER);
 			_webSocketListener.start();
 			_log.info("Login Server WebSocket ready on " + Config.LOGIN_BIND_ADDRESS + ":" + Config.PORT_LOGIN_WEBSOCKET);
 		}

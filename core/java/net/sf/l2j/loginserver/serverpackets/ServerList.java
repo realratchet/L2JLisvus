@@ -71,24 +71,26 @@ public final class ServerList extends L2LoginServerPacket
 		{
 			// Browser clients get the game server's WebSocket listener, or see the server as down if it has none
 			final int port = isWebSocket ? gsi.getWebSocketPort() : gsi.getPort();
+			// Browser clients reuse the login host, so the game server address is not revealed to them (e.g. behind Cloudflare)
+			final String host = isWebSocket ? "0.0.0.0" : client.usesInternalIP() ? gsi.getInternalHost() : gsi.getExternalHost();
 			if (isWebSocket && port == 0)
 			{
-				addServer(client.usesInternalIP() ? gsi.getInternalHost() : gsi.getExternalHost(), port, gsi.isPvp(), gsi.isTestServer(), gsi.getCurrentPlayerCount(), gsi.getMaxPlayers(), gsi.isShowingBrackets(), gsi.isShowingClock(), ServerStatus.STATUS_DOWN, gsi.getId());
+				addServer(host, port, gsi.isPvp(), gsi.isTestServer(), gsi.getCurrentPlayerCount(), gsi.getMaxPlayers(), gsi.isShowingBrackets(), gsi.isShowingClock(), ServerStatus.STATUS_DOWN, gsi.getId());
 			}
 			else if (gsi.getStatus() == ServerStatus.STATUS_GM_ONLY && client.getAccessLevel() > 0)
 			{
 				// Server is GM-Only but you've got GM Status
-				addServer(client.usesInternalIP() ? gsi.getInternalHost() : gsi.getExternalHost(), port, gsi.isPvp(), gsi.isTestServer(), gsi.getCurrentPlayerCount(), gsi.getMaxPlayers(), gsi.isShowingBrackets(), gsi.isShowingClock(), gsi.getStatus(), gsi.getId());
+				addServer(host, port, gsi.isPvp(), gsi.isTestServer(), gsi.getCurrentPlayerCount(), gsi.getMaxPlayers(), gsi.isShowingBrackets(), gsi.isShowingClock(), gsi.getStatus(), gsi.getId());
 			}
 			else if (gsi.getStatus() != ServerStatus.STATUS_GM_ONLY)
 			{
 				// Server is not GM-Only
-				addServer(client.usesInternalIP() ? gsi.getInternalHost() : gsi.getExternalHost(), port, gsi.isPvp(), gsi.isTestServer(), gsi.getCurrentPlayerCount(), gsi.getMaxPlayers(), gsi.isShowingBrackets(), gsi.isShowingClock(), gsi.getStatus(), gsi.getId());
+				addServer(host, port, gsi.isPvp(), gsi.isTestServer(), gsi.getCurrentPlayerCount(), gsi.getMaxPlayers(), gsi.isShowingBrackets(), gsi.isShowingClock(), gsi.getStatus(), gsi.getId());
 			}
 			else
 			{
 				// Server's GM-Only and you've got no GM-Status
-				addServer(client.usesInternalIP() ? gsi.getInternalHost() : gsi.getExternalHost(), port, gsi.isPvp(), gsi.isTestServer(), gsi.getCurrentPlayerCount(), gsi.getMaxPlayers(), gsi.isShowingBrackets(), gsi.isShowingClock(), ServerStatus.STATUS_DOWN, gsi.getId());
+				addServer(host, port, gsi.isPvp(), gsi.isTestServer(), gsi.getCurrentPlayerCount(), gsi.getMaxPlayers(), gsi.isShowingBrackets(), gsi.isShowingClock(), ServerStatus.STATUS_DOWN, gsi.getId());
 			}
 		}
 	}

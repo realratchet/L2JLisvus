@@ -417,7 +417,7 @@ public class GameServer
 
 		if (Config.GAME_WEBSOCKET_ENABLED)
 		{
-			_webSocketListener = new WebSocketListener(_selectorThread, bindAddress, Config.PORT_GAME_WEBSOCKET, bindAddress, Config.PORT_GAME, Config.WEBSOCKET_ALLOWED_ORIGINS);
+			_webSocketListener = new WebSocketListener(_selectorThread, bindAddress, Config.PORT_GAME_WEBSOCKET, bindAddress, Config.PORT_GAME, Config.WEBSOCKET_ALLOWED_ORIGINS, Config.WEBSOCKET_TRUSTED_PROXIES, Config.WEBSOCKET_REAL_IP_HEADER);
 			_webSocketListener.start();
 			_log.info("GameServer WebSocket ready on " + Config.GAMESERVER_HOSTNAME + ":" + Config.PORT_GAME_WEBSOCKET);
 		}
