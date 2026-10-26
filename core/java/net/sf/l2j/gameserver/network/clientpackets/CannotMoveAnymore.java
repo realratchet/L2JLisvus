@@ -23,6 +23,7 @@ import net.sf.l2j.gameserver.geoengine.GeoData;
 import net.sf.l2j.gameserver.model.Location;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.network.serverpackets.PartyMemberPosition;
+import net.sf.l2j.gameserver.network.serverpackets.ValidateLocation;
 
 /**
  * This class ...
@@ -61,11 +62,22 @@ public class CannotMoveAnymore extends L2GameClientPacket
 			_log.fine("client: x: " + _x + " y: " + _y + " z: " + _z + " server x: " + activeChar.getX() + " y: " + activeChar.getY() + " z: " + activeChar.getZ());
 		}
 		
+		if (!Config.PLAYER_GEODATA)
+		{
+			double dx = (double) _x - activeChar.getX();
+			double dy = (double) _y - activeChar.getY();
+			if (((dx * dx) + (dy * dy) > 360000) || (Math.abs((long) _z - activeChar.getZ()) > 1500) || (_z < -20000) || (_z > 20000))
+			{
+				activeChar.sendPacket(new ValidateLocation(activeChar));
+				return;
+			}
+		}
+
 		L2CharacterAI ai = activeChar.getAI();
 		if (ai != null)
 		{
 			// This mode will always try to synchronize server with client (not intended for server with geodata)
-			if (Config.COORD_SYNCHRONIZE == 1)
+			if (!Config.PLAYER_GEODATA || (Config.COORD_SYNCHRONIZE == 1))
 			{
 				ai.notifyEvent(CtrlEvent.EVT_ARRIVED_BLOCKED, new Location(_x, _y, _z, _heading));
 			}

@@ -3936,6 +3936,11 @@ public abstract class L2Character extends L2Object
 		}
 	}
 	
+	public boolean isGeodataMovementEnabled()
+	{
+		return Config.PLAYER_GEODATA || !(this instanceof L2PcInstance);
+	}
+
 	/**
 	 * Update the position of the L2Character during a movement and return True if the movement is finished.<BR>
 	 * <BR>
@@ -4004,7 +4009,7 @@ public abstract class L2Character extends L2Object
 		final boolean isFloating = isFlying() || isInsideZone(L2Character.ZONE_WATER);
 		
 		// Z coordinate will follow geodata or client values
-		if ((Config.COORD_SYNCHRONIZE == 2) && !isFloating && !m.disregardingGeodata && !(this instanceof L2BoatInstance) && ((GameTimeController.getInstance().getGameTicks() % 10) == 0 // once a second to reduce possible cpu load
+		if (isGeodataMovementEnabled() && (Config.COORD_SYNCHRONIZE == 2) && !isFloating && !m.disregardingGeodata && !(this instanceof L2BoatInstance) && ((GameTimeController.getInstance().getGameTicks() % 10) == 0 // once a second to reduce possible cpu load
 		) && GeoData.getInstance().hasGeo(xPrev, yPrev))
 		{
 			int geoHeight = GeoData.getInstance().getSpawnHeight(xPrev, yPrev, zPrev);
@@ -4066,7 +4071,7 @@ public abstract class L2Character extends L2Object
 			zNext = zPrev + (int) ((dz * distFraction) + 0.5);
 		}
 		
-		if (!isFloating && !(this instanceof L2BoatInstance) && !GeoData.getInstance().canMove(xPrev, yPrev, zPrev, xNext, yNext, zNext))
+		if (isGeodataMovementEnabled() && !isFloating && !(this instanceof L2BoatInstance) && !GeoData.getInstance().canMove(xPrev, yPrev, zPrev, xNext, yNext, zNext))
 		{
 			m.blocked = true;
 			return true;
@@ -4373,7 +4378,7 @@ public abstract class L2Character extends L2Object
 					return false;
 				}
 				
-				if (!isInBoat)
+				if (isGeodataMovementEnabled() && !isInBoat)
 				{
 					Location dest = GeoData.getInstance().moveCheck(curX, curY, curZ, x, y, z);
 					// Location difference if destination wasn't reached (or just z coord is different)
@@ -4390,7 +4395,7 @@ public abstract class L2Character extends L2Object
 			// Pathfinding checks. Only when geodata setting is 2, the LoS check gives shorter result
 			// than the original movement was and the LoS gives a shorter distance than 2000
 			// This way of detecting need for pathfinding could be changed.
-			if ((Config.PATHFINDING > 0) && ((originalDistance - distance) > 30) && !isAfraid())
+			if (isGeodataMovementEnabled() && (Config.PATHFINDING > 0) && ((originalDistance - distance) > 30) && !isAfraid())
 			{
 				// Path calculation
 				// Overrides previous movement check
@@ -4477,7 +4482,7 @@ public abstract class L2Character extends L2Object
 				return false;
 			}
 		}
-		else if (!isFlying() && !(this instanceof L2BoatInstance) && (this instanceof L2PlayableInstance) && isInsideZone(ZONE_WATER) && !(((this instanceof L2PcInstance) && ((L2PcInstance) this).isInBoat())))
+		else if (isGeodataMovementEnabled() && !isFlying() && !(this instanceof L2BoatInstance) && (this instanceof L2PlayableInstance) && isInsideZone(ZONE_WATER) && !(((this instanceof L2PcInstance) && ((L2PcInstance) this).isInBoat())))
 		{
 			// Swimming keeps its own Z, but walls and doors still block horizontal movement
 			final Location dest = GeoData.getInstance().swimCheck(curX, curY, curZ, x, y, z);

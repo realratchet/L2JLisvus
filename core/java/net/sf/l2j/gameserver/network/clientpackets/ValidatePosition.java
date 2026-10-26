@@ -115,7 +115,8 @@ public class ValidatePosition extends L2GameClientPacket
 			return;
 		}
 		
-		if (activeChar.isFalling(_z))
+		// Detect fall damage even when player geodata position correction is disabled.
+		if (activeChar.isFalling(_z) && Config.PLAYER_GEODATA)
 		{
 			// This is a small hack to fix position of players when they fall through world textures, based on pablo966's concept
 			final int height = GeoData.getInstance().getHeight(_x, _y, _z);
@@ -142,7 +143,7 @@ public class ValidatePosition extends L2GameClientPacket
 		boolean validZ = (Math.abs(dz) <= 200) || ((Math.abs(dz) < 1500) && (Math.abs(_z - activeChar.getClientZ()) < 800));
 		
 		// With geodata, client Z must match the floor the server knows the player is on
-		if (validZ && !activeChar.isFlying() && GeoData.getInstance().hasGeo(_x, _y))
+		if (Config.PLAYER_GEODATA && validZ && !activeChar.isFlying() && GeoData.getInstance().hasGeo(_x, _y))
 		{
 			final int floorZ = GeoData.getInstance().getHeight(_x, _y, realZ);
 			if (activeChar.isInsideZone(L2Character.ZONE_WATER))
@@ -186,7 +187,7 @@ public class ValidatePosition extends L2GameClientPacket
 		}
 		else if (diffSq < 360000) // if too large, messes observation
 		{
-			if (Config.COORD_SYNCHRONIZE == -1) // Only Z coordinate synchronized to server, mainly used when no geodata
+			if ((Config.COORD_SYNCHRONIZE == -1) || (!Config.PLAYER_GEODATA && (Config.COORD_SYNCHRONIZE == 2))) // Only Z coordinate synchronized to server, mainly used when no geodata
 			{
 				if (validZ)
 				{

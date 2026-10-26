@@ -15,10 +15,13 @@
 package net.sf.l2j.gameserver.pathfinding.cellnodes;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.locks.ReentrantLock;
 
 import net.sf.l2j.Config;
+import net.sf.l2j.gameserver.geoengine.GeoData;
 
 /**
  * @author DS
@@ -31,6 +34,7 @@ public class CellNodeBuffer
 	private final ReentrantLock _lock = new ReentrantLock();
 	private final int _mapSize;
 	private final CellNode[][] _buffer;
+	private final Map<NodeKey, CellNode> _layerNodes = new HashMap<>();
 	
 	private int _baseX = 0;
 	private int _baseY = 0;
@@ -44,6 +48,8 @@ public class CellNodeBuffer
 	
 	private CellNode _current = null;
 	
+	private record NodeKey(int x, int y, int z) {}
+
 	public CellNodeBuffer(int size)
 	{
 		_mapSize = size;
@@ -93,6 +99,7 @@ public class CellNodeBuffer
 					node.free();
 			}
 		
+		_layerNodes.clear();
 		_lock.unlock();
 		_lastElapsedTime = System.currentTimeMillis() - _timeStamp;
 	}
@@ -124,6 +131,12 @@ public class CellNodeBuffer
 			}
 		}
 		
+		for (CellNode node : _layerNodes.values())
+		{
+			if (node.getCost() > 0)
+				result.add(node);
+		}
+
 		return result;
 	}
 	
@@ -205,7 +218,16 @@ public class CellNodeBuffer
 			result = new CellNode(new NodeLoc(x, y, z));
 			_buffer[aX][aY] = result;
 		}
-		else if (!result.isInUse())
+		else if (result.isInUse())
+		{
+			final int geoZ = GeoData.getInstance().getNearestZ(x, y, z);
+			if (result.getLoc().getZ() != geoZ)
+			{
+				final NodeKey key = new NodeKey(x, y, geoZ);
+				return _layerNodes.computeIfAbsent(key, k -> new CellNode(new NodeLoc(x, y, geoZ)));
+			}
+		}
+		else
 		{
 			result.setInUse();
 			// reinit node if needed

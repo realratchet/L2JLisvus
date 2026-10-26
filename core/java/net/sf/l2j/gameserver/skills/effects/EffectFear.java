@@ -93,7 +93,9 @@ final class EffectFear extends L2Effect
         posX += _dX*FEAR_RANGE;
         posY += _dY*FEAR_RANGE;
 
-        Location dest = GeoData.getInstance().moveCheck(getEffected().getX(), getEffected().getY(), getEffected().getZ(), posX, posY, posZ);
+        Location dest = new Location(posX, posY, posZ);
+        if (getEffected().isGeodataMovementEnabled())
+            dest = GeoData.getInstance().moveCheck(getEffected().getX(), getEffected().getY(), getEffected().getZ(), posX, posY, posZ);
 
         if (!(getEffected() instanceof L2PetInstance))
             getEffected().setRunning();
