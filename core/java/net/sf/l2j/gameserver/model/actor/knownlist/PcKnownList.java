@@ -17,6 +17,7 @@ package net.sf.l2j.gameserver.model.actor.knownlist;
 import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.model.L2Character;
 import net.sf.l2j.gameserver.model.L2Object;
+import net.sf.l2j.gameserver.model.actor.instance.L2BoatInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2NpcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.network.serverpackets.DeleteObject;
@@ -26,6 +27,8 @@ public class PcKnownList extends PlayableKnownList
 {
 	// =========================================================
 	// Data Field
+	// Boats stay visible across the harbour, e.g. a ferry waiting off a busy dock
+	private static final int BOAT_RANGE_MULTIPLIER = 4;
 	
 	// =========================================================
 	// Constructor
@@ -141,6 +144,12 @@ public class PcKnownList extends PlayableKnownList
 		// when knownlist grows, the distance to forget should be at least
 		// the same as the previous watch range, or it becomes possible that
 		// extra charinfo packets are being sent (watch-forget-watch-forget)
+		int range = getDistanceToForget();
+		return object instanceof L2BoatInstance ? range * BOAT_RANGE_MULTIPLIER : range;
+	}
+	
+	private int getDistanceToForget()
+	{
 		int knownlistSize = getKnownObjects().size();
 		if (knownlistSize <= 25)
 		{
@@ -159,6 +168,12 @@ public class PcKnownList extends PlayableKnownList
 	
 	@Override
 	public int getDistanceToWatchObject(L2Object object)
+	{
+		int range = getDistanceToWatch();
+		return object instanceof L2BoatInstance ? range * BOAT_RANGE_MULTIPLIER : range;
+	}
+	
+	private int getDistanceToWatch()
 	{
 		int knownlistSize = getKnownObjects().size();
 		if (knownlistSize <= 25)

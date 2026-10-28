@@ -44,7 +44,8 @@ public class BoatKnownList extends CharKnownList
     {
         if (!(object instanceof L2PcInstance))
             return 0;       
-        return 5000;
+        // Mirror the player's range so both sides know each other
+        return ((L2PcInstance) object).getKnownList().getDistanceToForgetObject(getActiveChar());
     }
 
     @Override
@@ -52,6 +53,6 @@ public class BoatKnownList extends CharKnownList
     {
         if (!(object instanceof L2PcInstance))
             return 0;
-        return 4000;
+        return ((L2PcInstance) object).getKnownList().getDistanceToWatchObject(getActiveChar());
     }
 }
