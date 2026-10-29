@@ -2,9 +2,9 @@
 <!DOCTYPE xml>
 <list>
 	<!-- Admin Command Rights -->
-	<command name="admin_admin" val="100"/>
+	<command name="admin_admin" val="75"/>
 	<command name="admin_delete" val="100"/>
-	<command name="admin_gmshop" val="100"/>
+	<command name="admin_gmshop" val="75"/>
 	<command name="admin_heal" val="75"/>
 	<command name="admin_help" val="75"/>
 	<command name="admin_vis" val="75"/>
@@ -122,8 +122,8 @@
 	<command name="admin_setba" val="100"/>
 	<command name="admin_enchant" val="100"/>
 	<command name="admin_server_shutdown" val="100"/>
-	<command name="admin_server_restart" val="75"/>
-	<command name="admin_server_abort" val="75"/>
+	<command name="admin_server_restart" val="100"/>
+	<command name="admin_server_abort" val="100"/>
 	<command name="admin_server_gm_only" val="100"/>
 	<command name="admin_server_all" val="100"/>
 	<command name="admin_server_max_player" val="100"/>
@@ -190,10 +190,12 @@
 	<command name="admin_mammon_respawn" val="75"/>
 	<command name="admin_list_spawns" val="75"/>
 	<command name="admin_show_spawns" val="75"/>
-	<command name="admin_spawn" val="100"/>
-	<command name="admin_spawn_index" val="100"/>
-	<command name="admin_spawn_monster" val="100"/>
-	<command name="admin_spawn_once" val="100"/>
+	<command name="admin_show_npcs" val="75"/>
+	<command name="admin_npc_index" val="75"/>
+	<command name="admin_spawn" val="75"/>
+	<command name="admin_spawn_index" val="75"/>
+	<command name="admin_spawn_monster" val="75"/>
+	<command name="admin_spawn_once" val="75"/>
 	<command name="admin_respawnall" val="100"/>
 	<command name="admin_unspawnall" val="100"/>
 	<command name="admin_show_moves" val="75"/>
@@ -233,10 +235,10 @@
 	<command name="admin_gmlistoff" val="75"/>
 	<command name="admin_gmliston" val="75"/>
 	<command name="admin_snoop" val="75"/>
-	<command name="admin_buy" val="100"/>
+	<command name="admin_buy" val="75"/>
 	<command name="admin_sell" val="75"/>
-	<command name="admin_create_item" val="100"/>
-	<command name="admin_itemcreate" val="100"/>
+	<command name="admin_create_item" val="75"/>
+	<command name="admin_itemcreate" val="75"/>
 	<command name="admin_giveitem" val="100"/>
 	<command name="admin_play_sound" val="75"/>
 	<command name="admin_play_sounds" val="75"/>
