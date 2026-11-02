@@ -475,6 +475,8 @@ INSERT INTO `merchant_shopids` (`shop_id`,`npc_id`) VALUES
 (609918,'gm'),
 (609919,'gm'),
 (609920,'gm'),
+(609921,'gm'),
+(609922,'gm'),
 (609925,'gm'),
 (609927,'gm'),
 (609928,'gm'),
