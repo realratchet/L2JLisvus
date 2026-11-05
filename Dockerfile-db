@@ -1,4 +1,9 @@
-FROM mariadb:11.4
+FROM mariadb:11.4@sha256:d1891ede5a559f1086f55053bb8cc1569b0298338c4d72d71725a7f74f6ba620
+
+RUN apt-get update \
+    && DEBIAN_FRONTEND=noninteractive apt-get install -y --only-upgrade apt \
+    && DEBIAN_FRONTEND=noninteractive apt-get upgrade -y \
+    && rm -rf /var/lib/apt/lists/*
 
 ADD ./datapack/build/datapack.tar.gz /tmp/datapack/
 RUN mv /tmp/datapack/sql/* /docker-entrypoint-initdb.d/
