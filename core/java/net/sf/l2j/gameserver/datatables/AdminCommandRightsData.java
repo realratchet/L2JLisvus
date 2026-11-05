@@ -102,6 +102,11 @@ public class AdminCommandRightsData
     	
     	String command = adminCommand.split(" ")[0];
         int requiredLevel = _commandRights.containsKey(command) ? _commandRights.get(command) : Config.MASTER_ACCESS_LEVEL;
+        if (Config.GM_COMMAND_ACCESS_LEVEL >= 0)
+        {
+            requiredLevel = Config.SERVER_CONTROL_COMMANDS.contains(command)
+                ? Config.SERVER_CONTROL_ACCESS_LEVEL : Math.min(requiredLevel, Config.GM_COMMAND_ACCESS_LEVEL);
+        }
         
         // Check if player can use command
         if (activeChar.getAccessLevel() < requiredLevel)

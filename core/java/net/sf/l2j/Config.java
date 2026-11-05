@@ -24,9 +24,11 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
+import java.util.Set;
 import java.util.StringTokenizer;
 import java.util.logging.Logger;
 
@@ -483,6 +485,23 @@ public final class Config
 	
 	/** The highest access level */
 	public static int MASTER_ACCESS_LEVEL;
+	public static int GM_COMMAND_ACCESS_LEVEL;
+	public static int SERVER_CONTROL_ACCESS_LEVEL;
+	public static Set<String> SERVER_CONTROL_COMMANDS;
+	private static final String DEFAULT_SERVER_CONTROL_COMMANDS = String.join(",",
+		"admin_server_shutdown", "admin_server_restart", "admin_server_abort",
+		"admin_server_gm_only", "admin_server_all", "admin_server_max_player",
+		"admin_server_list_clock", "admin_server_login", "admin_changelvl",
+		"admin_reload", "admin_reload_announcements", "admin_reload_autoannounce",
+		"admin_cache_htm_rebuild", "admin_cache_htm_reload", "admin_cache_crest_fix",
+		"admin_cache_crest_rebuild", "admin_cache_crest_reload", "admin_cache_reload_file",
+		"admin_cache_reload_path", "admin_quest_reload", "admin_teleport_reload",
+		"admin_spawn_reload", "admin_script_load", "admin_closeall",
+		"admin_openall", "admin_respawnall", "admin_unspawnall",
+		"admin_para_all", "admin_unpara_all", "admin_saveolymp",
+		"admin_endolympiad", "admin_ge_mode", "admin_ge_join",
+		"admin_ge_leave", "admin_zone_reload", "admin_forge",
+		"admin_forge2", "admin_forge3", "admin_kick_non_gm");
 	/** General GM AccessLevel to resurrect fixed after death */
 	public static int GM_FIXED;
 	/** General GM AccessLevel to attack in the peace zone */
@@ -2126,6 +2145,17 @@ public final class Config
 			EnvProperties accessLevelSettings = new EnvProperties(ACCESS_LEVELS_FILE);
 			
 			MASTER_ACCESS_LEVEL = Integer.parseInt(accessLevelSettings.getProperty("MasterAccessLevel", "100"));
+			GM_COMMAND_ACCESS_LEVEL = Integer.parseInt(accessLevelSettings.getProperty("GMCommandAccessLevel", "-1"));
+			SERVER_CONTROL_ACCESS_LEVEL = Integer.parseInt(accessLevelSettings.getProperty("ServerControlAccessLevel", "100"));
+			Set<String> serverControlCommands = new HashSet<>();
+			for (String command : accessLevelSettings.getProperty("ServerControlCommands", DEFAULT_SERVER_CONTROL_COMMANDS).split(","))
+			{
+				if (!command.trim().isEmpty())
+				{
+					serverControlCommands.add(command.trim());
+				}
+			}
+			SERVER_CONTROL_COMMANDS = serverControlCommands;
 			GM_FIXED = Integer.parseInt(accessLevelSettings.getProperty("GMResurrectFixed", "100"));
 			GM_PEACE_ATTACK = Integer.parseInt(accessLevelSettings.getProperty("GMPeaceAttack", "100"));
 			GM_TRANSACTION = Integer.parseInt(accessLevelSettings.getProperty("GMTransaction", "100"));
