@@ -480,34 +480,37 @@ public class CharEffectList
 	
 	private void queueRunner()
 	{
-		if (!queueLock.compareAndSet(false, true))
-			return;
-		
-		try
+		while (queueLock.compareAndSet(false, true))
 		{
-			L2Effect effect;
-			do
+			try
 			{
-				// Remove has more priority than add, so removing all effects from queue first
-				while ((effect = _removeQueue.poll()) != null)
+				L2Effect effect;
+				do
 				{
-					removeEffectFromQueue(effect);
-					_partyOnly = false;
+					// Remove has more priority than add, so removing all effects from queue first
+					while ((effect = _removeQueue.poll()) != null)
+					{
+						removeEffectFromQueue(effect);
+						_partyOnly = false;
+					}
+
+					if ((effect = _addQueue.poll()) != null)
+					{
+						addEffectFromQueue(effect);
+						_partyOnly = false;
+					}
 				}
-				
-				if ((effect = _addQueue.poll()) != null)
-				{
-					addEffectFromQueue(effect);
-					_partyOnly = false;
-				}
+				while (!_addQueue.isEmpty() || !_removeQueue.isEmpty());
+
+				updateEffectIcons();
 			}
-			while (!_addQueue.isEmpty() || !_removeQueue.isEmpty());
-			
-			updateEffectIcons();
-		}
-		finally
-		{
-			queueLock.set(false);
+			finally
+			{
+				queueLock.set(false);
+			}
+
+			if (_addQueue.isEmpty() && _removeQueue.isEmpty())
+				return;
 		}
 	}
 	
