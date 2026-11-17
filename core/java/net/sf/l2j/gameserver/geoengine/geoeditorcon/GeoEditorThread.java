@@ -84,7 +84,7 @@ public class GeoEditorThread extends Thread
 				{
 					for (L2PcInstance gm : _gms)
 					{
-						if (gm == null || gm.getClient().getConnection().isClosed())
+						if (gm == null || gm.getClient() == null || gm.getClient().getConnection() == null || gm.getClient().getConnection().isClosed())
 						{
 							_gms.remove(gm);
 							continue;

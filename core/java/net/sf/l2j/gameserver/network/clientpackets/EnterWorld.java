@@ -311,7 +311,7 @@ public class EnterWorld extends L2GameClientPacket
 		Collection<L2PcInstance> players = L2World.getInstance().getAllPlayers();
 		for (L2PcInstance otherPlayer : players)
 		{
-			if (activeChar == otherPlayer || otherPlayer.getClient() == null)
+			if (activeChar == otherPlayer || otherPlayer.getClient() == null || otherPlayer.getClient().getConnection() == null)
 			{
 				continue;
 			}
