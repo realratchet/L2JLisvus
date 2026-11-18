@@ -9990,6 +9990,12 @@ public final class L2PcInstance extends L2PlayableInstance
 	@Override
 	public void teleToLocation(int x, int y, int z, boolean allowRandomOffset, TeleportType tpType)
 	{
+		if (isInStoreMode())
+		{
+			setPrivateStoreType(PrivateStoreType.NONE);
+			standUp();
+		}
+
 		if (isInBoat())
 		{
 			setBoat(null);
