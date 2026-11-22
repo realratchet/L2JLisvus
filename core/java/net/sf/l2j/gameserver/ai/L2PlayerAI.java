@@ -284,6 +284,12 @@ public class L2PlayerAI extends L2CharacterAI
 			return;
 		}
 
+		// A bow shot clears the move data, which raises EVT_ARRIVED and would start a new follow mid-shot
+		if (_actor.isAttackingNow())
+		{
+			return;
+		}
+
 		if (maybeMoveToPawn(target, _actor.getPhysicalAttackRange()))
 		{
 			return;
