@@ -76,7 +76,6 @@
     <region name="giran_habor" restartPointGroup="giran_town" castleId="3" locId="919" bbs="6">
         <map X="20" Y="24" />
         <map X="21" Y="24" />
-        <map X="21" Y="25" />
     </region>
     <!-- Gludin Town -->
     <region name="gludin_town" restartPointGroup="gludin_village" castleId="1" locId="911"
@@ -209,5 +208,7 @@
         <map X="17" Y="24" />
         <map X="17" Y="25" />
         <map X="18" Y="25" />
+        <!-- Elven Ruins interior -->
+        <map X="21" Y="25" />
     </region>
 </list>
