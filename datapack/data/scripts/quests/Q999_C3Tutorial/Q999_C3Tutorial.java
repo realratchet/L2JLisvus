@@ -181,6 +181,9 @@ public class Q999_C3Tutorial extends Quest
                 
                 st.unset("step");
                 st.set("onlyone", "1");
+
+                if (tutorialSt.getInt("reward") != 0)
+                    st.setState(State.COMPLETED);
             }
         }
         return htmltext;
@@ -328,7 +331,11 @@ public class Q999_C3Tutorial extends Quest
                     if (step == 1)
                         htmltext = htmlfiles[0];
                     else if (step == 2)
+                    {
+                        // The village guide may have completed the quest already, and events of a completed quest are ignored
+                        st.setState(State.STARTED);
                         htmltext = htmlfiles[1];
+                    }
                     else if (step == 3)
                         htmltext = htmlfiles[2];
                 }
