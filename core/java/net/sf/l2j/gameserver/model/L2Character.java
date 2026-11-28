@@ -1574,12 +1574,13 @@ public abstract class L2Character extends L2Object
 			crit = skill.isCritical(this, target);
 		}
 		
-		// This is a small hack to maintain bow skills animation
-		final int visualHitTime = hitTime < 1200 && skill.isOffensive() && (L2WeaponType.BOW.mask() & skill.getWeaponsAllowed()) != 0 ? 1200 : hitTime;
-		
-		// Send a Server->Client packet MagicSkillUse with target, displayId, level, hitTime, reuseDelay
-		// to the L2Character AND to all L2PcInstance in the _KnownPlayers of the L2Character
-		broadcastPacket(new MagicSkillUse(this, target, displayId, level, visualHitTime, reuseDelay, !skill.isMagic() && crit));
+		// An instant toggle's cast animation would replace the basic attack already playing.
+		if (!skill.isToggle() || hitTime > 0 || !isAttackingNow())
+		{
+			// This is a small hack to maintain bow skills animation
+			final int visualHitTime = hitTime < 1200 && skill.isOffensive() && (L2WeaponType.BOW.mask() & skill.getWeaponsAllowed()) != 0 ? 1200 : hitTime;
+			broadcastPacket(new MagicSkillUse(this, target, displayId, level, visualHitTime, reuseDelay, !skill.isMagic() && crit));
+		}
 		
 		// Send skill cast messages to the L2Character
 		if (this instanceof L2PcInstance && magicId != 1312)

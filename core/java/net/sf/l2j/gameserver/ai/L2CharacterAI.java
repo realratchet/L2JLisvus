@@ -291,14 +291,6 @@ public class L2CharacterAI extends AbstractAI
 			return;
 		}
 
-		// A toggle does not interrupt the attack, it is used once the attack is over
-		if (skill.isToggle() && _actor.isAttackingNow())
-		{
-			clientActionFailed();
-			saveNextIntention(AI_INTENTION_CAST, skill, target);
-			return;
-		}
-
 		// Set the AI cast target
 		setCastTarget((L2Character) target);
 

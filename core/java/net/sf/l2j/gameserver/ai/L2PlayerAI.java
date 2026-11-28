@@ -26,6 +26,7 @@ import net.sf.l2j.gameserver.model.L2Character;
 import net.sf.l2j.gameserver.model.L2Character.AIAccessor;
 import net.sf.l2j.gameserver.model.L2Object;
 import net.sf.l2j.gameserver.model.L2Skill;
+import net.sf.l2j.gameserver.model.L2Skill.SkillTargetType;
 import net.sf.l2j.gameserver.model.Location;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2StaticObjectInstance;
@@ -332,7 +333,8 @@ public class L2PlayerAI extends L2CharacterAI
 		}
 
 		L2Object oldTarget = _actor.getTarget();
-		if (oldTarget != null)
+		// Self-targeted toggles already resolve to the caster without changing the player's selection.
+		if (oldTarget != null && !(skill.isToggle() && skill.getTargetType() == SkillTargetType.TARGET_SELF))
 		{
 			// Replace the current target by the cast target
 			if ((target != null) && (oldTarget != target))
